@@ -1,0 +1,699 @@
+{
+  "schema": "smb-native-batch-validation-v1",
+  "runtimeCommit": "4aa045a4229d86257de11ae95f6781fc8e9802e1",
+  "integrationEvidenceCommit": "e2fb8d9",
+  "baselineRef": "b4c934e",
+  "status": "NON_REGRESSION_PASS",
+  "goalComplete": false,
+  "focusedTests": {
+    "pass": 50,
+    "fail": 0
+  },
+  "fullTests": {
+    "pass": 1960,
+    "fail": 0
+  },
+  "typescriptExit": 0,
+  "engineUnchanged": true,
+  "originalGate": {
+    "path": "/tmp/smb-batch-B-4aa045a/gate.json",
+    "sha256": "efd8fe954a7d7656df499c8d57bdc5f978cdf88450e88bd4c3559573b3afa650",
+    "status": "FAIL",
+    "note": "Original comparison failures preserved; only comparison rerun after source-backed classification. Full suite and survey were not repeated."
+  },
+  "classifiedComparison": {
+    "path": "/tmp/smb-batch-gate/batch-B-classified.json",
+    "sha256": "2077cc1c5c7052bcac6d72ac0eefaeb53deb7f41c11884d32c20fe2799268da9",
+    "status": "NON_REGRESSION_PASS",
+    "failures": []
+  },
+  "policySha256": "9a3b32d99136e631c28752bad4aee755a0733649896100dded71e62012cfde32",
+  "comparatorSha256": "611fbadd6e5388c422c145c4e82d0859244ac532ddc5dd0d3361cfa36c58dce6",
+  "earlierFieldClassifications": [
+    {
+      "level": "1-2",
+      "scope": "strict",
+      "field": "continuation.load.ready",
+      "was": null,
+      "now": 3059,
+      "classification": "coverage",
+      "reason": "72da817 always checks readiness while a load object exists. Unchanged b4c934e runtime rerun on1-2 ONLY with current readout also reports3059; baseline at3059 owns load{task1,engine0,screen8,disable7}, while native task3/engine8 is ready. Historical pre-readout baseline fingerprint bound; this is newly exposed comparison, not a new runtime divergence.",
+      "evidence": "/tmp/smb-readiness-b4c-current-readout-1-2.json"
+    },
+    {
+      "level": "5-1",
+      "scope": "legacy",
+      "field": "enemy",
+      "was": 1686,
+      "now": 1281,
+      "classification": "coverage",
+      "reason": "New ID51 coverage exposes native cannon shot1281; 2bcc9f1 coverage-only survey."
+    },
+    {
+      "level": "7-1",
+      "scope": "legacy",
+      "field": "cam",
+      "was": 1577,
+      "now": 1034,
+      "classification": "causal",
+      "reason": "479770c/900a141 source Piranha slot/timer changes expose camera1034 after unchanged MarioY444.",
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 444
+      }
+    },
+    {
+      "level": "7-1",
+      "scope": "legacy",
+      "field": "x",
+      "was": 1528,
+      "now": 1034,
+      "classification": "causal",
+      "reason": "479770c/900a141 source slot/timer changes expose X1034 after unchanged MarioY444.",
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 444
+      }
+    },
+    {
+      "level": "7-1",
+      "scope": "legacy",
+      "field": "enemy",
+      "was": 443,
+      "now": 395,
+      "classification": "coverage",
+      "reason": "New ID51 coverage exposes cannon X fraction difference395; strict already exposed it."
+    },
+    {
+      "level": "7-1",
+      "scope": "strict",
+      "field": "state",
+      "was": 1063,
+      "now": 1051,
+      "classification": "causal",
+      "reason": "479770c state1051 is downstream of unchanged MarioY444 and earlier enemy divergence.",
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 444
+      }
+    },
+    {
+      "level": "8-2",
+      "scope": "legacy",
+      "field": "time",
+      "was": 2367,
+      "now": 2017,
+      "classification": "causal",
+      "reason": "900a141/479770c time2017 follows unchanged MarioY1974 and enemy1554.",
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 1974
+      }
+    },
+    {
+      "level": "8-2",
+      "scope": "strict",
+      "field": "time",
+      "was": 2366,
+      "now": 2017,
+      "classification": "causal",
+      "reason": "Strict time2017 follows unchanged MarioY1974; original strict baseline was2366.",
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 1974
+      }
+    },
+    {
+      "level": "8-3",
+      "scope": "strict",
+      "field": "state",
+      "was": 3814,
+      "now": 3813,
+      "classification": "causal",
+      "reason": "The source ProcHammerObj TimerControl guard correctly holds later misc slot4 after the same-row existing false model death3813. Removing only the guard restores old accidental state138 match; guard retains139. Earlier extra264, missing341 and death3813 are unchanged; position619\u2192914 improves. Exact documented downstream case only.",
+      "upstream": {
+        "scope": "strict",
+        "field": "extra",
+        "frame": 264
+      },
+      "alsoUnchanged": [
+        {
+          "scope": "strict",
+          "field": "missing",
+          "frame": 341
+        },
+        {
+          "scope": "legacy",
+          "field": "dead",
+          "frame": 3813
+        }
+      ],
+      "evidence": {
+        "commit": "f447d19",
+        "path": "games/smb/evidence/native-hammer-hold-causal-8-3.json",
+        "sha256": "37ddbfc35c76dc3099816b3cdcf41a7c40f4526f32762f5fd17c8477b3796844"
+      }
+    },
+    {
+      "level": "6-2",
+      "scope": "legacy",
+      "field": "cam",
+      "was": 3666,
+      "now": 3582,
+      "classification": "causal",
+      "reason": "Native hit2937 is still unfixed in both builds. Native respawn3335; corrected pre-hit movement changes model death3425 vs3498, so main-camera comparison resumes3582 vs3666. Run-specific water native proof; x/y improve to3335.",
+      "upstream": {
+        "scope": "legacy",
+        "field": "dead",
+        "frame": 2937
+      },
+      "run": "water-down-strokes"
+    }
+  ],
+  "all32Fields": [
+    {
+      "level": "1-1",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "pass",
+      "strictFirst": null,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "1-2",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 1781,
+      "strictCoverageGap": 2893
+    },
+    {
+      "level": "1-3",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "pass",
+      "strictFirst": null,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "1-4",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 2675
+    },
+    {
+      "level": "2-1",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 0
+    },
+    {
+      "level": "2-2",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 6597
+    },
+    {
+      "level": "2-3",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 1198,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "2-4",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 4480
+    },
+    {
+      "level": "3-1",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 799,
+      "strictCoverageGap": 0
+    },
+    {
+      "level": "3-2",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "pass",
+      "strictFirst": null,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "3-3",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "pass",
+      "strictFirst": null,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "3-4",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 4607,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "4-1",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "pass",
+      "strictFirst": null,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "4-2",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 1465,
+      "strictCoverageGap": 327
+    },
+    {
+      "level": "4-3",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "pass",
+      "strictFirst": null,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "4-4",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 11633
+    },
+    {
+      "level": "5-1",
+      "legacy": {
+        "dead": 3626,
+        "time": 3629,
+        "score": 3243,
+        "coins": null,
+        "cam": 3247,
+        "x": 3247,
+        "y": 3239,
+        "enemy": 1281
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 1281,
+      "strictCoverageGap": 4226
+    },
+    {
+      "level": "5-2",
+      "legacy": {
+        "dead": 2609,
+        "time": 2195,
+        "score": 2381,
+        "coins": null,
+        "cam": 1389,
+        "x": 1389,
+        "y": 1328,
+        "enemy": 1339
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 741,
+      "strictCoverageGap": 0
+    },
+    {
+      "level": "5-3",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "pass",
+      "strictFirst": null,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "5-4",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "pass",
+      "strictFirst": null,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "6-1",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 2118
+    },
+    {
+      "level": "6-2",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 0
+    },
+    {
+      "level": "6-3",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 3078
+    },
+    {
+      "level": "6-4",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 1640
+    },
+    {
+      "level": "7-1",
+      "legacy": {
+        "dead": 1099,
+        "time": 1118,
+        "score": 448,
+        "coins": null,
+        "cam": 1034,
+        "x": 1034,
+        "y": 444,
+        "enemy": 395
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 381,
+      "strictCoverageGap": 3651
+    },
+    {
+      "level": "7-2",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "incomplete",
+      "strictFirst": null,
+      "strictCoverageGap": 4565
+    },
+    {
+      "level": "7-3",
+      "legacy": {
+        "dead": 1914,
+        "time": 1936,
+        "score": 1920,
+        "coins": 1920,
+        "cam": 2298,
+        "x": 2298,
+        "y": 2298,
+        "enemy": 579
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 578,
+      "strictCoverageGap": 3019
+    },
+    {
+      "level": "7-4",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 54,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "8-1",
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictStatus": "pass",
+      "strictFirst": null,
+      "strictCoverageGap": null
+    },
+    {
+      "level": "8-2",
+      "legacy": {
+        "dead": 2003,
+        "time": 2017,
+        "score": 1978,
+        "coins": null,
+        "cam": 1989,
+        "x": 1989,
+        "y": 1974,
+        "enemy": 1554
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 1380,
+      "strictCoverageGap": 2756
+    },
+    {
+      "level": "8-3",
+      "legacy": {
+        "dead": 3813,
+        "time": 3830,
+        "score": 989,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 711
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 264,
+      "strictCoverageGap": 4205
+    },
+    {
+      "level": "8-4",
+      "legacy": {
+        "dead": 9213,
+        "time": 9219,
+        "score": 9110,
+        "coins": null,
+        "cam": null,
+        "x": 8987,
+        "y": 8980,
+        "enemy": null
+      },
+      "strictStatus": "diverged",
+      "strictFirst": 6455,
+      "strictCoverageGap": 9847
+    }
+  ],
+  "nativePayloadsUnchanged": true,
+  "nativeCannonRows": {
+    "activeRows": 4703,
+    "birthRows": 251,
+    "legacyAdapterRows": 4452
+  },
+  "remaining": "25 legacy-field-clear levels; only9 strict pass. Pixel and whole-input coverage remain incomplete; known native deaths/spawns/transitions remain open."
+}
