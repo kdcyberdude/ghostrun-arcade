@@ -56,3 +56,12 @@ follow unchanged x/y617/614 mismatches; a389925 death null→2588 follows
 unchanged missing/extra742 and position743. No v2 field changes. These tables
 are diagnostics, not immutable integration receipts or full pixel coverage.
 Predictive CPU/NMI work-cycle scheduling remains open.
+
+The completion bank also runs `RunLargePlatform`/`LargePlatformCollision` after
+`DonePlayerTask` clears `TimerControl`. Platform movement alone is insufficient:
+Mario can land on or be carried by the platform without executing another
+player-control turn. The resume pass therefore runs the existing native platform
+contact calculation and retains its integer carry in `Platform_X_Scroll` for the
+following scroll pass. Behavioral tests cover native lift and horizontal motors,
+including the NMI interval hold. No captured transform-on-lift case exists yet;
+these tests are source-order regressions, not a claimed native CPU capture.

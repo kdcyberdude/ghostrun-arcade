@@ -1132,6 +1132,10 @@ export class Simulation {
   this.nmiTimersHeld=true;
   try{
    const p=this.player;this.platformFrame++;this.parserVramBusy=false;this.lakituScroll=0;this.broClock=(this.random.frame-1)&255;
+   // DonePlayerTask clears TimerControl before GameEngine visits the bank;
+   // RunLargePlatform must still land/carry Mario on this completion turn.
+   const x=p.x;this.platformEjection=0;this.updatePlatforms(p.y);
+   this.platformScroll=Math.floor(p.x)-Math.floor(x)-this.platformEjection;
    this.updateBubbles(false,false);this.updateGenerators();this.updateEnemies(p.y);this.updateItems();this.restoreStarMusic();
    this.firebarSlots?.step(this.camera);
    for(const [bar,motor]of this.firebarMotors)if(motor.state.active)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
