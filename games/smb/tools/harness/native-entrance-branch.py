@@ -6,6 +6,8 @@ Baseline/<level> contains the original initial.ram, pads.bin and ram.bin. Every
 baseline RAM row is reproduced before the new pad stream is allowed to run.
 No native RAM is edited; the emulator restores the original complete entrance.
 Outputs out/{traces,entrances}/<level> for native-excerpt.ts/native-runs.test.ts.
+Optional --pixels exports the original archived PPU picture plus every branch frame;
+rendering is checked to preserve RAM on every baseline and branch sample.
 """
 import argparse
 import ctypes
@@ -23,6 +25,7 @@ for name in ['lab', 'observer', 'rom-dir', 'boot-dir', 'recordings', 'archive', 
     p.add_argument('--' + name, type=Path, required=True)
 p.add_argument('--level', required=True)
 p.add_argument('--prefix', type=int, required=True)
+p.add_argument('--pixels', action='store_true')
 a = p.parse_args()
 os.environ['RL_ROM_DIR'] = str(a.rom_dir)
 os.environ['RL_BOOT_DIR'] = str(a.boot_dir)
@@ -47,12 +50,22 @@ if len(original_ram) != len(original_pads) * 2048:
     raise ValueError('Incomplete native baseline')
 P = ctypes.c_void_p
 ram = np.empty(2048, dtype=np.uint8)
+pixels = np.empty(240 * 224, dtype=np.uint8)
+emphasis = np.empty(224, dtype=np.uint8)
 sha = lambda b: hashlib.sha256(b).hexdigest()
 
 
 def read(env):
     env.lib.ghostrun_read_ram(env.h, P(ram.ctypes.data))
-    return ram.tobytes()
+    before = ram.tobytes()
+    if a.pixels:
+        env.lib.ghostrun_read_pixels.argtypes = [P, P, P]
+        if env.lib.ghostrun_read_pixels(env.h, P(pixels.ctypes.data), P(emphasis.ctypes.data)) != 0:
+            raise RuntimeError('Native picture export failed')
+        env.lib.ghostrun_read_ram(env.h, P(ram.ctypes.data))
+        if before != ram.tobytes():
+            raise ValueError('Native rendering changed CPU RAM')
+    return before
 
 
 def setup():
@@ -94,6 +107,14 @@ for frame, pad in enumerate(original_pads):
 del env
 env, initial = setup()
 rows = bytearray()
+trace = a.out / 'traces' / a.level
+trace.mkdir(parents=True, exist_ok=True)
+if a.pixels:
+    seed_pixels, seed_emphasis = pixels.tobytes(), emphasis.tobytes()
+    (trace / 'initial.pixels.bin').write_bytes(seed_pixels)
+    (trace / 'initial.emph.bin').write_bytes(seed_emphasis)
+    pixel_file, emphasis_file = (trace / 'pixels.bin').open('wb'), (trace / 'emph.bin').open('wb')
+    pixel_hash, emphasis_hash = hashlib.sha256(), hashlib.sha256()
 for frame, pad in enumerate(pads):
     if env.lib.ghostrun_frame(env.h, pad) != 0:
         raise RuntimeError(f'Native frame failed at {frame}')
@@ -101,6 +122,24 @@ for frame, pad in enumerate(pads):
     if frame < a.prefix and row != original_ram[frame * 2048:(frame + 1) * 2048]:
         raise ValueError(f'Native common RAM prefix differs at frame {frame}')
     rows.extend(row)
+    if a.pixels:
+        picture, attributes = pixels.tobytes(), emphasis.tobytes()
+        pixel_file.write(picture)
+        emphasis_file.write(attributes)
+        pixel_hash.update(picture)
+        emphasis_hash.update(attributes)
+
+if a.pixels:
+    pixel_file.close()
+    emphasis_file.close()
+    (trace / 'pixels.json').write_text(json.dumps({
+        'schema': 'native-entrance-pixels-v1', 'step': 1, 'width': 240, 'height': 224,
+        'frames': len(pads), 'lag': 1, 'padSha256': sha(pads), 'ramSha256': sha(rows),
+        'pixelsSha256': pixel_hash.hexdigest(), 'emphasisSha256': emphasis_hash.hexdigest(),
+        'initialPixelsSha256': sha(seed_pixels), 'initialEmphasisSha256': sha(seed_emphasis),
+        'format': 'Lossless NES palette indices, native x8..247/y8..231 and per-row emphasis.',
+        'method': 'Complete archived entrance PPU seed and subsequent controller-only frames; every original baseline RAM row and common prefix reproduced, rendering preserves CPU RAM on every sample.'
+    }, indent=2) + '\n')
 
 source = {'schema': 'native-entrance-controller-branch-v1', 'level': a.level,
           'archiveSha256': arc_sha, 'archiveFileSha256': sha(a.archive.read_bytes()),
