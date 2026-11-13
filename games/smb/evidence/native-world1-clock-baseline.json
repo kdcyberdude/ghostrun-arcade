@@ -1,0 +1,934 @@
+{
+  "schema": "native-world1-clock-baseline-v1",
+  "runtimeCommit": "cca2e44cff28d07595b6def7e2efc5ed356fcd56",
+  "diagnosticComparedFrames": 25028,
+  "method": "Current native-divergence --detail, all retained rows in the three source epochs; initial RAM is source row215 and input begins216; no later corrections. All input and complete native RAM hashes authenticated.",
+  "cases": [
+    {
+      "sha256": "91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577",
+      "nativeRamSha256": "617fcc893095493be853f0d00896ed789275ca7e8dc02c6b2c0aa902ebe89399",
+      "nativeCaptureReceiptSha256": "2ad769922e506c2d341280ef1302064d3e63e3a3f9ef983012323929726037b5",
+      "nativeFrames": 8632,
+      "sourceFrameOffset": 216,
+      "initialRamSha256": "b1f3f2523300451cf5ace94125c8d424354f66e796589e9912346b87fb8549b8",
+      "diagnosticInputSha256": "5fdff27fc7909d361e0b971ce7c0a683fbf8fb7f22ba339f1294601d91418539",
+      "role": "one authenticated entrance seed; diagnostic, not continuous POWER-ON proof",
+      "baseline": {
+        "level": "1-1",
+        "frames": 8416,
+        "first": 722,
+        "fields": {
+          "dead": null,
+          "time": 743,
+          "score": null,
+          "coins": null,
+          "cam": 722,
+          "x": 722,
+          "y": 724,
+          "enemy": 722
+        },
+        "at": [
+          {
+            "field": "cam",
+            "native": 1572,
+            "sim": 1574
+          },
+          {
+            "field": "x",
+            "native": 1688,
+            "sim": 1690
+          },
+          {
+            "field": "enemy koopa y184",
+            "native": 1680,
+            "sim": -1
+          },
+          {
+            "field": "y",
+            "native": 139,
+            "sim": 140
+          },
+          {
+            "field": "time",
+            "native": 370,
+            "sim": 369
+          }
+        ],
+        "strict": {
+          "status": "diverged",
+          "first": 722,
+          "fields": {
+            "level": null,
+            "area": null,
+            "dead": null,
+            "time": 743,
+            "score": null,
+            "coins": null,
+            "cam": 722,
+            "x": 722,
+            "y": 724,
+            "missing": 729,
+            "extra": 784,
+            "kind": null,
+            "position": 722,
+            "state": 752,
+            "firebar.id": null,
+            "firebar.high": null,
+            "firebar.low": null,
+            "firebar.speed": null,
+            "firebar.direction": null,
+            "alias.owner": null,
+            "vine.count": null,
+            "vine.height": null,
+            "vine.startY": null,
+            "vine.slots": null
+          },
+          "coverage": {
+            "completeInputSequence": true,
+            "unsteppedFrames": 0,
+            "ramFrames": 8416,
+            "flagFrames": 0,
+            "continuationFrames": 0,
+            "victoryFrames": 0,
+            "uncomparedSameLevelFrames": 0,
+            "nativeMappedFrames": 8416,
+            "inputFrames": 8416,
+            "endReason": "end of trace",
+            "frames": 8416,
+            "alignedFrames": 8416,
+            "nativeEntityRows": 2083,
+            "comparedEntityRows": 2083,
+            "nativeBirthRows": 17,
+            "areaFrames": {
+              "main": 8416
+            },
+            "complete": true
+          },
+          "diagnostics": []
+        }
+      },
+      "clockWindow": [
+        {
+          "sourceFrame": 934,
+          "pad": 146,
+          "counter": 104,
+          "random": [
+            45,
+            221,
+            134,
+            61,
+            49,
+            75,
+            41
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 17,
+          "masterTimer": 0,
+          "parserTask": 0,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 935,
+          "pad": 146,
+          "counter": 105,
+          "random": [
+            22,
+            238,
+            195,
+            30,
+            152,
+            165,
+            148
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 16,
+          "masterTimer": 0,
+          "parserTask": 0,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 936,
+          "pad": 146,
+          "counter": 106,
+          "random": [
+            11,
+            119,
+            97,
+            143,
+            76,
+            82,
+            202
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 15,
+          "masterTimer": 0,
+          "parserTask": 7,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 937,
+          "pad": 146,
+          "counter": 107,
+          "random": [
+            5,
+            187,
+            176,
+            199,
+            166,
+            41,
+            101
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 14,
+          "masterTimer": 0,
+          "parserTask": 7,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 938,
+          "pad": 146,
+          "counter": 107,
+          "random": [
+            5,
+            187,
+            176,
+            199,
+            166,
+            41,
+            101
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 14,
+          "masterTimer": 0,
+          "parserTask": 6,
+          "vramControl": 6
+        },
+        {
+          "sourceFrame": 939,
+          "pad": 146,
+          "counter": 108,
+          "random": [
+            130,
+            221,
+            216,
+            99,
+            211,
+            20,
+            178
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 13,
+          "masterTimer": 0,
+          "parserTask": 5,
+          "vramControl": 6
+        },
+        {
+          "sourceFrame": 940,
+          "pad": 146,
+          "counter": 109,
+          "random": [
+            193,
+            110,
+            236,
+            49,
+            233,
+            138,
+            89
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 12,
+          "masterTimer": 0,
+          "parserTask": 4,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 941,
+          "pad": 146,
+          "counter": 110,
+          "random": [
+            224,
+            183,
+            118,
+            24,
+            244,
+            197,
+            44
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 11,
+          "masterTimer": 0,
+          "parserTask": 3,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 942,
+          "pad": 146,
+          "counter": 111,
+          "random": [
+            240,
+            91,
+            187,
+            12,
+            122,
+            98,
+            150
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 10,
+          "masterTimer": 0,
+          "parserTask": 2,
+          "vramControl": 6
+        }
+      ]
+    },
+    {
+      "sha256": "a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966",
+      "nativeRamSha256": "e9540f6bbaf66ea26f7ce1dbc0dc6e13092c0453bfdb85084483b0a4d0f87e60",
+      "nativeCaptureReceiptSha256": "263691ad9ff5b6e1d2e4085a2cfd383eca4790dadead6888d20a8de0494e3093",
+      "nativeFrames": 8632,
+      "sourceFrameOffset": 216,
+      "initialRamSha256": "b1f3f2523300451cf5ace94125c8d424354f66e796589e9912346b87fb8549b8",
+      "diagnosticInputSha256": "758d81fc98119a96c6b29491525ff89153386c76b050e15def19a257b482480f",
+      "role": "one authenticated entrance seed; diagnostic, not continuous POWER-ON proof",
+      "baseline": {
+        "level": "1-1",
+        "frames": 8416,
+        "first": 722,
+        "fields": {
+          "dead": null,
+          "time": 743,
+          "score": null,
+          "coins": null,
+          "cam": 722,
+          "x": 722,
+          "y": 724,
+          "enemy": 722
+        },
+        "at": [
+          {
+            "field": "cam",
+            "native": 1572,
+            "sim": 1574
+          },
+          {
+            "field": "x",
+            "native": 1688,
+            "sim": 1690
+          },
+          {
+            "field": "enemy koopa y184",
+            "native": 1680,
+            "sim": -1
+          },
+          {
+            "field": "y",
+            "native": 139,
+            "sim": 140
+          },
+          {
+            "field": "time",
+            "native": 370,
+            "sim": 369
+          }
+        ],
+        "strict": {
+          "status": "diverged",
+          "first": 722,
+          "fields": {
+            "level": null,
+            "area": null,
+            "dead": null,
+            "time": 743,
+            "score": null,
+            "coins": null,
+            "cam": 722,
+            "x": 722,
+            "y": 724,
+            "missing": 729,
+            "extra": 784,
+            "kind": null,
+            "position": 722,
+            "state": 752,
+            "firebar.id": null,
+            "firebar.high": null,
+            "firebar.low": null,
+            "firebar.speed": null,
+            "firebar.direction": null,
+            "alias.owner": null,
+            "vine.count": null,
+            "vine.height": null,
+            "vine.startY": null,
+            "vine.slots": null
+          },
+          "coverage": {
+            "completeInputSequence": true,
+            "unsteppedFrames": 0,
+            "ramFrames": 8416,
+            "flagFrames": 0,
+            "continuationFrames": 0,
+            "victoryFrames": 0,
+            "uncomparedSameLevelFrames": 0,
+            "nativeMappedFrames": 8416,
+            "inputFrames": 8416,
+            "endReason": "end of trace",
+            "frames": 8416,
+            "alignedFrames": 8416,
+            "nativeEntityRows": 2083,
+            "comparedEntityRows": 2083,
+            "nativeBirthRows": 17,
+            "areaFrames": {
+              "main": 8416
+            },
+            "complete": true
+          },
+          "diagnostics": []
+        }
+      },
+      "clockWindow": [
+        {
+          "sourceFrame": 934,
+          "pad": 146,
+          "counter": 104,
+          "random": [
+            45,
+            221,
+            134,
+            61,
+            49,
+            75,
+            41
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 17,
+          "masterTimer": 0,
+          "parserTask": 0,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 935,
+          "pad": 146,
+          "counter": 105,
+          "random": [
+            22,
+            238,
+            195,
+            30,
+            152,
+            165,
+            148
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 16,
+          "masterTimer": 0,
+          "parserTask": 0,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 936,
+          "pad": 146,
+          "counter": 106,
+          "random": [
+            11,
+            119,
+            97,
+            143,
+            76,
+            82,
+            202
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 15,
+          "masterTimer": 0,
+          "parserTask": 7,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 937,
+          "pad": 146,
+          "counter": 107,
+          "random": [
+            5,
+            187,
+            176,
+            199,
+            166,
+            41,
+            101
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 14,
+          "masterTimer": 0,
+          "parserTask": 7,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 938,
+          "pad": 146,
+          "counter": 107,
+          "random": [
+            5,
+            187,
+            176,
+            199,
+            166,
+            41,
+            101
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 14,
+          "masterTimer": 0,
+          "parserTask": 6,
+          "vramControl": 6
+        },
+        {
+          "sourceFrame": 939,
+          "pad": 146,
+          "counter": 108,
+          "random": [
+            130,
+            221,
+            216,
+            99,
+            211,
+            20,
+            178
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 13,
+          "masterTimer": 0,
+          "parserTask": 5,
+          "vramControl": 6
+        },
+        {
+          "sourceFrame": 940,
+          "pad": 146,
+          "counter": 109,
+          "random": [
+            193,
+            110,
+            236,
+            49,
+            233,
+            138,
+            89
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 12,
+          "masterTimer": 0,
+          "parserTask": 4,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 941,
+          "pad": 146,
+          "counter": 110,
+          "random": [
+            224,
+            183,
+            118,
+            24,
+            244,
+            197,
+            44
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 11,
+          "masterTimer": 0,
+          "parserTask": 3,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 942,
+          "pad": 146,
+          "counter": 111,
+          "random": [
+            240,
+            91,
+            187,
+            12,
+            122,
+            98,
+            150
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 10,
+          "masterTimer": 0,
+          "parserTask": 2,
+          "vramControl": 6
+        }
+      ]
+    },
+    {
+      "sha256": "2bfc31326b5ab09964d788f22f4d53e803e00a0aa3b43824b5ec0f31b08f58b8",
+      "nativeRamSha256": "f95edf2bce89c5794b72ce60995d5efd19733b58eb429bf25453e43b2ea31abf",
+      "nativeCaptureReceiptSha256": "a2a8fad8739ef449578528fac5ff01a15e46ec5fcef05a6746be17292bbe7a34",
+      "nativeFrames": 8412,
+      "sourceFrameOffset": 216,
+      "initialRamSha256": "b1f3f2523300451cf5ace94125c8d424354f66e796589e9912346b87fb8549b8",
+      "diagnosticInputSha256": "7e4a854d6b7b5e05291c69e2b0d22e262c17402ad4072deec733759b92702252",
+      "role": "one authenticated entrance seed; diagnostic, not continuous POWER-ON proof",
+      "baseline": {
+        "level": "1-1",
+        "frames": 8196,
+        "first": 722,
+        "fields": {
+          "dead": null,
+          "time": 743,
+          "score": 768,
+          "coins": 768,
+          "cam": 722,
+          "x": 722,
+          "y": 724,
+          "enemy": 722
+        },
+        "at": [
+          {
+            "field": "cam",
+            "native": 1572,
+            "sim": 1574
+          },
+          {
+            "field": "x",
+            "native": 1688,
+            "sim": 1690
+          },
+          {
+            "field": "enemy koopa y184",
+            "native": 1680,
+            "sim": -1
+          },
+          {
+            "field": "y",
+            "native": 139,
+            "sim": 140
+          },
+          {
+            "field": "time",
+            "native": 370,
+            "sim": 369
+          },
+          {
+            "field": "score",
+            "native": 500,
+            "sim": 300
+          },
+          {
+            "field": "coins",
+            "native": 2,
+            "sim": 1
+          }
+        ],
+        "strict": {
+          "status": "diverged",
+          "first": 722,
+          "fields": {
+            "level": null,
+            "area": null,
+            "dead": null,
+            "time": 743,
+            "score": 768,
+            "coins": 768,
+            "cam": 722,
+            "x": 722,
+            "y": 724,
+            "missing": 729,
+            "extra": 784,
+            "kind": 784,
+            "position": 722,
+            "state": 752,
+            "firebar.id": null,
+            "firebar.high": null,
+            "firebar.low": null,
+            "firebar.speed": null,
+            "firebar.direction": null,
+            "alias.owner": null,
+            "vine.count": null,
+            "vine.height": null,
+            "vine.startY": null,
+            "vine.slots": null
+          },
+          "coverage": {
+            "completeInputSequence": true,
+            "unsteppedFrames": 0,
+            "ramFrames": 8196,
+            "flagFrames": 0,
+            "continuationFrames": 0,
+            "victoryFrames": 0,
+            "uncomparedSameLevelFrames": 0,
+            "nativeMappedFrames": 8196,
+            "inputFrames": 8196,
+            "endReason": "end of trace",
+            "frames": 8196,
+            "alignedFrames": 8196,
+            "nativeEntityRows": 1866,
+            "comparedEntityRows": 1866,
+            "nativeBirthRows": 16,
+            "areaFrames": {
+              "main": 8196
+            },
+            "complete": true
+          },
+          "diagnostics": []
+        }
+      },
+      "clockWindow": [
+        {
+          "sourceFrame": 934,
+          "pad": 146,
+          "counter": 104,
+          "random": [
+            45,
+            221,
+            134,
+            61,
+            49,
+            75,
+            41
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 17,
+          "masterTimer": 0,
+          "parserTask": 0,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 935,
+          "pad": 146,
+          "counter": 105,
+          "random": [
+            22,
+            238,
+            195,
+            30,
+            152,
+            165,
+            148
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 16,
+          "masterTimer": 0,
+          "parserTask": 0,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 936,
+          "pad": 146,
+          "counter": 106,
+          "random": [
+            11,
+            119,
+            97,
+            143,
+            76,
+            82,
+            202
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 15,
+          "masterTimer": 0,
+          "parserTask": 7,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 937,
+          "pad": 146,
+          "counter": 107,
+          "random": [
+            5,
+            187,
+            176,
+            199,
+            166,
+            41,
+            101
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 14,
+          "masterTimer": 0,
+          "parserTask": 7,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 938,
+          "pad": 146,
+          "counter": 107,
+          "random": [
+            5,
+            187,
+            176,
+            199,
+            166,
+            41,
+            101
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 14,
+          "masterTimer": 0,
+          "parserTask": 6,
+          "vramControl": 6
+        },
+        {
+          "sourceFrame": 939,
+          "pad": 146,
+          "counter": 108,
+          "random": [
+            130,
+            221,
+            216,
+            99,
+            211,
+            20,
+            178
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 13,
+          "masterTimer": 0,
+          "parserTask": 5,
+          "vramControl": 6
+        },
+        {
+          "sourceFrame": 940,
+          "pad": 146,
+          "counter": 109,
+          "random": [
+            193,
+            110,
+            236,
+            49,
+            233,
+            138,
+            89
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 12,
+          "masterTimer": 0,
+          "parserTask": 4,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 941,
+          "pad": 144,
+          "counter": 110,
+          "random": [
+            224,
+            183,
+            118,
+            24,
+            244,
+            197,
+            44
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 11,
+          "masterTimer": 0,
+          "parserTask": 3,
+          "vramControl": 0
+        },
+        {
+          "sourceFrame": 942,
+          "pad": 146,
+          "counter": 111,
+          "random": [
+            240,
+            91,
+            187,
+            12,
+            122,
+            98,
+            150
+          ],
+          "pauseStatus": 0,
+          "pauseTimer": 0,
+          "demoTimer": 0,
+          "engine": 8,
+          "interval": 10,
+          "masterTimer": 0,
+          "parserTask": 2,
+          "vramControl": 6
+        }
+      ]
+    }
+  ],
+  "conclusion": "No pause. FrameCounter, seven RNG bytes and interval hold while parser completes a partial CPU pass. Existing source CPU probes authenticate a long NMI across the PPU boundary. No frame skip or guessed timing policy implemented.",
+  "costCoverage": "Current runtime performs GameEngine atomically and has no complete instruction-cost ownership for player/enemy/collision/parser execution. Whole-row freezing would omit native parser progress.",
+  "existingCpuEvidence": "evidence/native-nmi-workload-probes.json",
+  "cpuEvidenceSha256": "93cfedab00bfe6db2ded105241fc3e54d075e5b3efaadfd73208956548afc388"
+}
