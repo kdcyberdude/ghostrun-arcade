@@ -4,12 +4,40 @@ import {LiveWorld1StateAudit,compareLiveWorld1Start,captureLiveWorld1State,type 
 import {strictNativeEntities} from '../tools/harness/native-strict-entities.js';
 import {nativeAreaBindings} from '../src/native-area-catalog.js';import {observedLevels} from '../src/levels.js';import {Simulation} from '../src/simulation.js';
 const bytes=gunzipSync(Buffer.from(data.gzipBase64,'base64')),samples=JSON.parse(bytes.toString()) as {frame:number;pad:number;ram:string}[],hash=(b:Uint8Array)=>createHash('sha256').update(b).digest('hex');
-const raw=(s:typeof samples[number])=>new Uint8Array(Buffer.from(s.ram,'base64')),game=samples.find(s=>raw(s)[0x770]===1&&raw(s)[14]===8)!,r=raw(game),level=observedLevels().find(l=>l.id==='1-1')!;
+const raw=(s:typeof samples[number])=>new Uint8Array(Buffer.from(s.ram,'base64')),game=samples.find(s=>raw(s)[0x770]===1&&raw(s)[0x772]===3&&raw(s)[14]===8)!,r=raw(game),level=observedLevels().find(l=>l.id==='1-1')!;
 // Native-derived expected values test the comparator, not the gameplay model.
-function oracle(row=r):LiveWorld1State{const digits=(a:number,n:number)=>Array.from(row.subarray(a,a+n)).reduce((s,v)=>s*10+v,0);return {level:'1-1',area:level.main,phase:'play',main:level.main,areas:level.areas.map(a=>({id:a.id,width:a.width})),bindings:nativeAreaBindings(level).bindings,bindingGaps:[],frameCounter:row[9],interval:row[0x77f],random:Array.from(row.subarray(0x7a7,0x7ae)),dead:row[14]===6||row[14]===11,time:digits(0x7f8,3),score:digits(0x7dd,6)*10,coins:row[0x75e],cam:256*row[0x71a]+row[0x71c],x:256*row[0x6d]+row[0x86],y:(row[0xb5]-1)*256+row[0xce],entities:strictNativeEntities(row).entities,entityGaps:[]};}
+function oracle(row=r):LiveWorld1State{const digits=(a:number,n:number)=>Array.from(row.subarray(a,a+n)).reduce((s,v)=>s*10+v,0);return {level:'1-1',area:level.main,phase:'play',loadReady:row[0x772]===3&&row[14]===8,main:level.main,areas:level.areas.map(a=>({id:a.id,width:a.width})),bindings:nativeAreaBindings(level).bindings,bindingGaps:[],frameCounter:row[9],interval:row[0x77f],random:Array.from(row.subarray(0x7a7,0x7ae)),dead:row[14]===6||row[14]===11,time:digits(0x7f8,3),score:digits(0x7dd,6)*10,coins:row[0x75e],cam:256*row[0x71a]+row[0x71c],x:256*row[0x6d]+row[0x86],y:(row[0xb5]-1)*256+row[0xce],entities:strictNativeEntities(row).entities,entityGaps:[]};}
 test('portable fixture retains genuine cold and1-1 RAM hashes; oracle is not a model equivalence claim',()=>{assert.equal(hash(bytes),data.samplesSha256);assert.equal(hash(Buffer.from(data.initialRam,'base64')),data.initialRamSha256);assert.equal(data.capture.padSha256.length,64);assert.ok(samples.some(s=>raw(s)[0xf]===1&&raw(s)[0x16]===6));});
 test('unowned cold source state stays unchecked; no blanket initial verification',()=>{const initial=new Uint8Array(Buffer.from(data.initialRam,'base64'));assert.equal(compareLiveWorld1Start(initial,oracle()).status,'unchecked');const model=oracle();model.startup={mode:255,task:255,engine:255,screen:255,disable:255,initializing:true};model.frameCounter=255;model.interval=255;model.random=Array(7).fill(255);assert.equal(compareLiveWorld1Start(initial,model).status,'match');model.startup.engine=0;assert.equal(compareLiveWorld1Start(initial,model).status,'mismatch');});
 test('all required World1-1 scalar readouts independently reject genuine-row perturbations',()=>{assert.equal(new LiveWorld1StateAudit().compare(r,oracle()).status,'match');for(const key of ['dead','time','score','coins','cam','x','y'] as const){const model=oracle();if(key==='dead')model.dead=!model.dead;else model[key]++;const result=new LiveWorld1StateAudit().compare(r,model);assert.equal(result.status,'mismatch',key);assert.ok(result.differences.some(d=>d.field===key));}});
 test('birth rows, missing/extra slots and unsupported actors cannot disappear from live state coverage',()=>{const row=raw(samples.find(s=>raw(s)[0xf]===1&&raw(s)[0x16]===6)!);const model=oracle(row);assert.equal(new LiveWorld1StateAudit().compare(row,model).status,'match');model.entities=[];assert.ok(new LiveWorld1StateAudit().compare(row,model).differences.some(d=>d.field==='entities.missing'));const extra=oracle();extra.entities.push({bank:'enemy',slot:4,kind:'goomba',x:100,y:100,source:'enemy'});assert.ok(new LiveWorld1StateAudit().compare(r,extra).differences.some(d=>d.field==='entities.extra'));const unknown=row.slice();unknown[0x16]=255;const result=new LiveWorld1StateAudit().compare(unknown,oracle(unknown));assert.equal(result.status,'unchecked');assert.ok(result.gaps.some(g=>g.startsWith('unsupported-native-object:')));});
 test('outside World1-1 is explicit unchecked and source unknown control is never a manufactured mismatch',()=>{const outside=r.slice();outside[0x75c]=1;assert.equal(new LiveWorld1StateAudit().compare(outside,oracle()).status,'unchecked');const boot=raw(samples[0]);assert.equal(new LiveWorld1StateAudit().compare(boot,oracle()).status,'unchecked');});
 test('readout observes live simulation without reset, stepping or native injection',()=>{const sim=new Simulation(observedLevels());sim.reset(false);const before={frame:sim.frame,x:sim.player.x,random:[...sim.random.bytes],phase:sim.phase};const value=captureLiveWorld1State(sim);assert.deepEqual({frame:sim.frame,x:sim.player.x,random:[...sim.random.bytes],phase:sim.phase},before);assert.equal(value.startup,undefined);});
+
+test('source load constructor advances through genuine first screen tasks without native state injection',async()=>{
+ const {nativeLevelLoad,stepNativeLevelLoad}=await import('../src/native-level-load.js');const {liveScreenControl}=await import('../tools/harness/native-continuous-state.js');
+ const n=nativeLevelLoad();
+ for(let frame=61;frame<=68;frame++){
+  // No native bytes enter the helper: timer starts zero and these calls precede its first tick.
+  stepNativeLevelLoad(n,false);const row=raw(samples.find(s=>s.frame===frame)!);
+  const control=liveScreenControl({nativeScreen:n,levelLoad:n})!;
+  for(const [key,address]of Object.entries({mode:0x770,task:0x772,engine:14,screen:0x73c,disable:0x774,timer:0x7a0,columns:0x71e}))assert.equal(control[key as keyof typeof control],row[address],`${frame}:${key}`);
+ }
+ const unrelated=liveScreenControl({nativeScreen:{task:1}})!;assert.equal(unrelated.mode,undefined,'an arbitrary screen object does not manufacture source GameMode1 ownership');
+});
+test('load checks use source-owned bytes; missing owner/fields remain explicit gaps',async()=>{
+ const {nativeLevelLoad,stepNativeLevelLoad}=await import('../src/native-level-load.js');const {liveScreenControl}=await import('../tools/harness/native-continuous-state.js');const row=raw(samples.find(s=>s.frame===62)!);
+ const n=nativeLevelLoad();stepNativeLevelLoad(n,false);stepNativeLevelLoad(n,false);
+ const live=captureLiveWorld1State(new Simulation(observedLevels()));live.screen=liveScreenControl({nativeScreen:n,levelLoad:n});
+ const result=new LiveWorld1StateAudit().compare(row,live);
+ for(const key of ['mode','task','engine','screen','disable','timer','columns']){assert.ok(result.checked.includes('load.'+key));assert.ok(!result.differences.some(d=>d.field==='load.'+key));}
+ assert.ok(result.checked.includes('load.parserColumn'));assert.ok(result.checked.includes('load.scrollLocked'));assert.ok(result.checked.includes('time'));assert.ok(result.checked.includes('entities.slot-kind-position-cardinality'));
+ assert.ok(!result.gaps.includes('world1-1-load-state-not-fully-covered'));
+ const absent={...live,screen:undefined};assert.ok(new LiveWorld1StateAudit().compare(row,absent).gaps.includes('source-load-control-owner-unavailable'));
+ const partial={...live,screen:{...live.screen,timer:undefined}};assert.ok(new LiveWorld1StateAudit().compare(row,partial).gaps.includes('unowned:load.timer'));
+ const wrong={...live,screen:{...live.screen,columns:9}};assert.ok(new LiveWorld1StateAudit().compare(row,wrong).differences.some(d=>d.field==='load.columns'));
+});
+test('retained ready/load disagreement is checked, not hidden by an absent load object',()=>{
+ const row=raw(samples.find(s=>s.frame===215)!);const live=captureLiveWorld1State(new Simulation(observedLevels()));
+ const result=new LiveWorld1StateAudit().compare(row,live);assert.ok(result.differences.some(d=>d.field==='load.ready'));assert.ok(result.checked.includes('frameCounter'));assert.ok(result.checked.includes('random'));
+});
