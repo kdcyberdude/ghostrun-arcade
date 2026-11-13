@@ -23,6 +23,7 @@ if(a.moods)requests.push(['2-2','area-2',25502,'8d3816f56f083556e2fca5efe24bac7f
 if(a.moods)requests.push(['2-2','area-2',18020,'5b3c2ae44e9fb30ffa749ec973baf125d2f17085917e2b399a8c37c1c1ba8d93',40]);
 if(a.moods)requests.push(['2-2','area-2',17390,'839557dd95ba75a6eb8aeb7d5a25b6bb361b922d3b89403522eefec4e1e54507',200]);
 if(a.moods)requests.push(['2-2','area-2',13138,'963e7dd452ab0c5bb388233bbaf23099e10eec20adf2ad364ed57788144725ec',1000]);
+if(a.moods)requests.push(['2-2','area-2',14632,'9ecf0fe238aeba52600d3fbb3ed82736486509ce9ac77b74ee55c4d66817a168',1000],['2-2','area-2',15815,'235642d62666f27a4fe125a7868815fda5d4c21ecfc59fb8d5839eaa1ef11db8',1200]);
 for(const [level,area,row,source,count=200]of requests){
  const dir=source?path.join(a.moods,'captures',source):path.join(a.traces,level),ram=fs.readFileSync(path.join(dir,'ram.bin')),pads=fs.readFileSync(path.join(dir,'pads.bin'));
  const expected=[];

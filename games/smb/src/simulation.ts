@@ -625,7 +625,7 @@ export class Simulation {
   if(useMotor&&this.wallSpeed!==undefined){this.motor.speed=Math.round(this.wallSpeed*4096);this.motor.contact((Math.sign(this.wallSpeed)||Math.sign(motion)||this.motor.moving||1) as 1|-1,true);p.vx=this.motor.speed/4096;}
   // Swimming uses its own motor: a zero-motion back-out row holds its wall pause too (native 7-2 rows832..835).
   if(swim&&this.wallBackOut)this.water.motor.freeze=Math.max(1,this.water.motor.freeze);
-  if(swim){this.swimContact(this.swimDy,oldBottom,this.swimHeight(height));if(p.y-this.water.whirlMoved>=288)this.areaControls.locked=true;if(!this.wallBackOut)p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
+  if(swim){this.swimContact(this.swimDy,oldBottom);if(p.y-this.water.whirlMoved>=288)this.areaControls.locked=true;if(!this.wallBackOut)p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
   if(p.grounded){if(!poseGrounded){if(Math.abs(p.vx)<=PHYSICS.walkMax)this.braking=PHYSICS.brake;}this.fallingThroughCastleLava=false;this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';this.waterEntryFall=false;this.entryLanding=Boolean(nativeEntry);this.entryFalling=false;this.waterSurface={active:false,contacted:false};}
   if(this.entryFalling&&nativeEntry){if(this.entryFallAge>=nativeEntry.gravityStartAge&&this.entryFallAge!==this.entryReadyAge){p.vy+=entry!.gravity;if(p.vy>=nativeEntry.resetAt)p.vy=nativeEntry.resetTo;}}
   else if(this.entryFalling){if(entry!.gravityBeforeControl||p.y>=entry!.controlFeetY)p.vy=Math.min(entry!.maxFall,p.vy+entry!.gravity);}
@@ -869,9 +869,11 @@ export class Simulation {
  private movePlayerY(dy:number,h:number,nativeHead=false,gravity=0,cutoff=false){
   const p=this.player,oldY=p.y;p.y+=dy;this.piranhaTouchFeetY=p.y;
   if(cutoff&&nativeBackgroundSkipped(p.y))return;
-  const down=dy>0||(dy===0&&!nativeHead)||this.apexFootProbe(dy,nativeHead,gravity);
-  const waterFeet=this.area.theme==='water'?p.y-this.water.whirlMoved:p.y;
-  const edge=down?waterFeet:p.y-(nativeHead?this.nativeHeadProbe(h):h);
+  const water=this.area.theme==='water',down=water?this.water.contactSpeed>=0:dy>0||(dy===0&&!nativeHead)||this.apexFootProbe(dy,nativeHead,gravity);
+  const waterFeet=water?p.y-this.water.whirlMoved:p.y;
+  const edge=down?waterFeet:(water?waterFeet:p.y)-(nativeHead?this.nativeHeadProbe(h):h);
+  // HeadChk uses PlayerBGUpperExtent and the returned probe low nibble, before the late whirlpool pass.
+  if(water&&!down&&(((Math.floor(waterFeet)-32)&255)<(p.size?32:16)||(Math.floor(edge)&15)<4))return;
   for(const x of (down?[p.x+3,p.x+12]:[p.x+8])){
    const tile=this.collisionAt(x,edge,!down&&(this.area.theme==='water'||hiddenBlockBumps(p.y)));
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
@@ -1003,24 +1005,16 @@ export class Simulation {
   if(locked&&p.y-32+step.dy>=49)this.swimLock=1;
  }
  /** Contact results of the swimming move: a landing clears the vertical speed, a head bump turns it around, a wall keeps the fraction. */
- private swimContact(dy:number,oldY:number,head:number){
+ private swimContact(dy:number,oldY:number){
   const p=this.player,w=this.water;
-  if(dy<0&&p.vy===0.5&&this.whirlpoolLiftedHead(oldY+dy,head)){p.y=oldY+dy;p.vy=w.speed;} // the bump came only from the trailing whirlpool pass: none in native
   // A rising frame that happens not to move (dy 0) is not a landing even with a tile top at the feet.
   if(dy===0&&w.speed<0)p.grounded=false;
   // A head bump keeps the position the move reached (no clamp to the tile) and only turns the speed around. Inside a whirlpool zone the bump
   // falls between the ordinary pass and the trailing whirlpool pass, which is redone at speed 1 (2-2/7-2 free-play strokes under a ceiling
   // in a zone: the swimmer does not move on the bump row, 172 of 177; outside a zone it moves, 338 of 338).
-  if(p.grounded)w.land();else if(dy<0&&p.vy===0.5){p.y=oldY+dy;p.y+=w.bump();}else if(w.speed<0&&this.swimUnderLift()){p.y+=w.bump();}
+  if(p.grounded)w.land();else if(w.contactSpeed<0&&p.vy===0.5){p.y=oldY+dy;p.y+=w.bump();}else if(w.speed<0&&this.swimUnderLift()){p.y+=w.bump();}
   if(this.wallSpeed!==undefined)p.vx=w.wall(Math.round(this.wallSpeed*4096),this.swimDirection===0||this.swimDirection*this.wallSpeed>0)/4096;
   p.vy=p.grounded?0:w.speed+w.force/256;
- }
- /** Native tests the ceiling between the ordinary pass and a trailing whirlpool pass (2-2/7-2 free-play rows in a zone: a swimmer arriving at
-  * feet - ceiling 13 through the whirlpool pixel goes on rising, the next frame bumps without moving; r4-2-2 mood0 rows 2596-2602). True when the
-  * head reached the tile only through that pass. */
- private whirlpoolLiftedHead(y:number,head:number){
-  const moved=this.water.whirlMoved;
-  return moved<0&&!this.collisionAt(this.player.x+8,y-moved-head,true);
  }
  /** Rising into the underside of a lift is a head bump (5-2 room, id 39 lifts): native y before the whirlpool pass minus lift y within 2..4 for big Mario, -10..-8 for small, over the lift's support window. Every sample is inside a whirlpool zone. */
  private swimUnderLift(){
