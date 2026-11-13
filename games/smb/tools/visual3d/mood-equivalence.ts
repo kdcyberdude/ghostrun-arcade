@@ -12,7 +12,7 @@ const {values:a}=parseArgs({options:{cache:{type:'string'},'runtime-ref':{type:'
 if(!a.cache||!a['runtime-ref'])throw Error('--cache and --runtime-ref required');
 const batch=Number(a.batch);if(!Number.isInteger(batch)||batch<1)throw Error('--batch must be a positive integer');
 const runtimeCommit=execFileSync('git',['rev-parse',a['runtime-ref']],{encoding:'utf8'}).trim();execFileSync('git',['diff','--exit-code',runtimeCommit,'--','src','data','assets'],{stdio:'pipe'});
-const toolSha256=hash(Buffer.concat([fs.readFileSync(new URL(import.meta.url)),fs.readFileSync(new URL('./equivalence.ts',import.meta.url)),fs.readFileSync(new URL('./lib.ts',import.meta.url)),...fs.readdirSync(new URL('../harness/',import.meta.url)).filter(f=>/^native-.*\.(ts|mjs)$/.test(f)).sort().map(f=>fs.readFileSync(new URL('../harness/'+f,import.meta.url)))]));
+const toolSha256=hash(Buffer.concat([fs.readFileSync(new URL(import.meta.url)),fs.readFileSync(new URL('./equivalence.ts',import.meta.url)),fs.readFileSync(new URL('./equivalence-snapshot.ts',import.meta.url)),fs.readFileSync(new URL('./lib.ts',import.meta.url)),...fs.readdirSync(new URL('../harness/',import.meta.url)).filter(f=>/^native-.*\.(ts|mjs)$/.test(f)).sort().map(f=>fs.readFileSync(new URL('../harness/'+f,import.meta.url)))]));
 const inventory=JSON.parse(fs.readFileSync(path.join(a.cache,'inventory.json'),'utf8')),selected=a.entries?.split(',').map(Number),rows:any[]=[],pending:any[]=[];
 let nativeEpochFrames=0,entryEpochs=0;
 for(const run of inventory.runs as MoodRun[]){
