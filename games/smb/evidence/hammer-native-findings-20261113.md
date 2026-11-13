@@ -338,3 +338,42 @@ continues independently; this research unit does not claim the hard gap solved.
 Timing research gates:1272 tests and TypeScript pass, excerpts regenerated,
 all32 first-divergence fields unchanged vs0a7baea, observer builds and reproduces
 every selected native RAM prefix, and git diff --check passes. No ROM is bundled.
+
+## CoinBlock carry and native block-sprite origin
+
+New mood strict clusters expose an independent native carry bug. CoinBlock
+executes SBC #$10 without SEC. Its JumpEngine entry ASL leaves carry0;
+FindEmptyMiscSlot preserves0 when slot8 is immediately free, but CPY #$05 sets
+carry1 when searching past an occupied8 (including all-busy overwrite8). The
+result is Block_Y_Position-17 for a free8 and-16 otherwise. Above-block coins
+still use SetupJumpCoin's separate ASL-derived block-buffer page carry.
+
+The normal/multicoin paths now use that carry and native BlockYPosAdderData:
+(nativeMarioY+18 for small/crouching, +4 for big)&$F0. X remains the hit-block
+column, matching native Block_X_Position. End-of-pass Mario X alignment differs
+from its earlier block sprite origin in11 recorded cases, so the later X must
+not replace the head-probe column. No fitted coordinates or level decisions enter
+this rule. Retained misc force/fraction are still reused, not reinitialized.
+
+`native-coin-block-events.ts` fingerprints all368 source streams and extracts
+1148 normal CoinBlock births (1042 slot8,106 slot7), including prior above-coin
+allocation when applicable. Every native blockY formula and first gravity
+position/speed/force/fraction matches with0 diagnostics. Component tests execute
+the actual simulation creation/misc methods on all1148 states. The old arc test
+had the one-pixel-low sighting-origin assumption; its native absolute coordinates
+are corrected while pause/repeatability/gravity/award checks remain.
+
+An isolated read-only integration candidate replay changes1-1 mood SHA3d43b7b4,
+entry0002, first strict position78→none; all15 strict fields are null through its
+1000 compared same-level samples.2-1 SHA17a2baf0, entry0007, position221→524,
+then exposes a Koopa state4/2 death-motion gap (native828/170 vsmodel828/174).
+All other strict firsts on that entry stay unchanged. See
+native-coin-carry-clusters.json; this preview is not a frozen final merge receipt.
+The original global1251 coin x2725 now starts127 and first moves to nativey122,
+rather than model128→123. The complete32-v2 first-divergence table is unchanged
+on this branch; the strict misc-row corrections are covered separately.
+Coin carry gates:1274 tests and TypeScript pass, excerpts regenerated, every
+field of all32 v2 first-divergence tables unchanged vs9c99b7a, and diff check
+passes. Only normal CoinBlock/multicoin creation changes; SetupJumpCoin's
+above-block page carry stays intact. Native lookup/slot/timer inputs drive the
+rule for later recordings; no per-level or recorded-frame conditions were added.
