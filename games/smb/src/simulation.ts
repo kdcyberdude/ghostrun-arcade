@@ -3400,7 +3400,7 @@ export class Simulation {
   }
   this.levelIndex++;this.fetchGameTimer=true;this.checkpoint=false;this.activatedCheckpointArea=undefined;this.phase='intro';this.phaseFrame=0;
   // NextArea changes the logical destination before InitializeArea clears the retained physical scene.
-  this.levelLoad={...nativeLevelLoad(),engine:victory?8:5,...(!victory?{disable:1,columns:255}:{})};
+  this.levelLoad={...nativeLevelLoad(),engine:victory?8:5,columns:255,...(!victory?{disable:1}:{})}; // the column byte still reads 255 from the end-of-level modes (2-1 entry after 1-4: 141 corpus runs)
   if(!victory){this.nativeEndLevelMusicQueue=128;const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.level.main);if(binding)this.pipeLoad={target:{area:this.level.main,spawn:this.level.areas.find(a=>a.id===this.level.main)!.spawn,direction:'level',frames:0},alternate:0,header:nativePhysicalAreas[binding.code].header[0],page:0,offset:binding.offset};}
   this.alignLifeClock(this.intervalControl);
  }
