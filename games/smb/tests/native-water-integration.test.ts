@@ -66,7 +66,7 @@ test('2-3 native stream fish and slot reuse preserve all enemy positions through
  assert.ok(frames>1000);
 });
 
-for(const [level,through] of [['2-2',6395],['7-2',2208]] as const)test(`${level} swimming entry, whirlpool scroll and offscreen page wraps match native through frame ${through}`,()=>{
+for(const [level,through] of [['2-2',6596],['7-2',4564]] as const)test(`${level} swimming entry, whirlpool scroll and offscreen page wraps match native through frame ${through}`,()=>{
  const run=replay(level),sim=run.sim;let frames=0;
  for(let f=0;f<=through;f++){
   run.step(f);const r=run.row(f);
@@ -153,7 +153,7 @@ test('swimming wall reversal uses the last friction absolute byte for skid stopp
  }
 });
 
-for(const [level,from,to,slots] of [['7-2',1118,1330,[0,2,3]],['2-2',2810,3021,[0,1]],['7-2',2713,2949,[0,1,2]],['2-2',6396,6596,[0,1,2]]] as const)test(`${level} native water injury holds the hitting slot and later slots through the death arc at ${from}`,()=>{
+for(const [level,from,to,slots] of [['7-2',1118,1330,[0,2,3]],['2-2',2810,3021,[0,1]],['7-2',2713,2949,[0,1,2,3]],['2-2',6396,6596,[0,1,2]]] as const)test(`${level} native water injury holds the hitting slot and later slots through the death arc at ${from}`,()=>{
  const run=replay(level);
  for(let f=0;f<=to&&f<run.pads.length;f++){
   run.step(f);if(f<from)continue;const r=run.row(f);
@@ -164,4 +164,41 @@ for(const [level,from,to,slots] of [['7-2',1118,1330,[0,2,3]],['2-2',2810,3021,[
    assert.equal(Math.floor(e.y)-24,r[0xcf+slot],`frame ${f} slot ${slot} y`);
   }
  }
+});
+
+test('odd-slot Bloopers use the retained native moving direction when Mario speed byte is zero',()=>{
+ const run=replay('7-2');
+ for(let f=0;f<=2558;f++){
+  run.step(f);if(f<2554)continue;const r=run.row(f);
+  for(const slot of [1,3]){
+   const e=run.sim.enemies.find(e=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===slot);assert.ok(e?.bloop,`frame ${f} slot ${slot}`);
+   assert.equal(Math.floor(e.x),r[0x6e+slot]*256+r[0x87+slot],`frame ${f} slot ${slot} x`);
+   assert.equal(Math.floor(e.y)-24,r[0xcf+slot],`frame ${f} slot ${slot} y`);
+  }
+ }
+});
+
+test('pre-whirlpool cached scroll position preserves water parser timing and the slot4 Blooper birth',()=>{
+ const run=replay('7-2');
+ for(let f=0;f<=2282;f++){
+  run.step(f);if(f<2258)continue;const r=run.row(f);
+  assert.equal(Math.floor(run.sim.camera),r[0x71a]*256+r[0x71c],`frame ${f} camera`);
+  if(f>=2280){
+   const e=run.sim.enemies.find(e=>e.active&&!e.dead&&e.enemySlot===4);
+   assert.equal(Boolean(e),f>=2281,`frame ${f} slot4 ownership`);
+   if(e){assert.equal(e.x,1328);assert.equal(e.y,160);}
+  }
+ }
+});
+
+for(const level of ['2-2','7-2'])test(`${level} all native water slots match bidirectionally throughout engine 7, 8 and 11`,()=>{
+ const run=replay(level);let checked=0;
+ for(let f=0;f<run.pads.length;f++){
+  run.step(f);const r=run.row(f);if(![7,8,11].includes(r[14])||run.sim.area.theme!=='water')continue;
+  const expected=[];
+  for(let slot=0;slot<5;slot++)if(r[0xf+slot]&&[7,10,11].includes(r[0x16+slot]))expected.push([slot,r[0x16+slot],r[0x6e+slot]*256+r[0x87+slot],r[0xcf+slot]]);
+  const actual=run.sim.enemies.filter(e=>e.active&&!e.dead&&!e.slotFreed&&(e.bloop||e.nativeSwim)).map(e=>[e.enemySlot,e.kind==='blooper'?7:e.palette==='0f-16-30-27'?11:10,Math.floor(e.x),Math.floor(e.y)-24]).sort((a,b)=>a[0]!-b[0]!);
+  assert.deepEqual(actual,expected,`frame ${f}`);checked++;
+ }
+ assert.ok(checked>3000);
 });

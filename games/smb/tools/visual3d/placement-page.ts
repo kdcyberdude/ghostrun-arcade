@@ -8,7 +8,7 @@ import {FLAG_COMPLETION,type Simulation} from '../../src/simulation.js';
 import {enemyPicture} from '../../src/enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from '../../src/platform-motion.js';
 import {compareFrame,pieceModels,type Obj,type Cell,type FrameReport} from './placement-match.js';
-import {titleBootColor} from '../../src/view-rules.js';
+import {titleBootColor,nativeBubbleShown} from '../../src/view-rules.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
 import {PIECES} from '../../src/render3d/semantics.js';
 type Any=any;  // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -54,6 +54,7 @@ function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number}[]):Obj[]{
   if(s.castleFlag){const f=s.castleFlag,r=exact(f.x-cam,f.y);if(r)out.push({id:'castleFlag',kind:'castleFlag',...r});}
   s.flagFireworks.forEach((f,i)=>{const r=exact(f.x-cam,f.y);if(r)out.push({id:'spark#'+i,kind:'spark',...r});});
  }
+ if(s.area.theme==='water')(s.bubbles??[]).forEach((b,i)=>{if(nativeBubbleShown(b,s.player.y,s.camera)){const r=exact((Math.floor(b.x)-cam)&255,b.y+1);if(r)out.push({id:'bubble#'+i,kind:'bubble',...r});}});
  const rt=union(quads.filter(q=>q.tag==='retainer').map(q=>q.r));if(rt)out.push({id:'retainer',kind:'retainer',state:s.level.id==='8-4'?'princess':'toad',...rt});
  return out;
 }
@@ -82,7 +83,7 @@ function objects3d(r3:Any):Obj[]{
 /** Tiles the 3D world drew this frame, by the pool model name, recorded by re-running World.sync with a logging pool(). */
 function cells3d(r3:Any,s:Simulation){
  const w=r3.world,orig=w.pool,log:{name:string;x:number;y:number}[]=[];
- w.pool=function(name:string,theme:string){const p=orig.call(this,name,theme);return {add:(m:THREE.Matrix4)=>{log.push({name,x:m.elements[12],y:m.elements[13]});return p.add(m);}};};
+ w.pool=function(name:string,theme:string,palette:number){const p=orig.call(this,name,theme,palette);return {add:(m:THREE.Matrix4)=>{log.push({name,x:m.elements[12],y:m.elements[13]});return p.add(m);}};};
  try{w.sync(s,Math.floor(s.camera));}finally{delete w.pool;}
  return log;
 }

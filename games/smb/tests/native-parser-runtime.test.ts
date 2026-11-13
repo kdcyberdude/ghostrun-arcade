@@ -8,6 +8,7 @@ import type {Button} from '../src/types.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import clockEvidence from '../data/native-parser-clock.json';
 import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
+import springEvents from './fixtures/native-spring-events.json';
 
 function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void){
  const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.v2.json`,import.meta.url),'utf8'));
@@ -107,5 +108,32 @@ test('the frenzy Bullet corpse is erased on the first graphics pass below page1,
   const e=sim.enemies.find((e:any)=>e.frenzy&&e.enemySlot===3&&e.dead===100);
   assert.ok(e);assert.equal(e.slotFreed,true);assert.equal(e.y,282);
   assert.deepEqual(sim.slotVertical[3],{speed:3,force:56,fraction:212});assert.equal(sim.slotSub[3],128);
+ });
+});
+
+test('ordinary Koopa side collision reads rawY+20 before moving at the 8-2 wall',()=>{
+ replay('8-2',791,(sim,frame)=>{
+  if(frame<789)return;
+  const e=sim.enemies.find((e:any)=>e.active&&e.enemySlot===3&&e.kind==='koopa');assert.ok(e);
+  assert.equal(e.x,frame===789?355:frame===790?354.5:354,`row${frame}`);
+ });
+});
+
+test('a Spiny landing returns before checking the wall in its new direction',()=>{
+ // Native 6-1: row246 lands at x497.5 moving right; row247 then sees
+ // the wall at x+16, reverses, and moves left to497.
+ replay('6-1',247,(sim,frame)=>{
+  if(frame<245)return;
+  const e=sim.enemies.find((e:any)=>e.active&&e.enemySlot===1&&e.kind==='spiny');assert.ok(e);
+  assert.equal(e.x,frame===246?497.5:497,`row${frame}`);
+ });
+});
+
+
+test('6-3 spring landing, compression and grounded launch hold match native RAM',()=>{
+ replay('6-3',1959,(sim,frame)=>{
+  const event=springEvents.find(e=>e.level==='6-3'&&e.frame===frame);
+  if(event){assert.equal(Math.floor(sim.player.y)-32,event.yAfter,`row${frame} y`);assert.equal(Math.floor(sim.player.vy),event.speedAfter,`row${frame} speed`);assert.equal(sim.player.x,1846+240/256,`row${frame} pinned x`);assert.equal(sim.camera,[1751,1752,1753,1754,1755,1756,1757,1758,1760,1762,1764,1766,1769][frame-1944],`row${frame} camera`);}
+  if(frame>=1957)assert.equal(Math.floor(sim.player.y)-32,[150,138,127][frame-1957],`row${frame} release`);
  });
 });

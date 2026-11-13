@@ -69,7 +69,10 @@ test('star and fire-change palettes use the shared native phases',()=>{
  const {sim}=scene();
  const paletteKit={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial();material.name='M_Cloth_Primary';root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
  const entities=new Entities(paletteKit,false),color=()=>{const model=actor(entities,'mario').getObjectByName('mario')!;return ((model.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial).color.getHexString();};
- sim.player.star=200;sim.frame=2;entities.sync(sim,0);assert.equal(color(),'2fae3a');
+ sim.player.star=35;sim.starDrawPalette=1;sim.frame=2;entities.sync(sim,0);assert.equal(color(),'2fae3a');
+ sim.player.star=0;sim.frame=99;entities.sync(sim,0);assert.equal(color(),'2fae3a'); // Expiry draw retains its captured palette.
+ sim.starDrawPalette=0;entities.sync(sim,0);assert.equal(color(),'d8241c');
+ sim.starDrawPalette=undefined;
  sim.player.star=0;sim.player.size=1;sim.powerChange={kind:'fire',from:1,to:2,remaining:61};sim.frame=4;entities.sync(sim,0);assert.equal(color(),'1a1a1a');
  sim.powerChange.remaining=54;sim.frame=6;entities.sync(sim,0);assert.equal(color(),'2fae3a');
 });
@@ -133,4 +136,16 @@ test('native birth slots wait for their first graphics pass while legacy actors 
  const {sim,entities}=scene({graphicsVisible:false});entities.sync(sim,0);assert.equal(entities.group.getObjectByName('goomba'),undefined);
  sim.enemies[0].graphicsVisible=true;entities.sync(sim,0);assert.ok(actor(entities,'goomba').visible);
  sim.enemies[0].graphicsVisible=undefined;entities.sync(sim,0);assert.ok(actor(entities,'goomba').visible);
+});
+test('native Bowser mouth and rear-foot bits select independent authored poses',()=>{
+ const {sim}=scene({kind:'bowser',nativeBowser:{controls:0x80} as Enemy['nativeBowser']});
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;const jaw=new THREE.Bone();jaw.name='Jaw';root.add(jaw);return {root,clips:new Map([['walk',new THREE.AnimationClip('walk',1,[new THREE.NumberKeyframeTrack('.position[x]',[0,1],[0,1])])],['idle',new THREE.AnimationClip('idle',2,[new THREE.QuaternionKeyframeTrack('Jaw.quaternion',[0,0.5,2],[0,0,0,1,0,0,Math.SQRT1_2,Math.SQRT1_2,0,0,0,1])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const model=actor(entities,'bowser').getObjectByName('bowser')!,jaw=model.getObjectByName('Jaw')!;assert.equal(model.position.x,0.25);assert.ok(Math.abs(jaw.quaternion.z-Math.SQRT1_2)<1e-6);
+ sim.enemies[0].nativeBowser!.controls=1;sim.frame++;entities.sync(sim,0);assert.equal(model.position.x,0.75);assert.equal(jaw.quaternion.z,0);
+});
+test('swim feet use the independent native kick bit while body time is unchanged',()=>{
+ const {sim}=scene();sim.area.theme='water';sim.player.size=1;sim.player.grounded=false;sim.playerAnim.fresh=false;sim.swimPoseFrame=0;sim.random.frame=0;
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;const foot=new THREE.Bone();foot.name='FootR';root.add(foot);return {root,clips:new Map([['swim',new THREE.AnimationClip('swim',0.8,[new THREE.QuaternionKeyframeTrack('FootR.quaternion',[0,0.8],[0,0,0,1,0,0,Math.SQRT1_2,Math.SQRT1_2])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const foot=actor(entities,'mario').getObjectByName('FootR')!,first=foot.quaternion.z;
+ sim.random.frame=4;entities.sync(sim,0);assert.ok(foot.quaternion.z>first);assert.equal(sim.frame,0);
 });

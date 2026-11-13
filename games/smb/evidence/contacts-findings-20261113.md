@@ -110,3 +110,66 @@ remake local296.5 versus native local232 on6735. Native enemy-slot/stream work
 owns that issue; evidence was sent to the walker worker. Its timer error6959
 now follows that earlier physical divergence. The all-level survey for this
 follow-up is `/tmp/contacts-parser-platform3-divergence.json` during the session.
+
+
+## Ordinary walker background phase (2026-11-13)
+
+Base: integration e9c874d. Native `EnemyToBGCollisionDet` checks its
+`(rawY+$3e)&255 >= $44` window, probes feet at x+8/rawY+24, and accepts
+landing only when rawY low nibble is8..12. State0 stays horizontal; state1
+runs native gravity61/256 with cap3. Landing snaps rawY to `(rawY&$f0)|8`,
+clears speed/force while retaining the slot fraction, and makes non-Goomba
+walkers face Mario. Spiny retains its FrameCounter-dependent direction rule.
+A landing returns immediately; otherwise the side probe reads x+0/16 and
+rawY+20 before movement. Native ID3 ledge avoidance remains distinct from
+unwinged red ID1. Explicit off-grid artwork keeps its existing support height.
+
+Reproducible fixture: `tools/harness/native-walker-landings.mjs`,113 native
+state1→0 events, plus replay regressions8-2 row790 and6-1 rows246/247.
+8-2 Koopa355→354.5 now matches its native pre-move wall reversal. The legacy
+8-2 firstenemy625 remains earlier because of respawn state (other worker).
+
+All32 comparison against e9c874d: only2-1 first fields change. Enemy517→791,
+death1522→null, timer1529→1745 improve. Earlier y1916→1601, x1916→1602,
+camera1916→1603, score2162→1800 all follow enemy791. Other levels and fields
+are unchanged. Excerpts regenerated; full field snapshots are
+`/tmp/contacts-walker-bg-baseline.json` and `/tmp/contacts-walker-bg-final.json`.
+
+## Final void frame screen clamp
+
+Mood0 SHA3d43b7b4… entry0007/1-3 row578 reaches native page6/rawY0.
+`ScrollHandler` still clamps screenX240 to239 and clears the integer horizontal
+speed byte before `PlayerHole` selects engine6. The previous early return
+at pitEndFeetY skipped this final clamp. Moving the existing clamp ahead of
+that return changes strict first578→579 (x578 is eliminated), with no change
+to any field of the32 v2 runs. Strict579+ is the separately owned death/intro
+RAM-retention gap: native engine0 retains the previous player/camera bytes
+until area initialization; the current intro model resets them immediately.
+
+
+## Source spring control, force and camera return
+
+`ChkForLandJumpSpring` writes control1/timer3/force-7 after TimerCore;
+`LandPlyr` snaps raw Mario Y's low nibble to0 without clearing position fraction.
+`JumpspringHandler` then moves Mario+2 (control1/2) or-2 (control3/4), sets
+spring artwork Y to fixedY+[8,16,8,0], and advances expired timers to4/control+1.
+An A edge at control2+ selects force-12. Control4 launches on the13th contact
+handler. That write changes only Y speed: Player_State is still ground0, so
+one more grounded movement row holds Y, then background changes it to falling2.
+The subsequent fall retains native $070A gravity, rather than always144/256.
+65 captured handler rows reproduce all control/timer/force/artwork/Mario-Y bytes.
+The old synthetic spring tests asserted inferred firstY144 and14-handler timing;
+they are replaced by the generated native byte fixtures.
+
+`MovePlayerHorizontally` returns nonzero spring control in A without moving X.
+`OnGroundStateSub` nevertheless writes A to $06FF Player_X_Scroll, so camera
+moves during compression even though Mario stays pinned. This is a source
+accumulator effect, not a platform carry or per-level camera correction.
+The runtime regression checks6-3 rows1944..1959, including exact camera values.
+
+Versus3894521,3-1 dead1278/time1287/score1407/camera1014/x1026/y1013 all become
+null; enemy924 is unchanged.6-3 dead2409/time2184/coins2620 become null,
+camera1945→1993,x1957→1992,y1944→2082. The remaining6-3 errors follow the
+missing spring slot reservation, owned by the walker worker.2-1 y1601→1602
+improves; score1800→1795 and camera1603→1602 move earlier but follow enemy791.
+No other level or field changes. Excerpts regenerated against the source rule.
