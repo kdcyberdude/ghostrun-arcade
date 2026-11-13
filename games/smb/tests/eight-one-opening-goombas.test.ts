@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -5,7 +6,7 @@ import {observedLevels} from '../src/levels.js';
 
 test('8-1 opening has three active left-moving Goombas',()=>{
  const level=structuredClone(observedLevels().find(level=>level.id==='8-1')!);
- const sim=new Simulation([level]);sim.reset(true);
+ const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);
  // Isolated observation fixture: place the camera at the surveyed opening and
  // keep Mario away. This is not a normal campaign traversal or an exact spawn fit.
  sim.camera=160;sim.player.x=160;

@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -11,7 +12,7 @@ for(const [id,centre,y] of [['6-2',912,128],['4-1',2128,144],['8-1',1680,144]] a
   const outcome=(x:number)=>{
    const level=structuredClone(observedLevels().find(l=>l.id===id)!);
    const main=level.areas.find(a=>a.id==='main')!;main.spawn=[x,y];main.camera=x-100;
-   const sim=new Simulation([level]);sim.reset(true);sim.enemies=[];sim.step(['down'],4);return sim.phase==='pipe';
+   const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.enemies=[];sim.step(['down'],4);return sim.phase==='pipe';
   };
   for(const dx of [-12,-8,-4,-3.0625])assert.equal(outcome(centre+dx),true,`x ${centre+dx}`);
   for(const dx of [-14,-13,-12.0625,-3,-2])assert.equal(outcome(centre+dx),false,`x ${centre+dx}`);

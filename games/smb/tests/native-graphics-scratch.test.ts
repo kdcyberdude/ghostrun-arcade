@@ -22,7 +22,7 @@ test('naturally visited vine prefix observes orderedEF across Goomba and Piranha
  const visit=(await import('./fixtures/native-vine-natural-visit.json',{with:{type:'json'}})).default,unpack=(s:string)=>new Uint8Array(gunzipSync(Buffer.from(s,'base64'))),initial=unpack(visit.initialRam),rows=unpack(visit.ram),pads=unpack(visit.pads),sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,decodeEntrance(initial,visit.receipt));sim.step([],0);sim.inputs=[];const buttons=['a','b','select','start','up','down','left','right'];
  const unresolved:number[]=[];
  for(let f=0;f<pads.length;f++){sim.step(buttons.filter((_,bit)=>pads[f]&(1<<bit)),1);if(sim.graphicsScratch.value===undefined)unresolved.push(f);else assert.equal(sim.graphicsScratch.value,rows[f*2048+0xef],`native row${f} retainedEF`);}
- assert.deepEqual(unresolved,[220,451,695],'three late group picture reconstructions remain explicit unknowns, never successful EF comparisons');
+ assert.deepEqual(unresolved,[220,695],'only legacy late group reconstructions remain unknown; native bank row451 is now compared exactly');
  assert.equal(pads.length,774);
 });
 

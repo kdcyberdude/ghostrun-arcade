@@ -4,6 +4,13 @@
 export type WaterStreamEvent=({kind:'frenzy'}|{kind:'blocked'}|{kind:'skip';offset:number}|{kind:'spawn';offset:number;id:number;x:number;y:number})&{x?:number;y?:number};
 export class NativeWaterStream {
  constructor(readonly bytes:readonly number[],public offset=0,public page=0,public selected=false){}
+ /** Older one-time entrance fixtures retained the cursor but not its page latch.
+  * Recover consumed ROM page commands; authenticated page/latch bytes take precedence. */
+ restore(offset:number,page?:number,selected?:boolean){
+  let consumedPage=0;
+  for(let at=0;at<offset;){const first=this.bytes[at],second=this.bytes[at+1],row=first&15;if(second&128)consumedPage=(consumedPage+1)&255;if(row===15&&!(second&128))consumedPage=second&63;at+=row===14?3:2;}
+  this.offset=offset;this.page=page??consumedPage;this.selected=selected??false;
+ }
  next(camera:number,hard:boolean,slot=0,accept?:(event:Extract<WaterStreamEvent,{kind:'spawn'}>)=>boolean):WaterStreamEvent{
   for(;;){
    const offset=this.offset,first=this.bytes[offset];

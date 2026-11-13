@@ -2591,6 +2591,7 @@ export class Simulation {
    this.groupParserSlot=slot;if(members.length)this.passNativeGroups(members[0].nativeGroup!.column,init.offset,this.placedActorStream?this.camera+this.lakituScroll:this.camera);
    return members.some(e=>e.active&&e.enemySlot===slot)?1:0;
   }
+  if(init.id===47){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot);return init.flag;}
   if(init.id===52){const controller=this.frenzyControllers.find(c=>c.offset===init.offset)!;controller.slot=slot;controller.x=init.x!+this.placedOrigin;return 1;}
   if(init.id>=27&&init.id<=31){const bar=this.placedBars.get(init.offset!)!;this.firebarSlots!.initializeNative(bar,slot,{id:init.id,high:this.slotYSpeed[slot],low:0,...nativeFirebarParameters(init.id)});this.castleSlotXSpeed[slot]=0;return 1;}
   if(init.id===12){const e=this.enemies.find(e=>e.nativeOffset===init.offset&&!e.active)!;Object.assign(e,{active:true,slotFreed:false,enemySlot:slot,slotBorn:this.frame,graphicsVisible:false,x:init.x!+this.placedOrigin+this.slotSub[slot]/256,y:282,age:0,pod:nativePodobooState(this.slotYFraction[slot])});Object.assign(this.slotVertical[slot],{speed:0,force:0});this.slotYSpeed[slot]=0;return 1;}
@@ -2651,8 +2652,8 @@ export class Simulation {
     m.active=true;if(this.placedActorStream)m.slotBorn=this.frame;m.x=Math.floor(camera)+255+24*m.nativeGroup!.index;this.takeNativeSlot(m,reserved);
     if(m.enemySlot===undefined){m.active=false;m.slotLost=true;continue;}
     m.vx=this.primaryHardMode?-0.75:-0.5;m.vy=0;m.graphicsVisible=m.enemySlot>this.groupParserSlot;m.graphicsFacing=-1;m.graphicsX=m.x;m.graphicsY=m.y;
-    if(m.graphicsVisible)this.captureEnemyGraphics(m);
-    if(m.enemySlot>this.groupParserSlot&&!this.nativeTimersStopped){
+    if(m.graphicsVisible&&!this.placedActorStream)this.captureEnemyGraphics(m);
+    if(!this.placedActorStream&&m.enemySlot>this.groupParserSlot&&!this.nativeTimersStopped){
      m.age=1;m.x+=m.vx;
      if(!this.collisionAt(m.graphicsX+8,m.y)){
       const n={...nativeMoveState(Math.floor(m.y)),fraction:this.slotVertical[m.enemySlot].fraction};nativeImposeGravity(n,0x3d,3);
@@ -2790,9 +2791,16 @@ export class Simulation {
   this.stompedThisStep=false;
   const stepFrom=new Map<Enemy,{x:number,y:number}>(this.enemies.filter(e=>e.active).map(e=>[e,{x:e.x,y:e.y}])); // each enemy before this frame's move (native EnemiesCollision boxes)
   const ordered=[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5));let nativeSlot=0;
-  for(const e of ordered){
+  const self=this;
+  function* nativeActors(){
+   // A group can occupy a later slot while an earlier handler is still running.
+   // Visit that slot at its own turn, after intervening collisions/TimerControl writes.
+   for(let slot=0;slot<6;slot++){self.visitNativeBankSlot(slot,oldBottom);nativeSlot=slot+1;for(const e of self.enemies)if(e.enemySlot===slot)yield e;}
+   for(const e of self.enemies)if(e.enemySlot===undefined)yield e;
+  }
+  for(const e of this.placedActorStream?nativeActors():ordered){
    while(nativeSlot<=Math.min(5,e.enemySlot??5))this.visitNativeBankSlot(nativeSlot++,oldBottom);
-   if((this.placedCastle||this.placedActorStream)&&e.slotBorn===this.frame)continue;
+   if((this.placedCastle||this.placedActorStream)&&e.slotBorn===this.frame&&(!e.nativeGroup||!e.graphicsVisible))continue;
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
    let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined,stompPod=e.pod?{...e.pod}:undefined;
    const hurtBeforeMove=()=>{
@@ -3057,7 +3065,7 @@ export class Simulation {
   }
   while(nativeSlot<6)this.visitNativeBankSlot(nativeSlot++,oldBottom);this.currentNativeBankSlot=-1;
   this.nativeWalkerContacts(stepFrom);
-  if(this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&!this.parserClock.blocked){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot);}}
+  if(!this.placedStream&&this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&!this.parserClock.blocked){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot);}}
   if(reservedClaim)Object.assign(this.specialSlot5,{flag:reservedClaim.flag,id:reservedClaim.id,frenzyBuffer:reservedClaim.buffer});
   this.specialSlot5.stepVine(this.random.frame,this.camera+this.lakituScroll);
   this.spinyFrenzyAfter(frenzy);

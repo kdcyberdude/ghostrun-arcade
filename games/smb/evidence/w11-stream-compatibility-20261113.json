@@ -1,0 +1,69 @@
+{
+  "baseline": "bfafb42",
+  "scope": "Compatibility repair of the newly admitted ordinary enemy streams; no new mechanics or other-level investigation.",
+  "focusedTests": 60,
+  "coldInjuryPrefixes": [
+    {
+      "id": "24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761",
+      "through": 1000,
+      "totalInputFrames": 23852,
+      "scope": "Cold reset; every retained input through first injury window, bounded at1000; no entrance seeding or mid-run corrections.",
+      "coverage": {
+        "scope": "continuous World1-1 and source-owned boot/title",
+        "start": {
+          "status": "match",
+          "scope": "cold-recorded-start",
+          "checked": [
+            "cold.RAM"
+          ],
+          "gaps": [],
+          "differences": []
+        },
+        "fullyComparedFrames": 1000,
+        "partiallyComparedFrames": 0,
+        "uncheckedFrames": 0,
+        "knownMismatchFrames": 0,
+        "gaps": {}
+      },
+      "firsts": {}
+    },
+    {
+      "id": "9779ab98593d32a4eb943b4a862a5e07f9d32274c78d06b34a539e13484201c5",
+      "through": 1000,
+      "totalInputFrames": 12360,
+      "scope": "Cold reset; every retained input through first injury window, bounded at1000; no entrance seeding or mid-run corrections.",
+      "coverage": {
+        "scope": "continuous World1-1 and source-owned boot/title",
+        "start": {
+          "status": "match",
+          "scope": "cold-recorded-start",
+          "checked": [
+            "cold.RAM"
+          ],
+          "gaps": [],
+          "differences": []
+        },
+        "fullyComparedFrames": 1000,
+        "partiallyComparedFrames": 0,
+        "uncheckedFrames": 0,
+        "knownMismatchFrames": 0,
+        "gaps": {}
+      },
+      "firsts": {}
+    }
+  ],
+  "coldReturnRegression": {
+    "tests": 3,
+    "status": "PASS",
+    "recordings": [
+      "3d43b7b4",
+      "1ec0a3e4"
+    ],
+    "method": "Complete retained input replays from cold reset, unchanged native-return-stream assertions; outside-World1-1 coverage remains explicit."
+  },
+  "runtimeHashes": {
+    "src/simulation.ts": "1c8e9a1779875df051e36f6fd2444d0598014565984503d1d2af0598ae8e1230",
+    "src/native-water-stream.ts": "e4746300d19836bb342788bb7310418525e2c76944c3f773e15cfb78af2627dd",
+    "tools/harness/native-entrance.mjs": "9e98003e67e14ca1bf2a22961018b78725e72fa6f4bc711b1755f2964f9e1fdf"
+  }
+}

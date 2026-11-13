@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {observedLevels} from '../src/levels.js';
@@ -8,7 +9,7 @@ import observations from '../data/six-two-vine.json';
 function mainFixture(spawn:[number,number]){
  const level=structuredClone(observedLevels().find(l=>l.id==='6-2')!),main=level.areas.find(a=>a.id==='main')!;
  main.spawn=spawn;main.camera=1183;main.enemies=[];
- const sim=new Simulation([level]);sim.reset(true);return sim;
+ const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);return sim;
 }
 
 test('6-2 retains its distinct 95-column sky map and explicit occlusions',()=>{

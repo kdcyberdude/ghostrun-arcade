@@ -1,0 +1,14 @@
+# Ordinary-stream integration compatibility
+
+Base: `bfafb42`. This repairs only regressions introduced by generic ordinary/group stream admission in `4affc72`.
+
+* Source EnemyCore/RunNormalEnemies handles ascending slots. Group followers allocated into later slots must run at those turns, after intervening handlers perform injury/TimerControl writes. The allocator previously moved followers eagerly. The physical ordinary-bank iterator now handles a later-born actor at its own slot; already-visited births still wait until next frame. Legacy profiles keep their existing path.
+* Source fallback ID47 now reaches the existing vine-segment initializer instead of looking up an unplaced vine as a walker. The legacy after-bank fallback remains only for profiles without a physical dispatcher.
+* Old serialized entrances retain EnemyDataOffset but omit EnemyDataPage/Selected. The one-time seed reconstructs consumed ROM page commands when those bytes are absent; explicit native bytes take precedence. Native death-load, game timer, pipe-load and player-priority assertions are unchanged.
+* The older flag-pose fixture omits all three cursor bytes, including a3-2 entry with an already-active actor from record0. Its initial counter/RNG match archived native initial RAM for all11 entries. The fixture now retains authenticated initial RAM and seeds its actual cursor/page/latch. Existing row assertions remain, plus initial RAM SHA256, counter, RNG and cursor assertions.
+* Terrain, manual opening, slot-subpixel and pipe-window component fixtures deliberately replace/move/clear the campaign roster. They now use the existing explicit test-only stream-isolation helper. No production synthetic boundary or campaign profile was disabled.
+* Native EF row451 is now compared exactly; explicit unknown rows220/695 remain. Checked coverage increases without accepting wrong known EF.
+
+Native source: recovered SMBDIS.ASM, SHA256 `e5c17c42783f430029ab90aa37c73d51c2c320898e533b3ff196dad38c50ae42`. Archived initial RAM: notes/smb-native-handoff/traces/LEVEL/initial.ram. Cold inputs: notes/smb-native-handoff/recovered-native/moods/captures/SHA/.
+
+Validation:60 focused tests PASS (34 reported regression/source cursor/HBro tests,23 additional component/native-priority/vine tests,3 unchanged cold-return/original tests). Original affected cold recordings24a4c03d and9779ab98 compare every checked field on every retained input through frame999 after cold reset:1000 fully compared frames each, zero mismatches, partial/unchecked frames or gaps. This covers introduced f532/f496 failures and their held-injury window. These bounded prefixes are not whole-input proof. Both complete cold-return regression inputs still pass. No full npm, TypeScript, all32 or3D audit repeated; root owns the combined gate.
