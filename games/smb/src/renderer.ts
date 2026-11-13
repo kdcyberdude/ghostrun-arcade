@@ -134,8 +134,8 @@ export class GameRenderer {
    const flipY=e.dead>0&&!s.castleBowserFalls(e);
    // The head half is the native anchor: at the body's left edge when he faces left, 16 px in (the body's right half) when he faces right.
    const right=e.bowser?e.bowser.side>0:e.vx>0,headX=e.bowser&&right?x+16:x;
-   this.enemyCell(35+(e.nativeBowser?e.nativeBowser.controls>>7&1:phase)*2,headX,y-8,e.palette??'0f-1a-30-27',right,flipY);
-   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,e.palette??'0f-1a-30-27',right,flipY);return;
+   this.enemyCell(35+(e.nativeBowser?e.nativeBowser.controls>>7&1:phase)*2,headX,y-8,e.palette??'0f-1a-30-27',!right,flipY);
+   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,e.palette??'0f-1a-30-27',!right,flipY);return;
   }
   palette=e.palette??palette;
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead&&e.vx<=0&&palette==='0f-16-30-27'){
@@ -214,6 +214,7 @@ export class GameRenderer {
   const black=['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
   if(black)this.renderer.setClearColor(s.pipeClearing||s.phase==='intro'&&s.phaseFrame>=TRANSITIONS.introUniformSkyFromFrame?(s.area.background??'#6888fc'):'#000000');
   if(!black){
+   const ordinary=s.spritePictureOwner!=='empty'&&s.spritePictureOwner!=='victory';
    this.waterSurfaceSky(s);
    this.worldClip=true;
    const pictureTiles=new Map(s.tiles);for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
@@ -237,6 +238,7 @@ export class GameRenderer {
    }
    for(const overlay of s.area.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
    if(s.warpZoneActive)for(const overlay of s.area.warpZone?.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
+   if(ordinary){
    for(const platform of s.area.platforms??[]){
     const context={levelId:s.level.id,areaId:s.area.id},pos=s.platformPicturePosition(platform);
     for(const y of nativePlatformArtworkYs(platform,context,pos.y)){
@@ -255,7 +257,9 @@ export class GameRenderer {
    }
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
-   for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
+   }
+   for(const e of s.enemies){const picture=enemyPicture(e);if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
+   if(ordinary){
    for(const b of s.blockGraphics)for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY);}
    for(const i of s.items)this.item(i,s);
    if(s.area.theme==='water')for(const bubble of s.bubbles)if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27');
@@ -279,6 +283,7 @@ export class GameRenderer {
      for(const firework of s.flagFireworks)this.special('explosions-'+firework.phase,firework.x-s.camera,firework.y);
     }
    }
+   }
    if(playerVisible(s))this.player(s);
    this.worldClip=false;
   }
@@ -294,15 +299,15 @@ export class GameRenderer {
   this.renderer.render(this.scene,this.camera);
  }
  private castleRescue(s:Simulation){
-  const exit=s.area.exit;if(exit?.kind!=='axe'||exit.retainerX===undefined||['intro','gameover','title'].includes(s.phase))return;
-  this.enemyCell(s.level.id==='8-4'?26:27,exit.retainerX-s.camera,185,'0f-16-30-27');
+  const exit=s.area.exit;if(exit?.kind!=='axe'||['intro','gameover','title'].includes(s.phase))return;
+  const actor=s.castleRetainer;if(actor?.graphicsVisible)this.enemyCell(s.level.id==='8-4'?26:27,actor.x-Math.floor(s.camera),actor.y+1,'0f-16-30-27');
   if(s.castleStage!=='message'&&s.phase!=='ending')return;
   if(s.castleText){for(const row of s.castleText)this.text(row.text,row.x-s.camera,row.y);return;}
   const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
   // The terminal reference image precedes ending dialogue. Subsequent ending
   // text is an inferred presentation; its timing cannot be observed via the tool.
   if(s.phase==='ending'&&elapsed===0)return;
-  const actorScreenX=exit.retainerX-s.camera;
+  const actorScreenX=(actor?.x??exit.retainerX??0)-s.camera;
   if(elapsed>=0)this.text('THANK YOU '+(s.currentPlayer?'LUIGI':'MARIO')+'!',actorScreenX-80,80);
   if(elapsed>=CASTLE_COMPLETION.secondMessageFrames){
    if(s.level.id==='8-4'){

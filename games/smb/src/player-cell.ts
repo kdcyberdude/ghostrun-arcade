@@ -7,7 +7,7 @@ import {growCell,shrinkBig,throwPoseShown} from './view-rules.js';
 /** PlayerGfxHandler exits on odd FrameCounter rows while InjuryTimer is nonzero, including the shrink animation.
  * Native source: https://github.com/Xkeeper0/smb1/blob/master/src/prg.asm (PlayerGfxHandler). */
 export function playerVisible(s:Simulation){
- return s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(!s.player.invincible||(s.random.frame&1)===0);
+ return s.spritePictureOwner!=='empty'&&s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(!s.player.invincible||(s.random.frame&1)===0);
 }
 
 /** PlayerGfxHandler's extra swimming-foot tile, separate from PlayerGfxOffset. Small swim frame3 keeps tile$48 instead. */
