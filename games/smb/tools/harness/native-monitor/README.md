@@ -70,7 +70,7 @@ sibling `traces/1-1 … 8-4`) and `combined`, the full historical every-frame re
 | Old full every-frame audit, state+picture (cca2e44) | 5,178,452 | 2 h 57 m (8 shards) | ~490 frames/s; ~14.5 ms/frame per shard |
 | State only, all levels (`native-state-replay.ts`) | 5,178,452 | 37 s (44 workers) | equals the old audit's state verdict on every frame |
 | State only, `--levels 1-1` | 1,182,392 | 10 s idle machine · 52 s at 20 workers beside an RL job | |
-| State+picture, `--levels 1-1`, 20 shards | 1,182,392 | 15 min idle (1,319 frames/s) · 18.4 min beside an RL job | equals the old audit's picture verdicts on all 552,853 compared 1-1 frames |
+| State+picture, `--levels 1-1`, 20 shards | 1,182,392 | ≈15 min idle (est.: 1,319 frames/s measured over 188 recordings) · 18.4 min beside an RL job | equals the old audit's picture verdicts on all 552,853 compared 1-1 frames |
 
 Where the time went (one browser shard, per frame): native picture base64 transfer through CDP ~1.5 ms and
 `Uint8Array.from(atob)` decode 2.3 ms (both replaced by a binary HTTP feed); `drawImage`/`getImageData`
