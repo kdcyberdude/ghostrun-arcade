@@ -1,7 +1,7 @@
 // Player, enemies and items. Positions come straight from the simulation (feet / hit box); animation never feeds back into it.
 // Pose selection mirrors the original renderer's sprite-cell choice (renderer.ts player()/enemy()), mapped onto 3D clips.
 import * as THREE from 'three';
-import {enemyPicture,nativeHammerBroCell} from '../enemy-picture.js';
+import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
 import {playerVisible,playerCell} from '../player-cell.js';
 import {itemShown,fireFlashVariant,starVariant} from '../view-rules.js';
@@ -9,6 +9,8 @@ import type {Enemy,EnemyKind,Item} from '../types.js';
 import {Kit} from './kit.js';
 import {ActorPool,Actor,turnToward,yawFor} from './actors.js';
 import {coinGeometry,GOLD} from './proc.js';
+import nesPalette from '../../assets/nes-rgb-palette.json';
+const PIRANHA_GREEN=new THREE.Color().fromArray(nesPalette.colors[0x1a].map(v=>v/255)).convertSRGBToLinear();
 const DIMS:Record<EnemyKind,[number,number]>={goomba:[1,1],koopa:[1,1.5],redKoopa:[1,1.5],paratroopa:[1,1.5],beetle:[1,1],spiny:[1,1],piranha:[1,1.5],blooper:[1,1.5],cheep:[1,1],bullet:[1,1],lakitu:[1,1.5],hammerBro:[1,1.5],podoboo:[1,1],bowser:[2,2]};
 const COLORS:Record<EnemyKind,number>={goomba:0x8a4a1a,koopa:0x2fae3a,redKoopa:0xd23a2a,paratroopa:0x2fae3a,beetle:0x222233,spiny:0xd23a2a,piranha:0x2fae3a,blooper:0xf0f0f0,cheep:0xd23a2a,bullet:0x333333,lakitu:0xeeeeee,hammerBro:0x2fae3a,podoboo:0xff6a00,bowser:0x3a8a2a};
 /** Model per enemy kind (absent = procedural stand-in). */
@@ -92,7 +94,7 @@ export class Entities{
  }
  private yaw(e:Enemy,target:number,frame:number){const prev=this.enemyYaw.get(e);if(prev?.frame===frame)return prev.yaw;const y=turnToward(prev?.yaw??target,target);this.enemyYaw.set(e,{frame,yaw:y});return y;}
  private enemy(e:Enemy,s:Simulation){
-  const physical=e;e=enemyPicture(e);
+  const physical=e;e=enemyPicture(e);const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
   const pictureX=!e.dead?e.graphicsX??e.x:e.x,pictureY=!e.dead?e.graphicsY??e.y:e.y;
   const [w,h]=DIMS[e.kind],cx=(pictureX+(e.kind==='bowser'?16:8))/16,feet=(239-pictureY)/16;this.box(physical.x/16,(239-physical.y)/16,physical.x/16+w,(239-physical.y)/16+h,0xff3030);
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead){
@@ -115,12 +117,16 @@ export class Entities{
   if(e.kind==='podoboo'){a.root.position.y=feet+0.5;a.root.rotation.z=e.podobooFalling?Math.PI:0;}
   if(shell){a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
   if(e.kind==='redKoopa'||e.kind==='koopa'||e.kind==='paratroopa')a.recolor('M_Shell',(e.palette??'').includes('16')||e.kind==='redKoopa'?'#d23a2a':'#2fae3a');
+  if(e.kind==='piranha')a.recolor('M_Head',PIRANHA_GREEN); // Native Piranha palette is $0f/$1a/$30/$27.
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
-  a.root.rotation.y=e.kind==='piranha'?-Math.PI/2:this.yaw(physical,yawFor(e.kind==='hammerBro'?(e.nativeDir??-1):facing),s.frame);
-  const broCell=e.kind==='hammerBro'&&e.hbro?nativeHammerBroCell(e.dead?0x20:e.hbro.state,s.random.frame,Boolean(s.powerChange)):undefined;
-  const nativePhase=e.nativeBowser?((e.nativeBowser.controls&1)?0.75:0.25):broCell!==undefined?((broCell&1)?0.75:0.25):undefined;
-  const clip=nativePhase!==undefined?'walk':e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk';
+  a.root.rotation.y=e.kind==='piranha'?Math.PI/2:this.yaw(physical,yawFor(e.kind==='hammerBro'?(e.nativeDir??-1):facing),s.frame);
+  const broCell=e.kind==='hammerBro'&&e.hbro?nativeHammerBroCell(e.dead?0x20:e.hbro.state,s.random.frame,timersStopped):undefined;
+  const blooper=e.kind==='blooper'?nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),timersStopped):undefined;
+  if(blooper)a.root.position.y-=blooper.yOffset/16;
+  const nativePhase=e.kind==='piranha'?((e.dead?Math.floor(e.age/8)%2:nativeEnemyCyclePhase(s.random.frame,Boolean(s.powerChange)))?0:0.5):blooper?(blooper.cell===10?0.5:0):e.nativeBowser?((e.nativeBowser.controls&1)?0.75:0.25):broCell!==undefined?((broCell&1)?0.75:0.25):undefined;
+  const clip=e.kind==='piranha'?'idle':nativePhase!==undefined?'walk':e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk';
   a.pose(clip,nativePhase===undefined?e.age/60:nativePhase*a.duration(clip),s.frame);
+  if(e.kind==='lakitu'&&nativeLakituCell(e.graphicsFrenzyTimer??0,Boolean(e.dead))===25)a.poseYOffset('Body',-8/16);
   if(e.nativeBowser)a.poseRotation('Jaw','idle',(e.nativeBowser.controls&0x80)?a.duration('idle')/4:0);
   if(e.kind==='hammerBro'){
    for(const name of ['M_Handle','M_Metal'])for(const material of a.materials.get(name)??[])material.visible=!e.hbro;

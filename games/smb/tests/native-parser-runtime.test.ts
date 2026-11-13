@@ -7,9 +7,11 @@ import {observedLevels} from '../src/levels.js';
 import type {Button} from '../src/types.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import clockEvidence from '../data/native-parser-clock.json';
+import springEvents from './fixtures/native-spring-events.json';
+import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
 
-function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void){
- const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.v2.json`,import.meta.url),'utf8'));
+function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void,runName='v2'){
+ const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.${runName}.json`,import.meta.url),'utf8'));
  const unpack=(s:string)=>new Uint8Array(gunzipSync(Buffer.from(s,'base64')));
  const initial=unpack(run.initialRam),pads=unpack(run.pads),buttons:Button[]=['a','b','select','start','up','down','left','right'];
  const sim:any=new Simulation(observedLevels());sim.reset(true);
@@ -100,4 +102,63 @@ test('a Spiny landing returns before checking the wall in its new direction',()=
   const e=sim.enemies.find((e:any)=>e.active&&e.enemySlot===1&&e.kind==='spiny');assert.ok(e);
   assert.equal(e.x,frame===246?497.5:497,`row${frame}`);
  });
+});
+
+
+test('6-3 spring landing, compression and grounded launch hold match native RAM',()=>{
+ replay('6-3',1959,(sim,frame)=>{
+  const event=springEvents.find(e=>e.level==='6-3'&&e.frame===frame);
+  if(event){assert.equal(Math.floor(sim.player.y)-32,event.yAfter,`row${frame} y`);assert.equal(Math.floor(sim.player.vy),event.speedAfter,`row${frame} speed`);assert.equal(sim.player.x,1846+240/256,`row${frame} pinned x`);assert.equal(sim.camera,[1751,1752,1753,1754,1755,1756,1757,1758,1760,1762,1764,1766,1769][frame-1944],`row${frame} camera`);}
+  if(frame>=1957)assert.equal(Math.floor(sim.player.y)-32,[150,138,127][frame-1957],`row${frame} release`);
+ });
+});
+
+
+test('the native frenzy Bullet stomp keeps pre-move x, draws the old picture, drops two pixels, and awards 200 without a chain step',()=>{
+ let chain=0;
+ replay('6-3',1928,(sim,frame)=>{
+  if(frame===1922)chain=sim.stompChain;
+  if(frame<1923)return;
+  const expected=bulletDefeats.find(e=>e.level==='6-3'&&e.frame===frame)!.after;
+  const e=sim.enemies.find((e:any)=>e.active&&e.kind==='bullet'&&e.enemySlot===3);
+  assert.ok(e);assert.equal(e.dead,1);assert.equal(e.x,expected.x);assert.equal(e.y,expected.y);
+  assert.deepEqual({speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction},{speed:expected.speed,force:expected.force,fraction:expected.fraction});
+  assert.equal(sim.stompChain,chain);
+  if(frame===1923){assert.equal(e.graphics.dead,0);assert.equal(e.graphics.y,144);assert.equal(e.graphics.x,1862.5);}
+  if(frame===1928)assert.equal(sim.score,238000);
+ });
+});
+
+test('the frenzy Bullet corpse is erased on the first graphics pass below page1, retaining its final slot bytes',()=>{
+ replay('6-3',1982,(sim,frame)=>{
+  if(frame!==1982)return;
+  const e=sim.enemies.find((e:any)=>e.frenzy&&e.enemySlot===3&&e.dead===100);
+  assert.ok(e);assert.equal(e.slotFreed,true);assert.equal(e.y,282);
+  assert.deepEqual(sim.slotVertical[3],{speed:3,force:56,fraction:212});assert.equal(sim.slotSub[3],128);
+ });
+});
+
+test('5-3 retained frenzy controller delays id40 until the native Koopa final movement and next slot pass',()=>{
+ replay('5-3',620,(sim,frame)=>{
+  if(frame===466){assert.equal(sim.frenzyControllers.find((c:any)=>c.column===1312).slot,3);}
+  if(frame<547)return;
+  const platform=sim.area.platforms.find((p:any)=>p.x===1466)!;
+  if(frame<550)assert.equal(sim.platformSlots.has(platform),false,`row${frame} waits`);
+  if(frame===549){assert.equal(sim.slotSub[2],184,'erased Koopa completes its horizontal movement');assert.deepEqual(sim.slotVertical[2],{speed:3,force:61,fraction:221},'erasure clears state, preserving vertical bytes');}
+  if(frame===550){assert.equal(sim.platformSlots.get(platform),2);assert.equal(sim.platformMotion.collisionPosition(platform,sim.platformFrame).x,1504+184/256);}
+  if(frame>=617)assert.equal(Math.floor(sim.player.x),[1470,1472,1473,1475][frame-617],`row${frame} Mario carry`);
+ });
+});
+
+
+test('native engine3 retains X speed and saved scroll while Y and enemies continue through its area timer',()=>{
+ replay('1-1',461,(sim,frame)=>{
+  if(frame<413)return;
+  const tick=frame-413;
+  assert.equal(sim.phase,'pipe');assert.equal(sim.player.x,917);assert.equal(sim.player.vx,9432/4096);
+  assert.equal(Math.floor(sim.player.y)-32,112+tick,`row${frame} y`);
+  if(frame<=418)assert.equal(sim.camera,[805,808,810,812,814,816][tick],`row${frame} camera`);
+  assert.equal(sim.playerXScroll,3);assert.equal(sim.pipeTimer,48-tick);
+  if(frame===414){const e=sim.enemies.find((e:any)=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===0);assert.ok(e);assert.equal(e.x,769.5,'enemy world continues during pipe entry');}
+ },'mood0-3d43-entry0000');
 });

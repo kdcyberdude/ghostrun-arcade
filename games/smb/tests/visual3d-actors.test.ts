@@ -20,3 +20,11 @@ test('a native joint control samples an authored pose without changing the body'
  actor.poseRotation('ArmR','walk',1);assert.ok(Math.abs(arm.quaternion.z-Math.SQRT1_2)<1e-6);assert.ok(leg.quaternion.equals(legPose));
  actor.pose('walk',0.5,2);assert.ok(Math.abs(arm.quaternion.z-Math.sin(Math.PI/8))<1e-6);
 });
+
+test('a native joint translation restores before an unchanged mixer sample',()=>{
+ const model=new THREE.Group(),body=new THREE.Bone();body.name='Body';model.add(body);
+ const actor=new Actor(model,new Map([['idle',new THREE.AnimationClip('idle',1,[new THREE.VectorKeyframeTrack('Body.position',[0,1],[0,1,0,0,1,0])])]]));
+ actor.pose('idle',0,1);actor.poseYOffset('Body',-0.5);assert.equal(body.position.y,0.5);
+ actor.pose('idle',0,2);actor.poseYOffset('Body',-0.5);assert.equal(body.position.y,0.5);
+ actor.pose('idle',0,3);assert.equal(body.position.y,1);
+});

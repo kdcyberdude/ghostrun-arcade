@@ -20,6 +20,8 @@ import {createServer} from 'vite';
 import {chromium} from 'playwright';
 import {PNG} from 'pngjs';
 import {decodeEntrance} from './native-entrance.mjs';
+import {observedLevels} from '../../src/levels.js';
+import {nativeAreaLoads} from './native-area-identity.js';
 import {divergence,nativeRow} from './native-divergence.js';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
@@ -38,7 +40,7 @@ const remakeRgb=[0x7c7c7c,0x0000fc,0x0000bc,0x4428bc,0x940084,0xa80020,0xa81000,
  0xfcfcfc,0xa4e4fc,0xb8b8f8,0xd8b8f8,0xf8b8f8,0xf8a4c0,0xf0d0b0,0xfce0a8,0xf8d878,0xd8f878,0xb8f8b8,0xb8f8d8,0x00fcfc,0xf8d8f8,0x000000,0x000000];
 const toNative=new Map<number,number>();remakeRgb.forEach((c,i)=>{if(!toNative.has(c))toNative.set(c,rgb[i]);});
 
-const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},out:{type:'string'},levels:{type:'string'},frames:{type:'string'},png:{type:'string',default:'none'},lag:{type:'string',default:'1'},json:{type:'string'},port:{type:'string',default:'53949'}}});
+const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},out:{type:'string'},levels:{type:'string'},frames:{type:'string'},png:{type:'string',default:'none'},lag:{type:'string',default:'1'},'all-frames':{type:'boolean'},json:{type:'string'},port:{type:'string',default:'53949'}}});
 if(!a.traces||!a.entrances||!a.out)throw Error('--traces, --entrances and --out are required');
 const levels=a.levels?.split(',')??Array.from({length:32},(_,n)=>`${Math.floor(n/4)+1}-${n%4+1}`);
 const [lo,hi]=a.frames?a.frames.split('-').map(Number):[0,Infinity];
@@ -61,11 +63,11 @@ try{
  for(const level of levels){
   const dir=path.join(a.traces,level),receiptPath=path.join(a.entrances,level,'entrance.json'),meta=JSON.parse(fs.readFileSync(path.join(dir,'pixels.json'),'utf8'));
   const initial=new Uint8Array(fs.readFileSync(path.join(dir,'initial.ram'))),ramRow=(f:number)=>f<0?initial:new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048);
-  const pixels=fs.readFileSync(path.join(dir,'pixels.bin')),emph=fs.readFileSync(path.join(dir,'emph.bin')),ram=fs.readFileSync(path.join(dir,'ram.bin')),pads=fs.readFileSync(path.join(dir,'pads.bin'));
-  let end=pads.length;for(let f=0;f<pads.length;f++){const n=nativeRow(new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048));if(n.mode!==1||n.level!==level){end=f;break;}}
-  const first=divergence(dir,receiptPath,level).first;if(first!==null)end=Math.min(end,first);
-  const frames:number[]=[];for(let k=0;k<meta.frames;k++){const f=k*meta.step;if(f<end&&f>=lo&&f<=hi&&f>=lag)frames.push(f);}
-  const entrance=decodeEntrance(initial,JSON.parse(fs.readFileSync(receiptPath,'utf8')));
+  const pixelFd=fs.openSync(path.join(dir,'pixels.bin'),'r'),emphFd=fs.openSync(path.join(dir,'emph.bin'),'r'),pixels=Buffer.alloc(W*H),emph=Buffer.alloc(H),ram=fs.readFileSync(path.join(dir,'ram.bin')),pads=fs.readFileSync(path.join(dir,'pads.bin'));
+  let end=pads.length;for(let f=0;f<pads.length;f++){const n=nativeRow(new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048));if(!a['all-frames']&&(n.mode!==1||n.level!==level)){end=f;break;}}
+  const first=divergence(dir,receiptPath,level).first;if(first!==null&&!a['all-frames'])end=Math.min(end,first);
+  const frames:number[]=[];for(let k=0;k<meta.frames;k++){const f=k*meta.step;if(f<end&&f>=lo&&f<=hi&&(a['all-frames']||f>=lag))frames.push(f);}
+  const entrance=decodeEntrance(initial,JSON.parse(fs.readFileSync(receiptPath,'utf8'))),model=observedLevels().find(l=>l.id===level)!,areaLoads=nativeAreaLoads(model,ram,entrance.area??model.main).loads;
   const page=await browser.newPage();const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`http://127.0.0.1:${a.port}/`);await page.waitForFunction(()=>(window as any).mario?.ready,null,{timeout:90000});
   await page.evaluate(async entrance=>{
@@ -75,34 +77,35 @@ try{
    const crop=document.createElement('canvas');crop.width=240;crop.height=224;w.pixelCrop=crop.getContext('2d',{willReadFrequently:true});
   },entrance);
   fs.mkdirSync(path.join(a.out,level),{recursive:true});
-  const rows:{frame:number,all:number,hud:number,field:number,sprite:number,shift:number,aligned:number,nativeScroll:number,camera:number,area:string}[]=[],offPalette=new Map<number,number>();let next=0;
+  const rows:{frame:number,all:number,hud:number,field:number,sprite:number,shift:number,aligned:number,nativeScroll:number,camera:number,area:string,alignmentKnown:boolean,overlapPixels:number}[]=[],offPalette=new Map<number,number>();let next=0;
   for(const f of frames){
+   const k=f/meta.step;if(fs.readSync(pixelFd,pixels,0,W*H,k*W*H)!==W*H||fs.readSync(emphFd,emph,0,H,k*H)!==H)throw Error('Incomplete native pixel frame');
    const b64:string=await page.evaluate(({pads,names,x0,y0})=>{
     const w=window as any;for(const p of pads)w.mario.step(names.filter((_:string,b:number)=>p&(1<<b)),1);
     w.pixelCrop.drawImage(document.querySelector('#game'),-x0,-y0);const d=w.pixelCrop.getImageData(0,0,240,224).data;
     const sim=w.marioDebug.simulation;w.pixelCamera=[sim.camera,sim.area.id];let s='';for(let n=0;n<d.length;n+=32768)s+=String.fromCharCode(...d.subarray(n,n+32768));return btoa(s);
    },{pads:[...pads.subarray(next,f-lag+1)],names:nesButtons,x0:X0,y0:Y0});next=f-lag+1;
-   const rgba=Buffer.from(b64,'base64'),k=f/meta.step,native=new Uint8Array(W*H*3),remake=new Uint8Array(W*H*3),seen=new Int32Array(W*H),differs=new Uint8Array(W*H);
-   for(let y=0;y<H;y++){if(emph[k*H+y])throw Error(`${level} frame ${f}: emphasis bits set, extend rgb`);
-    for(let x=0;x<W;x++){const i=y*W+x,c=rgb[pixels[k*W*H+i]],r=rgba[i*4]<<16|rgba[i*4+1]<<8|rgba[i*4+2],m=toNative.get(r);
+   const rgba=Buffer.from(b64,'base64'),native=new Uint8Array(W*H*3),remake=new Uint8Array(W*H*3),seen=new Int32Array(W*H),differs=new Uint8Array(W*H);
+   for(let y=0;y<H;y++){if(emph[y])throw Error(`${level} frame ${f}: emphasis bits set, extend rgb`);
+    for(let x=0;x<W;x++){const i=y*W+x,c=rgb[pixels[i]],r=rgba[i*4]<<16|rgba[i*4+1]<<8|rgba[i*4+2],m=toNative.get(r);
      native.set([c>>16,c>>8&255,c&255],i*3);remake.set(rgba.subarray(i*4,i*4+3),i*3);seen[i]=m??-1;
      if(m===undefined)offPalette.set(r,(offPalette.get(r)??0)+1);if(m!==c)differs[i]=1;}}
    /* The native picture of frame f shows row f-1 state: scroll and the $0200 OAM buffer copied at that NMI (8x8 sprites, y+1). */
-   const shown=ramRow(f-1),[camera,area]=await page.evaluate(()=>(window as any).pixelCamera),nativeScroll=shown[0x71a]*256+shown[0x71c],shift=nativeScroll-camera;
+   const shown=ramRow(f-1),[camera,area]=await page.evaluate(()=>(window as any).pixelCamera),visit=areaLoads.filter(v=>v.frame<=f-1).at(-1),origin=f===0?(entrance.areaOffset??0):visit?.offset,alignmentKnown=origin!==undefined,nativeScroll=shown[0x71a]*256+shown[0x71c]+(origin??0),shift=nativeScroll-camera;
    const sprite=new Uint8Array(W*H);for(let s=0;s<64;s++){const sy=shown[0x200+s*4]+1,sx=shown[0x203+s*4];if(sy>=240)continue;
     for(let y=sy;y<sy+8;y++)for(let x=sx;x<sx+8;x++)if(y>=Y0&&y<Y0+H&&x>=X0&&x<X0+W)sprite[(y-Y0)*W+x-X0]=1;}
-   let all=0,hud=0,inSprite=0,aligned=0;
+   let all=0,hud=0,inSprite=0,aligned=0,overlapPixels=0;
    for(let y=0;y<H;y++)for(let x=0;x<W;x++){const i=y*W+x;
     if(differs[i]){all++;if(y<HUD)hud++;else if(sprite[i])inSprite++;}
-    const sx=x+shift;if(y>=HUD&&sx>=0&&sx<W&&seen[y*W+sx]!==rgb[pixels[k*W*H+i]])aligned++;}
-   rows.push({frame:f,all,hud,field:all-hud,sprite:inSprite,shift,aligned,nativeScroll,camera,area});
+    const sx=x+shift;if(y>=HUD&&sx>=0&&sx<W){overlapPixels++;if(seen[y*W+sx]!==rgb[pixels[i]])aligned++;}}
+   rows.push({frame:f,all,hud,field:all-hud,sprite:inSprite,shift,aligned,nativeScroll,camera,area,alignmentKnown,overlapPixels});
    if(pngFrames==='all'||pngFrames.has(f))writePng(path.join(a.out,level,`${String(f).padStart(5,'0')}.png`),native,remake,differs);
   }
-  await page.close();
+  await page.close();fs.closeSync(pixelFd);fs.closeSync(emphFd);
   const mean=(k:'all'|'hud'|'field'|'sprite'|'aligned',n:number)=>rows.length?rows.reduce((s,r)=>s+r[k],0)/rows.length/n*100:0;
-  const r={level,first,end,compared:rows.length,pctAll:mean('all',W*H),pctHud:mean('hud',W*HUD),pctField:mean('field',W*(H-HUD)),pctSprite:mean('sprite',W*(H-HUD)),pctAligned:mean('aligned',W*(H-HUD)),offPalette:Object.fromEntries([...offPalette].map(([c,n])=>[c.toString(16).padStart(6,'0'),n])),errors,rows};report.push(r);
+  const r={level,first,end,status:rows.some(r=>r.aligned)?'diverged':!rows.length||!a['all-frames']||Boolean(a.frames)||meta.step!==1||rows.length!==pads.length||rows.some(r=>!r.alignmentKnown||r.overlapPixels===0)?'incomplete':'pass',source:JSON.parse(fs.readFileSync(receiptPath,'utf8')),coverage:{completeInputSequence:Boolean(a['all-frames'])&&!a.frames&&meta.step===1&&rows.length===pads.length&&rows.every(r=>r.alignmentKnown&&r.overlapPixels>0),inputFrames:pads.length,availableNativeFrames:meta.frames,allFrames:Boolean(a['all-frames']),comparedFrames:rows.length,alignedFrames:rows.filter(r=>r.alignmentKnown&&r.overlapPixels>0).length,unresolvedAlignmentFrames:rows.filter(r=>!r.alignmentKnown).length,noOverlapFrames:rows.filter(r=>r.overlapPixels===0).length},compared:rows.length,pctAll:mean('all',W*H),pctHud:mean('hud',W*HUD),pctField:mean('field',W*(H-HUD)),pctSprite:mean('sprite',W*(H-HUD)),pctAligned:mean('aligned',W*(H-HUD)),offPalette:Object.fromEntries([...offPalette].map(([c,n])=>[c.toString(16).padStart(6,'0'),n])),errors,rows};report.push(r);
   const alignedPixels=rows.reduce((sum,row)=>sum+row.aligned,0),nonzeroFrames=rows.filter(row=>row.aligned!==0).length;
-  console.log(`${level.padEnd(4)} end ${String(end).padStart(5)} frames ${String(rows.length).padStart(3)}  diff ${r.pctAll.toFixed(2).padStart(6)}%  hud ${r.pctHud.toFixed(2).padStart(6)}%  field ${r.pctField.toFixed(2).padStart(6)}% (in native sprites ${r.pctSprite.toFixed(2).padStart(6)}%, scroll-aligned ${r.pctAligned.toFixed(2).padStart(6)}%)  aligned pixels ${alignedPixels}; nonzero frames ${nonzeroFrames}/${rows.length}${offPalette.size?`  off-palette px ${[...offPalette.values()].reduce((s,n)=>s+n,0)}`:''}${errors.length?'  page errors: '+errors.join('; '):''}`);
+  console.log(`${level.padEnd(4)} ${r.status} end ${String(end).padStart(5)} frames ${String(rows.length).padStart(3)}  diff ${r.pctAll.toFixed(2).padStart(6)}%  hud ${r.pctHud.toFixed(2).padStart(6)}%  field ${r.pctField.toFixed(2).padStart(6)}% (in native sprites ${r.pctSprite.toFixed(2).padStart(6)}%, scroll-aligned ${r.pctAligned.toFixed(2).padStart(6)}%)  aligned pixels ${alignedPixels}; nonzero frames ${nonzeroFrames}/${rows.length}${offPalette.size?`  off-palette px ${[...offPalette.values()].reduce((s,n)=>s+n,0)}`:''}${errors.length?'  page errors: '+errors.join('; '):''}`);
  }
 }finally{await browser.close();await server.close();}
 if(a.json)fs.writeFileSync(a.json,JSON.stringify(report)+'\n');

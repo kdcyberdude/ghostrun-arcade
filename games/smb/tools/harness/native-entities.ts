@@ -13,7 +13,7 @@ export function nativeEntities(r:Uint8Array,prev?:Uint8Array):Entity[]{
 }
 /** Bowser stores a32px body foot and primary-head anchor; walkers use the24px enemy-foot convention. Duplicate native rear slots are aliases. */
 export function simEntities(sim:any):Entity[]{
- return sim.enemies.filter((e:any)=>e.active&&(!e.dead||e.squashed&&e.dead<90)).map((e:any)=>e.kind==='bowser'?{kind:e.kind,x:Math.floor(e.nativeBowser?.x??e.bowser?.anchor??e.x),y:(Math.floor(e.y)-32)&255}:{kind:e.kind,x:Math.floor(e.x),y:(Math.floor(e.y)-24)&255});
+ return sim.enemies.filter((e:any)=>e.active&&(!e.dead||e.squashed&&e.dead<90||e.kind==='bullet'&&e.dead<100&&!e.slotFreed)).map((e:any)=>e.kind==='bowser'?{kind:e.kind,x:Math.floor(e.nativeBowser?.x??e.bowser?.anchor??e.x),y:(Math.floor(e.y)-32)&255}:{kind:e.kind,x:Math.floor(e.x),y:(Math.floor(e.y)-24)&255});
 }
 /** First native entity with no remake enemy of the same kind at the same pixel (undefined when all are matched). */
 export function unmatchedEntity(native:Entity[],sim:Entity[]):Entity|undefined{
