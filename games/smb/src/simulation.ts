@@ -261,7 +261,7 @@ export class Simulation {
  private waterEntryTimerHold=0;
  private waterEntryFall=false;private waterSurface={active:false,contacted:false};
  private fetchGameTimer=false;private screenTimer=0;private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private deathLoad?:{state:NativeLevelLoad;dispatch:boolean;held:boolean;area:string;spawn?:[number,number];camera?:number;player?:Player};private lifeFrozen=0;private lifeRow=0;private entryLanding=false;
- private entryFalling=false;private entryFallAge=0;private entryReadyAge=-1;/** Rows a queued pad trails its native read in the entry (default: queue length - 1); tools that seed the queue on native rows set 0. */entryInputLag?:number;private entryInputDelay=-1;private entryTimerDelay=-1;
+ private entryFalling=false;private entryFallAge=0;private entryReadyAge=-1;private entrancePreviousAB:number|undefined;/** Rows a queued pad trails its native read in the entry (default: queue length - 1); tools that seed the queue on native rows set 0. */entryInputLag?:number;private entryInputDelay=-1;private entryTimerDelay=-1;
  private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0];slotYSpeed=[0,0,0,0,0];slotYFraction=[0,0,0,0,0];private slotYFrac=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
  private playerXScroll=0;private pipeTimer=0;
  private pipeRise=0;private enemyContactOff=false;broClock=0;random=new NativeRandom();secondaryHardMode=false;primaryHardMode=false;recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;private cannonOffset=0;private nativeAreaOffset=0;private slotFrameTimers=[0,0,0,0,0];private frameTimersAt=-1;
@@ -359,7 +359,7 @@ export class Simulation {
   this.waterEntryFall=Boolean(area.waterEntryFall&&spawnAtEntry);this.waterEntryTimerHold=this.waterEntryFall?1:0;this.waterSurface={active:false,contacted:false};
   this.startSwim(spawnAtEntry,preserveTimer||lifeEntry);this.bubbleState.reset();this.bubblesInitialized=false;
   if(lifeEntry&&this.swimLock===3)this.swimLock=2; // respawn PlayerEntrance starts its first gravity pass on the next row; a pipe load has one intervening engine row
-  this.entryFalling=Boolean(area.entryFall&&spawnAtEntry);this.entryFallAge=0;this.entryReadyAge=-1;this.entryInputLag=undefined;this.entryInputDelay=this.entryFalling?-1:0;this.entryTimerDelay=this.entryFalling?-1:0;
+  this.entryFalling=Boolean(area.entryFall&&spawnAtEntry);this.entryFallAge=0;this.entryReadyAge=-1;this.entrancePreviousAB=undefined;this.entryInputLag=undefined;this.entryInputDelay=this.entryFalling?-1:0;this.entryTimerDelay=this.entryFalling?-1:0;
   this.entryFallFacing(area);
   this.entryVineActive=Boolean(area.entryVine);this.autoVineActive=false;this.entryVineStage='climb';
   if(area.entryVine){
@@ -500,7 +500,7 @@ export class Simulation {
    this.random.frame=0;this.random.prev=[...this.random.bytes];
   }else this.random.tick();
   if(this.nativeBlockBounce>0)this.nativeBlockBounce--;
-  const resumedAB=this.powerupStateZero?this.transformPreviousAB:undefined,previousA=resumedAB===undefined?this.previous.has('a'):Boolean(resumedAB&128),previousB=resumedAB===undefined?this.previous.has('b'):Boolean(resumedAB&64);
+  const resumedAB=this.powerupStateZero?this.transformPreviousAB:this.entrancePreviousAB,previousA=resumedAB===undefined?this.previous.has('a'):Boolean(resumedAB&128),previousB=resumedAB===undefined?this.previous.has('b'):Boolean(resumedAB&64);
   const pressed=(key:Button)=>b.has(key)&&(!(key==='a'?previousA:key==='b'?previousB:this.previous.has(key))||(key==='a'&&this.freshA));
   if(this.phase==='title'){
    this.nativeGameOver=undefined; // Ownership ended on the preceding RunGameOver termination row.
@@ -633,7 +633,7 @@ export class Simulation {
 
   if(this.blockBounceTimer>0)this.blockBounceTimer--;p.invincible=Math.max(0,p.invincible-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
   if(this.area.autoWalk)b=new Set<Button>(['right']);
-  this.nativePlayerAB=(b.has('a')?128:0)|(b.has('b')?64:0);
+  this.entrancePreviousAB=undefined;this.nativePlayerAB=(b.has('a')?128:0)|(b.has('b')?64:0);
   this.wallSpeed=undefined;
   this.growVines();const vineMovement=this.moveOnVine(b,pressed('a'));if(vineMovement==='transition')return;
   if(!vineMovement){
@@ -1275,7 +1275,7 @@ export class Simulation {
  private updatePipeRise(){
   this.tickIntervalTimers(); // NMI interval bank runs before PlayerEntrance, including its early-return pipe rise.
   this.pipeRise--;this.player.y--;this.updateBubbles(true,false);this.enemyContactOff=true;this.updateEnemies(this.player.y);this.enemyContactOff=false;if(this.walkerStream)this.primeNativeEntryObjects(); // native engine 7 (pipe exit): enemies run, PlayerEnemyCollision does not (8-4 area 2: no touch from the hidden Piranha at the exit pipe)
-  if(this.pipeRise===0)this.player.grounded=this.isSolid(this.player.x+8,this.player.y);
+  if(this.pipeRise===0){this.player.grounded=this.isSolid(this.player.x+8,this.player.y);this.entrancePreviousAB=this.nativePlayerAB;} // PlayerEntrance did not read held pads; SaveAB retains the last actual controller AB byte.
   this.consumeGameTimer(this.pipeRise===0&&this.player.y<288);
  }
  private enterArea(id:string,spawn:[number,number],camera?:number,ordinaryEnemyFrontier?:number){
