@@ -58,6 +58,8 @@ export class NativeWater{
  private beforeWhirl?:{speed:number;force:number;frac:number;moved:number};
  /** Pixels this frame's trailing whirlpool pass moved. */
  get whirlMoved(){return this.beforeWhirl?.moved??0;}
+ /** PlayerBGCollision runs before the late whirlpool gravity pass. */
+ get contactSpeed(){return this.beforeWhirl?.speed??this.speed;}
  /** A landing or any support under the feet clears the vertical speed and force; the fraction is kept. */
  land(){this.contact(()=>{this.speed=0;this.force=0;});}
  /** A head bump turns the player around at speed 1 (the force is kept). Returns how many more pixels the whirlpool pass moves after it. */
