@@ -3223,7 +3223,7 @@ export class Simulation {
     this.collectItem(i);
    }
   }
-  this.items=this.items.filter(i=>i.life>0&&i.y<288&&(i.nativeFlame&&this.placedCastle?Math.floor(i.x)>=Math.floor(this.camera+this.lakituScroll)-72:i.x>=this.camera-(i.nativeFlame?73:i.nativePowerState===undefined?32:72))&&(i.nativePowerState===undefined||i.x<this.camera+328));
+  this.items=this.items.filter(i=>i.life>0&&i.y<288&&(i.nativeFlame&&this.placedCastle?Math.floor(i.x)>=Math.floor(this.camera+this.lakituScroll)-72:i.x>=this.camera-(i.nativeFlame?73:i.nativePowerState===undefined?32:72))&&(i.nativePowerState===undefined||i.x<this.camera+328)&&(!i.nativeFlame||i.age===0||Math.floor(i.x)<Math.floor(this.camera+(this.placedCastle?this.lakituScroll:0))+328)); // a flame born past the right bound is erased too (1-4 mood row 13393: Bowser at screen 344, flame at 330)
   this.syncSpecialPowerup();
  }
  // Native fireball (rows evidence/local/power/f1.jsonl; RAM 0x24+s state, 0x8d+s x, 0xd5+s y, 0xa6+s speed): position then speed, 4 px/row at launch, gravity 80/256, cap 812/256, bounce at speed -3 with the ball on the floor; gone past the screen edges.
