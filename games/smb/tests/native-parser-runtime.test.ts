@@ -174,11 +174,13 @@ test('a solid tree underside stops Mario without creating a native bump marker o
 });
 
 
-test('ordinary side-pipe movement keeps the native incoming fraction and running timer without a fitted first speed',()=>{
+test('ordinary side-pipe movement preserves native motor and scroll increments from its incoming state',()=>{
+ let cameraOffset=0;
  replay('1-2',1735,(sim,frame)=>{
+  if(frame===1727)cameraOffset=sim.camera-sidePipeEvents.find(e=>e.level==='1-2'&&e.frame===1728)!.scroll.before.camera;
   if(frame<1728)return;
   const event=sidePipeEvents.find(e=>e.level==='1-2'&&e.frame===frame)!;assert.ok(event);
   assert.equal(sim.player.x,event.after.x,`row${frame} x`);assert.equal(Math.round(sim.player.vx*4096),event.after.motor.speed,`row${frame} speed`);
-  assert.equal(sim.motor.runningTimer,event.after.motor.runningTimer);assert.equal(sim.motor.absolute,event.after.motor.absolute);assert.equal(sim.pipeTimer,event.after.change);
+  assert.equal(sim.motor.runningTimer,event.after.motor.runningTimer);assert.equal(sim.motor.absolute,event.after.motor.absolute);assert.equal(sim.pipeTimer,event.after.change);assert.equal(sim.camera,event.scroll.after.camera+cameraOffset);assert.equal(sim.playerXScroll,event.scroll.after.xScroll);
  });
 });

@@ -1,4 +1,4 @@
-import {nativeVerticalPipe,nativeSidePipe,nativeSidePipeTimer} from './native-pipe.js';
+import {nativeVerticalPipe,nativeSidePipe,nativeSidePipeTimer,nativeSavedScroll} from './native-pipe.js';
 import {NativePalette} from './native-palette.js';
 import {nativeIntervalStep,nativeStarMusic,nativeStarPalette,NATIVE_STAR_PICKUP} from './native-interval.js';
 import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-spring.js';
@@ -445,7 +445,7 @@ export class Simulation {
    return;
   }
   if(this.phase==='ending'){if(pressed('start')||pressed('b'))this.restartToTitle();return;}
-  if((this.random.frame&7)===0&&!(this.phase==='pipe'&&this.destination?.direction==='down'&&this.pipeTimer<=1))this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
+  if((this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.updateWorldInPitFall();
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
@@ -468,14 +468,21 @@ export class Simulation {
      const n={y:(Math.floor(this.player.y)-32)&255,change:this.pipeTimer,camera:this.camera,xScroll:this.playerXScroll,platformScroll:this.platformScroll&255};
      const scroll=nativeVerticalPipe(n,this.waterScrollX,this.sideCollisionTimer,this.areaControls.locked);
      this.player.y=n.y+32+this.player.y-Math.floor(this.player.y);this.camera=n.camera;this.playerXScroll=n.xScroll;this.platformScroll=n.platformScroll;this.pipeTimer=n.change;
-     if(this.pipeTimer)this.updateVerticalPipeWorld(previousCamera,oldFeet,scroll);
+     if(this.pipeTimer)this.updatePipeWorld(previousCamera,oldFeet,scroll);
     }
    }
-   else if(this.destination?.direction==='right')this.sidePipeStep();
+   else if(this.destination?.direction==='right'){if(this.pipeTimer>0){
+    const previousCamera=this.camera,oldFeet=this.player.y,oldX=this.player.x;this.sidePipeStep();
+    this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
+    const n={camera:this.camera,xScroll:(Math.floor(this.player.x)-Math.floor(oldX))&255,platformScroll:this.platformScroll&255};
+    const scroll=nativeSavedScroll(n,this.waterScrollX,this.sideCollisionTimer,this.areaControls.locked);
+    this.camera=n.camera;this.playerXScroll=n.xScroll;this.platformScroll=n.platformScroll;
+    if(this.pipeTimer)this.updatePipeWorld(previousCamera,oldFeet,scroll);
+   }}
    else if(!automatic||this.phaseFrame<=TRANSITIONS.pipeMotionFrames){
     if(this.destination?.direction==='right')this.player.x+=automatic?TRANSITIONS.pipeMotionSpeed:0.5;else this.player.y+=this.destination?.direction==='up'?-0.5:(automatic&&this.player.size===0?1:0.5);
    }
-   if(this.destination?.direction!=='down')this.updateBubbles(true,false);
+   if(this.destination?.direction!=='down'&&this.destination?.direction!=='right')this.updateBubbles(true,false);
    if(this.verticalPipeGraphics)this.updateLocomotionPose(this.player.grounded,this.motor.absolute,false,new Set<Button>(),false);
    if(this.destination&&this.phaseFrame===this.destination.frames){
     const target=this.destination;this.destination=undefined;
@@ -1140,9 +1147,9 @@ export class Simulation {
   }
   return false;
  }
- /** GameCoreRoutine continues GameEngine after engine3 until ChgAreaPipe
+ /** GameCoreRoutine continues GameEngine after pipe engines2/3/7 until ChgAreaPipe
   * clears OperMode_Task on its final row. Enemies move; player injury does not run. */
- private updateVerticalPipeWorld(previousCamera:number,oldFeet:number,scroll:number){
+ private updatePipeWorld(previousCamera:number,oldFeet:number,scroll:number){
   this.parserVramBusy=false;this.platformFrame++;this.updateBubbles(true,false);
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
   this.updateGenerators(false);this.lakituScroll=scroll;this.enemyContactOff=true;
