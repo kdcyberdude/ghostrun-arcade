@@ -1,3 +1,4 @@
+import pipeLoad from './fixtures/native-pipe-load-runtime.json';
 import {test} from 'node:test';
 import waterEvents from './fixtures/native-water-rule-events.json';
 import assert from 'node:assert/strict';
@@ -27,7 +28,7 @@ for(const level of ['1-2','2-2','4-2','7-2'])test(`${level} automatic pipe load 
   const r=run.row(f);
   assert.equal(run.sim.random.frame,r[9],`frame ${f}`);
   assert.deepEqual(run.sim.random.bytes,Array.from(r.slice(0x7a7,0x7ae)),`frame ${f}`);
-  assert.equal(run.sim.intervalControl,0,'native $077F at the room load (all four native traces)');
+  assert.equal(run.sim.intervalControl,pipeLoad.runs.find(r=>r.level===level)!.rows.find(r=>r.frame===f)!.interval,`frame ${f}: native $077F at InitializeMemory`);
   return;
  }
  assert.fail('did not reach room load');
