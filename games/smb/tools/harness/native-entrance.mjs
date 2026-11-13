@@ -64,11 +64,13 @@ export function initializeEntrance(sim,start){
    /* PiranhaPlant_Y_Speed = $58, MoveFlag = $A0, UpYPos = $0417, DownYPos = $0434, EnemyFrameTimer $078A */
    Object.assign(e,{active:true,slotHeld:true,enemySlot:s,age:2,pir:{y:o.y-256,speed:o.xSpeed,flag:o.speed,up:o.fraction,down:o.force,timer:o.frameTimer},y:o.y-256+24});}
   const walker={0:'koopa',2:'beetle',3:'redKoopa',4:'koopa',6:'goomba',14:'paratroopa'}[o.id];
-  if(walker&&o.state===0){let best;for(const e of sim.enemies)if(e.kind===walker&&!e.active&&!e.dead&&Math.abs(e.originX-o.x)<=48&&(!best||Math.abs(e.originX-o.x)<Math.abs(best.originX-o.x)))best=e;
+  const lowState=o.state&7,flat=o.id===6&&o.state===lowState&&[2,3,4].includes(lowState),shell=[0,2,3].includes(o.id)&&!(o.state&0x38)&&((o.state&128)!==0||[2,3,4].includes(lowState));
+  if(walker&&(o.state===0||flat||shell)){let best;for(const e of sim.enemies)if(e.kind===walker&&!e.active&&!e.dead&&Math.abs(e.originX-o.x)<=48&&(!best||Math.abs(e.originX-o.x)<Math.abs(best.originX-o.x)))best=e;
    if(!best&&start.nativeAreaSnapshot){best=sim.makeEnemy({kind:walker,x:Math.floor(o.x),y:o.y-256+24,nativeId:o.id,direction:o.xSpeed<0?-1:1,evidence:'Native one-time snapshot: current walker kind/slot/coordinates/motor bytes'});sim.enemies.push(best);snapshotActors.push({code:'snapshot-native-walker-source-origin-not-retained',kind:walker,slot:s,x:o.x});}
    if(!best)throw Error(`Observed ${walker} at ${o.x} is not mapped`);
    /* a walker already on screen keeps its native x (with sub-pixel), Enemy_X_Speed $58 (1/16 px) and feet y; a jumping Paratroopa also its 8.8 vertical state */
    Object.assign(best,{active:true,slotLost:false,enemySlot:s,age:2,x:o.x,y:o.y-256+24,vx:o.xSpeed/16});
+   if(flat||shell){Object.assign(best,{walkerState:lowState,fall:{speed:o.speed,force:o.force,fraction:o.fraction},shellTimer:o.timer});if(flat)Object.assign(best,{squashed:true,dead:1});else Object.assign(best,{shell:true,movingShell:Boolean(o.state&128),shellFalling:Boolean(o.state&64)});}
    if(o.id===14)best.pod={y:o.y-256+24,speed:o.speed,force:o.force,fraction:o.fraction,timer:0};}
   if(o.id===12){const e=sim.enemies.find(e=>e.kind==='podoboo'&&e.launch&&e.originX===Math.floor(o.x));if(!e)throw Error(`Observed Podoboo at ${o.x} is not mapped`);
    Object.assign(e,{active:true,enemySlot:s,age:2,pod:{y:o.y,speed:o.speed,force:o.force,fraction:o.fraction,timer:o.timer},y:o.y-256+24});}
