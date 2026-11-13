@@ -22,11 +22,11 @@ test('native ROM pipe decoder applies page selection and both warp/decorative pi
 
 test('parser-created plants expose native hidden state on the birth row without moving',()=>{
  for(const b of births.births){
-  const level:Level={id:'native-pipe-fixture',time:400,main:'main',evidence:'Native parser birth component',areas:[{id:'main',width:b.x+1000,theme:'ground',palette:0,evidence:'Native parser birth component',tiles:[],enemies:[{kind:'piranha',x:b.x,y:b.y+24}],spawn:[40,208]}]};
-  const sim:any=new Simulation([level]);sim.reset(true);const plant=sim.enemies[0];
+  const level:Level={id:'native-pipe-fixture',time:400,main:'main',evidence:'Native parser birth component',areas:[{id:'main',width:b.x+1000,theme:'ground',palette:0,evidence:'Native parser birth component',tiles:[],enemies:[{kind:'piranha',x:b.x,y:b.y+24,nativePipe:{column:b.x-8,offset:0}}],spawn:[40,208]}]};
+  const sim:any=new Simulation([level]);sim.reset(true);sim.loadArea('main',undefined,0,false,true);const plant=sim.enemies[0];
   for(const [slot,flag]of b.flags.entries())if(flag&&slot!==b.slot){const e=sim.makeEnemy({kind:'goomba',x:b.camera+100,y:208});Object.assign(e,{active:true,enemySlot:slot});sim.enemies.push(e);}
   if(b.level==='8-3'&&b.row===254){const erased=sim.makeEnemy({kind:'bullet',x:b.camera-75,y:176});Object.assign(erased,{active:true,dead:100,enemySlot:b.slot});sim.enemies.push(erased);}
-  sim.camera=b.camera;sim.piranhaColumns.through=b.x;sim.birthParserPiranhas();
+  sim.camera=b.camera;sim.createNativePipeObjects(b.x-8);
   assert.deepEqual([plant.active,plant.enemySlot,plant.age,plant.y],[true,b.slot,0,b.y+24],`${b.level} row${b.row}`);
   assert.deepEqual(plant.pir,{y:b.y,speed:1,flag:0,up:b.up,down:b.down,timer:0});
  }
