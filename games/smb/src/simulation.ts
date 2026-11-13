@@ -594,7 +594,7 @@ export class Simulation {
   if(nativeEntry&&this.entryReadyAge>=0){this.entryTimerDelay=0;this.entryInputDelay=0;}
   this.piranhaTouchFeetY=undefined;
   const priorityReadyOnly=Boolean(nativeEntry&&this.entryFallAge===this.entryReadyAge)||this.swimLock===1;
-  const p=this.player,nativeStateZero=this.powerupStateZero;this.powerupStateZero=false;if(nativeStateZero)p.grounded=true;const oldBottom=p.y;const oldX=p.x;const scrollLocked=this.areaControls.locked;this.hammerPlayerBox=undefined;this.waterCollisionPose=undefined;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
+  const p=this.player,nativeStateZero=this.powerupStateZero;this.powerupStateZero=false;if(nativeStateZero)p.grounded=true;const oldBottom=p.y;const oldX=p.x;const scrollLocked=this.areaControls.locked;this.hammerPlayerBox=undefined;this.waterCollisionPose=undefined;this.sidePipeContact=undefined;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
   let nativeGroundOnly=false;let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined,springScroll:number|undefined,waterScroll:number|undefined,waterBoundsShift=0,waterBoundsVx:number|undefined;
 
   if(this.blockBounceTimer>0)this.blockBounceTimer--;p.invincible=Math.max(0,p.invincible-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
@@ -752,9 +752,10 @@ export class Simulation {
    if(pipe.requiresWarpActivation&&!this.warpZoneActive)continue;
    // Native 8-4 area-3 pipe: Mario slid along the pipe top with Down+Right held for 14 rows (x 3645..3654) and went in only the row after Right was released.
    const down=pipe.direction==='down'&&b.has('down')&&downPipeFooting(p)&&!downPipeLateralBlocks(poseGrounded,b)&&Math.abs(Math.floor(p.x)+8-pipe.x)<(pipe.entryHorizontalTolerance??(pipe.requiresWarpActivation?9:5))&&Math.abs(p.y-pipe.y)<3;
-   // Native side pipes start when a grounded Mario moving right reaches entryTriggerX; the 8-4 water pipe starts with only Down held (momentum).
-   // The automatic pipe walk at the start of 1-2/2-2/4-2/7-2 starts it at floor(x)+13>=pipe.x (native rows).
-   const side=pipe.direction==='right'&&p.facing===1&&(this.area.autoWalk?b.has('right')&&Math.floor(p.x)+TRANSITIONS.autoWalkPipe.triggerOffset>=pipe.x:pipe.entryTriggerX!==undefined?(b.has('right')||p.vx>0||(this.wallSpeed??0)>0)&&p.grounded&&(Math.floor(p.x)>=pipe.entryTriggerX||(this.wallSpeed??0)>0&&Math.floor(p.x)+1>=pipe.entryTriggerX)&&Math.floor(p.x)<pipe.entryTriggerX+32:b.has('right')&&Math.abs(p.x+14-pipe.x)<3)&&Math.abs(p.y-pipe.y)<12;
+   // CheckSideMTiles starts native pipes from the actual bottom metatile probe.
+   // Non-native/synthetic pipe geometry retains its declared approach rule.
+   const nativeSide=[0x1c,0x6b].includes(this.tileAt(pipe.x,pipe.y-32));
+   const side=pipe.direction==='right'&&(nativeSide?this.sidePipeContact===pipe.x:p.facing===1&&(this.area.autoWalk?b.has('right')&&Math.floor(p.x)+TRANSITIONS.autoWalkPipe.triggerOffset>=pipe.x:pipe.entryTriggerX!==undefined?(b.has('right')||p.vx>0||(this.wallSpeed??0)>0)&&p.grounded&&(Math.floor(p.x)>=pipe.entryTriggerX||(this.wallSpeed??0)>0&&Math.floor(p.x)+1>=pipe.entryTriggerX)&&Math.floor(p.x)<pipe.entryTriggerX+32:b.has('right')&&Math.abs(p.x+14-pipe.x)<3)&&Math.abs(p.y-pipe.y)<12);
    const up=pipe.direction==='up'&&b.has('up')&&Math.abs(p.x+8-pipe.x)<9&&Math.abs(p.y-this.height-pipe.y)<3;
    if(down||side||up){this.playerBackgroundPriority=true;this.phase='pipe';this.phaseFrame=0;this.destination={area:pipe.to,sourceX:pipe.nativeSourceX??pipe.x,level:pipe.targetLevel,spawn:pipe.spawn,camera:pipe.camera,direction:pipe.direction,frames:(p.size===0?pipe.smallPlayerRoomEntry?.transitionFrames:undefined)??pipe.transitionFrames??64,smallPlayerRoomPreviewFrames:pipe.smallPlayerRoomPreviewFrames,smallPlayerRoomEntry:p.size===0?pipe.smallPlayerRoomEntry:undefined,ordinaryEnemyFrontier:pipe.ordinaryEnemyFrontier,returnCloudOffsetX:pipe.returnCloudOffsetX,riseFrames:pipe.riseFrames};this.pipeLoad=this.nativePipeTarget(this.destination);this.pipeTimer=down?0x30:side?(this.camera+this.areaControls.origin*16<256?0xa0:0x34):0;if(up)p.vx=0;p.vy=0;this.emit('sfx_pipe');return;}
   }
@@ -773,7 +774,7 @@ export class Simulation {
  tileAt(x:number,y:number){return this.tiles.get(`${Math.floor(x/16)},${Math.floor(y/16)}`)??this.freeTiles.find(t=>x>=t.x&&x<t.x+16&&y>=t.y&&y<t.y+16)?.id??0;}
  private collisionAt(x:number,y:number,hidden=false){
   const col=Math.floor(x/16),row=Math.floor(y/16),id=this.tiles.get(`${col},${row}`)??0;
-  if(solid(id)||(hidden&&(id===95||id===96)))return {x:col*16,y:row*16,width:16,height:16,id,col,row};
+  if(solid(id)||id>=0x1c&&id<=0x20||(hidden&&(id===95||id===96)))return {x:col*16,y:row*16,width:16,height:16,id,col,row};
   const fragment=this.area.solidRects?.find(r=>x>=r.x&&x<r.x+r.width&&y>=r.y&&y<r.y+r.height);
   if(fragment)return fragment;
   const piece=this.freeTiles.find(t=>solid(t.id)&&x>=t.x&&x<t.x+16&&y>=t.y&&y<t.y+16);
@@ -816,7 +817,9 @@ export class Simulation {
   if(this.tiles.get(`${Math.floor(exit.x/16)},${Math.floor(exit.y/16)}`)!==197)return false;
   return Math.floor(p.y)>=exit.y&&Math.floor(p.y)<exit.y+16&&[3,12].some(dx=>Math.floor(p.x)+dx>=exit.x-8&&Math.floor(p.x)+dx<exit.x+8);
  }
- private sideTileAt(x:number,y:number){
+ private sidePipeContact?:number;
+ private sideTileAt(x:number,y:number,upper=false){
+  const id=this.tileAt(x,y);if(upper&&(id===0x1c||id===0x6b))return;
   const tile=this.collisionAt(x,y);if(tile)return tile;
   if(this.tileAt(x,y)===197)return {x:Math.floor(x/16)*16,y:Math.floor(y/16)*16,width:16,height:16,id:197};
  }
@@ -832,18 +835,25 @@ export class Simulation {
   if(this.footPushed||this.axeFootContact())return;
   if(this.swimActive){this.swimSideWall(dx,h);return;}
   if(dx===0){
-   for(const y of[p.y-h+4,p.y-8]){
-    if(this.sideTileAt(p.x+13,y)){if(this.swimActive)this.water.blockSide(1);p.x--;this.wallBackOut=true;this.motor.contact(1,false);return;}
-    if(this.sideTileAt(p.x+2,y)){if(this.swimActive)this.water.blockSide(-1);p.x++;this.wallBackOut=true;this.motor.contact(-1,false);return;}
+   for(const [upper,y] of [[true,p.y-h+4],[false,p.y-8]] as const){
+    const right=this.sideTileAt(p.x+13,y,upper);if(right&&this.acceptSidePipe(right))return;
+    if(right){if(this.swimActive)this.water.blockSide(1);p.x--;this.wallBackOut=true;this.motor.contact(1,false);return;}
+    if(this.sideTileAt(p.x+2,y,upper)){if(this.swimActive)this.water.blockSide(-1);p.x++;this.wallBackOut=true;this.motor.contact(-1,false);return;}
    }
    return;
   }
   const edge=p.x+(dx>0?13:2);
-  for(const y of[p.y-h+4,p.y-8]){const tile=this.sideTileAt(edge,y)??this.springSideAt(edge,y);if(tile){
+  for(const [upper,y] of [[true,p.y-h+4],[false,p.y-8]] as const){const tile=this.sideTileAt(edge,y,upper)??this.springSideAt(edge,y);if(tile){
+   if(this.acceptSidePipe(tile))return;
    if(this.swimActive)this.water.blockSide(Math.sign(dx));
    const fraction=p.x-Math.floor(p.x);if(snap)p.x=(dx>0?tile.x-13:tile.x+tile.width-2)+fraction;else p.x-=Math.sign(dx);this.wallSpeed=p.vx;p.vx=0;return;
   }
   }
+ }
+ // CheckSideMTiles reads Player_State and PlayerFacingDir, not held direction.
+ private acceptSidePipe(tile:{id?:number;x:number}){
+  if((tile.id===0x1f||tile.id===0x6c)&&this.player.grounded&&(this.area.theme==='water'?this.player.facing:this.motor.facing)===1){this.sidePipeContact=tile.x;return true;}
+  return false;
  }
  /** Native DoPlayerSideCheck/ImpedePlayerMove uses the ordinary-pass Y and
   * left-before-right order, independent of the current movement direction. */
@@ -852,7 +862,8 @@ export class Simulation {
   const p=this.player,feet=p.y-this.water.whirlMoved,lowY=(Math.floor(feet)-32)&255;
   for(const side of [-1,1]){
    const x=p.x+(side<0?2:13);
-   if(!((lowY>=32&&this.sideTileAt(x,feet-h+4))||(lowY>=8&&this.sideTileAt(x,feet-8))))continue;
+   const tile=(lowY>=32?this.sideTileAt(x,feet-h+4,true):undefined)??(lowY>=8?this.sideTileAt(x,feet-8):undefined);
+   if(!tile)continue;if(this.acceptSidePipe(tile))return;
    this.water.blockSide(side);
    const speedByte=Math.floor(p.vx*16);
    if(side<0?speedByte>0:speedByte<0)return;
