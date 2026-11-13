@@ -1365,7 +1365,7 @@ export class Simulation {
   for(const item of this.items)if(item.nativeFlame&&item.life>0)held.add(item.nativeFlame.slot);
   for(const controller of this.frenzyControllers)if(controller.slot!==undefined)held.add(controller.slot);
   for(const e of this.enemies)if(e.active&&!e.dead&&e.nativeBowser?.rearSlot!==undefined)held.add(e.nativeBowser.rearSlot);
-  for(const [platform,slot] of platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else platformSlots.delete(platform);
+  for(const [platform,slot] of platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else{platformSlots.delete(platform);if(platformSlots===this.platformSlots&&!this.platformMotion.waiting.has(platform as PlatformSpec))this.platformMotion.lost.add(platform as PlatformSpec);}
   for(const platform of this.area.platforms??[])if(!platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
    if(this.parserClock.blocked)continue; // task7 blocks initialization as well as the creation clock
    let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){platformSlots.set(platform,slot);if(platformSlots===this.platformSlots){this.platformMotion.slotSub(platform,this.slotSub[slot]);this.platformMotion.slotFraction(platform,this.slotVertical[slot].fraction);}held.add(slot);}
