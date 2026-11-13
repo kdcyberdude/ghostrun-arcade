@@ -1,5 +1,5 @@
-/** Native enemy-data id23 records. These may remain flagged in NoRunCode
- * when InitEnemyFrenzy finds a live Bullet or a nonzero FrenzyEnemyTimer.
+/** Native enemy-data controllers: id23 may remain flagged in NoRunCode when
+ * InitEnemyFrenzy is inhibited; id52 is the persistent WarpZoneObject.
  * node tools/harness/native-controller-layout.mjs --source DISASSEMBLY */
 import fs from 'node:fs';
 import {parseArgs} from 'node:util';
@@ -20,9 +20,9 @@ for(const layout of layouts){
   if(second&128&&!pageSelected){page++;pageSelected=true;}
   if(row===15&&!pageSelected){page=second&63;pageSelected=true;offset+=2;continue;}
   if(row===14){offset+=3;pageSelected=false;continue;}
-  if((second&63)===23)records.push({id:23,offset,column:page*256+(first&240),y:row*16,hardOnly:Boolean(second&64)});
+  if([23,52].includes(second&63))records.push({id:second&63,offset,column:page*256+(first&240),y:row*16,hardOnly:Boolean(second&64)});
   offset+=2;pageSelected=false;
  }
  if(records.length)out.push({level:layout.level,area:layout.area,label:layout.label,pointer:layout.pointer,records});
 }
-fs.writeFileSync(a.out,JSON.stringify(out,null,1)+'\n');console.log(`${out.reduce((n,a)=>n+a.records.length,0)} native frenzy controller records`);
+fs.writeFileSync(a.out,JSON.stringify(out,null,1)+'\n');console.log(`${out.reduce((n,a)=>n+a.records.length,0)} native enemy controller records`);

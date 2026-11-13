@@ -11,7 +11,7 @@ for(const level of fs.readdirSync(a.traces).filter(s=>/^\d-\d$/.test(s)).sort())
  for(let frame=1;frame<b.length/2048;frame++){
   const p=b.subarray((frame-1)*2048,frame*2048),r=b.subarray(frame*2048,(frame+1)*2048);
   if(p[0x770]!==1||p[0x772]!==3||r[0x770]!==1||!((p[14]===2&&r[14]===2)||(p[14]===7&&r[14]===7&&p[0x6de]>0&&p[0x3c4]!==0)))continue;
-  events.push({level,frame,water:p[0x74e]===0,entrance:p[14]===7,grounded:p[0x1d]===0,camera:r[0x71a]*256+r[0x71c],before:{x:x(p),change:p[0x6de],motor:motor(p)},after:{x:x(r),change:r[0x6de],motor:motor(r)}});
+  events.push({level,frame,water:p[0x74e]===0,entrance:p[14]===7,grounded:p[0x1d]===0,camera:r[0x71a]*256+r[0x71c],scroll:{screen:p[0x755],sideTimer:Math.max(0,p[0x785]-1),locked:Boolean(p[0x723]),before:{camera:p[0x71a]*256+p[0x71c],platformScroll:p[0x3a1]},after:{camera:r[0x71a]*256+r[0x71c],xScroll:r[0x6ff],platformScroll:r[0x3a1]}},before:{x:x(p),change:p[0x6de],motor:motor(p)},after:{x:x(r),change:r[0x6de],motor:motor(r)}});
  }
 }
 fs.writeFileSync(a.out,JSON.stringify(events).replace(/\{"level"/g,'\n{"level"')+'\n');console.log(`${events.length} native side pipe rows`);
