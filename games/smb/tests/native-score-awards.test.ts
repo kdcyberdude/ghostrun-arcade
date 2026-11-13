@@ -7,6 +7,8 @@ import type {Level,Tile} from '../src/types.js';
 // Native RAM evidence from the v2 traces: score digits $07DD, coins $075E, block buffer $0500, engine $0E, GameTimerCtrlTimer $0787.
 function fixture(extra:Tile[],exit?:Level['areas'][0]['exit']){
  const tiles:Tile[]=[...Array.from({length:60},(_,x)=>[x,13,84] as Tile),...extra];
+ // Source pole contact requires the actual shaft metatile, not exit geometry alone.
+ if(exit?.kind==='flag')for(let row=2;row<12;row++)tiles.push([Math.floor(exit.x/16),row,37]);
  const level:Level={id:'award-fixture',time:400,main:'main',evidence:'synthetic',areas:[{id:'main',width:960,palette:0,theme:'ground',tiles,enemies:[],spawn:[80,208],exit,evidence:'test'}]};
  const sim=new Simulation([level]);sim.reset(true);return sim as any;
 }

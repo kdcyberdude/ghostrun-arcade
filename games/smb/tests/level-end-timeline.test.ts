@@ -7,7 +7,7 @@ import type {Level,Tile} from '../src/types.js';
 
 // Source timer6 expires on IntervalTimerControl; areaFrame has no role.
 test('no-firework flag levels follow the native interval divider, independently of areaFrame',()=>{
- const tiles:Tile[]=[];for(let x=0;x<40;x++)tiles.push([x,13,84]);tiles.push([6,12,97],[9,8,69],[10,8,69],[11,8,69],[11,12,82]);
+ const tiles:Tile[]=[];for(let x=0;x<40;x++)tiles.push([x,13,84]);for(let row=2;row<12;row++)tiles.push([6,row,37]);tiles.push([6,12,97],[9,8,69],[10,8,69],[11,8,69],[11,12,82]);
  const exits=new Set<number>();
  for(let offset=0;offset<21;offset++){
   const level:Level={id:'1-1',time:341,main:'main',evidence:'Synthetic flag fixture',areas:[{id:'main',width:640,palette:0,theme:'ground',tiles,enemies:[],spawn:[80,208],exit:{x:104,doorX:160,kind:'flag'},evidence:'Synthetic flag fixture'}]};
