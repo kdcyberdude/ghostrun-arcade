@@ -1,3 +1,4 @@
+import {nativeHammerPicturePhase} from './native-misc.js';
 import {nativeFireballPhase} from './native-fireball-picture.js';
 import * as THREE from 'three';
 import {loadPixelTexture,pixelCamera,pixelQuad} from '../assets/three-assets.mjs';
@@ -203,7 +204,7 @@ export class GameRenderer {
   }
   if(i.kind==='fireball')this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x,i.y);
   if(i.kind==='hammer'){
-   const phase=i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4;
+   const phase=i.nativeHammer?nativeHammerPicturePhase(i.nativeHammer,s.random.frame,s.frame,s.nativeTimersStopped):Math.floor(i.age/4)%4;
    const descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor,palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
    for(const piece of descriptor.sprites)this.spriteTile(piece.tile,i.nativeHammer?(Math.floor(x)+piece.x)&255:x+piece.x,i.nativeHammer?((Math.floor(i.y)+piece.y)&255)+1:i.y+piece.y,palette,piece.flip_x,piece.flip_y,i.nativeHammer?2+(255-s.spriteShuffle.miscOffset(i.nativeHammer.slot))/4096:2);
   }

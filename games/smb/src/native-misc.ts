@@ -1,7 +1,7 @@
 /** Native MiscObjectsCore, FindEmptyMiscSlot, Get{X,Y}OffscreenBits and PlayerHammerCollision helpers.
  * Source: https://github.com/MrWint/smb-dis/blob/master/smbdis.asm */
 export type NativeBox=[number,number,number,number];
-export type NativeMisc={slot:number;state:number;speed:number;force:number;fraction:number;collision?:boolean;box?:NativeBox};
+export type NativeMisc={slot:number;state:number;speed:number;force:number;fraction:number;collision?:boolean;box?:NativeBox;drawFrame?:number;drawTimersStopped?:boolean};
 export const nativeCoinSlot=(busy:ReadonlySet<number>)=>[8,7,6].find(slot=>!busy.has(slot))??8;
 export function nativeMiscGravity(n:NativeMisc,y:number,down:number,max:number){
  const f=n.fraction+n.force;n.fraction=f&255;y+=n.speed+(f>>8);
@@ -44,3 +44,8 @@ export function nativeAboveCoinStart(bufferRow:number,bufferLow:number,blockPage
 
 /** CoinBlock's SBC $10 has no SEC. JumpEngine leaves carry0; FindEmptyMiscSlot's CPY sets carry1 only after busy slot8. */
 export function nativeCoinBlockStartY(blockY:number,slot8Busy:boolean){return (blockY-16-(slot8Busy?0:1))&255;}
+
+/** DrawHammer: TimerControl forces pose0; otherwise only the flying low-state1 animates. */
+export const nativeHammerPhase=(state:number,counter:number,timersStopped:boolean)=>(state&127)===1&&!timersStopped?(counter>>2)&3:0;
+
+export const nativeHammerPicturePhase=(n:NativeMisc,counter:number,frame:number,timersStopped:boolean)=>nativeHammerPhase(n.state,counter,n.drawFrame===frame?n.drawTimersStopped??timersStopped:timersStopped);

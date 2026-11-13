@@ -1613,6 +1613,7 @@ export class Simulation {
    const box=this.hammerPlayerBox??nativePlayerBox(this.player.x,this.player.y,this.player.size,this.player.duck,this.camera+this.lakituScroll);
    if(nativeHammerContact(n,box,this.random.frame,this.miscOffscreen)){i.vx=-i.vx;if(!this.player.star)this.hurt();}
   }
+  n.drawFrame=this.frame;n.drawTimersStopped=this.nativeTimersStopped;
   i.vy=n.speed+n.force/256;Object.assign(this.miscHammerBytes[n.slot],{force:n.force,fraction:n.fraction,collision:n.collision??false});
   const camera=this.camera+this.lakituScroll;this.miscOffscreen=nativeMiscOffscreen(Math.floor(i.x),Math.floor(i.y),camera);n.box=nativeHammerBox(Math.floor(i.x),Math.floor(i.y),camera,n.slot<4?this.nativeBlocks[n.slot].x:this.miscPositions[n.slot-4].x);this.miscPositions[n.slot]={x:Math.floor(i.x),y:Math.floor(i.y)};
   if(this.miscOffscreen&0xfc)i.life=0;
