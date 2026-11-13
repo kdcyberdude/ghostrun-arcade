@@ -1,0 +1,236 @@
+{
+  "baseline": "c3f6431 (runtime4aa045a)",
+  "scope": "Focused8-3/7-1/5-2 only; noall32/corpus/picture audit. Native CPU observer authenticates11576PPUrows byte-for-byte and3739bounds calls. The source primitive agrees with every native call, including161erasures.",
+  "changes": [
+    {
+      "level": "8-3",
+      "before": {
+        "fields": {
+          "dead": 3813,
+          "time": 3830,
+          "score": 989,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "enemy": 711
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": 3813,
+          "time": 3830,
+          "score": 989,
+          "coins": null,
+          "cam": 3814,
+          "x": 3814,
+          "y": 3814,
+          "missing": 341,
+          "extra": 264,
+          "kind": 2109,
+          "position": 914,
+          "state": 3813,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null
+        }
+      },
+      "after": {
+        "fields": {
+          "dead": null,
+          "time": null,
+          "score": 989,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "enemy": 987
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": 989,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": 341,
+          "extra": 1052,
+          "kind": 2109,
+          "position": 987,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null
+        }
+      }
+    },
+    {
+      "level": "7-1",
+      "before": {
+        "fields": {
+          "dead": 1099,
+          "time": 1118,
+          "score": 448,
+          "coins": null,
+          "cam": 1034,
+          "x": 1034,
+          "y": 444,
+          "enemy": 395
+        },
+        "strict": {
+          "level": 3651,
+          "area": 3653,
+          "dead": 1099,
+          "time": 1118,
+          "score": 448,
+          "coins": null,
+          "cam": 1034,
+          "x": 1034,
+          "y": 444,
+          "missing": 470,
+          "extra": 381,
+          "kind": 557,
+          "position": 395,
+          "state": 1051,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "continuation.frameCounter": 3651,
+          "continuation.random": 3653,
+          "continuation.interval": 3651,
+          "continuation.load.ready": null
+        }
+      },
+      "after": {
+        "fields": {
+          "dead": 1152,
+          "time": 1166,
+          "score": 448,
+          "coins": null,
+          "cam": 1034,
+          "x": 1034,
+          "y": 444,
+          "enemy": 443
+        },
+        "strict": {
+          "level": 3651,
+          "area": 3653,
+          "dead": 1152,
+          "time": 1166,
+          "score": 448,
+          "coins": null,
+          "cam": 1034,
+          "x": 1034,
+          "y": 444,
+          "missing": 499,
+          "extra": 552,
+          "kind": 557,
+          "position": 443,
+          "state": 1051,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "continuation.frameCounter": 3651,
+          "continuation.random": 3653,
+          "continuation.interval": 3651,
+          "continuation.load.ready": 3651
+        }
+      }
+    },
+    {
+      "level": "5-2",
+      "before": {
+        "fields": {
+          "dead": 2609,
+          "time": 2195,
+          "score": 2381,
+          "coins": null,
+          "cam": 1389,
+          "x": 1389,
+          "y": 1328,
+          "enemy": 1339
+        },
+        "strict": {
+          "level": 3237,
+          "area": 3237,
+          "dead": 2609,
+          "time": 2195,
+          "score": 2381,
+          "coins": 3237,
+          "cam": 1389,
+          "x": 1389,
+          "y": 1328,
+          "missing": 741,
+          "extra": 795,
+          "kind": 1493,
+          "position": 1349,
+          "state": 2121,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "continuation.frameCounter": 3384,
+          "continuation.random": 3384,
+          "continuation.interval": 3384,
+          "continuation.load.ready": 3550
+        }
+      },
+      "after": {
+        "fields": {
+          "dead": 2609,
+          "time": 2195,
+          "score": 2381,
+          "coins": null,
+          "cam": 1389,
+          "x": 1389,
+          "y": 1328,
+          "enemy": 1339
+        },
+        "strict": {
+          "level": 3237,
+          "area": 3237,
+          "dead": 2609,
+          "time": 2195,
+          "score": 2381,
+          "coins": 3237,
+          "cam": 1389,
+          "x": 1389,
+          "y": 1328,
+          "missing": 741,
+          "extra": 1338,
+          "kind": 1493,
+          "position": 1349,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "continuation.frameCounter": 3384,
+          "continuation.random": 3384,
+          "continuation.interval": 3384,
+          "continuation.load.ready": 3550
+        }
+      }
+    }
+  ],
+  "remaining": "7-1 continuation.load.ready3651 appears after preexisting enemy/position443 andplayerY444; earlier native death1152 vs old model1099 changes subsequentload path. Load-owner audit remains open; no readout exemption introduced."
+}

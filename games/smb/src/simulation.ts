@@ -1,3 +1,4 @@
+import {nativeCannonOutside} from './native-cannon.js';
 import {NativeEnemyStream,type NativeEnemyInit} from './native-enemy-stream.js';
 import {nativeEnemyBytes,nativeEnemyRecords} from './native-enemy-catalog.js';
 import {NativeHud,hudDigits} from './native-hud.js';
@@ -1331,11 +1332,12 @@ export class Simulation {
  }
  private updateNativeCannons(){
   const cannons=(this.area.cannons??[]).filter(c=>c.native);if(!cannons.length||this.recordedRoute)return;
-  this.cannonPassDue=true;
+  this.cannonPassDue=true;this.cannonStartX.clear();
+  for(const e of this.enemies)if(e.active&&!e.dead&&e.nativeShot&&!e.frenzy)this.cannonStartX.set(e,e.x);
  }
  // Native order (ProcessCannons runs after the enemy loop, both after the frame's scroll): the pass sees this frame's camera, and an enemy the
  // native loader makes on this frame (the remake activates it on the next one, see enemyLoadBlocked) already holds the lowest free slot.
- private cannonPassDue=false;
+ private cannonPassDue=false;private cannonStartX=new Map<Enemy,number>();
  private passNativeCannons(){
   if(!this.cannonPassDue)return;this.cannonPassDue=false;
   this.freeNativeSlot();
@@ -1344,6 +1346,9 @@ export class Simulation {
   for(const held of this.objectSlots(used))used.add(held);
   for(const e of this.enemies)if(this.nativeLoadsThisFrame(e)){let slot=0;while(used.has(slot))slot++;used.add(slot);}
   const mask=this.secondaryHardMode?7:15,b=this.random.bytes;
+  // ProcessCannons checks bounds before this slot's BulletBillHandler. Its
+  // already-occupied slot cannot pick a cannon until a subsequent pass.
+  for(const [e,x]of this.cannonStartX)if(e.active&&!e.dead&&nativeCannonOutside(x,this.camera,this.nativeAreaOffset)){e.x=x;this.eraseEnemy(e);e.goneFrame=this.frame;}
   for(const e of this.enemies)if(e.bbCheck&&e.active&&!e.dead)this.nativeBulletBillCheck(e); // objects made on an earlier frame (each at its slot's turn; its slot stays in `used`)
   this.nativeCannonPass(used,mask,b);
  }
@@ -1418,8 +1423,9 @@ export class Simulation {
   if(e.pod){Object.assign(this.slotVertical[slot],{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});this.slotYSpeed[slot]=e.pod.speed&255;this.slotYFraction[slot]=e.pod.fraction;}
   e.slotFreed=true;this.slotReleaseFrame[slot]=this.frame;
  }
- // A live cannon shot's removal reads the next x against the prior scroll; defeated shots erase on their graphics pass.
+ // Frenzy shots retain their separate bounds; ProcessCannons owns live ID51 checks.
  private nativeBulletGone(e:Enemy){
+  if(e.nativeShot&&!e.frenzy)return false; // ProcessCannons owns ID51 bounds after scroll, before its movement.
   const next=e.x+(!e.nativeShot||e.age>1?Math.sign(e.vx)*BULLETS.speed:0);
   return !e.frenzy&&next<this.camera-BULLETS.removeLeft||next>this.camera+BULLETS.removeRight||e.y>280;
  }
