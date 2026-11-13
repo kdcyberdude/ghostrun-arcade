@@ -187,3 +187,13 @@ test('Bowser flames use the center of the native24-by8 picture rather than a pow
  const {sim,entities}=scene();sim.items=[{kind:'flame',x:100,y:80,vx:-1,vy:0,age:0,life:100}];entities.sync(sim,0);
  assert.deepEqual(actor(entities,'bowser_flame').position.toArray(),[112/16,156/16,0]);
 });
+
+test('only reviving Koopa shells expand their native alternate lower rim',()=>{
+ for(const kind of ['koopa','beetle'] as const){
+  const {sim,entities}=scene({kind,shell:true,shellTimer:4});sim.random.frame=0;entities.sync(sim,0);
+  const root=actor(entities,kind==='koopa'?'koopa_shell':'beetle_shell');assert.equal(root.scale.y,kind==='koopa'?15/14:1);assert.equal(root.position.y,(239-208-(kind==='koopa'?1:0))/16);
+  sim.random.frame=8;entities.sync(sim,0);assert.equal(root.scale.y,1);assert.equal(root.position.y,(239-208)/16);
+  sim.random.frame=0;sim.enemies[0].shellTimer=5;entities.sync(sim,0);assert.equal(root.scale.y,1);
+  sim.enemies[0].shellTimer=4;sim.enemies[0].movingShell=true;entities.sync(sim,0);assert.equal(root.scale.y,1);
+ }
+});

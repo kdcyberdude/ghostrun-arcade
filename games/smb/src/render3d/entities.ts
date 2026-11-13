@@ -1,7 +1,7 @@
 // Player, enemies and items. Positions come straight from the simulation (feet / hit box); animation never feeds back into it.
 // Pose selection mirrors the original renderer's sprite-cell choice (renderer.ts player()/enemy()), mapped onto 3D clips.
 import * as THREE from 'three';
-import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
+import {enemyPicture,nativeHammerBroCell,nativeShellPhase,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
 import {nativeFireballPhase} from '../native-fireball-picture.js';
 import {playerVisible,playerCell} from '../player-cell.js';
@@ -116,7 +116,11 @@ export class Entities{
   if(flipped&&h===1&&e.greenShellLaunchFrame===undefined&&!(e.defeat&&e.kind==='goomba'))a.root.position.y+=0.5;
   // Podoboo is authored around its glowing center; walkers are authored from the feet.
   if(e.kind==='podoboo'){a.root.position.y=feet+0.5;a.root.rotation.z=e.podobooFalling?Math.PI:0;}
-  if(shell){a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
+  if(shell){
+   // Koopa's alternate CHR adds one row to the lower rim (14→15px); Beetle's two cells have identical artwork.
+   const rim=e.kind==='beetle'?0:nativeShellPhase(e.shellTimer??0,s.random.frame,timersStopped||Boolean(e.dead)||Boolean(e.movingShell));
+   a.root.scale.y=(14+rim)/14;a.root.position.y-=rim/16;
+   a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
   if(e.kind==='redKoopa'||e.kind==='koopa'||e.kind==='paratroopa')a.recolor('M_Shell',(e.palette??'').includes('16')||e.kind==='redKoopa'?'#d23a2a':'#2fae3a');
   if(e.kind==='piranha')a.recolor('M_Head',PIRANHA_GREEN); // Native Piranha palette is $0f/$1a/$30/$27.
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
