@@ -2,7 +2,7 @@
  * Native pictures come from ghostrun-lab scripts/recording/native_ram_trace.py --pixels N (branch native-ram-trace): beside each
  * level's ram.bin, pixels.bin (240x224 NES palette indices, NES x 8..248 y 8..232, every Nth frame), emph.bin and pixels.json.
  *   npx tsx tools/harness/native-pixels.ts --traces DIR --entrances media/recordings/threejs-2d --out DIR [--levels 1-1,4-3]
- *     [--frames 0-600] [--png all|none|120,300] [--lag L] [--victory] [--json out.json] [--port 53949]
+ *     [--frames 0-600] [--png all|none|120,300] [--lag L] [--readback-batch 8] [--victory] [--json out.json] [--port 53949]
  * --victory compares continuous same-level mode1/2 pictures through castle completion, ignoring the first state-divergence cutoff.
  * Unresolved or non-overlapping rows have aligned=null; percentages use actual compared overlap pixels, or null/n/a when no comparison exists.
  * Excluded modes/levels/frames are reported; limited or sampled coverage cannot be a whole-input pass. --all-frames retains full-input behavior.
@@ -12,8 +12,8 @@
  * The native picture of frame f shows the state of RAM row f-1 (scroll and OAM are latched at that NMI), so by default (--lag 1)
  * it is compared with the remake drawn after frame f-1; --lag 0 pairs equal frame numbers. Per level it prints compared frames and mean
  * % differing pixels: all, HUD rows 0..23, playfield, playfield inside native sprite boxes ($0200 OAM), and playfield after shifting
- * the remake by the scroll offset (native ScreenLeft $71A/$71C minus remake camera, overlap columns). In busy frames the native
- * status-bar split is late and the rows under the HUD (seen up to ~70 rows) still use row f-2's scroll. --png writes OUT/<L>/<frame>.png:
+ * the remake by the scroll offset (native ScreenLeft $71A/$71C minus remake camera, overlap columns). Every picture is compared
+ * as captured, with no split-row masks or row-specific offsets. --png writes OUT/<L>/<frame>.png:
  * native | remake | diff (differing pixels red over a dimmed native). Read-only measurement tooling; never used by the browser game. */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -42,19 +42,25 @@ const remakeRgb=[0x7c7c7c,0x0000fc,0x0000bc,0x4428bc,0x940084,0xa80020,0xa81000,
  0xf8f8f8,0x3cbcfc,0x6888fc,0x9878f8,0xf878f8,0xf85898,0xf87858,0xfca044,0xf8b800,0xb8f818,0x58d854,0x58f898,0x00e8d8,0x787878,0x000000,0x000000,
  0xfcfcfc,0xa4e4fc,0xb8b8f8,0xd8b8f8,0xf8b8f8,0xf8a4c0,0xf0d0b0,0xfce0a8,0xf8d878,0xd8f878,0xb8f8b8,0xb8f8d8,0x00fcfc,0xf8d8f8,0x000000,0x000000];
 const toNative=new Map<number,number>();remakeRgb.forEach((c,i)=>{if(!toNative.has(c))toNative.set(c,rgb[i]);});
+const sameRgb=new Map<number,number>();for(const [r,n]of toNative)if(!sameRgb.has(n))sameRgb.set(n,r);
+const expectedRgb=rgb.map(c=>sameRgb.get(c)); // exact common-colour fast path; alternate/off-palette colours retain the original lookup
 
-const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},out:{type:'string'},levels:{type:'string'},frames:{type:'string'},png:{type:'string',default:'none'},lag:{type:'string',default:'1'},'all-frames':{type:'boolean'},victory:{type:'boolean'},json:{type:'string'},port:{type:'string',default:'53949'}}});
+const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},out:{type:'string'},levels:{type:'string'},frames:{type:'string'},png:{type:'string',default:'none'},lag:{type:'string',default:'1'},'readback-batch':{type:'string',default:'8'},'all-frames':{type:'boolean'},victory:{type:'boolean'},json:{type:'string'},port:{type:'string',default:'53949'}}});
 if(!a.traces||!a.entrances||!a.out)throw Error('--traces, --entrances and --out are required');
 const levels=a.levels?.split(',')??Array.from({length:32},(_,n)=>`${Math.floor(n/4)+1}-${n%4+1}`);
 const [lo,hi]=a.frames?a.frames.split('-').map(Number):[0,Infinity];
-const lag=Number(a.lag);
+const lag=Number(a.lag),readbackBatch=Number(a['readback-batch']);
+if(!Number.isInteger(readbackBatch)||readbackBatch<1||readbackBatch>32)throw Error('--readback-batch must be an integer from1 to32');
 const pngFrames=a.png==='all'?'all':new Set(a.png==='none'?[]:a.png!.split(',').map(Number));
 
-function writePng(file:string,native:Uint8Array,remake:Uint8Array,differs:Uint8Array){
- const g=4,png=new PNG({width:W*3+g*2,height:H});png.data.fill(255);
- for(let y=0;y<H;y++)for(let x=0;x<W;x++){const i=(y*W+x)*3,same=!differs[y*W+x];
-  for(const [p,c] of [[0,[native[i],native[i+1],native[i+2]]],[1,[remake[i],remake[i+1],remake[i+2]]],[2,same?[native[i]>>2,native[i+1]>>2,native[i+2]>>2]:[255,0,0]]] as [number,number[]][]){
-   const o=(y*png.width+p*(W+g)+x)*4;png.data[o]=c[0];png.data[o+1]=c[1];png.data[o+2]=c[2];png.data[o+3]=255;}}
+function writePng(file:string,pixels:Uint8Array,rgba:Uint8Array,differs:Uint8Array){
+ const gap=4,png=new PNG({width:W*3+gap*2,height:H});png.data.fill(255);
+ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+  const i=y*W+x,c=rgb[pixels[i]],r=c>>16,g=c>>8&255,b=c&255,o=(y*png.width+x)*4,m=o+(W+gap)*4,d=m+(W+gap)*4,same=!differs[i];
+  png.data[o]=r;png.data[o+1]=g;png.data[o+2]=b;
+  png.data[m]=rgba[i*4];png.data[m+1]=rgba[i*4+1];png.data[m+2]=rgba[i*4+2];
+  png.data[d]=same?r>>2:255;png.data[d+1]=same?g>>2:0;png.data[d+2]=same?b>>2:0;
+ }
  fs.writeFileSync(file,PNG.sync.write(png));
 }
 
@@ -80,29 +86,40 @@ try{
    const crop=document.createElement('canvas');crop.width=240;crop.height=224;w.pixelCrop=crop.getContext('2d',{willReadFrequently:true});
   },entrance);
   fs.mkdirSync(path.join(a.out,level),{recursive:true});
+  const rgbaBatch=Buffer.alloc(W*H*4*readbackBatch),seen=new Int32Array(W*H),differs=new Uint8Array(W*H),sprite=new Uint8Array(W*H);
+  let pictures:{camera:number,area:string}[]=[],pictureAt=0,frameCursor=0;
   const rows:{frame:number,all:number,hud:number,field:number,sprite:number,shift:number,aligned:number|null,nativeScroll:number,camera:number,area:string,alignmentKnown:boolean,overlapPixels:number}[]=[],offPalette=new Map<number,number>();let next=0;
   for(const f of frames){
    const k=f/meta.step;if(fs.readSync(pixelFd,pixels,0,W*H,k*W*H)!==W*H||fs.readSync(emphFd,emph,0,H,k*H)!==H)throw Error('Incomplete native pixel frame');
-   const b64:string=await page.evaluate(({pads,names,x0,y0})=>{
-    const w=window as any;for(const p of pads)w.mario.step(names.filter((_:string,b:number)=>p&(1<<b)),1);
-    w.pixelCrop.drawImage(document.querySelector('#game'),-x0,-y0);const d=w.pixelCrop.getImageData(0,0,240,224).data;
-    const sim=w.marioDebug.simulation;w.pixelCamera=[sim.camera,sim.area.id];let s='';for(let n=0;n<d.length;n+=32768)s+=String.fromCharCode(...d.subarray(n,n+32768));return btoa(s);
-   },{pads:[...pads.subarray(next,f-lag+1)],names:nesButtons,x0:X0,y0:Y0});next=f-lag+1;
-   const rgba=Buffer.from(b64,'base64'),native=new Uint8Array(W*H*3),remake=new Uint8Array(W*H*3),seen=new Int32Array(W*H),differs=new Uint8Array(W*H);
+   // Batch transport only: every pad still steps/draws once, and every selected frame gets its own raw capture.
+   if(pictureAt===pictures.length){
+    let through=next;const steps=frames.slice(frameCursor,frameCursor+readbackBatch).map(frame=>{const step=[...pads.subarray(through,frame-lag+1)];through=frame-lag+1;return step;});
+    const batch=await page.evaluate(async({steps,names,x0,y0})=>{
+     const w=window as any,out=[],buffers:ArrayBuffer[]=[];
+     for(const pads of steps){
+      for(const p of pads)w.mario.step(names.filter((_:string,b:number)=>p&(1<<b)),1);
+      w.pixelCrop.drawImage(document.querySelector('#game'),-x0,-y0);const d=w.pixelCrop.getImageData(0,0,240,224).data;
+      const sim=w.marioDebug.simulation;buffers.push(d.buffer as ArrayBuffer);out.push({camera:sim.camera,area:sim.area.id});
+     }
+     const rgba=await new Promise<string>((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve((reader.result as string).split(',')[1]);reader.onerror=()=>reject(reader.error);reader.readAsDataURL(new Blob(buffers));});
+     return {rgba,pictures:out};
+    },{steps,names:nesButtons,x0:X0,y0:Y0});rgbaBatch.write(batch.rgba,0,rgbaBatch.length,'base64');pictures=batch.pictures;next=through;pictureAt=0;
+   }
+   const picture=pictures[pictureAt],rgba=rgbaBatch.subarray(pictureAt*W*H*4,(pictureAt+1)*W*H*4);pictureAt++;frameCursor++;differs.fill(0);
    for(let y=0;y<H;y++){if(emph[y])throw Error(`${level} frame ${f}: emphasis bits set, extend rgb`);
-    for(let x=0;x<W;x++){const i=y*W+x,c=rgb[pixels[i]],r=rgba[i*4]<<16|rgba[i*4+1]<<8|rgba[i*4+2],m=toNative.get(r);
-     native.set([c>>16,c>>8&255,c&255],i*3);remake.set(rgba.subarray(i*4,i*4+3),i*3);seen[i]=m??-1;
+    for(let x=0;x<W;x++){const i=y*W+x,c=rgb[pixels[i]],r=rgba[i*4]<<16|rgba[i*4+1]<<8|rgba[i*4+2],m=expectedRgb[pixels[i]]===r?c:toNative.get(r);
+     seen[i]=m??-1;
      if(m===undefined)offPalette.set(r,(offPalette.get(r)??0)+1);if(m!==c)differs[i]=1;}}
    /* The native picture of frame f shows row f-1 state: scroll and the $0200 OAM buffer copied at that NMI (8x8 sprites, y+1). */
-   const shown=ramRow(f-1),[camera,area]=await page.evaluate(()=>(window as any).pixelCamera),visit=areaLoads.filter(v=>v.frame<=f-1).at(-1),origin=f===0?(entrance.areaOffset??0):visit?.offset,alignmentKnown=origin!==undefined,nativeScroll=shown[0x71a]*256+shown[0x71c]+(origin??0),shift=nativeScroll-camera;
-   const sprite=new Uint8Array(W*H);for(let s=0;s<64;s++){const sy=shown[0x200+s*4]+1,sx=shown[0x203+s*4];if(sy>=240)continue;
+   const shown=ramRow(f-1),{camera,area}=picture,visit=areaLoads.filter(v=>v.frame<=f-1).at(-1),origin=f===0?(entrance.areaOffset??0):visit?.offset,alignmentKnown=origin!==undefined,nativeScroll=shown[0x71a]*256+shown[0x71c]+(origin??0),shift=nativeScroll-camera;
+   sprite.fill(0);for(let s=0;s<64;s++){const sy=shown[0x200+s*4]+1,sx=shown[0x203+s*4];if(sy>=240)continue;
     for(let y=sy;y<sy+8;y++)for(let x=sx;x<sx+8;x++)if(y>=Y0&&y<Y0+H&&x>=X0&&x<X0+W)sprite[(y-Y0)*W+x-X0]=1;}
    let all=0,hud=0,inSprite=0,aligned=0,overlapPixels=0;
    for(let y=0;y<H;y++)for(let x=0;x<W;x++){const i=y*W+x;
     if(differs[i]){all++;if(y<HUD)hud++;else if(sprite[i])inSprite++;}
     const sx=x+shift;if(y>=HUD&&sx>=0&&sx<W){overlapPixels++;if(seen[y*W+sx]!==rgb[pixels[i]])aligned++;}}
    rows.push({frame:f,all,hud,field:all-hud,sprite:inSprite,shift,aligned:alignmentKnown&&overlapPixels>0?aligned:null,nativeScroll,camera,area,alignmentKnown,overlapPixels});
-   if(pngFrames==='all'||pngFrames.has(f))writePng(path.join(a.out,level,`${String(f).padStart(5,'0')}.png`),native,remake,differs);
+   if(pngFrames==='all'||pngFrames.has(f))writePng(path.join(a.out,level,`${String(f).padStart(5,'0')}.png`),pixels,rgba,differs);
   }
   await page.close();fs.closeSync(pixelFd);fs.closeSync(emphFd);
   const mean=(k:'all'|'hud'|'field'|'sprite',n:number)=>rows.length?rows.reduce((s,r)=>s+r[k],0)/rows.length/n*100:0;
