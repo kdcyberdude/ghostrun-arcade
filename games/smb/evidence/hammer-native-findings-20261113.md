@@ -397,3 +397,33 @@ Music unit gates:1277/1277 npmtestsPASS,tscPASS,regeneratedv2excerpts unchanged,
 full32 every-field report byte-equivalent JSON to pre-unit coin baseline,
 gitdiffcheckPASS. Simulation/entrance/queue lifecycle wiring left to ID49worker
 so this independent timing dependency cannot change existing gameplay yet.
+
+## Native powerup emergence during TimerControl freeze
+
+Canonical1dada86 plus pendingf488coin arithmetic reproduces clean mood
+77239b1f57dcf477fb38bce4712efe9a6a74deea7f45225053f6535a9a2de217,
+entry0006/1-4: strict position/state419(global9629), no earlier fields.
+Native slot5/id46 mushroom state4/Y85 at418 becomesstate5/Y84 at419,
+FrameCounter72, while Mario remainsengine11/Y118. The remake froze state4/Y85
+because its death branch returned without PowerUpObjHandler.
+
+Source PowerUpObjHandler branches on Enemy_State+5 bit7 first. States1..17
+enter GrowThePowerUp, whose FrameCounter&3 decrement/increment is independent
+of TimerControl. Only the mature bit7 motion branch tests TimerControl.
+NativeEnemyY wraps as a byte. The pure native-powerup helper reproduces these
+bytes; the frozen-death and power-change branches now run emergence only.
+Pit-death's existing full world pass already runs it and is not duplicated.
+Mature powerups retain the existing frozen-motion behavior.
+
+Full368 input scan authenticates5,178,452 PPU samples:6229 surviving emergence
+rows,6172engine8 and57engine11/TimerControl-nonzero,401 distinct transitions,
+zero mismatches. Fixture keeps all hashes, transitioncounts/examples and a
+complete637-row entry prefix (full initialRAM/pads/RAM, receipt and hashes).
+That strict prefix now has every15 field null; first419 position/state are
+eliminated. The latercam/x/y/missing637 respawn issue stays unchanged and is
+outside this fix. Source extractor accepts explicit replayentry/level/frame
+arguments so its bounded replay is reproducible, not a runtime frame condition.
+
+Gates:1635/1635 npmtestsPASS,tscPASS,allv2 excerpts regenerated unchanged,
+full32 everyfield before/after identical,gitdiffcheckPASS. Broader CPU/NMI
+predictive work-cycle scheduling is still open; this fix adds no fitted hold.

@@ -1,3 +1,4 @@
+import {nativePowerupEmergence} from './native-powerup.js';
 import {NativePalette} from './native-palette.js';
 import {nativeIntervalStep,nativeStarMusic,nativeStarPalette,NATIVE_STAR_PICKUP} from './native-interval.js';
 import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-spring.js';
@@ -456,6 +457,7 @@ export class Simulation {
   if((this.random.frame&7)===0&&!(this.phase==='pipe'&&this.destination?.direction==='down'&&this.pipeTimer<=1))this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.updateWorldInPitFall();
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath)this.emergeFrozenNativePowerups();
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
     const move=this.deathMove!;nativeImposeGravity(move,40,4);this.player.y=move.y+move.fraction/256;this.player.vy=move.speed+move.force/256;
    }
@@ -509,7 +511,7 @@ export class Simulation {
   }
   if(this.phase==='castle'){this.updateCastle();this.restoreStarMusic();return;}
   if(this.phase==='flag'){this.tickIntervalTimers();this.updateFlag();this.restoreStarMusic();return;}
-  if(this.powerChange){this.updateBubbles(false,false);this.lifeFrozen++;if(--this.powerChange.remaining===0){this.player.size=this.powerChange.to;this.powerChange=undefined;}return;}
+  if(this.powerChange){this.emergeFrozenNativePowerups();this.updateBubbles(false,false);this.lifeFrozen++;if(--this.powerChange.remaining===0){this.player.size=this.powerChange.to;this.powerChange=undefined;}return;}
   this.parserVramBusy=false;
   this.platformFrame++;
   if(this.area.autoWalk&&this.phaseFrame<=TRANSITIONS.autoWalkDelayFrames)return;
@@ -2527,12 +2529,16 @@ export class Simulation {
   if(Math.abs(Math.floor(priorX)-Math.floor(p.x))>(koopaKind?11:10))return false;
   return gap<=(koopaKind?15:10);
  }
+ /** GrowThePowerUp still runs while TimerControl stops ordinary enemy movement. */
+ private emergeFrozenNativePowerups(){
+  for(const i of this.items)if(i.life>0&&i.nativePowerState!==undefined&&i.nativePowerState<128)this.updateNativePowerup(i);
+  this.syncSpecialPowerup();
+ }
  /** PowerUpObjHandler owns enemy slot 5: emergence uses FrameCounter & 3, and erasing/collecting keeps its vertical bytes for the flag. */
  private updateNativePowerup(i:Item){
   const state=i.nativePowerState!;
   if(state<128){
-   if((this.random.frame&3)===0){i.y--;i.nativePowerState=state>=17?128:state+1;}
-   i.emerging=i.nativePowerState!<128?(18-i.nativePowerState!)*4-(this.random.frame&3):0;return;
+   const next=nativePowerupEmergence(state,i.y-8,this.random.frame);i.y=next.y+8;i.nativePowerState=next.state;i.emerging=next.emerging;return;
   }
   if(i.kind==='flower')return;
   const n={...this.nativePowerSlot,y:i.y-8,timer:0};
