@@ -72,6 +72,14 @@ export class NativeWater{
  get whirlMoved(){return this.beforeWhirl?.moved??0;}
  /** PlayerBGCollision runs before the late whirlpool gravity pass. */
  get contactSpeed(){return this.beforeWhirl?.speed??this.speed;}
+ /** Injury sets TimerControl before ProcessWhirlpools: that routine clears
+  * Whirlpool_Flag but skips its pending pull/gravity pass. */
+ cancelLatePass(){
+  const before=this.beforeWhirl;this.beforeWhirl=undefined;this.whirl=false;
+  if(!before)return 0;
+  this.speed=before.speed;this.force=before.force;this.frac=before.frac;
+  return -before.moved;
+ }
  /** A landing or any support under the feet clears the vertical speed and force; the fraction is kept. */
  land(){this.contact(()=>{this.speed=0;this.force=0;});}
  /** A head bump turns the player around at speed 1 (the force is kept). Returns how many more pixels the whirlpool pass moves after it. */
