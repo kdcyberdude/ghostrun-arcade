@@ -9,9 +9,9 @@ export interface NativeBowser {rearSlot?:number;
 export function nativeBowserState(x:number,y:number,fraction=0):NativeBowser{
  return {x,y,origin:x&255,direction:223,speed:2,range:0,controls:0,feet:32,timer:32,fireTimer:223,fireCounter:0,move:{y,speed:0,force:0,fraction,timer:0}};
 }
-export function stepNativeBowser(m:NativeBowser,input:{frame:number;byte:number;playerX:number;world:number;hard:boolean;frozen?:boolean}){
+export function stepNativeBowser(m:NativeBowser,input:{frame:number;byte:number;playerX:number;world:number;hard:boolean;frozen?:boolean;tickTimers?:boolean}){
  const {frame,byte,playerX,world,hard,frozen}=input;
- if(!frozen){if(m.timer>0)m.timer--;if(m.fireTimer>0)m.fireTimer--;}
+ if(!frozen&&input.tickTimers!==false){if(m.timer>0)m.timer--;if(m.fireTimer>0)m.fireTimer--;}
  let flame=false,hammer=false;
  if(!frozen){
   if(!(m.controls&128)){
