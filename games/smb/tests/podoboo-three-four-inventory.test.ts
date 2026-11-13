@@ -8,7 +8,9 @@ function fixture(omit=false,spawn:[number,number]=[40,112],camera=0){
  const area=levels.find(l=>l.id==='3-4')!.areas.find(a=>a.id==='main')!;
  if(omit)area.enemies=area.enemies.filter(e=>e.kind!=='podoboo'||e.x!==256);
  const sim=new Simulation(levels);sim.reset(true);
- sim.levelIndex=levels.findIndex(l=>l.id==='3-4');sim.loadArea('main',spawn,camera);
+ sim.levelIndex=levels.findIndex(l=>l.id==='3-4');
+ // Counterfactual component roster; no native EnemyData entrance is supplied.
+ sim.level.id='fixture';sim.loadArea('main',spawn,camera);
  return sim;
 }
 

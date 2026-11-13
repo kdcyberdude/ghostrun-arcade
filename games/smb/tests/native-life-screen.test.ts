@@ -2,6 +2,9 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
+import {initializeEntrance} from '../tools/harness/native-entrance.mjs';
+import castleRuntime from './fixtures/native-castle-stream-runtime.json';
+import type {Button} from '../src/types.js';
 
 // Native v2 RAM: PlayerLoseLife engine6 row, ScreenTimer $07A0 load row, IntervalTimerControl $077F at that load, then engine7/8.
 // 4-2: death889, timer898 (control0), engine7=1043. 1-4: death763, timer772 (control10), engine8=928.
@@ -33,8 +36,9 @@ test('respawn InitializeArea holds the LFSR and clears FrameCounter for exactly 
 });
 
 test('the first engine8 row already contains the in-range Podoboo initialized on engine7 (2-4 row1052)',()=>{
- const sim:any=new Simulation([observedLevels().find(l=>l.id==='2-4')!]);sim.reset(true);sim.die();sim.loseLife=true;sim.step([],1);
- sim.phaseFrame=162;sim.startPlayAfterIntro();
+ const run=castleRuntime.runs.find(r=>r.level==='2-4')!,sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,run.entrance);sim.inputs=[];
+ const buttons:Button[]=['a','b','select','start','up','down','left','right'];
+ for(const pad of run.pads.slice(0,1053))sim.step(buttons.filter((_,bit)=>pad&(1<<bit)),1);
  const enemy=sim.enemies.find((e:any)=>e.kind==='podoboo'&&e.x===256);
  assert.equal(enemy.active,true);assert.deepEqual(enemy.pod,{y:514,speed:0,force:28,fraction:0,timer:1});
 });

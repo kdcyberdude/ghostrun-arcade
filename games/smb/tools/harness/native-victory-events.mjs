@@ -2,7 +2,12 @@
  * node tools/harness/native-victory-events.mjs --traces DIR --entrances DIR --output tests/fixtures/native-victory-events.json */
 import {decodeEntrance} from './native-entrance.mjs';
 import fs from 'node:fs';import path from 'node:path';import {parseArgs} from 'node:util';
-const {values:a}=parseArgs({options:{traces:{type:'string'},output:{type:'string'},entrances:{type:'string'},'full-levels':{type:'string',default:'1-4,2-4,3-4'}}});if(!a.traces||!a.output||!a.entrances)throw Error('--traces, --entrances and --output required');
+const {values:a}=parseArgs({options:{traces:{type:'string'},output:{type:'string'},entrances:{type:'string'},'full-levels':{type:'string',default:'1-4,2-4,3-4'},'entrances-only':{type:'boolean'}}});if(!a.traces||!a.output||!a.entrances)throw Error('--traces, --entrances and --output required');
+if(a['entrances-only']){
+ const file=fs.readFileSync(a.output,'utf8'),fixture=JSON.parse(file);
+ for(const run of fixture.runtime)if(run.full)run.full.entrance=decodeEntrance(fs.readFileSync(path.join(a.traces,run.level,'initial.ram')),JSON.parse(fs.readFileSync(path.join(a.entrances,run.level,'entrance.json'),'utf8')));
+ fs.writeFileSync(a.output,file.slice(0,file.lastIndexOf('\"runtime\":'))+'\"runtime\":'+JSON.stringify(fixture.runtime)+'}\n');process.exit(0);
+}
 const signed=n=>(n<<24)>>24;
 const digits=(r,a,n)=>Array.from(r.subarray(a,a+n)).reduce((v,d)=>v*10+d,0);
 function state(r){const s=r[0x368];return {task:r[0x772],destination:r[0x34],walk:r[0x35],scrollFraction:r[0x768],primary:r[0x719],secondary:r[0x749],endTimer:r[0x7a1],feet:r[0x364],controls:r[0x363],bridge:r[0x369],bossState:r[0x1e+s],boss:{y:r[0xcf+s],speed:signed(r[0xa0+s]),force:r[0x434+s],fraction:r[0x417+s],timer:0}};}

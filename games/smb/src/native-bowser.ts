@@ -2,7 +2,7 @@ import {nativeImposeGravity,type NativeMoveState} from './simulation.js';
 /** InitBowser/BowserControl, using native enemy slot bytes and the global timers/counter.
  * PRandomRange and FlameTimerData are ROM tables, not per-level recordings. */
 const RANGE=[33,65,17,49],FIRE=[191,64,191,191,191,64,64,191];
-export interface NativeBowser {rearSlot?:number;
+export interface NativeBowser {rearSlot?:number;rearX?:number;rearY?:number;
  x:number;y:number;origin:number;direction:number;speed:number;range:number;controls:number;feet:number;
  timer:number;fireTimer:number;fireCounter:number;move:NativeMoveState;
 }

@@ -77,10 +77,11 @@ export function initializeEntrance(sim,start){
    Object.assign(best,{active:true,slotLost:false,enemySlot:s,age:2,x:o.x,y:o.y-256+24,vx:o.xSpeed/16});
    if(flat||shell){Object.assign(best,{walkerState:lowState,fall:{speed:o.speed,force:o.force,fraction:o.fraction},shellTimer:o.timer});if(flat)Object.assign(best,{squashed:true,dead:1});else Object.assign(best,{shell:true,movingShell:Boolean(o.state&128),shellFalling:Boolean(o.state&64)});}
    if(o.id===14)best.pod={y:o.y-256+24,speed:o.speed,force:o.force,fraction:o.fraction,timer:0};}
-  if(o.id===12){const e=sim.enemies.find(e=>e.kind==='podoboo'&&e.launch&&e.originX===Math.floor(o.x));if(!e)throw Error(`Observed Podoboo at ${o.x} is not mapped`);
+  if(o.id===12){const e=sim.enemies.find(e=>e.kind==='podoboo'&&(e.launch||e.nativeId===12)&&e.originX===Math.floor(o.x));if(!e)throw Error(`Observed Podoboo at ${o.x} is not mapped`);
    Object.assign(e,{active:true,enemySlot:s,age:2,pod:{y:o.y,speed:o.speed,force:o.force,fraction:o.fraction,timer:o.timer},y:o.y-256+24});}
  }
  if(start.slots)sim.slotFrameTimers=start.slots.map(o=>o.frameTimer??0);
+ if(start.slots&&sim.castleSlotXSpeed)sim.castleSlotXSpeed=start.slots.map(o=>o.xSpeed&255);
  if(start.slots)sim.slotVertical=start.slots.map(o=>({speed:o.speed,force:o.force,fraction:o.fraction})); /* Enemy_Y_Speed / MoveForce / y fraction left in each slot */
  if(start.playerXScroll!==undefined)sim.playerXScroll=start.playerXScroll;if(start.platformScroll!==undefined)sim.platformScroll=start.platformScroll;
  if(sim.placedStream&&start.enemyDataOffset!==undefined)Object.assign(sim.placedStream,{offset:start.enemyDataOffset,page:start.enemyDataPage??0,selected:start.enemyDataSelected??false});

@@ -34,8 +34,9 @@ export function comparePose(entrance:unknown,pads:ArrayLike<number>,frameRam:(f:
 }
 
 if(import.meta.url===`file://${process.argv[1]}`){
- const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},levels:{type:'string'},json:{type:'string'},fixture:{type:'string'},engines:{type:'string'},detail:{type:'boolean',default:false}}});
+ const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},levels:{type:'string'},json:{type:'string'},fixture:{type:'string'},'entrances-only':{type:'boolean'},engines:{type:'string'},detail:{type:'boolean',default:false}}});
  if(!a.traces||!a.entrances)throw Error('--traces and --entrances are required');
+ if(a['entrances-only']){if(!a.fixture)throw Error('--fixture required');const fixture=JSON.parse(fs.readFileSync(a.fixture,'utf8'));for(const run of fixture.cases)run.entrance=decodeEntrance(fs.readFileSync(path.join(a.traces,run.level,'initial.ram')),JSON.parse(fs.readFileSync(path.join(a.entrances,run.level,'entrance.json'),'utf8')));fs.writeFileSync(a.fixture,JSON.stringify(fixture)+'\n');process.exit(0);}
  const levels=a.levels?.split(',')??Array.from({length:32},(_,n)=>`${Math.floor(n/4)+1}-${n%4+1}`);
  const out:PoseReport[]=[],cases:unknown[]=[];let tc=0,tm=0,tf=0;
  for(const level of levels){

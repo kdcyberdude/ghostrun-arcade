@@ -85,6 +85,7 @@ test('missing5-4 arm waits before camera437 and exposes bin24 on its first activ
 test('missing5-4 flame is a damaging actor above its ordinary solid base',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='5-4')!),area=level.areas[0];
  assert.ok(area.tiles.some(([col,row,id])=>col===43&&row===13&&id===196));
+ level.id='fixture'; // isolated contact fixture, not a native EnemyData entrance
  area.spawn=[688,208];area.camera=568;area.enemies=[];area.firebars=area.firebars!.filter(bar=>bar.x===696);
  const sim=new Simulation([level]);sim.reset(true);assert.equal(sim.player.grounded,true);
  sim.step([],1);assert.equal(sim.phase,'dying');assert.equal(sim.events.filter(e=>e==='event_death').length,1);
