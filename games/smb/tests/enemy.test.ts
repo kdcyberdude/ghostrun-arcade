@@ -33,7 +33,7 @@ test('a live cannon shot damages the player through ordinary collision updates',
 
 test('late-castle Bowser throws ballistic hammers but early Bowser does not',()=>{
  const late=fixture('6-4',[{kind:'bowser',x:220,y:208}]);
- late.step([],60);assert.equal(late.items.filter(i=>i.kind==='hammer').length,2);
+ late.step([],60);assert.ok(late.items.some(i=>i.nativeHammer),'native BowserControl requests a misc-slot hammer while its jump timer is0');
  const hammer=late.items.find(i=>i.kind==='hammer')!,vy=hammer.vy,y=hammer.y;
  late.step([],8);assert.ok(hammer.vy>vy);assert.ok(hammer.y<y);
  late.step([],20);assert.ok(hammer.vy>0,'gravity must turn the hammer downward');
@@ -57,7 +57,7 @@ test('flame collision covers the supplied 24px assembly rather than only its fir
 });
 
 test('each spawned Bowser flame emits its supplied sound cue once',()=>{
- const sim=fixture('1-4',[{kind:'bowser',x:220,y:208}]);sim.events=[];
+ const sim=fixture('1-4',[{kind:'bowser',x:112,y:160}]);sim.events=[]; // native anchor low byte$70 avoids artificial page wrap
  // Native fire (free 5-4 probe): the first flame comes 255 frames after Bowser appears, while he faces left (the old age%150 guess was not measured).
  sim.step([],254);assert.ok(!sim.events.includes('sfx_bowser_flame'));
  sim.step([],1);assert.equal(sim.items.filter(item=>item.kind==='flame').length,1);

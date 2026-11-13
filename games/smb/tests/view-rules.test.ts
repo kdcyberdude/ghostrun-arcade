@@ -52,13 +52,9 @@ test('fireball throw pose duration follows native rows',()=>{
  const rows=(g:boolean,v:number)=>Array.from({length:10},(_,a)=>throwPoseShown(a,g,v)?1:0).join('');
  assert.equal(rows(true,1.6),'0111000000');assert.equal(rows(true,0.2),'0111111000');assert.equal(rows(false,1.6),'0110000000');
 });
-// Native 1-1 star on fire Mario (view5 capture rows 26..738, palette by colour role): F G W D in 2-row cells (rows 26..588), 8-row cells from the row
-// the star timer 0x79F drops to 7 (589) to the last star row (738, 150 rows), own palette after. The remake cycled own/dark/white/green in 8/32-frame cells.
-test('star palette cycle follows the native order and cell lengths',()=>{
- const code={fire:'F','star-green':'G','star-white':'W','star-dark':'D'} as Record<string,string>;
- const run=(left0:number,n:number,frame0:number)=>Array.from({length:n},(_,i)=>code[starVariant(left0-i,frame0+i,'fire')]).join('');
- assert.equal(run(600,16,0),'FFGGWWDDFFGGWWDD');
- assert.equal(run(150,34,0),'FFFFFFFFGGGGGGGGWWWWWWWWDDDDDDDDFF');
+test('Star drawing uses captured OAM palette bits, preserving the current player palette at zero',()=>{
+ assert.deepEqual([0,1,2,3].map(p=>starVariant(p,'fire')),['fire','star-green','star-white','star-dark']);
+ assert.equal(starVariant(0,'luigi'),'luigi');assert.equal(starVariant(0,'mario'),'mario');
 });
 // Native traces (all 32 levels): the ?-block colour is 27 27 27 17 07 17, one step per FrameCounter&7==0 engine frame; 1-1 entrance FC 157 offset 1, offset 2 from FC 160,
 // 3 from 168, 4 from 176. Before: the remake never cycled (native-pixels.ts lag 1: 1-1 playfield 0.42% -> 0.00%, 1-3 HUD 0.33% -> 0.11%).

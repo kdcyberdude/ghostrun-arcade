@@ -16,11 +16,11 @@ const query=new URLSearchParams(location.search);
 /** Output heights offered in the page (16:15 game frame): 960p default, 1080p, 2K (1440p), 4K (2160p). `?res=` picks one at load, `?scale=` still works. */
 export const RESOLUTIONS:Record<string,number>={'1K':960,'960p':960,'1080p':1080,'2K':1440,'4K':2160};
 export class Renderer3D{
- private gl:THREE.WebGLRenderer;private atmosphere:Atmosphere;private kit=new Kit();private world!:World;private entities!:Entities;private hud:Hud;private props=new Props();private avatar?:IntroAvatar;scale:number;
+ private gl:THREE.WebGLRenderer;private atmosphere:Atmosphere;private kit=new Kit();private world!:World;private entities!:Entities;private hud:Hud;private props=new Props(this.kit);private avatar?:IntroAvatar;scale:number;
  constructor(private canvas:HTMLCanvasElement){
   const res=RESOLUTIONS[query.get('res')??''];this.scale=res?res/NES_H:Number(query.get('scale')??4);
   this.gl=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
-  this.gl.info.autoReset=false;
+  this.gl.info.autoReset=false;this.gl.localClippingEnabled=true;
   this.atmosphere=new Atmosphere(this.gl,NES_W*this.scale,NES_H*this.scale,query.get('quality')==='low'?'low':'high');
   this.hud=new Hud(this.scale);
   if(import.meta.env.DEV)(window as unknown as {render3d:Renderer3D}).render3d=this;

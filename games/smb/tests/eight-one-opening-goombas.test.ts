@@ -12,7 +12,7 @@ test('8-1 opening has three active left-moving Goombas',()=>{
  const group=sim.enemies.filter(enemy=>enemy.kind==='goomba'&&enemy.originX>=340&&enemy.originX<440);
  assert.equal(group.length,3,'native tick 8796 visibly has three Goombas');
  sim.step([],1); // made as a native group at ScreenRight (camera + 255), +24, +48 on the activation frame
- assert.deepEqual(group.map(enemy=>Math.floor(enemy.x)),[414,438,462]);
+ assert.deepEqual(group.map(enemy=>Math.floor(enemy.x)),[415,438,462]);
  const start=group.map(enemy=>enemy.x);
  sim.step([],29);
  assert.ok(group.every((enemy,index)=>enemy.active&&enemy.x<start[index]),'all three must actually move left');

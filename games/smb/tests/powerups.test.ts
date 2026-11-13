@@ -33,12 +33,12 @@ test('a flower changes Big Mario to Fire Mario through the measured freeze',()=>
  sim.step([],1);assert.equal(sim.powerChange?.kind,'fire');sim.step([],62);assert.equal(sim.player.size,1);sim.step([],1);assert.equal(sim.player.size,2);assert.equal(sim.awardedScore,1000);
 });
 
-test('Star pickup grants1000points without a growth freeze and expires after720play frames',()=>{
+test('Star pickup grants1000points without a growth freeze and uses the shared native interval timer',()=>{
  const sim=game();sim.player.vx=1;sim.items.push({kind:'star',x:40,y:192,vx:0,vy:0,age:32,life:1000});sim.step([],1);
- assert.equal(sim.player.star,720);assert.equal(sim.awardedScore,1000);assert.equal(sim.powerChange,undefined);
+ assert.equal(sim.player.star,35);assert.equal(sim.awardedScore,1000);assert.equal(sim.powerChange,undefined);
  const x=sim.player.x;sim.step(['right'],4);assert.ok(sim.player.x>x);
  // Keep the ordinary fixture controller neutral; no state-based route or win.
- sim.step([],716);assert.equal(sim.player.star,0);assert.ok(sim.events.includes('music_ground'));
+ sim.step([],730);assert.equal(sim.player.star,0);assert.ok(sim.events.includes('music_ground'));
 });
 
 test('an8px fireball bounces from the floor and awards the observed100points for a Goomba',()=>{

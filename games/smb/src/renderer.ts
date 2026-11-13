@@ -4,9 +4,10 @@ import manifest from '../assets/graphics/graphics-manifest.json';
 import tables from '../assets/graphics/tables.json';
 import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
-import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown} from './view-rules.js';
+import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown,nativeBubbleShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
-import {enemyPicture,nativeHammerBroCell} from './enemy-picture.js';
+import {nativeBlockSprites} from './native-block-picture.js';
+import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
@@ -111,9 +112,10 @@ export class GameRenderer {
  private enemy(e:Enemy,s:Simulation){
   e=enemyPicture(e);
   const feet=!e.dead?e.graphicsY??e.y:e.y,x=Math.floor((!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(feet)-23;
-  const blooperTimer=e.bloop?.timer??0;
+  const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
+  const blooper=nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),timersStopped);
   const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
-  const phase=nativeCycle?(!s.powerChange&&(s.random.frame&8)===0?1:0):Math.floor(e.age/8)%2;
+  const phase=nativeCycle?nativeEnemyCyclePhase(s.random.frame,timersStopped):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
   const fiveThreeLeftShot=s.level.id==='5-3'&&s.area.id==='main'&&e.kind==='bullet'&&e.vx<0&&!e.dead&&e.palette===undefined;
   let cell=14,palette='0f-0f-36-17';
@@ -122,19 +124,19 @@ export class GameRenderer {
   if(e.kind==='beetle'){cell=e.shell?19+phase:phase;palette='0f-1a-30-27';}
   if(e.kind==='spiny'){cell=(e.motion==='falling'?8:6)+phase;palette='0f-16-30-27';}
   if(e.kind==='piranha'){cell=32+phase;palette='0f-1a-30-27';}
-  if(e.kind==='blooper'){cell=blooperTimer===1||blooperTimer>=5||e.dead||s.powerChange?10:11;palette='0f-00-30-10';}
+  if(e.kind==='blooper'){cell=blooper.cell;palette='0f-00-30-10';}
   if(e.kind==='cheep'){cell=12+phase;palette='0f-16-30-27';}
   if(e.kind==='bullet'){cell=39;palette=openingCannonShot||fiveThreeLeftShot?'0f-0f-36-17':'0f-00-30-10';}
-  if(e.kind==='lakitu'){cell=e.dead?24:(e.graphicsFrenzyTimer??0)<16?25:24;palette='0f-1a-30-27';}
-  if(e.kind==='hammerBro'){cell=nativeHammerBroCell(e.dead?0x20:e.hbro?.state??0,s.random.frame,Boolean(s.powerChange));palette='0f-1a-30-27';}
+  if(e.kind==='lakitu'){cell=nativeLakituCell(e.graphicsFrenzyTimer??0,Boolean(e.dead));palette='0f-1a-30-27';}
+  if(e.kind==='hammerBro'){cell=nativeHammerBroCell(e.dead?0x20:e.hbro?.state??0,s.random.frame,timersStopped);palette='0f-1a-30-27';}
   if(e.kind==='podoboo'){cell=34;palette='0f-16-30-27';}
   if(e.dead&&e.kind==='goomba'&&e.dead<20){cell=23;}
   if(e.kind==='bowser'){
    const flipY=e.dead>0&&!s.castleBowserFalls(e);
    // The head half is the native anchor: at the body's left edge when he faces left, 16 px in (the body's right half) when he faces right.
    const right=e.bowser?e.bowser.side>0:e.vx>0,headX=e.bowser&&right?x+16:x;
-   this.enemyCell(35+phase*2,headX,y-8,e.palette??'0f-1a-30-27',right,flipY);
-   this.enemyCell(36+phase*2,headX+(right?-16:16),y,e.palette??'0f-1a-30-27',right,flipY);return;
+   this.enemyCell(35+(e.nativeBowser?e.nativeBowser.controls>>7&1:phase)*2,headX,y-8,e.palette??'0f-1a-30-27',right,flipY);
+   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,e.palette??'0f-1a-30-27',right,flipY);return;
   }
   palette=e.palette??palette;
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead&&e.vx<=0&&palette==='0f-16-30-27'){
@@ -172,11 +174,11 @@ export class GameRenderer {
    const tiles=tables.enemy_cells[cell].tiles;
    // GmbaAnim flips the moving direction when FrameCounter bit 3 is clear.
    // The direction is captured before collision turns, as in native OAM.
-   const left=(e.graphicsFacing??e.vx)<0,flip=s.powerChange?left:left===Boolean(s.random.frame&8);
+   const left=(e.graphicsFacing??e.vx)<0,flip=timersStopped?left:left===Boolean(s.random.frame&8);
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
-  }else this.enemyCell(cell,x,y+(e.kind==='blooper'&&blooperTimer!==1&&blooperTimer<5?3:0)+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?(e.nativeDir??-1)<0:redVerticalFacing?true:koopaFacing||e.kind==='beetle'&&!e.dead&&!e.shell&&e.vx!==0&&palette==='0f-0f-36-17'||e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
+  }else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?(e.nativeDir??-1)<0:redVerticalFacing?true:koopaFacing||e.kind==='beetle'&&!e.dead&&!e.shell&&e.vx!==0&&palette==='0f-0f-36-17'||e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
  }
  private enemyCell(cell:number,x:number,y:number,palette:string,flipX=false,flipY=false,z=2){
   const data=tables.enemy_cells[cell];
@@ -206,7 +208,7 @@ export class GameRenderer {
   if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
  }
  render(s:Simulation){
-  const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorRotations));return r;};
+  const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorDrawRotations));return r;};
   this.scene.clear();this.used.clear();const boot=s.phase==='title'?titleBootColor(s.titleFrame):undefined;if(boot){this.renderer.setClearColor(boot);this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
@@ -215,10 +217,11 @@ export class GameRenderer {
   if(!black){
    this.waterSurfaceSky(s);
    this.worldClip=true;
-   for(const[key,id]of s.tiles){const[col,row]=key.split(',').map(Number);const x=col*16-Math.floor(s.camera);if(x<-16||x>=256||row<2)continue;
+   const pictureTiles=new Map(s.tiles);for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
+   for(const[key,id]of pictureTiles){const[col,row]=key.split(',').map(Number);const x=col*16-Math.floor(s.camera);if(x<-16||x>=256||row<2)continue;
     if(id===95||id===96)continue;let y=row*16;
     const below=doorwayBottomTile(id,s.tiles.has(`${col},${row+1}`));if(below!==undefined)this.tile(below,x,y+16,this.rotation(s.area.palette));
-    const age=s.bump.get(key);if(age!==undefined&&!s.usedBlockRehits.has(key)&&bumpShown(id))y-=Math.round(Math.sin(age/16*Math.PI)*4);
+    const age=s.bump.get(key);if(age!==undefined&&!s.blockGraphics.some(b=>b.key===key)&&!s.usedBlockRehits.has(key)&&bumpShown(id))y-=Math.round(Math.sin(age/16*Math.PI)*4);
     if(s.level.id==='8-4'&&s.area.id==='area-2'&&col===38&&row===9&&id===196){
      // The revealed foothold uses the observed gray castle palette.
      for(const [index,tile] of [87,88,89,90].entries())this.quad('background-tiles-0f-30-10-00.png',[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+(index%2)*8,y+Math.floor(index/2)*8,0,false,false,false);
@@ -254,7 +257,9 @@ export class GameRenderer {
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
    for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
+   for(const b of s.blockGraphics)for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY);}
    for(const i of s.items)this.item(i,s);
+   if(s.area.theme==='water')for(const bubble of s.bubbles)if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27');
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly)continue;
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,2.5);
@@ -293,6 +298,7 @@ export class GameRenderer {
   const exit=s.area.exit;if(exit?.kind!=='axe'||exit.retainerX===undefined||['intro','gameover','title'].includes(s.phase))return;
   this.enemyCell(s.level.id==='8-4'?26:27,exit.retainerX-s.camera,185,'0f-16-30-27');
   if(s.castleStage!=='message'&&s.phase!=='ending')return;
+  if(s.castleText){for(const row of s.castleText)this.text(row.text,row.x-s.camera,row.y);return;}
   const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
   // The terminal reference image precedes ending dialogue. Subsequent ending
   // text is an inferred presentation; its timing cannot be observed via the tool.
@@ -334,7 +340,7 @@ export class GameRenderer {
  private player(s:Simulation){
   const p=s.player,{cell,facing,throwing,swimKick}=playerCell(s),change=s.powerChange;
   let variant:string=(change?.kind==='fire'?fireFlashVariant(POWERUPS.transformFreezeNativeFrames.fireValue-change.remaining):undefined)??(p.size===2?'fire':s.currentPlayer?'luigi':'mario');
-  if(p.star)variant=starVariant(p.star,s.frame,variant);
+  if(s.starDrawPalette!==undefined)variant=starVariant(s.starDrawPalette,variant);
   let sheet=`player-${variant}-${facing<0?'left':'right'}.png`;if(swimKick!==undefined)sheet=this.swimKickSheet(sheet,facing);
   const z=s.phase==='pipe'||s.pipeRising?-0.1:3;
   this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],p.x-s.camera,p.y-31,z);

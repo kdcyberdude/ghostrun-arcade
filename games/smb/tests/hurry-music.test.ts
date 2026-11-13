@@ -13,7 +13,7 @@ function game(){
 test('Star collection and expiry retain the current hurry tempo',()=>{
  const sim=game();sim.items.push({kind:'star',x:40,y:192,vx:0,vy:0,age:32,life:1000});sim.step([],1);
  assert.ok(sim.events.includes('music_star_hurry'));sim.events=[];
- sim.player.star=1;sim.step([],1);assert.ok(sim.events.includes('music_ground_hurry'));
+ sim.player.star=4;sim.intervalControl=1;sim.step([],1);assert.ok(sim.events.includes('music_ground_hurry'));
 });
 
 test('area transitions preserve time and select the destination hurry track',()=>{

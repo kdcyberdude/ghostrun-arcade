@@ -10,6 +10,7 @@ function fixture(occupied:number){
  area.enemies=[...Array.from({length:occupied},(_,i)=>({kind:'piranha' as const,x:700+i*24,y:184,direction:-1 as const})),...group];
  area.cannons=[];area.generators=[];area.firebars=[];area.platforms=[];
  const sim:any=new Simulation([level]);sim.reset(true);sim.loadArea(area.id,[720,120],595);sim.phase='play';sim.player.invincible=100000;
+ for(let slot=0;slot<occupied;slot++)Object.assign(sim.enemies[slot],{active:true,enemySlot:slot});
  return sim;
 }
 
@@ -21,7 +22,7 @@ test('3-1 native group contains three Goombas, with the last member conditional 
   const group=sim.enemies.filter((e:any)=>e.kind==='goomba');
   assert.deepEqual(group.map((e:any)=>e.originX),[849,873,897]);
   assert.equal(group.filter((e:any)=>e.active).length,expected,`native mood${sample.mood}`);
-  assert.ok(group.filter((e:any)=>e.active).every((e:any)=>e.age===1),'members are born together');
+  assert.ok(group.filter((e:any)=>e.active).every((e:any)=>e.age===(e.enemySlot>occupied?1:0)),'only group members in later native slots move on their birth frame');
   if(expected===2)assert.equal(group[2].slotLost,true,'full group does not create its third member later');
  }
 });
