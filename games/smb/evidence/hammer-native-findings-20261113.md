@@ -377,3 +377,23 @@ field of all32 v2 first-divergence tables unchanged vs9c99b7a, and diff check
 passes. Only normal CoinBlock/multicoin creation changes; SetupJumpCoin's
 above-block page carry stays intact. Native lookup/slot/timer inputs drive the
 rule for later recordings; no per-level or recorded-frame conditions were added.
+
+## Source end-level EventMusicBuffer timing dependency
+
+Added independent `native-event-music.ts` square2 event32 clock for the flag
+worker. Native headerF949/dataFCB0/lengthFF66 define duration through actual
+note bytes; no WAV-derived or fitted324-frame delay. SoundEngine runs before
+gameplay, queue32 restarts on that turn, title/pause hold, areaqueue cancels.
+Only event32 lifetime modeled; other event buffers explicitly remain outside
+scope. Native entrance bytes07B1/07B3/07B4/F7 seed exact note phase.
+
+All368 inputs/5,178,452 PPU samples authenticated;300,625 active/queued rows,
+331 distinct transitions,925 complete sequences,0 mismatches. Every complete
+sequence load→terminator324 ticks follows ROMnotes. Retained1-1 queue consumed
+2287/buffer clears2611(task2), before native task4→5 row2852: interval/slot phase
+still required to explain fitted early2845 transition. Flagworker informed.
+Full source and reproduction commands:docs/NATIVE_EVENT_MUSIC_CLOCK.md.
+Music unit gates:1277/1277 npmtestsPASS,tscPASS,regeneratedv2excerpts unchanged,
+full32 every-field report byte-equivalent JSON to pre-unit coin baseline,
+gitdiffcheckPASS. Simulation/entrance/queue lifecycle wiring left to ID49worker
+so this independent timing dependency cannot change existing gameplay yet.
