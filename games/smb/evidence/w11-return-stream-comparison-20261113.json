@@ -1,0 +1,840 @@
+{
+  "scope": "Continuous cold-start World1-1 and source-owned boot state. Other-level tails explicitly unchecked; every input retained; no model reseed/native injection/pictures/full-machine claim.",
+  "dependencies": [
+    "547f218 Water AB edge; parent1fd6b93 source flag walk",
+    "0430c09 readiness readout (local260d701)",
+    "68b7d9c Goomba slot release (local72461fc), separate unit"
+  ],
+  "before": {
+    "runtimeCommit": "72461fc9b64ab07b262283d5d5c67727b5ea5e77",
+    "runtimeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scope": "Continuous cold-start World1-1 and source-owned boot state. Other-level tails explicitly unchecked; every input retained; no model reseed/native injection/pictures/full-machine claim.",
+    "runs": [
+      {
+        "sha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+        "inputs": 7396,
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "ramSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "start": {
+          "status": "match",
+          "scope": "cold-recorded-start",
+          "checked": [
+            "cold.RAM"
+          ],
+          "gaps": [],
+          "differences": []
+        },
+        "first": {
+          "entities.extra": {
+            "frame": 1076,
+            "model": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "goomba",
+              "x": 2815,
+              "y": 184,
+              "source": "enemy"
+            }
+          },
+          "entities.position": {
+            "frame": 1078,
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "goomba",
+              "x": 2815,
+              "y": 184,
+              "source": "enemy",
+              "state": 0
+            },
+            "model": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "goomba",
+              "x": 2814,
+              "y": 184,
+              "source": "enemy"
+            }
+          },
+          "entities.missing": {
+            "frame": 1318,
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "goomba",
+              "x": 2695,
+              "y": 184,
+              "source": "enemy",
+              "state": 0
+            }
+          }
+        },
+        "actualMismatchFrameCountsByField": {
+          "entities.extra": 2,
+          "entities.position": 240,
+          "entities.missing": 1
+        },
+        "actualDifferenceInstancesByField": {
+          "entities.extra": 4,
+          "entities.position": 452,
+          "entities.missing": 1
+        },
+        "status": {
+          "match": 1930,
+          "mismatch": 243,
+          "unchecked": 5223
+        },
+        "gaps": {
+          "outside-world1-1": 5223
+        },
+        "returnEvents": [
+          {
+            "f": 1076,
+            "nativeCursor": [
+              13,
+              5,
+              0
+            ],
+            "modelCursor": null,
+            "nativeSlots": [
+              [
+                0,
+                0,
+                272,
+                0
+              ],
+              [
+                0,
+                0,
+                352,
+                0
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2815,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2838,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          },
+          {
+            "f": 1077,
+            "nativeCursor": [
+              23,
+              7,
+              0
+            ],
+            "modelCursor": null,
+            "nativeSlots": [
+              [
+                0,
+                0,
+                1312,
+                0
+              ],
+              [
+                0,
+                0,
+                1600,
+                0
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2814,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2838,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          },
+          {
+            "f": 1078,
+            "nativeCursor": [
+              29,
+              11,
+              0
+            ],
+            "modelCursor": null,
+            "nativeSlots": [
+              [
+                1,
+                6,
+                2815,
+                184
+              ],
+              [
+                1,
+                6,
+                2839,
+                184
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2814,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2837,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          },
+          {
+            "f": 1079,
+            "nativeCursor": [
+              29,
+              11,
+              0
+            ],
+            "modelCursor": null,
+            "nativeSlots": [
+              [
+                1,
+                6,
+                2814.5,
+                184
+              ],
+              [
+                1,
+                6,
+                2838.5,
+                184
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2813,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2837,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sha256": "1ec0a3e4d31d8875aaf5798a2f31b6e73a032777ab3e47d6fb3c2e984050bc05",
+        "inputs": 8708,
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "ramSha256": "bcff1d2a02bb88d81bd616de46b16175f82e7572844ff936cf4e771e92483199",
+        "start": {
+          "status": "match",
+          "scope": "cold-recorded-start",
+          "checked": [
+            "cold.RAM"
+          ],
+          "gaps": [],
+          "differences": []
+        },
+        "first": {
+          "entities.extra": {
+            "frame": 1017,
+            "model": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "goomba",
+              "x": 2815,
+              "y": 184,
+              "source": "enemy"
+            }
+          },
+          "entities.position": {
+            "frame": 1019,
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "goomba",
+              "x": 2815,
+              "y": 184,
+              "source": "enemy",
+              "state": 0
+            },
+            "model": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "goomba",
+              "x": 2814,
+              "y": 184,
+              "source": "enemy"
+            }
+          }
+        },
+        "actualMismatchFrameCountsByField": {
+          "entities.extra": 2,
+          "entities.position": 237
+        },
+        "actualDifferenceInstancesByField": {
+          "entities.extra": 4,
+          "entities.position": 445
+        },
+        "status": {
+          "match": 8469,
+          "mismatch": 239,
+          "unchecked": 0
+        },
+        "gaps": {},
+        "returnEvents": [
+          {
+            "f": 1017,
+            "nativeCursor": [
+              13,
+              5,
+              0
+            ],
+            "modelCursor": null,
+            "nativeSlots": [
+              [
+                0,
+                0,
+                272,
+                0
+              ],
+              [
+                0,
+                0,
+                352,
+                0
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2815,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2838,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          },
+          {
+            "f": 1018,
+            "nativeCursor": [
+              23,
+              7,
+              0
+            ],
+            "modelCursor": null,
+            "nativeSlots": [
+              [
+                0,
+                0,
+                1312,
+                0
+              ],
+              [
+                0,
+                0,
+                1600,
+                0
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2814,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2838,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          },
+          {
+            "f": 1019,
+            "nativeCursor": [
+              29,
+              11,
+              0
+            ],
+            "modelCursor": null,
+            "nativeSlots": [
+              [
+                1,
+                6,
+                2815,
+                184
+              ],
+              [
+                1,
+                6,
+                2839,
+                184
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2814,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2837,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          },
+          {
+            "f": 1020,
+            "nativeCursor": [
+              29,
+              11,
+              0
+            ],
+            "modelCursor": null,
+            "nativeSlots": [
+              [
+                1,
+                6,
+                2814.5,
+                184
+              ],
+              [
+                1,
+                6,
+                2838.5,
+                184
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2813,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2837,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "after": {
+    "runtimeCommit": "72461fc9b64ab07b262283d5d5c67727b5ea5e77",
+    "runtimeDiffSha256": "f93453fe112bebb672be2913eec6c85658cd70495bcd41c663c2f45011eedcb9",
+    "scope": "Continuous cold-start World1-1 and source-owned boot state. Other-level tails explicitly unchecked; every input retained; no model reseed/native injection/pictures/full-machine claim.",
+    "runs": [
+      {
+        "sha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+        "inputs": 7396,
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "ramSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "start": {
+          "status": "match",
+          "scope": "cold-recorded-start",
+          "checked": [
+            "cold.RAM"
+          ],
+          "gaps": [],
+          "differences": []
+        },
+        "first": {},
+        "actualMismatchFrameCountsByField": {},
+        "actualDifferenceInstancesByField": {},
+        "status": {
+          "match": 2173,
+          "mismatch": 0,
+          "unchecked": 5223
+        },
+        "gaps": {
+          "outside-world1-1": 5223
+        },
+        "returnEvents": [
+          {
+            "f": 1076,
+            "nativeCursor": [
+              13,
+              5,
+              0
+            ],
+            "modelCursor": [
+              13,
+              5,
+              0
+            ],
+            "nativeSlots": [
+              [
+                0,
+                0,
+                272,
+                0
+              ],
+              [
+                0,
+                0,
+                352,
+                0
+              ]
+            ],
+            "modelEntities": []
+          },
+          {
+            "f": 1077,
+            "nativeCursor": [
+              23,
+              7,
+              0
+            ],
+            "modelCursor": [
+              23,
+              7,
+              0
+            ],
+            "nativeSlots": [
+              [
+                0,
+                0,
+                1312,
+                0
+              ],
+              [
+                0,
+                0,
+                1600,
+                0
+              ]
+            ],
+            "modelEntities": []
+          },
+          {
+            "f": 1078,
+            "nativeCursor": [
+              29,
+              11,
+              0
+            ],
+            "modelCursor": [
+              29,
+              11,
+              0
+            ],
+            "nativeSlots": [
+              [
+                1,
+                6,
+                2815,
+                184
+              ],
+              [
+                1,
+                6,
+                2839,
+                184
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2815,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2839,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          },
+          {
+            "f": 1079,
+            "nativeCursor": [
+              29,
+              11,
+              0
+            ],
+            "modelCursor": [
+              29,
+              11,
+              0
+            ],
+            "nativeSlots": [
+              [
+                1,
+                6,
+                2814.5,
+                184
+              ],
+              [
+                1,
+                6,
+                2838.5,
+                184
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2814,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2838,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sha256": "1ec0a3e4d31d8875aaf5798a2f31b6e73a032777ab3e47d6fb3c2e984050bc05",
+        "inputs": 8708,
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "ramSha256": "bcff1d2a02bb88d81bd616de46b16175f82e7572844ff936cf4e771e92483199",
+        "start": {
+          "status": "match",
+          "scope": "cold-recorded-start",
+          "checked": [
+            "cold.RAM"
+          ],
+          "gaps": [],
+          "differences": []
+        },
+        "first": {},
+        "actualMismatchFrameCountsByField": {},
+        "actualDifferenceInstancesByField": {},
+        "status": {
+          "match": 8708,
+          "mismatch": 0,
+          "unchecked": 0
+        },
+        "gaps": {},
+        "returnEvents": [
+          {
+            "f": 1017,
+            "nativeCursor": [
+              13,
+              5,
+              0
+            ],
+            "modelCursor": [
+              13,
+              5,
+              0
+            ],
+            "nativeSlots": [
+              [
+                0,
+                0,
+                272,
+                0
+              ],
+              [
+                0,
+                0,
+                352,
+                0
+              ]
+            ],
+            "modelEntities": []
+          },
+          {
+            "f": 1018,
+            "nativeCursor": [
+              23,
+              7,
+              0
+            ],
+            "modelCursor": [
+              23,
+              7,
+              0
+            ],
+            "nativeSlots": [
+              [
+                0,
+                0,
+                1312,
+                0
+              ],
+              [
+                0,
+                0,
+                1600,
+                0
+              ]
+            ],
+            "modelEntities": []
+          },
+          {
+            "f": 1019,
+            "nativeCursor": [
+              29,
+              11,
+              0
+            ],
+            "modelCursor": [
+              29,
+              11,
+              0
+            ],
+            "nativeSlots": [
+              [
+                1,
+                6,
+                2815,
+                184
+              ],
+              [
+                1,
+                6,
+                2839,
+                184
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2815,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2839,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          },
+          {
+            "f": 1020,
+            "nativeCursor": [
+              29,
+              11,
+              0
+            ],
+            "modelCursor": [
+              29,
+              11,
+              0
+            ],
+            "nativeSlots": [
+              [
+                1,
+                6,
+                2814.5,
+                184
+              ],
+              [
+                1,
+                6,
+                2838.5,
+                184
+              ]
+            ],
+            "modelEntities": [
+              {
+                "bank": "enemy",
+                "slot": 0,
+                "kind": "goomba",
+                "x": 2814,
+                "y": 184,
+                "source": "enemy"
+              },
+              {
+                "bank": "enemy",
+                "slot": 1,
+                "kind": "goomba",
+                "x": 2838,
+                "y": 184,
+                "source": "enemy"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

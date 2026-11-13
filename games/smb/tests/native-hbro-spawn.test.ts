@@ -11,7 +11,7 @@ for(const run of fixture.runs)test(`source Hammer Bro parser/init prefix ${run.n
 });
 test('Hammer Bro factories use raw records without a screenshot roster and retain native slot residue',async()=>{
  const {nativeMixedWalkerScene}=await import('../src/native-walker-scene.js'),scene=nativeMixedWalkerScene([{offset:7,id:5,x:1808,y:120,hard:false}],0,[])!;assert.equal(scene.length,1);assert.deepEqual([scene[0].kind,scene[0].x,scene[0].y,scene[0].nativeId,scene[0].nativeOffset],['hammerBro',1808,144,5,7]);
- const sim:any=new Simulation(observedLevels());sim.reset(true);sim.placedHammerBros=true;sim.slotSub[2]=128;sim.slotBroJump[2]=107;sim.slotFrameTimers[2]=9;Object.assign(sim.slotVertical[2],{fraction:42,speed:-5,force:144});const e:Enemy=sim.makeEnemy(scene[0]);sim.activateNativePlaced(e,2,1808);
+ const sim:any=new Simulation(observedLevels());sim.reset(true);sim.placedActorStream=true;sim.slotSub[2]=128;sim.slotBroJump[2]=107;sim.slotFrameTimers[2]=9;Object.assign(sim.slotVertical[2],{fraction:42,speed:-5,force:144});const e:Enemy=sim.makeEnemy(scene[0]);sim.activateNativePlaced(e,2,1808);
  assert.deepEqual([e.x,e.y,e.vx,e.nativeDir,e.graphicsVisible],[1808.5,144,0,-1,false]);assert.deepEqual(e.hbro,{state:0,jumpTimer:107,throwTimer:0,frameTimer:9,interval:128,speed:0,force:0,fraction:42,y:120});assert.deepEqual(sim.slotVertical[2],{fraction:42,speed:0,force:0});
  assert.equal(nativeMixedWalkerScene([{offset:0,id:5,x:1808,y:120,hard:false},{offset:2,id:7,x:1904,y:120,hard:false}],0,[]),undefined,'unsupported handlers cannot enter this profile');
 });
