@@ -251,6 +251,7 @@ export class Simulation {
  get pipeRising(){return this.pipeRise>0;}
  /** True while the native entry is still engine 7 (no control): the underground fall's first 17 rows, the water room's 34-row fall to native y 49. */
  get entryControlLocked(){const native=this.entryFalling?this.area.entryFall?.native:undefined;return native?this.entryReadyAge<0:this.swimLock>0;}
+ get verticalPipeGraphics(){return this.phase==='pipe'&&this.destination?.direction==='down';}
  get pipeHidden(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=(this.area.autoWalk?TRANSITIONS.autoWalkPipe.hiddenFrame:32));}
  /** Native time-out: a TIME UP screen for the first 7 clock ticks of the 14, then the ordinary lives screen. */
  get timeUpScreen(){return this.phase==='intro'&&Boolean(this.lifeIntro?.timeUp)&&this.lifeIntro!.seen<LIFE_FLOW.ticksScreen;}
@@ -459,6 +460,7 @@ export class Simulation {
     if(this.destination?.direction==='right')this.player.x+=automatic?TRANSITIONS.pipeMotionSpeed:0.5;else this.player.y+=this.destination?.direction==='up'?-0.5:(automatic&&this.player.size===0?1:0.5);
    }
    this.updateBubbles(true,false);
+   if(this.verticalPipeGraphics)this.updateLocomotionPose(this.player.grounded,this.motor.absolute,false,new Set<Button>(),false);
    if(this.destination&&this.phaseFrame===this.destination.frames){
     const target=this.destination;this.destination=undefined;
     if(target.level){
@@ -840,7 +842,7 @@ export class Simulation {
  }
  /** ProcessPlayerAction (src/player-anim.ts): the pose kind and frame from the native Player_State at the end of the frame (ground, jump,
   * walk-off fall), the speed byte, Left/Right (dropped by Down on the ground), Player_XSpeedAbsolute and the moving/facing directions. */
- private updateLocomotionPose(wasGrounded:boolean,absolute:number,jumped:boolean,buttons:Set<Button>){
+ private updateLocomotionPose(wasGrounded:boolean,absolute:number,jumped:boolean,buttons:Set<Button>,refreshSpeed=true){
   const p=this.player,pose=this.locomotionPose,anim=this.playerAnim;anim.tick();
   if(anim.fresh){anim.fresh=false;if(!jumped)anim.setSpeed(absolute);} // JumpSwimSub bypasses GetPlayerAnimSpeed on a first-frame ground jump; the cleared reload stays 0 until landing
   const water=this.area.theme==='water';
@@ -852,7 +854,7 @@ export class Simulation {
   if(p.grounded&&!jumped){
    this.jumpPose=false;
    const lr=buttons.has('down')&&wasGrounded?0:Number(buttons.has('right'))|Number(buttons.has('left'))<<1;
-   if(water)anim.setSpeed(absolute); // OnGroundStateSub on the water floor (the land motor sets it otherwise)
+   if(water&&refreshSpeed)anim.setSpeed(absolute); // OnGroundStateSub on the water floor (the land motor sets it otherwise)
    const m=water?{speed:Math.round(p.vx*4096),absolute:Math.abs(Math.floor(Math.round(p.vx*4096)/256)),moving:Math.sign(p.vx),facing:p.facing}:this.motor;
    const byte=Math.floor(m.speed/256)&255;
    if(p.duck||byte===0&&lr===0){pose.kind='stand';anim.still();}
@@ -861,7 +863,7 @@ export class Simulation {
   }else if(water&&this.swimActive){
    // JumpSwimSub (ProcSwim) runs GetPlayerAnimSpeed every swimming frame; ActionSwimming animates while the swim timer runs, the frame is
    // not 0 or A is held.
-   anim.setSpeed(absolute);
+   if(refreshSpeed)anim.setSpeed(absolute);
    pose.kind='jump';this.swimPoseFrame=this.water.timer||anim.ctrl||buttons.has('a')?anim.animate(3):anim.hold();
   }else if(this.jumpPose||p.duck){pose.kind='jump';anim.still();}
   else{pose.kind='walk';pose.frame=anim.hold();} // a walk-off fall keeps its walking frame and facing
