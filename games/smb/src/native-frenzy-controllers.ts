@@ -1,5 +1,5 @@
 import layouts from '../data/native-frenzy-controllers.json';
-export type NativeFrenzyController={id:number;offset:number;column:number;y:number;hardOnly:boolean;x?:number;slot?:number;lost?:boolean};
+export type NativeFrenzyController={id:number;offset:number;column:number;y:number;yHigh?:number;hardOnly:boolean;x?:number;slot?:number;lost?:boolean};
 /** Flagged enemy-data controllers retain their native slot. ID23 can become
  * a frenzy Bullet; ID52 runs WarpZoneObject until its ScrollLock/Y test passes. */
 export function nativeFrenzyControllers(level:string,area:string):NativeFrenzyController[]{
