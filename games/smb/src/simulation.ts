@@ -2431,10 +2431,12 @@ export class Simulation {
   }
  }
  private activateNativePlaced(e:Enemy,slot:number,column:number){
-    e.active=true;e.enemySlot=slot;e.graphicsVisible=false;e.graphicsFacing=-1;e.vx=e.nativeId===17?e.vx:e.nativeId===16?0:e.nativeId===14?-0.5:this.primaryHardMode?-0.75:-0.5;e.vy=0;
+    e.active=true;e.enemySlot=slot;if(this.placedHammerBros)e.slotBorn=this.frame;e.graphicsVisible=false;e.graphicsFacing=-1;e.vx=e.nativeId===17?e.vx:e.nativeId===16?0:e.nativeId===14?-0.5:this.primaryHardMode?-0.75:-0.5;e.vy=0;
     e.x=column+(e.nativeId===15?0:this.slotSub[slot]/256);e.y=e.originY;
     const left=this.slotVertical[slot];
-    if(e.nativeId===17){e.lak={dir:0,speed:0,box:3};this.lakituReappearCount=0;}
+    // InitHammerBro/SetBBox clears throw/X speed and Y speed/force, retaining frame/jump timers and fractional bytes.
+    if(e.nativeId===5){e.vx=0;e.nativeDir=-1;e.hbro={state:0,jumpTimer:this.slotBroJump[slot],throwTimer:0,frameTimer:this.slotFrameTimers[slot],interval:this.secondaryHardMode?0x50:0x80,speed:0,force:0,fraction:left.fraction,y:Math.floor(e.y)-24};}
+    else if(e.nativeId===17){e.lak={dir:0,speed:0,box:3};this.lakituReappearCount=0;}
     else if(e.nativeId===14)e.pod={...nativeMoveState(e.y),...left};
     else if(e.nativeId===15)e.redFlight=createNativeRedFlight(e.y,left.fraction);
     else if(e.nativeId===16)e.horizontalFlight={x:e.x,y:e.y,primary:0,secondary:0};
@@ -2444,9 +2446,9 @@ export class Simulation {
     if(e.redFlight)this.slotSub[slot]=e.redFlight.originalY;
  }
  private resetNativeEnemyCursor(){for(const stream of [this.placedStream,this.walkerStream,this.waterEnemyStream])if(stream)Object.assign(stream,{offset:0,page:0,selected:false});}
- private placedStream?:NativeEnemyStream;private placedOrigin=0;private placedPlatforms=new Map<number,PlatformSpec>();private placedBars=new Map<number,FirebarSpec>();private placedCastle=false;private placedBankFrame=-1;private castleSlotXSpeed=[0,0,0,0,0];
+ private placedStream?:NativeEnemyStream;private placedOrigin=0;private placedPlatforms=new Map<number,PlatformSpec>();private placedBars=new Map<number,FirebarSpec>();private placedCastle=false;private placedHammerBros=false;private placedBankFrame=-1;private castleSlotXSpeed=[0,0,0,0,0];
  private setupNativePlacedStream(){
-  this.placedStream=undefined;this.placedPlatforms.clear();this.placedBars.clear();this.placedCastle=false;
+  this.placedStream=undefined;this.placedPlatforms.clear();this.placedBars.clear();this.placedCastle=false;this.placedHammerBros=false;
   if(this.walkerStream||this.waterEnemyStream||!/^[1-8]-[1-4]$/.test(this.level.id))return;
   const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.area.id);if(!binding)return;
   const physical=nativePhysicalAreas[binding.code],type=this.area.theme==='water'?0:this.area.theme==='underground'?2:this.area.theme==='castle'?3:1;if(physical.type!==type)return;
@@ -2454,6 +2456,8 @@ export class Simulation {
   const records=nativeEnemyRecords(bytes),supported=new Set([3,6,15,23,37,40]),castleSupported=new Set([12,21,27,28,29,30,31,40,41,43,44,45,53]);
   this.placedCastle=type===3&&records.length>0&&records.every(r=>castleSupported.has(r.id));
   const mixedWalkers=nativeMixedWalkerScene(records,binding.offset,this.area.enemies);
+  // These physical streams share ProcessEnemyData with the ordinary actors in ascending native slots.
+  this.placedHammerBros=Boolean(mixedWalkers&&records.some(r=>r.id===5));
   if(!this.placedCastle&&!mixedWalkers&&(!records.some(r=>r.id===23)||!records.every(r=>supported.has(r.id))))return;
   if(this.placedCastle&&records.some(r=>r.id>=27&&r.id<=31)&&!this.firebarSlots){this.placedCastle=false;return;}
   for(const r of records){
@@ -2464,7 +2468,7 @@ export class Simulation {
     const p=this.area.platforms?.find(p=>{const o=nativePlatformObject(p,this.platformMotion.context);return o?.x===r.x+binding.offset+([38,39,43,44].includes(r.id)?12:0)&&o.y===r.y;});if(!p)return;this.placedPlatforms.set(r.offset,p);
    }else if(!this.enemies.some(e=>e.nativeOffset===r.offset&&e.nativeId===r.id))return;
   }
-  if(mixedWalkers)this.enemies=[...this.enemies.filter(e=>!ordinaryWalker(e.kind)),...mixedWalkers.map(spec=>this.makeEnemy(spec))];
+  if(mixedWalkers)this.enemies=[...this.enemies.filter(e=>!ordinaryWalker(e.kind)&&!(this.placedHammerBros&&e.kind==='hammerBro')),...mixedWalkers.map(spec=>this.makeEnemy(spec))];
   if(this.placedCastle)for(const r of records){
    if(r.id===12||r.id===45){let e=this.enemies.find(e=>e.kind===(r.id===12?'podoboo':'bowser')&&e.originX===r.x+binding.offset);if(!e){e=this.makeEnemy({kind:r.id===12?'podoboo':'bowser',x:r.x+binding.offset,y:r.id===12?282:r.y+32});this.enemies.push(e);}e.nativeId=r.id;e.nativeOffset=r.offset;e.nativeColumn=r.x+binding.offset;}
    if(r.id>=27&&r.id<=31){const x=r.x+binding.offset+8,y=r.y+8;let bar=this.area.firebars?.find(b=>b.x===x&&b.y===y);if(!bar){bar={x,y,length:r.id===31?12:6,speed:(nativeFirebarParameters(r.id).direction?-1:1)*nativeFirebarParameters(r.id).speed/256*Math.PI/16};(this.area.firebars??=[]).push(bar);}this.placedBars.set(r.offset,bar);}
@@ -2473,7 +2477,7 @@ export class Simulation {
   for(const p of this.area.platforms??[])this.platformMotion.waiting.add(p);
  }
  private passNativePlacedStream(){
-  if(this.placedCastle&&this.placedBankFrame===this.frame)return;
+  if((this.placedCastle||this.placedHammerBros)&&this.placedBankFrame===this.frame)return;
   for(const e of this.enemies)if(e.frenzy&&e.kind==='bullet'&&e.active&&!e.slotFreed&&e.dead===0&&e.x+(e.age>1?BULLETS.speed:0)-this.camera<=-BULLETS.generatorRemoveLeft){this.eraseEnemy(e);e.slotFreed=true;e.goneFrame=this.frame;if(e.enemySlot!==undefined){this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}}
   const stream=this.placedStream!,context={camera:this.camera-this.placedOrigin,hard:this.secondaryHardMode,primaryHard:this.primaryHardMode,slot:0,frenzy:this.specialSlot5.frenzyBuffer,vine:this.specialSlot5.vineCount,queue:this.specialSlot5.frenzyQueue};
   for(let slot=0;slot<6;slot++){
@@ -2488,7 +2492,7 @@ export class Simulation {
   if(init.source==='group'){
    const members=this.enemies.filter(e=>e.nativeGroup?.offset===init.offset),kind=init.id<0x3b?(this.primaryHardMode?'beetle':'goomba'):'koopa';
    for(const member of members){member.kind=kind;member.nativeId=kind==='beetle'?2:kind==='goomba'?6:0;}
-   this.groupParserSlot=slot;if(members.length)this.passNativeGroups(members[0].nativeGroup!.column,init.offset);
+   this.groupParserSlot=slot;if(members.length)this.passNativeGroups(members[0].nativeGroup!.column,init.offset,this.placedHammerBros?this.camera+this.lakituScroll:this.camera);
    return members.some(e=>e.active&&e.enemySlot===slot)?1:0;
   }
   if(init.id===52){const controller=this.frenzyControllers.find(c=>c.offset===init.offset)!;controller.slot=slot;controller.x=init.x!+this.placedOrigin;return 1;}
@@ -2537,18 +2541,18 @@ export class Simulation {
    else this.activateNativePlaced(enemy,slot,event.x+offset);
   }
  }
- private passNativeGroups(onlyColumn?:number,onlyOffset?:number){
+ private passNativeGroups(onlyColumn?:number,onlyOffset?:number,camera=this.camera){
   if(this.groupParserSlot>=5||this.parserClock.blocked)return;
   const reserved=new Set(this.groupSlotsBefore.flatMap((busy,s)=>busy&&s>=this.groupParserSlot?[s]:[])),seen=new Set<number>();
   for(const e of this.enemies){
    const group=e.nativeGroup;if(!group||onlyColumn!==undefined&&group.column!==onlyColumn||onlyOffset!==undefined&&group.offset!==onlyOffset||e.active||e.slotLost||seen.has(group.column))continue;
    seen.add(group.column);
    const members=this.nativeGroupMembers(e)!;
-   if(group.column<Math.floor(this.camera)+255){for(const m of members)if(!m.active)m.slotLost=true;continue;}
-   if(group.column>((Math.floor(this.camera)+303)&~15)||this.availableNativeSlot(undefined,reserved)>=5)continue;
+   if(group.column<Math.floor(camera)+255){for(const m of members)if(!m.active)m.slotLost=true;continue;}
+   if(group.column>((Math.floor(camera)+303)&~15)||this.availableNativeSlot(undefined,reserved)>=5)continue;
    for(const m of members){
     if(m.active||m.slotLost)continue;
-    m.active=true;m.x=Math.floor(this.camera)+255+24*m.nativeGroup!.index;this.takeNativeSlot(m,reserved);
+    m.active=true;if(this.placedHammerBros)m.slotBorn=this.frame;m.x=Math.floor(camera)+255+24*m.nativeGroup!.index;this.takeNativeSlot(m,reserved);
     if(m.enemySlot===undefined){m.active=false;m.slotLost=true;continue;}
     m.vx=this.primaryHardMode?-0.75:-0.5;m.vy=0;m.graphicsVisible=m.enemySlot>this.groupParserSlot;m.graphicsFacing=-1;m.graphicsX=m.x;m.graphicsY=m.y;
     if(m.graphicsVisible)this.captureEnemyGraphics(m);
@@ -2643,7 +2647,7 @@ export class Simulation {
  private currentNativeBankSlot=-1;private nativeBankItemFrame=-1;
  private visitNativeBankSlot(slot:number,oldBottom:number){
   this.currentNativeBankSlot=slot;
-  if(this.placedCastle&&this.placedStream&&!this.parserClock.blocked&&!this.busyNativeSlots().has(slot)&&!(slot===5&&this.specialSlot5.flag)&&this.slotReleaseFrame[slot]!==this.frame){
+  if((this.placedCastle||this.placedHammerBros)&&this.placedStream&&!this.parserClock.blocked&&!this.busyNativeSlots().has(slot)&&!(slot===5&&this.specialSlot5.flag)&&this.slotReleaseFrame[slot]!==this.frame){
    const context={camera:this.camera+this.lakituScroll-this.placedOrigin,hard:this.secondaryHardMode,primaryHard:this.primaryHardMode,slot,frenzy:this.specialSlot5.frenzyBuffer,vine:this.specialSlot5.vineCount,queue:this.specialSlot5.frenzyQueue};this.placedStream.attempt(context,init=>this.initializeNativePlacedObject(init));this.specialSlot5.frenzyQueue=context.queue;return;
   }
   const alias=this.firebarSlots?.visitAlias(slot);if(alias){if(alias==='cleared')this.slotReleaseFrame[slot]=this.frame;return;}
@@ -2670,7 +2674,7 @@ export class Simulation {
   }
  }
  private updateEnemies(oldBottom:number){
-  this.broClock++;if(this.placedCastle&&this.placedStream)this.placedBankFrame=this.frame;this.nativeBankItemFrame=this.frame;this.firebarSlots?.beginFrame(this.camera);
+  this.broClock++;if((this.placedCastle||this.placedHammerBros)&&this.placedStream)this.placedBankFrame=this.frame;this.nativeBankItemFrame=this.frame;this.firebarSlots?.beginFrame(this.camera);
   // Retained component motors are independent of the native bank readout.
   for(const [bar,motor]of this.firebarMotors)if(motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   if(this.mouthFlame&&!this.placedCastle)this.passNativeMouthFlame(0,this.mouthFlame.enemySlot??0);
@@ -2690,7 +2694,7 @@ export class Simulation {
   const ordered=[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5));let nativeSlot=0;
   for(const e of ordered){
    while(nativeSlot<=Math.min(5,e.enemySlot??5))this.visitNativeBankSlot(nativeSlot++,oldBottom);
-   if(this.placedCastle&&e.slotBorn===this.frame)continue;
+   if((this.placedCastle||this.placedHammerBros)&&e.slotBorn===this.frame)continue;
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
    let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined,stompPod=e.pod?{...e.pod}:undefined;
    const hurtBeforeMove=()=>{if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};

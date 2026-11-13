@@ -1,11 +1,11 @@
 import type {EnemyKind,EnemySpec} from './types.js';
 type Record={offset:number;id:number;x:number;y:number;hard:boolean};
-const kinds:Partial<{[id:number]:EnemyKind}>={0:'koopa',2:'beetle',3:'redKoopa',6:'goomba',14:'paratroopa',15:'paratroopa',16:'paratroopa'};
+const kinds:Partial<{[id:number]:EnemyKind}>={0:'koopa',2:'beetle',3:'redKoopa',5:'hammerBro',6:'goomba',14:'paratroopa',15:'paratroopa',16:'paratroopa'};
 export const ordinaryWalker=(kind:EnemyKind)=>['goomba','koopa','redKoopa','beetle','paratroopa'].includes(kind);
-/** Fully supported mixed walker/group/wrap-lift rooms use the physical stream, including singles absent from screenshots. */
+/** Fully supported Hammer Bro or walker/group/wrap-lift rooms use physical records, including singles absent from screenshots. */
 export function nativeMixedWalkerScene(records:Record[],origin:number,pictures:EnemySpec[]):EnemySpec[]|undefined{
  const group=(id:number)=>id>=0x37&&id<0x3f;
- if(!records.some(r=>r.id===38||r.id===39)||!records.some(r=>group(r.id))||!records.every(r=>kinds[r.id]||group(r.id)||[38,39,52].includes(r.id)))return;
+ if(!(records.some(r=>r.id===5)||records.some(r=>r.id===38||r.id===39)&&records.some(r=>group(r.id)))||!records.every(r=>kinds[r.id]||group(r.id)||[38,39,52].includes(r.id)))return;
  const palette=(kind:EnemyKind,x:number)=>pictures.filter(e=>e.kind===kind).sort((a,b)=>Math.abs(a.x-x)-Math.abs(b.x-x))[0]?.palette;
  return records.flatMap<EnemySpec>(r=>{
   if(group(r.id)){const n=r.id-0x37,kind:EnemyKind=n<4?'goomba':'koopa',count=2+(n&1),y=(n&2?0x70:0xb0)+32,column=r.x+origin;
