@@ -876,7 +876,7 @@ export class Simulation {
    const tile=this.collisionAt(x,edge,!down&&(this.area.theme==='water'||hiddenBlockBumps(p.y)));
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
    if(!tile&&pipeTop===undefined)continue;
-   if(tile&&this.area.theme==='water'&&dy>=0&&oldY>tile.y&&(waterFeet-tile.y>=SWIM_WALL_DEPTH||this.water.contactSpeed<0))continue;
+   if(tile&&this.area.theme==='water'&&down&&(waterFeet-tile.y>=SWIM_WALL_DEPTH||this.water.contactSpeed<0))continue;
    if(down&&tile&&this.area.theme!=='water'&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();break;}
    if(down){if(dy!==0)this.landingFraction=p.y-Math.floor(p.y);p.y=tile?.y??pipeTop!;p.vy=0;p.grounded=true;}
    else{if(!tile)continue;
