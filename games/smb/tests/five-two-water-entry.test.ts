@@ -35,7 +35,8 @@ test('the 5-2 water side pipe returns within the same level without a fresh-leve
  level.main=water.id;water.spawn=[pipe.x-14,pipe.y];water.camera=water.width-256;water.enemies=[];
  water.entryFall=undefined;water.waterEntryFall=false;water.spawnVelocity=undefined;
  const sim=new Simulation([level]);sim.reset(true);sim.player.size=2;
- sim.step(['right'],3);assert.equal(sim.phase,'pipe');
+ // Stop at the actual bottom-metatile contact, before any entry-animation rows.
+ for(let frame=0;frame<30&&sim.phase==='play';frame++)sim.step(['right'],1);assert.equal(sim.phase,'pipe');
  const time=sim.time;sim.step([],pipe.transitionFrames??64);
  assert.equal(sim.area.id,'area-2');assert.equal(sim.phase,'play');
  assert.equal(sim.player.x,1848);assert.equal(sim.player.y,176);assert.equal(sim.camera,1792);
