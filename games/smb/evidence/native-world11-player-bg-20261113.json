@@ -1,0 +1,289 @@
+{
+  "schema": "native-world11-player-bg-result-v1",
+  "runtimeBase": "cca2e44cff28d07595b6def7e2efc5ed356fcd56",
+  "role": "Independent per-frame strict STATE checks after one declared entrance seed per complete retained episode; pixels/joint/continuousPOWERON unchecked.",
+  "before": [
+    {
+      "sha256": "f25dd9e50ce8a2fd3b747ad5e358a0dd9c659381f045354003f48c7d6287baac",
+      "sourceFrameOffset": 1538,
+      "endFrame": 4375,
+      "frames": 2837,
+      "role": "Full retained native World1-1 epochs after one entrance seed; NOT continuous POWER-ON proof. Every row compared independently after first mismatch; pictures/joint unchecked.",
+      "counts": {
+        "match": 429,
+        "mismatch": 2408,
+        "unchecked": 0
+      },
+      "perField": {
+        "x": 1412,
+        "cam": 2393,
+        "missing": 356,
+        "y": 815,
+        "extra": 32,
+        "position": 739,
+        "time": 605,
+        "score": 552
+      },
+      "gaps": {},
+      "firsts": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": 2231,
+        "score": 2285,
+        "coins": null,
+        "cam": 443,
+        "x": 424,
+        "y": 505,
+        "missing": 461,
+        "extra": 1706,
+        "kind": null,
+        "position": 1710,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 2837,
+        "flagFrames": 614,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 2837,
+        "inputFrames": 2837,
+        "endReason": "end of trace",
+        "frames": 2837,
+        "alignedFrames": 2837,
+        "nativeEntityRows": 3108,
+        "comparedEntityRows": 3108,
+        "nativeBirthRows": 13,
+        "areaFrames": {
+          "main": 2837
+        },
+        "complete": true
+      }
+    },
+    {
+      "sha256": "9a3d23e2e274519969fd45896b4762ebd2125a7de3932262e5e8eec939ed5a0e",
+      "sourceFrameOffset": 216,
+      "endFrame": 2570,
+      "frames": 2354,
+      "role": "Full retained native World1-1 epochs after one entrance seed; NOT continuous POWER-ON proof. Every row compared independently after first mismatch; pictures/joint unchecked.",
+      "counts": {
+        "match": 2350,
+        "mismatch": 4,
+        "unchecked": 0
+      },
+      "perField": {
+        "y": 4
+      },
+      "gaps": {},
+      "firsts": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": 1339,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 2354,
+        "flagFrames": 810,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 2354,
+        "inputFrames": 2354,
+        "endReason": "end of trace",
+        "frames": 2354,
+        "alignedFrames": 2354,
+        "nativeEntityRows": 4075,
+        "comparedEntityRows": 4075,
+        "nativeBirthRows": 24,
+        "areaFrames": {
+          "main": 2354
+        },
+        "complete": true
+      }
+    }
+  ],
+  "after": [
+    {
+      "sha256": "f25dd9e50ce8a2fd3b747ad5e358a0dd9c659381f045354003f48c7d6287baac",
+      "sourceFrameOffset": 1538,
+      "endFrame": 4375,
+      "frames": 2837,
+      "role": "Full retained native World1-1 epochs after one entrance seed; NOT continuous POWER-ON proof. Every row compared independently after first mismatch; pictures/joint unchecked.",
+      "counts": {
+        "match": 2837,
+        "mismatch": 0,
+        "unchecked": 0
+      },
+      "perField": {},
+      "gaps": {},
+      "firsts": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 2837,
+        "flagFrames": 614,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 2837,
+        "inputFrames": 2837,
+        "endReason": "end of trace",
+        "frames": 2837,
+        "alignedFrames": 2837,
+        "nativeEntityRows": 3108,
+        "comparedEntityRows": 3108,
+        "nativeBirthRows": 13,
+        "areaFrames": {
+          "main": 2837
+        },
+        "complete": true
+      }
+    },
+    {
+      "sha256": "9a3d23e2e274519969fd45896b4762ebd2125a7de3932262e5e8eec939ed5a0e",
+      "sourceFrameOffset": 216,
+      "endFrame": 2570,
+      "frames": 2354,
+      "role": "Full retained native World1-1 epochs after one entrance seed; NOT continuous POWER-ON proof. Every row compared independently after first mismatch; pictures/joint unchecked.",
+      "counts": {
+        "match": 2354,
+        "mismatch": 0,
+        "unchecked": 0
+      },
+      "perField": {},
+      "gaps": {},
+      "firsts": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 2354,
+        "flagFrames": 810,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 2354,
+        "inputFrames": 2354,
+        "endReason": "end of trace",
+        "frames": 2354,
+        "alignedFrames": 2354,
+        "nativeEntityRows": 4075,
+        "comparedEntityRows": 4075,
+        "nativeBirthRows": 24,
+        "areaFrames": {
+          "main": 2354
+        },
+        "complete": true
+      }
+    }
+  ],
+  "cpu": {
+    "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+    "impedeCalls": 6144,
+    "initJSPrefixCalls": 512,
+    "impedePC": "df4b",
+    "initJSPC": "b4a0",
+    "sourceProbeSha256": "71a15d42ef50a507c605491801698b6ee4bfa01ee3edf1a1accdcd7edd561b2b"
+  },
+  "originalWorld11": {
+    "frames": 2853,
+    "entityRows": 4777,
+    "strict": "pass",
+    "legacyAllNull": true,
+    "otherWorldFramesNotAudited": 167
+  },
+  "focusedTests": {
+    "passed": 16,
+    "failed": 0
+  },
+  "limitations": [
+    "These episodes are native-entrance-seeded diagnostics, not cold-start continuous gameplay.",
+    "Pictures and state/picture joint rows have not been checked.",
+    "No whole corpus or other-level gameplay investigation was run; existing cross-level focused tests were regression checks only.",
+    "No protected PlayerMotor or ScrollHandler/camera arithmetic changed."
+  ]
+}

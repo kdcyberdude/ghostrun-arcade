@@ -1,3 +1,4 @@
+import {nativeFootImpediment} from './native-player-bg.js';
 import {nativeGoombaBlockStun} from './native-block-enemy.js';
 import {NativeColdStartup} from './native-cold-startup.js';
 import {NativeStartupPicture} from './native-startup-picture.js';
@@ -273,7 +274,7 @@ export class Simulation {
  vines:Vine[]=[];private climbingVine?:Vine;private vineProgress=new Map<string,number>();private vineDetached=false;private entryVineActive=false;private autoVineActive=false;private entryVineStage:'grow'|'climb'|'right'|'fall'='climb';
  warpZoneActive=false;
  private footPushed=false;private piranhaTouchFeetY?:number;private landingFraction=0;private fallGravity=FALL_GRAVITY_AFTER_LOAD;private walkingOff=false;
- private motor=new PlayerMotor();private wallSpeed?:number;private wallBackOut=false;
+ private motor=new PlayerMotor();private wallSide?:1|-1;private wallSpeed?:number;private wallBackOut=false;
  readonly bubbleState=new NativeBubbles();
  get bubbles(){return this.bubbleState.slots;}
  private bubblesInitialized=false;private waterScrollX=0;
@@ -634,7 +635,7 @@ export class Simulation {
   if(this.blockBounceTimer>0)this.blockBounceTimer--;p.invincible=Math.max(0,p.invincible-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
   if(this.area.autoWalk)b=new Set<Button>(['right']);
   this.entrancePreviousAB=undefined;this.nativePlayerAB=(b.has('a')?128:0)|(b.has('b')?64:0);
-  this.wallSpeed=undefined;
+  this.wallSpeed=undefined;this.wallSide=undefined;
   this.growVines();const vineMovement=this.moveOnVine(b,pressed('a'));if(vineMovement==='transition')return;
   if(!vineMovement){
   const direction=Number(b.has('right'))-Number(b.has('left'));
@@ -667,7 +668,7 @@ export class Simulation {
    if(this.waterEntryFall)p.vy=Math.min(PHYSICS.maxFall,p.vy+WATER_PHYSICS.entryGravity);
    else if(!swim){const next=advanceWater(p.y,p.vy,b.has('a'),pressed('a'),this.waterSurface);p.y=next.y;p.vy=next.vy;}
   }else{
-   if(pressed('a')&&p.grounded&&!this.springTimers.size){if(nativeStateZero)p.y=Math.floor(p.y);const jumpSpeed=Math.abs(p.vx);this.runJump=useMotor?jumpClassByte>=25:jumpSpeed>1.5;this.mediumJump=!this.runJump&&(useMotor?jumpClassByte>=16:jumpSpeed>1&&jumpSpeed<=1.5);this.lastJumpFallForce=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;this.fallGravity=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;p.vy=this.runJump?PHYSICS.runJump:PHYSICS.jump;p.grounded=false;this.jumpArc=true;this.jumpHeld=0;this.landJump='held';if(!b.has('b'))this.braking=PHYSICS.brake;this.emit(p.size?'sfx_jump_big':'sfx_jump_small');}
+   if(pressed('a')&&p.grounded&&!this.springTimers.size){p.y=Math.floor(p.y);this.landingFraction=0;const jumpSpeed=Math.abs(p.vx);this.runJump=useMotor?jumpClassByte>=25:jumpSpeed>1.5;this.mediumJump=!this.runJump&&(useMotor?jumpClassByte>=16:jumpSpeed>1&&jumpSpeed<=1.5);this.lastJumpFallForce=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;this.fallGravity=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;p.vy=this.runJump?PHYSICS.runJump:PHYSICS.jump;p.grounded=false;this.jumpArc=true;this.jumpHeld=0;this.landJump='held';if(!b.has('b'))this.braking=PHYSICS.brake;this.emit(p.size?'sfx_jump_big':'sfx_jump_small');}
    // Fresh no-contact release/repress pairs: A cannot restore held gravity.
    if(this.landJump==='held'&&!b.has('a')&&p.vy<0)this.landJump='released';
    this.jumpHeld++;
@@ -687,7 +688,7 @@ export class Simulation {
   // Native contacts resume after one masked row (Player_CollisionBits are restored every frame); a zero-motion back-out row masks its side again (movePlayerX).
   // The jump class after a contact reads the stale Player_XSpeedAbsolute (native 4-2 r8m0 row373, 5-2 r8m3 row1325, 7-1 r8m5 row1933).
   // ImpedePlayerMove: the contact zeroes the speed byte (the fraction stays) and masks that side's press on the next frame.
-  if(useMotor&&this.wallSpeed!==undefined){this.motor.speed=Math.round(this.wallSpeed*4096);this.motor.contact((Math.sign(this.wallSpeed)||Math.sign(motion)||this.motor.moving||1) as 1|-1,true);p.vx=this.motor.speed/4096;}
+  if(useMotor&&this.wallSpeed!==undefined){this.motor.speed=Math.round(this.wallSpeed*4096);this.motor.contact(this.wallSide??(Math.sign(this.wallSpeed)||Math.sign(motion)||this.motor.moving||1) as 1|-1,true);p.vx=this.motor.speed/4096;}
   // Swimming uses its own motor: a zero-motion back-out row holds its wall pause too (native 7-2 rows832..835).
   if(swim&&this.wallBackOut)this.water.motor.freeze=Math.max(1,this.water.motor.freeze);
   if(swim){this.swimContact(this.swimDy,oldBottom);if(p.y-this.water.whirlMoved>=288)this.areaControls.locked=true;if(this.swimPull>0&&!(this.water.horizontalState.collision&1))this.swimPull=0;p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
@@ -834,8 +835,11 @@ export class Simulation {
    return Math.abs(y-position.y)<0.01&&platformSupportsX(x,position.x,this.platformWidth(platform));
   });
  }
- // Native foot probes (x+3, x+12) land only when the feet are under 5 px into the cell; deeper, a non-rising Mario is pushed 1 px back along his motion and that row runs no side probe.
- private footPush(){const p=this.player,dir=Math.sign(p.vx)||this.motor.moving;p.x-=dir;this.wallSpeed=p.vx;p.vx=0;this.footPushed=true;}
+ // DoFootCheck: depth>=5 passes the retained moving direction to ImpedePlayerMove and omits side probes.
+ private footPush(){
+  const p=this.player,n=nativeFootImpediment(this.motor.moving,Math.round(p.vx*4096));this.wallSide=n.side;this.footPushed=true;
+  if(n.offset){p.x+=n.offset;this.wallSpeed=p.vx;p.vx=0;}
+ }
  // Native springboard cells (16x32 from 24 px above the spring base) are a wall to the side probes: free-play rows of 3-1, 5-2, 8-2, 2-1, 6-3 stop a right-moving
  // Mario at x = spring x - 13 (22 of 22 contacts, walking at feet 208 and rising in the air; speed cut to its fraction), the remake passed into the spring.
  // While Mario rides a spring (compression rows up to the launch row) a held direction steps the speed like the ground (5-2 r4 mood0 rows 224-237: +228 per row
@@ -868,7 +872,8 @@ export class Simulation {
  }
  private movePlayerX(dx:number,h:number,snap=true){
   const p=this.player;
-  if(this.footPushed||this.axeFootContact())return;
+  if(this.footPushed){if(this.wallSide)this.motor.contact(this.wallSide,false);return;}
+  if(this.axeFootContact())return;
   if(this.swimActive){this.swimSideWall(dx,h);return;}
   if(dx===0){
    for(const [upper,y] of [[true,p.y-h+4],[false,p.y-8]] as const){
@@ -2073,7 +2078,7 @@ export class Simulation {
    if(wasGrounded)this.playerAnim.setSpeed(this.motor.absolute);
    p.vx=this.motor.step({direction:1,ground:wasGrounded,jump:false,b:false,down:false,buttons:true})/4096;
    p.x+=motionOf(this.motor.speed);p.anim+=p.vx;p.grounded=false;
-   this.wallSpeed=undefined;this.footPushed=false;this.movePlayerY(p.vy,this.height);
+   this.wallSpeed=undefined;this.wallSide=undefined;this.footPushed=false;this.movePlayerY(p.vy,this.height);
    if(!p.grounded)p.vy=this.nativeFallCap(p.vy+this.fallGravity);
    this.walkOffStart(wasGrounded);
    // ScrollHandler sees the previous screen position and this frame's integer horizontal move.
@@ -2134,7 +2139,7 @@ export class Simulation {
     // ScrollHandler/ChkPOffscr clamps the integer coordinate, preserving its fraction.
     if(Math.floor(p.x)>Math.floor(this.camera)+239){p.x=Math.floor(this.camera)+239+p.x-Math.floor(p.x);this.motor.speed&=255;p.vx=this.motor.speed/4096;}
     if(Math.floor(p.x)<Math.floor(this.camera)){p.x=Math.floor(this.camera)+p.x-Math.floor(p.x);this.motor.speed&=255;p.vx=this.motor.speed/4096;}
-    this.wallSpeed=undefined;this.footPushed=false;this.movePlayerY(p.vy,this.height);
+    this.wallSpeed=undefined;this.wallSide=undefined;this.footPushed=false;this.movePlayerY(p.vy,this.height);
     if(!p.grounded)p.vy=this.nativeFallCap(p.vy+this.fallGravity);
     else{this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';}
     this.motor.clearContacts();this.movePlayerX(p.x-oldX,this.height,false);this.walkOffStart(wasGrounded);
