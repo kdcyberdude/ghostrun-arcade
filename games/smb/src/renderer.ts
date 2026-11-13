@@ -7,6 +7,7 @@ import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
 import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown,nativeBubbleShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
+import {nativeScreenPicture} from './native-screen-picture.js';
 import {nativeFlagSprites} from './native-flag-picture.js';
 import {nativeBlockSprites} from './native-block-picture.js';
 import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
@@ -214,8 +215,8 @@ export class GameRenderer {
   this.scene.clear();this.used.clear();const boot=s.phase==='title'?titleBootColor(s.titleFrame):undefined;if(boot){this.renderer.setClearColor(boot);this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
-  const black=['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
-  if(black)this.renderer.setClearColor(s.pipeClearing||s.phase==='intro'&&s.phaseFrame>=TRANSITIONS.introUniformSkyFromFrame?(s.area.background??'#6888fc'):'#000000');
+  const screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined,black=screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
+  if(black)this.renderer.setClearColor(screen?(s.nativeBackdrop===0x22?'#6888fc':'#000000'):s.pipeClearing||s.phase==='intro'&&s.phaseFrame>=TRANSITIONS.introUniformSkyFromFrame?(s.area.background??'#6888fc'):'#000000');
   if(!black){
    const ordinary=s.spritePictureOwner!=='empty'&&s.spritePictureOwner!=='victory';
    this.waterSurfaceSky(s);
@@ -289,12 +290,12 @@ export class GameRenderer {
    if(playerVisible(s))this.player(s);
    this.worldClip=false;
   }
-  const introLoading=s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.introHiddenLate);
-  if(!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing)this.hud(s);
+  const introLoading=screen?!screen.hud:s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.introHiddenLate);
+  if(screen?screen.hud:!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing)this.hud(s,s.area.palette,Boolean(screen&&s.nativeScreen!.engine<8));
   if(s.phase==='title')this.title(s);
-  if(s.timeUpScreen&&!introLoading)this.text('TIME UP',96,128);
-  else if(s.phase==='intro'&&!introLoading){
-   this.text('WORLD '+s.level.id,88,80);this.quad('player-'+(s.currentPlayer?'luigi':'mario')+'-right.png',[160,32,16,32],96,89,3);this.text('×  '+s.lives,120,112);
+  if(screen?screen.message==='time-up':s.timeUpScreen&&!introLoading)this.text('TIME UP',96,128);
+  else if(screen?screen.message==='lives':s.phase==='intro'&&!introLoading){
+   this.text('WORLD '+s.level.id,88,80);if(!screen||screen.avatar)this.quad('player-'+(s.currentPlayer?'luigi':'mario')+'-right.png',[160,32,16,32],96,89,3);this.text('×  '+s.lives,120,112);
   }
   if(s.phase==='gameover'&&!s.gameoverClosing){if(s.twoPlayer)this.text(s.currentPlayer?'LUIGI':'MARIO',104,112);this.text('GAME OVER',88,128);}
   this.castleRescue(s);

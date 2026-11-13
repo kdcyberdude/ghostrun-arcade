@@ -17,7 +17,7 @@ for(const level of fs.readdirSync(a.traces).sort()){
   // ScreenRoutines can be interrupted before a complete CPU pass. Retain
   // uniform PPU pictures as direct universal-color evidence for the writer.
   if(colors.length!==1)continue;
-  const key=JSON.stringify([n,water,colors[0]]);out.checked++;if(prior===key)continue;prior=key;out.events.push({level,frame:f,n,water,areaType:r[0x74e],background:r[0x744],color:colors[0]});
+  const key=JSON.stringify([n,water,colors[0]]);out.checked++;if(prior===key)continue;prior=key;out.events.push({level,frame:f,n,water,areaType:r[0x74e],background:r[0x744],previous:pixels[f*240*224],color:colors[0]});
  }
 }
 fs.writeFileSync(a.out,JSON.stringify(out)+'\n');console.log(out.checked,out.events.length);

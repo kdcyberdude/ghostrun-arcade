@@ -3,6 +3,8 @@ import {nativeAreaBindings,nativePhysicalAreas} from './native-area-catalog.js';
 import {initializeNativeGameTimer,runNativeGameTimer,tickNativeGameTimer} from './native-game-timer.js';
 import {nativeVerticalPipe,nativeSidePipe,nativeSidePipeTimer,nativeSavedScroll} from './native-pipe.js';
 import {NativeCastlePictures} from './native-castle-picture.js';
+import graphics from '../assets/graphics/graphics-manifest.json';
+import {nativeScreenPicture,nativeScreenBackdrop} from './native-screen-picture.js';
 import {NativePalette} from './native-palette.js';
 import {nativeIntervalStep,nativeStarMusic,nativeStarPalette,NATIVE_STAR_PICKUP} from './native-interval.js';
 import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-spring.js';
@@ -270,6 +272,7 @@ export class Simulation {
  get verticalPipeGraphics(){return this.phase==='pipe'&&this.destination?.direction==='down';}
  get pipeHidden(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=(this.area.autoWalk?TRANSITIONS.autoWalkPipe.hiddenFrame:32));}
  /** Native time-out: a TIME UP screen for the first 7 clock ticks of the 14, then the ordinary lives screen. */
+ nativeBackdrop=0x22; // PPUpalette0: retained across CPU RAM initialization, advanced by source screen writes
  get nativeScreen(){return this.deathLoad?.state??this.levelLoad;}
  get timeUpScreen(){return this.phase==='intro'&&Boolean(this.lifeIntro?.timeUp)&&this.lifeIntro!.seen<LIFE_FLOW.ticksScreen;}
  /** DisplayIntermediate/DisplayTimeUp queues the text and enables PPU output; it appears on the following NMI. */
@@ -330,6 +333,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
+  if(!this.nativeScreen)this.nativeBackdrop=graphics.palette_observations[area.palette].palette[0];
   this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.castlePictures=new NativeCastlePictures(this.level.id,area.id);this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=lifeEntry?12:0;if(lifeEntry)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);seedNativePageControllers(this.frenzyControllers,this.camera,this.areaControls.origin*16);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   for(const object of this.areaControls.castleGraphics)if(object.column>=0&&object.column*16<area.width)this.blockBackground.set(`${object.column},${object.row}`,object.id);
   this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
@@ -417,7 +421,7 @@ export class Simulation {
    const player=this.phase==='title'||!this.twoPlayer?0:this.currentPlayer;
    this.inputs.push(new Set(held[player]));const effective=this.inputs.shift()!;
    for(const key of ['start','select'] as Button[]){if(held[0].has(key)||(this.phase==='title'&&held[1].has(key)))effective.add(key);else effective.delete(key);}
-   {const starBefore=this.player.star,paletteBefore=this.starPalette,areaBefore=this.area,cameraBefore=this.camera,engineBefore=!['title','intro','gameover','ending','castle'].includes(this.phase),fresh=this.freshA,grace=this.phase==='play'&&this.controlGrace>0;if(grace){effective.delete('a');this.controlGrace--;}this.paletteRemove=false;this.graphicsBuffer1=false;this.blockUpdateBusy=false;this.update(effective);if(!this.paused&&areaBefore===this.area){if(engineBefore){const buffer2=this.paletteClock.step(Math.max(0,Math.floor(this.camera)-Math.floor(cameraBefore)),this.colorRotations,this.paletteRemove,this.graphicsBuffer1||(this.random.frame&7)===0);if(!buffer2){for(const [key,id]of this.blockBackgroundQueue)this.blockBackground.set(key,id);this.blockBackgroundQueue.clear();}}else this.paletteClock.draw=this.colorRotations;this.starDrawPalette=starBefore||this.player.star?paletteBefore:undefined;this.starPalette=nativeStarPalette(this.player.star,this.random.frame);}if(fresh&&!grace)this.freshA=false;}this.previous=effective;
+   {const starBefore=this.player.star,paletteBefore=this.starPalette,areaBefore=this.area,cameraBefore=this.camera,engineBefore=!['title','intro','gameover','ending','castle'].includes(this.phase),fresh=this.freshA,grace=this.phase==='play'&&this.controlGrace>0;if(grace){effective.delete('a');this.controlGrace--;}this.paletteRemove=false;this.graphicsBuffer1=false;this.blockUpdateBusy=false;this.update(effective);this.nativeBackdrop=nativeScreenBackdrop(this.nativeBackdrop,this.nativeScreen?nativeScreenPicture(this.nativeScreen,this.area.theme==='water'):undefined,graphics.palette_observations[this.area.palette].palette[0]);if(!this.paused&&areaBefore===this.area){if(engineBefore){const buffer2=this.paletteClock.step(Math.max(0,Math.floor(this.camera)-Math.floor(cameraBefore)),this.colorRotations,this.paletteRemove,this.graphicsBuffer1||(this.random.frame&7)===0);if(!buffer2){for(const [key,id]of this.blockBackgroundQueue)this.blockBackground.set(key,id);this.blockBackgroundQueue.clear();}}else this.paletteClock.draw=this.colorRotations;this.starDrawPalette=starBefore||this.player.star?paletteBefore:undefined;this.starPalette=nativeStarPalette(this.player.star,this.random.frame);}if(fresh&&!grace)this.freshA=false;}this.previous=effective;
   }
  }
  private update(b:Set<Button>){
