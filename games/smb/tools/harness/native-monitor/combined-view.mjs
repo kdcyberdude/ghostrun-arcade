@@ -12,10 +12,10 @@ export function renderCombined(s,{width=100,color=false,world=0,now=Date.now()}=
  const w=Math.max(52,Math.min(118,width-2)),plain=x=>x.replace(/\x1b\[[0-9;]*m/g,''),paint=(x,c)=>color?`\x1b[${c}m${x}\x1b[0m`:x;
  const fit=(s,len)=>plain(s).length>len?plain(s).slice(0,len-1)+'…':s+' '.repeat(len-plain(s).length);
  const row=x=>'│ '+fit(x,w-4)+' │',rule=title=>'├─ '+title+' '+'─'.repeat(Math.max(0,w-title.length-6))+'┤';
- const d=s.result,newer=(s.current?.results??[]).filter(r=>!r.error),historical=newer.length>0&&d.reported;
+ const d=s.result,newer=(s.current?.results??[]).filter(r=>!r.error),fullCurrent=Boolean(s.current?.fullCurrent),historical=newer.length>0&&d.reported&&!fullCurrent;
  // A level's newest state+picture result from the current build replaces its historical cell, marked '*'.
- const live={};for(const r of newer)if(r.current&&r.kind==='state+picture')for(const [key,e]of Object.entries(r.levels))if(!live[key]||Date.parse(r.measured)>Date.parse(live[key].measured))live[key]={...e,measured:r.measured};
- const lines=['┌'+'─'.repeat(w-2)+'┐',row(paint(historical?`SMB 2D · HISTORICAL FULL AUDIT · build ${d.runtime.slice(0,7)}`:'SMB 2D · ACTUAL EVERY-FRAME CHECK',1)),row(`${s.moodCount} mood + ${s.referenceCount} original recordings · ${n(d.total)} recorded input frames`)];
+ const live={};if(!fullCurrent)for(const r of newer)if(r.current&&r.kind==='state+picture')for(const [key,e]of Object.entries(r.levels))if(!live[key]||Date.parse(r.measured)>Date.parse(live[key].measured))live[key]={...e,measured:r.measured};
+ const lines=['┌'+'─'.repeat(w-2)+'┐',row(paint(fullCurrent?`SMB 2D · CURRENT FULL AUDIT · build ${d.runtime.slice(0,7)}${d.progress?.status==='running'?' · RUNNING':''}`:historical?`SMB 2D · HISTORICAL FULL AUDIT · build ${d.runtime.slice(0,7)}`:'SMB 2D · ACTUAL EVERY-FRAME CHECK',1)),row(`${s.moodCount} mood + ${s.referenceCount} original recordings · ${n(d.total)} recorded input frames`)];
  if(d.scope)lines.push(row(`SCOPE ${d.scope.levels.join(', ')} · all target-level frames; other frames unchecked`));
  lines.push(row(paint(`MATCHING ${d.reported?n(d.matching):'--'}`,32)+'     '+paint(`NOT MATCHING ${d.reported?n(d.notMatching):'--'}`,31)));
  lines.push(row(`${n(d.unchecked)} unchecked · state AND screen required · each observed frame counted independently`));
@@ -47,6 +47,7 @@ export function renderCombined(s,{width=100,color=false,world=0,now=Date.now()}=
   lines.push(row('Each cell: matching / not matching input frames. -- means no combined evidence.'));
   if(Object.keys(live).length)lines.push(row(`* current build ${s.current.head.slice(0,7)} (state+picture); other cells historical build ${d.runtime.slice(0,7)}. Totals above are historical.`));
   else if(historical)lines.push(row(`All cells historical build ${d.runtime.slice(0,7)}; newer results are listed above.`));
+  else if(fullCurrent)lines.push(row(`All cells current build ${d.runtime.slice(0,7)} (state+picture)${d.progress?.status==='running'?'; recordings still running count as unchecked':''}.`));
  }else{
   lines.push(row('Level       Matching       Not matching       Unchecked'));
   for(let l=1;l<=4;l++){const key=`${world}-${l}`,e=d.levels[key];lines.push(row(`${key.padEnd(12)}${(e.total?n(e.matching):'--').padEnd(15)}${(e.total?n(e.notMatching):'--').padEnd(19)}${e.total?n(e.unchecked):'--'}`));for(const [label,c]of [['State',e.state],['Picture',e.picture]])lines.push(row(`  ${label}: ${n(c.matching)} match / ${n(c.notMatching)} mismatch / ${n(c.unchecked)} unchecked`));}

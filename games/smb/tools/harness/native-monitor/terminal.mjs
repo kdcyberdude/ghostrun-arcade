@@ -65,7 +65,8 @@ while(running){
    lastCompleted={runtime:result.runtime,...(result.scope?{scope:result.scope}:{}),finished:result.progress.finished,started:result.progress.started};histories[historyKey]=lastCompleted;
    fs.writeFileSync(lastCompletedFile+'.partial',JSON.stringify(lastCompleted,null,2)+'\n');fs.renameSync(lastCompletedFile+'.partial',lastCompletedFile);
   }
-  const text=renderCombined({moodCount:mood.runs.length,referenceCount:32,result,lastCompleted,current:currentResults()},{world,width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY)});
+  const current=currentResults();current.fullCurrent=Boolean(result.reported&&current.head&&!current.dirty&&sameGame(result.runtime,current.head));
+  const text=renderCombined({moodCount:mood.runs.length,referenceCount:32,result,lastCompleted,current},{world,width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY)});
   if(args.watch&&process.stdout.isTTY){cursorTo(process.stdout,0,0);clearScreenDown(process.stdout);}
   process.stdout.write(text);if(invalid)process.stderr.write(`Rejected report: ${invalid}\n`);
  }catch(e){process.stderr.write(`No result accepted: ${e.message}\n`);if(!args.watch)process.exitCode=1;}

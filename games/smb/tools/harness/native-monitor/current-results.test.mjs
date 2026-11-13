@@ -25,3 +25,8 @@ test('view separates historical totals from newer state-only results',()=>{
  assert.match(text,/HISTORICAL FULL AUDIT · build cca2e44/);assert.match(text,/1-1 STATE ONLY · pictures not compared · CURRENT/);assert.match(text,/All cells historical build cca2e44/);
  const older={...current,results:[{...current.results[0],current:false}]};assert.match(renderCombined({moodCount:1,referenceCount:1,result:emptyResult(inventory),current:older},{width:118}),/OLDER BUILD abc1234/);
 });
+test('a full audit of the current game build is titled CURRENT, not historical',()=>{
+ const current={head:'abc1234',dirty:false,fullCurrent:true,results:[{...summarizeCurrent(stateReport(runs()),inventory,policyHash),current:true,file:'x'}]};
+ const text=renderCombined({moodCount:1,referenceCount:1,result:{...emptyResult(inventory),reported:true,runtime:'abc1234',progress:{status:'running',done:0,total:2,directlyComparedFrames:0,started:'2026-11-14T00:00:00Z',updated:'2026-11-14T00:00:00Z'}},current},{width:118});
+ assert.match(text,/CURRENT FULL AUDIT · build abc1234 · RUNNING/);assert.doesNotMatch(text,/HISTORICAL/);assert.match(text,/All cells current build abc1234/);
+});
