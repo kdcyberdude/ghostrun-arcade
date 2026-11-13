@@ -17,8 +17,8 @@ export class NativeAreaControls {
   this.column=startPage*16+24-this.origin;
  }
  seedNative(column:number,locked:boolean){this.column=column-this.origin;this.locked=locked;}
- advance(task:number|undefined){
-  if(task===7||task===3)for(const command of this.commands)if(command.column===this.column)this.locked=!this.locked;
+ advance(task:number|undefined,warpHandled=false){
+  if(task===7||task===3)for(const command of this.commands)if(command.column===this.column&&!(warpHandled&&command.command===5))this.locked=!this.locked;
   if(task===4||task===0)this.column++;
  }
 }

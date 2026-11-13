@@ -1,0 +1,267 @@
+{
+ "source": "Unmodified v2 native RAM. Counts ID51 active non-alias rows across all areas before comparator gates; legacy adapter retains its existing first-birth skip. Strict already maps ID51 and is unchanged.",
+ "previouslyMappedRows": 0,
+ "totals": {
+  "activeRows": 4703,
+  "birthRows": 251,
+  "legacyAdapterRows": 4452
+ },
+ "levels": [
+  {
+   "level": "1-1",
+   "frames": 3020,
+   "ramSha256": "c23dafaa7222862a82883a8e45f6f6c49b3c39fe799b377aac789c967ca9ee1b",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "1-2",
+   "frames": 3060,
+   "ramSha256": "56ab5053a758a084a902266837b9117329b30359b5a191dfcff8db84e909e112",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "1-3",
+   "frames": 1736,
+   "ramSha256": "996207281332e7b28f1c203a22ffcb170aa1be22347062664fd6a5000e6562cf",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "1-4",
+   "frames": 2840,
+   "ramSha256": "45ea8e1a9d92bad85ccd47c02a2068e320f7e03bcc70aac22410a74bfd94e8bd",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "2-1",
+   "frames": 2956,
+   "ramSha256": "fc0806d85aa43ab262b480d574ff55fad45ffa9c31f0a9e86315079d9351d4ec",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "2-2",
+   "frames": 6600,
+   "ramSha256": "2f3f5d571d134a6fe21074f8d27a34a92afae0c24089991aeabad5b5b822cf2e",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "2-3",
+   "frames": 2408,
+   "ramSha256": "564cd73bd551043ae2999fd9eda6d5c3f34f40730679a3a320b2e76627341fa5",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "2-4",
+   "frames": 4644,
+   "ramSha256": "b948c60ab3737463e13d38061f4090884f26cc4ec54b4c5d5d579264aba19c52",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "3-1",
+   "frames": 2616,
+   "ramSha256": "f7c672c37bda8356964ab2b6b017fabfb8bf3c17e2c2d043d22b8090ad520a99",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "3-2",
+   "frames": 2304,
+   "ramSha256": "35c26ad64c504d53c454342380c2e080f100fdb3a2110fc0342bf6a87bae33ed",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "3-3",
+   "frames": 1776,
+   "ramSha256": "d85e3c1f050e512fd644c30d10ea055eda0f859874556ecbc39993c52b55f443",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "3-4",
+   "frames": 4772,
+   "ramSha256": "ce5be1cd8ddf615eb07bf99de0ef529a1c7891c76431a27a13a157582bc7dd05",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "4-1",
+   "frames": 2388,
+   "ramSha256": "579c63cf0e6e3a4eadd8d42af3680a1fbb1d81bad9c13bd7a705dedca60fbf32",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "4-2",
+   "frames": 4636,
+   "ramSha256": "cb9b88687cff601acf5fadb2974a2ecfc7a02c35f55c1483a667d8e4f1e24734",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "4-3",
+   "frames": 1800,
+   "ramSha256": "d2ef8791452f98d63bc34d508a4a2bf3f99409fef86b978bfbd997bd78891814",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "4-4",
+   "frames": 11636,
+   "ramSha256": "ab812a6e0e46fa7e06bcc0ca8d61a7b5a148d8a9cab96db8e7d58424fe8058f1",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "5-1",
+   "frames": 4392,
+   "ramSha256": "7d05553f898b2be4821d2afc4b4162d004c2d883e75a5273cfef641c0e7a5b0f",
+   "activeRows": 613,
+   "birthRows": 28,
+   "legacyAdapterRows": 585
+  },
+  {
+   "level": "5-2",
+   "frames": 3552,
+   "ramSha256": "d793a2cdee95c4df2218829e5e45c3561504e0ead23f23075739fb7c7ffa4732",
+   "activeRows": 501,
+   "birthRows": 19,
+   "legacyAdapterRows": 482
+  },
+  {
+   "level": "5-3",
+   "frames": 2456,
+   "ramSha256": "bc7979e5d5daec316f92470961a538d6eb6aae6521f8d5da032b586c363ea76e",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "5-4",
+   "frames": 2672,
+   "ramSha256": "da787c1a1afcdf22b72f2643072a6ab94b03b39ce7a5c3d0b935a5bc92fad5f8",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "6-1",
+   "frames": 2284,
+   "ramSha256": "ad6341cfc58b253b3446d620c774d5decd3f6fc79ca9e59922fea2926ebb145d",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "6-2",
+   "frames": 4696,
+   "ramSha256": "ea0f476307ecb681925fbd452839a85f5a8f54a646d7010942ebbbfe85d0641e",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "6-3",
+   "frames": 3080,
+   "ramSha256": "4cc89d030e3101ab01631f8bcc6e391ae23fa4e60b756f430493dc32c06e4d03",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "6-4",
+   "frames": 1644,
+   "ramSha256": "48cbfe5206efa8463eea327e1882bbe8b584222cc631c2cbd9b2da22c285d277",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "7-1",
+   "frames": 3816,
+   "ramSha256": "4695eef592ca9e0bd21c05aa40c2967402cce6cde75a3b70ad6ee37ae354a0b5",
+   "activeRows": 1525,
+   "birthRows": 92,
+   "legacyAdapterRows": 1433
+  },
+  {
+   "level": "7-2",
+   "frames": 4568,
+   "ramSha256": "c1a8703d40ba20f3afa3a24cbd5b8a86f3c0fc1c0a6fb0e9f914e333633a119d",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "7-3",
+   "frames": 3184,
+   "ramSha256": "07d15e07dc4bbd3c93238d7790126527efac54cfeb4d4682c23ec30bdf387748",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "7-4",
+   "frames": 24000,
+   "ramSha256": "fa6a41c5d98184091168f34ce1cdac9c52ca7f3e9c69e20c74605ae9e525b4a4",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "8-1",
+   "frames": 3800,
+   "ramSha256": "0a79a09f79b7ace066d413d72b02d05d69aa2de5b42048bbad1fa702661184a2",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  },
+  {
+   "level": "8-2",
+   "frames": 2760,
+   "ramSha256": "55689587f5c530e2cf25c97883eefa6b37e3ebc101d3af8e6573ff1d20520149",
+   "activeRows": 345,
+   "birthRows": 37,
+   "legacyAdapterRows": 308
+  },
+  {
+   "level": "8-3",
+   "frames": 4208,
+   "ramSha256": "9f9ffe84f4b8601e79d79f6dd08522c4ba2aa3917413818b98d935df7a22d484",
+   "activeRows": 1719,
+   "birthRows": 75,
+   "legacyAdapterRows": 1644
+  },
+  {
+   "level": "8-4",
+   "frames": 15732,
+   "ramSha256": "0d1bb0f3933ebfdfc6a89f4922ccb069ac8a52f7780f93fab152ec1d9a79549f",
+   "activeRows": 0,
+   "birthRows": 0,
+   "legacyAdapterRows": 0
+  }
+ ]
+}

@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
+import parserStarts from './fixtures/native-roof-parser-starts.json';
 import {observedLevels} from '../src/levels.js';
 import observations from '../data/warp-1-2-observations.json';
 import fixtures from '../data/warp-1-2-fixture-inputs.json';
@@ -15,7 +16,7 @@ function roofFixture(){
  const all=observedLevels(),source=structuredClone(all.find(l=>l.id==='1-2')!);
  source.main='area-2';const area=source.areas.find(a=>a.id===source.main)!;
  area.spawn=[2578,32];area.camera=2457;area.spawnVelocity=[0,0];area.entryFall=undefined;
- const sim=new Simulation([source,...all.filter(l=>l.id!==source.id)]);sim.reset(true);return sim;
+ const sim=new Simulation([source,...all.filter(l=>l.id!==source.id)]);sim.reset(true);const parser=parserStarts.samples.find(s=>s.level==='1-2')!;assert.equal(sim.camera,parser.camera);(sim as any).areaControls.seedNative(parser.column,parser.locked);Object.assign((sim as any).parserClock,{task:parser.task,scroll:parser.scroll});return sim;
 }
 
 test('the observed roof extension remains in the same1-2 area with real pipes and explicit unknown cells',()=>{
@@ -29,20 +30,20 @@ test('the observed roof extension remains in the same1-2 area with real pipes an
  assert.ok(area.pipes?.some(p=>p.x===2656&&p.to==='area-3'&&!p.requiresWarpActivation),'normal exit remains available');
 });
 
-test('ordinary roof movement activates the sign at the camera stop and removes only the three warp plants',()=>{
+test('ordinary roof movement activates the source warp column and clears live plants',()=>{
  const sim=roofFixture(),area=sim.area,warpX=area.warpZone!.removePiranhasAtX;
  const ordinaryPlants=sim.enemies.filter(e=>e.kind==='piranha'&&!warpX.includes(e.x));
- assert.equal(sim.warpZoneActive,false);let firstActiveFrame=0;
+ assert.equal(sim.warpZoneActive,false);let firstActiveFrame=0,lockedAt=0;
  for(let frame=1;frame<=300;frame++){
   const x=sim.player.x;sim.step(['right','b'],1);
   assert.equal(sim.area,area);assert.equal(sim.areaFrame,frame);assert.ok(Math.abs(sim.player.x-x)<=2.5);
   assert.ok(sim.camera<=2818);
   if(!sim.warpZoneActive)assert.ok(sim.camera<2818);
-  else if(!firstActiveFrame){firstActiveFrame=frame;assert.equal(sim.camera,2818);}
+  else if(!firstActiveFrame){firstActiveFrame=frame;lockedAt=sim.camera;assert.equal(sim.parserColumnX,area.nativePiranhaKills![0].column);assert.equal((sim as any).areaControls.locked,true);}
  }
- assert.ok(firstActiveFrame>0);assert.equal(sim.warpZoneActive,true);assert.equal(sim.camera,2818);
+ assert.ok(firstActiveFrame>0);assert.equal(sim.warpZoneActive,true);assert.equal(sim.camera,lockedAt);
  assert.equal(sim.player.y,208);assert.equal(sim.lives,3);assert.equal(sim.phase,'play');
- assert.equal(sim.enemies.some(e=>e.kind==='piranha'&&warpX.includes(e.originX)),false);
+ assert.equal(sim.enemies.some(e=>e.kind==='piranha'&&warpX.includes(e.originX)&&e.active&&!e.slotFreed&&e.dead<100),false);
  for(const plant of ordinaryPlants)assert.ok(sim.enemies.includes(plant),'unrelated plants are not removed by warp activation');
  sim.reset(true);assert.equal(sim.warpZoneActive,false);assert.equal(sim.enemies.filter(e=>e.kind==='piranha'&&warpX.includes(e.x)).length,3);
 });

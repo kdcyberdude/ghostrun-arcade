@@ -1,6 +1,6 @@
 {
   "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
-  "source": "Native ROM VerticalPipe: x=column*16+8,y=row*16+32; InitPiranhaPlant down=y,up=y-24. Native1-1 suppresses pipe plants. Geometry offsets are source area mappings, not fitted motor constants.",
+  "source": "Native ROM VerticalPipe: x=column*16+8,y=row*16+32; InitPiranhaPlant down=y,up=y-24. Native WorldNumber|AreaNumber zero suppresses plants. Area bindings come from ROM world routes and portal destinations.",
   "areas": [
     {
       "level": "1-1",
@@ -11,6 +11,19 @@
           "offset": 0
         }
       ],
+      "kills": [],
+      "plants": []
+    },
+    {
+      "level": "1-1",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": 0
+        }
+      ],
+      "kills": [],
       "plants": []
     },
     {
@@ -22,6 +35,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -31,6 +45,12 @@
         {
           "pointer": 44087,
           "offset": 0
+        }
+      ],
+      "kills": [
+        {
+          "column": 3168,
+          "offset": 158
         }
       ],
       "plants": [
@@ -105,6 +125,7 @@
           "offset": -176
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 56,
@@ -119,6 +140,18 @@
       ]
     },
     {
+      "level": "1-2",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": -32
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "1-3",
       "area": "main",
       "source": [
@@ -127,6 +160,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -138,6 +172,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -149,6 +184,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 744,
@@ -233,6 +269,30 @@
       ]
     },
     {
+      "level": "2-1",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": 0
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
+      "level": "2-1",
+      "area": "sky-coins",
+      "source": [
+        {
+          "pointer": 43132,
+          "offset": 0
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "2-2",
       "area": "main",
       "source": [
@@ -241,6 +301,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -252,7 +313,31 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
+    },
+    {
+      "level": "2-2",
+      "area": "area-3",
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": -176
+        }
+      ],
+      "kills": [],
+      "plants": [
+        {
+          "x": 56,
+          "y": 176,
+          "offset": 90,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 42640
+        }
+      ]
     },
     {
       "level": "2-3",
@@ -263,6 +348,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -274,6 +360,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -285,6 +372,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 520,
@@ -339,6 +427,30 @@
       ]
     },
     {
+      "level": "3-1",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": -64
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
+      "level": "3-1",
+      "area": "3-1-vine-sky",
+      "source": [
+        {
+          "pointer": 43993,
+          "offset": 0
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "3-2",
       "area": "main",
       "source": [
@@ -347,6 +459,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 2712,
@@ -369,6 +482,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -380,6 +494,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -391,6 +506,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 344,
@@ -435,6 +551,18 @@
       ]
     },
     {
+      "level": "4-1",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": -96
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "4-2",
       "area": "area-2",
       "source": [
@@ -443,6 +571,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -452,6 +581,12 @@
         {
           "pointer": 44250,
           "offset": 0
+        }
+      ],
+      "kills": [
+        {
+          "column": 3680,
+          "offset": 156
         }
       ],
       "plants": [
@@ -566,6 +701,7 @@
           "offset": -176
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 56,
@@ -580,6 +716,66 @@
       ]
     },
     {
+      "level": "4-2",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": -128
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
+      "level": "4-2",
+      "area": "vine-warp-zone",
+      "source": [
+        {
+          "pointer": 43472,
+          "offset": 0
+        }
+      ],
+      "kills": [
+        {
+          "column": 1120,
+          "offset": 44
+        }
+      ],
+      "plants": [
+        {
+          "x": 808,
+          "y": 160,
+          "offset": 34,
+          "bytes": [
+            40,
+            122
+          ],
+          "pointer": 43472
+        },
+        {
+          "x": 872,
+          "y": 160,
+          "offset": 36,
+          "bytes": [
+            104,
+            122
+          ],
+          "pointer": 43472
+        },
+        {
+          "x": 936,
+          "y": 160,
+          "offset": 38,
+          "bytes": [
+            168,
+            122
+          ],
+          "pointer": 43472
+        }
+      ]
+    },
+    {
       "level": "4-3",
       "area": "main",
       "source": [
@@ -588,6 +784,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -599,6 +796,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 648,
@@ -621,6 +819,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 712,
@@ -665,6 +864,18 @@
       ]
     },
     {
+      "level": "5-1",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": -128
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "5-2",
       "area": "area-2",
       "source": [
@@ -673,6 +884,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 888,
@@ -707,6 +919,30 @@
       ]
     },
     {
+      "level": "5-2",
+      "area": "optional-water",
+      "source": [
+        {
+          "pointer": 44552,
+          "offset": 0
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
+      "level": "5-2",
+      "area": "5-2-vine-sky",
+      "source": [
+        {
+          "pointer": 43132,
+          "offset": 0
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "5-3",
       "area": "main",
       "source": [
@@ -715,6 +951,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -726,6 +963,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -737,6 +975,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 1640,
@@ -759,6 +998,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 312,
@@ -1043,6 +1283,54 @@
       ]
     },
     {
+      "level": "6-2",
+      "area": "optional-water",
+      "source": [
+        {
+          "pointer": 44552,
+          "offset": 0
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
+      "level": "6-2",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": -128
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
+      "level": "6-2",
+      "area": "bonus-coins-late",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": -96
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
+      "level": "6-2",
+      "area": "6-2-vine-sky",
+      "source": [
+        {
+          "pointer": 43993,
+          "offset": 0
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "6-3",
       "area": "main",
       "source": [
@@ -1051,6 +1339,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -1062,6 +1351,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -1073,6 +1363,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 1224,
@@ -1127,6 +1418,18 @@
       ]
     },
     {
+      "level": "7-1",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": 0
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "7-2",
       "area": "area-2",
       "source": [
@@ -1135,6 +1438,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -1146,7 +1450,31 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
+    },
+    {
+      "level": "7-2",
+      "area": "area-5",
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": -176
+        }
+      ],
+      "kills": [],
+      "plants": [
+        {
+          "x": 56,
+          "y": 176,
+          "offset": 90,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 42640
+        }
+      ]
     },
     {
       "level": "7-3",
@@ -1157,6 +1485,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -1168,6 +1497,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": []
     },
     {
@@ -1179,6 +1509,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 568,
@@ -1303,6 +1634,18 @@
       ]
     },
     {
+      "level": "8-1",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": -32
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "8-2",
       "area": "main",
       "source": [
@@ -1311,6 +1654,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 2104,
@@ -1355,6 +1699,18 @@
       ]
     },
     {
+      "level": "8-2",
+      "area": "bonus-coins",
+      "source": [
+        {
+          "pointer": 44411,
+          "offset": -128
+        }
+      ],
+      "kills": [],
+      "plants": []
+    },
+    {
       "level": "8-3",
       "area": "main",
       "source": [
@@ -1363,6 +1719,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 856,
@@ -1405,6 +1762,7 @@
           "offset": 0
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 312,
@@ -1457,6 +1815,7 @@
           "offset": -112
         }
       ],
+      "kills": [],
       "plants": [
         {
           "x": 56,
@@ -1505,6 +1864,115 @@
           "bytes": [
             132,
             122
+          ],
+          "pointer": 41980
+        }
+      ]
+    },
+    {
+      "level": "8-4",
+      "area": "area-3",
+      "source": [
+        {
+          "pointer": 41980,
+          "offset": -192
+        }
+      ],
+      "kills": [],
+      "plants": [
+        {
+          "x": 56,
+          "y": 176,
+          "offset": 64,
+          "bytes": [
+            57,
+            115
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 200,
+          "y": 128,
+          "offset": 68,
+          "bytes": [
+            198,
+            118
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 328,
+          "y": 112,
+          "offset": 70,
+          "bytes": [
+            69,
+            255
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 584,
+          "y": 128,
+          "offset": 80,
+          "bytes": [
+            70,
+            126
+          ],
+          "pointer": 41980
+        }
+      ]
+    },
+    {
+      "level": "8-4",
+      "area": "area-4",
+      "source": [
+        {
+          "pointer": 44738,
+          "offset": 0
+        }
+      ],
+      "kills": [],
+      "plants": [
+        {
+          "x": 56,
+          "y": 176,
+          "offset": 2,
+          "bytes": [
+            57,
+            115
+          ],
+          "pointer": 44738
+        }
+      ]
+    },
+    {
+      "level": "8-4",
+      "area": "area-5",
+      "source": [
+        {
+          "pointer": 41980,
+          "offset": -256
+        }
+      ],
+      "kills": [],
+      "plants": [
+        {
+          "x": 56,
+          "y": 176,
+          "offset": 86,
+          "bytes": [
+            57,
+            243
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 168,
+          "y": 176,
+          "offset": 88,
+          "bytes": [
+            169,
+            123
           ],
           "pointer": 41980
         }

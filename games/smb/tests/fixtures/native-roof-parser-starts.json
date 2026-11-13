@@ -1,0 +1,25 @@
+{
+ "source": "Native v2 RAM fields071F/073D/0725/0726/0723 at the declared roof fixture cameras; no later RAM is applied.",
+ "samples": [
+  {
+   "level": "1-2",
+   "frame": 1700,
+   "pointer": 44087,
+   "camera": 2457,
+   "task": 0,
+   "scroll": 25,
+   "column": 176,
+   "locked": false
+  },
+  {
+   "level": "4-2",
+   "frame": 2539,
+   "pointer": 44250,
+   "camera": 2546,
+   "task": 0,
+   "scroll": 18,
+   "column": 182,
+   "locked": false
+  }
+ ]
+}
