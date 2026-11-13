@@ -1,10 +1,10 @@
 {
   "schema": "smb-ram-corpus-fix-progress-v1",
-  "generatedAt": "2026-11-13T22:06:38.620Z",
+  "generatedAt": "2026-11-13T22:30:51.433Z",
   "status": "incomplete",
   "baselineCommit": "795ec985f1cc72d10263860a272366a7e2c33e5c",
   "runtimeSources": {
-    "games/smb/src/simulation.ts": "645cc2985d763c8f46171f6ba2262b55ba6ddc498d3b8732e3e99dece9c4408f",
+    "games/smb/src/simulation.ts": "17b512bf41aab08ec119c1a1f741f770fb72d06c70f84f097b6648cc7dedec64",
     "games/smb/src/native-player-enemy-latch.ts": "9685b9b8d4dcb74bde5040d81336d7e2257454bc424abfee42fd8526234d29f3",
     "games/smb/data/levels.json": "9aba89d77a2a589ff15291b54d905ff810c34fe989f824a40a4ccbc8342b1e9d",
     "games/smb/data/native-geometry-corrections.json": "680503eb7ba7fcedc51e34f49b79e03023449ef7f028ecaa345b1037d15221c7",
@@ -50,64 +50,8 @@
     "Left screen boundary preserves fractional position/speed and the facing/steering exception.",
     "Exit castles in 2-2 and 7-2 use the native solid door cell at column29,row12."
   ],
-  "remainingEvaluationSegments": 108,
+  "remainingEvaluationSegments": 96,
   "remainingByLevel": [
-    {
-      "level": "1-2",
-      "segments": 17,
-      "recordings": 16,
-      "examples": [
-        {
-          "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
-          "entry": 4,
-          "area": "area-2",
-          "sourceFrame": 3198,
-          "evidence": "ordered-level-pass"
-        },
-        {
-          "id": "feb0bae1907f573909f0218b6b5a7bc9af9a8d1645130c77be2e291665224116",
-          "entry": 4,
-          "area": "area-2",
-          "sourceFrame": 4061,
-          "evidence": "ordered-level-pass"
-        },
-        {
-          "id": "a561a80e9b03653e53b7fa409f399cd5d995c3ce9d6b19cd997437180d442569",
-          "entry": 2,
-          "area": "area-2",
-          "sourceFrame": 3420,
-          "evidence": "ordered-level-pass"
-        }
-      ]
-    },
-    {
-      "level": "1-4",
-      "segments": 4,
-      "recordings": 4,
-      "examples": [
-        {
-          "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
-          "entry": 8,
-          "area": "main",
-          "sourceFrame": 13393,
-          "evidence": "ordered-level-pass"
-        },
-        {
-          "id": "cc17bab5a6f1c9a13ba304166ca198ca15814e51593e37f4fd0258ab81eafa25",
-          "entry": 7,
-          "area": "main",
-          "sourceFrame": 9819,
-          "evidence": "ordered-level-pass"
-        },
-        {
-          "id": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
-          "entry": 7,
-          "area": "main",
-          "sourceFrame": 15445,
-          "evidence": "ordered-level-pass"
-        }
-      ]
-    },
     {
       "level": "1-1",
       "segments": 3,
@@ -118,77 +62,49 @@
           "entry": 0,
           "area": "main",
           "sourceFrame": 938,
-          "evidence": "ordered-level-pass"
+          "evidence": "two-d-integrated"
         },
         {
           "id": "a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966",
           "entry": 0,
           "area": "main",
           "sourceFrame": 938,
-          "evidence": "ordered-level-pass"
+          "evidence": "two-d-integrated"
         },
         {
           "id": "2bfc31326b5ab09964d788f22f4d53e803e00a0aa3b43824b5ec0f31b08f58b8",
           "entry": 0,
           "area": "main",
           "sourceFrame": 938,
-          "evidence": "ordered-level-pass"
+          "evidence": "two-d-integrated"
         }
       ]
     },
     {
-      "level": "2-3",
-      "segments": 20,
-      "recordings": 19,
+      "level": "1-2",
+      "segments": 7,
+      "recordings": 7,
       "examples": [
         {
-          "id": "c6ee76c6759431d0feeca36dc96fe9948f1f6fb1ac673ed36b242f5042568de5",
-          "entry": 12,
-          "area": "main",
-          "sourceFrame": 19618,
-          "evidence": "current-worlds-patch"
+          "id": "a561a80e9b03653e53b7fa409f399cd5d995c3ce9d6b19cd997437180d442569",
+          "entry": 2,
+          "area": "area-2",
+          "sourceFrame": 3420,
+          "evidence": "two-d-integrated"
         },
         {
-          "id": "01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46",
-          "entry": 12,
-          "area": "main",
-          "sourceFrame": 18724,
-          "evidence": "current-worlds-patch"
+          "id": "89fad3702628c2e8467618195db6b72ab433b4f7ab46a5af1b3c0f99bbba93b5",
+          "entry": 2,
+          "area": "area-2",
+          "sourceFrame": 7749,
+          "evidence": "two-d-integrated"
         },
         {
-          "id": "24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761",
-          "entry": 11,
-          "area": "main",
-          "sourceFrame": 19510,
-          "evidence": "current-worlds-patch"
-        }
-      ]
-    },
-    {
-      "level": "2-1",
-      "segments": 31,
-      "recordings": 30,
-      "examples": [
-        {
-          "id": "bec0f52a3021c72e93d7a8126c6e481c1176604f09234921c77afa9b2dbfe18e",
-          "entry": 8,
-          "area": "main",
-          "sourceFrame": 12056,
-          "evidence": "ordered-level-pass"
-        },
-        {
-          "id": "01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46",
-          "entry": 7,
-          "area": "main",
-          "sourceFrame": 11753,
-          "evidence": "ordered-level-pass"
-        },
-        {
-          "id": "ff38f6f5ab48d512a04712f738589111f0dbe3a455ce60939a56cf70fb2d2796",
-          "entry": 7,
-          "area": "main",
-          "sourceFrame": 10572,
-          "evidence": "ordered-level-pass"
+          "id": "369ae366683f14ac13007e63a5cfb8537eeb6bec3e4c08cba07e126cf175088f",
+          "entry": 2,
+          "area": "area-2",
+          "sourceFrame": 7216,
+          "evidence": "two-d-integrated"
         }
       ]
     },
@@ -202,21 +118,105 @@
           "entry": 6,
           "area": "main",
           "sourceFrame": 8034,
-          "evidence": "ordered-level-pass"
+          "evidence": "two-d-integrated"
         },
         {
           "id": "be6bee4201de75b3a7cfe0aeaddaa94b0637f422b9cd1277ded420749ed87337",
           "entry": 5,
           "area": "main",
           "sourceFrame": 7989,
-          "evidence": "ordered-level-pass"
+          "evidence": "two-d-integrated"
         },
         {
           "id": "a14e9c25f82bbe8b8caf82002bb9f61a0caf4a87bcc98b257d5c29774e767110",
           "entry": 5,
           "area": "main",
           "sourceFrame": 7502,
-          "evidence": "ordered-level-pass"
+          "evidence": "two-d-integrated"
+        }
+      ]
+    },
+    {
+      "level": "1-4",
+      "segments": 3,
+      "recordings": 3,
+      "examples": [
+        {
+          "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
+          "entry": 8,
+          "area": "main",
+          "sourceFrame": 13393,
+          "evidence": "two-d-integrated"
+        },
+        {
+          "id": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 15445,
+          "evidence": "two-d-integrated"
+        },
+        {
+          "id": "6a6cac6d72b4db67938297380ea148d426c89157e1965cd4ced68352e1c512dd",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 9755,
+          "evidence": "two-d-integrated"
+        }
+      ]
+    },
+    {
+      "level": "2-1",
+      "segments": 30,
+      "recordings": 29,
+      "examples": [
+        {
+          "id": "bec0f52a3021c72e93d7a8126c6e481c1176604f09234921c77afa9b2dbfe18e",
+          "entry": 8,
+          "area": "main",
+          "sourceFrame": 12056,
+          "evidence": "two-d-integrated"
+        },
+        {
+          "id": "01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 11753,
+          "evidence": "two-d-integrated"
+        },
+        {
+          "id": "ff38f6f5ab48d512a04712f738589111f0dbe3a455ce60939a56cf70fb2d2796",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 10572,
+          "evidence": "two-d-integrated"
+        }
+      ]
+    },
+    {
+      "level": "2-3",
+      "segments": 20,
+      "recordings": 19,
+      "examples": [
+        {
+          "id": "c6ee76c6759431d0feeca36dc96fe9948f1f6fb1ac673ed36b242f5042568de5",
+          "entry": 12,
+          "area": "main",
+          "sourceFrame": 19618,
+          "evidence": "two-d-integrated"
+        },
+        {
+          "id": "01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46",
+          "entry": 12,
+          "area": "main",
+          "sourceFrame": 18724,
+          "evidence": "two-d-integrated"
+        },
+        {
+          "id": "24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761",
+          "entry": 11,
+          "area": "main",
+          "sourceFrame": 19510,
+          "evidence": "two-d-integrated"
         }
       ]
     },
@@ -230,21 +230,21 @@
           "entry": 13,
           "area": "main",
           "sourceFrame": 20966,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         },
         {
           "id": "7be1c24038b01de67e526b90742a8162ee751ae2a790c233f823e29b7a7ef4ea",
           "entry": 13,
           "area": "main",
           "sourceFrame": 21033,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         },
         {
           "id": "308c986d49124f4bbb39de61a97321678a1dcae576bdf836bc22523bb174d60a",
           "entry": 11,
           "area": "main",
           "sourceFrame": 18760,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         }
       ]
     },
@@ -258,21 +258,21 @@
           "entry": 13,
           "area": "main",
           "sourceFrame": 22205,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         },
         {
           "id": "37d55efe9bb775412b652c282449be287349b34189c36042d075d8cd2d565f31",
           "entry": 14,
           "area": "main",
           "sourceFrame": 23696,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         },
         {
           "id": "67829346ddd387babf836864a51bfffc3455ec30391b3fc4f9bc39fb272f5c99",
           "entry": 14,
           "area": "main",
           "sourceFrame": 27935,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         }
       ]
     },
@@ -286,14 +286,14 @@
           "entry": 17,
           "area": "main",
           "sourceFrame": 35085,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         },
         {
           "id": "df3651d627f4a1f4bd1a0900781615a3c18b01676c265a109996dd4e4fcb68bf",
           "entry": 16,
           "area": "main",
           "sourceFrame": 28654,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         }
       ]
     },
@@ -307,7 +307,7 @@
           "entry": 19,
           "area": "area-3",
           "sourceFrame": 32472,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         }
       ]
     },
@@ -321,7 +321,7 @@
           "entry": 23,
           "area": "main",
           "sourceFrame": 47521,
-          "evidence": "current-worlds-patch"
+          "evidence": "two-d-integrated"
         }
       ]
     }
@@ -459,7 +459,7 @@
       }
     }
   ],
-  "scope": "All 336 evaluation and 32 original recordings were audited at baseline. Evaluation diagnostics initialize independently at supported native area-load epochs; they are not continuous power-on proof. The four-fix patch rechecks only 154 known failing segments from 124 evaluations plus the 32 originals. Other baseline verdicts are not fresh proof for this patch. Strict comparisons cover supported fields, not all 2048 RAM bytes. Images are not checked and the combined dashboard is not updated. Latest worlds batch replays all 176 previously queued evaluation segments and the seven previously failing originals; unchanged passing segments were not rerun. Ordered pass integrates current main, rechecks levels individually and visits all32 originals sequentially. Remaining cases stay open; no full Three.js visual equivalence is claimed.",
+  "scope": "All 336 evaluation and 32 original recordings were audited at baseline. Evaluation diagnostics initialize independently at supported native area-load epochs; they are not continuous power-on proof. The four-fix patch rechecks only 154 known failing segments from 124 evaluations plus the 32 originals. Other baseline verdicts are not fresh proof for this patch. Strict comparisons cover supported fields, not all 2048 RAM bytes. Images are not checked and the combined dashboard is not updated. Latest worlds batch replays all 176 previously queued evaluation segments and the seven previously failing originals; unchanged passing segments were not rerun. Ordered pass integrates current main, rechecks levels individually and visits all32 originals sequentially. Remaining cases stay open; no full Three.js visual equivalence is claimed. Latest2DBatch supersedes queued failure counts using focused native RAM replays and ten selected 2D pictures; prior passing recordings were not rerun. The combined full-corpus state-and-picture dashboard has not been recalculated.",
   "latestBatch": {
     "recheckedSegments": 176,
     "recheckedRecordings": 120,
@@ -493,7 +493,7 @@
       "level": "1-2",
       "originalStatus": "pass",
       "originalFirst": null,
-      "remainingEvaluationSegments": 17,
+      "remainingEvaluationSegments": 7,
       "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
     },
     {
@@ -507,14 +507,14 @@
       "level": "1-4",
       "originalStatus": "pass",
       "originalFirst": null,
-      "remainingEvaluationSegments": 4,
+      "remainingEvaluationSegments": 3,
       "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
     },
     {
       "level": "2-1",
       "originalStatus": "pass",
       "originalFirst": null,
-      "remainingEvaluationSegments": 31,
+      "remainingEvaluationSegments": 30,
       "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
     },
     {
@@ -737,5 +737,123 @@
     "branchNaming": "descriptive names without a prefix; preference saved in global AGENTS.md",
     "mergeTarget": "main"
   },
-  "evidenceArchivePath": "/home/kd/Desktop/proj/ghostrun/ghostrun-arcade/games/smb/evidence/local/ram-corpus-ordered-GIBleo"
+  "evidenceArchivePath": "/home/kd/Desktop/proj/ghostrun/ghostrun-arcade/games/smb/evidence/local/ram-corpus-ordered-GIBleo",
+  "latest2DBatch": {
+    "scope": "2D gameplay and 2D screen only; 3D excluded",
+    "evaluationSegmentsRechecked": 108,
+    "evaluationSegmentsCleared": 12,
+    "remainingEvaluationSegments": 96,
+    "checkedFieldsFirstMismatchEarlier": 0,
+    "byLevel": [
+      {
+        "level": "1-1",
+        "rechecked": 3,
+        "cleared": 0,
+        "remaining": 3
+      },
+      {
+        "level": "1-2",
+        "rechecked": 17,
+        "cleared": 10,
+        "remaining": 7
+      },
+      {
+        "level": "1-3",
+        "rechecked": 3,
+        "cleared": 0,
+        "remaining": 3
+      },
+      {
+        "level": "1-4",
+        "rechecked": 4,
+        "cleared": 1,
+        "remaining": 3
+      },
+      {
+        "level": "2-1",
+        "rechecked": 31,
+        "cleared": 1,
+        "remaining": 30
+      },
+      {
+        "level": "2-3",
+        "rechecked": 20,
+        "cleared": 0,
+        "remaining": 20
+      },
+      {
+        "level": "2-4",
+        "rechecked": 12,
+        "cleared": 0,
+        "remaining": 12
+      },
+      {
+        "level": "3-1",
+        "rechecked": 14,
+        "cleared": 0,
+        "remaining": 14
+      },
+      {
+        "level": "3-4",
+        "rechecked": 2,
+        "cleared": 0,
+        "remaining": 2
+      },
+      {
+        "level": "4-2",
+        "rechecked": 1,
+        "cleared": 0,
+        "remaining": 1
+      },
+      {
+        "level": "4-4",
+        "rechecked": 1,
+        "cleared": 0,
+        "remaining": 1
+      }
+    ],
+    "failingOriginalsRechecked": 7,
+    "remainingOriginals": 7,
+    "focusedTestsPassed": 79,
+    "typescript": "pass",
+    "fixes": [
+      "Falling walkers settle onto the floor during timer freezes while retaining the pre-landing sprite picture.",
+      "Injury exposes the retained native player Y fraction and airborne state immediately.",
+      "Stopping and re-kicking a shell retains its native scoring chain."
+    ],
+    "integratedMainFixes": [
+      "4fd76e8 right-edge clamp during offscreen fall",
+      "9fd229b foot-depth push after head bump"
+    ],
+    "ui": {
+      "frozenLanding": {
+        "frames": [
+          544,
+          545,
+          546,
+          547,
+          548
+        ],
+        "pctAll": 0,
+        "pctHud": 0
+      },
+      "shellPayout": {
+        "frames": [
+          3413,
+          3414,
+          3415,
+          3416,
+          3417
+        ],
+        "pctAll": 1.7473958333333335,
+        "pctHud": 0,
+        "remaining": "Playfield debris, background and floating-number differences remain."
+      }
+    },
+    "evidenceReports": [
+      "two-d-integrated.json",
+      "two-d-failing-originals.json"
+    ],
+    "merge": "Pending integration; main has concurrent overlapping uncommitted freeze logic."
+  }
 }

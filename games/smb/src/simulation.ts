@@ -3144,10 +3144,11 @@ export class Simulation {
  private settleFrozenWalker(e:Enemy){
   if(!this.nativeTimersStopped||!e.active||e.slotFreed||e.dead||e.shell||e.motion||!NATIVE_FALLERS.includes(e.kind)||e.walkerState!==1||!e.fall)return;
   const rawY=(Math.floor(e.y)-24)&255,ground=this.enemyCollisionAt(Math.floor(e.x)+8,e.y),depth=((rawY&15)-8)&255;
-  if(((rawY+0x3e)&255)<0x44||!ground||depth>=5&&ground.y%16===0)return;
+  if(((rawY+0x3e)&255)<0x44||e.kind==='spiny'&&rawY<0x25||!ground||depth>=5&&ground.y%16===0)return;
   if(e.graphicsFrame!==this.frame){e.graphicsX=e.x;e.graphicsY=e.y;e.graphicsFacing=Math.sign(e.vx);this.captureEnemyGraphics(e);}
   const step={x:e.x,y:e.y,vx:e.vx,...e.fall};landNativeWalker(step,e.kind==='goomba'||e.kind==='spiny',this.player.x);
   e.y=ground.y%16?ground.y:step.y;e.vx=step.vx;e.vy=0;e.walkerState=0;e.fall.speed=0;e.fall.force=0;
+  if(e.kind==='spiny')e.vx=this.spinyLandingVx(e.x);
  }
  /** GrowThePowerUp still runs while TimerControl stops ordinary enemy movement. */
  private emergeFrozenNativePowerups(){
