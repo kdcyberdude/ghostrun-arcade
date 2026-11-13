@@ -1,4 +1,7 @@
 import {nativeGoombaBlockStun} from './native-block-enemy.js';
+import {NativeColdStartup} from './native-cold-startup.js';
+import {NativeStartupPicture} from './native-startup-picture.js';
+import {nativeTitleControlsFromRam,stepNativeTitleControls,type NativeTitleControls} from './native-title-controls.js';
 import {NativeGraphicsScratch} from './native-graphics-scratch.js';
 
 import {nativePlayerEnemyLatch,nativeNormalEnemyBox,nativeNormalContactStomps} from './native-player-enemy-latch.js';
@@ -297,7 +300,9 @@ export class Simulation {
  spriteShuffle=new NativeSpriteShuffle();
  readonly graphicsScratch=new NativeGraphicsScratch();
  nativeBackdrop=0x22; // PPUpalette0: retained across CPU RAM initialization, advanced by source screen writes
- get nativeScreen(){return this.nativeGameOver??this.deathLoad?.state??this.levelLoad;}
+ nativeStartup?:NativeTitleControls;readonly nativeStartupPicture=new NativeStartupPicture();private coldStartup?:NativeColdStartup;
+ get nativeColdRam():Readonly<Uint8Array>|undefined{return this.coldStartup&&!this.coldStartup.done?this.coldStartup.ram:undefined;}
+ get nativeScreen(){return this.nativeStartup??this.nativeGameOver??this.deathLoad?.state??this.levelLoad;}
  get timeUpScreen(){return this.phase==='intro'&&Boolean(this.lifeIntro?.timeUp)&&this.lifeIntro!.seen<LIFE_FLOW.ticksScreen;}
  /** DisplayIntermediate/DisplayTimeUp queues the text and enables PPU output; it appears on the following NMI. */
  get introHiddenEarly(){if(this.levelLoad)return this.levelLoad.task===0||this.levelLoad.screen<=6;return this.phaseFrame<(this.lifeIntro?.fromDeath?this.lifeIntro.set+1:TRANSITIONS.introHiddenBeforeFrame);}
@@ -311,6 +316,7 @@ export class Simulation {
  get entryFallPose(){return this.entryFalling&&this.area.theme!=='water';}
  get entryTimerHidden(){return Boolean(this.area.entryFall&&this.entryTimerDelay!==0);}
  reset(playing=false){
+  this.nativeStartup=undefined;this.coldStartup=undefined;this.nativeStartupPicture.reset();this.random=new NativeRandom();this.intervalControl=20;
   this.frame=0;this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.deathLoad=undefined;this.levelLoad=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
   this.nativeEndLevelMusic=emptyNativeEndLevelMusic();this.nativeEndLevelMusicQueue=0;this.nativeEndLevelMusicAreaQueue=0;
@@ -318,6 +324,7 @@ export class Simulation {
   this.destination=undefined;this.pipeLoad=undefined;this.lastFire=-12;this.airRunning=false;this.runJump=false;this.mediumJump=false;this.bouncing=false;this.braking=PHYSICS.brake;this.skidAccel=0;this.motor.reset();this.jumpHeld=0;this.landJump='inactive';
   this.vineProgress.clear();this.climbingVine=undefined;this.activatedHidden1ups.clear();this.graphicsScratch.clear();
   if(this.player)this.player.size=0;this.loadArea(this.level.main);this.timerFrames=this.level.id==='1-1'?TRANSITIONS.freshReferenceResetTimerFrames:0;if(this.level.id==='1-1'){this.areaFrame=FLAG_COMPLETION.freshAreaFrame;this.broClock=HAMMER_NATIVE.freshClock;}this.fetchGameTimer=!playing;if(!playing){this.time=0;this.timerFrames=24;this.events=['command_silence'];}this.phase=playing?'play':'title';this.phaseFrame=0;this.titleFrame=0;this.hud.seed(hudDigits(this.score,this.coins));
+  if(!playing&&this.level.id==='1-1'){this.inputs=[];this.coldStartup=new NativeColdStartup();this.nativeStartup=nativeTitleControlsFromRam(this.coldStartup.ram);this.nativeStartup.initializing=true;this.syncStartupClocks(this.nativeStartup,true);this.nativeStartupPicture.step(this.nativeStartup);}
  }
  // Standalone snapshots have completed preload; InitializeArea defers its terrain callbacks to Screen8.
  loadArea(id:string,spawn?:[number,number],camera?:number,preserveTimer=false,lifeEntry=false,deferTerrain=lifeEntry){
@@ -455,7 +462,32 @@ export class Simulation {
    {const scoreBefore=this.score,coinsBefore=this.coins,starBefore=this.player.star,paletteBefore=this.starPalette,areaBefore=this.area,cameraBefore=this.camera,engineBefore=!['title','intro','gameover','ending','castle'].includes(this.phase),fresh=this.freshA,grace=this.phase==='play'&&this.controlGrace>0;if(grace){effective.delete('a');this.controlGrace--;}this.paletteRemove=false;this.graphicsBuffer1=false;this.blockUpdateBusy=false;this.loopScrollAdjustment=0;this.update(effective);if(this.score!==scoreBefore)this.hud.queue({score:hudDigits(this.score,this.coins).score});if(this.coins!==coinsBefore)this.hud.queue({coins:hudDigits(this.score,this.coins).coins});if(this.nativeScreen?.task===1&&this.nativeScreen.screen>=1)this.hud.header(this.score,this.coins);this.snapshotPlayerPriority();this.nativeBackdrop=nativeScreenBackdrop(this.nativeBackdrop,this.nativeScreen?nativeScreenPicture(this.nativeScreen,this.area.theme==='water'):undefined,graphics.palette_observations[this.area.palette].palette[0]);if(!this.paused&&(areaBefore===this.area||this.loopScrollAdjustment!==0)){if(engineBefore){const buffer2=this.paletteClock.step(Math.max(0,Math.floor(this.camera)-Math.floor(cameraBefore)+this.loopScrollAdjustment),this.colorRotations,this.paletteRemove,this.graphicsBuffer1||(this.random.frame&7)===0);this.hud.step(buffer2);if(!buffer2){for(const [key,id]of this.blockBackgroundQueue)this.blockBackground.set(key,id);this.blockBackgroundQueue.clear();}}else{this.paletteClock.draw=this.colorRotations;this.hud.step(false);}this.starDrawPalette=starBefore||this.player.star?paletteBefore:undefined;this.starPalette=nativeStarPalette(this.player.star,this.random.frame);}if(this.paused)this.hud.step(false);if(fresh&&!grace)this.freshA=false;}this.previous=effective;
   }
  }
+ /** Startup clocks are generated by the cold CPU / source title controller, never recording samples. */
+ private syncStartupClocks(n:NativeTitleControls,cold=false){
+  this.random.prev=[...this.random.bytes];this.random.bytes=[...n.random];this.random.frame=n.counter;this.intervalControl=n.interval;
+  if(n.time<=999)this.time=n.time;if(cold)this.colorRotations=0;if(n.players<=1)this.twoPlayer=Boolean(n.players);this.fetchGameTimer=n.fetchGameTimer;this.screenTimer=n.timer;
+ }
+ private updateStartup(b:Set<Button>){
+  this.titleFrame++;this.lifeRow++;
+  if(this.coldStartup&&!this.coldStartup.done){
+   const names:Button[]=['a','b','select','start','up','down','left','right'];let pad=0;for(const [bit,name]of names.entries())if(b.has(name))pad|=1<<bit;
+   this.coldStartup.step(pad);this.nativeStartup=nativeTitleControlsFromRam(this.coldStartup.ram);this.nativeStartup.initializing=!this.coldStartup.done;this.syncStartupClocks(this.nativeStartup,true);this.nativeStartupPicture.step(this.nativeStartup);return;
+  }
+  if(this.nativeStartup?.unsupported)return;
+  const n=this.nativeStartup!,names:Button[]=['a','b','select','start','up','down','left','right'];let pad=0;for(const [bit,name]of names.entries())if(b.has(name))pad|=1<<bit;
+  tickNativeEndLevelMusic(this.nativeEndLevelMusic,{operMode:0,eventQueue:this.nativeEndLevelMusicQueue,areaQueue:this.nativeEndLevelMusicAreaQueue});this.nativeEndLevelMusicQueue=this.nativeEndLevelMusicAreaQueue=0;
+  const effect=stepNativeTitleControls(n,pad);if(effect.unsupportedDemo||effect.resetTitle)n.unsupported=effect.unsupportedDemo?'title-demo-playback':'title-initializer-reentry';this.syncStartupClocks(n);
+  if(n.queuedPalette.some(packet=>packet.address===0x3f0c))this.colorRotations++;
+  if(effect.renderColumns)this.renderInitialSpringColumns();
+  if(effect.primary){this.lives=3;this.player.size=0;this.spriteShuffle.reset();}
+  if(effect.initPlayer){const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.area.id)!;const setup=nativeEntranceSetup(nativePhysicalAreas[binding.code].header[0],0,0);this.player.x=setup.x+binding.offset;this.player.y=setup.y+32;this.player.vx=this.player.vy=0;this.player.grounded=true;this.player.facing=1;this.player.dead=false;this.motor.reset(0,1,0);this.seedPlayerPriority();this.primeNativeEntryObjects(true);}
+  this.nativeStartupPicture.step(n);
+  if(effect.startGame){
+   this.levelLoad={task:n.task,engine:n.engine,screen:n.screen,disable:n.disable,timer:n.timer,columns:n.columns};this.phase='intro';this.phaseFrame=0;this.lifeIntro=undefined;this.alignLifeClock(n.interval);this.nativeStartup=undefined;this.coldStartup=undefined;
+  }
+ }
  private update(b:Set<Button>){
+  if(this.nativeStartup){this.updateStartup(b);return;}
   // SoundEngine consumes the preceding gameplay queue before ReadJoypads/PauseRoutine.
   tickNativeEndLevelMusic(this.nativeEndLevelMusic,{eventQueue:this.nativeEndLevelMusicQueue,areaQueue:this.nativeEndLevelMusicAreaQueue,operMode:this.phase==='title'?0:1,pauseMode:this.paused?1:0});
   this.nativeEndLevelMusicQueue=0;this.nativeEndLevelMusicAreaQueue=0;
@@ -3223,7 +3255,7 @@ export class Simulation {
   if(!(n.task===0&&n.screen===0))this.gameTimerStep(false);
   const tick=((this.lifeRow-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase;
   const result=stepNativeLevelLoad(n,tick);
-  if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=-this.areaControls.origin*16;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
+  if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=-this.areaControls.origin*16;this.parserColumnX=-this.areaControls.origin*16;this.areaControls.locked=false;this.parserClock.task=0;this.parserClock.scroll=0;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
   if(result.clear){
    this.graphicsScratch.clear();
    const time=this.time;this.loadArea(load.area,load.spawn,load.camera,false,true);this.time=time;load.player={...this.player};
@@ -3268,7 +3300,7 @@ export class Simulation {
   if(!hold){this.gameTimerStep(false);this.tickIntervalTimers();}else this.lifeFrozen++;
   const result=stepNativeLevelLoad(n,!hold&&this.intervalControl===20);if(render)this.renderInitialSpringColumns();
   if(task===2)this.nativeEndLevelMusicAreaQueue=this.area.entryVine?16:this.area.autoWalk&&this.pipeLoad?.alternate!==2?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];
-  if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=-this.areaControls.origin*16;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
+  if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=-this.areaControls.origin*16;this.parserColumnX=-this.areaControls.origin*16;this.areaControls.locked=false;this.parserClock.task=0;this.parserClock.scroll=0;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
   if(result.clear){
    this.graphicsScratch.clear();
    const time=this.time,load=this.pipeLoad;this.loadArea(load?.target.area??this.level.main,undefined,load?load.page*256+load.offset:undefined,true,Boolean(load),true);this.time=time;
@@ -3278,12 +3310,12 @@ export class Simulation {
   if(result.preload&&this.pipeLoad){const levelEntry=this.pipeLoad.target.direction==='level';this.finishNativePipeLoad();if(levelEntry&&!this.area.autoWalk&&!this.entryControlLocked)this.levelLoad=n;return;}
   if(result.preload){
    const [x,y]=this.area.spawn;this.player.x=x;this.player.y=y;this.player.grounded=this.isSolid(x+8,y);
-   this.initializeGameTimer();this.timerFrames=24;this.phase='play';this.playerAnim.fresh=true;this.seedPlayerPriority();this.primeNativeEntryObjects(true);
+   this.initializeGameTimer();this.timerFrames=24;this.phase='intro';this.playerAnim.fresh=true;this.seedPlayerPriority();this.primeNativeEntryObjects(true);if((this.random.frame&7)===0)this.colorRotations++;
   }
   if(result.ready){
    this.screenTimer=n.timer;this.consumeGameTimer(true);this.phase='play';this.phaseFrame=0;this.broClock=this.random.frame-2;
    this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.levelLoad=undefined;
-   this.primeNativeReadyEnemies();this.emit(this.areaMusic());
+   this.primeNativeReadyEnemies();if((this.random.frame&7)===0)this.colorRotations++;this.emit(this.areaMusic());
   }
  }
  private nextLevel(victory=false){

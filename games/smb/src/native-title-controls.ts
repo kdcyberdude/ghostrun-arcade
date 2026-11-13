@@ -1,7 +1,7 @@
 import {NativeRandom} from './native-random.js';
 export type NativeStartupPalette={address:number;bytes:number[]};
 /** Source state after the cold CPU initializer; no sampled future state enters step(). */
-export type NativeTitleControls={mode:number;task:number;engine:number;screen:number;disable:number;columns:number;timer:number;demo:number;selectTimer:number;counter:number;interval:number;random:number[];players:number;joypadMasks:number[];fetchGameTimer:boolean;gameTimerSetting:number;time:number;colorRotate:number;ctrl:number;mask:number;initializing:boolean;queuedPalette:NativeStartupPalette[];pendingVertical?:boolean};
+export type NativeTitleControls={mode:number;task:number;engine:number;screen:number;disable:number;columns:number;timer:number;demo:number;selectTimer:number;counter:number;interval:number;random:number[];players:number;joypadMasks:number[];fetchGameTimer:boolean;gameTimerSetting:number;time:number;colorRotate:number;ctrl:number;mask:number;initializing:boolean;queuedPalette:NativeStartupPalette[];pendingVertical?:boolean;unsupported?:string};
 export function nativeTitleControlsFromRam(r:Uint8Array):NativeTitleControls{
  return {mode:r[0x770],task:r[0x772],engine:r[14],screen:r[0x73c],disable:r[0x774],columns:r[0x71e],timer:r[0x7a0],demo:r[0x7a2],selectTimer:r[0x780],counter:r[9],interval:r[0x77f],random:Array.from(r.subarray(0x7a7,0x7ae)),players:r[0x77a],joypadMasks:[r[0x74a],r[0x74b]],fetchGameTimer:Boolean(r[0x757]),gameTimerSetting:r[0x715],time:r[0x7f8]*100+r[0x7f9]*10+r[0x7fa],colorRotate:r[0x6d4],ctrl:r[0x778],mask:r[0x779],initializing:false,queuedPalette:[]};
 }

@@ -5,8 +5,11 @@ import {observedLevels} from '../src/levels.js';
 
 function start(twoPlayer:boolean){
  const sim=new Simulation(observedLevels());sim.reset(false);
- if(twoPlayer){sim.step(['select'],1);sim.step([],10);}
- sim.step(['start'],1);sim.step([],220);return sim;
+ // Native menu input is accepted only after cold initialization and ScreenRoutines finish.
+ for(let n=0;n<2000&&sim.nativeStartup?.task!==3;n++)sim.step([],1);
+ assert.equal(sim.nativeStartup?.task,3);
+ if(twoPlayer){sim.step(['select'],1);sim.step([],1);}
+ sim.step(['start'],1);for(let n=0;n<2000&&sim.phase!=='play';n++)sim.step([],1);assert.equal(sim.phase,'play');return sim;
 }
 function nextGameover(sim:Simulation){
  for(let n=0;n<9000&&sim.phase!=='gameover';n++)sim.step(['right','b'],1,['right','b']);
