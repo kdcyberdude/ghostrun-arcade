@@ -1,3 +1,4 @@
+import {decodeNativeGameOver} from '../../src/native-game-over.js';
 /** Optional strict coverage audit for native-divergence.ts --strict. The legacy gate remains unchanged.
  * Current area comes from ROM AreaData pointers and native InitializeArea start pages, never from Mario's observed position.
  * Unsupported objects, unresolved native loads, and incomplete remake ownership produce explicit coverage gaps. */
@@ -32,7 +33,7 @@ export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8A
  if(!pads.length)gap(0,nativeLevel.main,{code:'empty-native-input',detail:'no retained input frames to compare'});
  for(let f=0;f<Math.min(pads.length,coverage.ramFrames);f++){
   const raw=ram.subarray(f*2048,(f+1)*2048),nativeId=`${raw[0x75f]+1}-${raw[0x75c]+1}`;
-  if(raw[0x770]!==1&&raw[0x770]!==2){
+  if(raw[0x770]!==1&&raw[0x770]!==2&&raw[0x770]!==3){
    for(let tail=f;tail<Math.min(pads.length,coverage.ramFrames);tail++){
     const r=ram.subarray(tail*2048,(tail+1)*2048);if(`${r[0x75f]+1}-${r[0x75c]+1}`!==nativeId)break;coverage.uncomparedSameLevelFrames++;
    }
@@ -60,6 +61,11 @@ export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8A
    coverage.victoryFrames++;if(prev?.[0x770]===2&&prev[0x772]===2)walkOwned=true;
    for(const [key,native,remake]of victoryChecks(raw,sim,walkOwned,prev?.[0x770]===2,visit?.offset??0))check(`victory.${key}`,native,remake,f);
    if(!sim.nativeVictory)gap(f,area,{code:'native-victory-not-owned',detail:'native mode2 has no remake victory control state; replay continues without resetting gameplay'});
+  }
+  if(raw[0x770]===3){
+   for(const [key,native]of Object.entries(decodeNativeGameOver(raw)))check(`gameover.${key}`,native,sim.nativeGameOver?.[key],f);
+   check('gameover.frameCounter',raw[9],sim.random.frame,f);check('gameover.random',Array.from(raw.subarray(0x7a7,0x7ae)),sim.random.bytes,f);check('gameover.interval',raw[0x77f],sim.intervalControl,f);
+   if(!sim.nativeGameOver)gap(f,area,{code:'native-gameover-not-owned',detail:'native mode3 has no remake game-over control state; replay continues without resetting gameplay'});
   }
   const native=strictNativeEntities(raw,visit?.offset??0);coverage.nativeEntityRows+=native.live;
   for(let slot=0;slot<6;slot++)if(raw[0x0f+slot]&&(!prev||!prev[0x0f+slot]))coverage.nativeBirthRows++;

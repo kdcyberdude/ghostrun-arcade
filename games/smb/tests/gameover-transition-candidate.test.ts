@@ -15,14 +15,15 @@ function nextGameover(sim:Simulation){
 test('two-player exhausted Mario remains visible before Luigi takes over',()=>{
  const sim=start(true);nextGameover(sim);assert.equal(sim.currentPlayer,0);assert.equal(sim.lives,0);
  sim.step([],80,['start']);assert.equal(sim.phase,'gameover');assert.equal(sim.gameoverClosing,false);
- sim.step([],1);sim.step(['start'],1);sim.step([],4);assert.equal(sim.gameoverClosing,true);
- sim.step([],6);assert.equal(sim.phase,'intro');assert.equal(sim.currentPlayer,1);assert.ok(sim.lives>0);assert.equal(sim.phaseFrame,0);assert.equal(sim.introFromGameover,true);
+ // RunGameOver accepts held Start on task2; it has no extra closing delay.
+ while(sim.nativeGameOver?.task!==2)sim.step([],1);
+ sim.step(['start'],1);assert.equal(sim.phase,'intro');assert.equal(sim.currentPlayer,1);assert.ok(sim.lives>0);assert.equal(sim.phaseFrame,0);assert.equal(sim.introFromGameover,true);
  sim.step([],169);assert.equal(sim.phase,'play');assert.equal(sim.introFromGameover,false);
 });
 test('single-player final game over returns automatically to the title',()=>{
  const sim=start(false);nextGameover(sim);assert.equal(sim.lives,0);sim.step([],414+26);assert.equal(sim.phase,'title');assert.equal(sim.twoPlayer,false);
 });
 test('two-player last loss returns to the title with two-player selected',()=>{
- const sim=start(true);nextGameover(sim);sim.step(['start'],1);sim.step([],12);assert.equal(sim.currentPlayer,1);
+ const sim=start(true);nextGameover(sim);while(sim.nativeGameOver?.task!==2)sim.step([],1);sim.step(['start'],1);assert.equal(sim.currentPlayer,1);
  nextGameover(sim);assert.equal(sim.currentPlayer,1);assert.equal(sim.lives,0);sim.step([],414+26);assert.equal(sim.phase,'title');assert.equal(sim.twoPlayer,true);
 });
