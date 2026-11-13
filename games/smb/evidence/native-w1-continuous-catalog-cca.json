@@ -1,0 +1,176 @@
+{
+  "schema": "native-w1-continuous-catalog-v1",
+  "runtimeCommit": "cca2e44cff28d07595b6def7e2efc5ed356fcd56",
+  "publishedReportSha256": "e92934c3eb81b033ffa3d67e97cca4fa1c14ed2ae452565470266c553fe27f96",
+  "nativeHelperManifestSha256": "c9cacc1ce1ef0b774633d71429e6eedc9d458f728dc9261400067d0d15b3f267",
+  "generatorSha256": "5ed9e45a812958b1a7c4ae19e3217d15155d80dd7e94728950fe7ba71926b003",
+  "inputs": 336,
+  "sourceInputFrames": 5032416,
+  "targetDefinition": "Native$075f=$075c=0 (World1-1, including its title/control rows), plus cold pre-initialization modeFF; no false claim that the first9 cold rows belong to a level.",
+  "nativeTargetFrames": 1179539,
+  "nodeFramesReplayed": 1203896,
+  "publishedBrowserPrefixesVerified": 276,
+  "fullBrowserProof": [
+    {
+      "id": "mood:3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+      "frames": 7396,
+      "stateSha256": "5451b3a1c98f9b38f21f54a9b990e876b9ba5d120b9632507237a79359ba6be0",
+      "coverageSha256": "2971a421a9cb1ac0db7797529d33e8f03d99ef90002cd3f1e8a3345bc8ec0fa3",
+      "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+      "padSha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+      "ramSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f"
+    },
+    {
+      "id": "mood:164ce4209cd1ff6dc492c4d3e526c33d9d8934e5a1c8edc2cd767d27b7d6853d",
+      "frames": 21284,
+      "stateSha256": "17e96893e9d4b884cc11a2a0d82b040435dc776c654c7a23e650eebce9752b82",
+      "coverageSha256": "7dc3e12ff3f5a31e92bce62ce1f1f1839c1d0a38949591808d1a4f1d1a5acbfc",
+      "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+      "padSha256": "164ce4209cd1ff6dc492c4d3e526c33d9d8934e5a1c8edc2cd767d27b7d6853d",
+      "ramSha256": "9be660708df4f9aa862217d30420607395d09a5c744cc267d9dd58e2f2b47983"
+    },
+    {
+      "id": "mood:1ec0a3e4d31d8875aaf5798a2f31b6e73a032777ab3e47d6fb3c2e984050bc05",
+      "frames": 8708,
+      "stateSha256": "b6337ddec66356cf6e3a4012e58fbf45e39063f1ae138c09cea2a902c49e6cb1",
+      "coverageSha256": "3fd2398c5d595b5798d92a83497ea608f013b600269e3d3bed356b745c0b78ab",
+      "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+      "padSha256": "1ec0a3e4d31d8875aaf5798a2f31b6e73a032777ab3e47d6fb3c2e984050bc05",
+      "ramSha256": "bcff1d2a02bb88d81bd616de46b16175f82e7572844ff936cf4e771e92483199"
+    }
+  ],
+  "groups": [
+    {
+      "key": "no-world1-state-mismatch",
+      "count": 250,
+      "examples": [
+        {
+          "id": "mood:164ce4209cd1ff6dc492c4d3e526c33d9d8934e5a1c8edc2cd767d27b7d6853d",
+          "frame": null,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/164ce4209cd1ff6dc492c4d3e526c33d9d8934e5a1c8edc2cd767d27b7d6853d"
+        },
+        {
+          "id": "mood:b47452ef2d5e4ecc55d0f90aa829fab00f30a1a1f07ae8a7d06059396dc1a5e4",
+          "frame": null,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/b47452ef2d5e4ecc55d0f90aa829fab00f30a1a1f07ae8a7d06059396dc1a5e4"
+        }
+      ]
+    },
+    {
+      "key": "1/0/42640:load.scrollLocked",
+      "count": 35,
+      "examples": [
+        {
+          "id": "mood:04a7c0c59a69ff99fe70e9feea29156c096005c9d26217d3d1d4c99dc56fe8c3",
+          "frame": 706,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/04a7c0c59a69ff99fe70e9feea29156c096005c9d26217d3d1d4c99dc56fe8c3"
+        },
+        {
+          "id": "mood:bbcf4e23e00b5247dcfb75c942eea26d66927e9f85c4ea40501fb34637c5a22c",
+          "frame": 708,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/bbcf4e23e00b5247dcfb75c942eea26d66927e9f85c4ea40501fb34637c5a22c"
+        }
+      ]
+    },
+    {
+      "key": "1/7/42640:entities.extra,entities.extra,load.ready",
+      "count": 33,
+      "examples": [
+        {
+          "id": "mood:3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+          "frame": 1076,
+          "visit": 2,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c"
+        },
+        {
+          "id": "mood:3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a",
+          "frame": 1065,
+          "visit": 2,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a"
+        }
+      ]
+    },
+    {
+      "key": "1/0/42640:load.parserColumn,load.scrollLocked",
+      "count": 11,
+      "examples": [
+        {
+          "id": "mood:e2a3c1655e886de076360959ea78b91755f17657bbae5e91ccafab39d9f3ed61",
+          "frame": 1616,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/e2a3c1655e886de076360959ea78b91755f17657bbae5e91ccafab39d9f3ed61"
+        },
+        {
+          "id": "mood:abb9d08284e0b7d00b895807d354fdaa09ea488f06dad8540687f62e614cd3a1",
+          "frame": 1544,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/abb9d08284e0b7d00b895807d354fdaa09ea488f06dad8540687f62e614cd3a1"
+        }
+      ]
+    },
+    {
+      "key": "1/8/42640:cam,entities.position,entities.position,entities.position,entities.position,frameCounter,interval,random,x",
+      "count": 3,
+      "examples": [
+        {
+          "id": "mood:91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577",
+          "frame": 938,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577"
+        },
+        {
+          "id": "mood:a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966",
+          "frame": 938,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966"
+        }
+      ]
+    },
+    {
+      "key": "1/8/42640:entities.missing,entities.position",
+      "count": 2,
+      "examples": [
+        {
+          "id": "mood:7be1c24038b01de67e526b90742a8162ee751ae2a790c233f823e29b7a7ef4ea",
+          "frame": 1057,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/7be1c24038b01de67e526b90742a8162ee751ae2a790c233f823e29b7a7ef4ea"
+        },
+        {
+          "id": "mood:928561a37b83ed1e3b649c188d303cd44817bad46824706ae4ecd337f6ead0aa",
+          "frame": 1036,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/928561a37b83ed1e3b649c188d303cd44817bad46824706ae4ecd337f6ead0aa"
+        }
+      ]
+    },
+    {
+      "key": "1/8/42640:y",
+      "count": 1,
+      "examples": [
+        {
+          "id": "mood:9a3d23e2e274519969fd45896b4762ebd2125a7de3932262e5e8eec939ed5a0e",
+          "frame": 1555,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/9a3d23e2e274519969fd45896b4762ebd2125a7de3932262e5e8eec939ed5a0e"
+        }
+      ]
+    },
+    {
+      "key": "1/5/42640:cam",
+      "count": 1,
+      "examples": [
+        {
+          "id": "mood:620b52b343ff917c06a0745722e6391386350c3380de281b1dc54819b003411a",
+          "frame": 2175,
+          "visit": 0,
+          "source": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/moods/captures/620b52b343ff917c06a0745722e6391386350c3380de281b1dc54819b003411a"
+        }
+      ]
+    }
+  ],
+  "scope": "Continuous cold-start state-only CCA diagnostics; no renderer/pixel audit; no native RAM injection or episode resets. Unreplayed tails outside last native World1-1/cold target are not claimed. This receipt does not relabel any future corrected readout/runtime as CCA.",
+  "artifacts": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/w1-continuous-catalog-cca"
+}

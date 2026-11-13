@@ -1,0 +1,17 @@
+# Continuous World1-1 state residual catalog
+
+This read-only diagnostic tool runs the same source-owned cold reset and every retained input in order. It never calls `initializeEntrance`, restores native actor state or resets at deaths/portals. It drains the non-gameplay sound-event queue exactly as the browser controller does. Native RAM is read only for comparison, evidence and selecting the last native target row; no native value enters the model. There is no renderer and no duplicate picture audit.
+
+Before bulk work, three completed CCA browser recordings were replayed to their full lengths:37,388 frames with exactly equal state classification spans, initial verification and complete continuous-state coverage. The bulk run also verified each available published browser prefix,276 in the retained snapshot. The other60 inputs are diagnostics from the identical frozen source, not new browser equivalence claims. Native pads, RAM and initial-state hashes are verified for every input. The recorded browser manifest must match all imported native audit helpers, and source/data must match its pinned runtime. A future corrected model/readout must be labelled with its own build and proof; this tool refuses to relabel changed source as CCA.
+
+The frozen CCA catalog covered all336 moods. The target is native `$075f=$075c=0`, including its title/control rows, plus cold pre-initialization modeFF (not falsely attributed to a level). It examined1,179,539 target rows and stepped1,203,896 Node rows, including outside-target tails of the three full proof cases. Ordinary bulk replay stops after the last native target row; unreplayed tails remain explicitly unclaimed.250 inputs have no target state mismatch;86 have mismatches. No target demo/unsupported-control coverage gap was found. Picture-only failures are separate and are not inferred from state success.
+
+Earliest observed groups:35scroll-lock aliases and11parser/lock aliases during load;33bonus-return engine7 readiness/two-extra-Goomba rows;3NMI/CPU hold cases;2hurt-Goomba actor cases;1MarioY case;1end-of-level camera case. No score/coin/death group is independently earliest. Later first fields are retained with the earlier differences, without asserting that chronology alone proves causality. Mechanics owners classify source evidence: the46load aliases reflect omitted dying/ScrollHandler writes before partial clear, not a reason to hide the readout; readiness during pipe rise is a derived-readout issue distinct from the true actor births and resumed-input motor.
+
+Persistent full artifacts are under `notes/smb-native-handoff/recovered-native/measurements/w1-continuous-catalog-cca/`: frozen published input, proof, per-run first-field contexts and state spans, and the final catalog. The compact versioned receipt is `evidence/native-w1-continuous-catalog-cca.json`.
+
+Run only in an isolated checkout whose actual native helper/source versions match the supplied report:
+
+    npx tsx games/smb/tools/harness/native-w1-continuous-catalog.ts --live /ABS/FROZEN_PUBLISHED_REPORT.json --captures /ABS/recovered-native/moods/captures --out /ABS/NEW_PERSISTENT_CATALOG
+
+Use `--proof-only` to stop after three browser comparisons. `--proof-ids` selects exactly three published mood IDs. The exported `replayState(pads,ram,initial,through)` supports bounded source diagnostics in another worker's own tree; use that tree's runtime and label its results accordingly, not as frozen CCA browser proof. Do not edit the running audit checkout or live report.
