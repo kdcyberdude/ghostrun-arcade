@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
+import {nativeFireballPhase} from '../native-fireball-picture.js';
 import {playerVisible,playerCell} from '../player-cell.js';
 import {itemShown,fireFlashVariant,starVariant} from '../view-rules.js';
 import type {Enemy,EnemyKind,Item} from '../types.js';
@@ -70,7 +71,7 @@ export class Entities{
   const cyclePx=(clip:string)=>(clip==='run'?33.6:16.8)*scale;
   let clip='idle',t=s.frame/60,loop=true;
   if(cell===22){clip='death';t=0;loop=false;}
-  else if([8,9,20,21].includes(cell)){clip=s.phase==='flag'?'slide':'climb';t=s.phase==='flag'?0:p.anim/24*a.duration('climb');}
+  else if([8,9,20,21].includes(cell)){clip=s.phase==='flag'?'slide':'climb';t=(cell===9||cell===21?0.5:0)*a.duration(clip);}
   else if(cell===10)clip='duck';
   else if([5,6,7,17,18,19].includes(cell))clip='swim';
   else if(cell===4||cell===16)clip=p.vy>0?'fall':'jump';
@@ -123,7 +124,7 @@ export class Entities{
   const broCell=e.kind==='hammerBro'&&e.hbro?nativeHammerBroCell(e.dead?0x20:e.hbro.state,s.random.frame,timersStopped):undefined;
   const blooper=e.kind==='blooper'?nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),timersStopped):undefined;
   if(blooper)a.root.position.y-=blooper.yOffset/16;
-  const nativePhase=e.kind==='piranha'?((e.dead?Math.floor(e.age/8)%2:nativeEnemyCyclePhase(s.random.frame,Boolean(s.powerChange)))?0:0.5):blooper?(blooper.cell===10?0.5:0):e.nativeBowser?((e.nativeBowser.controls&1)?0.75:0.25):broCell!==undefined?((broCell&1)?0.75:0.25):undefined;
+  const nativePhase=e.kind==='piranha'?((e.dead?Math.floor(e.age/8)%2:nativeEnemyCyclePhase(s.random.frame,timersStopped))?0:0.5):blooper?(blooper.cell===10?0.5:0):e.nativeBowser?((e.nativeBowser.controls&1)?0.75:0.25):broCell!==undefined?((broCell&1)?0.75:0.25):undefined;
   const clip=e.kind==='piranha'?'idle':nativePhase!==undefined?'walk':e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk';
   a.pose(clip,nativePhase===undefined?e.age/60:nativePhase*a.duration(clip),s.frame);
   if(e.kind==='lakitu'&&nativeLakituCell(e.graphicsFrenzyTimer??0,Boolean(e.dead))===25)a.poseYOffset('Body',-8/16);
@@ -154,6 +155,6 @@ export class Entities{
   if(i.kind==='hammer')a.root.position.y=cy;
   if(i.kind==='flame')a.root.position.set((pictureX+12)/16,(236-pictureY)/16,0);
   if(i.kind==='fireball'||i.kind==='star'){a.root.position.set((i.x+4)/16,(232-i.y)/16-0.5,0);}
-  a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?(i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4)/4*a.duration('spin'):i.age/60,s.frame);
+  a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?(i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4)/4*a.duration('spin'):i.kind==='fireball'?nativeFireballPhase(s.random.frame)/4*a.duration('spin'):i.age/60,s.frame);
  }
 }

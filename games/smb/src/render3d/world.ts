@@ -9,7 +9,7 @@ import {analyseArea} from './layout.js';
 import {buildStatics,disposeGroup} from './scenery.js';
 import {buildBackdrop,type LightSpot} from './backdrop.js';
 import {photoBackdrop} from './nature.js';
-import {FLAG_COMPLETION} from '../simulation.js';
+import {nativeFlagSprites} from '../native-flag-picture.js';
 import {makeFlag,waveFlag} from './flag.js';
 import {liftRopeColumns,rotatedPalette} from '../view-rules.js';
 import graphics from '../../assets/graphics/graphics-manifest.json';
@@ -158,7 +158,7 @@ export class World{
   for(const entry of this.paletteMaterials){const index=rotatedPalette(nativePalettes,entry.palette,s.colorDrawRotations),[r,g,b]=nesPalette.colors[nativePalettes[index][13]];for(const material of entry.materials){material.color.setRGB(r/255,g/255,b/255,THREE.SRGBColorSpace);if(entry.coin)material.emissive.copy(material.color);}}
   this.light(camPx,s.frame);
   LIQUIDS.lava.emissiveIntensity=0.85+0.2*Math.sin(s.frame*0.07);if(LIQUIDS.lava.map){LIQUIDS.lava.map.offset.set(s.frame*0.0011,s.frame*0.0004);}LIQUIDS.water.opacity=0.62+0.05*Math.sin(s.frame*0.05);
-  const exit=s.area.exit;this.flag.visible=exit?.kind==='flag';
-  if(exit?.kind==='flag'){const top=s.phase==='flag'?s.flagTop:FLAG_COMPLETION.flagTopY;this.flag.position.set((exit.x-8)/16,(232-top)/16,0.05);waveFlag(this.flag,s.frame);}
+  const flag=s.area.exit?.kind==='flag'?nativeFlagSprites(s.specialSlot5,undefined,camPx):[];this.flag.visible=flag.length>0;
+  if(flag.length){this.flag.position.set((camPx+flag[0].x+8)/16,(232-flag[0].y)/16,0.05);waveFlag(this.flag,s.random.frame);}
  }
 }

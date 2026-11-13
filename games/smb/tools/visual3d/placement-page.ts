@@ -4,11 +4,12 @@
 // is pure (placement-match.ts) so it is unit-tested without a browser.
 import * as THREE from 'three';
 import {GameRenderer} from '../../src/renderer.js';
-import {FLAG_COMPLETION,type Simulation} from '../../src/simulation.js';
+import {type Simulation} from '../../src/simulation.js';
+import {nativeFlagSprites} from '../../src/native-flag-picture.js';
 import {enemyPicture} from '../../src/enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from '../../src/platform-motion.js';
 import {compareFrame,pieceModels,type Obj,type Cell,type FrameReport} from './placement-match.js';
-import {titleBootColor,nativeBubbleShown} from '../../src/view-rules.js';
+import {nativeBubbleShown} from '../../src/view-rules.js';
 import {nativeBlockSprites} from '../../src/native-block-picture.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
 import {PIECES} from '../../src/render3d/semantics.js';
@@ -50,7 +51,7 @@ function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number;chr?:number}[]
  });
  (s.area.firebars??[]).forEach((bar,i)=>s.firebarCenters(bar).forEach(({x,y},k)=>{const r=exact(x-4-cam,y-4+(bar.visualOffsetY??0));if(r)out.push({id:`fire#${i}.${k}`,kind:'fire',...r});}));
  (s.area.springs??[]).forEach((sp,i)=>{const r=near({x:sp.x-cam,y:sp.y-23,w:16,h:24});if(r)out.push({id:'spring#'+i,kind:'spring',...r});});
- const exit=s.area.exit;if(exit?.kind==='flag'){const r=near({x:exit.x-16-cam,y:s.phase==='flag'?s.flagTop:FLAG_COMPLETION.flagTopY,w:16,h:16});if(r)out.push({id:'flag',kind:'flag',...r});}
+ if(s.area.exit?.kind==='flag'){const pieces=nativeFlagSprites(s.specialSlot5,undefined,cam),r=union(pieces.flatMap(p=>misc.filter(q=>q.chr===p.tile&&q.r.x===p.x&&q.r.y===p.y).map(q=>q.r)));if(r)out.push({id:'flag',kind:'flag',...r});}
  if(s.phase==='flag'){
   if(s.castleFlag){const f=s.castleFlag,r=exact(f.x-cam,f.y);if(r)out.push({id:'castleFlag',kind:'castleFlag',...r});}
   s.flagFireworks.forEach((f,i)=>{const r=exact(f.x-cam,f.y);if(r)out.push({id:'spark#'+i,kind:'spark',...r});});
@@ -99,7 +100,7 @@ export function audit():FrameReport{
  // Debris is a tile-sheet sprite in 2D (z 2): it is an object, not terrain.
  const debris=tiles.filter(t=>t.z===2);
  const o2=objects2d(s,quads.concat(debris.map(t=>({tag:t.tag,r:{x:t.x,y:t.y,w:8,h:8},z:2}))));
- const black=['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing||(s.phase==='title'&&!!titleBootColor(s.titleFrame));
+ const black=!r3.world.group.visible;
  const t3=black?[]:cells3d(r3,s),o3=black?[]:objects3d(r3);
  return compareFrame({theme:s.area.theme,camera:cam,tiles2d:t2,tiles3d:t3,objects2d:o2,objects3d:o3,pieceModel:pieceModels(PIECES)});
 }
