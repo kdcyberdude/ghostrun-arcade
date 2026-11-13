@@ -22,9 +22,9 @@ export async function setup(){
 }
 /** Everything the 2D renderer draws this frame: tiles (cell + id) and sprite quads tagged with the object being drawn. */
 function draw2d(s:Simulation){
- const quads:{tag:string;r:Rect;z:number}[]=[],tiles:{id:number;x:number;y:number;z:number;tag:string}[]=[];let tag='misc';
+ const quads:{tag:string;r:Rect;z:number;chr?:number}[]=[],tiles:{id:number;x:number;y:number;z:number;tag:string}[]=[];let tag='misc';
  const q0=r2.quad,t0=r2.tile,p0=r2.player,e0=r2.enemy,i0=r2.item,c0=r2.castlePriorityTile,txt=r2.text,hud=r2.hud,cr=r2.castleRescue;
- r2.quad=function(name:string,rect:number[],x:number,y:number,z=0,fx=false,fy=false,sprite=true){if(sprite&&tag!=='skip')quads.push({tag,r:{x:Math.floor(x),y:Math.floor(y),w:rect[2],h:rect[3]},z});return q0.call(this,name,rect,x,y,z,fx,fy,sprite);};
+ r2.quad=function(name:string,rect:number[],x:number,y:number,z=0,fx=false,fy=false,sprite=true){if(sprite&&tag!=='skip')quads.push({tag,r:{x:Math.floor(x),y:Math.floor(y),w:rect[2],h:rect[3]},z,chr:name.startsWith('sprite-tiles-')?rect[1]/8*16+rect[0]/8:undefined});return q0.call(this,name,rect,x,y,z,fx,fy,sprite);};
  r2.tile=function(id:number,x:number,y:number,palette:number,z=0){tiles.push({id,x,y,z,tag});return t0.call(this,id,x,y,palette,z);};
  r2.castlePriorityTile=function(id:number,x:number,y:number,p:number){tiles.push({id,x,y,z:0,tag});return c0.call(this,id,x,y,p);};
  r2.player=function(ss:Simulation){tag='player';const r=p0.call(this,ss);tag='misc';return r;};
@@ -37,12 +37,12 @@ function draw2d(s:Simulation){
  return {quads,tiles};
 }
 /** Sim objects with the rect the 2D renderer drew for each (union of its quads). */
-function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number}[]):Obj[]{
+function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number;chr?:number}[]):Obj[]{
  const cam=Math.floor(s.camera),out:Obj[]=[],misc=quads.filter(q=>q.tag==='misc'&&q.z!==2.5);  // z 2.5 = score popups (HUD text in 3D)
  const near=(r:Rect)=>union(misc.filter(q=>hit(q.r,r)).map(q=>q.r));
  const exact=(x:number,y:number)=>union(misc.filter(q=>q.r.x===Math.floor(x)&&q.r.y===Math.floor(y)).map(q=>q.r));
  const pr=union(quads.filter(q=>q.tag==='player').map(q=>q.r));if(pr)out.push({id:'player',kind:'player',...pr});
- s.enemies.forEach((physical,i)=>{const e=enemyPicture(physical),r=union(quads.filter(q=>q.tag==='enemy#'+i).map(q=>q.r));if(r)out.push({id:'enemy#'+i,kind:e.kind,state:e.shell?'shell':e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.greenShellLaunchFrame!==undefined?'flipped':e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',...r});});
+ s.enemies.forEach((physical,i)=>{const e=enemyPicture(physical),sprites=quads.filter(q=>q.tag==='enemy#'+i),r=union(sprites.map(q=>q.r));if(r)out.push({id:'enemy#'+i,kind:e.kind,state:e.kind==='blooper'?(sprites.some(q=>q.chr===223)?'contracted':'extended'):e.kind==='lakitu'?(sprites.some(q=>q.chr===189)?'ducked':'normal'):e.kind==='piranha'?(sprites.some(q=>q.chr===229)?'open':'closed'):e.shell?'shell':e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.greenShellLaunchFrame!==undefined?'flipped':e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',...r});});
  s.items.forEach((it,i)=>{const r=typeof r2.item==='function'?union(quads.filter(q=>q.tag==='item#'+i&&q.z!==2.5).map(q=>q.r)):near({x:it.x-cam,y:it.y,w:it.kind==='debris'?8:16,h:16});if(r)out.push({id:'item#'+i,kind:it.kind,...r});});
  (s.area.platforms??[]).forEach((pl,i)=>{const p=s.platformPicturePosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=nativePlatformArtworkYs(pl,context,p.y);
   ys.forEach((y,copy)=>{const cloud=platformMotionModel(pl,context)==='contact-cloud',r=cloud?near({x:p.x-cam,y,w:pl.width,h:8}):union(misc.filter(q=>q.r.y===Math.floor(y)&&q.r.w===8&&q.r.h<=8&&q.r.x>=Math.floor(p.x-cam)&&q.r.x<Math.floor(p.x-cam)+pl.width).map(q=>q.r));if(r)out.push({id:`platform#${i}.${copy}`,kind:platformMotionModel(pl,context)==='contact-cloud'?'cloud':'lift',...r});});
@@ -69,7 +69,8 @@ function objects3d(r3:Any):Obj[]{
   return {x:x0,y:y0,w:x1-x0,h:y1-y0};
  };
  const enemyModels=new Set(Object.values(ENEMY_MODEL));
- const state=(kind:string,o:THREE.Object3D)=>kind==='toad'||kind==='princess'?kind:kind.endsWith('_shell')?'shell':kind==='espinyEgg'?'egg':kind==='podoboo'?(o.rotation.z?'falling':'rising'):enemyModels.has(kind)?(kind==='goomba'&&o.scale.y<1?'squashed':o.rotation.z?'flipped':'normal'):undefined;
+ // Midpoints between the two sampled authored asset poses distinguish actual bone transforms, not simulation tags.
+ const state=(kind:string,o:THREE.Object3D)=>kind==='blooper'?((o.getObjectByName('Body')?.position.y??0.65)<0.6?'contracted':'extended'):kind==='lakitu'?((o.getObjectByName('Body')?.position.y??0.35)<0?'ducked':'normal'):kind==='piranha'?(Math.sin(o.rotation.y)<=0?'back-facing':Math.abs(o.getObjectByName('JawF')?.quaternion.z??0)>0.3?'open':'closed'):kind==='toad'||kind==='princess'?kind:kind.endsWith('_shell')?'shell':kind==='espinyEgg'?'egg':kind==='podoboo'?(o.rotation.z?'falling':'rising'):enemyModels.has(kind)?(kind==='goomba'&&o.scale.y<1?'squashed':o.rotation.z?'flipped':'normal'):undefined;
  const add=(kind:string,o:THREE.Object3D|undefined,i:number)=>{if(!o?.visible)return;const r=project(o);if(r)out.push({id:`${kind}@${i}`,kind,state:state(kind,o),...r});};
  const e=r3.entities;
  if(e.mario)add('player',e.mario.root,0);
