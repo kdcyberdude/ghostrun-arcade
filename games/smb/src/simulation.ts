@@ -2216,6 +2216,8 @@ export class Simulation {
  get spritePictureOwner(){return this.castlePictures.owner;}
  get castleRetainer(){return this.castlePictures.retainer;}
  itemPictureShown(item:Item){return !item.nativeFlame||item.nativeFlame.born!==this.frame;}
+ /** Where the player is drawn: a swimmer's OAM is written before ProcessWhirlpools moves it (Player_Rel_XPos/Player_Rel_YPos; 2-2 cce087a2 row 21137). */
+ playerPicturePosition(){const p=this.player;return this.swimActive?{x:p.x-this.swimPull,y:p.y-this.water.whirlMoved}:{x:p.x,y:p.y};}
  enemyPictureShown(e:Enemy){return this.spritePictureOwner==='engine'||this.spritePictureOwner==='victory'&&e===this.victoryBoss;}
  private beginNativeVictory(){
   this.castlePictures.begin();

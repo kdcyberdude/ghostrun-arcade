@@ -42,7 +42,7 @@ export function nativeOamPicture(s:any){
  const rowsOf=(e:any,body:any):(number|undefined)[]|undefined=>e.kind==='goomba'&&!e.dead?[0,8,16]:e.kind==='goomba'&&e.squashed&&e.dead?[s.popups.some((p:any)=>p.victim===body)||body.erasedFrame===s.frame?undefined:1,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?[2,10,18]:undefined;
  if(enemies.some((body:any)=>{const e=pic(body);return e.enemySlot===undefined||!hidden(e)&&!undrawn(e,body)&&(!rowsOf(e,body)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
  const pose=playerCell(s);if(pose.throwing||pose.swimKick!==undefined)reasons.push('player-extra-piece');
- const px=Math.floor(s.player.x-s.camera),py=Math.floor(s.player.y)-32;
+ const at=s.playerPicturePosition(),px=Math.floor(at.x-s.camera),py=Math.floor(at.y)-32;
  if(px<0||px>240||py<0)reasons.push('player-offscreen');
  if(s.spriteShuffle.offsets[0]!==4)reasons.push('player-offset');
  if(reasons.length)return {supported:false as const,reasons};
