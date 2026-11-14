@@ -2408,6 +2408,7 @@ export class Simulation {
   // Source-owned plants/Bros retain Enemy_Flag until their handler actually erases it.
   if(e.kind==='piranha'&&e.nativePipe&&!e.dead||e.kind==='hammerBro'&&e.nativeId===5)return e.active&&!e.slotFreed&&e.dead<100;
   if(e.kind==='bullet'&&e.nativeShot&&!e.frenzy)return e.active&&e.dead<100; // the cannon pass erases its shots, after the enemy loader's turn (5-2 original row 1338)
+  if(e.kind==='cheep'&&e.nativeFlight)return e.active&&e.dead<100; // a leaping Cheep keeps its slot behind the screen until it falls out (moods corpus)
   const reach=e.kind==='piranha'||e.kind==='hammerBro'?17:73;
   return e.active&&(e.kind==='piranha'?Math.floor(e.x)>=this.nativeLeftBound(e)!:e.x>=this.camera-reach)&&(e.squashed?e.dead<90:e.dead<100||e.x<this.camera-48&&e.x-(e.dead-100)/2>=this.camera-73); // A squashed Goomba holds its slot until its native interval-timer erasure.
  }
@@ -2917,8 +2918,9 @@ export class Simulation {
    const eraseWalkerAfterMove=eraseGreenAfterMove||NATIVE_FALLERS.includes(e.kind)&&!e.motion&&(!e.shell&&e.y>=280||e.movingShell&&e.y>=280);
    // EnemyGfxHandler clears ID14 to ID0 before the caller dispatches movement; its last pass is horizontal only.
    if(eraseGreenAfterMove){e.kind='koopa';e.nativeId=0;e.fall={speed:e.pod!.speed,force:e.pod!.force,fraction:e.pod!.fraction};delete e.pod;}
+   // A leaping Cheep is never erased at the left edge, only when it falls below the screen (moods corpus: kept up to 317 px behind ScreenLeft, every erase at y page 2).
    if(eraseWalkerAfterMove){e.walkerState=0;e.shellFalling=false;} // EraseEnemyObject clears state before the caller moves horizontally, leaving all vertical bytes intact.
-   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'||e.kind==='podoboo'?73:48)||(e.kind==='spiny'||e.kind==='cheep'?e.y>=280:e.y>280)&&e.kind!=='podoboo'&&!eraseWalkerAfterMove){this.eraseEnemy(e);if(e.kind==='bullet')e.goneFrame=this.frame;if((e.nativeFlight||e.nativeSwim)&&e.enemySlot!==undefined)this.leaveFlyingCheepSlot(e);continue;}
+   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&!(e.kind==='cheep'&&e.nativeFlight)&&e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'||e.kind==='podoboo'?73:48)||(e.kind==='spiny'||e.kind==='cheep'?e.y>=280:e.y>280)&&e.kind!=='podoboo'&&!eraseWalkerAfterMove){this.eraseEnemy(e);if(e.kind==='bullet')e.goneFrame=this.frame;if((e.nativeFlight||e.nativeSwim)&&e.enemySlot!==undefined)this.leaveFlyingCheepSlot(e);continue;}
    const isWater=e.kind==='blooper'||e.kind==='cheep';
    const nativeWaterActor=this.area.theme==='water'&&isWater&&(e.swim||e.stroke);
    // RunNormalEnemies tests injury before its movement; TimerControl set by
