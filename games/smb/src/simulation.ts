@@ -853,8 +853,11 @@ export class Simulation {
  // Mario at x = spring x - 13 (22 of 22 contacts, walking at feet 208 and rising in the air; speed cut to its fraction), the remake passed into the spring.
  // While Mario rides a spring (compression rows up to the launch row) a held direction steps the speed like the ground (5-2 r4 mood0 rows 224-237: +228 per row
  // with B, the air step is 152; 2-1 r1 mood1 rows 1556-1560 the same); the x stays pinned (springPinX).
+ // A falling foot less than FOOT_LAND_DEPTH into either springboard cell lands on the spring before the side probes run (2-1 rows e3ba922f 12871,
+ // 01f49b10 11753, fb76f347 11432: right foot 2 px into the lower cell, x keeps moving, the spring starts compressing).
+ private springFeet?:SpringSpec;
  private springSideAt(x:number,y:number){
-  for(const s of this.area.springs??[])if(!this.springTimers.get(s)&&x>=s.x&&x<s.x+16&&y>=s.y-24&&y<s.y+8)return {x:s.x,y:s.y-24,width:16,height:32};
+  for(const s of this.area.springs??[])if(!this.springTimers.get(s)&&s!==this.springFeet&&x>=s.x&&x<s.x+16&&y>=s.y-24&&y<s.y+8)return {x:s.x,y:s.y-24,width:16,height:32,spec:s};
   return undefined;
  }
  private eraseAxeMetatile(){
@@ -983,7 +986,7 @@ export class Simulation {
  // up 1 px runs the foot probes, not the head probe, and lands on a floor top his feet are under 5 px into (feet 83 -> 80, 1-3 row 992).
  private apexFootProbe(dy:number,nativeHead:boolean,gravity:number){return dy<0&&gravity>0&&!nativeHead&&this.area.theme!=='water';}
  private movePlayerY(dy:number,h:number,nativeHead=false,gravity=0,cutoff=false){
-  const p=this.player,oldY=p.y;p.y+=dy;this.piranhaTouchFeetY=p.y;
+  const p=this.player,oldY=p.y;p.y+=dy;this.piranhaTouchFeetY=p.y;this.springFeet=undefined;
   if(cutoff&&nativeBackgroundSkipped(p.y))return;
   const water=this.area.theme==='water',down=water?this.water.contactSpeed>=0:dy>0||(dy===0&&!nativeHead)||this.apexFootProbe(dy,nativeHead,gravity);
   const waterFeet=water?p.y-this.water.whirlMoved:p.y;
@@ -994,7 +997,7 @@ export class Simulation {
    const tile=this.collisionAt(x,edge,!down&&(this.area.theme==='water'||hiddenBlockBumps(p.y)));
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
    // A foot deep in a resting springboard cell is pushed like a wall (2-1 mood rows 12473-12474: right foot 6 px into the top cell, x -1, speed 0).
-   if(down&&!tile&&pipeTop===undefined&&this.area.theme!=='water'){const spring=this.springSideAt(x,edge);if(spring&&Math.floor(p.y)-(spring.y+Math.floor((edge-spring.y)/16)*16)>=FOOT_LAND_DEPTH){this.footPush();break;}}
+   if(down&&!tile&&pipeTop===undefined&&this.area.theme!=='water'){const spring=this.springSideAt(x,edge);if(spring){if(Math.floor(p.y)-(spring.y+Math.floor((edge-spring.y)/16)*16)>=FOOT_LAND_DEPTH){this.footPush();break;}if(dy>0)this.springFeet=spring.spec;}}
    if(!tile&&pipeTop===undefined)continue;
    if(tile&&this.area.theme==='water'&&down&&(waterFeet-tile.y>=SWIM_WALL_DEPTH||this.water.contactSpeed<0))continue;
    if(down&&tile&&this.area.theme!=='water'&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();break;}
@@ -1350,7 +1353,7 @@ export class Simulation {
   for(const spring of this.area.springs??[]){
    let n=this.springTimers.get(spring);const born=!n;
    const top=spring.y-24,aligned=Math.floor(p.x)+12>=spring.x&&Math.floor(p.x)+3<spring.x+16;
-   if(!n&&aligned&&p.vy>=0&&oldBottom<=top+3&&p.y>=top){
+   if(!n&&(spring===this.springFeet||aligned&&p.vy>=0&&oldBottom<=top+3&&p.y>=top)){
     n=nativeSpring();this.springTimers.set(spring,n);this.springPinX=p.x;
     // LandPlyr clears raw Player_Y_Position's low nibble, retaining $0416.
     this.springPinY=((Math.floor(p.y)-32)&~15)+32+p.y-Math.floor(p.y);
