@@ -540,7 +540,7 @@ export class Simulation {
   if(this.phase!=='castle'&&(this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotationPending=true; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.parserVramBusy=false;this.updateWorldInPitFall();
-   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateNativeMisc();this.flushNativeBlockPictures();}
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateNativeMisc();this.advanceNativeBlockPictures();}
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
     const move=this.deathMove!;nativeImposeGravity(move,40,4);this.player.y=move.y+move.fraction/256;this.player.vy=move.speed+move.force/256;
     if(nativePlayerHoleLocks(Math.floor((this.player.y-32)/256)+1))this.areaControls.locked=true;
@@ -1050,7 +1050,7 @@ export class Simulation {
   }
   const nativeBlock=this.nativeBlocks[this.blockControl^1];
   const newNativeBlock=nativeBlock.state>=16&&nativeBlock.x===(Math.floor(p.x+8)&~15);
-  if(newNativeBlock){this.blockBackgroundQueue.set(key,null);this.blockUpdateBusy=this.graphicsBuffer1=true;}
+  if(newNativeBlock){if(!this.blockBackground.has(key))this.blockBackground.set(key,id);this.blockBackgroundQueue.set(key,null);this.blockUpdateBusy=this.graphicsBuffer1=true;} // the name table keeps the hit metatile until the queued blank is written (0d12a2e4 rows 327..330)
   const content=this.area.blockContents?.find(block=>block.col===x&&block.row===y);
   const powerupContent=content&&content.kind!=='vine'&&content.kind!=='multiCoin'&&id!==196?content.kind:undefined;
   if(content?.kind==='vine'&&id!==196){
@@ -1865,13 +1865,10 @@ export class Simulation {
   this.miscPositions[slot]={x:Math.floor(x),y:Math.floor(y)};
   this.items.push({kind:'coin',x,y,vx:0,vy:-5,age:0,life:1000,nativeCoin:{slot,state:1,speed:-5,...this.miscHammerBytes[slot]}});
  }
- /** A bump that ended on the previous row hides its sprite and writes its metatile back; this also runs during a death (e2a3c165 rows 1408..1409). */
- private flushNativeBlockPictures(){
+ /** Block bumps keep bouncing and write their metatile back during a death too (e2a3c165 rows 1408..1409, 24614c5e rows 3336..3341). */
+ private advanceNativeBlockPictures(){
   let busy=this.paletteClock.pendingBuffer1||this.blockUpdateBusy;
   for(const slot of [1,0]){const b=this.blockGraphics.find(b=>b.slot===slot);if(!b)continue;b.pictureY=undefined;if(b.replace&&!busy){this.queueBlockMetatile(b.key,b.metatile||null);this.blockBackgroundQueue.set(b.key,b.metatile||null);this.enemyBumpCells.delete(b.key);b.replace=false;busy=this.graphicsBuffer1=true;}}
- }
- private advanceNativeBlockPictures(){
-  this.flushNativeBlockPictures();
   const bouncing=this.nativeBlocks.slice(0,2).map(n=>(n.state&15)===1);
   this.advanceNativeBlocks();
   for(const b of this.blockGraphics)if(bouncing[b.slot]){const n=this.nativeBlocks[b.slot];b.pictureY=n.y;if(!n.state)b.replace=true;}

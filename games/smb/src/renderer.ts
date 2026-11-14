@@ -94,7 +94,7 @@ export class GameRenderer {
     this.oamContext=context;return;
    }
   }
-  const clipTop=sprite?0:32;
+  const clipTop=sprite?0:32;y=Math.floor(y); // the clip must cut whole pixel rows: a fractional top shifted Mario 1 px at the screen top (0d12a2e4 row 8403)
   if(this.worldClip&&(y<clipTop||y+rect[3]>240)){
    const top=Math.max(0,clipTop-y),bottom=Math.max(0,y+rect[3]-240);if(top+bottom>=rect[3])return;
    rect=[rect[0],rect[1]+(flipY?bottom:top),rect[2],rect[3]-top-bottom];y+=top;
