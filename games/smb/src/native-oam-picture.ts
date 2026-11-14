@@ -33,7 +33,7 @@ export function nativeOamPicture(s:any){
  if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)write(4+row*8+col*4,py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||pose.cell===25&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
  for(const body of enemies.sort((a:any,b:any)=>a.enemySlot-b.enemySlot)){
   const e=enemyPicture(body),x=Math.floor((e.graphicsX??e.x)-s.camera),y=Math.floor(e.graphicsY??e.y)-24,base=s.spriteShuffle.offsets[e.enemySlot!+1],stopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped),left=(e.graphicsFacing??e.vx)<0,flip=stopped?left:left===Boolean(s.random.frame&8);
-  if(hidden(e)){for(let i=0;i<6;i++)write(base+Math.floor(i/2)*8+(i%2)*4,248,0,0,0);continue;}
+  if(hidden(e))continue; // its entries keep the cleared Y (248); tile, attribute and X bytes are not reconstructed
   if(y<0||y>216)return {supported:false as const,reasons:['enemy-vertical-mask']};
   // SprObjectOffscrChk hides whole columns, including the left column at X0.
   for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=x+col*8;write(base+row*8+col*4,xx<=0||xx>255?248:y+row*8,tables.enemy_cells[14].tiles[row*2+(flip?1-col:col)],3|(flip?64:0),xx);}
