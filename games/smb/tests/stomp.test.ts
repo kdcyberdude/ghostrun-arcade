@@ -41,6 +41,7 @@ test('an area load clears an airborne count while retaining the accumulated scor
 test('actual damage clears an airborne count before a second enemy contact',()=>{
  const sim=fixture();sim.player.size=1;sim.step([],11);assert.equal(sim.awardedScore,100);
  sim.items.push({kind:'flame',x:40,y:180,vx:0,vy:0,age:0,life:1});sim.step([],1);assert.equal(sim.powerChange?.kind,'shrink');
+ while(sim.powerChange)sim.step([],1);sim.enemies[1].x=40; // Mario moves on the last two shrink frames (2-1 a3899256 row 12421), so the walker is placed under his fall
  let landed=false;for(let frame=0;frame<100&&sim.awardedScore===100;frame++){sim.step([],1);if(sim.player.grounded)landed=true;}
  assert.equal(landed,false);assert.equal(sim.awardedScore,200);assert.equal(sim.enemies[1].dead,1);assert.equal(sim.phase,'play');
 });

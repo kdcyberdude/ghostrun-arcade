@@ -134,8 +134,8 @@ test('the generator stops outside its camera range (5-3 recorded range 0 to 1802
  sim.camera=300;sim.step([],400);assert.equal(shots(sim).length,1);
 });
 
-// Contact box: native Mario never touches a Bullet Bill that he only passes at its top edge (5-3 row 43124: rising feet 184 beside a bullet with feet 192, x 1032 / 1039)
-// and stomps one when his feet go from 167 to 171 over a bullet with feet 176 (7-1 rows 56844-56845, vy 4 then -3): the box is about 9 px tall (6 < height <= 10).
+// Contact box (native RAM box rows: Bullet Bill x+3..x+13, y+14..y+20 at its moved position; small Mario x+3..x+13, y+20..y+32; edges touching count).
+// The shot moves 1.5 px left from x 1000 before the check (to 998.5); dx is 1000 - Mario x.
 function contact(bulletFeet:number,marioFeet:number,oldFeet:number,vy:number,dx:number){
  const sim=fixture({});sim.player.invincible=0;sim.camera=900;sim.broClock=1; // PlayerEnemyCollision runs on even frame-counter rows
  (sim as any).spawnNativeBullet(1000,bulletFeet,-1);
@@ -143,15 +143,15 @@ function contact(bulletFeet:number,marioFeet:number,oldFeet:number,vy:number,dx:
  (sim as any).updateEnemies(oldFeet);
  return {sim,bullet};
 }
-test('a bullet passed at its top edge does not hurt Mario (5-3 row 43124)',()=>{
- const {sim,bullet}=contact(192,184,188,-5,7);
- assert.equal(sim.phase,'play');assert.equal(bullet.dead,0);assert.equal(sim.player.dead,false);
+test('a bullet 1 px clear of the Mario box does not touch him, and one at its edge is stomped (5-1 original row 3238: box 107..117 against 118..128)',()=>{
+ const clear=contact(192,186,182,4,-9);
+ assert.equal(clear.bullet.dead,0);assert.equal(clear.sim.player.dead,false);assert.equal(clear.sim.phase,'play');
+ const edge=contact(192,186,182,4,-8);
+ assert.ok(edge.bullet.dead>0);assert.equal(edge.sim.player.dead,false);assert.ok(edge.sim.player.vy<0);
 });
-test('falling Mario stomps a bullet when his feet cross its 9 px box (7-1 rows 56844-56845)',()=>{
- const before=contact(176,167,163,4,4);
- assert.equal(before.bullet.dead,0);assert.equal(before.sim.player.dead,false);
- const stomp=contact(176,171,167,4,4);
- assert.ok(stomp.bullet.dead>0);assert.equal(stomp.sim.player.dead,false);assert.ok(stomp.sim.player.vy<0);
+test('a rising Mario whose y + 12 is above the bullet stomps it (7-1 original row 2274: box 80..90 x 182..188 against 72..82 x 171..183)',()=>{
+ const {sim,bullet}=contact(192,183,186,-3,10);
+ assert.ok(bullet.dead>0);assert.equal(sim.player.dead,false);assert.ok(sim.player.vy<0);
 });
 
 // Data produced by tools/derive-bullet-schedule.mjs from the route trace and attached by tools/compile-levels.mjs.
