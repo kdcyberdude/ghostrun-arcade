@@ -1112,7 +1112,7 @@ export class Simulation {
    this.jumpPose=false;
    const lr=buttons.has('down')&&wasGrounded?0:Number(buttons.has('right'))|Number(buttons.has('left'))<<1;
    if(water&&refreshSpeed)anim.setSpeed(absolute); // OnGroundStateSub on the water floor (the land motor sets it otherwise)
-   if(water&&p.vx)this.swimMovingDir=Math.sign(p.vx); // Player_MovingDir keeps its value while the speed is 0 (all captures: 134,477 water rows; 2-2 d6214d96 row 22507: stopped by a wall, still walking)
+   if(water&&Math.floor(p.vx*16))this.swimMovingDir=Math.sign(p.vx); // Player_MovingDir keeps its value while the speed byte (Player_X_Speed, vx x 16 floored) is 0 (all captures: 134,477 water rows; 2-2 d6214d96 row 22507: stopped by a wall, still walking; db6a782b row 20063: vx 0.039 is byte 0)
    const m=water?{speed:Math.round(p.vx*4096),absolute:this.swimAbsolute,moving:this.swimMovingDir,facing:p.facing}:this.motor; // Player_XSpeedAbsolute keeps this frame's speed when a wall then zeroes Player_X_Speed (2-2 371fe2fe row 20302: speed 0, absolute $15, still skidding)
    const byte=Math.floor(m.speed/256)&255;
    if(p.duck||byte===0&&lr===0){pose.kind='stand';anim.still();}
