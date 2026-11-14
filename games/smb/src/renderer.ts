@@ -185,9 +185,9 @@ export class GameRenderer {
    return;
   }
   if(e.defeat&&(e.kind==='koopa'||e.kind==='redKoopa')&&e.dead>0){
-   // A defeated Koopa is the shell with its rows swapped ($6E over $6F), drawn before it moves: OAM y = previous y + 8, x = x - 1 (0d12a2e4 rows 5418..5449).
+   // A defeated Koopa is the shell with its rows swapped ($6E over $6F), drawn from its pre-move picture: OAM x = x, OAM y = y + 8 (0d12a2e4 rows 5418..5449).
    const tiles=tables.enemy_cells[17].tiles,top=Math.floor(e.graphicsY??e.y)-15;
-   for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(2-row)*2+col],x-1+col*8,top+row*8,palette,col===1,false);
+   for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(2-row)*2+col],x+col*8,top+row*8,palette,col===1,false);
    return;
   }
   if(e.squashed){
