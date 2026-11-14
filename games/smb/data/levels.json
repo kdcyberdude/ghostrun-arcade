@@ -110635,7 +110635,8 @@
             "x": 400,
             "y": 200,
             "nativeColumn": 400,
-            "nativeOffset": 10
+            "nativeOffset": 10,
+            "palette": "0f-16-30-27"
           }
         ],
         "freeTiles": [
@@ -140530,13 +140531,15 @@
             "x": 608,
             "y": 200,
             "nativeColumn": 608,
-            "nativeOffset": 16
+            "nativeOffset": 16,
+            "palette": "0f-16-30-27"
           },
           {
             "x": 1856,
             "y": 200,
             "nativeColumn": 1856,
-            "nativeOffset": 64
+            "nativeOffset": 64,
+            "palette": "0f-16-30-27"
           }
         ],
         "freeTiles": [],
@@ -191446,7 +191449,8 @@
             "x": 704,
             "y": 200,
             "nativeColumn": 704,
-            "nativeOffset": 22
+            "nativeOffset": 22,
+            "palette": "0f-16-30-27"
           }
         ],
         "freeTiles": [
