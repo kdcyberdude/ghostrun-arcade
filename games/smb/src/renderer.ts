@@ -211,7 +211,7 @@ export class GameRenderer {
    const shell=tables.enemy_cells[(e.kind==='beetle'?19:17)+phase],launched=e.dead>0||e.kind!=='beetle'&&(e.walkerState===2||e.walkerState===3); // a Koopa shell in state 2 or 3 (after a mid-air stomp) is drawn like a launched one, $6E over $6F unflipped (17a2baf0 2-1 rows 11898-12016; states 4/84/C4 flipped)
    for(let row=0;row<2;row++)for(let col=0;col<2;col++){
     const sourceRow=launched?2-row:row+1;
-    this.spriteTile(shell.tiles[sourceRow*2+col],x+col*8,y+10+row*8,palette,col===1,!launched);
+    this.spriteTile(shell.tiles[sourceRow*2+col],x+col*8,y+(e.dead>0?10:launched?8:10)+row*8,palette,col===1,!launched); // the state 2/3 shell is two lines higher (17a2baf0 row 11899: OAM 185 for feet 201)
    }
    return;
   }
