@@ -131,7 +131,7 @@ export class GameRenderer {
   * background where that is not colour 0 (2-1 799a745a picture 14578: Piranha entries 12-17 hide a Goomba at 18-23 over the sky). */
  private behindBackgroundSprite(x:number,y:number,width:number,height:number,z:number,draw:()=>void){
   this.stencilMode=1;draw();this.stencilMode=2;
-  for(const b of this.backgroundDraws){const r=this.rects.get(b.id)!;if(b.x<x+width&&x<b.x+r[2]&&b.y<y+height&&y<b.y+r[3])this.castlePriorityTile(b.id,b.x,b.y,b.palette,z+1e-6);}
+  for(const b of this.backgroundDraws??[]){const r=this.rects.get(b.id)!;if(b.x<x+width&&x<b.x+r[2]&&b.y<y+height&&y<b.y+r[3])this.castlePriorityTile(b.id,b.x,b.y,b.palette,z+1e-6);}
   this.stencilMode=0;
  }
  private spriteTile(id:number,x:number,y:number,palette='0f-1a-30-27',flipX=false,flipY=false,z=this.enemyOamZ??2){
