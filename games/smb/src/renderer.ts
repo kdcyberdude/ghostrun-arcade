@@ -238,7 +238,7 @@ export class GameRenderer {
    const descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor,palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
    for(const piece of descriptor.sprites)this.spriteTile(piece.tile,i.nativeHammer?(Math.floor(x)+piece.x)&255:x+piece.x,i.nativeHammer?((Math.floor(i.y)+piece.y)&255)+1:i.y+piece.y,palette,piece.flip_x,piece.flip_y,i.nativeHammer?2+(255-s.spriteShuffle.miscOffset(i.nativeHammer.slot))/4096:2);
   }
-  if(i.kind==='flame')this.special('bowser_flame-'+(s.random.frame>>1&1),x,i.y); // OAM attribute $82/$02: flipped on FrameCounter bit 1 (0d12a2e4 rows 12380..12419)
+  if(i.kind==='flame')this.special('bowser_flame-'+(s.random.frame>>1&1),x,i.y+1); // OAM attribute $82/$02 flips on FrameCounter bit 1; drawn one line below OAM y = flame y (0d12a2e4 rows 12380..12465)
   if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
  }
  render(s:Simulation){
@@ -258,9 +258,13 @@ export class GameRenderer {
     if(id===95||id===96)continue;let y=row*16;
     const below=doorwayBottomTile(id,s.tiles.has(`${col},${row+1}`));if(below!==undefined)this.tile(below,x,y+16,this.rotation(s.area.palette));
     const age=s.bump.get(key);if(age!==undefined&&!s.blockGraphics.some(b=>b.key===key)&&!s.usedBlockRehits.has(key)&&bumpShown(id))y-=Math.round(Math.sin(age/16*Math.PI)*4);
-    if(s.level.id==='8-4'&&s.area.id==='area-2'&&col===38&&row===9&&id===196){
-     // The revealed foothold uses the observed gray castle palette.
-     for(const [index,tile] of [87,88,89,90].entries())this.quad('background-tiles-0f-30-10-00.png',[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+(index%2)*8,y+Math.floor(index/2)*8,0,false,false,false);
+    const original=this.originalTiles.get(key);
+    if(s.blockBackground.has(key)&&original!==undefined&&original>>6!==id>>6){
+     // A block write-back sends only the four name-table tiles, never the attribute byte, so the cell keeps its original palette group
+     // (b230c302 row 13193: $2640/$2660 <- 57 58 / 59 5A over hidden block $5F, drawn gray in 1-4; same in 8-4 area-2 at 38,9).
+     const palette=this.palettes[this.rotation(s.area.palette)],group=original>>6,colors=[palette[0],...palette.slice(group*4+1,group*4+4)].map(n=>n.toString(16).padStart(2,'0')).join('-');
+     const tiles=tables.metatiles.find(m=>m.metatile_id===id)!.tiles; // TL,BL,TR,BR
+     for(const [index,tile] of tiles.entries())this.quad(`background-tiles-${colors}.png`,[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+Math.floor(index/2)*8,y+(index%2)*8,0,false,false,false);
     }else{
      this.tile(id,x,y,this.rotation(s.area.palette));
     }
