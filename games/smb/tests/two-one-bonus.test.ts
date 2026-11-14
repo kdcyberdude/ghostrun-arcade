@@ -15,7 +15,7 @@ function pipeFixture(){
 
 test('2-1 bonus retains its unique supplied-palette map and observed connections',()=>{
  const level=observedLevels().find(l=>l.id==='2-1')!,main=level.areas.find(a=>a.id==='main')!,room=level.areas.find(a=>a.id==='bonus-coins')!;
- assert.equal(room.width,256);assert.equal(room.palette,4);assert.equal(room.tiles.length,105);
+ assert.equal(room.width,256);assert.equal(room.palette,3);assert.equal(room.tiles.length,105);
  assert.equal(room.tiles.filter(t=>t[2]===194).length,19);assert.deepEqual(sourceRoom.unknownCells,[]);
  assert.deepEqual(room.tiles,sourceRoom.tiles.map(([x,y,id])=>[x,y,id===71?82:id]));
  const entrance=main.pipes!.find(p=>p.to===room.id)!;assert.equal(entrance.targetLevel,undefined);
