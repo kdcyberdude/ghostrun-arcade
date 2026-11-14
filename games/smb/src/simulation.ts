@@ -1867,7 +1867,7 @@ export class Simulation {
    }else{
     i.y=nativeMiscGravity(n,i.y,0x10,4);i.x+=i.vx;
     const box=this.hammerPlayerBox??nativePlayerBox(this.player.x,this.player.y,this.player.size,this.player.duck,this.camera+this.lakituScroll);
-    if(nativeHammerContact(n,box,this.random.frame,this.miscOffscreen)){i.vx=-i.vx;if(!this.player.star)this.hurt();}
+    if(nativeHammerContact(n,box,this.random.frame,this.miscOffscreen)){i.vx=-i.vx;if(!this.player.star){this.hurt();if(this.nativeTimersStopped)for(const e of this.enemies)if(e.cannonMove?.frame===this.frame)e.x=e.cannonMove.x;}} // the hammer pass precedes the cannon shots' move (7-1 original row 1152)
    }
   }
   n.drawFrame=this.frame;n.drawTimersStopped=this.nativeTimersStopped;
@@ -2950,7 +2950,7 @@ export class Simulation {
     e.x+=speed===undefined?e.vx*(e.kind==='blooper'?0.8:1.5):Math.sign(e.vx)*speed;e.y=e.swim?e.originY+swimBobOffset(e.swim.bob,e.age-1):e.originY+Math.sin(e.age/40)*24;
     if(e.kind==='blooper'&&e.age%120<40){e.x+=Math.sign(p.x-e.x)*0.5;e.y-=0.4;}
     }
-   }else if(e.kind==='bullet'){if(!e.nativeShot||e.age>1)e.x+=Math.sign(e.vx)*BULLETS.speed;} // a native shot holds its spawn row
+   }else if(e.kind==='bullet'){if(!e.nativeShot||e.age>1){if(cannonShot(e))e.cannonMove={frame:this.frame,x:e.x};e.x+=Math.sign(e.vx)*BULLETS.speed;}} // a native shot holds its spawn row
    else if(e.kind==='lakitu'){
     if(!p.dead&&!this.enemyContactOff)this.contactNativeLakitu(e,priorX,priorY);
     this.updateNativeLakitu(e);
