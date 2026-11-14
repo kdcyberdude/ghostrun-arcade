@@ -296,9 +296,10 @@ export class GameRenderer {
    if(ordinary){
    for(const platform of s.area.platforms??[]){
     const context={levelId:s.level.id,areaId:s.area.id},pos=s.platformPicturePosition(platform);
-    for(const y of nativePlatformArtworkYs(platform,context,pos.y)){
+    const ys=nativePlatformArtworkYs(platform,context,pos.y);
+    for(const y of ys){
      if(platformMotionModel(platform,context)==='contact-cloud')this.special(s.platformWidth(platform)===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,y);
-     else{const slot=s.spriteObjectSlot(platform),base=slot===undefined?undefined:s.spriteShuffle.offsets[slot+1];this.oamContext=this.oamRows&&base!==undefined?{base,count:s.platformWidth(platform)/8}:undefined;for(let i=0;i<s.platformWidth(platform);i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27',false,false,base===undefined?2:2+(255-base)/4096);this.oamContext=undefined;} // lower OAM offsets draw in front, as for enemies (0d12a2e4 row 18152: lift over Bowser)
+     else{const slot=s.spriteObjectSlot(platform),base=slot===undefined?undefined:s.spriteShuffle.offsets[slot+1];this.oamContext=this.oamRows&&base!==undefined?{base,count:s.platformWidth(platform)/8+(ys.length>1?3:0)}:undefined;for(let i=0;i<s.platformWidth(platform);i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27',false,false,base===undefined?2:2+(255-base)/4096);this.oamContext=undefined;} // lower OAM offsets draw in front, as for enemies (0d12a2e4 row 18152: lift over Bowser); a small lift's second surface is on entries 3-5, so its dropped ninth sprite hides too (2-4 24a4c03d picture 22164)
     }
    }
    // Reference vines remain visible in the HUD rows while growing offscreen.
