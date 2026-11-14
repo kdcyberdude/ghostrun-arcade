@@ -168518,11 +168518,14 @@
           },
           {
             "kind": "paratroopa",
-            "x": 2480,
+            "x": 2496,
             "y": 160,
             "direction": -1,
-            "evidence": "screenshot sequence 2081 tick 8320; exact enemy-table-0f-1a-30-27.png cell 4; camera registration inferred",
-            "palette": "0f-1a-30-27"
+            "evidence": "screenshot sequence 2081 tick 8320; exact enemy-table-0f-1a-30-27.png cell 4; camera registration inferred; x 2480 -> 2496: the native horizontal flyer (id 16, enemy record 18) appears at x 2496 y 136 (original 7-3 row 1961)",
+            "palette": "0f-1a-30-27",
+            "nativeColumn": 2496,
+            "nativeId": 16,
+            "nativeOffset": 18
           },
           {
             "kind": "cheep",
