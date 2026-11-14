@@ -1,6 +1,6 @@
 /** Native id $10: XMoveCntr_GreenPTroopa + MoveWithXMCntrs and FrameCounter y sway.
  * Primary counter aliases $A0, secondary $58, horizontal subpixel $0401. */
-export type NativeHorizontalFlight={x:number;y:number;primary:number;secondary:number};
+export type NativeHorizontalFlight={x:number;y:number;primary:number;secondary:number;fraction?:number}; // fraction: the slot's y sub-pixel, untouched by the flight (a stomp drops from it)
 export function advanceNativeHorizontalFlight(n:NativeHorizontalFlight,frame:number){
  if((frame&3)===0){
   if(n.primary&1){if(n.secondary===0)n.primary=(n.primary+1)&255;else n.secondary=(n.secondary-1)&255;}

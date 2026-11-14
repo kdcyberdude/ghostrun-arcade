@@ -2571,7 +2571,7 @@ export class Simulation {
     else if(e.nativeId===17){e.lak={dir:0,speed:0,box:3};this.lakituReappearCount=0;}
     else if(e.nativeId===14)e.pod={...nativeMoveState(e.y),...left};
     else if(e.nativeId===15)e.redFlight=createNativeRedFlight(e.y,left.fraction);
-    else if(e.nativeId===16)e.horizontalFlight={x:e.x,y:e.y,primary:0,secondary:0};
+    else if(e.nativeId===16)e.horizontalFlight={x:e.x,y:e.y,primary:0,secondary:0,fraction:left.fraction};
     else e.fall={speed:0,force:0,fraction:left.fraction};
     if(e.nativeId===3)e.walkerState=1; // InitRedKoopa starts falling; only state0 avoids ledges.
     if(e.nativeId!==14){left.speed=0;left.force=0;this.slotYSpeed[slot]=0;}
@@ -2843,7 +2843,7 @@ export class Simulation {
   for(const e of this.placedActorStream?nativeActors():ordered){
    while(nativeSlot<=Math.min(5,e.enemySlot??5))this.visitNativeBankSlot(nativeSlot++,oldBottom);
    if((this.placedCastle||this.placedActorStream)&&e.slotBorn===this.frame&&(!e.nativeGroup||!e.graphicsVisible))continue;
-   const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
+   const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??e.horizontalFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
    let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined,stompPod=e.pod?{...e.pod}:undefined;const stompRed=e.redFlight?{...e.redFlight}:undefined;
    const hurtBeforeMove=()=>{
     if(!p.invincible&&!p.star&&!this.powerChange&&this.phase==='play'){
