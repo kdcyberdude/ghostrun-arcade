@@ -321,7 +321,10 @@ export class Simulation {
  get waterEntryStanding(){return this.entryFalling&&this.area.theme==='water'&&this.entryFallAge<=(this.area.entryFall?.initialStandFrames??0);}
  get entryFallPose(){return this.entryFalling&&this.area.theme!=='water';}
  get entryTimerHidden(){return Boolean(this.area.entryFall&&this.entryTimerDelay!==0);}
+ // The castle-walk scroll fraction ($0768) is only written by that scroll: the next castle starts from what the last one left (2-4 738f9c75 row 22157: 128 from 1-4).
+ private victoryScrollFraction=0;
  reset(playing=false){
+  this.victoryScrollFraction=0;
   this.nativeStartup=undefined;this.coldStartup=undefined;this.nativeStartupPicture.reset();this.random=new NativeRandom();this.intervalControl=20;
   this.frame=0;this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.deathLoad=undefined;this.levelLoad=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
@@ -2162,7 +2165,7 @@ export class Simulation {
   const boss=this.enemies.find(e=>e.kind==='bowser'&&e.active),body=boss?.nativeBowser;
   this.victoryBoss=boss;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase='axe';
   const task={bridge:0,fall:0,walk:2,message:3}[this.castleStage];
-  this.nativeVictory={task,destination:((Math.floor(this.camera)+255)>>8)+1,walk:0,scrollFraction:0,primary:0,secondary:0,endTimer:0,
+  this.nativeVictory={task,destination:((Math.floor(this.camera)+255)>>8)+1,walk:0,scrollFraction:this.victoryScrollFraction,primary:0,secondary:0,endTimer:0,
    feet:body?.feet??32,controls:body?.controls??0,bridge:0,bossState:boss?.dead?32:0,
    boss:body?{...body.move,y:body.y}:{y:Math.floor(boss?.y??256)-32,speed:0,force:0,fraction:0,timer:0}};
   if(task===0){this.motor.speed=24*256+(this.motor.speed&255);this.player.vx=this.motor.speed/4096;}
@@ -2197,7 +2200,7 @@ export class Simulation {
     if(axe){this.eraseAxeMetatile();this.motor.speed=24*256+(this.motor.speed&255);p.vx=this.motor.speed/4096;}
     return {playerX:Math.floor(p.x),axe};
    }});
-  this.camera=result.camera;
+  this.camera=result.camera;this.victoryScrollFraction=n.scrollFraction;
   // PlayerVictoryWalk calls UpdScrollVar before VictoryMode's slot0 enemy pass.
   if(this.camera!==previousCamera)this.areaControls.advance(this.parserClock.advance(this.camera-previousCamera,false));
   this.updateLocomotionPose(poseGround,poseAbsolute,false,new Set<Button>(poseWalk?['right']:[]));
