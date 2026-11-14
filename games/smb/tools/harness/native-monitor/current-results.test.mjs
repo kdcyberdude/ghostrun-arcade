@@ -19,11 +19,11 @@ test('failure plan lists recordings with any mismatch in the level, worst first'
  const plan=failingRecordings(stateReport(runs()),'1-1');
  assert.deepEqual([plan.visiting,plan.failing,plan.failedFrames,plan.ids,plan.measures],[2,1,1,['a'],'state-only']);
 });
-test('view separates historical totals from newer state-only results',()=>{
+test('view keeps historical totals and does not list state-only results',()=>{
  const current={head:'abc1234',dirty:false,results:[{...summarizeCurrent(stateReport(runs()),inventory,policyHash),current:true,file:'x'}]};
  const text=renderCombined({moodCount:1,referenceCount:1,result:{...emptyResult(inventory),reported:true,runtime:'cca2e44'},current},{width:118});
- assert.match(text,/HISTORICAL FULL AUDIT · build cca2e44/);assert.match(text,/1-1 STATE ONLY · pictures not compared · CURRENT/);assert.match(text,/All cells historical build cca2e44/);
- const older={...current,results:[{...current.results[0],current:false}]};assert.match(renderCombined({moodCount:1,referenceCount:1,result:emptyResult(inventory),current:older},{width:118}),/OLDER BUILD abc1234/);
+ assert.match(text,/HISTORICAL FULL AUDIT · build cca2e44/);assert.doesNotMatch(text,/STATE ONLY|NEWER BUILD RESULTS/);assert.match(text,/All cells historical build cca2e44/);
+ const older={...current,results:[{...current.results[0],current:false}]};assert.doesNotMatch(renderCombined({moodCount:1,referenceCount:1,result:emptyResult(inventory),current:older},{width:118}),/STATE ONLY|OLDER BUILD abc1234/);
 });
 test('a full audit of the current game build is titled CURRENT, not historical',()=>{
  const current={head:'abc1234',dirty:false,fullCurrent:true,results:[{...summarizeCurrent(stateReport(runs()),inventory,policyHash),current:true,file:'x'}]};

@@ -19,7 +19,7 @@ sibling `traces/1-1 … 8-4`) and `combined`, the full historical every-frame re
 * **Historical full audit**: the registered `combined` receipt (every frame of all 368 recordings,
   state AND picture). Its build is printed in the title; its totals stay historical until a new full audit.
 * **Newer build results**: receipts registered with `--add-current`, listed per level and labelled
-  * `STATE ONLY · pictures not compared`: from `native-state-replay.ts`;
+  * state-only receipts from `native-state-replay.ts` are accepted but not listed (development check);
   * `STATE+PICTURE`: a level-scoped `combined-monitor-audit.ts` audit (joint, state and picture counts);
   * `CURRENT` when the measured `src/` and `data/` equal HEAD's (clean tree), otherwise `OLDER BUILD <sha>`. Targeted receipts (a subset of recordings) say so.
 * In the overview grid, a level with a CURRENT state+picture result shows that result, marked `*`;

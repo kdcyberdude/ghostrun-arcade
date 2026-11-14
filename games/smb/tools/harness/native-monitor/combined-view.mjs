@@ -20,16 +20,18 @@ export function renderCombined(s,{width=100,color=false,world=0,now=Date.now()}=
  lines.push(row(paint(`MATCHING ${d.reported?n(d.matching):'--'}`,32)+'     '+paint(`NOT MATCHING ${d.reported?n(d.notMatching):'--'}`,31)));
  lines.push(row(`${n(d.unchecked)} unchecked · state AND screen required · each observed frame counted independently`));
  for(const [name,c]of [['STATE',d.state],['PICTURE',d.picture]])lines.push(row(name+': '+n(c.matching)+' match / '+n(c.notMatching)+' mismatch / '+n(c.unchecked)+' unchecked'));
- if(s.current?.results?.length){
+ // State-only receipts are a development check; the view lists only state+picture results (and rejected receipts).
+ const listed=(s.current?.results??[]).filter(r=>r.error||r.kind==='state+picture');
+ if(listed.length){
   lines.push(rule(`NEWER BUILD RESULTS · main HEAD ${s.current.head.slice(0,7)||'?'}${s.current.dirty?' + uncommitted changes':''}`));
-  for(const r of s.current.results){
+  for(const r of listed){
    if(r.error){lines.push(row(paint(`Rejected ${r.file.split('/').at(-1)}: ${r.error}`,31)));continue;}
    const label=r.current?paint('CURRENT',32):paint(`OLDER BUILD ${r.runtime.slice(0,7)}${r.dirty?' (uncommitted)':''}`,33);
    for(const [key,e]of Object.entries(r.levels).sort()){
-    lines.push(row(`${key} ${r.kind==='state-only'?paint('STATE ONLY',36)+' · pictures not compared':paint('STATE+PICTURE',36)} · ${label} · ${e.recordings} recordings${r.recordings<r.inventoryRecordings?` (targeted ${r.recordings}/${r.inventoryRecordings})`:''} · ${localTime(r.measured)}`));
-    if(r.kind==='state+picture')lines.push(row(`  JOINT: ${n(e.joint.matching)} match / ${n(e.joint.notMatching)} mismatch / ${n(e.joint.unchecked)} unchecked`));
+    lines.push(row(`${key} ${paint('STATE+PICTURE',36)} · ${label} · ${e.recordings} recordings${r.recordings<r.inventoryRecordings?` (targeted ${r.recordings}/${r.inventoryRecordings})`:''} · ${localTime(r.measured)}`));
+    lines.push(row(`  JOINT: ${n(e.joint.matching)} match / ${n(e.joint.notMatching)} mismatch / ${n(e.joint.unchecked)} unchecked`));
     lines.push(row(`  STATE: ${n(e.state.matching)} match / ${n(e.state.notMatching)} mismatch / ${n(e.state.unchecked)} unchecked`));
-    if(r.kind==='state+picture')lines.push(row(`  PICTURE: ${n(e.picture.matching)} match / ${n(e.picture.notMatching)} mismatch / ${n(e.picture.unchecked)} unchecked`));
+    lines.push(row(`  PICTURE: ${n(e.picture.matching)} match / ${n(e.picture.notMatching)} mismatch / ${n(e.picture.unchecked)} unchecked`));
    }
   }
  }
