@@ -3473,6 +3473,7 @@ export class Simulation {
  }
  private updateLevelLoad(){
   const n=this.levelLoad!,task=n.task,render=n.task===1&&n.screen===8,hold=n.task===0&&n.screen===0;
+  if(task!==0)this.nativeStartupPicture.title=false; // InitializeArea has blanked the retained title nametable: later task-0 rows keep the old picture (2-1 1ae7aeeb rows 8685-8686 show 1-4's castle)
   if(!hold){this.gameTimerStep(false);this.tickIntervalTimers();}else this.lifeFrozen++;
   const result=stepNativeLevelLoad(n,!hold&&this.intervalControl===20);if(render)this.renderInitialSpringColumns();
   if(task===2)this.nativeEndLevelMusicAreaQueue=this.area.entryVine?16:this.area.autoWalk&&this.pipeLoad?.alternate!==2?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];
