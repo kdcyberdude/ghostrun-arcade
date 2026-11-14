@@ -603,7 +603,7 @@ export class Simulation {
   if(this.powerChange){
    this.lifeFrozen++;const next=nativeTransformStep(this.powerChange.kind,this.powerChange.remaining);this.powerChange.remaining=next.remaining;
    if(next.done){this.player.size=this.powerChange.to;this.powerChange=undefined;this.resumeWorldAfterTransform();}
-   else{for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
+   else{this.shrinkScroll();for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
    return;
   }
   this.gameTimerStep(false); // NMI precedes player/actor routines, including automatic entrances.
@@ -1337,6 +1337,13 @@ export class Simulation {
   // Pipe plants are terrain actors; generators retain their normal lifecycle.
   if(ordinaryEnemyFrontier!==undefined)this.enemies=this.enemies.filter(e=>e.kind==='piranha'||e.originX>=ordinaryEnemyFrontier);
   if(this.area.entryFall?.native)this.primeNativeEntryObjects(true);
+ }
+ // While Mario shrinks, once the injury timer is below 240 the camera keeps scrolling by the last Player_X_Scroll (Mario stands still) until his
+ // screen x is below 79 (2-1 371fe2fe rows 18250-18282: scroll 1 from screen x 111 to 78; a3899256 rows 12384-12416: scroll 2 at 112, then 1, to 78).
+ private shrinkScroll(){
+  const scroll=this.playerXScroll<128?this.playerXScroll:0,screenX=Math.floor(this.player.x)-Math.floor(this.camera);
+  if(this.powerChange?.kind!=='shrink'||this.powerChange.remaining>=40||this.areaControls.locked||this.sideCollisionTimer>0||scroll===0||screenX<79)return;
+  this.camera+=screenX>=112||scroll<2?scroll:scroll-1;
  }
  private restartToTitle(){const frame=this.frame,row=this.lifeRow,frozen=this.lifeFrozen;this.reset();this.frame=frame;this.lifeRow=row;this.lifeFrozen=frozen;}
  /* native: an A held through the load starts the first control row's jump (no release edge needed) */ private freshA=false;private controlGrace=0;
