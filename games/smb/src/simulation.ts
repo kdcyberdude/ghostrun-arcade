@@ -1990,7 +1990,7 @@ export class Simulation {
   if(lakitu.lak?.fleeing||((Math.floor(this.player.y)-32)&255)<SPINY_EGG.minMarioY)return;
   const x=low?lakitu.lak!.preX!:Math.floor(lakitu.x),y=lakitu.y-SPINY_EGG.aboveLakitu,left=this.slotVertical[slot];
   const egg=this.makeEnemy({kind:'spiny',motion:'falling',x:x+this.slotSub[slot]/256,y,palette:'0f-16-30-27',evidence:'Native CreateSpiny (src/lakitu.ts).'});
-  egg.active=true;egg.egg=true;egg.vx=0;egg.vy=SPINY_EGG.speed;egg.enemySlot=slot;egg.age=0;
+  egg.active=true;egg.egg=true;egg.vx=0;egg.vy=SPINY_EGG.speed;egg.enemySlot=slot;egg.age=0;egg.graphicsVisible=false; // not drawn on the row it is made (all captures: 40 of 40 new eggs, either slot order)
   egg.pod={...nativeMoveState(y),speed:SPINY_EGG.speed,force:0,fraction:left.fraction}; // speed $FD, MoveForce 0; the y fraction $0417 is what the slot was left with (26 of 26 v2 eggs)
   this.enemies.push(egg);
  }
