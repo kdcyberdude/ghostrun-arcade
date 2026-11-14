@@ -26172,6 +26172,11 @@
             143,
             2,
             130
+          ],
+          [
+            88,
+            12,
+            78
           ]
         ],
         "enemies": [
@@ -26636,12 +26641,6 @@
         "decorations": [],
         "patternOverrides": [
           [
-            174,
-            24,
-            128,
-            "background-tiles-22-36-17-0f.png"
-          ],
-          [
             55,
             5,
             53,
@@ -26676,12 +26675,6 @@
             24,
             36,
             "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            177,
-            24,
-            191,
-            "background-tiles-22-36-17-0f.png"
           ],
           [
             3,
