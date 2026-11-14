@@ -3099,7 +3099,7 @@ export class Simulation {
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
     if(['goomba','koopa','redKoopa','beetle'].includes(e.kind))this.nativeStompTimer=(this.nativeStompTimer+1)&255;
     if(e.kind==='bullet'&&e.frenzy)e.x=priorX;
-    const award=e.kind==='bullet'||e.nativeFlight?200:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award);
+    const award=e.kind==='bullet'||e.nativeFlight?200:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award,cannonShot(e)?6:5); // a cannon shot's turn follows the floatey pass of its slot: paid a frame later (7-1 original row 2280)
     // A Paratroopa stomp shows a popup in the reference; its Koopa offset and lifetime are inferred.
     if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='paratroopa'||e.kind==='bullet')this.enemyPopup(award,e);
     this.emit('sfx_stomp');
