@@ -1,10 +1,12 @@
-import {enemyPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,platformMotionModel} from './platform-motion.js';
+import {enemyRenderPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,platformMotionModel} from './platform-motion.js';
 /** Explicit capability: normal Mario, live Goombas and lifts. Unknown writers
  * refuse the whole composition; they are never silently omitted from the cap. */
 export function nativeOamPicture(s:any){
+ // The picture the renderer draws: with timers stopped (Mario dying) the frozen one (abf3a46f 1-1 row 1095: X one less than the pre-move picture).
+ const pic=(e:any)=>enemyRenderPicture(e,s.frame,s.nativeTimersStopped);
  const reasons:string[]=[];
- if(s.paused||s.phase!=='play'||s.spritePictureOwner!=='engine'||s.nativeScreen||s.nativeTimersStopped||s.powerChange)reasons.push('control-owner');
- if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.area.theme==='water'||s.player.dead)reasons.push('player-variant');
+ if(s.paused||!['play','dying'].includes(s.phase)||s.spritePictureOwner!=='engine'||s.nativeScreen||s.nativeTimersStopped&&s.phase!=='dying'||s.powerChange)reasons.push('control-owner');
+ if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.area.theme==='water'||s.player.dead&&s.phase!=='dying')reasons.push('player-variant');
  const powerup=(i:any)=>['mushroom','flower','star','1up'].includes(i.kind)&&i.nativePowerState!==undefined&&!i.emerging;
  if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i))||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed||!p.victim.dead&&!p.victim.shell)||s.blockGraphics.some((b:any)=>b.pictureY!==undefined)||s.vines.length||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup))||s.frenzyControllers?.some((c:any)=>c.slot!==undefined&&!c.lost))reasons.push('other-writer');
  if(s.area.springs?.length)reasons.push('area-writer');
@@ -21,14 +23,14 @@ export function nativeOamPicture(s:any){
   if(ys.length>1||slot===undefined||platformMotionModel(platform,context)==='contact-cloud'||s.area.theme==='castle'){reasons.push('area-writer');break;} // castle lifts keep other slot mappings (e79163dc 2-4 row 20624)
   lifts.push({base:s.spriteShuffle.offsets[slot+1],x:Math.floor(s.platformPicturePosition(platform).x-s.camera),y:ys[0]-1,width:s.platformWidth(platform)});
  }
- const enemies=s.enemies.filter((e:any)=>e.active&&enemyPicture(e).dead<90);
+ const enemies=s.enemies.filter((e:any)=>e.active&&pic(e).dead<90);
  // An enemy with both columns off screen writes only hidden entries (SprObjectOffscrChk), whatever its kind.
  const hidden=(e:any)=>{const x=Math.floor((e.graphicsX??e.x)-s.camera);return [x,x+8].every(xx=>xx<=0||xx>255);};
  // Entry rows (OAM Y less Enemy_Y) per drawn state, measured over World 1 captures (entpat): walkers 0/8/16 (Goomba id6 130,604 rows, Koopa id0 17,358);
  // a shell 2/10/18 (id0 states 4/84); a squashed Goomba 9/17 below its floatey number, which owns the slot's first two entries.
  const walker=(e:any)=>['koopa','redKoopa','beetle'].includes(e.kind);
- const rowsOf=(e:any):(number|undefined)[]|undefined=>e.kind==='goomba'&&!e.dead?[0,8,16]:e.kind==='goomba'&&e.squashed&&e.dead?[undefined,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?[2,10,18]:undefined;
- if(enemies.some((body:any)=>{const e=enemyPicture(body);return e.enemySlot===undefined||!hidden(e)&&(!rowsOf(e)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
+ const rowsOf=(e:any,body:any):(number|undefined)[]|undefined=>e.kind==='goomba'&&!e.dead?[0,8,16]:e.kind==='goomba'&&e.squashed&&e.dead?[s.popups.some((p:any)=>p.victim===body)?undefined:1,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?[2,10,18]:undefined;
+ if(enemies.some((body:any)=>{const e=pic(body);return e.enemySlot===undefined||!hidden(e)&&(!rowsOf(e,body)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
  const pose=playerCell(s);if(pose.throwing||pose.swimKick!==undefined)reasons.push('player-extra-piece');
  const px=Math.floor(s.player.x-s.camera),py=Math.floor(s.player.y)-32;
  if(px<0||px>240||py<0||py>208)reasons.push('player-offscreen');
@@ -43,12 +45,12 @@ export function nativeOamPicture(s:any){
  // ChkForPlayerAttrib forces symmetry at table offsets50/B8/C0/C8.
  if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)write(4+row*8+col*4,py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||pose.cell===25&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
  for(const body of enemies.sort((a:any,b:any)=>a.enemySlot-b.enemySlot)){
-  const e=enemyPicture(body),x=Math.floor((e.dead?e.x:e.graphicsX??e.x)-s.camera),y=Math.floor(e.dead?e.y:e.graphicsY??e.y)-24,base=s.spriteShuffle.offsets[e.enemySlot!+1],stopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped),left=(e.graphicsFacing??e.vx)<0,flip=stopped?left:left===Boolean(s.random.frame&8);
+  const e=pic(body),x=Math.floor((e.dead?e.x:e.graphicsX??e.x)-s.camera),y=Math.floor(e.dead?e.y:e.graphicsY??e.y)-24,base=s.spriteShuffle.offsets[e.enemySlot!+1],stopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped),left=(e.graphicsFacing??e.vx)<0,flip=stopped?left:left===Boolean(s.random.frame&8);
   if(hidden(e))continue; // its entries keep the cleared Y (248); tile, attribute and X bytes are not reconstructed
   if(y<0||y>216)return {supported:false as const,reasons:['enemy-vertical-mask']};
   // SprObjectOffscrChk hides whole columns, including the left column at X0.
   // A live Goomba's bytes are exact; other states reconstruct Y and X only, which alone decide the scanline cap.
-  const rows=rowsOf(e)!;for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=x+col*8,dy=rows[row];if(dy===undefined)continue;write(base+row*8+col*4,xx<=0||xx>255?248:y+dy,tables.enemy_cells[14].tiles[row*2+(flip?1-col:col)],3|(flip?64:0),xx,e.kind==='goomba'&&!e.dead);}
+  const rows=rowsOf(e,body)!;for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=x+col*8,dy=rows[row];if(dy===undefined)continue;write(base+row*8+col*4,xx<=0||xx>255?248:y+dy,tables.enemy_cells[14].tiles[row*2+(flip?1-col:col)],3|(flip?64:0),xx,e.kind==='goomba'&&!e.dead);}
  }
  // The row a squashed Goomba is erased, its slot still writes the first two entries (blank) one line below Enemy_Y (c35cb97a row 4020: Y 185, Enemy_Y 184).
  for(const body of s.enemies)if(body.squashed&&body.erasedFrame===s.frame&&body.enemySlot!==undefined){const base=s.spriteShuffle.offsets[body.enemySlot+1],x=Math.floor(body.x-s.camera);for(let col=0;col<2;col++){const xx=x+col*8;write(base+col*4,xx<=0||xx>255?248:Math.floor(body.y)-23,0xfc,3,xx,false);}}
