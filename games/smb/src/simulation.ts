@@ -3411,15 +3411,15 @@ export class Simulation {
   }
  }
  private respawn(){
-  this.vineProgress.clear();this.climbingVine=undefined;const timeUp=this.timeUpDeath;this.timeUpDeath=false; // GameTimerExpiredFlag is cleared once the screen that shows TIME UP has it
+  this.vineProgress.clear();this.climbingVine=undefined;
   this.lives--;this.slots[this.currentPlayer]={level:this.levelIndex,lives:this.lives,score:this.score,coins:this.coins,size:0,checkpoint:this.checkpoint,checkpointArea:this.activatedCheckpointArea};
-  if(this.lives<=0){this.nativeGameOver={mode:3,task:0,engine:6,screen:12,disable:1,timer:this.screenTimer,master:this.nativeTimersStopped?255-this.phaseFrame:0,timeUp,columns:255};this.gameOverDispatch=true;this.phase='gameover';this.phaseFrame=0;this.nativeEndLevelMusicQueue=128;return;}
+  if(this.lives<=0){this.nativeGameOver={mode:3,task:0,engine:6,screen:12,disable:1,timer:this.screenTimer,master:this.nativeTimersStopped?255-this.phaseFrame:0,timeUp:this.timeUpDeath,columns:255};this.gameOverDispatch=true;this.phase='gameover';this.phaseFrame=0;this.nativeEndLevelMusicQueue=128;return;}
   if(this.twoPlayer&&this.slots[1-this.currentPlayer].lives>0){
    this.currentPlayer=1-this.currentPlayer;const s=this.slots[this.currentPlayer];this.levelIndex=s.level;this.lives=s.lives;this.score=s.score;this.coins=s.coins;this.checkpoint=s.checkpoint;this.activatedCheckpointArea=s.checkpointArea;
   }
   const target=this.level.areas.find(a=>a.id===(this.checkpoint?(this.activatedCheckpointArea??this.level.main):(this.level.respawnArea??this.level.main)))!,checkpoint=this.checkpoint?target.checkpoint:undefined;
   // Native PlayerLoseLife/ContinueGame keeps the HUD timer digits ($07F8) through the lives screen; the area's time is loaded with the level on the engine-7 row (1-1 v2: 368 until 1147, 400 from 1149).
-  this.fetchGameTimer=true;this.player.size=0;this.deathLoad={state:{...nativeLevelLoad(),engine:0,disable:1,columns:255,timer:this.screenTimer,timeUp},dispatch:true,held:this.nativeTimersStopped,area:target.id,spawn:checkpoint?.spawn,camera:checkpoint?.camera};this.phase='intro';this.phaseFrame=0;this.introLength=TRANSITIONS.introFrames;this.lifeIntro=newLifeIntro(this.timeUpDeath,true);this.timeUpDeath=false;
+  this.fetchGameTimer=true;this.player.size=0;this.deathLoad={state:{...nativeLevelLoad(),engine:0,disable:1,columns:255,timer:this.screenTimer,timeUp:this.timeUpDeath},dispatch:true,held:this.nativeTimersStopped,area:target.id,spawn:checkpoint?.spawn,camera:checkpoint?.camera};this.phase='intro';this.phaseFrame=0;this.introLength=TRANSITIONS.introFrames;this.lifeIntro=newLifeIntro(this.timeUpDeath,true);this.timeUpDeath=false;
  }
  /** NMI precedes GameOverMode; PlayerLoseLife itself dispatches no mode3 task. */
  private updateGameOver(b:Set<Button>){
