@@ -217,7 +217,7 @@ export class GameRenderer {
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
-  }else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20,e.kind==='piranha'?-0.1:this.enemyOamZ);
+  }else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20,e.kind==='piranha'?-0.1:this.enemyOamZ);
  }
  private enemyCell(cell:number,x:number,y:number,palette:string,flipX=false,flipY=false,z=this.enemyOamZ??2){
   const data=tables.enemy_cells[cell];
