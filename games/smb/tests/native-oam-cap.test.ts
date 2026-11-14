@@ -17,7 +17,7 @@ test('every reconstructed source OAM byte matches native on supported ground and
   }
   assert.equal(count,c.supported);assert.equal(bytes,c.checkedBytes);supported+=count;checked+=bytes;
  }
- assert.equal(supported,1905);assert.equal(checked,209357);
+ assert.equal(supported,1965);assert.equal(checked,216023);
 });
 test('unknown writers refuse the whole cap rather than disappear from its sprite count',()=>{
  const sim:any=new Simulation(observedLevels());sim.reset(true);sim.phase='play';sim.items=[];sim.popups=[];sim.vines=[];sim.blockGraphics=[];sim.frenzyControllers=[];sim.nativeCastleFlag=undefined;sim.specialSlot5.flag=0;sim.area={...sim.area,platforms:[],firebars:[],springs:[]};sim.enemies=[];Object.assign(sim.player,{x:112,y:208,dead:false,size:0,star:0});sim.camera=0;

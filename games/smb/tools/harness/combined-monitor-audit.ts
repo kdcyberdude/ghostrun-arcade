@@ -8,8 +8,11 @@ import fs from 'node:fs';import path from 'node:path';import {createHash} from '
 import {decodeEntrance} from './native-entrance.mjs';import {bundleStateReplay,replayStateInWorker,levelAt} from './native-state-replay.js';import {nativeLagFrames} from './native-lag-frames.mjs';
 import {auditSourceHashes,verifyAuditSource,sourceManifestHash} from './native-monitor/source-provenance.mjs';
 import {policy,policyHash} from './native-monitor/visual-check.mjs';import {inventoryHash,counting,validateScope} from './native-monitor/combined-replay.mjs';
-const {values:a}=parseArgs({options:{monitor:{type:'string'},out:{type:'string'},ids:{type:'string'},levels:{type:'string'},jobs:{type:'string',default:'1'},batch:{type:'string',default:'16'},port:{type:'string',default:'54021'},dump:{type:'string'},'pilot-frames':{type:'string'}}});if(!a.monitor||!a.out)throw Error('--monitor and --out required');
+const {values:a}=parseArgs({options:{monitor:{type:'string'},out:{type:'string'},ids:{type:'string'},levels:{type:'string'},jobs:{type:'string',default:'1'},batch:{type:'string',default:'16'},port:{type:'string',default:'54021'},dump:{type:'string'},'pilot-frames':{type:'string'},windows:{type:'string'}}});if(!a.monitor||!a.out)throw Error('--monitor and --out required');
 const batch=Number(a.batch),pilot=a['pilot-frames']?Number(a['pilot-frames']):undefined;if(!Number.isInteger(batch)||batch<1||batch>32||pilot!==undefined&&(!a.ids||!Number.isInteger(pilot)||pilot<1||pilot>512))throw Error('batch1..32; pilot requires explicit ids and1..512 frames');
+// --windows FILE: {id:[[from,to],...]} re-checks only those frames (a targeted re-verification, never a level total): other frames are
+// simulated without drawing and reported unchecked; a frame is drawn only when the next one is compared.
+const windows:Record<string,[number,number][]>|undefined=a.windows?JSON.parse(fs.readFileSync(a.windows,'utf8')):undefined;
 const scope=a.levels?validateScope({levels:a.levels.split(',').filter(Boolean),frameSelection:'all-target-level-frames'}):undefined;
 const monitor=path.resolve(a.monitor),root=path.resolve('games/smb'),recovered='/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native',read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8')),sha=(b:any)=>createHash('sha256').update(b).digest('hex');
 const inventory=read(path.join(monitor,'combined-inputs.json')).runs,runtimeCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
@@ -17,7 +20,7 @@ execFileSync('git',['diff','--exit-code',runtimeCommit,'--','games/smb/src','gam
 const sourceHashes=auditSourceHashes(root),manifestHash=sourceManifestHash(sourceHashes);
 const paletteSource=fs.readFileSync(path.join(root,'tools/harness/native-pixels.ts'),'utf8'),palette=paletteSource.match(/const remakeRgb=\[([\s\S]*?)\];/)![1].match(/0x[0-9a-f]+/g)!.map(x=>parseInt(x));
 const fceux=fs.readFileSync('/home/kd/Desktop/proj/ghostrun/ghostrun-lab/rl/fceux_palette.py','utf8'),rgb=Array.from(fceux.matchAll(/\((\d+), (\d+), (\d+)\)/g),m=>[Number(m[1]),Number(m[2]),Number(m[3])]);if(rgb.length!==512)throw Error('Expected512 palette');
-const report:any={schema:'smb-combined-replay-v2',counting,unit:'input-frame',...(scope?{scope}:{}),protocol:'continuous-from-recorded-start',runtimeCommit,inventorySha256:inventoryHash(inventory),visualPolicyHash:policyHash,toolSha256:sha(fs.readFileSync(new URL(import.meta.url))),sourceHashes,paletteSha256:sha(fceux),runs:[],errors:[],progress:{status:'running',done:0,total:inventory.length,started:new Date().toISOString(),updated:null,finished:null,active:[],directlyComparedFrames:0}};
+const report:any={schema:'smb-combined-replay-v2',...(windows?{frameWindows:{file:path.resolve(a.windows!),sha256:sha(fs.readFileSync(a.windows!))}}:{}),counting,unit:'input-frame',...(scope?{scope}:{}),protocol:'continuous-from-recorded-start',runtimeCommit,inventorySha256:inventoryHash(inventory),visualPolicyHash:policyHash,toolSha256:sha(fs.readFileSync(new URL(import.meta.url))),sourceHashes,paletteSha256:sha(fceux),runs:[],errors:[],progress:{status:'running',done:0,total:inventory.length,started:new Date().toISOString(),updated:null,finished:null,active:[],directlyComparedFrames:0}};
 fs.mkdirSync(path.dirname(path.resolve(a.out)),{recursive:true});const checkpoint=()=>{report.progress.updated=new Date().toISOString();report.progress.done=report.runs.length;report.progress.directlyComparedFrames=report.runs.reduce((n:number,r:any)=>n+r.directlyComparedFrames,0);fs.writeFileSync(a.out+'.partial',JSON.stringify(report)+'\n');fs.renameSync(a.out+'.partial',a.out!);};checkpoint();
 process.on('uncaughtExceptionMonitor',error=>{report.errors.push({error:String(error)});report.progress.status='failed';checkpoint();});
 // Native picture batches go to the page as binary HTTP bodies: the same bytes Node just read and hashed.
@@ -36,8 +39,8 @@ async function audit(input:any,page:any){
  if(sha(pads)!==input.padsSha256||pads.length!==input.frames||ram.length!==pads.length*2048||sha(ram)!==meta.ramSha256||meta.padSha256!==input.padsSha256||meta.frames!==pads.length||meta.step!==1)throw Error('Native input/RAM/length authentication');
  if(sha(initial)!==(original?input.initialRamSha256:read(path.join(dir,'capture.json')).initialRamSha256))throw Error('Native initialRAM differs');
  if(fs.statSync(path.join(pixelDir,'pixels.bin')).size!==pads.length*240*224||fs.statSync(path.join(pixelDir,'emph.bin')).size!==pads.length*224)throw Error('Native picture length');
- const labels=Array.from({length:pads.length},(_,f)=>levelAt(ram.subarray(f*2048,(f+1)*2048))),chosen=(f:number)=>!scope||scope.levels.includes(labels[f]!);
- const lag=new Set<number>(nativeLagFrames(ram));let end=pads.length;if(scope){end=0;for(let f=0;f<pads.length;f++)if(chosen(f))end=f+1;}
+ const labels=Array.from({length:pads.length},(_,f)=>levelAt(ram.subarray(f*2048,(f+1)*2048))),win=windows?.[input.id]??(windows?[]:undefined),chosen=(f:number)=>(!scope||scope.levels.includes(labels[f]!))&&(!win||win.some(([a,b])=>f>=a&&f<b));
+ const lag=new Set<number>(nativeLagFrames(ram));let end=pads.length;if(scope||win){end=0;for(let f=0;f<pads.length;f++)if(chosen(f))end=f+1;}
  const limit=pilot===undefined?end:Math.min(pilot,end),entrance=original?decodeEntrance(initial,read(path.join(recovered,'original32/entrances',level!,'entrance.json'))):undefined;
  // State runs in a child process while this process drives the pictures.
  const statePromise=replayStateInWorker(stateBundle.file,monitor,input.id,scope?.levels);statePromise.catch(()=>{});
@@ -59,8 +62,8 @@ async function audit(input:any,page:any){
    const count=Math.min(batch,limit-from),body=Buffer.alloc(count*240*224+count*224),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224);
    if(fs.readSync(pixelFd,pix,0,pix.length,from*240*224)!==pix.length||fs.readSync(emphFd,emph,0,emph.length,from*224)!==emph.length)throw Error('Native picture truncated');pixelsHash.update(pix);emphasisHash.update(emph);
    const key=String(++feedKey);feed.set(key,body);
-   const compare=Array.from({length:count},(_,i)=>chosen(from+i)&&!lag.has(from+i)),skip=Array.from({length:count},(_,i)=>lag.has(from+i));
-   const rows=await page.evaluate(async({key,count,pads,names,compare,skip}:any)=>{
+   const compare=Array.from({length:count},(_,i)=>chosen(from+i)&&!lag.has(from+i)),skip=Array.from({length:count},(_,i)=>lag.has(from+i)),draw=Array.from({length:count},(_,i)=>!win||chosen(from+i+1));
+   const rows=await page.evaluate(async({key,count,pads,names,compare,skip,draw}:any)=>{
     const w=window as any,a=w.audit,body=new Uint8Array(await (await fetch('/__native-feed/'+key)).arrayBuffer()),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224),rows=[];a.pictures=[];
     for(let f=0;f<pads.length;f++){
      if(compare[f]){
@@ -68,9 +71,9 @@ async function audit(input:any,page:any){
       for(let y=0;y<224;y++)for(let x=0;x<240;x++){const k=y*240+x,index=pix[f*240*224+k],c=a.rgb[index|emph[f*224+y]<<6],j=k*4;if(!c)throw Error('Unknown emphasis');a.native[j]=c[0];a.native[j+1]=c[1];a.native[j+2]=c[2];a.native[j+3]=255;const packed=remake[j]<<16|remake[j+1]<<8|remake[j+2],mapped=a.palette[index]===packed?a.rgb[index]:a.mapping.get(packed);if(mapped){remake[j]=mapped[0];remake[j+1]=mapped[1];remake[j+2]=mapped[2];}}
       const picture=a.compareFrame(a.native,remake,240,224,a.policy,a.work);a.pictures.push(remake);rows.push({picture});
      }else{a.pictures.push(null);rows.push(null);}
-     if(!skip[f])w.mario.step(names.filter((_:any,b:number)=>pads[f]&(1<<b)),1);
+     if(!skip[f]){const buttons=names.filter((_:any,b:number)=>pads[f]&(1<<b));if(draw[f])w.mario.step(buttons,1);else{const sim=w.marioDebug.simulation;sim.step(buttons,1);sim.events.length=0;}}
     }return rows;
-   },{key,count,pads:Array.from(pads.subarray(from,from+count)),names,compare,skip});
+   },{key,count,pads:Array.from(pads.subarray(from,from+count)),names,compare,skip,draw});
    feed.delete(key);
    for(let i=0;i<count;i++){
     const f=from+i,row=rows[i];pictures[f]=row?{status:row.picture.status==='pass'?'match':'mismatch',picture:row.picture}:{status:'unchecked'};

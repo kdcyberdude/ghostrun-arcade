@@ -231,9 +231,10 @@ export class GameRenderer {
   if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up')this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),i.emerging?-0.1:1.5);
   if(i.kind==='coin'){
    if(i.nativeCoin){
-    const y=Math.floor(i.y),screenX=Math.floor(x)&255;
+    const y=Math.floor(i.y),screenX=Math.floor(x)&255;const context=this.oamContext;this.oamContext=this.oamRows?{base:s.spriteShuffle.miscOffset(i.nativeCoin.slot),count:2}:undefined;
     if(i.nativeCoin.state>=2){this.spriteTile(0xf7,screenX,(y&255)+1,'0f-16-30-27',false,false,2.5);this.spriteTile(0xfb,(screenX+8)&255,(y&255)+1,'0f-16-30-27',false,false,2.5);}
     else{const tile=0x60+((s.random.frame>>1)&3);this.spriteTile(tile,screenX,(y&255)+1,'0f-16-30-27');this.spriteTile(tile,screenX,((y+8)&255)+1,'0f-16-30-27',false,true);}
+    this.oamContext=context;
    }else this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
   }
   if(i.kind==='fireball')this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x,i.y);
