@@ -19,11 +19,12 @@ for(const run of fixture.runs){
   assert.ok(run.timing[1].checked>1000);assert.equal(run.timing[1].different,0);assert.ok(run.timing[0].different>0);assert.ok(run.timing[2].different>0);
  });
  const original=victory.runtime.find((r:any)=>r.level===run.level);if(!original.full)continue;
+ // The axe (erase 0) is blanked on the contact row itself: picture f+1 after the row its $C5 metatile leaves the block buffer shows no axe (20 mood captures, e.g. 01f49b10 row 9471, c35cb97a row 9398); $369 counts only the later bridge writes.
  test(`${run.level}: continuous original entrance replay owns blank axe and native retainer pictures`,()=>{
   const s:any=new Simulation(observedLevels());s.reset(true);initializeEntrance(s,original.full.entrance);s.step([],0);s.inputs=[];
   for(const pad of original.full.pads)s.step(keys.filter((_,i)=>pad&(1<<i)),1);
   assert.equal(s.spritePictureOwner,'empty');assert.equal(s.castleRetainer,undefined);
-  for(let i=1;i<run.rows.length;i++){const row=run.rows[i],previous=run.rows[i-1];s.step([],1);assert.equal(s.spritePictureOwner,'victory');assert.equal(s.camera,row.camera,`camera ${row.frame}`);assert.equal(s.colorRotations%6,row.rotation,`ColorRotateOffset ${row.frame}`);for(const object of s.areaControls.castleGraphics)assert.equal(s.blockBackground.get(`${object.column},${object.row}`),row.bridge>object.erase?null:object.id,`queued castle BG ${row.frame}/${object.erase}`);assert.deepEqual([s.parserClock.task,s.parserClock.scroll],row.parser,`parser ${row.frame}`);
+  for(let i=1;i<run.rows.length;i++){const row=run.rows[i],previous=run.rows[i-1];s.step([],1);assert.equal(s.spritePictureOwner,'victory');assert.equal(s.camera,row.camera,`camera ${row.frame}`);assert.equal(s.colorRotations%6,row.rotation,`ColorRotateOffset ${row.frame}`);for(const object of s.areaControls.castleGraphics)assert.equal(s.blockBackground.get(`${object.column},${object.row}`),object.erase===0||row.bridge>object.erase?null:object.id,`queued castle BG ${row.frame}/${object.erase}`);assert.deepEqual([s.parserClock.task,s.parserClock.scroll],row.parser,`parser ${row.frame}`);
    const write=original.rows.find((r:any)=>r.frame===row.frame)?.write;if(write===0)assert.ok(s.castleText.some((r:any)=>r.text==='THANK YOU MARIO!'),`queued VRAM text ${row.frame}`);
    const active=row.slot0[0]===1&&row.slot0[1]===53;assert.equal(Boolean(s.castleRetainer),active,`retainer birth ${row.frame}`);if(active){assert.deepEqual([s.castleRetainer.x,s.castleRetainer.y],[row.slot0[2],row.slot0[3]]);assert.equal(s.castleRetainer.graphicsVisible,previous.slot0[0]===1&&previous.slot0[1]===53);}
   }
