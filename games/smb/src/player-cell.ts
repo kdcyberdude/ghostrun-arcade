@@ -20,7 +20,7 @@ export function nativeSwimKick(cell:number,frameCounter:number){
 }
 
 export function playerCell(s:Simulation){
- const p=s.player,pose=s.phase==='play'||s.nativeVictory||s.verticalPipeGraphics||s.phase==='flag'?(s.wallDisplayPose??s.locomotionPose):undefined;let cell=p.size?25:23;
+ const p=s.player,pose=s.phase==='play'||s.nativeVictory||s.verticalPipeGraphics||s.sidePipeGraphics||s.phase==='flag'?(s.wallDisplayPose??s.locomotionPose):undefined;let cell=p.size?25:23;
  if(p.dead)cell=22;else if(s.playerAnim.fresh&&(s.phase==='play'||s.nativeScreen?.engine===7))cell=p.size?25:23; // the area load row: Player_State 0 shows the standing pose (1-2 row 349, 2-2 row 352)
  else if(s.waterEntryStanding)cell=p.size?25:23;else if(s.entryFallPose)cell=p.size?0:12;else if(p.climbing)cell=(p.size?8:20)+(s.phase==='flag'?s.climbPoseFrame:Math.floor(p.anim/12)%2);
  else if(p.duck)cell=10;else if(s.area.theme==='water'&&!p.grounded)cell=(p.size?5:17)+s.swimPoseFrame;

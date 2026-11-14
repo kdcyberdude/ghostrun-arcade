@@ -299,6 +299,7 @@ export class Simulation {
  get pipeRising(){return this.pipeRise>0;}
  /** True while the native entry is still engine 7 (no control): the underground fall's first 17 rows, the water room's 34-row fall to native y 49. */
  get entryControlLocked(){const native=this.entryFalling?this.area.entryFall?.native:undefined;return native?this.entryReadyAge<0:this.swimLock>0;}
+ get sidePipeGraphics(){return this.phase==='pipe'&&this.destination?.direction==='right'&&this.area.theme!=='water';}
  get verticalPipeGraphics(){return this.phase==='pipe'&&this.destination?.direction==='down';}
  get pipeHidden(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=(this.area.autoWalk?TRANSITIONS.autoWalkPipe.hiddenFrame:32));}
  /** Native time-out: a TIME UP screen for the first 7 clock ticks of the 14, then the ordinary lives screen. */
@@ -317,7 +318,7 @@ export class Simulation {
  get pipePreviewArea(){const d=this.destination;if(this.phase!=='pipe'||this.player.size!==0||!d?.smallPlayerRoomPreviewFrames||d.frames-this.phaseFrame>d.smallPlayerRoomPreviewFrames)return undefined;return this.level.areas.find(a=>a.id===d.area);}
  get pipeLoading(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames); }
  get pipeClearing(){return this.phase==='pipe'&&!this.area.autoWalk&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=48&&this.phaseFrame<this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames);}
- get entryFallHidden(){return this.entryFalling&&this.entryFallAge<=(this.area.entryFall?.visibleDelay??0);}
+ get entryFallHidden(){return this.entryFalling&&!this.area.entryFall?.native&&this.entryFallAge<=(this.area.entryFall?.visibleDelay??0);} // a native drop-in is drawn from its first row (0d12a2e4 rows 667/4987: Mario's eight OAM sprites are set on the entrance row)
  get waterEntryStanding(){return this.entryFalling&&this.area.theme==='water'&&this.entryFallAge<=(this.area.entryFall?.initialStandFrames??0);}
  get entryFallPose(){return this.entryFalling&&this.area.theme!=='water';}
  get entryTimerHidden(){return Boolean(this.area.entryFall&&this.entryTimerDelay!==0);}
@@ -565,7 +566,8 @@ export class Simulation {
     }
    }
    else if(this.destination?.direction==='right'){if(this.pipeTimer>0){
-    const previousCamera=this.camera,oldFeet=this.player.y,oldX=this.player.x;this.sidePipeStep();
+    const previousCamera=this.camera,oldFeet=this.player.y,oldX=this.player.x,absolute=this.motor.absolute;this.sidePipeStep();
+    if(this.sidePipeGraphics){if(this.player.grounded)this.playerAnim.setSpeed(absolute);this.updateLocomotionPose(this.player.grounded,absolute,false,new Set<Button>(['right']),false);} // the walk into a side pipe keeps animating (0d12a2e4 rows 866..880: $070D steps every 7 rows)
     this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
     const n={camera:this.camera,xScroll:(Math.floor(this.player.x)-Math.floor(oldX))&255,platformScroll:this.platformScroll&255};
     const scroll=nativeSavedScroll(n,this.waterScrollX,this.sideCollisionTimer,this.areaControls.locked);

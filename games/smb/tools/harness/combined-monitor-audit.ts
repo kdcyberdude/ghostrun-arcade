@@ -8,7 +8,7 @@ import fs from 'node:fs';import path from 'node:path';import {createHash} from '
 import {decodeEntrance} from './native-entrance.mjs';import {bundleStateReplay,replayStateInWorker,levelAt} from './native-state-replay.js';import {nativeLagFrames} from './native-lag-frames.mjs';
 import {auditSourceHashes,verifyAuditSource,sourceManifestHash} from './native-monitor/source-provenance.mjs';
 import {policy,policyHash} from './native-monitor/visual-check.mjs';import {inventoryHash,counting,validateScope} from './native-monitor/combined-replay.mjs';
-const {values:a}=parseArgs({options:{monitor:{type:'string'},out:{type:'string'},ids:{type:'string'},levels:{type:'string'},jobs:{type:'string',default:'1'},batch:{type:'string',default:'16'},port:{type:'string',default:'54021'},'pilot-frames':{type:'string'}}});if(!a.monitor||!a.out)throw Error('--monitor and --out required');
+const {values:a}=parseArgs({options:{monitor:{type:'string'},out:{type:'string'},ids:{type:'string'},levels:{type:'string'},jobs:{type:'string',default:'1'},batch:{type:'string',default:'16'},port:{type:'string',default:'54021'},dump:{type:'string'},'pilot-frames':{type:'string'}}});if(!a.monitor||!a.out)throw Error('--monitor and --out required');
 const batch=Number(a.batch),pilot=a['pilot-frames']?Number(a['pilot-frames']):undefined;if(!Number.isInteger(batch)||batch<1||batch>32||pilot!==undefined&&(!a.ids||!Number.isInteger(pilot)||pilot<1||pilot>512))throw Error('batch1..32; pilot requires explicit ids and1..512 frames');
 const scope=a.levels?validateScope({levels:a.levels.split(',').filter(Boolean),frameSelection:'all-target-level-frames'}):undefined;
 const monitor=path.resolve(a.monitor),root=path.resolve('games/smb'),recovered='/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native',read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8')),sha=(b:any)=>createHash('sha256').update(b).digest('hex');
@@ -52,6 +52,8 @@ async function audit(input:any,page:any){
  const out:any={id:input.id,frames:input.frames,reseeded:false,nativeLagFrames:[...lag].filter(f=>f<limit),initialStateVerified:original,spans:[],directlyComparedFrames:0,firstFailure:null,stateAudit:null,provenance:{ramSha256:meta.ramSha256,initialRamSha256:sha(initial),nativePixelsSha256:meta.pixelsSha256,nativeEmphasisSha256:meta.emphasisSha256,lag:1,start:input.start,paletteNormalization:'native-pixels.ts native palette-index equivalence',fullPictureStreamAuthenticated:false}};
  const pixelFd=fs.openSync(path.join(pixelDir,'pixels.bin'),'r'),emphFd=fs.openSync(path.join(pixelDir,'emph.bin'),'r'),pixelsHash=createHash('sha256'),emphasisHash=createHash('sha256');
  const pictures:{status:string;picture?:any}[]=[],firstPictures=new Map<number,{pix:Buffer;emph:Buffer;i:number;remake?:Buffer}>();let candidate=-1;
+ // --dump F,G: diagnostic only, saves native | remake | difference PNGs of those frames beside --out.
+ const dumpFrames=new Set((a.dump??'').split(',').filter(Boolean).map(Number));
  try{
   for(let from=0;from<limit;from+=batch){
    const count=Math.min(batch,limit-from),body=Buffer.alloc(count*240*224+count*224),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224);
@@ -74,6 +76,7 @@ async function audit(input:any,page:any){
     const f=from+i,row=rows[i];pictures[f]=row?{status:row.picture.status==='pass'?'match':'mismatch',picture:row.picture}:{status:'unchecked'};
     if(f+1===warmup)steadyStarted=performance.now();
     // Keep the remake image of the earliest picture mismatch (state is joined after the loop).
+    if(row&&dumpFrames.has(f))firstPictures.set(f,{pix:Buffer.from(pix.subarray(i*240*224,(i+1)*240*224)),emph:Buffer.from(emph.subarray(i*224,(i+1)*224)),i});
     if(row&&candidate<0&&pictures[f].status==='mismatch'){candidate=f;firstPictures.set(f,{pix:Buffer.from(pix.subarray(i*240*224,(i+1)*240*224)),emph:Buffer.from(emph.subarray(i*224,(i+1)*224)),i});}
    }
    // Diagnostics need remake pixels only for a first failure; fetch them while this batch is still in the page.
@@ -82,6 +85,10 @@ async function audit(input:any,page:any){
   // Hash the unreplayed suffix so the complete native stream is authenticated; those frames stay unchecked.
   for(let from=limit;from<pads.length;from+=4096){const count=Math.min(4096,pads.length-from),pix=Buffer.alloc(count*240*224),emph=Buffer.alloc(count*224);if(fs.readSync(pixelFd,pix,0,pix.length,from*240*224)!==pix.length||fs.readSync(emphFd,emph,0,emph.length,from*224)!==emph.length)throw Error('Native picture truncated');pixelsHash.update(pix);emphasisHash.update(emph);}
  }finally{fs.closeSync(pixelFd);fs.closeSync(emphFd);}
+ for(const f of dumpFrames){const item=firstPictures.get(f);if(!item?.remake)continue;const png=new PNG({width:720,height:224});
+  for(let k=0;k<240*224;k++){const c=rgb[item.pix[k]|item.emph[Math.floor(k/240)]<<6],x=k%240,y=Math.floor(k/240),r=item.remake.subarray(k*4,k*4+3),diff=c[0]!==r[0]||c[1]!==r[1]||c[2]!==r[2];
+   for(const [panel,v] of [[0,c],[1,r],[2,diff?[255,0,255]:[c[0]>>2,c[1]>>2,c[2]>>2]]] as const){const j=(y*720+panel*240+x)*4;png.data[j]=v[0];png.data[j+1]=v[1];png.data[j+2]=v[2];png.data[j+3]=255;}}
+  const file=path.join(path.dirname(a.out!),'dump',`${input.id.replace(':','-').slice(0,20)}-${f}.png`);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,PNG.sync.write(png));}
  const state=await statePromise,stateAt:string[]=[];for(const s of state.spans)for(let f=s.from;f<s.to;f++)stateAt[f]=s.state;
  if(state.replayedFrames!==end||state.reference.ramSha256!==meta.ramSha256)throw Error('State replay covers a different native stream');
  if(original)out.stateAudit=state.strict;else{out.continuousState=state.continuous;out.initialStateVerified=state.start?.status==='match';}
