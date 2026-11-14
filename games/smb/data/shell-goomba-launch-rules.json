@@ -3,8 +3,8 @@
   "velocityX": 1,
   "gravity": 0.2421875,
   "maxFall": 3,
-  "visibleBodyTopFromFeet": -15,
+  "visibleBodyTopFromFeet": -13,
   "scope": "Grounded orange Goomba defeated by right-moving greenKoopa shell only. Other causes/colors/directions and airborne victims retain legacy rules.",
   "status": "Inferred bounded force representative;52calibration+18freshreserved+16extra samples max1px. Source contact pose may lag0..1native; default immediate body flip is within2native timing tolerance. No position shift or score label.",
-  "evidence": "data/shell-launch-vertical-force-candidate.json"
+  "evidence": "data/shell-launch-vertical-force-candidate.json; visibleBodyTopFromFeet measured from native OAM: flipped rows $72/$73 at pre-move Y+10 and $70/$71 at +18 (e2a3c165 rows 4325..4344)"
 }

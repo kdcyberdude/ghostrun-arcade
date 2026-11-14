@@ -3180,6 +3180,7 @@ export class Simulation {
    const award=([500,800,1000,2000,4000,5000,8000,'1up'] as const)[Math.min(shell.shellChain??0,7)];
    this.stunShellVictim(victim);this.floateyScore(award,victim.enemySlot!<e.enemySlot?6:5);shell.shellChain=(shell.shellChain??0)+1;this.emit('sfx_kick');
    this.awardPopup(award,e.graphicsX??e.x,victim.y-31,victim); // SetupFloateyNumber: victim slot and stunned Y, X from Enemy_Rel_XPos of the object being processed (24614c5e row 3257, 0d12a2e4 row 5416)
+   if(victim===e){const label=this.popups[this.popups.length-1];label.age++;label.y--;} // the processed slot's floatey also runs this frame (e2a3c165 row 4324: timer 47, Y 181)
    if(e.dead)break;
   }
  }
