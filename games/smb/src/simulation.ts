@@ -2895,7 +2895,7 @@ export class Simulation {
    // EnemyGfxHandler clears ID14 to ID0 before the caller dispatches movement; its last pass is horizontal only.
    if(eraseGreenAfterMove){e.kind='koopa';e.nativeId=0;e.fall={speed:e.pod!.speed,force:e.pod!.force,fraction:e.pod!.fraction};delete e.pod;}
    if(eraseWalkerAfterMove){e.walkerState=0;e.shellFalling=false;} // EraseEnemyObject clears state before the caller moves horizontally, leaving all vertical bytes intact.
-   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'||e.kind==='podoboo'?73:48)||(e.kind==='spiny'?e.y>=280:e.y>280)&&e.kind!=='podoboo'&&!eraseWalkerAfterMove){this.eraseEnemy(e);if(e.kind==='bullet')e.goneFrame=this.frame;if((e.nativeFlight||e.nativeSwim)&&e.enemySlot!==undefined)this.leaveFlyingCheepSlot(e);continue;}
+   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'||e.kind==='podoboo'?73:48)||(e.kind==='spiny'||e.kind==='cheep'?e.y>=280:e.y>280)&&e.kind!=='podoboo'&&!eraseWalkerAfterMove){this.eraseEnemy(e);if(e.kind==='bullet')e.goneFrame=this.frame;if((e.nativeFlight||e.nativeSwim)&&e.enemySlot!==undefined)this.leaveFlyingCheepSlot(e);continue;}
    const isWater=e.kind==='blooper'||e.kind==='cheep';
    const nativeWaterActor=this.area.theme==='water'&&isWater&&(e.swim||e.stroke);
    // RunNormalEnemies tests injury before its movement; TimerControl set by
