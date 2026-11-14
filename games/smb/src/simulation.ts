@@ -607,7 +607,7 @@ export class Simulation {
    this.lifeFrozen++;const next=nativeTransformStep(this.powerChange.kind,this.powerChange.remaining);this.powerChange.remaining=next.remaining;
    if(next.done){this.player.size=this.powerChange.to;this.powerChange=undefined;this.resumeWorldAfterTransform();}
    else{this.shrinkScroll();for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
-   return;
+   if(this.powerChange?.kind!=='shrink'||this.powerChange.remaining>2)return; // the last two shrink frames run Mario's own step while enemies stay held (2-1 a3899256 row 12421, 371fe2fe row 18287)
   }
   this.gameTimerStep(false); // NMI precedes player/actor routines, including automatic entrances.
   this.parserVramBusy=false;
@@ -761,7 +761,7 @@ export class Simulation {
   // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
   if(waterScroll!==undefined)this.camera+=waterScroll;
-  else{const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-previousCamera;this.playerXScroll=scrollMove&255;
+  else if(!this.shrinkEndStep){const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-previousCamera;this.playerXScroll=scrollMove&255;
    if(!scrollLocked&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
@@ -1314,7 +1314,7 @@ export class Simulation {
   if(initialized){this.hud.clearTime();this.time=n.time;this.fetchGameTimer=n.fetch;this.player.star=0;}
  }
  private gameTimerStep(run:boolean){
-  const n=this.gameTimerState();if(!this.nmiTimersHeld)tickNativeGameTimer(n);this.timerFrames=24-n.control;
+  const n=this.gameTimerState();if(!this.nmiTimersHeld&&!this.shrinkEndStep)tickNativeGameTimer(n);this.timerFrames=24-n.control;
   return run?this.consumeGameTimer(true):false;
  }
  private consumeGameTimer(run:boolean){
@@ -1345,9 +1345,11 @@ export class Simulation {
  }
  // While Mario shrinks, once the injury timer is below 240 the camera keeps scrolling by the last Player_X_Scroll (Mario stands still) until his
  // screen x is below 79 (2-1 371fe2fe rows 18250-18282: scroll 1 from screen x 111 to 78; a3899256 rows 12384-12416: scroll 2 at 112, then 1, to 78).
+ /** The last two shrink frames: Mario's own step runs, without the scroll handler ($06ff and the camera hold) or the timers. */
+ private get shrinkEndStep(){return this.powerChange?.kind==='shrink'&&this.powerChange.remaining<=2;}
  private shrinkScroll(){
   const scroll=this.playerXScroll<128?this.playerXScroll:0,screenX=Math.floor(this.player.x)-Math.floor(this.camera);
-  if(this.powerChange?.kind!=='shrink'||this.powerChange.remaining>=40||this.areaControls.locked||this.sideCollisionTimer>0||scroll===0||screenX<79)return;
+  if(this.powerChange?.kind!=='shrink'||this.powerChange.remaining>=40||this.shrinkEndStep||this.areaControls.locked||this.sideCollisionTimer>0||scroll===0||screenX<79)return;
   this.camera+=screenX>=112||scroll<2?scroll:scroll-1;
  }
  private restartToTitle(){const frame=this.frame,row=this.lifeRow,frozen=this.lifeFrozen;this.reset();this.frame=frame;this.lifeRow=row;this.lifeFrozen=frozen;}
@@ -1711,7 +1713,7 @@ export class Simulation {
  playerBackgroundPriority=false;playerDrawBackgroundPriority=false;starPalette=0;starDrawPalette:number|undefined; // stored $03C4 palette bits, and the prior bits used by this frame's player OAM
  intervalControl=20; // native $077F: counts 20..0 once per frame; at 0 the interval timers tick
  private tickIntervalTimers(){
-  if(this.nmiTimersHeld)return;
+  if(this.nmiTimersHeld||this.shrinkEndStep)return;
   if(!this.nativeTimersStopped&&this.frameTimersAt!==this.frame){
    this.frameTimersAt=this.frame;for(let slot=0;slot<5;slot++)if(this.slotFrameTimers[slot]>0)this.slotFrameTimers[slot]--;
    for(const e of this.enemies)if(e.active&&!e.slotFreed&&e.dead<100&&e.enemySlot!==undefined){if(e.pir)e.pir.timer=this.slotFrameTimers[e.enemySlot];if(e.hbro)e.hbro.frameTimer=this.slotFrameTimers[e.enemySlot];if(e.nativeShot)e.cannonFrameTimer=this.slotFrameTimers[e.enemySlot];}
