@@ -2235,7 +2235,7 @@ export class Simulation {
   this.castlePictures.begin();
   const boss=this.enemies.find(e=>e.kind==='bowser'&&e.active),body=boss?.nativeBowser;
   this.victoryBoss=boss;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase='axe';
-  const axe=this.areaControls.castleGraphics.find(o=>o.erase===0);if(axe)this.blockBackground.set(`${axe.column},${axe.row}`,null); // the contact row already blanks the axe picture; the bridge sequence's first write repeats it (1-4 c35cb97a: gone from picture 9399, rewritten row 9412)
+  const axe=this.areaControls.castleGraphics.find(o=>o.erase===0);if(axe&&axe.column===Math.floor((Math.floor(this.player.x)+12)/16))this.blockBackground.set(`${axe.column},${axe.row}`,null); // the contact row blanks the right foot's metatile, which is the axe only when x+12 is in its column (1-4 8f90807f row 10299: x 2263 blanks column 142, VRAM $221C, and the axe stays until the bridge sequence's write); the bridge sequence's first write repeats it (1-4 c35cb97a: gone from picture 9399, rewritten row 9412)
   const task={bridge:0,fall:0,walk:2,message:3}[this.castleStage];
   this.nativeVictory={task,destination:((Math.floor(this.camera)+255)>>8)+1,walk:0,scrollFraction:this.victoryScrollFraction,primary:0,secondary:0,endTimer:0,
    feet:body?.feet??32,controls:body?.controls??0,bridge:0,bossState:boss?.dead?32:0,
