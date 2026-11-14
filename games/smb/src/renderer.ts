@@ -258,7 +258,10 @@ export class GameRenderer {
    const ordinary=s.spritePictureOwner!=='empty'&&s.spritePictureOwner!=='victory';
    this.waterSurfaceSky(s);
    this.worldClip=true;
-   const pictureTiles=new Map(s.tiles);for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
+   const pictureTiles=new Map(s.tiles);
+   // Jumpspring writes metatiles 0x67 (blank) and 0x68 (half brick) into its two rows; the picture shows the half brick under the spring (2-1 1ae7aeeb rows 11657+, column 188 row 12).
+   for(const spring of s.area.springs??[]){const col=Math.floor(spring.x/16),row=Math.floor((spring.y-8)/16);pictureTiles.set(`${col},${row-1}`,0x67);pictureTiles.set(`${col},${row}`,0x68);}
+   for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
    for(const[key,id]of pictureTiles){const[col,row]=key.split(',').map(Number);const x=col*16-Math.floor(s.camera);if(x<-16||x>=256||row<2)continue;
     if(id===95||id===96)continue;let y=row*16;
     const below=doorwayBottomTile(id,s.tiles.has(`${col},${row+1}`));if(below!==undefined)this.tile(below,x,y+16,this.rotation(s.area.palette));
