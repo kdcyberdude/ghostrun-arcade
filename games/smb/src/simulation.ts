@@ -3177,7 +3177,9 @@ export class Simulation {
    if(!e.movingShell&&!other.movingShell||!nativeEnemyBoxesTouch(body(e),body(other),Math.floor(this.camera+this.lakituScroll)))continue;
    const both=e.movingShell&&other.movingShell,shell=e.movingShell?e:other,victim=e.movingShell?other:e;
    if(both){this.stunShellVictim(e);this.floateyScore(200);} // ShellOrBlockDefeat overwrites the earlier control6 with control2.
-   this.stunShellVictim(victim);this.floateyScore(([500,800,1000,2000,4000,5000,8000,'1up'] as const)[Math.min(shell.shellChain??0,7)],victim.enemySlot!<e.enemySlot?6:5);shell.shellChain=(shell.shellChain??0)+1;this.emit('sfx_kick');
+   const award=([500,800,1000,2000,4000,5000,8000,'1up'] as const)[Math.min(shell.shellChain??0,7)];
+   this.stunShellVictim(victim);this.floateyScore(award,victim.enemySlot!<e.enemySlot?6:5);shell.shellChain=(shell.shellChain??0)+1;this.emit('sfx_kick');
+   this.awardPopup(award,e.graphicsX??e.x,victim.y-32,victim); // SetupFloateyNumber: victim slot and stunned Y, X from Enemy_Rel_XPos of the object being processed (24614c5e row 3257, 0d12a2e4 row 5416)
    if(e.dead)break;
   }
  }
