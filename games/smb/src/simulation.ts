@@ -748,7 +748,7 @@ export class Simulation {
   // PlayerHole runs before ProcessWhirlpools; its pending late step cannot select engine6 early.
   if(p.y-(this.swimActive?this.water.whirlMoved:0)>=LIFE_FLOW.pitEndFeetY){this.clampBelowScreen(oldBottom,b);this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;return;}
   if(oldBottom>=288&&!this.pitMusic){this.pitMusic=true;this.emit('event_death');}
-  const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true;else if(this.area.theme!=='water'&&this.area.theme!=='castle'&&(lava===134||lava===135))this.die();
+  const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true; // elsewhere these cells are scenery: Mario falls on to the pit (3-1 00276e8d rows 23337-23360)
   if(this.area.checkpoint&&this.camera>=this.area.checkpoint.camera){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;} // native halfway: the screen's page reached the halfway page (corpus deaths: 1-1 page 5, 1-3 page 4, 2-1 page 6; Mario's own page does not count)
   const previousCamera=this.camera,attemptX=cameraAttemptX??p.x;
   // ProcessWhirlpools runs after native ScrollHandler; its trailing x pull is not a side-wall stop.
