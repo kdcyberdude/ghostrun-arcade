@@ -606,7 +606,7 @@ export class Simulation {
   if(this.powerChange){
    this.lifeFrozen++;const next=nativeTransformStep(this.powerChange.kind,this.powerChange.remaining);this.powerChange.remaining=next.remaining;
    if(next.done){this.player.size=this.powerChange.to;this.powerChange=undefined;this.resumeWorldAfterTransform();}
-   else{this.shrinkScroll();for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
+   else{const before=this.camera;this.shrinkScroll();this.advanceNativeAreaParser(this.camera-before);for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
    if(this.powerChange?.kind!=='shrink'||this.powerChange.remaining>2)return; // the last two shrink frames run Mario's own step while enemies stay held (2-1 a3899256 row 12421, 371fe2fe row 18287)
   }
   this.gameTimerStep(false); // NMI precedes player/actor routines, including automatic entrances.
