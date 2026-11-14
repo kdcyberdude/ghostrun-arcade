@@ -24,7 +24,7 @@ import type {Area,Enemy,Item} from './types.js';
 const A=(import.meta.env?.BASE_URL??'/')+'assets/graphics/';
 export class GameRenderer {
  renderer:THREE.WebGLRenderer;scene=new THREE.Scene();camera=pixelCamera(THREE);textures=new Map<string,THREE.Texture>();
- private oamRows:number[]|undefined;private oam:Uint8Array|undefined;private oamWritten:Uint8Array|undefined;private oamContext:{base:number,count:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
+ private castleHeld=false;private hudMeshes:THREE.Object3D[]=[];private retainerMeshes:THREE.Object3D[]=[];private oamRows:number[]|undefined;private oam:Uint8Array|undefined;private oamWritten:Uint8Array|undefined;private oamContext:{base:number,count:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();private ropeColumns:number[]=[];
@@ -249,6 +249,10 @@ export class GameRenderer {
  render(s:Simulation){
   const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oam=oam.supported?oam.oam:undefined;this.oamWritten=oam.supported?oam.written:undefined;this.oamContext=undefined;
   const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorDrawRotations));return r;};
+  // After a castle victory InitializeArea's first rows keep the castle picture: the retainer is gone from the first, the status bar from the second (2-1 1ae7aeeb pictures 8686, 8687).
+  const victoryHold=s.phase==='intro'&&s.levelLoad?.engine===8&&s.levelLoad.task===0;
+  if(victoryHold&&this.castleHeld){for(const m of [...this.retainerMeshes,...(s.levelLoad!.screen===0?this.hudMeshes:[])])this.scene.remove(m);this.renderer.render(this.scene,this.camera);return;}
+  this.castleHeld=s.phase==='castle';this.hudMeshes=[];this.retainerMeshes=[];
   this.scene.clear();this.used.clear();const titlePicture=nativeStartupTitleShown(s.nativeStartupPicture,s.phase,s.nativeScreen),startup=titlePicture?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
@@ -336,7 +340,7 @@ export class GameRenderer {
    this.worldClip=false;
   }
   const introLoading=screen?!screen.hud:s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.introHiddenLate);
-  if(screen?screen.hud:!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing)this.hud(s,s.area.palette,Boolean(screen&&s.nativeScreen!.engine<8),titlePicture);
+  if(screen?screen.hud:!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing){const first=this.scene.children.length;this.hud(s,s.area.palette,Boolean(screen&&s.nativeScreen!.engine<8),titlePicture);this.hudMeshes=this.scene.children.slice(first);}
   if(titlePicture)this.title(s);
   if(screen?screen.message==='time-up':s.timeUpScreen&&!introLoading)this.text('TIME UP',96,128);
   else if(screen?screen.message==='lives':s.phase==='intro'&&!introLoading){
@@ -348,7 +352,7 @@ export class GameRenderer {
  }
  private castleRescue(s:Simulation){
   const exit=s.area.exit;if(exit?.kind!=='axe'||['intro','gameover','title'].includes(s.phase))return;
-  const actor=s.castleRetainer;if(actor?.graphicsVisible)this.enemyCell(s.level.id==='8-4'?26:27,actor.x-Math.floor(s.camera),actor.y+1,'0f-16-30-27');
+  const actor=s.castleRetainer;if(actor?.graphicsVisible){const first=this.scene.children.length;this.enemyCell(s.level.id==='8-4'?26:27,actor.x-Math.floor(s.camera),actor.y+1,'0f-16-30-27');this.retainerMeshes=this.scene.children.slice(first);}
   if(s.castleStage!=='message'&&s.phase!=='ending')return;
   if(s.castleText){for(const row of s.castleText)this.text(row.text,row.x-s.camera,row.y);return;}
   const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
