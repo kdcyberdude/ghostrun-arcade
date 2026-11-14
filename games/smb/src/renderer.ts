@@ -28,10 +28,10 @@ export class GameRenderer {
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();private ropeColumns:number[]=[];
- private hudCoinTextures:string[]=[];private skyBand?:THREE.Mesh;
+ private hudCoinTextures:string[]=[];private backgroundDraws:{id:number,x:number,y:number,palette:number}[]=[];private stencilMode:0|1|2=0;private skyBand?:THREE.Mesh;
  private palettes=manifest.palette_observations.map(o=>o.palette);private rotation=(index:number)=>index;
  constructor(canvas:HTMLCanvasElement){
-  this.renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,preserveDrawingBuffer:true});this.renderer.setPixelRatio(1);this.renderer.setSize(256,240,false);
+  this.renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,preserveDrawingBuffer:true,stencil:true});this.renderer.setPixelRatio(1);this.renderer.setSize(256,240,false);
   // Preserve depth priority; only equal-depth transparent quads follow this frame's submission order.
   this.renderer.setTransparentSort((a,b)=>a.groupOrder-b.groupOrder||a.renderOrder-b.renderOrder||b.z-a.z||a.object.userData.drawOrder-b.object.userData.drawOrder);
   this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.NoToneMapping;
@@ -105,10 +105,11 @@ export class GameRenderer {
   const key=`${name}:${rect.join(',')}:${sprite}`;let pool=this.pools.get(key);if(!pool)this.pools.set(key,pool=[]);
   const index=this.used.get(key)??0;this.used.set(key,index+1);
   let mesh=pool[index];if(!mesh){mesh=pixelQuad(THREE,this.textures.get(name)!,rect,{sprite});pool.push(mesh);}
+  {const m=mesh.material as THREE.MeshBasicMaterial;m.stencilWrite=this.stencilMode!==0;m.stencilRef=1;m.stencilFunc=this.stencilMode===2?THREE.EqualStencilFunc:THREE.AlwaysStencilFunc;m.stencilZPass=this.stencilMode===1?THREE.ReplaceStencilOp:THREE.KeepStencilOp;}
   mesh.userData.drawOrder=this.scene.children.length;
   mesh.position.set(Math.floor(x)+rect[2]/2,240-Math.floor(y)-rect[3]/2,z);mesh.scale.set(flipX?-1:1,flipY?-1:1,1);this.scene.add(mesh);
  }
- private tile(id:number,x:number,y:number,palette:number,z=0){const rect=this.rects.get(id);if(rect)this.quad(`metatiles-palette-${String(palette).padStart(3,'0')}.png`,rect,x,y,z,false,false,false);}
+ private tile(id:number,x:number,y:number,palette:number,z=0){const rect=this.rects.get(id);if(rect&&z<1)this.backgroundDraws.push({id,x,y,palette});if(rect)this.quad(`metatiles-palette-${String(palette).padStart(3,'0')}.png`,rect,x,y,z,false,false,false);}
  // Native water areas keep sky colour above the surface wave (rows 0-31, the HUD band); only the playfield below is water blue.
  private waterSurfaceSky(s:Simulation){
   if(!waterSurfaceSky(s.area))return;
@@ -116,7 +117,7 @@ export class GameRenderer {
   this.scene.add(this.skyBand);
  }
  // Priority-bit castle flags show through universal-color crenellation gaps.
- private castlePriorityTile(id:number,x:number,y:number,palette:number){
+ private castlePriorityTile(id:number,x:number,y:number,palette:number,z=1.6){
   const base=`metatiles-palette-${String(palette).padStart(3,'0')}.png`,name=base+'#castle-priority';
   if(!this.textures.has(name)){
    const source=this.textures.get(base)!;const canvas=document.createElement('canvas');canvas.width=source.image.width;canvas.height=source.image.height;
@@ -124,7 +125,14 @@ export class GameRenderer {
    for(let at=0;at<pixels.data.length;at+=4)if(background.every((color,c)=>pixels.data[at+c]===color))pixels.data[at+3]=0;
    context.putImageData(pixels,0,0);const texture=new THREE.CanvasTexture(canvas);texture.magFilter=texture.minFilter=THREE.NearestFilter;texture.generateMipmaps=false;texture.colorSpace=THREE.SRGBColorSpace;this.textures.set(name,texture);
   }
-  this.quad(name,this.rects.get(id)!,x,y,1.6);
+  this.quad(name,this.rects.get(id)!,x,y,z);
+ }
+ /** OAM priority ignores the background-priority bit: a behind-background sprite still hides later entries, and its opaque pixels then show the
+  * background where that is not colour 0 (2-1 799a745a picture 14578: Piranha entries 12-17 hide a Goomba at 18-23 over the sky). */
+ private behindBackgroundSprite(x:number,y:number,width:number,height:number,z:number,draw:()=>void){
+  this.stencilMode=1;draw();this.stencilMode=2;
+  for(const b of this.backgroundDraws){const r=this.rects.get(b.id)!;if(b.x<x+width&&x<b.x+r[2]&&b.y<y+height&&y<b.y+r[3])this.castlePriorityTile(b.id,b.x,b.y,b.palette,z+1e-6);}
+  this.stencilMode=0;
  }
  private spriteTile(id:number,x:number,y:number,palette='0f-1a-30-27',flipX=false,flipY=false,z=this.enemyOamZ??2){
   if(id===252)return;this.quad(`sprite-tiles-${palette}.png`,[(id%16)*8,Math.floor(id/16)*8,8,8],x,y,z,flipX,flipY);
@@ -217,7 +225,8 @@ export class GameRenderer {
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
-  }else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20,e.kind==='piranha'?-0.1:this.enemyOamZ);
+  }else if(e.kind==='piranha'){const z=this.enemyOamZ??2;this.behindBackgroundSprite(x,y,16,24,z,()=>this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20,z));}
+  else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20,this.enemyOamZ);
  }
  private enemyCell(cell:number,x:number,y:number,palette:string,flipX=false,flipY=false,z=this.enemyOamZ??2){
   const data=tables.enemy_cells[cell];
@@ -255,7 +264,7 @@ export class GameRenderer {
   // After a castle victory InitializeArea's first rows keep the castle picture: the retainer is gone from the first, the status bar from the second (2-1 1ae7aeeb pictures 8686, 8687).
   const victoryHold=s.phase==='intro'&&s.levelLoad?.engine===8&&s.levelLoad.task===0;
   if(victoryHold&&this.castleHeld){for(const m of [...this.retainerMeshes,...(s.levelLoad!.screen===0?this.hudMeshes:[])])this.scene.remove(m);this.renderer.render(this.scene,this.camera);return;}
-  this.castleHeld=s.phase==='castle';this.hudMeshes=[];this.retainerMeshes=[];
+  this.castleHeld=s.phase==='castle';this.hudMeshes=[];this.backgroundDraws=[];this.retainerMeshes=[];
   this.scene.clear();this.used.clear();const titlePicture=nativeStartupTitleShown(s.nativeStartupPicture,s.phase,s.nativeScreen),startup=titlePicture?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
