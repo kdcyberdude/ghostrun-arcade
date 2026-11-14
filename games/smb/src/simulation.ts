@@ -2885,6 +2885,7 @@ export class Simulation {
     if(e.kind==='hammerBro'&&e.hbro){this.moveDefeatedHammerBro(e);continue;}
     if(e.kind==='lakitu'&&e.pod){this.moveDefeatedRespawnLakitu(e);continue;}
 
+    if(e.nativeFlight&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.y>=280){this.eraseBulletObject(e);continue;}nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y+24;e.vy=e.pod.speed+e.pod.force/256;continue;}
     if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseBulletObject(e);continue;}nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseBulletObject(e);continue;}
     e.dead++;
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
@@ -3040,6 +3041,8 @@ export class Simulation {
    }
    if(e.kind==='hammerBro')continue; // native contact already preceded ProcHammerBro
    if(e.kind==='lakitu')continue; // its native contact already preceded MoveLakitu
+   const cheepStomp=e.nativeFlight&&!e.dead?this.flyingCheepContact(p,priorX,priorY):undefined;
+   if(e.nativeFlight&&!e.dead&&(cheepStomp===undefined||!cheepStomp&&!p.star)){if(cheepStomp===false)hurtBeforeMove();continue;}
    const eh=e.kind==='bowser'?32:e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
    if(e.unwingedAir&&e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;
@@ -3063,7 +3066,7 @@ export class Simulation {
      const award=this.shellKickAward();this.enemyPopup(award,e);this.floateyScore(award);this.emit('sfx_kick');continue;
     }
    }
-   const stompWindow=normalContact??shellContact??this.nativeStompWindow(e,p,priorX,priorY),chkInj=normalContact?normalStomp&&Math.floor(p.vy)<=0:this.nativeChkInjStomp(e,p,priorX,priorY)||Boolean(e.shell&&shellContact&&this.nativeStompTimer);
+   const stompWindow=normalContact??shellContact??this.nativeStompWindow(e,p,priorX,priorY),chkInj=cheepStomp||(normalContact?normalStomp&&Math.floor(p.vy)<=0:this.nativeChkInjStomp(e,p,priorX,priorY))||Boolean(e.shell&&shellContact&&this.nativeStompTimer);
    const boxX=e.nativeFlight?priorX:e.x; // a leaping Cheep Cheep's box is x+3..x+13 at its x before this frame's move (34,978 native box rows; 2-3 2f5c8c27 row 17831: |dx| 12, no touch)
    if(!chkInj&&(stompWindow===false||stompWindow===undefined&&!overlap(p.x+3,p.y-this.height+2,10,this.height-3,boxX+2,e.y-eh,ew-4,eh))){if(e.unwingedBounce)delete e.unwingedBounce;delete e.kickOverlap;if((p.vy<=0||e.kind==='spiny')&&!this.bouncing&&!e.shell&&(e.nativeFlight?Math.abs(Math.floor(priorX)-Math.floor(p.x))<=10:Math.abs(e.x-p.x)<11||this.koopaSideReach(e.kind,priorX))&&this.nativeTouch(e,priorY,false))hurtBeforeMove();continue;} // above the stomp box a rising or standing Mario is still hurt
    if(e.kickOverlap)continue;
@@ -3076,7 +3079,7 @@ export class Simulation {
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
     if(['goomba','koopa','redKoopa','beetle'].includes(e.kind))this.nativeStompTimer=(this.nativeStompTimer+1)&255;
     if(e.kind==='bullet'&&e.frenzy)e.x=priorX;
-    const award=e.kind==='bullet'?200:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award);
+    const award=e.kind==='bullet'||e.nativeFlight?200:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award);
     // A Paratroopa stomp shows a popup in the reference; its Koopa offset and lifetime are inferred.
     if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='paratroopa'||e.kind==='bullet')this.enemyPopup(award,e);
     this.emit('sfx_stomp');
@@ -3084,7 +3087,8 @@ export class Simulation {
      if(e.kind==='paratroopa'){e.kind=e.palette==='0f-16-30-27'?'redKoopa':'koopa';e.nativeId=e.kind==='redKoopa'?1:0;const unwinged=nativeUnwingedStomp(priorX+(e.redFlight?.originalY??0)/256,priorY,priorFraction,p.x);delete e.redFlight;delete e.horizontalFlight;e.fall={speed:0,force:0,fraction:unwinged.fraction};e.vx=unwinged.vx;e.x=unwinged.x;e.y=unwinged.y;if(e.pod)Object.assign(e.pod,{y:unwinged.y,speed:0,force:0,fraction:unwinged.fraction});e.unwingedBounce=true;e.unwingedAir=this.frame;}
      else if(!e.shell){e.shell=true;e.movingShell=false;e.shellFalling=false;e.shellAge=0;e.shellChain=0;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;if(stompFall)e.vy=stompFall.speed+stompFall.force/256;} // HandleStompedShellE precedes MoveNormalEnemy; state4 holds its pre-movement vertical bytes. Native: a stomped Koopa keeps its position from before this frame's step (all 31 Koopa/Beetle stomps of the 32 v2 model replays; 4-3 row 187: slot 0 stays 409.0)
      else{e.movingShell=false;e.shellFalling=false;e.shellAge=0;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;}
-    }else{e.dead=1;e.vy=0;if(e.kind==='bullet'){e.x=e.frenzy?priorX:e.x;e.y=priorY-2;e.vx=0;e.pod={...nativeMoveState(e.y),fraction:priorFraction};if(e.frenzy)nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;}if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;if(stompFall)e.vy=stompFall.speed+stompFall.force/256;}} // HandleStompedShellE writes state4 and interval16/11; MoveNormalEnemy owns subsequent falling, landing and timer14 erasure.
+    }else{e.dead=1;e.vy=0;if(e.nativeFlight){e.x=priorX;e.vx=0;e.pod={...nativeMoveState(Math.floor(priorY)-26),fraction:priorFraction};nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y+24;e.vy=e.pod.speed+e.pod.force/256;} // a stomped leaping Cheep Cheep keeps its x, rises 2 px and falls like a stomped frenzy Bullet Bill (2-3 41a57f77 row 22976, 904408d8 row 24603)
+     if(e.kind==='bullet'){e.x=e.frenzy?priorX:e.x;e.y=priorY-2;e.vx=0;e.pod={...nativeMoveState(e.y),fraction:priorFraction};if(e.frenzy)nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;}if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;if(stompFall)e.vy=stompFall.speed+stompFall.force/256;}} // HandleStompedShellE writes state4 and interval16/11; MoveNormalEnemy owns subsequent falling, landing and timer14 erasure.
    }else if(e.shell&&shellContact)hurtBeforeMove();
    else if(normalContact||this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))hurtBeforeMove();
 
@@ -3148,6 +3152,14 @@ export class Simulation {
   const my=Math.floor(p.y)-32,ny=Math.floor(priorY)-24,mx=Math.floor(p.x),ex=Math.floor(priorX),small=p.size===0||p.duck;
   if(my+12>=ny)return false;
   return mx+(small?3:2)<=ex+14&&ex+2<=mx+(small?13:14)&&my+(small?20:8)<=ny+21&&ny+9<=my+32;
+ }
+ /** A leaping Cheep Cheep (2-3 and others): native boxes (Cheep x+3..x+13, y+14..y+20 at its position before this frame's move; 34,978 box rows) decide contact;
+  * then a falling Mario (speed byte > 0) stomps it, and a rising or level one still does when his y + 12 is above its y, otherwise he is hurt
+  * (2-3 41a57f77 row 22976: falling at feet 4 px below its top, stomped). undefined: no contact. */
+ private flyingCheepContact(p:Player,priorX:number,priorY:number){
+  const my=Math.floor(p.y)-32,ny=Math.floor(priorY)-24,mx=Math.floor(p.x),ex=Math.floor(priorX),small=p.size===0||p.duck;
+  if(!(mx+(small?3:2)<=ex+13&&ex+3<=mx+(small?13:14)&&my+(small?20:8)<=ny+20&&ny+14<=my+32))return undefined;
+  return Math.floor(p.vy)>0||my+12<ny;
  }
  private risingParatroopaStomp(e:any,p:any){return e.kind==='paratroopa'&&!e.shell&&p.vy>=1&&p.y-e.y<=8;}
  // Native stomp window for Goombas (areas `stomp`, `stomp2`, `stomp4`, `stompedge`; docs/NATIVE_ROLES.md): a falling Mario (speed byte >= 1) touches a Goomba only when the native frame counter
