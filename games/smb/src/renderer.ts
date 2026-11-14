@@ -229,7 +229,7 @@ export class GameRenderer {
   }
  }
  private item(i:Item,s:Simulation){
-  if(!itemShown(i))return;const x=i.x-s.camera;
+  if(!itemShown(i)||!s.itemPictureShown(i))return;const x=i.x-s.camera; // a flame is drawn from the frame after it appears (32183fd4 1-4 row 9196: in RAM, first in OAM row 9197)
   if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up'){const context=this.oamContext;this.oamContext=this.oamRows&&i.nativePowerState!==undefined&&!i.emerging?{base:s.spriteShuffle.offsets[6],count:4}:undefined;this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),i.emerging?-0.1:1.5);this.oamContext=context;}
   if(i.kind==='coin'){
    if(i.nativeCoin){
