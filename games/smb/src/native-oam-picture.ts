@@ -1,4 +1,4 @@
-import {enemyRenderPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,platformMotionModel} from './platform-motion.js';
+import {nativeMiscOffscreen} from './native-misc.js';import {enemyRenderPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,platformMotionModel} from './platform-motion.js';
 /** Explicit capability: normal Mario, live Goombas and lifts. Unknown writers
  * refuse the whole composition; they are never silently omitted from the cap. */
 export function nativeOamPicture(s:any){
@@ -8,7 +8,7 @@ export function nativeOamPicture(s:any){
  if(s.paused||!['play','dying'].includes(s.phase)||s.spritePictureOwner!=='engine'||s.nativeScreen||s.nativeTimersStopped&&s.phase!=='dying'||s.powerChange)reasons.push('control-owner');
  if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.area.theme==='water'||s.player.dead&&s.phase!=='dying')reasons.push('player-variant');
  const powerup=(i:any)=>['mushroom','flower','star','1up'].includes(i.kind)&&i.nativePowerState!==undefined&&!i.emerging;
- if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i))||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed||!p.victim.dead&&!p.victim.shell)||s.blockGraphics.some((b:any)=>b.pictureY!==undefined)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup))||s.frenzyControllers?.some((c:any)=>c.slot!==undefined&&!c.lost))reasons.push('other-writer');
+ if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i))||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed||!p.victim.dead&&!p.victim.shell)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup))||s.frenzyControllers?.some((c:any)=>c.slot!==undefined&&!c.lost))reasons.push('other-writer');
  // Springboards: six entries at their slot's offset, rows Enemy_Y, +8, +16 (Enemy_Y: the spring's top, 8 lower per compression step) and columns X, X+8;
  // a column off X 1..255 keeps Y 248 (1ae7aeeb 2-1 rows 11640-11664 entering at the right, 13205-13223 compressed).
  const springs:{base:number,x:number,y:number}[]=[];
@@ -69,6 +69,10 @@ export function nativeOamPicture(s:any){
  // A victim still walking (a stomped paratroopa's Koopa) keeps its own entries and its number moves to offset index 8 or 9 by a rule
  // not yet measured (all captures: 4,617 rows at 8, 699 at 9; 24a4c03d 1-3 rows 7146-7148 at 9), so such frames are refused above.
  for(const popup of s.popups){const v=popup.victim,base=s.spriteShuffle.offsets[v.enemySlot+1];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
+ // A bumped block: four entries at Block_SprDataOffset (offset table entry 8 + its slot), rows at its picture Y and Y+8, a column hidden by
+ // its misc offscreen bits left at Y 248 (1-2 9d8b2405 rows 3028-3041: entries 22-25 / 40-43 at offsets[8]).
+ for(const b of s.blockGraphics){if(b.pictureY===undefined)continue;const base=s.spriteShuffle.offsets[8+b.slot],bits=nativeMiscOffscreen(b.x,b.pictureY,s.camera);
+  for(let row=0;row<2;row++)for(let col=0;col<2;col++)write(base+row*8+col*4,bits&(col?4:8)?248:(b.pictureY+row*8)&255,0x86,3,(Math.floor(b.x)-Math.floor(s.camera)+col*8)&255,false);}
  for(const sp of springs)for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=sp.x+col*8;write(sp.base+row*8+col*4,xx<=0||xx>255?248:sp.y+row*8,0xfc,2,xx,false);}
  for(const bar of bars)bar.balls.forEach((b,k)=>write(bar.base+k*4,b.x<0||b.x>255?248:b.y-1,0x75,2,b.x,false));
  // A lift at y 0 is drawn off screen (native: 242 of 257 on-screen rows at y 0 hidden; 0d12a2e4 row 6023), except one starting at X 248 or right of it (all captures: 203 rows kept at Y 0, 4 hidden).
