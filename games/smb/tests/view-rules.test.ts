@@ -27,12 +27,13 @@ test('title boot sequence colours follow the native power-on frames',()=>{
  assert.equal(at(0),'#7c7c7c');assert.equal(at(8),'#7c7c7c');assert.equal(at(9),'#000000');assert.equal(at(26),'#000000');
  assert.equal(at(27),'#6888fc');assert.equal(at(31),'#6888fc');assert.equal(at(32),undefined);assert.equal(at(45),undefined);
 });
-// Native 1-1 mushroom pickup, every frame of the freeze (A small, B mid, C big; 4-frame cells; first image row 375 = freeze row 1).
-test('mushroom growth cells follow the native 4-frame sequence',()=>{
- const letter=(n:number)=>({23:'A',24:'B',25:'C'} as Record<number,string>)[growCell(n)!];
- let s='';for(let n=1;n<=46;n++)s+=letter(n);
- assert.equal(s,'AAAAAAAABBBBAAAABBBBAAAABBBBCCCCAAAABBBBCCCCAC');
- assert.equal(growCell(0),undefined);
+// Native mushroom pickups, every frame of the freeze (A small, B mid, C big). 1-1 standing (first image row 375 = freeze row 1): steps on rows 9, 13, ...;
+// 0a766fa4 1-2 row 3409: steps on rows 10, 14, ... (FrameCounter&3 = 0 there). Rows 1-6 keep the current pose (standing: A); after the tenth step the big pose.
+test('mushroom growth steps with FrameCounter from freeze row 7',()=>{
+ const run=(phase:number,n0=46)=>{let s='';for(let n=1;n<=n0;n++){const g=growCell(n,n+phase);s+=g===undefined?'A':g==='big'?'C':({23:'A',24:'B',25:'C'} as Record<number,string>)[g];}return s;};
+ assert.equal(run(3),'AAAAAAAABBBBAAAABBBBAAAABBBBCCCCAAAABBBBCCCCAC');
+ assert.equal(run(2,47),'AAAAAAAAABBBBAAAABBBBAAAABBBBCCCCAAAABBBBCCCCAC');
+ assert.equal(growCell(0,0),undefined);assert.equal(growCell(6,0),undefined);
 });
 // Native 1-1 shrink (engine 10 rows 568..622): sprite height alternates big/small each frame on image rows 569..583, then small.
 test('shrink freeze flickers big/small each frame for 15 rows, then stays small',()=>{

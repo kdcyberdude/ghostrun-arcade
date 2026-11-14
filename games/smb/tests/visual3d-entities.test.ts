@@ -59,7 +59,7 @@ test('shell-launched Goombas flip at full size immediately instead of showing a 
 test('Mario growth follows the native small/mid/big picture cells',()=>{
  const {sim,entities}=scene();sim.player.size=0;
  for(const [age,size] of [[1,0.6],[9,0.8],[29,1],[33,0.6],[46,1]]){
-  sim.powerChange={kind:'grow',from:0,to:1,remaining:59-age};sim.frame++;entities.sync(sim,0);assert.equal(actor(entities,'mario').scale.x,size);
+  sim.powerChange={kind:'grow',from:0,to:1,remaining:59-age};sim.frame++;sim.random.frame=age+3;entities.sync(sim,0); // FrameCounter phase of the 1-1 capture (steps on freeze rows 9, 13, ...)assert.equal(actor(entities,'mario').scale.x,size);
  }
 });
 test('big Mario uses the native small death picture',()=>{

@@ -30,7 +30,7 @@ export function playerCell(s:Simulation){
  const change=s.powerChange;
  // Pose cadence between7/8-frame observations remains inferred. All three
  // supplied growth sizes are used while the measured gameplay freeze runs.
- if(change?.kind==='grow')cell=growCell(POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue-change.remaining)??cell;
+ if(change?.kind==='grow'){const grow=growCell(POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue-change.remaining,s.random.frame);if(grow==='big')cell=cell>=12&&cell<=17?cell-12:cell===23?25:cell;else if(grow!==undefined)cell=grow;}
  if(change?.kind==='shrink'&&!shrinkBig(POWERUPS.transformFreezeNativeFrames.shrinkValue-change.remaining)&&(cell<13||cell===25))cell=cell===25?23:cell===10?23:cell+12; // native: the big pose flickers against the small one every frame for 16 rows, then small
  const facing=pose&&s.area.theme!=='water'&&!p.climbing?pose.facing:p.facing;
  const throwing=p.size===2&&throwPoseShown(s.fireballThrowAge,p.grounded,Math.abs(p.vx))&&!p.duck&&!p.dead&&!p.climbing;

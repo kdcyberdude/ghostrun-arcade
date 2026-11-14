@@ -11,12 +11,13 @@ export const waterSurfaceSky=(area:{theme?:string;background?:string})=>area.the
 export const doorwayBottomTile=(id:number,hasTileBelow:boolean)=>id===74&&!hasTileBelow?75:undefined;
 // Native power-on frames before the title menu (steps 1-based): grey 1-9, black 10-27, plain sky 28-32, title from 33.
 export const titleBootColor=(frame:number)=>frame<=9?'#7c7c7c':frame<=27?'#000000':frame<=32?'#6888fc':undefined;
-/** Mushroom growth pose (native 1-1 captures, every frame of the 59-row freeze; evidence/view4-findings-20261111.md): 4-frame cells from freeze row 1,
- * 0 small / 1 mid / 2 big = A A B A B A B C A B C, then one more small frame and big from row 46. Returns the sprite cell (23 small, 24 mid, 25 big) or undefined (row 0: keep the pose). */
-export const growCell=(frozen:number)=>{
- if(frozen<1)return undefined;
- const seq=[23,23,24,23,24,23,24,25,23,24,25],cell=Math.floor((frozen-1)/4);
- return cell<seq.length?seq[cell]:frozen===45?23:25;
+/** Mushroom growth pose (PlayerChangeSize; all captures, 4 of 4 grows plus the 1-1 freeze in evidence/view4-findings-20261111.md): freeze rows 1-6 keep the
+ * current pose; from row 7 the size step starts at 0 and advances on rows with FrameCounter&3 = 0, drawing sizes 0 1 0 1 0 1 2 0 1 2 as cells 23/24/25;
+ * the tenth step draws 23 once and ends it, later rows show the big pose ('big'). undefined: keep the pose. */
+export const growCell=(frozen:number,frameCounter:number):number|'big'|undefined=>{
+ if(frozen<7)return undefined;
+ let step=0;for(let k=7;k<=frozen;k++)if(((frameCounter-frozen+k)&3)===0&&++step===10)return k===frozen?23:'big';
+ return [23,24,23,24,23,24,25,23,24,25][step];
 };
 /** Shrink freeze (native 1-1 hurt by a Goomba, every frame of the 55 engine-10 rows): the big pose alternates with the small one each frame on freeze rows 1,3 .. 15 (big) / 2,4 .. (small), small from row 16. Row 0 keeps the pose. */
 export const shrinkBig=(frozen:number)=>frozen<1||frozen<=15&&frozen%2===1;

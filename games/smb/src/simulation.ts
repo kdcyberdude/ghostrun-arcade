@@ -58,6 +58,7 @@ import {advanceNativeHorizontalFlight} from './horizontal-paratroopa.js';
 import {advanceBowserX,bowserBodyX,bowserFaceMario,bowserFlameDue,bowserFlameSpeed,bowserHopPause,createBowserMotor,nativeBowserSpawnX,BOWSER_FLAME_OFFSET_X,BOWSER_HOP} from './bowser-motion.js';
 import type {FirebarGeometry,FirebarMotor} from './firebar-motion.js';
 import {advanceWater,WATER_FORCES} from './water-physics.js';
+import {growCell} from './view-rules.js';
 import {NativeWater,whirlpoolAt,whirlpoolPull,STROKE_TIMER,NO_INPUT_Y,SWIM_DEATH_Y,SWIM_WALL_DEPTH,SURFACE_Y} from './native-water.js';
 import type {WhirlpoolZone} from './native-water.js';
 import whirlpoolData from '../data/water-whirlpools.json';
@@ -263,7 +264,7 @@ export class Simulation {
  private activatedCheckpointArea?:string;
  castleStage:'bridge'|'fall'|'walk'|'message'='bridge';castleArrivalFrame=0;nativeVictory?:NativeVictory;private victoryBoss?:Enemy;private victoryMessages:number[]=[];private victoryPending=-1;levelLoad?:NativeLevelLoad;private pipeLoad?:{target:NonNullable<Simulation['destination']>;alternate:number;header:number;page:number;offset:number};private victoryErase?:'axe'|'chain'|'bridge';
  readonly flagNumber={y:0,fraction:0};flagTop=49;flagInside=false;flagBonus=0;
- powerChange?:{from:0|1|2;to:0|1|2;remaining:number;kind:'grow'|'fire'|'shrink'};
+ powerChange?:{from:0|1|2;to:0|1|2;remaining:number;kind:'grow'|'fire'|'shrink';born?:number};
  /** Water pipe drop-in (2-2, 7-2): native PlayerEntrance runs until Mario's y reaches $30, and the game timer starts with control (2-2 v2: y49 on row 385, routine 8 and 401 -> 400 on row 386). */
  private waterEntryTimerHold=0;
  private waterEntryFall=false;private waterSurface={active:false,contacted:false};
@@ -609,6 +610,15 @@ export class Simulation {
   if(this.powerChange){
    this.lifeFrozen++;const next=nativeTransformStep(this.powerChange.kind,this.powerChange.remaining);this.powerChange.remaining=next.remaining;
    if(next.done){this.player.size=this.powerChange.to;this.powerChange=undefined;this.resumeWorldAfterTransform();}
+   // Until PlayerChangeSize sets its flag (freeze row 7) ProcessPlayerAction still runs with the timers held: a walk shows the current AnimationControl frame
+   // (0a766fa4 1-2 rows 3410-3415: ctrl advanced on the pickup row, drawn from the next).
+   else if(this.powerChange.kind==='grow'){
+    // PlayerChangeSize counts its steps in PlayerAnimCtrl: 0 from freeze row 7 and again when the tenth step ends it, so the walk resumes from frame 0
+    // (371fe2fe 2-1 rows 15059-15073, a3899256 rows 12113-12125: big walk frame 0 after the sequence).
+    const frozen=POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue-next.remaining,grow=growCell(frozen,this.random.frame);
+    if(frozen>=7)this.playerAnim.ctrl=0;
+    if((frozen<7||grow==='big')&&this.locomotionPose.kind==='walk'&&(this.player.grounded||this.powerupStateZero))this.locomotionPose.frame=this.playerAnim.animate(3);
+   }
    else{const before=this.camera;this.shrinkScroll();this.advanceNativeAreaParser(this.camera-before);for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
    if(this.powerChange?.kind!=='shrink'||this.powerChange.remaining>2)return; // the last two shrink frames run Mario's own step while enemies stay held (2-1 a3899256 row 12421, 371fe2fe row 18287)
   }
@@ -1091,8 +1101,10 @@ export class Simulation {
   if(jumped)this.jumpPose=true;
   if(p.climbing){if(this.phase==='flag'){anim.setClimb(p.vy);this.climbPoseFrame=Math.floor(p.vy)!==0?anim.animate(2):anim.still();}return;}
   if(p.invincible&&this.random.frame&1)return; // PlayerGfxHandler returns at once on odd FrameCounter rows while the injury timer runs
-  if(this.powerChange)return; // DoChangeSize replaces ProcessPlayerAction
-  if(p.grounded&&!jumped){
+  // DoChangeSize replaces ProcessPlayerAction from the next row. The pickup row still runs it, with the Player_State 0 the pickup wrote
+  // (371fe2fe 2-1 row 15014: landing-row pickup in the air, drawn walking; the walk frame it advances is shown on the freeze rows).
+  if(this.powerChange&&this.powerChange.born!==this.frame)return;
+  if((p.grounded||this.powerChange&&this.powerupStateZero)&&!jumped){
    this.jumpPose=false;
    const lr=buttons.has('down')&&wasGrounded?0:Number(buttons.has('right'))|Number(buttons.has('left'))<<1;
    if(water&&refreshSpeed)anim.setSpeed(absolute); // OnGroundStateSub on the water floor (the land motor sets it otherwise)
@@ -3348,7 +3360,7 @@ export class Simulation {
     i.life=0;
     if(i.kind==='1up'){this.lives++;this.awardPopup('1up',i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_1up');}
     else if(i.kind==='star'){this.nativeEndLevelMusicAreaQueue=64;p.star=NATIVE_STAR_PICKUP;if(i.nativePowerState!==undefined)this.floateyScore(POWERUPS.starCollectionScore.value);else this.addScore(POWERUPS.starCollectionScore.value);this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset);this.emit(this.time<=100?'music_star_hurry':'music_star');}
-    else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size){this.powerChange={from:p.size,to:size,remaining:nativeTransformRows(i.kind==='flower'?'fire':'grow'),kind:i.kind==='flower'?'fire':'grow'};this.powerupStateZero=true;this.transformPreviousAB=this.nativePlayerAB;p.climbing=false;this.climbingVine=undefined;}if(i.nativePowerState!==undefined)this.floateyScore(1000);else this.addScore(1000);this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_powerup');}
+    else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size){this.powerChange={from:p.size,to:size,remaining:nativeTransformRows(i.kind==='flower'?'fire':'grow'),kind:i.kind==='flower'?'fire':'grow',born:this.frame};this.powerupStateZero=true;this.transformPreviousAB=this.nativePlayerAB;p.climbing=false;this.climbingVine=undefined;}if(i.nativePowerState!==undefined)this.floateyScore(1000);else this.addScore(1000);this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_powerup');}
  }
  private cancelWaterPass(){
   if(this.area.theme!=='water'||!this.swimActive)return;
