@@ -351,7 +351,8 @@ export class GameRenderer {
   else if(screen?screen.message==='lives':s.phase==='intro'&&!introLoading){
    this.text('WORLD '+s.level.id,88,80);if(!screen||screen.avatar)this.quad('player-'+(s.currentPlayer?'luigi':'mario')+'-right.png',[160,32,16,32],96,89,3);this.text('×  '+s.lives,120,112);
   }
-  if(s.phase==='gameover'&&!s.gameoverClosing){if(s.twoPlayer)this.text(s.currentPlayer?'LUIGI':'MARIO',104,112);this.text('GAME OVER',88,128);}
+  const overText=s.nativeGameOver?s.nativeGameOver.task>=2||s.nativeGameOver.task===1&&s.nativeGameOver.screen>=7:true; // GameOverInter writes the text in DisplayIntermediate, like the lives screen; ScreenRoutines rows 0-2 still show the old picture (2-1 35303fad pictures 13253-13255, 4-1 738f9c75 picture 33875)
+  if(s.phase==='gameover'&&!s.gameoverClosing&&overText){if(s.twoPlayer)this.text(s.currentPlayer?'LUIGI':'MARIO',104,112);this.text('GAME OVER',88,128);}
   this.castleRescue(s);
   this.renderer.render(this.scene,this.camera);
  }
