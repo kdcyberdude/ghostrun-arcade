@@ -208,7 +208,7 @@ export class GameRenderer {
    this.spriteTile(239,x,top,palette,false,true);this.spriteTile(239,x+8,top,palette,true,true);return;
   }
   if(e.shell&&(e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='beetle'&&!e.dead)){
-   const shell=tables.enemy_cells[(e.kind==='beetle'?19:17)+phase],launched=e.dead>0;
+   const shell=tables.enemy_cells[(e.kind==='beetle'?19:17)+phase],launched=e.dead>0||e.kind!=='beetle'&&(e.walkerState===2||e.walkerState===3); // a Koopa shell in state 2 or 3 (after a mid-air stomp) is drawn like a launched one, $6E over $6F unflipped (17a2baf0 2-1 rows 11898-12016; states 4/84/C4 flipped)
    for(let row=0;row<2;row++)for(let col=0;col<2;col++){
     const sourceRow=launched?2-row:row+1;
     this.spriteTile(shell.tiles[sourceRow*2+col],x+col*8,y+10+row*8,palette,col===1,!launched);
@@ -225,8 +225,8 @@ export class GameRenderer {
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
-  }else if(e.kind==='piranha'){const z=this.enemyOamZ??2;this.behindBackgroundSprite(x,y,16,24,z,()=>this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,(Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20)!==((e.kind==='koopa'||e.kind==='redKoopa')&&e.shell&&!e.dead&&(e.walkerState===2||e.walkerState===3)),z));}
-  else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,(Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20)!==((e.kind==='koopa'||e.kind==='redKoopa')&&e.shell&&!e.dead&&(e.walkerState===2||e.walkerState===3)),this.enemyOamZ);
+  }else if(e.kind==='piranha'){const z=this.enemyOamZ??2;this.behindBackgroundSprite(x,y,16,24,z,()=>this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20,z));}
+  else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20,this.enemyOamZ);
  }
  private enemyCell(cell:number,x:number,y:number,palette:string,flipX=false,flipY=false,z=this.enemyOamZ??2){
   const data=tables.enemy_cells[cell];
