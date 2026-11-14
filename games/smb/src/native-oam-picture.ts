@@ -43,7 +43,7 @@ export function nativeOamPicture(s:any){
  write(0,24,255,35,88);
  const tiles=tables.player_cells[pose.cell].tiles;
  // ChkForPlayerAttrib forces symmetry at table offsets50/B8/C0/C8.
- if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)write(4+row*8+col*4,py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||pose.cell===25&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
+ if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)write(4+row*8+col*4,py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||[22,25].includes(pose.cell)&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
  for(const body of enemies.sort((a:any,b:any)=>a.enemySlot-b.enemySlot)){
   const e=pic(body),x=Math.floor((e.dead?e.x:e.graphicsX??e.x)-s.camera),y=Math.floor(e.dead?e.y:e.graphicsY??e.y)-24,base=s.spriteShuffle.offsets[e.enemySlot!+1],stopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped),left=(e.graphicsFacing??e.vx)<0,flip=stopped?left:left===Boolean(s.random.frame&8);
   if(hidden(e))continue; // its entries keep the cleared Y (248); tile, attribute and X bytes are not reconstructed
