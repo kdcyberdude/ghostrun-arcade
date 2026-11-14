@@ -1065,7 +1065,7 @@ export class Simulation {
   if(newNativeBlock){const old=this.blockGraphics.findIndex(b=>b.slot===nativeBlock.slot);if(old>=0)this.blockGraphics.splice(old,1);this.blockGraphics.push({slot:nativeBlock.slot,key,x:nativeBlock.x,y:y*16,metatile:this.brokenBrick?.key===key?0:(piece?.id??this.tiles.get(key)??0),pictureY:undefined,replace:nativeBlock.state===0x12});}
   // EnemyToBGCollisionDet only stuns a walker when BumpBlock wrote $23.
   // Solid tree/stone head contact does not create that native marker.
-  if(bumpedNativeBlock)for(const e of this.enemies)if(e.active&&!e.dead&&e.kind!=='goomba'&&e.kind!=='blooper'&&!(e.kind==='cheep'&&e.swim)&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
+  if(bumpedNativeBlock)for(const e of this.enemies)if(e.active&&!e.dead&&e.kind!=='goomba'&&!(e.kind==='hammerBro'&&e.nativeId===5)&&e.kind!=='blooper'&&!(e.kind==='cheep'&&e.swim)&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
  }
  /** ProcessPlayerAction (src/player-anim.ts): the pose kind and frame from the native Player_State at the end of the frame (ground, jump,
   * walk-off fall), the speed byte, Left/Right (dropped by Down on the ground), Player_XSpeedAbsolute and the moving/facing directions. */
@@ -1772,6 +1772,7 @@ export class Simulation {
   const slot=e.enemySlot!;
   const n=e.hbro??={state:0,jumpTimer:this.slotBroJump[slot],throwTimer:0,frameTimer:this.slotFrameTimers[slot],interval:(this.secondaryHardMode?0x50:0x80)-(this.intervalControl===20&&!this.nmiTimersHeld?1:0),speed:0,force:0,fraction:this.slotVertical[slot].fraction,y:Math.floor(e.y)-24};
   if(e.age===1)e.x+=this.slotSub[slot]/256;
+  if(this.bumpedHammerBro(e,n))return;
   const camera=this.camera+this.lakituScroll,screenX=Math.floor(e.x)-camera;
   const step=hammerBroStep(n,{x:Math.floor(e.x),marioX:Math.floor(this.player.x),frame:this.random.frame,random1:this.random.bytes[slot+1],random2:this.random.bytes[slot+2],hard:this.secondaryHardMode,tickTimer:!this.nmiTimersHeld,timerTicked:this.frameTimersAt===this.frame,
    supported:Boolean(this.enemyCollisionAt(Math.floor(e.x)+8,n.y+24)),sideBlocked:this.enemySolid(Math.floor(e.x)+(e.nativeDir===1?16:0),n.y+20),onScreen:screenX>0&&screenX<=247,spawnHammer:()=>this.spawnNativeHammer(e),afterBackground:()=>{e.y=n.y+24;this.contactNativeHammerBro(e);return this.nativeTimersStopped;}});
@@ -1779,6 +1780,17 @@ export class Simulation {
   if(!e.dead)e.nativeDir=Math.floor(e.x)-Math.floor(this.player.x)<0?1:-1;if(!e.dead)e.vx=step.speed/16;e.x+=e.vx*step.steps;e.y=n.y+24;e.vy=n.speed+n.force/256;
   this.slotFrameTimers[slot]=n.frameTimer;this.slotBroJump[slot]=n.jumpTimer;this.slotSub[slot]=Math.round((e.x-Math.floor(e.x))*256)&255;
 
+ }
+ /** A Hammer Bro standing on a block Mario bumps (the temporary $23 cell under its bottom middle) is killed before it moves: state 0x22, 2 px up, speed -4,
+  * one pixel per frame away from Mario, then the defeated fall moves it that same frame; 1000 points (3-1 27638f84 row 26748, 37d55efe 23696, 5ed33322 23708). */
+ private bumpedHammerBro(e:Enemy,n:NonNullable<Enemy['hbro']>){
+  if(e.dead||this.nativeTimersStopped)return false;
+  const rawY=(Math.floor(e.y)-24)&255,key=`${Math.floor((Math.floor(e.x)+8)/16)},${Math.floor(e.y/16)}`;
+  if(((rawY+0x3e)&255)<0x44||this.enemyBumpCells.get(key)!==0x23)return false;
+  this.enemyBumpCells.set(key,0);
+  e.dead=1;n.state=(n.state&0x10)|0x22;n.y-=2;n.speed=-4;n.force=0;e.nativeDir=Math.floor(e.x)-Math.floor(this.player.x)<0?-1:1;e.vx=e.nativeDir;
+  this.floateyScore(1000);this.enemyPopup(1000,e);this.moveDefeatedHammerBro(e);
+  return true;
  }
  private contactNativeHammerBro(e:Enemy){
   if(this.player.dead||this.enemyContactOff||e.dead)return;
