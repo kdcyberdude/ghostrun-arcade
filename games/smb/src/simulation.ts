@@ -2189,7 +2189,7 @@ export class Simulation {
   }
   if(this.phaseFrame===this.flagAwardFrame+1)this.emit('event_level_clear');
   const walkFrom=this.flagAwardFrame+rules.flipFrames+1;
-  if(this.phaseFrame<walkFrom){p.x=exit.x-1+(p.x-Math.floor(p.x));p.climbing=true;p.facing=-1;return;}
+  if(this.phaseFrame<walkFrom){p.x=exit.x-1+(p.x-Math.floor(p.x));p.climbing=true;p.facing=-1;p.vy=0;return;} // the flip clears Player_Y_Speed, so the climb frame holds (e255e4c1 row 6215: $9F 0, $070D 0)
   p.climbing=false;p.facing=1;
 
   {
