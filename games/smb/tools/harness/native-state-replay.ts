@@ -48,8 +48,9 @@ export function replayState(input:{id:string;frames:number;padsSha256:string;ini
   strict={first:audit.first,firstCoverageGap:audit.firstCoverageGap,fields:audit.fields};
  }else{
   const sim:any=new Simulation(observedLevels());sim.twoPlayer=false;sim.reset(false);sim.events.length=0;
-  // The continuous readout covers boot/title and 1-1, plus 1-2 when that level is selected.
-  const audit=new LiveWorld1StateAudit(['1-1',...(levels??[]).filter(l=>l!=='1-1')]);start=compareLiveWorld1Start(initial,captureLiveWorld1State(sim,true));continuous.start=start;
+  // The continuous readout covers boot/title and every selected level; with no --levels, all 32 (it used to stop at 1-1, leaving the full audit's other levels unchecked).
+  const all=Array.from({length:32},(_,i)=>`${(i>>2)+1}-${(i&3)+1}`);
+  const audit=new LiveWorld1StateAudit(['1-1',...(levels??all).filter(l=>l!=='1-1')]);start=compareLiveWorld1Start(initial,captureLiveWorld1State(sim,true));continuous.start=start;
   for(let f=0;f<end;f++){
    if(!lag.has(f)){sim.step(names.filter((_,b)=>pads[f]&(1<<b)),1);sim.events.length=0;}
    const live=audit.compare(ram.subarray(f*2048,(f+1)*2048),captureLiveWorld1State(sim));

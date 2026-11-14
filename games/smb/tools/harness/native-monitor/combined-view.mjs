@@ -20,21 +20,7 @@ export function renderCombined(s,{width=100,color=false,world=0,now=Date.now()}=
  lines.push(row(paint(`MATCHING ${d.reported?n(d.matching):'--'}`,32)+'     '+paint(`NOT MATCHING ${d.reported?n(d.notMatching):'--'}`,31)));
  lines.push(row(`${n(d.unchecked)} unchecked · state AND screen required · each observed frame counted independently`));
  for(const [name,c]of [['STATE',d.state],['PICTURE',d.picture]])lines.push(row(name+': '+n(c.matching)+' match / '+n(c.notMatching)+' mismatch / '+n(c.unchecked)+' unchecked'));
- // State-only receipts are a development check; the view lists only state+picture results (and rejected receipts).
- const listed=(s.current?.results??[]).filter(r=>r.error||r.kind==='state+picture');
- if(listed.length){
-  lines.push(rule(`NEWER BUILD RESULTS · main HEAD ${s.current.head.slice(0,7)||'?'}${s.current.dirty?' + uncommitted changes':''}`));
-  for(const r of listed){
-   if(r.error){lines.push(row(paint(`Rejected ${r.file.split('/').at(-1)}: ${r.error}`,31)));continue;}
-   const label=r.current?paint('CURRENT',32):paint(`OLDER BUILD ${r.runtime.slice(0,7)}${r.dirty?' (uncommitted)':''}`,33);
-   for(const [key,e]of Object.entries(r.levels).sort()){
-    lines.push(row(`${key} ${paint('STATE+PICTURE',36)} · ${label} · ${e.recordings} recordings${r.recordings<r.inventoryRecordings?` (targeted ${r.recordings}/${r.inventoryRecordings})`:''} · ${localTime(r.measured)}`));
-    lines.push(row(`  JOINT: ${n(e.joint.matching)} match / ${n(e.joint.notMatching)} mismatch / ${n(e.joint.unchecked)} unchecked`));
-    lines.push(row(`  STATE: ${n(e.state.matching)} match / ${n(e.state.notMatching)} mismatch / ${n(e.state.unchecked)} unchecked`));
-    lines.push(row(`  PICTURE: ${n(e.picture.matching)} match / ${n(e.picture.notMatching)} mismatch / ${n(e.picture.unchecked)} unchecked`));
-   }
-  }
- }
+ for(const r of s.current?.results??[])if(r.error)lines.push(row(paint(`Rejected ${r.file.split('/').at(-1)}: ${r.error}`,31)));
  lines.push(rule(d.scope?'SELECTED LEVELS':world?`WORLD ${world}`:'ALL 32 LEVELS'));
  if(d.scope){
   for(const key of d.scope.levels){const e=d.levels[key];lines.push(row(`${key} JOINT: ${n(e.matching)} match / ${n(e.notMatching)} mismatch / ${n(e.unchecked)} unchecked`));for(const [label,c]of [['STATE',e.state],['PICTURE',e.picture]])lines.push(row(`  ${label}: ${n(c.matching)} match / ${n(c.notMatching)} mismatch / ${n(c.unchecked)} unchecked`));}
@@ -43,12 +29,12 @@ export function renderCombined(s,{width=100,color=false,world=0,now=Date.now()}=
   const cell=Math.floor((w-12)/4);lines.push(row('World   '+[1,2,3,4].map(l=>fit('Level '+l,cell)).join('')));
   for(let world=1;world<=8;world++){
    let text=fit('W'+world,8);
-   for(let l=1;l<=4;l++){const key=`${world}-${l}`,c=live[key],e=c?c.joint:d.levels[key],label=(c?'*':'')+(e.total?`${n(e.matching)} / ${n(e.notMatching)}`:'-- / --');text+=fit(paint(label,e.notMatching?31:e.unchecked?33:e.total?32:90),cell);}
+   for(let l=1;l<=4;l++){const key=`${world}-${l}`,c=live[key],e=c?c.joint:d.levels[key],running=d.progress?.status==='running'&&e.unchecked>0,label=(c?'*':'')+(e.total?`${n(e.matching)} / ${n(e.notMatching)}`:'-- / --')+(running&&e.total?` ${Math.floor(100*(e.total-e.unchecked)/e.total)}%`:'');text+=fit(paint(label,running?33:e.notMatching?31:e.unchecked?33:e.total?32:90),cell);}
    lines.push(row(text));
   }
-  lines.push(row('Each cell: matching / not matching input frames. -- means no combined evidence.'));
+  lines.push(row(`Each cell: matching / not matching input frames${d.progress?.status==='running'?'; yellow N% = share of the level checked so far':''}. -- means no combined evidence.`));
   if(Object.keys(live).length)lines.push(row(`* current build ${s.current.head.slice(0,7)} (state+picture); other cells historical build ${d.runtime.slice(0,7)}. Totals above are historical.`));
-  else if(historical)lines.push(row(`All cells historical build ${d.runtime.slice(0,7)}; newer results are listed above.`));
+  else if(historical)lines.push(row(`All cells historical build ${d.runtime.slice(0,7)}.`));
   else if(fullCurrent)lines.push(row(`All cells current build ${d.runtime.slice(0,7)} (state+picture)${d.progress?.status==='running'?'; recordings still running count as unchecked':''}.`));
  }else{
   lines.push(row('Level       Matching       Not matching       Unchecked'));
