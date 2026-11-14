@@ -3062,8 +3062,9 @@ export class Simulation {
    }
    if(e.kind==='hammerBro')continue; // native contact already preceded ProcHammerBro
    if(e.kind==='lakitu')continue; // its native contact already preceded MoveLakitu
-   const cheepStomp=e.nativeFlight&&!e.dead?this.flyingCheepContact(p,priorX,priorY):undefined;
-   if(e.nativeFlight&&!e.dead&&(cheepStomp===undefined||!cheepStomp&&!p.star)){if(cheepStomp===false)hurtBeforeMove();continue;}
+   // A cannon shot has the same native box as a leaping Cheep Cheep, at its position after this frame's move (5-1 original row 3238: box 107..117 against Mario's 118..128, no touch).
+   const boxed=(e.nativeFlight||cannonShot(e))&&!e.dead,cheepStomp=boxed?this.flyingCheepContact(p,e.nativeFlight?priorX:e.x,e.nativeFlight?priorY:e.y):undefined;
+   if(boxed&&(cheepStomp===undefined||!cheepStomp&&!p.star)){if(cheepStomp===false)hurtBeforeMove();continue;}
    const eh=e.kind==='bowser'?32:e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
    if(e.unwingedAir&&e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;
@@ -3169,7 +3170,7 @@ export class Simulation {
  /** Native ChkForPlayerInjury/ChkInj: with Player_Y_Speed <= 0 an object of id >= 7 (Bloober) is still stomped when Mario's y + 12 is above its y (7-1 row 359: Mario rising at y 140, Paratroopa at 161).
   * Contact is the native box test (inclusive edges, enemy box before its move): Mario x+3..x+13, y+20..y+32 small or x+2..x+14, y+8..y+32 big; a winged Koopa x+2..x+14, y+9..y+21 (RAM $04AC/$04B0). */
  private nativeChkInjStomp(e:Enemy,p:Player,priorX:number,priorY:number){
-  if(Math.floor(p.vy)>0||e.kind!=='paratroopa'&&e.kind!=='bullet'||e.shell)return false; // a rising Mario stomps a Bullet Bill too (7-1 original row 2274)
+  if(Math.floor(p.vy)>0||e.kind!=='paratroopa'||e.shell)return false;
   const my=Math.floor(p.y)-32,ny=Math.floor(priorY)-24,mx=Math.floor(p.x),ex=Math.floor(priorX),small=p.size===0||p.duck;
   if(my+12>=ny)return false;
   return mx+(small?3:2)<=ex+14&&ex+2<=mx+(small?13:14)&&my+(small?20:8)<=ny+21&&ny+9<=my+32;
