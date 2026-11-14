@@ -42,15 +42,16 @@ test('a spring compresses before launching and pressing jump during the compress
  assert.ok(launch(true)<launch(false)-12);
 });
 
-test('a small player spring rebound keeps the jump pose without another jump sound',()=>{
+// Native launch leaves Player_State falling, so the ground frame holds (every capture's spring launch keeps $06D5).
+test('a small player spring rebound keeps its spring pose without another jump sound',()=>{
  const sim=game([area({springs:[{x:40,y:200}]})]);
  sim.player.y=174;sim.player.vy=2;sim.player.grounded=false;
- let launched=false;
+ let launched=false,before='';
  for(let frame=0;frame<30;frame++){
-  sim.step([],1);
+  before=sim.locomotionPose.kind;sim.step([],1);
   if(sim.player.vy<-5){
    launched=true;
-   assert.equal(sim.locomotionPose.kind,'jump');
+   assert.notEqual(sim.locomotionPose.kind,'jump');assert.equal(sim.locomotionPose.kind,before);
    assert.ok(!sim.events.includes('sfx_jump_small'));
    break;
   }
