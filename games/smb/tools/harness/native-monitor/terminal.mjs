@@ -36,6 +36,19 @@ if(args['plan-failures']){
  console.log(`${plan.failing}/${plan.visiting} recordings visiting ${level} fail (${plan.measures}, build ${plan.sourceRuntime.slice(0,7)}); ${plan.failedFrames} failed frames. Plan: ${file}`);
  console.log(`Re-run them with --ids "$(node -p 'require(process.argv[1]).ids.join()' ${file})"`);process.exit(0);
 }
+// Frames per level over the whole inventory (native RAM labels: $075F world, $075C level, $0770 mode 1-3), cached by inventory hash.
+function levelTotals(){
+ const file=path.join(path.dirname(configFile),'level-frames.json');try{const c=read(file);if(c.inventorySha256===descriptor.inventorySha256)return c.levels;}catch{}
+ const recovered=path.join(path.dirname(latest.mood),'recovered-native'),levels={},buf=Buffer.alloc(2048*4096);
+ for(const r of inventory){
+  const ram=r.id.startsWith('original:')?path.join(recovered,'original32/traces',r.id.slice(9),'ram.bin'):path.join(recovered,'moods/captures',r.padsSha256,'ram.bin');
+  const fd=fs.openSync(ram,'r'),seen=new Set();let pos=0,got;
+  while((got=fs.readSync(fd,buf,0,buf.length,pos))>0){for(let o=0;o+2048<=got;o+=2048){const w=buf[o+0x75f]+1,l=buf[o+0x75c]+1;if([1,2,3].includes(buf[o+0x770])&&w<=8&&l<=4){const k=`${w}-${l}`;(levels[k]??={frames:0,recordings:0}).frames++;seen.add(k);}}pos+=got;}
+  fs.closeSync(fd);for(const k of seen)levels[k].recordings++;
+ }
+ fs.writeFileSync(file,JSON.stringify({inventorySha256:descriptor.inventorySha256,levels},null,1)+'\n');return levels;
+}
+let totals;try{totals=levelTotals();}catch{} // test fixtures have no recordings: the grid then omits totals
 const repo=path.resolve(dir,'../../../../..'),git=(...a)=>execFileSync('git',a,{cwd:repo,encoding:'utf8'}).trim();
 let currentCache=new Map();const sameGameCache=new Map();
 // CURRENT = measured game code (src/, data/) equals HEAD's; tool-only commits do not age a result.
@@ -66,7 +79,7 @@ while(running){
    fs.writeFileSync(lastCompletedFile+'.partial',JSON.stringify(lastCompleted,null,2)+'\n');fs.renameSync(lastCompletedFile+'.partial',lastCompletedFile);
   }
   const current=currentResults();current.fullCurrent=Boolean(result.reported&&current.head&&!current.dirty&&sameGame(result.runtime,current.head));
-  const text=renderCombined({moodCount:mood.runs.length,referenceCount:32,result,lastCompleted,current},{world,width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY)});
+  const text=renderCombined({moodCount:mood.runs.length,referenceCount:32,result,lastCompleted,current,totals},{world,width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY)});
   if(args.watch&&process.stdout.isTTY){cursorTo(process.stdout,0,0);clearScreenDown(process.stdout);}
   process.stdout.write(text);if(invalid)process.stderr.write(`Rejected report: ${invalid}\n`);
  }catch(e){process.stderr.write(`No result accepted: ${e.message}\n`);if(!args.watch)process.exitCode=1;}

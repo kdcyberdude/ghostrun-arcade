@@ -29,10 +29,11 @@ export function renderCombined(s,{width=100,color=false,world=0,now=Date.now()}=
   const cell=Math.floor((w-12)/4);lines.push(row('World   '+[1,2,3,4].map(l=>fit('Level '+l,cell)).join('')));
   for(let world=1;world<=8;world++){
    let text=fit('W'+world,8);
-   for(let l=1;l<=4;l++){const key=`${world}-${l}`,c=live[key],e=c?c.joint:d.levels[key],running=d.progress?.status==='running'&&e.unchecked>0,label=(c?'*':'')+(e.total?`${n(e.matching)} / ${n(e.notMatching)}`:'-- / --')+(running&&e.total?` ${Math.floor(100*(e.total-e.unchecked)/e.total)}%`:'');text+=fit(paint(label,running?33:e.notMatching?31:e.unchecked?33:e.total?32:90),cell);}
+   for(let l=1;l<=4;l++){const key=`${world}-${l}`,c=live[key],e=c?c.joint:d.levels[key],running=d.progress?.status==='running'&&(!s.totals?.[key]||e.matching+e.notMatching<s.totals[key].frames),label=(c?'*':'')+(e.total?`${n(e.matching)} / ${n(e.notMatching)}`:'-- / --');text+=fit(paint(label,running?33:e.notMatching?31:e.unchecked?33:e.total?32:90),cell);}
    lines.push(row(text));
+   if(s.totals){let sub=' '.repeat(8);for(let l=1;l<=4;l++){const key=`${world}-${l}`,t=s.totals[key],e=live[key]?.joint??d.levels[key],checked=e.matching+e.notMatching+(d.progress?.status==='running'?0:e.unchecked);sub+=fit(paint(t?`of ${n(t.frames)} · ${Math.floor(100*Math.min(checked,t.frames)/t.frames)}%`:'',90),cell);}lines.push(row(sub));}
   }
-  lines.push(row(`Each cell: matching / not matching input frames${d.progress?.status==='running'?'; yellow N% = share of the level checked so far':''}. -- means no combined evidence.`));
+  lines.push(row(`Cell: matching / not matching frames; below: the level's frames in all recordings, % checked${d.progress?.status==='running'?'; yellow = running':''}.`));
   if(Object.keys(live).length)lines.push(row(`* current build ${s.current.head.slice(0,7)} (state+picture); other cells historical build ${d.runtime.slice(0,7)}. Totals above are historical.`));
   else if(historical)lines.push(row(`All cells historical build ${d.runtime.slice(0,7)}.`));
   else if(fullCurrent)lines.push(row(`All cells current build ${d.runtime.slice(0,7)} (state+picture)${d.progress?.status==='running'?'; recordings still running count as unchecked':''}.`));
