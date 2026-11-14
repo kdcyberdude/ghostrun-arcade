@@ -38,7 +38,7 @@ export function nativeOamPicture(s:any){
  if(enemies.some((body:any)=>{const e=pic(body);return e.enemySlot===undefined||!hidden(e)&&!undrawn(e,body)&&(!rowsOf(e,body)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
  const pose=playerCell(s);if(pose.throwing||pose.swimKick!==undefined)reasons.push('player-extra-piece');
  const px=Math.floor(s.player.x-s.camera),py=Math.floor(s.player.y)-32;
- if(px<0||px>240||py<0||py>208)reasons.push('player-offscreen');
+ if(px<0||px>240||py<0)reasons.push('player-offscreen');
  if(s.spriteShuffle.offsets[0]!==4)reasons.push('player-offset');
  if(reasons.length)return {supported:false as const,reasons};
  // MoveSpritesOffscreen clears Y only; unused tile/attribute/X bytes stay unknown.
@@ -48,7 +48,8 @@ export function nativeOamPicture(s:any){
  write(0,24,255,35,88);
  const tiles=tables.player_cells[pose.cell].tiles;
  // ChkForPlayerAttrib forces symmetry at table offsets50/B8/C0/C8.
- if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)write(4+row*8+col*4,py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||[22,25].includes(pose.cell)&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
+ // A row at Y 248 or below the screen stays hidden (all captures, Player_Y 170-300 in states 8 and 11: rows end where Y + 8 x row reaches 248).
+ if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)if(py+row*8<248)write(4+row*8+col*4,py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||[22,25].includes(pose.cell)&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
  for(const body of enemies.sort((a:any,b:any)=>a.enemySlot-b.enemySlot)){
   const e=pic(body),x=Math.floor((e.dead?e.x:e.graphicsX??e.x)-s.camera),y=Math.floor(e.dead?e.y:e.graphicsY??e.y)-24,base=s.spriteShuffle.offsets[e.enemySlot!+1],stopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped),left=(e.graphicsFacing??e.vx)<0,flip=stopped?left:left===Boolean(s.random.frame&8);
   if(hidden(e)||undrawn(e,body))continue; // its entries keep the cleared Y (248); tile, attribute and X bytes are not reconstructed
