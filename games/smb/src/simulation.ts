@@ -692,7 +692,16 @@ export class Simulation {
   // MovePlayerHorizontally returns the nonzero spring control in A without
   // moving; OnGroundStateSub still stores A as Player_X_Scroll ($06ff).
   springScroll=this.springTimers.values().next().value?.control;
-  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;if(swim){this.playerXScroll=(Math.floor(p.x)-Math.floor(oldX)+this.platformScroll)&255;waterScroll=this.nativeScrollPreview(oldX,p.x,oldBottom);const beforeBounds=p.x;this.waterScreenBounds(this.camera+waterScroll);waterBoundsShift=p.x-beforeBounds;waterBoundsVx=p.vx;}p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;if(swim)this.waterCollisionPose={x:hammerBoxX,y:hammerBoxFeet-this.water.whirlMoved-32};this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
+  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;
+  // ChkPOffscr holds Mario at the left screen edge before BG collision: the feet then probe from the held x (3-1 37d55efe row 24537: skidding left against the edge on a step, he stays standing).
+  if(!water&&(p.x<this.camera||useMotor&&direction<=0&&(p.vx<0||this.motor.facing===-1)&&Math.floor(p.x)===Math.floor(this.camera))){
+   // The screen edge retains position/speed fractions; steering away also keeps the negative speed byte (native4-4 rows2597..2599).
+   if(useMotor){
+    p.x=this.camera+p.x-Math.floor(p.x);
+    if(!(direction>0&&p.vx<0)){this.motor.speed=Math.round(p.vx*4096)&255;p.vx=this.motor.speed/4096;}
+   }else{p.x=this.camera;p.vx=Math.max(0,p.vx);}
+  }
+  if(swim){this.playerXScroll=(Math.floor(p.x)-Math.floor(oldX)+this.platformScroll)&255;waterScroll=this.nativeScrollPreview(oldX,p.x,oldBottom);const beforeBounds=p.x;this.waterScreenBounds(this.camera+waterScroll);waterBoundsShift=p.x-beforeBounds;waterBoundsVx=p.vx;}p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;if(swim)this.waterCollisionPose={x:hammerBoxX,y:hammerBoxFeet-this.water.whirlMoved-32};this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
   if(!nativeGroundOnly&&!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(this.airGravity(b),this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom));
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
   this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y))this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
@@ -709,13 +718,6 @@ export class Simulation {
   else if(nativeGroundOnly){if(!p.grounded){this.walkingOff=true;this.jumpArc=false;this.jumpPose=false;this.bouncing=false;this.landJump='released';}}
   else if(this.walkOffFall()){}
   else if(this.area.theme!=='water'&&!p.grounded&&!this.headBumped)p.vy=this.nativeFallCap(p.vy+this.airGravity(b));
-  if(!water&&(p.x<this.camera||useMotor&&direction<=0&&(p.vx<0||this.motor.facing===-1)&&Math.floor(p.x)===Math.floor(this.camera))){
-   // The screen edge retains position/speed fractions; steering away also keeps the negative speed byte (native4-4 rows2597..2599).
-   if(useMotor){
-    p.x=this.camera+p.x-Math.floor(p.x);
-    if(!(direction>0&&p.vx<0)){this.motor.speed=Math.round(p.vx*4096)&255;p.vx=this.motor.speed/4096;}
-   }else{p.x=this.camera;p.vx=Math.max(0,p.vx);}
-  }
   p.anim+=Math.abs(p.vx);
   if(p.size===2&&!p.duck&&pressed('b')&&this.items.filter(i=>i.kind==='fireball').length<POWERUPS.fireballMaxActive.value){
    this.lastFire=this.frame;this.items.push({kind:'fireball',x:p.x+4,y:p.y-32,vx:p.facing*4,vy:POWERUPS.fireballArc.launchSpeed,age:0,life:240});this.emit('sfx_fireball');
