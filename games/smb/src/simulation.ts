@@ -39,7 +39,7 @@ import {NativeWaterStream} from './native-water-stream.js';
 import nativeWaterStreams from '../data/native-water-streams.json';
 import {nativeFlameHit} from './native-flame-contact.js';
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,PlatformSpec,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
-import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel,nativeSmallPlatform,nativePlatformSpawnCamera} from './platform-motion.js';
+import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformBoxBottom,nativePlatformHoldsSlot,platformMotionModel,nativeSmallPlatform,nativePlatformSpawnCamera} from './platform-motion.js';
 import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide,nativeLargePlatformWidth} from './native-platform-contact.js';
 import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
@@ -2264,7 +2264,7 @@ export class Simulation {
     for(const offset of small?[0,128]:[0]){
      const surface={x:prior.x,y:small?(Math.floor(prior.y)+offset)&255:prior.y};
      if(small&&surface.y<32)continue;
-     const side=nativePlatformSide(Math.floor(feet),speed,p.size>0&&!p.duck,x,surface,width,p.size>0);
+     const side=nativePlatformSide(Math.floor(feet),speed,p.size>0&&!p.duck,x,surface,width,p.size>0,small?6:13);
      if(!side)continue;
      const byte=Math.floor(p.vx*16),into=side>0?byte>=0:byte<1;
      this.motor.contact(side,into);
@@ -2298,7 +2298,7 @@ export class Simulation {
   const p=this.player,v=p.vy+gravity;if(v>=0)return;
   for(const platform of this.area.platforms??[]){
    const prior=this.platformContactPosition(platform,this.platformFrame-1,scroll);
-   if(nativePlatformHeadBump(Math.floor(p.y),p.size>0&&!p.duck,p.x,prior,this.platformWidth(platform),p.size>0)){p.vy=v-Math.floor(v)+1;this.headBumped=true;return;}
+   if(nativePlatformHeadBump(Math.floor(p.y),p.size>0&&!p.duck,p.x,prior,this.platformWidth(platform),p.size>0,nativePlatformBoxBottom(platform,this.platformMotion.context))){p.vy=v-Math.floor(v)+1;this.headBumped=true;return;}
   }
  }
  platformWidth(platform:PlatformSpec){return nativeLargePlatformWidth(nativePlatformObject(platform,this.platformMotion.context)?.nativeId,this.area.theme==='castle',this.secondaryHardMode,platform.width);}

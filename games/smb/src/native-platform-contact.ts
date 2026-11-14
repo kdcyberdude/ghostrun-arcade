@@ -32,9 +32,9 @@ export function nativePlatformLanding(feet:number,vy:number,x:number,prior:Platf
 /** Native head bump on a platform's underside (ProcLPlatCollisions): with the boxes overlapping and Player_Y_Speed < 0 after this frame's gravity,
  * platform bottom (top + 13, BoundBoxCtrlData rows 5/6) minus player box top (y + 8 big, y + 20 small or crouching) 0..3 sets the speed to 1
  * (the move force stays). In feet terms: feet - top 34..37 big, 22..25 small. */
-export function nativePlatformHeadBump(feet:number,big:boolean,x:number,prior:PlatformPosition,width:number,wide=big):boolean{
+export function nativePlatformHeadBump(feet:number,big:boolean,x:number,prior:PlatformPosition,width:number,wide=big,bottom=13):boolean{
  if(!platformSupportsX(x,prior.x,width,wide))return false;
- const d=Math.floor(prior.y)+13-(feet-32+(big?8:20));
+ const d=Math.floor(prior.y)+bottom-(feet-32+(big?8:20));
  return d>=0&&d<4;
 }
 
@@ -45,11 +45,11 @@ export function nativeBackgroundSkipped(feet:number):boolean{const y=Math.floor(
 /** ProcLPlatCollisions / PlatformSideCollisions after top/underside handling:
  * inclusive native boxes, then a left penetration below8 or right penetration
  * below9 (the latter SBC follows CLC, hence the extra pixel). */
-export function nativePlatformSide(feet:number,vy:number,big:boolean,x:number,prior:PlatformPosition,width:number,wide=big):1|-1|0{
+export function nativePlatformSide(feet:number,vy:number,big:boolean,x:number,prior:PlatformPosition,width:number,wide=big,bottom=13):1|-1|0{
  const y=feet-32;if(y<0||y>=0xd0)return 0;
  const left=Math.floor(x)+(wide?2:3),right=Math.floor(x)+(wide?14:13),top=feet-32+(big?8:20);
  const pl=Math.floor(prior.x),pr=pl+width,pt=Math.floor(prior.y);
- if(right<pl||left>pr||feet<pt||top>pt+13)return 0;
+ if(right<pl||left>pr||feet<pt||top>pt+bottom)return 0;
  if(vy>=0&&feet-pt>=0&&feet-pt<6)return 0;
  if(right-pl<8)return 1;
  if(pr-left-1>=0&&pr-left-1<9)return -1;

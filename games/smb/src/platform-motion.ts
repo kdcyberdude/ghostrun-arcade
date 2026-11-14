@@ -24,6 +24,8 @@ export function nativePlatformObject(platform:PlatformSpec,context:PlatformMotio
 export function nativeSmallPlatform(platform:PlatformSpec,context:PlatformMotionContext){
  const id=nativePlatformObject(platform,context)?.nativeId;return id===43||id===44;
 }
+/** Bottom of the native platform box below its y before this frame's move: 6 for the small lifts (ids 43/44), 13 for the large platforms (corpus box rows $04B0+4s). */
+export function nativePlatformBoxBottom(platform:PlatformSpec,context:PlatformMotionContext){return nativeSmallPlatform(platform,context)?6:13;}
 /** DrawSmallPlatform emits two surfaces 128 pixels apart, suppressing either whose raw OAM y is above the HUD boundary ($20).
  * firstArtworkY is already the native OAM y + 1; small lifts draw before their movement step. */
 export function nativePlatformArtworkYs(platform:PlatformSpec,context:PlatformMotionContext,firstArtworkY:number){
