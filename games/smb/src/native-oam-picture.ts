@@ -29,11 +29,13 @@ export function nativeOamPicture(s:any){
  const enemies=s.enemies.filter((e:any)=>e.active&&pic(e).dead<90);
  // An enemy with both columns off screen writes only hidden entries (SprObjectOffscrChk), whatever its kind.
  const hidden=(e:any)=>{const x=Math.floor((e.graphicsX??e.x)-s.camera);return [x,x+8].every(xx=>xx<=0||xx>255);};
+ // EnemyGfxHandler skips a Piranha Plant moving with its frame timer running: all six entries stay cleared (entpat id $0D: 37,724 of 68,266 on-screen rows).
+ const undrawn=(e:any,body:any)=>e.kind==='piranha'&&(body.graphicsVisible===false||!s.enemyPictureShown(body)||e.pir&&e.pir.speed>=0&&e.pir.timer!==0);
  // Entry rows (OAM Y less Enemy_Y) per drawn state, measured over World 1 captures (entpat): walkers 0/8/16 (Goomba id6 130,604 rows, Koopa id0 17,358);
  // a shell 2/10/18 (id0 states 4/84); a squashed Goomba 9/17 below its floatey number, which owns the slot's first two entries.
- const walker=(e:any)=>['koopa','redKoopa','beetle'].includes(e.kind);
+ const walker=(e:any)=>['koopa','redKoopa','beetle','paratroopa','piranha'].includes(e.kind);
  const rowsOf=(e:any,body:any):(number|undefined)[]|undefined=>e.kind==='goomba'&&!e.dead?[0,8,16]:e.kind==='goomba'&&e.squashed&&e.dead?[s.popups.some((p:any)=>p.victim===body)||body.erasedFrame===s.frame?undefined:1,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?[2,10,18]:undefined;
- if(enemies.some((body:any)=>{const e=pic(body);return e.enemySlot===undefined||!hidden(e)&&(!rowsOf(e,body)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
+ if(enemies.some((body:any)=>{const e=pic(body);return e.enemySlot===undefined||!hidden(e)&&!undrawn(e,body)&&(!rowsOf(e,body)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
  const pose=playerCell(s);if(pose.throwing||pose.swimKick!==undefined)reasons.push('player-extra-piece');
  const px=Math.floor(s.player.x-s.camera),py=Math.floor(s.player.y)-32;
  if(px<0||px>240||py<0||py>208)reasons.push('player-offscreen');
@@ -49,7 +51,7 @@ export function nativeOamPicture(s:any){
  if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)write(4+row*8+col*4,py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||[22,25].includes(pose.cell)&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
  for(const body of enemies.sort((a:any,b:any)=>a.enemySlot-b.enemySlot)){
   const e=pic(body),x=Math.floor((e.dead?e.x:e.graphicsX??e.x)-s.camera),y=Math.floor(e.dead?e.y:e.graphicsY??e.y)-24,base=s.spriteShuffle.offsets[e.enemySlot!+1],stopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped),left=(e.graphicsFacing??e.vx)<0,flip=stopped?left:left===Boolean(s.random.frame&8);
-  if(hidden(e))continue; // its entries keep the cleared Y (248); tile, attribute and X bytes are not reconstructed
+  if(hidden(e)||undrawn(e,body))continue; // its entries keep the cleared Y (248); tile, attribute and X bytes are not reconstructed
   if(y<0||y>216)return {supported:false as const,reasons:['enemy-vertical-mask']};
   // SprObjectOffscrChk hides whole columns, including the left column at X0.
   // A live Goomba's bytes are exact; other states reconstruct Y and X only, which alone decide the scanline cap.
