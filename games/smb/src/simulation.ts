@@ -2299,7 +2299,7 @@ export class Simulation {
    const turns=!e.dead&&!e.shell&&!(e.egg&&e.motion==='falling')&&(e.kind!=='paratroopa'||isGreenParatroopa(e)&&(e.paratroopaMotion??'bounce')==='bounce');
    bodies.push({slot,x:Math.floor(from.x),y:Math.floor(from.y)-24,tall:e.kind!=='goomba'&&e.kind!=='spiny',turns,reacts:true});bySlot.set(slot,e);
   }
-  const {before,after}=nativeEnemiesCollision(bodies,Math.floor(this.camera),this.broClock,this.area.theme==='water',bits);
+  const {before,after}=nativeEnemiesCollision(bodies,Math.floor(this.camera+this.lakituScroll),this.broClock,this.area.theme==='water',bits);  // boxes use this frame's scrolled camera (2-1 cce087a2 row 14049: x 2719 joins at camera 2464)
   for(const s of before){const e=bySlot.get(s)!,from=stepFrom.get(e)!;e.x=from.x-(e.x-from.x);e.vx=-e.vx;} // turned before its own step: the step goes the other way
   for(const s of after){const e=bySlot.get(s)!;e.vx=-e.vx;}
  }
