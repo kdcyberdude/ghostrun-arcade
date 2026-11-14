@@ -318,7 +318,7 @@ export class Simulation {
  get gameoverClosing(){return this.phase==='gameover'&&this.nativeGameOver?.mode===0;}
  get pipePreviewArea(){const d=this.destination;if(this.phase!=='pipe'||this.player.size!==0||!d?.smallPlayerRoomPreviewFrames||d.frames-this.phaseFrame>d.smallPlayerRoomPreviewFrames)return undefined;return this.level.areas.find(a=>a.id===d.area);}
  get pipeLoading(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames); }
- get pipeClearing(){return this.phase==='pipe'&&!this.area.autoWalk&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=48&&this.phaseFrame<this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames);}
+ get pipeClearing(){return this.phase==='pipe'&&!this.area.autoWalk&&Boolean(this.destination&&this.destination.frames>64&&this.pipeTimer===0&&this.phaseFrame<this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames);}
  get entryFallHidden(){return this.entryFalling&&!this.area.entryFall?.native&&this.entryFallAge<=(this.area.entryFall?.visibleDelay??0);} // a native drop-in is drawn from its first row (0d12a2e4 rows 667/4987: Mario's eight OAM sprites are set on the entrance row)
  get waterEntryStanding(){return this.entryFalling&&this.area.theme==='water'&&this.entryFallAge<=(this.area.entryFall?.initialStandFrames??0);}
  get entryFallPose(){return this.entryFalling&&this.area.theme!=='water';}
