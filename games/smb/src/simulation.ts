@@ -403,7 +403,7 @@ export class Simulation {
  private awardPopup(value:number|'1up',x:number,y:number,victim?:Enemy){
   // SetupFloateyNumber overwrites the label in this enemy slot (or the special power-up slot5).
   this.popups=this.popups.filter(p=>victim?p.victim!==victim&&(victim.enemySlot===undefined||p.victim?.enemySlot!==victim.enemySlot):p.victim!==undefined);
-  this.popups.push({value,x:Math.floor(x-this.camera),y:Math.floor(y),age:0,life:0x30,victim});
+  this.popups.push({value,x:Math.floor(x-this.camera),y:Math.floor(y),age:0,life:0x30,victim,born:this.frame});
  }
  private enemyPopup(value:number|'1up',enemy:Enemy){
   const picture=enemyPicture(enemy);this.awardPopup(value,picture.x,picture.y-popupRules.enemyFeetYOffset,enemy);
@@ -782,7 +782,7 @@ export class Simulation {
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
   this.passNativeObjects();this.updateFishFrenzy();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();
   this.gateNativePlatforms(previousCamera);this.busyNativeSlots(); // register newly eligible platforms on their native birth row
-  for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
+  for(const popup of this.popups)if(popup.born===this.frame)popup.x+=previousCamera-this.camera; // includes a shell victim's label already advanced this frame (19011e4d row 3208: X 191 = victim 926 - screen left 735)
   if(this.phase==='play'){
    if(this.piranhaColumns){this.piranhaColumns.step(this.camera);this.birthParserPiranhas();}
    this.firebarSlots?.finishFrame(this.camera);

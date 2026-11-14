@@ -31,5 +31,5 @@ export interface Enemy extends EnemySpec {graphicsFrame?:number;graphicsTimersSt
 export interface Item {nativeFlame?:{slot:number;target:number;force:number;born?:number};kind:'mushroom'|'flower'|'star'|'1up'|'coin'|'fireball'|'hammer'|'flame'|'debris';x:number;y:number;vx:number;vy:number;age:number;life:number;emerging?:number;nativePowerState?:number;hold?:number;owner?:Enemy;nativeHammer?:import('./native-misc.js').NativeMisc;nativeCoin?:import('./native-misc.js').NativeMisc;gravity?:number}
 /** One recorded native Hammer Bro of the winning route (data/native-hammer-bros.json): spawn, jump and throw times in frames since it appeared. */
 export interface NativeHammerBro {level:string;area:string;x:number;y:number;appear?:number;jumps:number[][];trigger?:number;throws?:number[]}
-export interface ScorePopup {value:number|'1up';x:number;y:number;age:number;life:number;victim?:Enemy}
+export interface ScorePopup {value:number|'1up';x:number;y:number;age:number;life:number;victim?:Enemy;born?:number}
 export type Phase = 'title'|'intro'|'play'|'dying'|'gameover'|'flag'|'castle'|'ending'|'pipe';
