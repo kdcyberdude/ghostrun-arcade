@@ -761,7 +761,7 @@ export class Simulation {
   // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
   if(waterScroll!==undefined)this.camera+=waterScroll;
-  else if(!this.shrinkEndStep){const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-previousCamera;this.playerXScroll=scrollMove&255;
+  else if(!this.shrinkEndStep){const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'||this.player.invincible?this.waterScrollX:Math.floor(oldX)-previousCamera; /* a blinking Mario's scroll position updates only on the frames he is drawn (2-1 a3899256 row 12454) */this.playerXScroll=scrollMove&255;
    if(!scrollLocked&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
