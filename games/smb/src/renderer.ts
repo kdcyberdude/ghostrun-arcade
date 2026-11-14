@@ -24,7 +24,7 @@ import type {Area,Enemy,Item} from './types.js';
 const A=(import.meta.env?.BASE_URL??'/')+'assets/graphics/';
 export class GameRenderer {
  renderer:THREE.WebGLRenderer;scene=new THREE.Scene();camera=pixelCamera(THREE);textures=new Map<string,THREE.Texture>();
- private oamRows:number[]|undefined;private oamContext:{base:number,x:number,y:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
+ private oamRows:number[]|undefined;private oam:Uint8Array|undefined;private oamWritten:Uint8Array|undefined;private oamContext:{base:number,count:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();private ropeColumns:number[]=[];
@@ -82,7 +82,10 @@ export class GameRenderer {
   const context=this.oamContext,rows=this.oamRows;
   if(context&&rows&&sprite&&rect[2]%8===0&&rect[3]%8===0){
    const width=rect[2]/8,height=rect[3]/8,px=Math.floor(x),py=Math.floor(y);
-   const mask=(col:number,row:number)=>rows[((context.base+(py+row*8-context.y)/8*8+(px+col*8-context.x)/8*4)&255)/4];
+   // The entry drawing this 8x8 tile: among the object's written entries, the one at its X whose Y is one line above it; a hidden entry at that X hides it.
+   const mask=(col:number,row:number)=>{const X=(px+col*8)&255,Y=py+row*8;let hidden=false;
+    for(let k=0;k<context.count;k++){const n=((context.base+k*4)&255)/4;if(!this.oamWritten![n]||this.oam![n*4+3]!==X)continue;const y=this.oam![n*4];if(y+1===Y)return rows[n];if(y>=0xef)hidden=true;}
+    return hidden?0:255;};
    if(Array.from({length:width*height},(_,i)=>mask(i%width,Math.floor(i/width))).some(v=>v!==255)){
     this.oamContext=undefined;
     for(let row=0;row<height;row++)for(let col=0;col<width;col++){
@@ -243,7 +246,7 @@ export class GameRenderer {
   if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
  }
  render(s:Simulation){
-  const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oamContext=undefined;
+  const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oam=oam.supported?oam.oam:undefined;this.oamWritten=oam.supported?oam.written:undefined;this.oamContext=undefined;
   const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorDrawRotations));return r;};
   this.scene.clear();this.used.clear();const titlePicture=nativeStartupTitleShown(s.nativeStartupPicture,s.phase,s.nativeScreen),startup=titlePicture?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
@@ -284,7 +287,7 @@ export class GameRenderer {
     const context={levelId:s.level.id,areaId:s.area.id},pos=s.platformPicturePosition(platform);
     for(const y of nativePlatformArtworkYs(platform,context,pos.y)){
      if(platformMotionModel(platform,context)==='contact-cloud')this.special(s.platformWidth(platform)===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,y);
-     else{const slot=s.spriteObjectSlot(platform),base=slot===undefined?undefined:s.spriteShuffle.offsets[slot+1];this.oamContext=this.oamRows&&base!==undefined?{base,x:Math.floor(pos.x-s.camera),y}:undefined;for(let i=0;i<s.platformWidth(platform);i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27',false,false,base===undefined?2:2+(255-base)/4096);this.oamContext=undefined;} // lower OAM offsets draw in front, as for enemies (0d12a2e4 row 18152: lift over Bowser)
+     else{const slot=s.spriteObjectSlot(platform),base=slot===undefined?undefined:s.spriteShuffle.offsets[slot+1];this.oamContext=this.oamRows&&base!==undefined?{base,count:s.platformWidth(platform)/8}:undefined;for(let i=0;i<s.platformWidth(platform);i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27',false,false,base===undefined?2:2+(255-base)/4096);this.oamContext=undefined;} // lower OAM offsets draw in front, as for enemies (0d12a2e4 row 18152: lift over Bowser)
     }
    }
    // Reference vines remain visible in the HUD rows while growing offscreen.
@@ -299,14 +302,15 @@ export class GameRenderer {
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
    }
-   for(const e of s.enemies){const picture=enemyRenderPicture(e,s.frame,s.nativeTimersStopped);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90){this.oamContext=this.oamRows?{base:s.spriteShuffle.offsets[picture.enemySlot!+1],x:Math.floor((picture.graphicsX??picture.x)-s.camera),y:Math.floor(picture.graphicsY??picture.y)-23}:undefined;this.enemy(e,s);this.oamContext=undefined;}}this.enemyOamZ=2;
+   for(const e of s.enemies){const picture=enemyRenderPicture(e,s.frame,s.nativeTimersStopped);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90){this.oamContext=this.oamRows?{base:s.spriteShuffle.offsets[picture.enemySlot!+1],count:6}:undefined;this.enemy(e,s);this.oamContext=undefined;}}this.enemyOamZ=2;
    if(ordinary){
    for(const b of s.blockGraphics)for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY);}
    for(const i of s.items)this.item(i,s);
    if(s.area.theme==='water')for(const [slot,bubble]of s.bubbles.entries())if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27',false,false,2+(255-s.spriteShuffle.offsets[10+slot])/4096);
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly)continue;
-    for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,2.5);
+    const v=popup.victim;this.oamContext=this.oamRows&&v?.enemySlot!==undefined?{base:s.spriteShuffle.offsets[v.dead||v.shell?v.enemySlot+1:8],count:2}:undefined; // the composer's floatey entries
+    for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,2.5);this.oamContext=undefined;
    }
    for(const bar of s.area.firebars??[])for(const {x,y}of s.firebarCenters(bar))this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x-4-s.camera,y-4+(bar.visualOffsetY??0));
    const pole=s.area.exit;
@@ -324,7 +328,7 @@ export class GameRenderer {
     }
    }
    }
-   if(playerVisible(s)&&(!startup||startup.player)){this.oamContext=this.oamRows?{base:4,x:Math.floor(s.player.x-s.camera),y:Math.floor(s.player.y)-31}:undefined;this.player(s);this.oamContext=undefined;}
+   if(playerVisible(s)&&(!startup||startup.player)){this.oamContext=this.oamRows?{base:4,count:8}:undefined;this.player(s);this.oamContext=undefined;}
    this.worldClip=false;
   }
   const introLoading=screen?!screen.hud:s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.introHiddenLate);

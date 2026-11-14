@@ -7,22 +7,23 @@ test('first-eight fetches include transparent, behind-background and horizontall
  oam[0]=248;const overwritten=nativeOamScanlines(oam);assert.equal(overwritten.rows[8],255,'selection uses final ownership, not an earlier writer');assert.equal(overwritten.rows[0],0);
  const tall=nativeOamScanlines(oam,16);assert.equal(tall.rows[8],65535);
 });
+// Entries marked written 2 reconstruct Y and X only; their tile and attribute bytes are not claimed.
 test('every reconstructed source OAM byte matches native on supported ground and underground frames',()=>{
  let supported=0,checked=0;const buttons=['a','b','select','start','up','down','left','right'];
  for(const c of fixture.cases){const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,decodeEntrance(unpack(c.initial),c.entrance));sim.step([],0);sim.inputs=[];const pads=unpack(c.pads),ram=unpack(c.ram);let count=0,bytes=0;
   for(let f=0;f<c.frames;f++){sim.step(buttons.filter((_,i)=>pads[f]&(1<<i)),1);const picture=nativeOamPicture(sim);if(!picture.supported)continue;count++;const native=ram.subarray(f*2048+512,f*2048+768);
-   for(let a=0;a<256;a++)if(a%4===0||picture.written[a>>2]){bytes++;assert.equal(picture.oam[a],native[a],`${c.level} frame${f} OAMbyte${a}`);}
+   for(let a=0;a<256;a++)if(a%4===0||picture.written[a>>2]===1||picture.written[a>>2]===2&&a%4===3){bytes++;assert.equal(picture.oam[a],native[a],`${c.level} frame${f} OAMbyte${a}`);}
    assert.deepEqual(nativeOamScanlines(picture.oam),nativeOamScanlines(native));
   }
   assert.equal(count,c.supported);assert.equal(bytes,c.checkedBytes);supported+=count;checked+=bytes;
  }
- assert.equal(supported,1687);assert.equal(checked,182281);
+ assert.equal(supported,1905);assert.equal(checked,209357);
 });
 test('unknown writers refuse the whole cap rather than disappear from its sprite count',()=>{
  const sim:any=new Simulation(observedLevels());sim.reset(true);sim.phase='play';sim.items=[];sim.popups=[];sim.vines=[];sim.blockGraphics=[];sim.frenzyControllers=[];sim.nativeCastleFlag=undefined;sim.specialSlot5.flag=0;sim.area={...sim.area,platforms:[],firebars:[],springs:[]};sim.enemies=[];Object.assign(sim.player,{x:112,y:208,dead:false,size:0,star:0});sim.camera=0;
  assert.equal(nativeOamPicture(sim).supported,true);
  sim.items=[{kind:'coin'}];assert.ok(nativeOamPicture(sim).reasons.includes('other-writer'));sim.items=[];
- sim.enemies=[{active:true,dead:0,kind:'koopa',enemySlot:0}];assert.ok(nativeOamPicture(sim).reasons.includes('enemy-writer'));sim.enemies=[];
+ sim.enemies=[{active:true,dead:0,kind:'hammerBro',enemySlot:0}];assert.ok(nativeOamPicture(sim).reasons.includes('enemy-writer'));sim.enemies=[];
  sim.area.platforms=[{}];assert.ok(nativeOamPicture(sim).reasons.includes('area-writer'));sim.area.platforms=[];
  sim.paused=true;assert.ok(nativeOamPicture(sim).reasons.includes('control-owner'));
 });

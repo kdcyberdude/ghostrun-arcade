@@ -409,7 +409,7 @@ export class Simulation {
   const picture=enemyPicture(enemy);this.awardPopup(value,picture.x,picture.y-popupRules.enemyFeetYOffset,enemy);
  }
  private eraseEnemy(enemy:Enemy){
-  enemy.dead=100;if(enemy.enemySlot!==undefined&&!enemy.slotFreed)this.slotFrameTimers[enemy.enemySlot]=0;if(enemy.nativeShot)enemy.cannonFrameTimer=0;this.popups=this.popups.filter(p=>p.victim!==enemy); // EraseEnemyObject clears FloateyNum_Control, leaving its timer residue
+  if(enemy.dead<100)enemy.erasedFrame=this.frame;enemy.dead=100;if(enemy.enemySlot!==undefined&&!enemy.slotFreed)this.slotFrameTimers[enemy.enemySlot]=0;if(enemy.nativeShot)enemy.cannonFrameTimer=0;this.popups=this.popups.filter(p=>p.victim!==enemy); // EraseEnemyObject clears FloateyNum_Control, leaving its timer residue
 
  }
  /** Score with the floatey-number points still waiting to be paid (what has been awarded, independent of when the HUD shows it). */
