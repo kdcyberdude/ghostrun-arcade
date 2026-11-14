@@ -3,10 +3,12 @@
 import {nativeMiscOffscreen} from './native-misc';
 export type AreaControl={x:number;id:number};
 export class NativeSpecialSlot {
- vineSlots:number[]=[];flag=0;id=0;state=0;x=0;y=0;yHigh=0;vineHeight=0;vineCount=0;vineStartY=0;frenzyQueue=0;frenzyBuffer=0;
+ vineSlots:number[]=[];vineAnchors:Record<number,{x:number;yHigh:number}>={};flag=0;id=0;state=0;x=0;y=0;yHigh=0;vineHeight=0;vineCount=0;vineStartY=0;frenzyQueue=0;frenzyBuffer=0;
  claimPowerup(x:number,y:number){this.state=1;this.yHigh=1;this.flag=1;this.id=46;this.x=x;this.y=y;}
  claimVine(x:number,y:number){this.flag=1;this.id=47;this.x=x;this.y=y;if(!this.vineCount)this.vineStartY=y;this.vineCount++;this.vineSlots.push(5);}
- addVineSegment(slot:number){this.vineCount++;this.vineSlots.push(slot);}
+ /** A second vine slot gets x from the enemy-ID byte of the slot below it, page and y 0, and keeps that slot's y-high byte
+  * (measured on all seven 2-1 corpus births and the controlled fixture). */
+ addVineSegment(slot:number,anchor?:{x:number;yHigh:number}){this.vineCount++;this.vineSlots.push(slot);if(anchor)this.vineAnchors[slot]=anchor;else delete this.vineAnchors[slot];}
  claimFlag(column:number){this.flag=(this.flag+1)&255;this.id=48;this.x=column-8;this.y=48;}
  erase(){this.flag=0;this.id=0;this.state=0;}
  areaCommand(id:number,enemyIds:ReadonlyArray<number>){this.frenzyQueue=enemyIds.includes(id)?0:id;}
@@ -21,7 +23,7 @@ export class NativeSpecialSlot {
   if(!this.flag||this.id!==47)return;
   const limit=this.vineCount===1?48:96;
   if(this.vineHeight!==limit&&(frame&2)){this.y=(this.y-1)&255;this.vineHeight=(this.vineHeight+1)&255;}
-  if(this.vineHeight>=8&&(nativeMiscOffscreen(this.x,this.y,camera)&12)){this.erase();this.vineHeight=0;this.vineCount=0;this.vineSlots=[];}
+  if(this.vineHeight>=8&&(nativeMiscOffscreen(this.x,this.y,camera)&12)){this.erase();this.vineHeight=0;this.vineCount=0;this.vineSlots=[];this.vineAnchors={};}
  }
 }
 /** AreaParserTaskHandler: the two native columns are parsed on tasks7 and3, four rows apart. */

@@ -2600,7 +2600,7 @@ export class Simulation {
    this.groupParserSlot=slot;if(members.length)this.passNativeGroups(members[0].nativeGroup!.column,init.offset,this.placedActorStream?this.camera+this.lakituScroll:this.camera);
    return members.some(e=>e.active&&e.enemySlot===slot)?1:0;
   }
-  if(init.id===47){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot);return init.flag;}
+  if(init.id===47){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot,this.vineSegmentAnchor(slot));return init.flag;}
   if(init.id===52){const controller=this.frenzyControllers.find(c=>c.offset===init.offset)!;controller.slot=slot;controller.x=init.x!+this.placedOrigin;return 1;}
   if(init.id>=27&&init.id<=31){const bar=this.placedBars.get(init.offset!)!;this.firebarSlots!.initializeNative(bar,slot,{id:init.id,high:this.slotYSpeed[slot],low:0,...nativeFirebarParameters(init.id)});this.castleSlotXSpeed[slot]=0;return 1;}
   if(init.id===12){const e=this.enemies.find(e=>e.nativeOffset===init.offset&&!e.active)!;Object.assign(e,{active:true,slotFreed:false,enemySlot:slot,slotBorn:this.frame,graphicsVisible:false,x:init.x!+this.placedOrigin+this.slotSub[slot]/256,y:282,age:0,pod:nativePodobooState(this.slotYFraction[slot])});Object.assign(this.slotVertical[slot],{speed:0,force:0});this.slotYSpeed[slot]=0;return 1;}
@@ -2731,9 +2731,15 @@ export class Simulation {
  /** TimerControl stops sprite alternation as well as motion. Death initializes $FF; the NMI counts it down. */
  get nativeTimersStopped(){return Boolean(this.nativeGameOver&&this.nativeGameOver.master>1)||Boolean(this.powerChange)||this.phase==='dying'&&!this.offscreenPitDeath&&!this.offscreenLavaDeath&&this.phaseFrame<255;}
  enemyPictureTimersStopped(e:Enemy){return enemyPictureTimersStopped(e,this.frame,this.nativeTimersStopped);}
+ /** Raw anchor of a second vine slot: the slot below's enemy ID (unknown when that slot holds no modelled enemy) and the y-high byte left by this slot's last enemy. */
+ private vineSegmentAnchor(slot:number){
+  const below=slot>0?this.enemies.find(e=>e.active&&!e.slotFreed&&e.enemySlot===slot-1):undefined,id=below?this.nativeEnemyId(below):slot>0?undefined:0;
+  return id===undefined?undefined:{x:id,yHigh:this.enemies.some(e=>e.enemySlot===slot)?1:0};
+ }
+ private nativeEnemyId(e:Enemy){return e.nativeId??(e.nativePipe?13:e.nativeFlight?20:e.kind==='bullet'&&e.frenzy?8:e.nativeGroup?(e.kind==='goomba'?6:e.kind==='koopa'?0:undefined):undefined);} // Native pipe/group initializers author these IDs.
  private captureEnemyGraphics(e:Enemy){
   if(e.active&&!e.slotFreed&&e.dead<100&&!(e.kind==='bullet'&&e.nativeShot&&!e.frenzy)){
-   const id=e.nativeId??(e.nativePipe?13:e.nativeFlight?20:e.kind==='bullet'&&e.frenzy?8:e.nativeGroup?(e.kind==='goomba'?6:e.kind==='koopa'?0:undefined):undefined); // Native pipe/group initializers author these IDs.
+   const id=this.nativeEnemyId(e);
    if(id===undefined||e.kind==='bowser'||id===13&&!e.pir||e.nativeGroup&&e.age===0&&e.graphicsVisible)this.graphicsScratch.unknown();
    else{const timer=e.pir?Math.max(0,e.pir.timer-Number(!this.nmiTimersHeld&&this.frameTimersAt!==this.frame)):undefined;this.graphicsScratch.enemy(id,{piranhaSpeed:e.pir?.speed,frameTimer:timer});} // Piranha movement helper applies this NMI decrement later; graphics already sees it.
   }
@@ -3074,7 +3080,7 @@ export class Simulation {
   }
   while(nativeSlot<6)this.visitNativeBankSlot(nativeSlot++,oldBottom);this.currentNativeBankSlot=-1;
   this.nativeWalkerContacts(stepFrom);
-  if(!this.placedStream&&this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&!this.parserClock.blocked){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot);}}
+  if(!this.placedStream&&this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&!this.parserClock.blocked){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot,this.vineSegmentAnchor(slot));}}
   if(reservedClaim)Object.assign(this.specialSlot5,{flag:reservedClaim.flag,id:reservedClaim.id,frenzyBuffer:reservedClaim.buffer});
   this.specialSlot5.stepVine(this.random.frame,this.camera+this.lakituScroll);
   this.spinyFrenzyAfter(frenzy);
