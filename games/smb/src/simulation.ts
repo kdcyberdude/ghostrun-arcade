@@ -2319,9 +2319,9 @@ export class Simulation {
   for(const [index,e] of this.enemies.entries()){
    const slot=e.enemySlot??index,from=stepFrom.get(e);
    const corpse=e.squashed&&e.dead<90; // a flat Goomba still occupies its native slot until its erase (the remake's slot accounting may have let it go)
-   if(!from||!e.active||slot>=5||e.slotFreed&&!corpse||!kinds.includes(e.kind)||e.movingShell||e.dead&&!corpse||corpse&&bySlot.has(slot))continue;
-   const turns=!e.dead&&!e.shell&&!(e.egg&&e.motion==='falling')&&(e.kind!=='paratroopa'||isGreenParatroopa(e)&&(e.paratroopaMotion??'bounce')==='bounce');
-   bodies.push({slot,x:Math.floor(from.x),y:Math.floor(from.y)-24,tall:e.kind!=='goomba'&&e.kind!=='spiny',turns,reacts:true});bySlot.set(slot,e);
+   if(!from||!e.active||slot>=5||e.slotFreed&&!corpse||!kinds.includes(e.kind)&&!(e.nativeFlight&&!e.dead)||e.movingShell||e.dead&&!corpse||corpse&&bySlot.has(slot))continue; // a leaping Cheep Cheep (Goomba-sized box) turns a walker it touches but keeps its own course (7-3 original row 692)
+   const turns=!e.nativeFlight&&!e.dead&&!e.shell&&!(e.egg&&e.motion==='falling')&&(e.kind!=='paratroopa'||isGreenParatroopa(e)&&(e.paratroopaMotion??'bounce')==='bounce');
+   bodies.push({slot,x:Math.floor(from.x),y:Math.floor(from.y)-24,tall:e.kind!=='goomba'&&e.kind!=='spiny'&&!e.nativeFlight,turns,reacts:true});bySlot.set(slot,e);
   }
   const {before,after}=nativeEnemiesCollision(bodies,Math.floor(this.camera+this.lakituScroll),this.broClock,this.area.theme==='water',bits);  // boxes use this frame's scrolled camera (2-1 cce087a2 row 14049: x 2719 joins at camera 2464)
   for(const s of before){const e=bySlot.get(s)!,from=stepFrom.get(e)!;e.x=from.x-(e.x-from.x);e.vx=-e.vx;} // turned before its own step: the step goes the other way
