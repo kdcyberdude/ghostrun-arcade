@@ -3168,7 +3168,7 @@ export class Simulation {
  /** Native ChkForPlayerInjury/ChkInj: with Player_Y_Speed <= 0 an object of id >= 7 (Bloober) is still stomped when Mario's y + 12 is above its y (7-1 row 359: Mario rising at y 140, Paratroopa at 161).
   * Contact is the native box test (inclusive edges, enemy box before its move): Mario x+3..x+13, y+20..y+32 small or x+2..x+14, y+8..y+32 big; a winged Koopa x+2..x+14, y+9..y+21 (RAM $04AC/$04B0). */
  private nativeChkInjStomp(e:Enemy,p:Player,priorX:number,priorY:number){
-  if(Math.floor(p.vy)>0||e.kind!=='paratroopa'||e.shell)return false;
+  if(Math.floor(p.vy)>0||e.kind!=='paratroopa'&&e.kind!=='bullet'||e.shell)return false; // a rising Mario stomps a Bullet Bill too (7-1 original row 2274)
   const my=Math.floor(p.y)-32,ny=Math.floor(priorY)-24,mx=Math.floor(p.x),ex=Math.floor(priorX),small=p.size===0||p.duck;
   if(my+12>=ny)return false;
   return mx+(small?3:2)<=ex+14&&ex+2<=mx+(small?13:14)&&my+(small?20:8)<=ny+21&&ny+9<=my+32;
