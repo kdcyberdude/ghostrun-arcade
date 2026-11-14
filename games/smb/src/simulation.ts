@@ -384,7 +384,7 @@ export class Simulation {
   const waterSource=nativeWaterStreams.streams.find(s=>s.areas.some(a=>a.level===this.level.id&&a.area===area.id));this.waterEnemyStream=waterSource?new NativeWaterStream(waterSource.bytes):undefined;this.waterSlotPositions=Array.from({length:6},()=>({x:0,y:0,yHigh:0}));this.walkerStream=area.nativeWalkerStream?new NativeWaterStream(area.nativeWalkerStream.bytes):undefined;this.setupNativeWaterObjects();
   this.areaControls.origin=-this.nativeAreaOffset/16;
   this.piranhaColumns=new PiranhaColumns(this.camera);
-  this.bindNativeHammerBros();this.setupNativePlacedStream();
+  this.bindNativeHammerBros();this.setupNativePlacedStream();this.setupFishLoader();
   if(!deferTerrain)for(const command of this.specialAreaCommands())if(command.x>=Math.floor(this.camera/256)*256&&command.x<Math.floor(this.camera/256)*256+384)this.applySpecialAreaCommand(command);
   if(area.entryVine)this.specialSlot5.claimVine(Math.floor(this.player.x+8)&~15,240);
   this.climbPoseFrame=0;this.locomotionPose={kind:'stand',frame:0,facing:1};this.playerAnim.reset();this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -1624,14 +1624,31 @@ export class Simulation {
  // A slot keeps the sub-pixel x ($0401+s) and y fraction ($0417+s) of its last occupant, and a new flying fish starts with them (32 v2 traces: 30 of 30 fish spawns in a used slot
  // start with the bytes the slot held after its previous occupant was removed). A fish removed on a row still makes that row's horizontal step, not its vertical one.
  private leaveFlyingCheepSlot(e:Enemy){const x=e.nativeSwim?e.x:e.x+e.vx,slot=e.enemySlot!;this.slotSub[slot]=Math.round((x-Math.floor(x))*256)&255;this.slotYFrac[slot]=e.nativeSwim?.fraction??e.pod?.fraction??0;if(e.nativeSwim){Object.assign(this.slotVertical[slot],{speed:0,force:e.nativeSwim.originY,fraction:e.nativeSwim.fraction});this.slotYSpeed[slot]=0;this.slotYFraction[slot]=e.nativeSwim.fraction;}if(e.nativeFlight&&e.pod){Object.assign(this.slotVertical[slot],{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});this.slotYSpeed[slot]=e.pod.speed&255;this.slotYFraction[slot]=e.pod.fraction;}}
+ /** ProcessEnemyData's cursor in a leaping-Cheep area whose objects the remake loads itself (2-3/7-3 shared stream): a record it passes over takes that free slot's turn,
+  * so this frame's frenzy runs in the next free slot (2-3 camera 527 -> 530, record x 832: 4 of 4 reloads read slot 4's random byte with slot 3 free). */
+ private fishLoader?:{stream:NativeWaterStream;origin:number};
+ private setupFishLoader(){
+  this.fishLoader=undefined;
+  if(this.placedStream||this.walkerStream||this.waterEnemyStream||!this.area.generators?.some(g=>g.kind==='flyingFish'))return;
+  const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.area.id),bytes=binding&&nativeEnemyBytes(nativePhysicalAreas[binding.code].enemy);
+  if(binding&&bytes)this.fishLoader={stream:new NativeWaterStream(bytes),origin:binding.offset};
+ }
+ private passFishLoader(){
+  const taken=new Set<number>(),l=this.fishLoader;if(!l||this.parserClock.blocked)return taken;const used=this.busyNativeSlots();
+  // A record already behind the right edge is dropped within the same slot's turn (7-3 original row 458: slot 0 still takes the Cheep).
+  for(let slot=0;slot<5;slot++){if(used.has(slot)||this.groupSlotsBefore[slot])continue;const ev=l.stream.next(this.camera-l.origin,this.secondaryHardMode,slot,()=>true);if(ev.kind!=='skip')break;if(ev.y===undefined)slot--;else taken.add(slot);}
+  return taken;
+ }
  private updateFishFrenzy(){
-  if(this.recordedRoute||this.specialSlot5.frenzyBuffer!==20)return;
-  this.freeNativeSlot(); // an enemy takes its native slot on the frame it activates (not when the timer next reads the slots): a later fish then sees the real free slot
+  if(this.recordedRoute)return;
+  const fish=this.specialSlot5.frenzyBuffer===20;
+  if(fish)this.freeNativeSlot(); // an enemy takes its native slot on the frame it activates (not when the timer next reads the slots): a later fish then sees the real free slot
+  const skipped=this.passFishLoader();if(!fish)return;
   // CheckFrenzyBuffer follows placed data; EndFrenzy clears the source buffer.
   if(this.nativeFrenzyTimer>0||this.parserClock.blocked)return;
   const F=FLYING_FISH.frenzy,bytes=this.random.bytes,used=this.busyNativeSlots();
   // A slot already visited while occupied cannot be revisited after its erasure.
-  for(let s=0;s<5;s++)if(this.groupSlotsBefore[s])used.add(s);
+  for(let s=0;s<5;s++)if(this.groupSlotsBefore[s]||skipped.has(s))used.add(s);
   let slot=0;while(used.has(slot))slot++;const wait=bytes[slot+1]&3;
   if(slot>=5)return; // all five native slots busy: the timer stays at 0 until one is free (7-3 rows 451, 244)
   // InitFlyingCheepCheep calls SmallBBox/InitVStf before its max-slot test:
