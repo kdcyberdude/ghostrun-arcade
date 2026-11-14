@@ -39,9 +39,9 @@ async function audit(input:any,page:any){
  if(sha(pads)!==input.padsSha256||pads.length!==input.frames||ram.length!==pads.length*2048||sha(ram)!==meta.ramSha256||meta.padSha256!==input.padsSha256||meta.frames!==pads.length||meta.step!==1)throw Error('Native input/RAM/length authentication');
  if(sha(initial)!==(original?input.initialRamSha256:read(path.join(dir,'capture.json')).initialRamSha256))throw Error('Native initialRAM differs');
  if(fs.statSync(path.join(pixelDir,'pixels.bin')).size!==pads.length*240*224||fs.statSync(path.join(pixelDir,'emph.bin')).size!==pads.length*224)throw Error('Native picture length');
- const labels=Array.from({length:pads.length},(_,f)=>levelAt(ram.subarray(f*2048,(f+1)*2048))),win=windows?.[input.id]??(windows?[]:undefined),chosen=(f:number)=>(!scope||scope.levels.includes(labels[f]!))&&(!win||win.some(([a,b])=>f>=a&&f<b));
- const lag=new Set<number>(nativeLagFrames(ram));let end=pads.length;if(scope||win){end=0;for(let f=0;f<pads.length;f++)if(chosen(f))end=f+1;}
- const limit=pilot===undefined?end:Math.min(pilot,end),entrance=original?decodeEntrance(initial,read(path.join(recovered,'original32/entrances',level!,'entrance.json'))):undefined;
+ const labels=Array.from({length:pads.length},(_,f)=>levelAt(ram.subarray(f*2048,(f+1)*2048))),win=windows?.[input.id]??(windows?[]:undefined),inLevels=(f:number)=>!scope||scope.levels.includes(labels[f]!),chosen=(f:number)=>inLevels(f)&&(!win||win.some(([a,b])=>f>=a&&f<b));
+ const lag=new Set<number>(nativeLagFrames(ram));let end=pads.length;if(scope){end=0;for(let f=0;f<pads.length;f++)if(inLevels(f))end=f+1;}
+ const winEnd=win?Math.max(0,...win.map(([,b])=>b)):end,limit=Math.min(pilot===undefined?end:Math.min(pilot,end),winEnd),entrance=original?decodeEntrance(initial,read(path.join(recovered,'original32/entrances',level!,'entrance.json'))):undefined;
  // State runs in a child process while this process drives the pictures.
  const statePromise=replayStateInWorker(stateBundle.file,monitor,input.id,scope?.levels);statePromise.catch(()=>{});
  await page.evaluate(async({entrance,original,rgb,palette,policy}:any)=>{
