@@ -1,4 +1,4 @@
-import {nativeMiscOffscreen} from './native-misc.js';import {enemyRenderPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,platformMotionModel} from './platform-motion.js';
+import {nativeMiscOffscreen} from './native-misc.js';import {enemyRenderPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,nativeSmallPlatform,platformMotionModel} from './platform-motion.js';
 /** Explicit capability: normal Mario, live Goombas and lifts. Unknown writers
  * refuse the whole composition; they are never silently omitted from the cap. */
 export function nativeOamPicture(s:any){
@@ -8,7 +8,7 @@ export function nativeOamPicture(s:any){
  if(s.paused||!['play','dying'].includes(s.phase)||s.spritePictureOwner!=='engine'||s.nativeScreen||s.nativeTimersStopped&&s.phase!=='dying'||s.powerChange)reasons.push('control-owner');
  if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.area.theme==='water'||s.player.dead&&s.phase!=='dying')reasons.push('player-variant');
  const powerup=(i:any)=>['mushroom','flower','star','1up'].includes(i.kind)&&i.nativePowerState!==undefined&&!i.emerging;
- if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i))||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed||!p.victim.dead&&!p.victim.shell)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup))||s.frenzyControllers?.some((c:any)=>c.slot!==undefined&&!c.lost))reasons.push('other-writer');
+ if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i)&&!i.nativeFlame)||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed||!p.victim.dead&&!p.victim.shell)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup))||s.frenzyControllers?.some((c:any)=>c.slot!==undefined&&!c.lost))reasons.push('other-writer');
  // Springboards: six entries at their slot's offset, rows Enemy_Y, +8, +16 (Enemy_Y: the spring's top, 8 lower per compression step) and columns X, X+8;
  // a column off X 1..255 keeps Y 248 (1ae7aeeb 2-1 rows 11640-11664 entering at the right, 13205-13223 compressed).
  const springs:{base:number,x:number,y:number}[]=[];
@@ -23,10 +23,15 @@ export function nativeOamPicture(s:any){
  for(const platform of s.area.platforms??[]){
   const ys=nativePlatformArtworkYs(platform,context,s.platformPicturePosition(platform).y);if(!ys.length)continue;
   const slot=s.spriteObjectSlot(platform);if(slot===undefined&&ys.every(y=>y<-16||y>=240))continue; // an unloaded lift is parked far off screen
-  if(ys.length>1||slot===undefined||platformMotionModel(platform,context)==='contact-cloud'||s.area.theme==='castle'){reasons.push('area-writer');break;} // castle lifts keep other slot mappings (e79163dc 2-4 row 20624)
-  lifts.push({base:s.spriteShuffle.offsets[slot+1],x:Math.floor(s.platformPicturePosition(platform).x-s.camera),y:ys[0]-1,width:s.platformWidth(platform)});
+  if(slot===undefined||platformMotionModel(platform,context)==='contact-cloud'){reasons.push('area-writer');break;}
+  // DrawSmallPlatform: the first surface on entries 0-2, the one 128 lower on entries 3-5; a surface above the HUD line stays at Y 248 (e79163dc 2-4 row 20640: entries 13-15 at Y 144, 10-12 hidden).
+  const first=s.platformPicturePosition(platform).y,surfaces=nativeSmallPlatform(platform,context)?[[0,first],[12,((first-1+128)&255)+1]].filter(([,y])=>y>=33):[[0,ys[0]]];
+  for(const [offset,y] of surfaces)lifts.push({base:s.spriteShuffle.offsets[slot+1]+offset,x:Math.floor(s.platformPicturePosition(platform).x-s.camera),y:y-1,width:s.platformWidth(platform)});
  }
- const enemies=s.enemies.filter((e:any)=>e.active&&pic(e).dead<90);
+ // Bowser alive: his head on his slot's six entries (rows feet-32, -24, -16), his rear on the rear slot's six, 8 lower and 16 behind
+ // (32183fd4 1-4 rows 14079-14080: head 18-23 / 40-45 at X 224, rear 24-29 / 46-51 at X 240).
+ const bowsers=s.enemies.filter((e:any)=>e.active&&e.kind==='bowser'&&!e.dead&&e.nativeBowser?.rearSlot!==undefined&&e.graphicsVisible!==false&&e.enemySlot!==undefined);
+ const enemies=s.enemies.filter((e:any)=>e.active&&pic(e).dead<90&&!bowsers.includes(e));
  // An enemy with both columns off screen writes only hidden entries (SprObjectOffscrChk), whatever its kind.
  const hidden=(e:any)=>{const x=Math.floor((e.graphicsX??e.x)-s.camera);return [x,x+8].every(xx=>xx<=0||xx>255);};
  // EnemyGfxHandler skips a Piranha Plant moving with its frame timer running: all six entries stay cleared (entpat id $0D: 37,724 of 68,266 on-screen rows).
@@ -50,6 +55,12 @@ export function nativeOamPicture(s:any){
  // ChkForPlayerAttrib forces symmetry at table offsets50/B8/C0/C8.
  // A row at Y 248 or below the screen stays hidden (all captures, Player_Y 170-300 in states 8 and 11: rows end where Y + 8 x row reaches 248).
  if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)if(py+row*8<248)write(4+row*8+col*4,py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||[22,25].includes(pose.cell)&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
+ for(const e of bowsers){const feet=Math.floor(e.graphicsY??e.y),x=Math.floor((e.graphicsX??e.x)-s.camera),right=e.bowser?e.bowser.side>0:e.vx>0,head=right?x+16:x;
+  for(const [slot,hx,top] of [[e.enemySlot,head,feet-32],[e.nativeBowser.rearSlot,head+(right?-16:16),feet-24]]){const base=s.spriteShuffle.offsets[slot+1];
+   for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=hx+col*8;write(base+row*8+col*4,xx<=0||xx>255?248:top+row*8,0,0,xx&255,false);}}}
+ // Bowser's flame: three entries at its slot's offset, Y = its Y, X, X+8, X+16 (32183fd4 1-4 row 14079: entries 36-38 at offset 144).
+ for(const i of s.items){if(!i.nativeFlame||!s.itemPictureShown(i))continue;const base=s.spriteShuffle.offsets[i.nativeFlame.slot+1],x=Math.floor(i.x-s.camera);
+  for(let col=0;col<3;col++){const xx=x+col*8;write(base+col*4,xx<=0||xx>255?248:Math.floor(i.y),0,0,xx&255,false);}}
  for(const body of enemies.sort((a:any,b:any)=>a.enemySlot-b.enemySlot)){
   const e=pic(body),x=Math.floor((e.dead?e.x:e.graphicsX??e.x)-s.camera),y=Math.floor(e.dead?e.y:e.graphicsY??e.y)-24,base=s.spriteShuffle.offsets[e.enemySlot!+1],stopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped),left=(e.graphicsFacing??e.vx)<0,flip=stopped?left:left===Boolean(s.random.frame&8);
   if(hidden(e)||undrawn(e,body))continue; // its entries keep the cleared Y (248); tile, attribute and X bytes are not reconstructed
@@ -61,7 +72,8 @@ export function nativeOamPicture(s:any){
  // The row a squashed Goomba is erased, its slot still writes the first two entries (blank) one line below Enemy_Y (c35cb97a row 4020: Y 185, Enemy_Y 184).
  for(const body of s.enemies)if(body.squashed&&body.erasedFrame===s.frame&&body.enemySlot!==undefined){const base=s.spriteShuffle.offsets[body.enemySlot+1],x=Math.floor(body.x-s.camera);for(let col=0;col<2;col++){const xx=x+col*8;write(base+col*4,xx<=0||xx>255?248:Math.floor(body.y)-23,0xfc,3,xx,false);}}
  // A block's jumping coin (misc slot): two entries at the misc offset, the coin's halves at Y and Y+8, then its 200 side by side (c35cb97a rows 990, 999: offset index 7 + 8 x slot).
- for(const i of s.items){const c=i.nativeCoin;if(!c)continue;const base=s.spriteShuffle.miscOffset(c.slot),x=Math.floor(i.x-s.camera)&255,y=Math.floor(i.y)&255,score=c.state>=2;
+ // A coin in state 0 draws nothing (itemShown; 232eab82 2-1 rows 12240-12431, frozen while Mario dies).
+ for(const i of s.items){const c=i.nativeCoin;if(!c||c.state===0)continue;const base=s.spriteShuffle.miscOffset(c.slot),x=Math.floor(i.x-s.camera)&255,y=Math.floor(i.y)&255,score=c.state>=2;
   write(base,y,score?0xf7:0x60,2,x,false);write(base+4,score?y:(y+8)&255,score?0xfb:0x60,2,score?(x+8)&255:x,false);}
  // A power-up out of its block: four entries at slot 5's offset, its 16x16 picture one line below (all captures: id $2E rows at Enemy_Y+8/+16, X/X+8).
  for(const i of s.items)if(powerup(i)){const base=s.spriteShuffle.offsets[6],x=Math.floor(i.x-s.camera),y=Math.floor(i.y);

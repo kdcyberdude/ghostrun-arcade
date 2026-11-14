@@ -168,7 +168,8 @@ export class GameRenderer {
    const colors=s.bowserPalette?e.palette??'0f-1a-30-27':manifest.palette_observations[s.area.palette].palette.slice(20,24).map(c=>c.toString(16).padStart(2,'0')).join('-');
    this.enemyCell(35+(e.nativeBowser?e.nativeBowser.controls>>7&1:phase)*2,headX,y-8,colors,!right,flipY);
    const rear=e.nativeBowser?.rearSlot,rearZ=rear===undefined?this.enemyOamZ:2+(255-s.spriteShuffle.offsets[rear+1])/4096; // the rear half has its own slot's OAM offset (0d12a2e4 row 18152: rear 40 < lift 64 < head 232)
-   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,colors,!right,flipY,rearZ);return;
+   const context=this.oamContext;if(context&&rear!==undefined)this.oamContext={base:s.spriteShuffle.offsets[rear+1],count:6};
+   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,colors,!right,flipY,rearZ);this.oamContext=context;return;
   }
   palette=e.palette??palette;
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead&&e.vx<=0&&palette==='0f-16-30-27'){
@@ -244,7 +245,8 @@ export class GameRenderer {
    const descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor,palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
    for(const piece of descriptor.sprites)this.spriteTile(piece.tile,i.nativeHammer?(Math.floor(x)+piece.x)&255:x+piece.x,i.nativeHammer?((Math.floor(i.y)+piece.y)&255)+1:i.y+piece.y,palette,piece.flip_x,piece.flip_y,i.nativeHammer?2+(255-s.spriteShuffle.miscOffset(i.nativeHammer.slot))/4096:2);
   }
-  if(i.kind==='flame')this.special('bowser_flame-'+(s.random.frame>>1&1),x,i.y+1,i.nativeFlame?2+(255-s.spriteShuffle.offsets[i.nativeFlame.slot+1])/4096:2); // its enemy slot's OAM depth, so it can pass in front of a lift (e79163dc 2-4 row 23413); OAM attribute $82/$02 flips on FrameCounter bit 1; drawn one line below OAM y = flame y (0d12a2e4 rows 12380..12465)
+  if(i.kind==='flame'){const context=this.oamContext;this.oamContext=this.oamRows&&i.nativeFlame?{base:s.spriteShuffle.offsets[i.nativeFlame.slot+1],count:3}:undefined;this.special('bowser_flame-'+(s.random.frame>>1&1),x,i.y+1,i.nativeFlame?2+(255-s.spriteShuffle.offsets[i.nativeFlame.slot+1])/4096:2); // its enemy slot's OAM depth, so it can pass in front of a lift (e79163dc 2-4 row 23413); OAM attribute $82/$02 flips on FrameCounter bit 1; drawn one line below OAM y = flame y (0d12a2e4 rows 12380..12465)
+  this.oamContext=context;}
   if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
  }
  render(s:Simulation){
