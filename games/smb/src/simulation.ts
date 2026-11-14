@@ -2405,6 +2405,7 @@ export class Simulation {
  private holdsNativeSlot(e:Enemy){
   // Source-owned plants/Bros retain Enemy_Flag until their handler actually erases it.
   if(e.kind==='piranha'&&e.nativePipe&&!e.dead||e.kind==='hammerBro'&&e.nativeId===5)return e.active&&!e.slotFreed&&e.dead<100;
+  if(e.kind==='bullet'&&e.nativeShot&&!e.frenzy)return e.active&&e.dead<100; // the cannon pass erases its shots, after the enemy loader's turn (5-2 original row 1338)
   const reach=e.kind==='piranha'||e.kind==='hammerBro'?17:73;
   return e.active&&(e.kind==='piranha'?Math.floor(e.x)>=this.nativeLeftBound(e)!:e.x>=this.camera-reach)&&(e.squashed?e.dead<90:e.dead<100||e.x<this.camera-48&&e.x-(e.dead-100)/2>=this.camera-73); // A squashed Goomba holds its slot until its native interval-timer erasure.
  }
