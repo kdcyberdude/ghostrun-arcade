@@ -421,6 +421,7 @@ export class Simulation {
  private floateyScore(value:number|'1up',delay=5){this.pendingScore.push({value,left:delay});}
  private payFloateyScore(){for(const s of this.pendingScore)if(--s.left===0){if(s.value==='1up'){this.lives++;this.emit('sfx_1up');}else{this.addScore(s.value);this.blockUpdateBusy=this.graphicsBuffer1=true;}}this.pendingScore=this.pendingScore.filter(s=>s.left>0);}
  private advancePopups(){
+  this.popups=this.popups.filter(p=>p.lastFrame===undefined||p.lastFrame>=this.frame);
   for(const popup of this.popups){popup.age++;if(popup.y>=16)popup.y--;}
   this.popups=this.popups.filter(popup=>popup.age<popup.life); // native raw Y stops at23; the SBC carry makes the visible artwork stop at15
  }
@@ -3196,11 +3197,13 @@ export class Simulation {
    if(other===e||!other.active||other.dead>=100||other.dead&&!other.squashed||other.slotFreed||other.enemySlot===undefined||other.enemySlot>=e.enemySlot||!kinds.includes(other.kind)||!from.has(other))continue;
    if(!e.movingShell&&!other.movingShell||!nativeEnemyBoxesTouch(body(e),body(other),Math.floor(this.camera+this.lakituScroll)))continue;
    const both=e.movingShell&&other.movingShell,shell=e.movingShell?e:other,victim=e.movingShell?other:e;
-   if(both){this.stunShellVictim(e);this.floateyScore(200);} // ShellOrBlockDefeat overwrites the earlier control6 with control2.
+   if(both){this.stunShellVictim(e);this.floateyScore(200);this.awardPopup(200,e.graphicsX??e.x,e.y-31,e);const label=this.popups[this.popups.length-1];label.life++;label.age++;label.y--;} // the processed shell's own label: 200 at its stunned Y (778a843b row 10788: slot 2 X $1C, Y $B5) // ShellOrBlockDefeat overwrites the earlier control6 with control2.
    const award=([500,800,1000,2000,4000,5000,8000,'1up'] as const)[Math.min(shell.shellChain??0,7)];
+   const earlier=victim!==e?this.popups.filter(p=>p.victim===victim||p.victim?.enemySlot===victim.enemySlot):[]; // a lower slot already drew its label this row
    this.stunShellVictim(victim);this.floateyScore(award,victim.enemySlot!<e.enemySlot?6:5);shell.shellChain=(shell.shellChain??0)+1;this.emit('sfx_kick');
    this.awardPopup(award,e.graphicsX??e.x,victim.y-31,victim); // SetupFloateyNumber: victim slot and stunned Y, X from Enemy_Rel_XPos of the object being processed (24614c5e row 3257, 0d12a2e4 row 5416)
-   {const label=this.popups[this.popups.length-1];label.life++;if(victim===e){label.age++;label.y--;}else label.hiddenFrame=this.frame;} // a shell-kill number is drawn until its timer's 0 row, one row longer than a stomp's: the processed slot's floatey also runs this frame (e2a3c165 row 4324: timer 47, Y 181; bce85ccb rows 4446-4493, 48 rows), a lower slot's already ran, so it starts at timer 48 (02013a1a rows 4453-4501, 49 rows)
+   {const label=this.popups[this.popups.length-1];label.life++;if(victim===e){label.age++;label.y--;}else label.hiddenFrame=this.frame;}
+   for(const old of earlier)this.popups.push({...old,lastFrame:this.frame}); // ...and keeps it on screen there (778a843b row 10788: slot 1's earlier 500 at x 110 under its new hidden one) // a shell-kill number is drawn until its timer's 0 row, one row longer than a stomp's: the processed slot's floatey also runs this frame (e2a3c165 row 4324: timer 47, Y 181; bce85ccb rows 4446-4493, 48 rows), a lower slot's already ran, so it starts at timer 48 (02013a1a rows 4453-4501, 49 rows)
    if(e.dead)break;
   }
  }
