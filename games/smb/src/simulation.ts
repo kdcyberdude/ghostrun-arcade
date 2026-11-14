@@ -316,6 +316,9 @@ export class Simulation {
  /** DisplayIntermediate/DisplayTimeUp queues the text and enables PPU output; it appears on the following NMI. */
  get introHiddenEarly(){if(this.levelLoad)return this.levelLoad.task===0||this.levelLoad.screen<=6;return this.phaseFrame<(this.lifeIntro?.fromDeath?this.lifeIntro.set+1:TRANSITIONS.introHiddenBeforeFrame);}
  get introHiddenLate(){if(this.levelLoad)return this.levelLoad.screen>=8;return this.lifeIntro?this.lifeIntro.end>0&&this.phaseFrame>=this.lifeIntro.end-LIFE_FLOW.screenBlackTail:this.phaseFrame>=TRANSITIONS.introHiddenFromFrame;}
+ /** A buffer1 flush past its 63 bytes (into VRAM_Buffer2_Offset at $0340) outlasts vblank: that picture's background is one line lower, sprites are not
+  * (offset $43 in all 45 such flushes of the corpus, every one a 1-3 flag row; $3C and below draw normally). */
+ get backgroundRowShift(){return this.paletteClock.buffer1.flushed>=0x40?1:0;}
  get gameoverClosing(){return this.phase==='gameover'&&this.nativeGameOver?.mode===0;}
  get pipePreviewArea(){const d=this.destination;if(this.phase!=='pipe'||this.player.size!==0||!d?.smallPlayerRoomPreviewFrames||d.frames-this.phaseFrame>d.smallPlayerRoomPreviewFrames)return undefined;return this.level.areas.find(a=>a.id===d.area);}
  get pipeLoading(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames); }

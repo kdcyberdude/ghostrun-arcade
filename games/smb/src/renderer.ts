@@ -28,7 +28,7 @@ export class GameRenderer {
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();private ropeColumns:number[]=[];
- private hudCoinTextures:string[]=[];private backgroundDraws:{id:number,x:number,y:number,palette:number}[]=[];private stencilMode:0|1|2=0;private skyBand?:THREE.Mesh;
+ private hudCoinTextures:string[]=[];private backgroundDraws:{id:number,x:number,y:number,palette:number}[]=[];private stencilMode:0|1|2=0;private backgroundShift=0;private skyBand?:THREE.Mesh;
  private palettes=manifest.palette_observations.map(o=>o.palette);private rotation=(index:number)=>index;
  constructor(canvas:HTMLCanvasElement){
   this.renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,preserveDrawingBuffer:true,stencil:true});this.renderer.setPixelRatio(1);this.renderer.setSize(256,240,false);
@@ -97,7 +97,7 @@ export class GameRenderer {
     this.oamContext=context;return;
    }
   }
-  const clipTop=sprite?0:32;y=Math.floor(y); // the clip must cut whole pixel rows: a fractional top shifted Mario 1 px at the screen top (0d12a2e4 row 8403)
+  const clipTop=sprite?0:32;y=Math.floor(y)+(name.startsWith('metatiles-')||name.startsWith('background-tiles-')?this.backgroundShift:0); // the clip must cut whole pixel rows: a fractional top shifted Mario 1 px at the screen top (0d12a2e4 row 8403)
   if(this.worldClip&&(y<clipTop||y+rect[3]>240)){
    const top=Math.max(0,clipTop-y),bottom=Math.max(0,y+rect[3]-240);if(top+bottom>=rect[3])return;
    rect=[rect[0],rect[1]+(flipY?bottom:top),rect[2],rect[3]-top-bottom];y+=top;
@@ -264,7 +264,7 @@ export class GameRenderer {
   // After a castle victory InitializeArea's first rows keep the castle picture: the retainer is gone from the first, the status bar from the second (2-1 1ae7aeeb pictures 8686, 8687).
   const victoryHold=s.phase==='intro'&&s.levelLoad?.engine===8&&s.levelLoad.task===0;
   if(victoryHold&&this.castleHeld){for(const m of [...this.retainerMeshes,...(s.levelLoad!.screen===0?this.hudMeshes:[])])this.scene.remove(m);this.renderer.render(this.scene,this.camera);return;}
-  this.castleHeld=s.phase==='castle';this.hudMeshes=[];this.backgroundDraws=[];this.retainerMeshes=[];
+  this.castleHeld=s.phase==='castle';this.hudMeshes=[];this.backgroundDraws=[];this.backgroundShift=s.backgroundRowShift;this.retainerMeshes=[];
   this.scene.clear();this.used.clear();const titlePicture=nativeStartupTitleShown(s.nativeStartupPicture,s.phase,s.nativeScreen),startup=titlePicture?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
