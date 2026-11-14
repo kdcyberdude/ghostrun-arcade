@@ -228,7 +228,7 @@ export class GameRenderer {
  }
  private item(i:Item,s:Simulation){
   if(!itemShown(i))return;const x=i.x-s.camera;
-  if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up')this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),i.emerging?-0.1:1.5);
+  if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up'){const context=this.oamContext;this.oamContext=this.oamRows&&i.nativePowerState!==undefined&&!i.emerging?{base:s.spriteShuffle.offsets[6],count:4}:undefined;this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),i.emerging?-0.1:1.5);this.oamContext=context;}
   if(i.kind==='coin'){
    if(i.nativeCoin){
     const y=Math.floor(i.y),screenX=Math.floor(x)&255;const context=this.oamContext;this.oamContext=this.oamRows?{base:s.spriteShuffle.miscOffset(i.nativeCoin.slot),count:2}:undefined;
@@ -310,7 +310,7 @@ export class GameRenderer {
    if(s.area.theme==='water')for(const [slot,bubble]of s.bubbles.entries())if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27',false,false,2+(255-s.spriteShuffle.offsets[10+slot])/4096);
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly)continue;
-    const v=popup.victim;this.oamContext=this.oamRows&&v?.enemySlot!==undefined?{base:s.spriteShuffle.offsets[v.dead||v.shell?v.enemySlot+1:8],count:2}:undefined; // the composer's floatey entries
+    const v=popup.victim;this.oamContext=this.oamRows&&v?.enemySlot!==undefined?{base:s.spriteShuffle.offsets[v.enemySlot+1],count:2}:undefined; // the composer's floatey entries
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,2.5);this.oamContext=undefined;
    }
    for(const bar of s.area.firebars??[]){const slot=s.spriteObjectSlot(bar),centers=s.firebarCenters(bar);this.oamContext=this.oamRows&&slot!==undefined?{base:s.spriteShuffle.offsets[slot+1],count:centers.length}:undefined;for(const {x,y}of centers)this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x-4-s.camera,y-4+(bar.visualOffsetY??0));this.oamContext=undefined;}

@@ -5,7 +5,8 @@ export function nativeOamPicture(s:any){
  const reasons:string[]=[];
  if(s.paused||s.phase!=='play'||s.spritePictureOwner!=='engine'||s.nativeScreen||s.nativeTimersStopped||s.powerChange)reasons.push('control-owner');
  if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.area.theme==='water'||s.player.dead)reasons.push('player-variant');
- if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin))||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed)||s.blockGraphics.some((b:any)=>b.pictureY!==undefined)||s.vines.length||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag||s.frenzyControllers?.some((c:any)=>c.slot!==undefined&&!c.lost))reasons.push('other-writer');
+ const powerup=(i:any)=>['mushroom','flower','star','1up'].includes(i.kind)&&i.nativePowerState!==undefined&&!i.emerging;
+ if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i))||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed||!p.victim.dead&&!p.victim.shell)||s.blockGraphics.some((b:any)=>b.pictureY!==undefined)||s.vines.length||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup))||s.frenzyControllers?.some((c:any)=>c.slot!==undefined&&!c.lost))reasons.push('other-writer');
  if(s.area.springs?.length)reasons.push('area-writer');
  // Firebars: ball k on entry slot offset + 4k, Y one line above the drawn ball, hidden off the screen's X 0..255 (19011e4d 1-4 rows 9500-11200: 8,182 of 8,182 entries; X 249-255 still drawn, rows 9585, 9724).
  const bars:{base:number,balls:{x:number,y:number}[]}[]=[];
@@ -54,9 +55,13 @@ export function nativeOamPicture(s:any){
  // A block's jumping coin (misc slot): two entries at the misc offset, the coin's halves at Y and Y+8, then its 200 side by side (c35cb97a rows 990, 999: offset index 7 + 8 x slot).
  for(const i of s.items){const c=i.nativeCoin;if(!c)continue;const base=s.spriteShuffle.miscOffset(c.slot),x=Math.floor(i.x-s.camera)&255,y=Math.floor(i.y)&255,score=c.state>=2;
   write(base,y,score?0xf7:0x60,2,x,false);write(base+4,score?y:(y+8)&255,score?0xfb:0x60,2,score?(x+8)&255:x,false);}
+ // A power-up out of its block: four entries at slot 5's offset, its 16x16 picture one line below (all captures: id $2E rows at Enemy_Y+8/+16, X/X+8).
+ for(const i of s.items)if(powerup(i)){const base=s.spriteShuffle.offsets[6],x=Math.floor(i.x-s.camera),y=Math.floor(i.y);
+  for(let row=0;row<2;row++)for(let col=0;col<2;col++){const xx=x+col*8;write(base+row*8+col*4,xx<=0||xx>255?248:y+row*8,0x76,2,xx&255,false);}}
  // Floatey numbers: the victim slot's first two entries at Y = FloateyNum_Y - 8 (popup.y - 1), X and X+8 (fltpat: 17,618 of 23,640 rows; the rest read a shuffled offset).
- // A victim still walking (a stomped paratroopa's Koopa) keeps its own entries; its number is drawn at offset index 8 whatever the slot (fltpat: k-i 8/7/6 for slots 0/1/2; c35cb97a row 7238: slot 2, entries 54-55 = offset 216).
- for(const popup of s.popups){const v=popup.victim,base=s.spriteShuffle.offsets[v.dead||v.shell?v.enemySlot+1:8];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
+ // A victim still walking (a stomped paratroopa's Koopa) keeps its own entries and its number moves to offset index 8 or 9 by a rule
+ // not yet measured (all captures: 4,617 rows at 8, 699 at 9; 24a4c03d 1-3 rows 7146-7148 at 9), so such frames are refused above.
+ for(const popup of s.popups){const v=popup.victim,base=s.spriteShuffle.offsets[v.enemySlot+1];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
  for(const bar of bars)bar.balls.forEach((b,k)=>write(bar.base+k*4,b.x<0||b.x>255?248:b.y-1,0x75,2,b.x,false));
  // A lift at y 0 is drawn off screen (native: 242 of 257 on-screen rows at y 0 hidden; 0d12a2e4 row 6023), except one starting at X 248 or right of it (all captures: 203 rows kept at Y 0, 4 hidden).
  for(const lift of lifts)for(let i=0;i*8<lift.width;i++){const xx=lift.x+i*8;write(lift.base+i*4,xx<=0||xx>255||lift.y===0&&lift.x<248?248:lift.y,91,2,xx);}
