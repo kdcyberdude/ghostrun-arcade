@@ -1,4 +1,4 @@
-import {nativeMiscOffscreen} from './native-misc.js';import {enemyRenderPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,nativeSmallPlatform,platformMotionModel} from './platform-motion.js';
+import {nativeMiscOffscreen} from './native-misc.js';import {enemyRenderPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,nativeSmallPlatform,platformMotionModel} from './platform-motion.js';import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
 /** Explicit capability: normal Mario, live Goombas and lifts. Unknown writers
  * refuse the whole composition; they are never silently omitted from the cap. */
 export function nativeOamPicture(s:any){
@@ -7,8 +7,11 @@ export function nativeOamPicture(s:any){
  const reasons:string[]=[];
  if(s.paused||!['play','dying'].includes(s.phase)||s.spritePictureOwner!=='engine'||s.nativeScreen||s.nativeTimersStopped&&s.phase!=='dying'||s.powerChange)reasons.push('control-owner');
  if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.area.theme==='water'||s.player.dead&&s.phase!=='dying')reasons.push('player-variant');
+ // A Goomba or Koopa knocked over (not squashed): its picture's two rows at entries 2-5, its floatey number on 0-1 (all captures, state bit 5:
+ // 30,689 rows with rows 1-2 eight apart, at the drawn top less one; a row reaching Y 248 stays hidden: 243 / 248).
+ const defeatTop=(e:any)=>!e.dead||e.squashed?undefined:e.greenShellLaunchFrame!==undefined||e.defeat&&e.kind==='goomba'?Math.floor(e.y)+shellLaunchRules.visibleBodyTopFromFeet:e.defeat&&(e.kind==='koopa'||e.kind==='redKoopa')?Math.floor(e.graphicsY??e.y)-15:undefined;
  const powerup=(i:any)=>['mushroom','flower','star','1up'].includes(i.kind)&&i.nativePowerState!==undefined&&!i.emerging;
- if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i)&&!i.nativeFlame)||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed||!p.victim.dead&&!p.victim.shell)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup)))reasons.push('other-writer'); // a frenzy controller (ID23 before its Bullet, ID52 WarpZoneObject) holds a slot but draws nothing
+ if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i)&&!i.nativeFlame)||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed&&defeatTop(p.victim)===undefined||!p.victim.dead&&!p.victim.shell)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup)))reasons.push('other-writer'); // a frenzy controller (ID23 before its Bullet, ID52 WarpZoneObject) holds a slot but draws nothing
  // Springboards: six entries at their slot's offset, rows Enemy_Y, +8, +16 (Enemy_Y: the spring's top, 8 lower per compression step) and columns X, X+8;
  // a column off X 1..255 keeps Y 248 (1ae7aeeb 2-1 rows 11640-11664 entering at the right, 13205-13223 compressed).
  const springs:{base:number,x:number,y:number}[]=[];
@@ -39,7 +42,7 @@ export function nativeOamPicture(s:any){
  // Entry rows (OAM Y less Enemy_Y) per drawn state, measured over World 1 captures (entpat): walkers 0/8/16 (Goomba id6 130,604 rows, Koopa id0 17,358);
  // a shell 2/10/18 (id0 states 4/84); a squashed Goomba 9/17 below its floatey number, which owns the slot's first two entries.
  const walker=(e:any)=>['koopa','redKoopa','beetle','paratroopa','piranha'].includes(e.kind);
- const rowsOf=(e:any,body:any):(number|undefined)[]|undefined=>e.kind==='goomba'&&!e.dead?[0,8,16]:e.kind==='goomba'&&e.squashed&&e.dead?[s.popups.some((p:any)=>p.victim===body)||body.erasedFrame===s.frame?undefined:1,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?[2,10,18]:undefined;
+ const rowsOf=(e:any,body:any):(number|undefined)[]|undefined=>e.kind==='goomba'&&!e.dead?[0,8,16]:e.kind==='goomba'&&e.squashed&&e.dead?[s.popups.some((p:any)=>p.victim===body)||body.erasedFrame===s.frame?undefined:1,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?[2,10,18]:defeatTop(e)!==undefined&&s.popups.some((p:any)=>p.victim===body)?[undefined,defeatTop(e)!-1-(Math.floor(e.y)-24),defeatTop(e)!+7-(Math.floor(e.y)-24)]:undefined;
  if(enemies.some((body:any)=>{const e=pic(body);return e.enemySlot===undefined||!hidden(e)&&!undrawn(e,body)&&(!rowsOf(e,body)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
  const pose=playerCell(s);if(pose.throwing||pose.swimKick!==undefined)reasons.push('player-extra-piece');
  const at=s.playerPicturePosition(),px=Math.floor(at.x-s.camera),py=Math.floor(at.y)-32;
@@ -67,7 +70,7 @@ export function nativeOamPicture(s:any){
   if(y<0||y>216)return {supported:false as const,reasons:['enemy-vertical-mask']};
   // SprObjectOffscrChk hides whole columns, including the left column at X0.
   // A live Goomba's bytes are exact; other states reconstruct Y and X only, which alone decide the scanline cap.
-  const rows=rowsOf(e,body)!;for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=x+col*8,dy=rows[row];if(dy===undefined)continue;write(base+row*8+col*4,xx<=0||xx>255?248:y+dy,tables.enemy_cells[14].tiles[row*2+(flip?1-col:col)],3|(flip?64:0),xx,e.kind==='goomba'&&!e.dead);}
+  const rows=rowsOf(e,body)!;for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=x+col*8,dy=rows[row];if(dy===undefined)continue;write(base+row*8+col*4,xx<=0||xx>255||y+dy>=248?248:y+dy,tables.enemy_cells[14].tiles[row*2+(flip?1-col:col)],3|(flip?64:0),xx,e.kind==='goomba'&&!e.dead);}
  }
  // The row a squashed Goomba is erased, its slot still writes the first two entries (blank) one line below Enemy_Y (c35cb97a row 4020: Y 185, Enemy_Y 184).
  for(const body of s.enemies)if(body.squashed&&body.erasedFrame===s.frame&&body.enemySlot!==undefined){const base=s.spriteShuffle.offsets[body.enemySlot+1],x=Math.floor(body.x-s.camera);for(let col=0;col<2;col++){const xx=x+col*8;write(base+col*4,xx<=0||xx>255?248:Math.floor(body.y)-23,0xfc,3,xx,false);}}
