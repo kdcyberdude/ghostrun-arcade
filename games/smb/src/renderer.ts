@@ -24,7 +24,7 @@ import type {Area,Enemy,Item} from './types.js';
 const A=(import.meta.env?.BASE_URL??'/')+'assets/graphics/';
 export class GameRenderer {
  renderer:THREE.WebGLRenderer;scene=new THREE.Scene();camera=pixelCamera(THREE);textures=new Map<string,THREE.Texture>();
- private castleHeld=false;private hudMeshes:THREE.Object3D[]=[];private retainerMeshes:THREE.Object3D[]=[];private oamRows:number[]|undefined;private oam:Uint8Array|undefined;private oamWritten:Uint8Array|undefined;private oamContext:{base:number,count:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
+ private castleHeld=false;private enemyTopRowHidden=false;private hudMeshes:THREE.Object3D[]=[];private retainerMeshes:THREE.Object3D[]=[];private oamRows:number[]|undefined;private oam:Uint8Array|undefined;private oamWritten:Uint8Array|undefined;private oamContext:{base:number,count:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();private ropeColumns:number[]=[];
@@ -223,6 +223,7 @@ export class GameRenderer {
   for(let i=0;i<6;i++){
    const col=i%2,row=Math.floor(i/2),symmetric=data.tiles[row*2]===data.tiles[row*2+1];
    const bottomFlip=cell===40&&row===2||cell===41&&row===1||cell===23&&row===2;
+   if(this.enemyTopRowHidden&&(flipY?2-row:row)===0)continue;
    this.spriteTile(data.tiles[i],x+(flipX?1-col:col)*8,y+(flipY?2-row:row)*8,palette,flipX!==(symmetric&&col===1),flipY!==bottomFlip,z);
   }
  }
@@ -310,7 +311,8 @@ export class GameRenderer {
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
    }
-   for(const e of s.enemies){const picture=enemyRenderPicture(e,s.frame,s.nativeTimersStopped);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90){this.oamContext=this.oamRows?{base:s.spriteShuffle.offsets[picture.enemySlot!+1],count:6}:undefined;this.enemy(e,s);this.oamContext=undefined;}}this.enemyOamZ=2;
+   for(const e of s.enemies){const picture=enemyRenderPicture(e,s.frame,s.nativeTimersStopped);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90){this.oamContext=this.oamRows?{base:s.spriteShuffle.offsets[picture.enemySlot!+1],count:6}:undefined;this.enemyTopRowHidden=!picture.dead&&!picture.shell&&s.popups.some(p=>p.victim===e); // the stomp row's floatey takes the slot's first two entries over the pre-stomp picture's top row (1-1 b47452ef picture 901)
+    this.enemy(e,s);this.enemyTopRowHidden=false;this.oamContext=undefined;}}this.enemyOamZ=2;
    if(ordinary){
    for(const b of s.blockGraphics)for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY);}
    for(const i of s.items)this.item(i,s);
