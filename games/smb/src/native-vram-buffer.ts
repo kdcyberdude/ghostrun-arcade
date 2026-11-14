@@ -12,9 +12,9 @@ export class NativeVramBuffer1 {
  clear(){this.data[0]=this.data[1]=0;}
  seed(bytes:Uint8Array,selector=0){this.data.set(bytes.subarray(0,this.data.length));this.selector=selector;}
  /** NMI clears the selected buffer only; control6 preserves buffer1. */
- /** Bytes the NMI wrote from buffer1 at the start of this frame (0 when control6 kept it). */
- flushed=0;
- beginFrame(){this.flushed=this.selector!==6?this.offset:0;if(this.selector!==6)this.clear();this.selector=0;}
+ /** Bytes the next NMI writes from buffer1 (0 while control6 keeps it). */
+ get pendingFlush(){return this.selector!==6?this.offset:0;}
+ beginFrame(){if(this.selector!==6)this.clear();this.selector=0;}
  select(buffer2:boolean){this.selector=buffer2?6:0;}
 }
 /** ColorRotation: AND7 / CPX#$31 before appending its seven-byte command. */
