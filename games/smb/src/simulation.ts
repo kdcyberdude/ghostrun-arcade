@@ -243,6 +243,7 @@ export class Simulation {
  private areaControls=new NativeAreaControls('','');private parserClock=new NativeParserClock();private parserVramBusy=false;private parserLoaderWasBlocked=false;
  springSlots=new Map<SpringSpec,number>();private springLoadColumns=0;
  get parserColumnX(){return this.areaControls.column*16;}
+ get bowserPalette(){return this.areaControls.bowserPalette;}
  set parserColumnX(x:number){this.areaControls.column=x/16;}
  // Camera crossings remain inputs to the separate loop/frenzy parser models.
  private scrollCrossFrame=-Infinity;private scrollCrossCamera=0;private loopPass=0;private loopCorrect=0;private loopScrollAdjustment=0;

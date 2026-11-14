@@ -2,6 +2,8 @@ import data from '../data/native-area-controls.json';
 /** ScrollLockObject ($0723): called by AreaParserCore at task index7/3; IncrementColumnPos is index4/0. */
 export class NativeAreaControls {
  column=24;locked=false;origin=0;
+ /** AxeObj writes the Bowser sprite palette ($0773=8) when the parser reaches the axe column; until then sprite palette 1 is the area's own (0d12a2e4 row 18000). */
+ bowserPalette=false;
  readonly castleGraphics:{column:number;row:number;id:number;erase:number}[]=[];
  private commands:{column:number;command:number}[]=[];
  constructor(level:string,area:string,screenLeft=0){
@@ -18,6 +20,7 @@ export class NativeAreaControls {
  }
  seedNative(column:number,locked:boolean){this.column=column-this.origin;this.locked=locked;}
  advance(task:number|undefined,warpHandled=false){
+  if((task===7||task===3)&&this.castleGraphics.some(o=>o.erase===0&&o.column===this.column))this.bowserPalette=true;
   if(task===7||task===3)for(const command of this.commands)if(command.column===this.column&&!(warpHandled&&command.command===5))this.locked=!this.locked;
   if(task===4||task===0)this.column++;
  }

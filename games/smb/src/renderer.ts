@@ -162,8 +162,9 @@ export class GameRenderer {
    const flipY=e.dead>0&&!s.castleBowserFalls(e);
    // The head half is the native anchor: at the body's left edge when he faces left, 16 px in (the body's right half) when he faces right.
    const right=e.bowser?e.bowser.side>0:e.vx>0,headX=e.bowser&&right?x+16:x;
-   this.enemyCell(35+(e.nativeBowser?e.nativeBowser.controls>>7&1:phase)*2,headX,y-8,e.palette??'0f-1a-30-27',!right,flipY);
-   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,e.palette??'0f-1a-30-27',!right,flipY);return;
+   const colors=s.bowserPalette?e.palette??'0f-1a-30-27':manifest.palette_observations[s.area.palette].palette.slice(20,24).map(c=>c.toString(16).padStart(2,'0')).join('-');
+   this.enemyCell(35+(e.nativeBowser?e.nativeBowser.controls>>7&1:phase)*2,headX,y-8,colors,!right,flipY);
+   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,colors,!right,flipY);return;
   }
   palette=e.palette??palette;
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead&&e.vx<=0&&palette==='0f-16-30-27'){
@@ -231,7 +232,7 @@ export class GameRenderer {
    const descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor,palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
    for(const piece of descriptor.sprites)this.spriteTile(piece.tile,i.nativeHammer?(Math.floor(x)+piece.x)&255:x+piece.x,i.nativeHammer?((Math.floor(i.y)+piece.y)&255)+1:i.y+piece.y,palette,piece.flip_x,piece.flip_y,i.nativeHammer?2+(255-s.spriteShuffle.miscOffset(i.nativeHammer.slot))/4096:2);
   }
-  if(i.kind==='flame')this.special('bowser_flame-'+Math.floor(i.age/8)%2,x,i.y);
+  if(i.kind==='flame')this.special('bowser_flame-'+(s.random.frame>>1&1),x,i.y); // OAM attribute $82/$02: flipped on FrameCounter bit 1 (0d12a2e4 rows 12380..12419)
   if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
  }
  render(s:Simulation){

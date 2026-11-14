@@ -34,7 +34,7 @@ test('Bowser halves use native OAM cell, position and horizontal orientation on 
  let checked=0;for(const run of fixture.runs)for(const row of run.rows){if(!row.boss?.sprites.length)continue;const b=row.boss,right=Boolean(b.direction&1),actual:any[]=[];
   const renderer=Object.create(GameRenderer.prototype);renderer.spriteTile=(tile:number,x:number,y:number,palette:string,flipX:boolean,flipY:boolean)=>{if(tile!==252&&y-1<240&&y>0&&x>=0&&x<256)actual.push({x,y:y-1,tile,attributes:(flipX?64:0)|(flipY?128:0)});};
   const enemy:any={kind:'bowser',x:b.x-(right?16:0),y:b.y+32,vx:right?1:-1,dead:0,age:0,bowser:{side:right?1:-1},nativeBowser:{controls:b.controls}};
-  renderer.enemy(enemy,{level:{id:run.level},area:{id:'main'},camera:row.camera,random:{frame:0},castleBowserFalls:()=>Boolean(b.state&64)});
+  renderer.enemy(enemy,{level:{id:run.level},area:{id:'main'},camera:row.camera,random:{frame:0},bowserPalette:true,castleBowserFalls:()=>Boolean(b.state&64)});
   const order=(a:any,b:any)=>a.y-b.y||a.x-b.x||a.tile-b.tile;assert.deepEqual(actual.sort(order),row.boss.sprites.map((s:any)=>({...s,attributes:s.attributes&192})).sort(order),`${run.level}:${row.frame}`);checked++;
  }
  assert.ok(checked>100);
