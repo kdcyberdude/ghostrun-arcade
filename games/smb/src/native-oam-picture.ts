@@ -69,7 +69,7 @@ export function nativeOamPicture(s:any){
  for(const body of enemies.sort((a:any,b:any)=>a.enemySlot-b.enemySlot)){
   const e=pic(body),x=Math.floor((e.dead?e.x:e.graphicsX??e.x)-s.camera),y=Math.floor(e.dead?e.y:e.graphicsY??e.y)-24,base=s.spriteShuffle.offsets[e.enemySlot!+1],stopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped),left=(e.graphicsFacing??e.vx)<0,flip=stopped?left:left===Boolean(s.random.frame&8);
   if(hidden(e)||undrawn(e,body))continue; // its entries keep the cleared Y (248); tile, attribute and X bytes are not reconstructed
-  if(y<0||y>216&&defeatTop(e)===undefined)return {supported:false as const,reasons:['enemy-vertical-mask']};
+  if(y<0)return {supported:false as const,reasons:['enemy-vertical-mask']};
   // SprObjectOffscrChk hides whole columns, including the left column at X0.
   // A live Goomba's bytes are exact; other states reconstruct Y and X only, which alone decide the scanline cap.
   const rows=rowsOf(e,body)!;for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=x+col*8,dy=rows[row];if(dy===undefined)continue;write(base+row*8+col*4,xx<=0||xx>255||y+dy>=248?248:y+dy,tables.enemy_cells[14].tiles[row*2+(flip?1-col:col)],3|(flip?64:0),xx,e.kind==='goomba'&&!e.dead);}
