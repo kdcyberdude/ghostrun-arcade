@@ -2832,13 +2832,16 @@ export class Simulation {
   {const speedByte=Math.floor(Math.round((this.wallSpeed??p.vx)*4096)/256);if(speedByte!==0)this.marioMotion=Math.sign(speedByte);} // Player_MovingDir changes on a nonzero speed byte, before background wall stops
   this.stompedThisStep=false;
   const stepFrom=new Map<Enemy,{x:number,y:number}>(this.enemies.filter(e=>e.active).map(e=>[e,{x:e.x,y:e.y}])); // each enemy before this frame's move (native EnemiesCollision boxes)
-  const ordered=[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5));let nativeSlot=0;
+  // Cannon shots (ID51) move and touch Mario after every other enemy: a death earlier in the frame holds them, and their own hit leaves later slots moving (originals 8-2 row 2003, 5-2 row 94).
+  const cannonShot=(e:Enemy)=>e.kind==='bullet'&&Boolean(e.nativeShot)&&!e.frenzy;
+  const ordered=[...this.enemies].sort((a,b)=>Number(cannonShot(a))-Number(cannonShot(b))||(a.enemySlot??5)-(b.enemySlot??5));let nativeSlot=0;
   const self=this;
   function* nativeActors(){
    // A group can occupy a later slot while an earlier handler is still running.
    // Visit that slot at its own turn, after intervening collisions/TimerControl writes.
-   for(let slot=0;slot<6;slot++){self.visitNativeBankSlot(slot,oldBottom);nativeSlot=slot+1;for(const e of self.enemies)if(e.enemySlot===slot)yield e;}
-   for(const e of self.enemies)if(e.enemySlot===undefined)yield e;
+   for(let slot=0;slot<6;slot++){self.visitNativeBankSlot(slot,oldBottom);nativeSlot=slot+1;for(const e of self.enemies)if(e.enemySlot===slot&&!cannonShot(e))yield e;}
+   for(const e of self.enemies)if(e.enemySlot===undefined&&!cannonShot(e))yield e;
+   for(const e of self.enemies)if(cannonShot(e))yield e;
   }
   for(const e of this.placedActorStream?nativeActors():ordered){
    while(nativeSlot<=Math.min(5,e.enemySlot??5))this.visitNativeBankSlot(nativeSlot++,oldBottom);
