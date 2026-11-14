@@ -9,7 +9,10 @@ export function nativeOamPicture(s:any){
  if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.area.theme==='water'||s.player.dead&&s.phase!=='dying')reasons.push('player-variant');
  const powerup=(i:any)=>['mushroom','flower','star','1up'].includes(i.kind)&&i.nativePowerState!==undefined&&!i.emerging;
  if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i))||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed||!p.victim.dead&&!p.victim.shell)||s.blockGraphics.some((b:any)=>b.pictureY!==undefined)||s.vines.length||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup))||s.frenzyControllers?.some((c:any)=>c.slot!==undefined&&!c.lost))reasons.push('other-writer');
- if(s.area.springs?.length)reasons.push('area-writer');
+ // Springboards: six entries at their slot's offset, rows Enemy_Y, +8, +16 (Enemy_Y: the spring's top, 8 lower per compression step) and columns X, X+8;
+ // a column off X 1..255 keeps Y 248 (1ae7aeeb 2-1 rows 11640-11664 entering at the right, 13205-13223 compressed).
+ const springs:{base:number,x:number,y:number}[]=[];
+ for(const spring of s.area.springs??[]){const slot=s.spriteObjectSlot(spring);if(slot!==undefined)springs.push({base:s.spriteShuffle.offsets[slot+1],x:Math.floor(spring.x-s.camera),y:spring.y-24+8*s.springCompression(spring)});}
  // Firebars: ball k on entry slot offset + 4k, Y one line above the drawn ball, hidden off the screen's X 0..255 (19011e4d 1-4 rows 9500-11200: 8,182 of 8,182 entries; X 249-255 still drawn, rows 9585, 9724).
  const bars:{base:number,balls:{x:number,y:number}[]}[]=[];
  for(const bar of s.area.firebars??[]){const slot=s.spriteObjectSlot(bar);if(!s.firebarCenters(bar).length)continue; // not loaded: nothing drawn
@@ -64,6 +67,7 @@ export function nativeOamPicture(s:any){
  // A victim still walking (a stomped paratroopa's Koopa) keeps its own entries and its number moves to offset index 8 or 9 by a rule
  // not yet measured (all captures: 4,617 rows at 8, 699 at 9; 24a4c03d 1-3 rows 7146-7148 at 9), so such frames are refused above.
  for(const popup of s.popups){const v=popup.victim,base=s.spriteShuffle.offsets[v.enemySlot+1];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
+ for(const sp of springs)for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=sp.x+col*8;write(sp.base+row*8+col*4,xx<=0||xx>255?248:sp.y+row*8,0xfc,2,xx,false);}
  for(const bar of bars)bar.balls.forEach((b,k)=>write(bar.base+k*4,b.x<0||b.x>255?248:b.y-1,0x75,2,b.x,false));
  // A lift at y 0 is drawn off screen (native: 242 of 257 on-screen rows at y 0 hidden; 0d12a2e4 row 6023), except one starting at X 248 or right of it (all captures: 203 rows kept at Y 0, 4 hidden).
  for(const lift of lifts)for(let i=0;i*8<lift.width;i++){const xx=lift.x+i*8;write(lift.base+i*4,xx<=0||xx>255||lift.y===0&&lift.x<248?248:lift.y,91,2,xx);}

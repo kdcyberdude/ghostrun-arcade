@@ -309,7 +309,7 @@ export class GameRenderer {
     }
    }
    this.worldClip=true;
-   for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
+   for(const spring of s.area.springs??[]){const compression=s.springCompression(spring),slot=s.spriteObjectSlot(spring);this.oamContext=this.oamRows&&slot!==undefined?{base:s.spriteShuffle.offsets[slot+1],count:6}:undefined;this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');this.oamContext=undefined;}
    }
    for(const e of s.enemies){const picture=enemyRenderPicture(e,s.frame,s.nativeTimersStopped);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90){this.oamContext=this.oamRows?{base:s.spriteShuffle.offsets[picture.enemySlot!+1],count:6}:undefined;this.enemyTopRowHidden=!picture.dead&&!picture.shell&&s.popups.some(p=>p.victim===e); // the stomp row's floatey takes the slot's first two entries over the pre-stomp picture's top row (1-1 b47452ef picture 901)
     this.enemy(e,s);this.enemyTopRowHidden=false;this.oamContext=undefined;}}this.enemyOamZ=2;
