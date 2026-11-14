@@ -84,7 +84,8 @@ export class LiveWorld1StateAudit{
    if(!model.physicalScene){out.gaps.push('model-physical-scene-unavailable');return finish();}
    if(!model.physicalScene.bindings.some(b=>b.data===ptr&&b.offset===this.binding!.offset)){out.gaps.push('post-level-scene-ownership-mismatch');return finish();}
   }
-  check('cam',raw[0x71a]*256+raw[0x71c]+this.binding.offset,((model.cam-this.binding.offset)&65535)+this.binding.offset); // ScreenLeft is a 16-bit page/x pair: a camera wound back before 0 (4-4 maze loop) reads 65536 less, as in native-strictcheck('x',raw[0x6d]*256+raw[0x86]+this.binding.offset,model.x);check('y',(raw[0xb5]-1)*256+raw[0xce],model.y);
+  // ScreenLeft and Mario's x are 16-bit page/x pairs: a position wound back before 0 (4-4 maze loop) reads 65536 more.
+  check('cam',raw[0x71a]*256+raw[0x71c]+this.binding.offset,((model.cam-this.binding.offset)&65535)+this.binding.offset);check('x',raw[0x6d]*256+raw[0x86]+this.binding.offset,((model.x-this.binding.offset)&65535)+this.binding.offset);check('y',(raw[0xb5]-1)*256+raw[0xce],model.y);
   const native=strictNativeEntities(raw,this.binding.offset),difference=strictEntityDifferences(native,model.entities);
   out.checked.push('entities.slot-kind-position-cardinality');out.gaps.push(...[...difference.gaps,...model.entityGaps].map(g=>g.code+':'+g.detail));
   for(const d of difference.mismatches)out.differences.push({field:'entities.'+d.code,native:d.native,model:d.sim});return finish();
