@@ -21764,7 +21764,7 @@
       {
         "id": "main",
         "width": 3456,
-        "palette": 1,
+        "palette": 0,
         "theme": "ground",
         "background": "#6888fc",
         "tiles": [
@@ -26971,7 +26971,7 @@
       {
         "id": "bonus-coins",
         "width": 256,
-        "palette": 4,
+        "palette": 3,
         "theme": "underground",
         "background": "#000000",
         "tiles": [
@@ -58112,7 +58112,7 @@
       {
         "id": "bonus-coins",
         "width": 256,
-        "palette": 4,
+        "palette": 3,
         "theme": "underground",
         "background": "#000000",
         "tiles": [
@@ -58652,7 +58652,7 @@
       {
         "id": "main",
         "width": 3552,
-        "palette": 16,
+        "palette": 15,
         "theme": "night",
         "background": "#000000",
         "tiles": [
@@ -77553,7 +77553,7 @@
       {
         "id": "bonus-coins",
         "width": 256,
-        "palette": 4,
+        "palette": 3,
         "theme": "underground",
         "background": "#000000",
         "tiles": [
@@ -86240,7 +86240,7 @@
       {
         "id": "bonus-coins",
         "width": 256,
-        "palette": 4,
+        "palette": 3,
         "theme": "underground",
         "background": "#000000",
         "tiles": [
@@ -92712,7 +92712,7 @@
       {
         "id": "main",
         "width": 3072,
-        "palette": 7,
+        "palette": 6,
         "theme": "castle",
         "background": "#000000",
         "tiles": [
@@ -103367,7 +103367,7 @@
       {
         "id": "bonus-coins",
         "width": 256,
-        "palette": 4,
+        "palette": 3,
         "theme": "underground",
         "background": "#000000",
         "tiles": [
@@ -103887,7 +103887,7 @@
       {
         "id": "area-2",
         "width": 3424,
-        "palette": 25,
+        "palette": 24,
         "theme": "snow",
         "background": "#6888fc",
         "tiles": [
@@ -116699,7 +116699,7 @@
       {
         "id": "main",
         "width": 2560,
-        "palette": 7,
+        "palette": 6,
         "theme": "castle",
         "background": "#000000",
         "tiles": [
@@ -134159,7 +134159,7 @@
       {
         "id": "bonus-coins",
         "width": 256,
-        "palette": 4,
+        "palette": 3,
         "theme": "underground",
         "background": "#000000",
         "tiles": [
@@ -168968,7 +168968,7 @@
       {
         "id": "main",
         "width": 3584,
-        "palette": 7,
+        "palette": 6,
         "theme": "castle",
         "background": "#000000",
         "tiles": [
@@ -189708,7 +189708,7 @@
       {
         "id": "bonus-coins",
         "width": 256,
-        "palette": 4,
+        "palette": 3,
         "theme": "underground",
         "background": "#000000",
         "tiles": [
