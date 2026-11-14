@@ -11,7 +11,7 @@ import {policy,policyHash} from './native-monitor/visual-check.mjs';import {inve
 const {values:a}=parseArgs({options:{monitor:{type:'string'},out:{type:'string'},ids:{type:'string'},levels:{type:'string'},jobs:{type:'string',default:'1'},batch:{type:'string',default:'16'},port:{type:'string',default:'54021'},dump:{type:'string'},'pilot-frames':{type:'string'},windows:{type:'string'}}});if(!a.monitor||!a.out)throw Error('--monitor and --out required');
 const batch=Number(a.batch),pilot=a['pilot-frames']?Number(a['pilot-frames']):undefined;if(!Number.isInteger(batch)||batch<1||batch>32||pilot!==undefined&&(!a.ids||!Number.isInteger(pilot)||pilot<1||pilot>512))throw Error('batch1..32; pilot requires explicit ids and1..512 frames');
 // --windows FILE: {id:[[from,to],...]} re-checks only those frames (a targeted re-verification, never a level total): other frames are
-// simulated without drawing and reported unchecked; a frame is drawn only when the next one is compared.
+// still drawn (skipping draws left stale renderer state: whole later recordings mismatched) but not compared, and the run stops after the last window.
 const windows:Record<string,[number,number][]>|undefined=a.windows?JSON.parse(fs.readFileSync(a.windows,'utf8')):undefined;
 const scope=a.levels?validateScope({levels:a.levels.split(',').filter(Boolean),frameSelection:'all-target-level-frames'}):undefined;
 const monitor=path.resolve(a.monitor),root=path.resolve('games/smb'),recovered='/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native',read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8')),sha=(b:any)=>createHash('sha256').update(b).digest('hex');
@@ -62,8 +62,8 @@ async function audit(input:any,page:any){
    const count=Math.min(batch,limit-from),body=Buffer.alloc(count*240*224+count*224),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224);
    if(fs.readSync(pixelFd,pix,0,pix.length,from*240*224)!==pix.length||fs.readSync(emphFd,emph,0,emph.length,from*224)!==emph.length)throw Error('Native picture truncated');pixelsHash.update(pix);emphasisHash.update(emph);
    const key=String(++feedKey);feed.set(key,body);
-   const compare=Array.from({length:count},(_,i)=>chosen(from+i)&&!lag.has(from+i)),skip=Array.from({length:count},(_,i)=>lag.has(from+i)),draw=Array.from({length:count},(_,i)=>!win||chosen(from+i+1));
-   const rows=await page.evaluate(async({key,count,pads,names,compare,skip,draw}:any)=>{
+   const compare=Array.from({length:count},(_,i)=>chosen(from+i)&&!lag.has(from+i)),skip=Array.from({length:count},(_,i)=>lag.has(from+i))
+   const rows=await page.evaluate(async({key,count,pads,names,compare,skip}:any)=>{
     const w=window as any,a=w.audit,body=new Uint8Array(await (await fetch('/__native-feed/'+key)).arrayBuffer()),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224),rows=[];a.pictures=[];
     for(let f=0;f<pads.length;f++){
      if(compare[f]){
@@ -71,9 +71,9 @@ async function audit(input:any,page:any){
       for(let y=0;y<224;y++)for(let x=0;x<240;x++){const k=y*240+x,index=pix[f*240*224+k],c=a.rgb[index|emph[f*224+y]<<6],j=k*4;if(!c)throw Error('Unknown emphasis');a.native[j]=c[0];a.native[j+1]=c[1];a.native[j+2]=c[2];a.native[j+3]=255;const packed=remake[j]<<16|remake[j+1]<<8|remake[j+2],mapped=a.palette[index]===packed?a.rgb[index]:a.mapping.get(packed);if(mapped){remake[j]=mapped[0];remake[j+1]=mapped[1];remake[j+2]=mapped[2];}}
       const picture=a.compareFrame(a.native,remake,240,224,a.policy,a.work);a.pictures.push(remake);rows.push({picture});
      }else{a.pictures.push(null);rows.push(null);}
-     if(!skip[f]){const buttons=names.filter((_:any,b:number)=>pads[f]&(1<<b));if(draw[f])w.mario.step(buttons,1);else{const sim=w.marioDebug.simulation;sim.step(buttons,1);sim.events.length=0;}}
+     if(!skip[f])w.mario.step(names.filter((_:any,b:number)=>pads[f]&(1<<b)),1);
     }return rows;
-   },{key,count,pads:Array.from(pads.subarray(from,from+count)),names,compare,skip,draw});
+   },{key,count,pads:Array.from(pads.subarray(from,from+count)),names,compare,skip});
    feed.delete(key);
    for(let i=0;i<count;i++){
     const f=from+i,row=rows[i];pictures[f]=row?{status:row.picture.status==='pass'?'match':'mismatch',picture:row.picture}:{status:'unchecked'};
