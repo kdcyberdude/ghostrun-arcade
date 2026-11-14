@@ -1801,7 +1801,7 @@ export class Simulation {
   n.collision=collision.collision;if(action==='none')return;
   if(action==='hurt'){this.hurt();return;}
   e.dead=1;n.state=action==='stomp'?0x20:(n.state&0x10)|0x22;n.y-=2;
-  if(action==='stomp'){n.speed=0;n.force=0;e.vx=0;p.vy=-3+(p.vy-Math.floor(p.vy));p.grounded=false;this.emit('sfx_stomp');}
+  if(action==='stomp'){n.speed=0;n.force=0;e.vx=0;p.vy=-3+(p.vy-Math.floor(p.vy));p.grounded=false;this.bouncing=true;this.stompBounce();this.landJump='inactive';this.emit('sfx_stomp');} // the bounce keeps the fall gravity, A held or not (7-1 original rows 2584-2588)
   else{n.speed=-3;e.nativeDir=Math.floor(e.x)-Math.floor(p.x)<0?-1:1;e.vx=e.nativeDir;this.emit('sfx_kick');}
   this.floateyScore(1000);this.enemyPopup(1000,e);
  }
