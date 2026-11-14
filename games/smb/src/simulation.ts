@@ -1108,7 +1108,7 @@ export class Simulation {
    this.jumpPose=false;
    const lr=buttons.has('down')&&wasGrounded?0:Number(buttons.has('right'))|Number(buttons.has('left'))<<1;
    if(water&&refreshSpeed)anim.setSpeed(absolute); // OnGroundStateSub on the water floor (the land motor sets it otherwise)
-   const m=water?{speed:Math.round(p.vx*4096),absolute:Math.abs(Math.floor(Math.round(p.vx*4096)/256)),moving:Math.sign(p.vx),facing:p.facing}:this.motor;
+   const m=water?{speed:Math.round(p.vx*4096),absolute:this.swimAbsolute,moving:Math.sign(p.vx),facing:p.facing}:this.motor; // Player_XSpeedAbsolute keeps this frame's speed when a wall then zeroes Player_X_Speed (2-2 371fe2fe row 20302: speed 0, absolute $15, still skidding)
    const byte=Math.floor(m.speed/256)&255;
    if(p.duck||byte===0&&lr===0){pose.kind='stand';anim.still();}
    else if(m.absolute>=9&&m.moving!==m.facing){pose.kind='skid';anim.still();}
