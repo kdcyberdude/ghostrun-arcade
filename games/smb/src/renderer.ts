@@ -333,7 +333,8 @@ export class GameRenderer {
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly||popup.hiddenFrame===s.frame)continue; // a lower slot's floatey ran before the shell reached it
     const v=popup.victim;this.oamContext=this.oamRows&&v?.enemySlot!==undefined?{base:s.spriteShuffle.offsets[v.enemySlot+1],count:2}:undefined; // the composer's floatey entries
-    for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,2.5);this.oamContext=undefined;
+    const z=v?.enemySlot!==undefined?2+(255-s.spriteShuffle.offsets[v.enemySlot+1])/4096:2.5; // its slot's OAM depth: a bumped brick at entries 26-29 covers a floatey at 40-41 (97387d10 1-2 picture 3582)
+    for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,z);this.oamContext=undefined;
    }
    for(const bar of s.area.firebars??[]){const slot=s.spriteObjectSlot(bar),centers=s.firebarCenters(bar);this.oamContext=this.oamRows&&slot!==undefined?{base:s.spriteShuffle.offsets[slot+1],count:centers.length}:undefined;for(const {x,y}of centers)this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x-4-s.camera,y-4+(bar.visualOffsetY??0));this.oamContext=undefined;}
    const pole=s.area.exit;
