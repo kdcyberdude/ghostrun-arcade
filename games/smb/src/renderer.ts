@@ -354,7 +354,7 @@ export class GameRenderer {
  }
  private castleRescue(s:Simulation){
   const exit=s.area.exit;if(exit?.kind!=='axe'||['intro','gameover','title'].includes(s.phase))return;
-  const actor=s.castleRetainer;if(actor?.graphicsVisible){const first=this.scene.children.length;this.enemyCell(s.level.id==='8-4'?26:27,actor.x-Math.floor(s.camera),actor.y+1,'0f-16-30-27');this.retainerMeshes=this.scene.children.slice(first);}
+  const actor=s.castleRetainer;if(actor?.graphicsVisible){const before=this.scene?.children.length;this.enemyCell(s.level.id==='8-4'?26:27,actor.x-Math.floor(s.camera),actor.y+1,'0f-16-30-27');if(before!==undefined)this.retainerMeshes=this.scene.children.slice(before);}
   if(s.castleStage!=='message'&&s.phase!=='ending')return;
   if(s.castleText){for(const row of s.castleText)this.text(row.text,row.x-s.camera,row.y);return;}
   const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
