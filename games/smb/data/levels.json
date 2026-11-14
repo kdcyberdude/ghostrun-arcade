@@ -46684,6 +46684,46 @@
             213,
             3,
             133
+          ],
+          [
+            52,
+            3,
+            129
+          ],
+          [
+            53,
+            3,
+            129
+          ],
+          [
+            100,
+            3,
+            129
+          ],
+          [
+            101,
+            3,
+            129
+          ],
+          [
+            148,
+            3,
+            129
+          ],
+          [
+            149,
+            3,
+            129
+          ],
+          [
+            196,
+            3,
+            129
+          ],
+          [
+            197,
+            3,
+            129
           ]
         ],
         "enemies": [
@@ -47143,78 +47183,6 @@
           }
         ],
         "patternOverrides": [
-          [
-            104,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            105,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            106,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            200,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            201,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            202,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            296,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            297,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            298,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            392,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            393,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            394,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
           [
             3,
             18,
@@ -56549,6 +56517,106 @@
             177,
             4,
             133
+          ],
+          [
+            19,
+            3,
+            129
+          ],
+          [
+            28,
+            2,
+            129
+          ],
+          [
+            46,
+            2,
+            129
+          ],
+          [
+            49,
+            3,
+            129
+          ],
+          [
+            50,
+            3,
+            129
+          ],
+          [
+            67,
+            3,
+            129
+          ],
+          [
+            79,
+            3,
+            129
+          ],
+          [
+            80,
+            3,
+            129
+          ],
+          [
+            81,
+            8,
+            11
+          ],
+          [
+            97,
+            3,
+            129
+          ],
+          [
+            98,
+            3,
+            129
+          ],
+          [
+            113,
+            12,
+            77
+          ],
+          [
+            115,
+            3,
+            129
+          ],
+          [
+            127,
+            3,
+            129
+          ],
+          [
+            128,
+            3,
+            129
+          ],
+          [
+            145,
+            3,
+            129
+          ],
+          [
+            146,
+            3,
+            129
+          ],
+          [
+            163,
+            3,
+            129
+          ],
+          [
+            175,
+            3,
+            129
+          ],
+          [
+            176,
+            3,
+            129
           ]
         ],
         "enemies": [
@@ -57754,162 +57822,6 @@
         ],
         "patternOverrides": [
           [
-            38,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            98,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            99,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            100,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            134,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            158,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            159,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            160,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            194,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            195,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            196,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            226,
-            24,
-            128,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            226,
-            25,
-            160,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            230,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            254,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            255,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            256,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            290,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            291,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            292,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            326,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            350,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            351,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            352,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            56,
-            5,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            92,
-            5,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
             104,
             24,
             36,
@@ -57982,24 +57894,6 @@
             "background-tiles-0f-07-17-00.png"
           ],
           [
-            162,
-            16,
-            36,
-            "background-tiles-0f-07-17-00.png"
-          ],
-          [
-            162,
-            17,
-            192,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            163,
-            16,
-            36,
-            "background-tiles-0f-07-17-00.png"
-          ],
-          [
             186,
             24,
             36,
@@ -58036,28 +57930,10 @@
             "background-tiles-0f-07-17-00.png"
           ],
           [
-            226,
-            24,
-            128,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            226,
-            25,
-            160,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
             227,
             22,
             36,
             "background-tiles-0f-07-17-00.png"
-          ],
-          [
-            227,
-            25,
-            161,
-            "background-tiles-0f-36-17-0f.png"
           ],
           [
             296,
@@ -63433,6 +63309,116 @@
             195,
             4,
             133
+          ],
+          [
+            19,
+            3,
+            129
+          ],
+          [
+            23,
+            12,
+            78
+          ],
+          [
+            31,
+            3,
+            129
+          ],
+          [
+            32,
+            3,
+            129
+          ],
+          [
+            49,
+            3,
+            129
+          ],
+          [
+            50,
+            3,
+            129
+          ],
+          [
+            67,
+            3,
+            129
+          ],
+          [
+            71,
+            12,
+            78
+          ],
+          [
+            79,
+            3,
+            129
+          ],
+          [
+            80,
+            3,
+            129
+          ],
+          [
+            97,
+            3,
+            129
+          ],
+          [
+            98,
+            3,
+            129
+          ],
+          [
+            115,
+            3,
+            129
+          ],
+          [
+            127,
+            3,
+            129
+          ],
+          [
+            128,
+            3,
+            129
+          ],
+          [
+            145,
+            3,
+            129
+          ],
+          [
+            146,
+            3,
+            129
+          ],
+          [
+            163,
+            3,
+            129
+          ],
+          [
+            175,
+            3,
+            129
+          ],
+          [
+            176,
+            3,
+            129
+          ],
+          [
+            193,
+            3,
+            129
+          ],
+          [
+            194,
+            3,
+            129
           ]
         ],
         "enemies": [
@@ -64822,114 +64808,6 @@
         ],
         "patternOverrides": [
           [
-            38,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            62,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            63,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            64,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            98,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            99,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            100,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            134,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            158,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            159,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            160,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            194,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            195,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            196,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            230,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            254,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            255,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            256,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
             278,
             22,
             186,
@@ -64954,88 +64832,10 @@
             "background-tiles-0f-30-00-10.png"
           ],
           [
-            290,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            291,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            292,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            326,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            350,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            351,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            352,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            386,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            387,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            388,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
             442,
             5,
             56,
             "background-tiles-0f-30-21-0f.png"
-          ],
-          [
-            46,
-            24,
-            190,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            46,
-            25,
-            190,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            47,
-            24,
-            191,
-            "background-tiles-0f-36-17-0f.png"
           ],
           [
             48,
@@ -65096,12 +64896,6 @@
             25,
             36,
             "background-tiles-0f-07-17-00.png"
-          ],
-          [
-            142,
-            24,
-            190,
-            "background-tiles-0f-36-17-0f.png"
           ],
           [
             324,
@@ -68648,6 +68442,51 @@
             117,
             3,
             133
+          ],
+          [
+            39,
+            6,
+            129
+          ],
+          [
+            52,
+            3,
+            129
+          ],
+          [
+            53,
+            3,
+            129
+          ],
+          [
+            78,
+            7,
+            76
+          ],
+          [
+            87,
+            6,
+            129
+          ],
+          [
+            100,
+            3,
+            129
+          ],
+          [
+            101,
+            3,
+            129
+          ],
+          [
+            105,
+            7,
+            76
+          ],
+          [
+            106,
+            7,
+            76
           ]
         ],
         "enemies": [
@@ -69185,48 +69024,6 @@
             "background-tiles-22-27-16-0f.png"
           ],
           [
-            78,
-            13,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            104,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            105,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            106,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            156,
-            15,
-            82,
-            "background-tiles-0f-07-17-0f.png"
-          ],
-          [
-            157,
-            15,
-            82,
-            "background-tiles-0f-07-17-0f.png"
-          ],
-          [
-            174,
-            13,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
             179,
             15,
             42,
@@ -69257,24 +69054,6 @@
             "background-tiles-22-27-16-0f.png"
           ],
           [
-            200,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            201,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            202,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
             204,
             23,
             255,
@@ -69285,30 +69064,6 @@
             23,
             255,
             "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            210,
-            15,
-            82,
-            "background-tiles-0f-07-17-0f.png"
-          ],
-          [
-            211,
-            15,
-            82,
-            "background-tiles-0f-07-17-0f.png"
-          ],
-          [
-            212,
-            15,
-            82,
-            "background-tiles-0f-07-17-0f.png"
-          ],
-          [
-            213,
-            15,
-            82,
-            "background-tiles-0f-07-17-0f.png"
           ],
           [
             262,
@@ -78335,6 +78090,91 @@
             213,
             3,
             133
+          ],
+          [
+            28,
+            3,
+            129
+          ],
+          [
+            29,
+            3,
+            129
+          ],
+          [
+            30,
+            3,
+            129
+          ],
+          [
+            57,
+            3,
+            129
+          ],
+          [
+            76,
+            3,
+            129
+          ],
+          [
+            77,
+            3,
+            129
+          ],
+          [
+            78,
+            3,
+            129
+          ],
+          [
+            105,
+            3,
+            129
+          ],
+          [
+            124,
+            3,
+            129
+          ],
+          [
+            125,
+            3,
+            129
+          ],
+          [
+            126,
+            3,
+            129
+          ],
+          [
+            153,
+            3,
+            129
+          ],
+          [
+            172,
+            3,
+            129
+          ],
+          [
+            173,
+            3,
+            129
+          ],
+          [
+            174,
+            3,
+            129
+          ],
+          [
+            201,
+            3,
+            129
+          ],
+          [
+            212,
+            2,
+            129
           ]
         ],
         "enemies": [
@@ -79216,156 +79056,6 @@
           }
         ],
         "patternOverrides": [
-          [
-            56,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            57,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            58,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            59,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            60,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            114,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            152,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            153,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            154,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            155,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            156,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            210,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            248,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            249,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            250,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            251,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            252,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            306,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            344,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            345,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            346,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            347,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            348,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            402,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            424,
-            5,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
           [
             264,
             16,
@@ -93582,6 +93272,46 @@
             136,
             7,
             133
+          ],
+          [
+            68,
+            9,
+            80
+          ],
+          [
+            94,
+            11,
+            128
+          ],
+          [
+            94,
+            12,
+            131
+          ],
+          [
+            131,
+            8,
+            131
+          ],
+          [
+            132,
+            7,
+            129
+          ],
+          [
+            132,
+            8,
+            132
+          ],
+          [
+            133,
+            8,
+            133
+          ],
+          [
+            135,
+            6,
+            129
           ]
         ],
         "enemies": [
@@ -94064,12 +93794,6 @@
             "background-tiles-0f-36-17-0f.png"
           ],
           [
-            136,
-            18,
-            37,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
             142,
             18,
             37,
@@ -94176,18 +93900,6 @@
             18,
             67,
             "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            264,
-            15,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            270,
-            13,
-            37,
-            "background-tiles-0f-30-00-10.png"
           ],
           [
             40,
@@ -94328,12 +94040,6 @@
             "background-tiles-22-07-12-0f.png"
           ],
           [
-            137,
-            18,
-            67,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
             143,
             18,
             67,
@@ -94420,42 +94126,6 @@
           [
             181,
             16,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            188,
-            22,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            188,
-            23,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            188,
-            24,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            188,
-            25,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            189,
-            22,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            189,
-            25,
             36,
             "background-tiles-22-07-12-0f.png"
           ],
@@ -94728,54 +94398,6 @@
             18,
             67,
             "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            262,
-            16,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            262,
-            17,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            263,
-            17,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            264,
-            17,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            265,
-            17,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            266,
-            17,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            267,
-            16,
-            36,
-            "background-tiles-22-07-12-0f.png"
-          ],
-          [
-            267,
-            17,
-            36,
-            "background-tiles-22-07-12-0f.png"
           ],
           [
             3,
