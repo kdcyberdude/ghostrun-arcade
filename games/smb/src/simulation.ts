@@ -1456,8 +1456,8 @@ export class Simulation {
  private passNativeCannons(){
   if(!this.cannonPassDue)return;this.cannonPassDue=false;
   this.freeNativeSlot();
-  // Busy slots: the native slot model (releaseNativeSlots: a removed walker keeps its slot until native x - camera < -74); a cannon shot is removed inside the pass, after its own slot's turn.
-  const used=new Set<number|undefined>(this.enemies.filter(e=>e.active&&(e.nativeShot?!e.dead||e.goneFrame===this.frame:!e.slotFreed&&(!e.dead||e.enemySlot!==undefined))).map(e=>e.enemySlot));
+  // Busy slots: the native slot model (releaseNativeSlots: a removed walker keeps its slot until native x - camera < -74); a cannon shot is removed inside the pass, after its own slot's turn; a stomped one holds its slot while it falls (7-1 original rows 2274-2310).
+  const used=new Set<number|undefined>(this.enemies.filter(e=>e.active&&(e.nativeShot?!e.dead||e.dead<100&&!e.slotFreed||e.goneFrame===this.frame:!e.slotFreed&&(!e.dead||e.enemySlot!==undefined))).map(e=>e.enemySlot));
   for(const held of this.objectSlots(used))used.add(held);
   for(const e of this.enemies)if(this.nativeLoadsThisFrame(e)){let slot=0;while(used.has(slot))slot++;used.add(slot);}
   const mask=this.secondaryHardMode?7:15,b=this.random.bytes;
