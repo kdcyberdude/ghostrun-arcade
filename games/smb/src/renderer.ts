@@ -164,7 +164,8 @@ export class GameRenderer {
    const right=e.bowser?e.bowser.side>0:e.vx>0,headX=e.bowser&&right?x+16:x;
    const colors=s.bowserPalette?e.palette??'0f-1a-30-27':manifest.palette_observations[s.area.palette].palette.slice(20,24).map(c=>c.toString(16).padStart(2,'0')).join('-');
    this.enemyCell(35+(e.nativeBowser?e.nativeBowser.controls>>7&1:phase)*2,headX,y-8,colors,!right,flipY);
-   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,colors,!right,flipY);return;
+   const rear=e.nativeBowser?.rearSlot,rearZ=rear===undefined?this.enemyOamZ:2+(255-s.spriteShuffle.offsets[rear+1])/4096; // the rear half has its own slot's OAM offset (0d12a2e4 row 18152: rear 40 < lift 64 < head 232)
+   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,colors,!right,flipY,rearZ);return;
   }
   palette=e.palette??palette;
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead&&e.vx<=0&&palette==='0f-16-30-27'){
@@ -283,7 +284,7 @@ export class GameRenderer {
     const context={levelId:s.level.id,areaId:s.area.id},pos=s.platformPicturePosition(platform);
     for(const y of nativePlatformArtworkYs(platform,context,pos.y)){
      if(platformMotionModel(platform,context)==='contact-cloud')this.special(s.platformWidth(platform)===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,y);
-     else{const slot=s.spriteObjectSlot(platform);this.oamContext=this.oamRows&&slot!==undefined?{base:s.spriteShuffle.offsets[slot+1],x:Math.floor(pos.x-s.camera),y}:undefined;for(let i=0;i<s.platformWidth(platform);i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27');this.oamContext=undefined;}
+     else{const slot=s.spriteObjectSlot(platform),base=slot===undefined?undefined:s.spriteShuffle.offsets[slot+1];this.oamContext=this.oamRows&&base!==undefined?{base,x:Math.floor(pos.x-s.camera),y}:undefined;for(let i=0;i<s.platformWidth(platform);i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27',false,false,base===undefined?2:2+(255-base)/4096);this.oamContext=undefined;} // lower OAM offsets draw in front, as for enemies (0d12a2e4 row 18152: lift over Bowser)
     }
    }
    // Reference vines remain visible in the HUD rows while growing offscreen.
