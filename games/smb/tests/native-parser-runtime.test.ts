@@ -68,7 +68,7 @@ test('native horizontal Paratroopa birth retains horizontal and vertical slot fr
   if(frame===1857)priorFraction=sim.slotVertical[0].fraction;
   if(frame!==1858)return;
   const e=sim.enemies.find((e:any)=>e.nativeId===16&&e.active);
-  assert.ok(e);assert.equal(e.enemySlot,0);assert.deepEqual(e.horizontalFlight,{x:2240.25,y:128,primary:0,secondary:0});
+  assert.ok(e);assert.equal(e.enemySlot,0);assert.deepEqual(e.horizontalFlight,{x:2240.25,y:128,primary:0,secondary:0,fraction:priorFraction});
   assert.equal(e.graphicsVisible,false);assert.deepEqual(sim.slotVertical[0],{speed:0,force:0,fraction:priorFraction});
  });
 });
