@@ -22,14 +22,16 @@ export function nativeOamPicture(s:any){
   if(slot===undefined||s.firebarDuplicateSlot(bar)!==undefined){reasons.push('area-writer');break;}
   bars.push({base:s.spriteShuffle.offsets[slot+1],balls:s.firebarCenters(bar).map((c:any)=>({x:Math.floor(c.x-4-s.camera),y:Math.floor(c.y-4+(bar.visualOffsetY??0))}))});}
  // Lifts (DrawLargePlatform): one row of width/8 tiles at their slot's OAM offset (0d12a2e4 row 6018: slot 2, offset 96, entries 24..29).
- const context={levelId:s.level.id,areaId:s.area.id},lifts:{base:number,x:number,y:number,width:number}[]=[];
+ const context={levelId:s.level.id,areaId:s.area.id},lifts:{base:number,x:number,y:number,width:number,fromAbove:boolean}[]=[];
  for(const platform of s.area.platforms??[]){
   const ys=nativePlatformArtworkYs(platform,context,s.platformPicturePosition(platform).y);if(!ys.length)continue;
   const slot=s.spriteObjectSlot(platform);if(slot===undefined&&ys.every(y=>y<-16||y>=240))continue; // an unloaded lift is parked far off screen
   if(slot===undefined||platformMotionModel(platform,context)==='contact-cloud'){reasons.push('area-writer');break;}
   // DrawSmallPlatform: the first surface on entries 0-2, the one 128 lower on entries 3-5; a surface above the HUD line stays at Y 248 (e79163dc 2-4 row 20640: entries 13-15 at Y 144, 10-12 hidden).
   const first=s.platformPicturePosition(platform).y,surfaces=nativeSmallPlatform(platform,context)?[[0,first],[12,((first-1+128)&255)+1]].filter(([,y])=>y>=33):[[0,ys[0]]];
-  for(const [offset,y] of surfaces)lifts.push({base:s.spriteShuffle.offsets[slot+1]+offset,x:Math.floor(s.platformPicturePosition(platform).x-s.camera),y:y-1,width:s.platformWidth(platform)});
+  // The picture one frame earlier: a lift reaching Y 0 from above the screen (Y 255) is still hidden (all captures, ids 26/27 at Y 0: 500 of 500 from 255 hidden, 523 of 523 from 0 or 1 drawn).
+  const before=s.platformPosition(platform,s.platformFrame-(nativeSmallPlatform(platform,context)?1:0)-1).y,fromAbove=(y:number,offset:number)=>y===1&&((offset?((before-1+128)&255):before-1)&255)===255;
+  for(const [offset,y] of surfaces)lifts.push({base:s.spriteShuffle.offsets[slot+1]+offset,x:Math.floor(s.platformPicturePosition(platform).x-s.camera),y:y-1,width:s.platformWidth(platform),fromAbove:fromAbove(y,offset)});
  }
  // Bowser alive: his head on his slot's six entries (rows feet-32, -24, -16), his rear on the rear slot's six, 8 lower and 16 behind
  // (32183fd4 1-4 rows 14079-14080: head 18-23 / 40-45 at X 224, rear 24-29 / 46-51 at X 240).
@@ -91,8 +93,8 @@ export function nativeOamPicture(s:any){
   for(let row=0;row<2;row++)for(let col=0;col<2;col++)write(base+row*8+col*4,bits&(col?4:8)?248:(b.pictureY+row*8)&255,0x86,3,(Math.floor(b.x)-Math.floor(s.camera)+col*8)&255,false);}
  for(const sp of springs)for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=sp.x+col*8;write(sp.base+row*8+col*4,xx<=0||xx>255?248:sp.y+row*8,0xfc,2,xx,false);}
  for(const bar of bars)bar.balls.forEach((b,k)=>write(bar.base+k*4,b.x<0||b.x>255?248:b.y-1,0x75,2,b.x,false));
- // A lift at y 0 is drawn off screen (native: 242 of 257 on-screen rows at y 0 hidden; 0d12a2e4 row 6023), except one starting at X 248 or right of it (all captures: 203 rows kept at Y 0, 4 hidden).
- for(const lift of lifts)for(let i=0;i*8<lift.width;i++){const xx=lift.x+i*8;write(lift.base+i*4,xx<=0||xx>255||lift.y===0&&lift.x<248?248:lift.y,91,2,xx);}
+ // A lift at Y 0 that came from above the screen keeps Y 248 (0d12a2e4 row 6023); one already at the top is drawn (b230c302 1-2 row 6853: X 5, Y 0).
+ for(const lift of lifts)for(let i=0;i*8<lift.width;i++){const xx=lift.x+i*8;write(lift.base+i*4,xx<=0||xx>255||lift.fromAbove?248:lift.y,91,2,xx);}
  if(overlapping)return {supported:false as const,reasons:['overlapping-writer']};
  return {supported:true as const,reasons,oam,written};
 }
