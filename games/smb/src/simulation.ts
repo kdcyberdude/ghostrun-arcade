@@ -735,7 +735,7 @@ export class Simulation {
   const height=this.height;
   let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom,this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom),(this.area.platforms??[]).filter(p=>!nativePlatformObject(p,this.platformMotion.context)));springJumped=this.updateSprings(oldBottom,b.has('a'));if(groundStomp){p.y+=this.landingFraction;this.walkingOff=true;}else if(!springJumped&&!nativeGroundOnly)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
-  this.updateBubbles();this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom);if(nativePlayerHoleLocks(Math.floor((p.y-(this.swimActive?this.water.whirlMoved:0)-32)/256)+1))this.areaControls.locked=true;this.hammerPlayerBox??=nativePlayerBox(p.x,p.y,p.size,p.duck,this.camera);if(this.hammerPlayerBox){this.hammerPlayerBox[0]=(this.hammerPlayerBox[0]-this.lakituScroll)&255;this.hammerPlayerBox[2]=(this.hammerPlayerBox[2]-this.lakituScroll)&255;}this.updateEnemies(oldBottom);this.updateItems();this.restoreStarMusic();
+  this.updateBubbles();this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom);if(nativePlayerHoleLocks(Math.floor((p.y-(this.swimActive?this.water.whirlMoved:0)-32)/256)+1))this.areaControls.locked=true;this.hammerPlayerBox??=nativePlayerBox(p.x,p.y,p.size,p.duck,this.camera);if(this.hammerPlayerBox){this.hammerPlayerBox[0]=(this.hammerPlayerBox[0]-this.lakituScroll)&255;this.hammerPlayerBox[2]=(this.hammerPlayerBox[2]-this.lakituScroll)&255;}if(this.area.theme==='castle'&&CASTLE_LOOPS[Number(this.level.id[0])]){this.loopFractions=[];for(const e of this.enemies)if(e.active&&!e.slotFreed&&e.enemySlot!==undefined&&e.enemySlot<5&&e.dead<100&&Simulation.SUBPIXEL_WALKERS.includes(e.kind))this.loopFractions[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;this.snapshotLoopVertical();}this.updateEnemies(oldBottom);this.updateItems();this.restoreStarMusic();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
   this.updateLocomotionPose(poseGrounded,poseAbsolute,jumped,poseLocked?new Set():b); // the uncontrolled water entry (engine 7) and the water bottom (PlayerCtrlRoutine DisJoyp, y >= $d0) replace the controller: 2-2 rows 352..386 and 1393.. keep swim frame 0 with A down
   const wallDisplay=poseGrounded&&p.grounded&&p.size===0&&this.area.theme==='ground'&&this.camera===0&&p.x===this.camera&&b.has('left')&&!b.has('right')&&this.locomotionPose.kind!=='jump';
@@ -2000,11 +2000,19 @@ export class Simulation {
   nativeImposeGravity(n,SPINY_EGG.down,SPINY_EGG.max);e.y=n.y;e.vy=n.speed+n.force/256;
  }
  /** Castle areas whose loop objects follow the native loop-command table (a remake maze spec on such a page is replaced by it). */
- private nativeLoopPage(x:number){const loops=CASTLE_LOOPS[Number(this.level.id[0])];return this.area.theme==='castle'&&Boolean(loops?.some(l=>l.page*256===x));}
+ private nativeLoopPage(x:number){const loops=CASTLE_LOOPS[Number(this.level.id[0])];return this.area.theme==='castle'&&Boolean(loops?.some(l=>l.page*256===x-this.nativeAreaOffset));} // pages of the physical area: a remake slice starts nativeAreaOffset into it (8-4 area-2: page 11 is x 1024)
+ private loopFractions:(number|undefined)[]=[];private loopVertical=new Map<number,{m:{speed:number;force:number;fraction:number};speed:number;fraction:number;frac:number;timer:number}>();
+ /** What rememberSlotVertical would leave in each occupied slot at the start of this row, without writing it. */
+ private snapshotLoopVertical(){
+  const keep=(s:number)=>({m:{...this.slotVertical[s]},speed:this.slotYSpeed[s],fraction:this.slotYFraction[s],frac:this.slotYFrac[s],timer:this.slotFrameTimers[s]});
+  const before=[0,1,2,3,4].map(keep);this.rememberSlotVertical();this.loopVertical.clear();
+  for(const e of this.enemies)if(e.active&&!e.slotFreed&&e.enemySlot!==undefined&&e.enemySlot<5)this.loopVertical.set(e.enemySlot,keep(e.enemySlot));
+  before.forEach((v,s)=>{Object.assign(this.slotVertical[s],v.m);this.slotYSpeed[s]=v.speed;this.slotYFraction[s]=v.fraction;this.slotYFrac[s]=v.frac;this.slotFrameTimers[s]=v.timer;});
+ }
  private nativeLoopCommand(){
   const loops=CASTLE_LOOPS[Number(this.level.id[0])],x=this.scrollCrossCamera+LOOP_PARSER_AHEAD;
   if(this.frame!==this.scrollCrossFrame+LOOP_CHECK_ROWS||x%256!==0||!this.nativeLoopPage(x))return;
-  const loop=loops.find(l=>l.page*256===x)!,p=this.player,right=Math.floor(p.y)-32===loop.y&&p.grounded;
+  const loop=loops.find(l=>l.page*256===x-this.nativeAreaOffset)!,p=this.player,right=Math.floor(p.y)-32===loop.y&&p.grounded;
   if(this.level.id[0]==='7'){if(right)this.loopCorrect++;if(++this.loopPass<3)return;const all=this.loopCorrect===3;this.loopPass=0;this.loopCorrect=0;if(all)return;}
   else if(right)return;
   p.x-=LOOP_BACK;this.camera-=LOOP_BACK;this.loopScrollAdjustment+=LOOP_BACK;this.areaControls.column-=LOOP_BACK/16;
@@ -2020,10 +2028,13 @@ export class Simulation {
   // KillAllEnemies, and the enemy data restarts from its first object: objects left of the screen's right edge are skipped, the rest load again as they come in range.
   const edge=this.camera+256;
   this.firebarSlots?.loopBack(edge); // preserve the source pre-loop angle before erasing bank ownership
+  this.loopFractions.forEach((sub,slot)=>{if(sub!==undefined)this.slotSub[slot]=sub;}); // the erased slots keep the x fraction of the row before (the loop back precedes this row's enemy moves; 8-4 original rows 9812/9834)
+  for(const [slot,v]of this.loopVertical){Object.assign(this.slotVertical[slot],v.m);this.slotYSpeed[slot]=v.speed;this.slotYFraction[slot]=v.fraction;this.slotYFrac[slot]=v.frac;this.slotFrameTimers[slot]=v.timer;} // and their vertical bytes, also from the row before (rows 9566/10173: slot 4 keeps force 28, fraction 172)
   this.clearVictoryEnemyBank(); // the same KillAllEnemies erases every owner in slots0–4
   for(const platform of this.area.platforms??[])this.platformMotion.loopBack(platform,edge);
   for(const spec of this.area.enemies)if(spec.x>=edge&&!this.enemies.some(e=>e.originX===spec.x&&e.originY===spec.y&&e.kind===spec.kind))this.enemies.push(this.makeEnemy(spec));
   if(this.placedCastle){this.setupNativePlacedStream();this.resetNativeEnemyCursor();this.placedBankFrame=-1;this.primeNativeEntryObjects();}
+  else if(this.walkerStream)this.resetNativeEnemyCursor(); // 8-4 original row 9812: the Beetle record at x 2048 loads again after the loop back
  }
  private updateMaze(oldX:number){
   for(const state of this.mazeStates){
