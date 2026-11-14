@@ -704,7 +704,7 @@ export class Simulation {
   if(swim){this.playerXScroll=(Math.floor(p.x)-Math.floor(oldX)+this.platformScroll)&255;waterScroll=this.nativeScrollPreview(oldX,p.x,oldBottom);const beforeBounds=p.x;this.waterScreenBounds(this.camera+waterScroll);waterBoundsShift=p.x-beforeBounds;waterBoundsVx=p.vx;}p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly||groundStomp?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;if(swim)this.waterCollisionPose={x:hammerBoxX,y:hammerBoxFeet-this.water.whirlMoved-32};this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);if(!groundStomp)this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
   if(!nativeGroundOnly&&!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(this.airGravity(b),this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom));
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
-  this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y))this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
+  this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y)&&!this.coinEndsCollision)this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
   // Native contacts resume after one masked row (Player_CollisionBits are restored every frame); a zero-motion back-out row masks its side again (movePlayerX).
   // The jump class after a contact reads the stale Player_XSpeedAbsolute (native 4-2 r8m0 row373, 5-2 r8m3 row1325, 7-1 r8m5 row1933).
   // ImpedePlayerMove: the contact zeroes the speed byte (the fraction stays) and masks that side's press on the next frame.
@@ -978,7 +978,7 @@ export class Simulation {
  private stompBounceVy(vy:number,kind?:string){return (kind!==undefined&&STOMP_SPEED_THREE.includes(kind)?-3:-4)+(vy-Math.floor(vy));}
  /** A stomp made standing on the ground leaves Mario in the ground state for one more row: no vertical move and no gravity, then the bounce
   * (2-3 8f90807f row 18567 and 8c0dadd8 row 18861, the corpus's two grounded stomps: y held, speed -3.0 kept, up 3 px the row after). */
- private groundStomp=false;
+ private groundStomp=false;private coinEndsCollision=false;
  private stompBounce(){this.bounceGravity=this.fallGravity===FALL_GRAVITY_AFTER_LOAD?0.5625:this.fallGravity;}
  private airGravity(b:Set<Button>){const p=this.player;return this.bouncing?this.bounceGravity:b.has('a')&&this.landJump!=='released'&&p.vy<0?(this.runJump?0.15625:this.mediumJump?0.1171875:PHYSICS.heldGravity):(this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity);}
  // Native big Mario (evidence/power-findings-20261111.md, 1-1 probes): the head probe is 28 px above the feet standing and 14 crouched (bump at feet - ceiling 24..26 / 13, none at 28 / 16). A used block gives speed 1 plus the fraction, a question block 0 plus the fraction;
@@ -1002,7 +1002,10 @@ export class Simulation {
   const edge=down?waterFeet:(water?waterFeet:p.y)-(nativeHead?this.nativeHeadProbe(h):h);
   // HeadChk uses PlayerBGUpperExtent and the returned probe low nibble, before the late whirlpool pass.
   if(water&&!down&&(((Math.floor(waterFeet)-32)&255)<(p.size?32:16)||(Math.floor(edge)&15)<4))return;
+  this.coinEndsCollision=false;
   for(const x of (down?[p.x+3,p.x+12]:[p.x+8])){
+   // A coin under the left foot ends PlayerBGCollision (collectTiles): no right-foot landing and no side check this row (4-2 df3651d6 row 32472, the corpus's one coin/block foot pair).
+   if(down&&!water&&x===p.x+3&&[194,195].includes(this.tiles.get(`${Math.floor(x/16)},${Math.floor(edge/16)}`)!)){this.coinEndsCollision=true;break;}
    const tile=this.collisionAt(x,edge,!down&&(this.area.theme==='water'||hiddenBlockBumps(p.y)));
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
    // A foot deep in a resting springboard cell is pushed like a wall (2-1 mood rows 12473-12474: right foot 6 px into the top cell, x -1, speed 0).
