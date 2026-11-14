@@ -746,7 +746,8 @@ export class Simulation {
    if(!this.wallDisplayPose){this.wallDisplayPose={kind:'walk',frame:this.locomotionPose.frame,facing:this.locomotionPose.facing};this.wallDisplayTimer=this.playerAnim.timer;}
    else{this.wallDisplayTimer=Math.max(0,this.wallDisplayTimer-1);if(this.wallDisplayTimer===0){this.wallDisplayPose.frame=(this.wallDisplayPose.frame+1)%3;this.wallDisplayTimer=7;}this.wallDisplayPose.facing=this.locomotionPose.facing;}
   }else this.wallDisplayPose=undefined;
-  for(const [key,age]of this.bump){if(age>=16){this.bump.delete(key);this.usedBlockRehits.delete(key);}else this.bump.set(key,age+1);}
+  for(const [key,age]of this.bump){if(age>=15){ // the same block bumps again 16 rows after its last hit (a14e9c25 1-2 rows 4293, 4309)
+ this.bump.delete(key);this.usedBlockRehits.delete(key);}else this.bump.set(key,age+1);}
   this.collectTiles();
   if(!p.dead&&this.area.fallExit&&p.vy>=0&&p.y>this.area.fallExit.belowY){const exit=this.area.fallExit;this.enterArea(exit.to,exit.spawn,exit.camera);return;}
   // PlayerHole keeps engine 8 and ordinary movement through the offscreen fall. Only page 6 selects PlayerLoseLife (engine 6).
@@ -3181,7 +3182,7 @@ export class Simulation {
    const award=([500,800,1000,2000,4000,5000,8000,'1up'] as const)[Math.min(shell.shellChain??0,7)];
    this.stunShellVictim(victim);this.floateyScore(award,victim.enemySlot!<e.enemySlot?6:5);shell.shellChain=(shell.shellChain??0)+1;this.emit('sfx_kick');
    this.awardPopup(award,e.graphicsX??e.x,victim.y-31,victim); // SetupFloateyNumber: victim slot and stunned Y, X from Enemy_Rel_XPos of the object being processed (24614c5e row 3257, 0d12a2e4 row 5416)
-   if(victim===e){const label=this.popups[this.popups.length-1];label.age++;label.y--;} // the processed slot's floatey also runs this frame (e2a3c165 row 4324: timer 47, Y 181)
+   {const label=this.popups[this.popups.length-1];label.life++;if(victim===e){label.age++;label.y--;}} // a shell-kill number is drawn until its timer's 0 row, one row longer than a stomp's: the processed slot's floatey also runs this frame (e2a3c165 row 4324: timer 47, Y 181; bce85ccb rows 4446-4493, 48 rows), a lower slot's already ran, so it starts at timer 48 (02013a1a rows 4453-4501, 49 rows)
    if(e.dead)break;
   }
  }

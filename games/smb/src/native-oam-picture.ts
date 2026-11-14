@@ -4,15 +4,20 @@ import {enemyPicture,enemyPictureTimersStopped} from './enemy-picture.js';import
 export function nativeOamPicture(s:any){
  const reasons:string[]=[];
  if(s.paused||s.phase!=='play'||s.spritePictureOwner!=='engine'||s.nativeScreen||s.nativeTimersStopped||s.powerChange)reasons.push('control-owner');
- if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||['water','castle'].includes(s.area.theme)||s.player.dead)reasons.push('player-variant');
+ if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.area.theme==='water'||s.player.dead)reasons.push('player-variant');
  if(s.items.length||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed)||s.blockGraphics.some((b:any)=>b.pictureY!==undefined)||s.vines.length||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag||s.frenzyControllers?.some((c:any)=>c.slot!==undefined&&!c.lost))reasons.push('other-writer');
- if(s.area.firebars?.length||s.area.springs?.length)reasons.push('area-writer');
+ if(s.area.springs?.length)reasons.push('area-writer');
+ // Firebars: ball k on entry slot offset + 4k, Y one line above the drawn ball, hidden off the screen's X 0..255 (19011e4d 1-4 rows 9500-11200: 8,182 of 8,182 entries; X 249-255 still drawn, rows 9585, 9724).
+ const bars:{base:number,balls:{x:number,y:number}[]}[]=[];
+ for(const bar of s.area.firebars??[]){const slot=s.spriteObjectSlot(bar);if(!s.firebarCenters(bar).length)continue; // not loaded: nothing drawn
+  if(slot===undefined||s.firebarDuplicateSlot(bar)!==undefined){reasons.push('area-writer');break;}
+  bars.push({base:s.spriteShuffle.offsets[slot+1],balls:s.firebarCenters(bar).map((c:any)=>({x:Math.floor(c.x-4-s.camera),y:Math.floor(c.y-4+(bar.visualOffsetY??0))}))});}
  // Lifts (DrawLargePlatform): one row of width/8 tiles at their slot's OAM offset (0d12a2e4 row 6018: slot 2, offset 96, entries 24..29).
  const context={levelId:s.level.id,areaId:s.area.id},lifts:{base:number,x:number,y:number,width:number}[]=[];
  for(const platform of s.area.platforms??[]){
   const ys=nativePlatformArtworkYs(platform,context,s.platformPicturePosition(platform).y);if(!ys.length)continue;
   const slot=s.spriteObjectSlot(platform);if(slot===undefined&&ys.every(y=>y<-16||y>=240))continue; // an unloaded lift is parked far off screen
-  if(ys.length>1||slot===undefined||platformMotionModel(platform,context)==='contact-cloud'){reasons.push('area-writer');break;}
+  if(ys.length>1||slot===undefined||platformMotionModel(platform,context)==='contact-cloud'||s.area.theme==='castle'){reasons.push('area-writer');break;} // castle lifts keep other slot mappings (e79163dc 2-4 row 20624)
   lifts.push({base:s.spriteShuffle.offsets[slot+1],x:Math.floor(s.platformPicturePosition(platform).x-s.camera),y:ys[0]-1,width:s.platformWidth(platform)});
  }
  const enemies=s.enemies.filter((e:any)=>e.active&&enemyPicture(e).dead<90);
@@ -49,6 +54,7 @@ export function nativeOamPicture(s:any){
  // Floatey numbers: the victim slot's first two entries at Y = FloateyNum_Y - 8 (popup.y - 1), X and X+8 (fltpat: 17,618 of 23,640 rows; the rest read a shuffled offset).
  // A victim still walking (a stomped paratroopa's Koopa) keeps its own entries; its number is drawn at offset index 8 whatever the slot (fltpat: k-i 8/7/6 for slots 0/1/2; c35cb97a row 7238: slot 2, entries 54-55 = offset 216).
  for(const popup of s.popups){const v=popup.victim,base=s.spriteShuffle.offsets[v.dead||v.shell?v.enemySlot+1:8];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
+ for(const bar of bars)bar.balls.forEach((b,k)=>write(bar.base+k*4,b.x<0||b.x>255?248:b.y-1,0x75,2,b.x,false));
  // A lift at y 0 is drawn off screen (native: 242 of 257 on-screen rows at y 0 hidden; 0d12a2e4 row 6023), except one starting at X 248 or right of it (all captures: 203 rows kept at Y 0, 4 hidden).
  for(const lift of lifts)for(let i=0;i*8<lift.width;i++){const xx=lift.x+i*8;write(lift.base+i*4,xx<=0||xx>255||lift.y===0&&lift.x<248?248:lift.y,91,2,xx);}
  if(overlapping)return {supported:false as const,reasons:['overlapping-writer']};
