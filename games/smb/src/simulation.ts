@@ -3064,7 +3064,8 @@ export class Simulation {
     }
    }
    const stompWindow=normalContact??shellContact??this.nativeStompWindow(e,p,priorX,priorY),chkInj=normalContact?normalStomp&&Math.floor(p.vy)<=0:this.nativeChkInjStomp(e,p,priorX,priorY)||Boolean(e.shell&&shellContact&&this.nativeStompTimer);
-   if(!chkInj&&(stompWindow===false||stompWindow===undefined&&!overlap(p.x+3,p.y-this.height+2,10,this.height-3,e.x+2,e.y-eh,ew-4,eh))){if(e.unwingedBounce)delete e.unwingedBounce;delete e.kickOverlap;if((p.vy<=0||e.kind==='spiny')&&!this.bouncing&&!e.shell&&(Math.abs(e.x-p.x)<11||this.koopaSideReach(e.kind,priorX))&&this.nativeTouch(e,priorY,false))hurtBeforeMove();continue;} // above the stomp box a rising or standing Mario is still hurt
+   const boxX=e.nativeFlight?priorX:e.x; // a leaping Cheep Cheep's box is x+3..x+13 at its x before this frame's move (34,978 native box rows; 2-3 2f5c8c27 row 17831: |dx| 12, no touch)
+   if(!chkInj&&(stompWindow===false||stompWindow===undefined&&!overlap(p.x+3,p.y-this.height+2,10,this.height-3,boxX+2,e.y-eh,ew-4,eh))){if(e.unwingedBounce)delete e.unwingedBounce;delete e.kickOverlap;if((p.vy<=0||e.kind==='spiny')&&!this.bouncing&&!e.shell&&(e.nativeFlight?Math.abs(Math.floor(priorX)-Math.floor(p.x))<=10:Math.abs(e.x-p.x)<11||this.koopaSideReach(e.kind,priorX))&&this.nativeTouch(e,priorY,false))hurtBeforeMove();continue;} // above the stomp box a rising or standing Mario is still hurt
    if(e.kickOverlap)continue;
    if(p.star){e.dead=1;e.vy=-4;this.floateyScore(100);if(e.kind==='goomba')this.enemyPopup(100,e);this.emit('sfx_kick');continue;}
    const stompable=!['piranha','spiny','podoboo','bowser','blooper'].includes(e.kind);
