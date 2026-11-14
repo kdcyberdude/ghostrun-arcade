@@ -14,7 +14,7 @@ import {playerCell,playerVisible} from './player-cell.js';
 import {nativeScreenPicture} from './native-screen-picture.js';
 import {nativeStartupTitleShown} from './native-startup-picture.js';
 import {nativeFlagSprites} from './native-flag-picture.js';
-import {nativeBlockSprites} from './native-block-picture.js';
+import {nativeBlockSprites,nativeBrickChunkSprites} from './native-block-picture.js';
 import {enemyRenderPicture,nativeBulletPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeShellPhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
@@ -257,7 +257,6 @@ export class GameRenderer {
   }
   if(i.kind==='flame'){const context=this.oamContext;this.oamContext=this.oamRows&&i.nativeFlame?{base:s.spriteShuffle.offsets[i.nativeFlame.slot+1],count:3}:undefined;this.special('bowser_flame-'+(s.random.frame>>1&1),x,i.y+1,i.nativeFlame?2+(255-s.spriteShuffle.offsets[i.nativeFlame.slot+1])/4096:2); // its enemy slot's OAM depth, so it can pass in front of a lift (e79163dc 2-4 row 23413); OAM attribute $82/$02 flips on FrameCounter bit 1; drawn one line below OAM y = flame y (0d12a2e4 rows 12380..12465)
   this.oamContext=context;}
-  if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
  }
  render(s:Simulation){
   const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oam=oam.supported?oam.oam:undefined;this.oamWritten=oam.supported?oam.written:undefined;this.oamContext=undefined;
@@ -327,7 +326,8 @@ export class GameRenderer {
    for(const e of s.enemies){const picture=enemyRenderPicture(e,s.frame,s.nativeTimersStopped);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90){this.oamContext=this.oamRows?{base:s.spriteShuffle.offsets[picture.enemySlot!+1],count:6}:undefined;this.enemyTopRowHidden=!picture.dead&&!picture.shell&&Boolean(e.shell||e.dead)&&s.popups.some(p=>p.victim===e&&p.hiddenFrame!==s.frame); // the stomp row's floatey takes the slot's first two entries over the pre-stomp picture's top row (1-1 b47452ef picture 901); a paratroopa that only loses its wings keeps its picture (1-3 536bc848 picture 5508)
     this.enemy(e,s);this.enemyTopRowHidden=false;this.oamContext=undefined;}}this.enemyOamZ=2;
    if(ordinary){
-   for(const b of s.blockGraphics){this.oamContext=this.oamRows&&b.pictureY!==undefined?{base:s.spriteShuffle.offsets[8+b.slot],count:4}:undefined;for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY,2+(255-s.spriteShuffle.offsets[8+b.slot])/4096);}this.oamContext=undefined;} // its own OAM depth: a bumped brick at entries 26-29 covers a Koopa head at entry 40 (1-2 4340c9fa picture 3456)
+   for(const b of s.blockGraphics){this.oamContext=this.oamRows&&b.pictureY!==undefined?{base:s.spriteShuffle.offsets[8+b.slot],count:4}:undefined;for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY,2+(255-s.spriteShuffle.offsets[8+b.slot])/4096);}this.oamContext=undefined;}
+   for(const c of s.brickChunkPictures())for(const p of nativeBrickChunkSprites(c,s.random.frame,s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY,2+(255-s.spriteShuffle.offsets[8+c.slot])/4096);} // its own OAM depth: a bumped brick at entries 26-29 covers a Koopa head at entry 40 (1-2 4340c9fa picture 3456)
    for(const i of s.items)this.item(i,s);
    if(s.area.theme==='water')for(const [slot,bubble]of s.bubbles.entries())if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27',false,false,2+(255-s.spriteShuffle.offsets[10+slot])/4096);
    for(const popup of s.popups){
