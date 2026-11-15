@@ -195874,42 +195874,6 @@
             "y": 32,
             "id": 130,
             "palette": 0
-          },
-          {
-            "x": 2752,
-            "y": 32,
-            "id": 128,
-            "palette": 0
-          },
-          {
-            "x": 2768,
-            "y": 32,
-            "id": 129,
-            "palette": 0
-          },
-          {
-            "x": 2784,
-            "y": 32,
-            "id": 130,
-            "palette": 0
-          },
-          {
-            "x": 3040,
-            "y": 32,
-            "id": 128,
-            "palette": 0
-          },
-          {
-            "x": 3056,
-            "y": 32,
-            "id": 129,
-            "palette": 0
-          },
-          {
-            "x": 3072,
-            "y": 32,
-            "id": 130,
-            "palette": 0
           }
         ],
         "decorations": [
@@ -196264,30 +196228,6 @@
             "background-tiles-0f-07-17-0f.png"
           ],
           [
-            328,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            352,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            353,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            354,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
             354,
             24,
             71,
@@ -196322,24 +196262,6 @@
             23,
             71,
             "background-tiles-0f-07-17-0f.png"
-          ],
-          [
-            388,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            389,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            390,
-            7,
-            37,
-            "background-tiles-0f-30-00-10.png"
           ],
           [
             292,
