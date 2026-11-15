@@ -14,7 +14,7 @@ function publish(status='running'){
  verifyAuditSource(runtime,pin,sourceHashes);
  const reports=chunks.flatMap((_,i)=>{const p=path.join(out,`shard-${i}.json`);return fs.existsSync(p)?[read(p)]:[];});
  const result=aggregateLiveReports(reports,inv,{pin,sourceHashes,policyHash,started,status,scope,finished:['complete','scoped-complete'].includes(status)?new Date().toISOString():null});
- if(['complete','scoped-complete'].includes(status)&&(reports.length!==n||reports.some(r=>!(scope?['shard-complete','scoped-complete']:['shard-complete','complete']).includes(r.progress.status))||result.report.runs.length!==368||result.report.errors.length||result.summary.progress.directlyComparedFrames!==(scope?result.report.runs.reduce((n,r)=>n+r.selectedFrames,0):5178452)))throw Error('Incomplete native/source-verified aggregate');
+ if(['complete','scoped-complete'].includes(status)&&(reports.length!==n||reports.some(r=>!(scope?['shard-complete','scoped-complete']:['shard-complete','complete']).includes(r.progress.status))||result.report.runs.length!==inv.length||result.report.errors.length||result.summary.progress.directlyComparedFrames!==(scope?result.report.runs.reduce((n,r)=>n+r.selectedFrames,0):inv.reduce((n,r)=>n+r.frames,0))))throw Error('Incomplete native/source-verified aggregate');
  atomic(liveFile,result.report);atomic(path.join(out,'live-summary.json'),result.summary);return result;
 }
 if(!a['aggregate-only']){
