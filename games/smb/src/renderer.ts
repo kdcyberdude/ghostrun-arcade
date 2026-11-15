@@ -16,7 +16,7 @@ import {nativeStartupTitleShown} from './native-startup-picture.js';
 import {nativeFlagSprites} from './native-flag-picture.js';
 import {nativeBlockSprites,nativeBrickChunkSprites} from './native-block-picture.js';
 import {enemyRenderPicture,nativeBulletPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeShellPhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
-import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
+import {platformMotionModel,nativePlatformArtworkYs,nativePlatformObject} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
 import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
@@ -286,6 +286,12 @@ export class GameRenderer {
    // Jumpspring writes metatiles 0x67 (blank) and 0x68 (half brick) into its two rows; the picture shows the half brick under the spring (2-1 1ae7aeeb rows 11657+, column 188 row 12).
    for(const spring of s.area.springs??[]){const col=Math.floor(spring.x/16),row=Math.floor((spring.y-8)/16);pictureTiles.set(`${col},${row-1}`,0x67);pictureTiles.set(`${col},${row}`,0x68);}
    for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
+   // Balance lift ropes (SetupPlatformRope): each frame the pair writes its rope's 8-pixel row at the lift's Y, rope ($A2/$A3) moving down and
+   // blank one row lower moving up, in the column of Enemy X + 24, so the rope ends on the tile row holding the lift's top (6-3 original picture 500).
+   const ropes:{col:number,top:number,bottom:number}[]=[],context={levelId:s.level.id,areaId:s.area.id};
+   for(const platform of s.area.platforms??[]){const object=nativePlatformObject(platform,context);if(object?.kind!=='balance'||platformMotionModel(platform,context)!=='native-balance')continue;
+    const at=s.platformPosition(platform),col=Math.floor((at.x+24)/16),rows=[...pictureTiles].filter(([key,id])=>id===64&&key.startsWith(col+',')).map(([key])=>Number(key.split(',')[1]));if(!rows.length)continue;
+    for(const row of rows)pictureTiles.delete(`${col},${row}`);ropes.push({col,top:Math.min(...rows)*2,bottom:Math.floor((Math.floor(at.y)-1)/8)});}
    for(const[key,id]of pictureTiles){const[col,row]=key.split(',').map(Number);const x=col*16-Math.floor(s.camera);if(x<-16||x>=256||row<2)continue;
     if(id===95||id===96)continue;let y=row*16;
     const below=doorwayBottomTile(id,s.tiles.has(`${col},${row+1}`));if(below!==undefined)this.tile(below,x,y+16,this.rotation(s.area.palette));
@@ -301,6 +307,8 @@ export class GameRenderer {
      this.tile(id,x,y,this.rotation(s.area.palette));
     }
    }
+   for(const rope of ropes){const x=rope.col*16-Math.floor(s.camera),palette=this.palettes[this.rotation(s.area.palette)],colors=[palette[0],...palette.slice(5,8)].map(n=>n.toString(16).padStart(2,'0')).join('-');if(x<=-16||x>=256)continue;
+    for(let row=rope.top;row<=rope.bottom;row++)for(const [i,tile] of [162,163].entries())this.quad(`background-tiles-${colors}.png`,[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+i*8,row*8,0,false,false,false);}
    for(const col of this.ropeColumns){const x=col*16-Math.floor(s.camera);if(x>-16&&x<256)for(let row=2;row<15;row++)if(!s.tiles.has(`${col},${row}`))this.tile(64,x,row*16,this.rotation(s.area.palette));}
    const freeTiles=s.freeTiles.filter(piece=>!s.area.hiddenFreeTiles?.some(hidden=>hidden.x===piece.x&&hidden.y===piece.y&&hidden.id===piece.id&&hidden.palette===piece.palette));
    for(const piece of [...s.area.decorations??[],...freeTiles])if(piece.x-s.camera>-16&&piece.x-s.camera<256){const age=piece.interactive?s.bump.get(`${piece.x/16},${piece.y/16}`):undefined;const y=piece.y-(age===undefined?0:Math.round(Math.sin(age/16*Math.PI)*4));this.tile(piece.id,piece.x-s.camera,y,this.rotation(piece.palette),'aboveFreeTiles'in piece&&piece.aboveFreeTiles===true?0.15:0.1);}
