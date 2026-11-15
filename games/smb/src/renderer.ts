@@ -344,9 +344,8 @@ export class GameRenderer {
     if(s.phase==='flag'){
      const flag=s.castleFlag;
      if(flag){
-      this.worldClip=false;this.special('castle_star_flag',flag.x-s.camera,flag.y,1.5);this.worldClip=true;
-      for(const [key,id] of s.tiles){const [col,row]=key.split(',').map(Number);if(id>=69&&id<=73&&col*16<flag.x+16&&col*16+16>flag.x&&row*16<flag.y+16&&row*16+16>flag.y)this.castlePriorityTile(id,col*16-s.camera,row*16,s.area.palette);}
-      for(const piece of s.freeTiles)if(piece.id>=69&&piece.id<=73&&piece.x<flag.x+16&&piece.x+16>flag.x&&piece.y<flag.y+16&&piece.y+16>flag.y)this.castlePriorityTile(piece.id,piece.x-s.camera,piece.y,piece.palette);
+      // OAM attribute $22: behind every opaque background pixel, not only the castle's (df3651d6 3-3 picture 26914: hidden in the tower)
+      this.worldClip=false;this.behindBackgroundSprite(flag.x-s.camera,flag.y,16,16,1.5,()=>this.special('castle_star_flag',flag.x-s.camera,flag.y,1.5));this.worldClip=true;
      }
      for(const firework of s.flagFireworks)this.special('explosions-'+firework.phase,firework.x-s.camera,firework.y);
     }
