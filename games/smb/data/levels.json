@@ -46500,7 +46500,8 @@
             "palette": "0f-10-30-27",
             "swim": {},
             "nativeSlot": "wait",
-            "evidence": "Native shared 2-3/7-3 enemy stream at CPU $9F3C, ROM PRG0; ProcessEnemyData/CheckPageCtrlRow. 0F 8A sets page-select before the row-$0F check and therefore creates a GreyCheep, not a page control."
+            "evidence": "Native shared 2-3/7-3 enemy stream at CPU $9F3C, ROM PRG0; ProcessEnemyData/CheckPageCtrlRow. 0F 8A sets page-select before the row-$0F check and therefore creates a GreyCheep, not a page control.",
+            "nativeOffset": 16
           }
         ],
         "pipes": [],
@@ -167585,7 +167586,8 @@
             "palette": "0f-10-30-27",
             "swim": {},
             "nativeSlot": "wait",
-            "evidence": "Native shared 2-3/7-3 enemy stream at CPU $9F3C, ROM PRG0; ProcessEnemyData/CheckPageCtrlRow. 0F 8A sets page-select before the row-$0F check and therefore creates a GreyCheep, not a page control."
+            "evidence": "Native shared 2-3/7-3 enemy stream at CPU $9F3C, ROM PRG0; ProcessEnemyData/CheckPageCtrlRow. 0F 8A sets page-select before the row-$0F check and therefore creates a GreyCheep, not a page control.",
+            "nativeOffset": 16
           }
         ],
         "pipes": [],
