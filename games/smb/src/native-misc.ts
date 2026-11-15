@@ -28,7 +28,7 @@ export function nativePlayerBox(x:number,feet:number,size:number,duck:boolean,ca
 }
 /** SprObjectCollisionCore uses inclusive byte intervals and handles vertical wrap. */
 export function nativeBoxesOverlap(a:NativeBox,b:NativeBox){
- const axis=(l:number,r:number,L:number,R:number)=>l>=L?(l===L||l<=R||l>r&&r>=L):(l>=R||R<L||r>=L);
+ const axis=(l:number,r:number,L:number,R:number)=>l>=L?(l===L||l<=R||l>r&&r>=L):l<R?(R<L||r>=L):(l===R||r<l||r>=L); // first left of a wrapped second and past its right edge: only its own wrap or its right reaching the second's left collides (08d3f28d 5-2 row 43069: hammer y 82..90 vs Mario below the screen 250..6, no hit)
  return axis(a[0],a[2],b[0],b[2])&&axis(a[1],a[3],b[1],b[3]);
 }
 export function nativeHammerContact(n:NativeMisc,player:NativeBox,frame:number,offscreen:number){
