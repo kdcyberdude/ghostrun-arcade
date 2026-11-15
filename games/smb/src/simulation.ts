@@ -2373,8 +2373,16 @@ export class Simulation {
   return this.platformMotion.artworkPosition(platform,frame);
  }
  /** Small lifts draw before their motion; large platforms draw after it. Collision continues reading the current step. */
+ /** The platform frame a lift's OAM shows: small lifts draw before they move; a balance half in a lower slot than the half that drives the
+  * pair is drawn before the driver moves it (all captures, id $24: 125 rows at the previous Y, 191 at the new one, split by that slot order). */
+ platformPictureFrame(platform:NonNullable<Area['platforms']>[number]){
+  const context=this.platformMotion.context;if(nativeSmallPlatform(platform,context))return this.platformFrame-1;
+  const object=platformMotionModel(platform,context)==='native-balance'?nativePlatformObject(platform,context):undefined;
+  if(object&&object.side!==-1){const pair=object.pair?.join(','),driver=(this.area.platforms??[]).find(q=>q!==platform&&nativePlatformObject(q,context)?.pair?.join(',')===pair),own=this.spriteObjectSlot(platform),other=driver&&this.spriteObjectSlot(driver);if(own!==undefined&&other!==undefined&&own<other)return this.platformFrame-1;}
+  return this.platformFrame;
+ }
  platformPicturePosition(platform:NonNullable<Area['platforms']>[number]){
-  return this.platformPosition(platform,this.platformFrame-(nativeSmallPlatform(platform,this.platformMotion.context)?1:0));
+  return this.platformPosition(platform,this.platformPictureFrame(platform));
  }
  /** Native EnemiesCollision (src/enemy-collision.ts): walkers, shells and Goomba corpses in native slots, boxes from the position before this frame's move. */
  private collisionBits=[0,0,0,0,0];

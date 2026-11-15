@@ -30,7 +30,7 @@ export function nativeOamPicture(s:any){
   // DrawSmallPlatform: the first surface on entries 0-2, the one 128 lower on entries 3-5; a surface above the HUD line stays at Y 248 (e79163dc 2-4 row 20640: entries 13-15 at Y 144, 10-12 hidden).
   const first=s.platformPicturePosition(platform).y,surfaces=nativeSmallPlatform(platform,context)?[[0,first],[12,((first-1+128)&255)+1]].filter(([,y])=>y>=33):[[0,ys[0]]];
   // The picture one frame earlier: a lift reaching Y 0 from above the screen (Y 255) is still hidden (all captures, ids 26/27 at Y 0: 500 of 500 from 255 hidden, 523 of 523 from 0 or 1 drawn).
-  const before=s.platformPosition(platform,s.platformFrame-(nativeSmallPlatform(platform,context)?1:0)-1).y,fromAbove=(y:number,offset:number)=>y===1&&((offset?((before-1+128)&255):before-1)&255)===255;
+  const before=s.platformPosition(platform,s.platformPictureFrame(platform)-1).y,fromAbove=(y:number,offset:number)=>y===1&&((offset?((before-1+128)&255):before-1)&255)===255;
   for(const [offset,y] of surfaces)lifts.push({base:s.spriteShuffle.offsets[slot+1]+offset,x:Math.floor(s.platformPicturePosition(platform).x-s.camera),y:y-1,width:s.platformWidth(platform),fromAbove:fromAbove(y,offset)});
  }
  // Bowser alive: his head on his slot's six entries (rows feet-32, -24, -16), his rear on the rear slot's six, 8 lower and 16 behind
