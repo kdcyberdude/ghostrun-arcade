@@ -547,7 +547,7 @@ export class Simulation {
   if(this.phase!=='castle'&&(this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotationPending=true; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.parserVramBusy=false;this.updateWorldInPitFall();
-   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateNativeMisc();this.advanceNativeBlockPictures();}
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;for(const e of this.enemies)this.settleFrozenWalker(e);for(const e of this.enemies)if(e.active&&e.nativeFlight&&e.kind==='cheep'&&!e.dead&&e.y>=280){this.eraseEnemy(e);if(e.enemySlot!==undefined)this.leaveFlyingCheepSlot(e);} /* a leaping Cheep below the screen is still erased while Mario dies (b9aac778 2-3 RAM 17518: slot 0 at y page 2 cleared) */this.emergeFrozenNativePowerups();this.updateNativeMisc();this.advanceNativeBlockPictures();}
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
     const move=this.deathMove!;nativeImposeGravity(move,40,4);this.player.y=move.y+move.fraction/256;this.player.vy=move.speed+move.force/256;
     if(nativePlayerHoleLocks(Math.floor((this.player.y-32)/256)+1))this.areaControls.locked=true;
