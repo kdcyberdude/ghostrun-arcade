@@ -35,11 +35,11 @@ function verdict(report,id,commit,key,levels){
  const first=bad[0];return {id,commit,gameKey:key,levels,result:bad.length?'mismatch':'match',checked:run.directlyComparedFrames,stateFrames:n('state'),pictureFrames:n('picture'),
   first:first?{frame:first.from,level:first.level,state:first.state,picture:first.picture}:null,failingLevels:[...new Set(bad.map(s=>s.level))],finished:new Date().toISOString()};
 }
-const running=new Set(),forced=new Set((a.ids??'').split(',').filter(Boolean));let port=0;
+const running=new Set(),forced=new Set((a.ids??'').split(',').filter(Boolean)),freePorts=Array.from({length:Number(a.jobs)},(_,i)=>Number(a['base-port'])+i);
 async function audit(r,levels,head){
- const key=gameKey(head),tree=treeFor(head),name=r.id.replace(/[^a-z0-9-]/gi,'_'),partial=path.join(raw,name+'.partial'),slot=port++%Number(a.jobs);
+ const key=gameKey(head),tree=treeFor(head),name=r.id.replace(/[^a-z0-9-]/gi,'_'),partial=path.join(raw,name+'.partial'),port=freePorts.shift();
  fs.writeFileSync(path.join(out,'running',name),JSON.stringify({id:r.id,commit:head,started:new Date().toISOString()}));
- const code=await new Promise(res=>{const p=spawn(path.join(tree,'node_modules/.bin/tsx'),['games/smb/tools/harness/combined-monitor-audit.ts','--monitor',monitor,'--out',partial,'--ids',r.id,'--levels',levels.join(','),'--port',String(Number(a['base-port'])+slot)],{cwd:tree,stdio:['ignore','ignore','pipe']});let e='';p.stderr.on('data',b=>e=(e+b).slice(-4000));p.on('exit',c=>res(c?e:0));});
+ const code=await new Promise(res=>{const p=spawn(path.join(tree,'node_modules/.bin/tsx'),['games/smb/tools/harness/combined-monitor-audit.ts','--monitor',monitor,'--out',partial,'--ids',r.id,'--levels',levels.join(','),'--port',String(port)],{cwd:tree,stdio:['ignore','ignore','pipe']});let e='';p.stderr.on('data',b=>e=(e+b).slice(-4000));p.on('exit',c=>res(c?e:0));});freePorts.push(port);
  fs.rmSync(path.join(out,'running',name),{force:true});release(tree,git('rev-parse','HEAD'));
  const status=code===0?(fs.renameSync(partial,path.join(raw,name+'.json')),verdict(read(path.join(raw,name+'.json')),r.id,head,key,levels)):{id:r.id,commit:head,gameKey:key,levels,result:'error',error:String(code).slice(-1500),finished:new Date().toISOString()};
  fs.writeFileSync(statusFile(r.id)+'.partial',JSON.stringify(status,null,1)+'\n');fs.renameSync(statusFile(r.id)+'.partial',statusFile(r.id));
@@ -52,7 +52,7 @@ for(;;){
  const inv=read(path.join(monitor,'combined-inputs.json')).runs,levels=furthest(inv),head=git('rev-parse','HEAD'),key=gameKey(head),rank=r=>-LEVELS.indexOf(levels[r.id].at(-1)??'1-1');
  const status=id=>fs.existsSync(statusFile(id))?read(statusFile(id)):null;
  const todo=inv.filter(r=>levels[r.id].length&&!running.has(r.id)).map(r=>({r,s:status(r.id)}))
-  .filter(({r,s})=>forced.has(r.id)||!s||s.result!=='match'&&s.gameKey!==key)
+  .filter(({r,s})=>forced.has(r.id)||!s||s.result==='error'||s.result!=='match'&&s.gameKey!==key) // an audit error (not a verdict) is always retried
   .sort((x,y)=>(forced.has(y.r.id)-forced.has(x.r.id))||(!!x.s-!!y.s)||rank(x.r)-rank(y.r));
  while(running.size<Number(a.jobs)&&todo.length){const {r}=todo.shift();forced.delete(r.id);running.add(r.id);audit(r,levels[r.id],head).catch(e=>console.error(r.id,e)).finally(()=>running.delete(r.id));}
  await new Promise(res=>setTimeout(res,15000));
