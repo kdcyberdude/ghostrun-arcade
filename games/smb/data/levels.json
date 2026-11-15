@@ -92909,42 +92909,6 @@
         "patternOverrides": [
           [
             42,
-            13,
-            37,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            42,
-            14,
-            37,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            42,
-            15,
-            37,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            42,
-            16,
-            37,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            42,
-            17,
-            37,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            42,
-            18,
-            37,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            42,
             19,
             186,
             "background-tiles-0f-36-17-0f.png"
@@ -93073,12 +93037,6 @@
             237,
             18,
             67,
-            "background-tiles-0f-36-17-0f.png"
-          ],
-          [
-            42,
-            18,
-            37,
             "background-tiles-0f-36-17-0f.png"
           ],
           [
