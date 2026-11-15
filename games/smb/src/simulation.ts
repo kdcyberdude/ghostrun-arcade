@@ -1601,8 +1601,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  // EraseEnemyObject releases the actual bank flag immediately. Its cannon pass
  // still owns this turn's reservation; movement residues survive for the next owner.
- private eraseBulletObject(e:Enemy){
-  const drawn=this.popups.filter(p=>p.victim===e&&e.kind==='bullet');this.eraseEnemy(e);e.goneFrame=this.frame;for(const p of drawn)this.popups.push({...p,lastFrame:this.frame}); // a stomped bullet falling out below: its slot's number was drawn this row, timer counted (ba9b128f 8-2 RAM 74008: slot 0 control 2 -> 0, timer 14 -> 13, its 200 still at OAM 22-23); a walker leaving the screen is erased first (RAM 70447: timer stays 10, nothing drawn)
+ private eraseBulletObject(e:Enemy,numberDrawn=true){
+  const drawn=numberDrawn?this.popups.filter(p=>p.victim===e&&e.kind==='bullet'):[];this.eraseEnemy(e);e.goneFrame=this.frame;for(const p of drawn)this.popups.push({...p,lastFrame:this.frame}); // a stomped bullet falling out below: its slot's number was drawn this row, timer counted (ba9b128f 8-2 RAM 74008: slot 0 control 2 -> 0, timer 14 -> 13, its 200 still at OAM 22-23); a walker leaving the screen is erased first (RAM 70447: timer stays 10, nothing drawn)
   if(e.enemySlot===undefined)return;const slot=e.enemySlot;
   this.slotSub[slot]=Math.round((e.x-Math.floor(e.x))*256)&255;
   if(e.pod){Object.assign(this.slotVertical[slot],{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});this.slotYSpeed[slot]=e.pod.speed&255;this.slotYFraction[slot]=e.pod.fraction;}
@@ -3092,7 +3092,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     if(e.kind==='lakitu'&&e.pod){this.moveDefeatedRespawnLakitu(e);continue;}
 
     if(e.nativeFlight&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.y>=280){this.eraseBulletObject(e);continue;}nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y+24;e.vy=e.pod.speed+e.pod.force/256;continue;}
-    if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseBulletObject(e);continue;}nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseBulletObject(e);continue;}
+    if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseBulletObject(e,false);continue;} /* the frenzy Bullet Bill ($08) is erased at the start of its own turn, before FloateyNumbersRoutine: its number is neither drawn nor counted that row (ba9b128f 5-3 RAM 42201: slot 4 control 2 -> 0, timer stays 4) */nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseBulletObject(e);continue;}
     e.dead++;
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
    }
