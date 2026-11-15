@@ -25,7 +25,7 @@ function fixture(enemy:Partial<EnemySpec>){
 
 test('native swimming slot 0 holds height; slot 2 bobs from its fraction and random direction',()=>{
  const flat=fixture({swim:{}});flat.step([],200);
- assert.equal(flat.enemies[0].y,100);assert.equal(flat.enemies[0].x,400-0.25*200);
+ assert.equal(flat.enemies[0].y,100);assert.equal(flat.enemies[0].x,400-0.25*199); // loaded after the enemy pass, so it first moves the row after (40aa7fba 7-3 RAM 63834)
  const bob=fixture({swim:{bob:{dir:-1,first:1}}});bob.enemies[0].active=true;bob.enemies[0].enemySlot=2;bob.random.bytes=[0,0,0,0,0,0,0];
  bob.step([],113);assert.equal(bob.enemies[0].y,100-15);bob.step([],1);assert.equal(bob.enemies[0].y,100-14);
  const legacy=fixture({});legacy.step([],16);assert.equal(legacy.enemies[0].y,100+Math.sin(16/40)*24); // unmeasured fish keep the old motion
