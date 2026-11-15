@@ -251,7 +251,7 @@ export class PlatformMotion {
   at.last=frame;at.counter=counter;
  }
 
- private pulleys=new Map<string,{start:number;d:number[];load:Record<string,number>;driver:NativePlatformObject;motor:PlatformVerticalState;turned?:number}>();
+ private pulleys=new Map<string,{start:number;d:number[];load:Record<string,number>;driver:NativePlatformObject;partner?:NativePlatformObject;bias?:Record<string,number>;motor:PlatformVerticalState;turned?:number}>();
  private startFraction=new Map<PlatformSpec,number>();
  slotFraction(platform:PlatformSpec,fraction:number){if(!this.startFraction.has(platform)){this.startFraction.set(platform,fraction);const at=this.clockFrames.get(platform);if(at&&at.last===at.born)this.seedClock(platform,at.born);}}
  /** $0401+s is x fraction for id40 and YPlatformTopYPos for id37.
@@ -308,6 +308,12 @@ export class PlatformMotion {
  private turnPulley(pulley:{driver:NativePlatformObject;motor:PlatformVerticalState;load:Record<string,number>;d:number[];turned?:number},frame:number,run=true){
   if(pulley.turned===frame)return;pulley.turned=frame;
   const {driver,motor}=pulley,load=(pulley.load['1']===frame?1:0)-(pulley.load['-1']===frame?1:0);
+  // ChkForFall / ChkOtherForFall, before the move: a balance lift at y $2D or above the top is set to $2F and both stop (StopPlatforms), the partner
+  // keeping its y (smb-fast 17d9176d 4-3 RAM 37363-37364: slot 0 y 45 -> 47, slot 1 stays 159, both still). A rider on that lift (MakePlatformFall) is not modelled.
+  if(run&&driver.kind==='balance'&&pulley.partner){
+   const d=pulley.d[pulley.d.length-1],bias=pulley.bias??={};
+   for(const o of [driver,pulley.partner]){const y=nativeObjectPosition(o,d).y+(bias[String(o.side)]??0);if(y<=0x2d){bias[String(o.side)]=(bias[String(o.side)]??0)+0x2f-y;motor.speed=0;motor.force=0;pulley.d.push(d);return;}}
+  }
   if(run){if(driver.kind==='drop')nativeDropStep(motor,load!==0);else nativeBalanceStep(motor,-load);}
   pulley.d.push((motor.y-driver.y)*driver.side!);
  }
@@ -323,7 +329,7 @@ export class PlatformMotion {
     const driver=model==='native-drop'?object:list?.find(o=>o.kind==='balance'&&o.pair?.join(',')===key&&o.side===-1);
     if(!driver)return;
     const spec=[...this.startFraction.keys()].find(p=>p.x===driver.spec[0]&&p.y===driver.spec[1]);
-    pulley={start:frame,d:[0],load:{},driver,motor:{y:driver.y,speed:0,force:0,fraction:spec?this.startFraction.get(spec)!:0}};
+    pulley={start:frame,d:[0],load:{},driver,partner:list?.find(o=>o!==driver&&o.kind==='balance'&&o.pair?.join(',')===key),motor:{y:driver.y,speed:0,force:0,fraction:spec?this.startFraction.get(spec)!:0}};
     this.pulleys.set(key,pulley);
    }
    pulley.load[String(object.side)]=frame;
@@ -353,7 +359,7 @@ export class PlatformMotion {
      offset=(next.y-pulley.driver.y)*pulley.driver.side!;
     }
    }
-   return {x:object.x,y:nativeObjectPosition(object,offset).y+1};
+   return {x:object.x,y:nativeObjectPosition(object,offset).y+1+(pulley?.bias?.[String(object.side)]??0)};
   }
   if(model==='water-descender'){
    if(this.context.levelId==='5-2'){
