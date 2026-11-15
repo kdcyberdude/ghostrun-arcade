@@ -383,7 +383,7 @@ export class Simulation {
    this.player.climbing=this.entryVineStage==='climb';
   }
   if(!this.nativeScreen)this.nativeBackdrop=graphics.palette_observations[area.palette].palette[0];
-  this.player.grounded=[x+3,x+12].some(foot=>this.isSolid(foot,y));this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.spriteShuffle.reset();this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.nativeFrenzyTimer=0;this.nativeCastleFlag=undefined;this.nativeFireworks=[];this.nativeFireworksCounter=255;this.nativeFireworksBorn=0;this.scrollCrossFrame=-Infinity;this.castlePictures=new NativeCastlePictures(this.level.id,area.id);this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=deferTerrain?12:0;if(deferTerrain)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.castleSlotXSpeed.fill(0);this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.lakituScroll=0;this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.cannonOffset=0;this.slotFrameTimers=[0,0,0,0,0];this.frameTimersAt=-1;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);seedNativePageControllers(this.frenzyControllers,this.camera,this.areaControls.origin*16);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=[x+3,x+12].some(foot=>this.isSolid(foot,y));this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.spriteShuffle.reset();this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.nativeFrenzyTimer=0;this.nativeCastleFlag=undefined;this.nativeFireworks=[];this.nativeFireworksCounter=255;this.nativeFireworksBorn=0;this.scrollCrossFrame=-Infinity;this.castlePictures=new NativeCastlePictures(this.level.id,area.id);this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=deferTerrain?12:0;if(deferTerrain)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.castleSlotXSpeed.fill(0);this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.lakituScroll=0;this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.cannonOffset=0;this.slotFrameTimers=[0,0,0,0,0];this.frameTimersAt=-1;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);this.pointerRecords=this.nativePointerRecords(area.id);seedNativePageControllers(this.frenzyControllers,this.camera,this.areaControls.origin*16);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   for(const object of this.areaControls.castleGraphics)if(object.column>=0&&object.column*16<area.width)this.blockBackground.set(`${object.column},${object.row}`,object.id);
 
   this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
@@ -1603,6 +1603,17 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  // A platform takes the lowest slot free when it is first seen holding one.
  private platformSlots=new Map<object,number>();
  private frenzyControllers:NativeFrenzyController[]=[];
+ /** The area's 3-byte area-pointer records (row 14): ProcessEnemyData skips one on a free slot's turn like a record behind the screen (4-1 smb-fast e251c69a RAM 29094, after a
+  * respawn at camera 1536: slot 1 takes the pointer at offset 0 (x 288 left in $0087+1), slot 2 the Lakitu record at x 480, slot 3 makes the Lakitu at x 1792; aa1b5261 28907, 6f1d6800 29946 the same). */
+ private pointerRecords:{offset:number;column:number}[]=[];
+ private nativePointerRecords(areaId:string){
+  if(!/^[1-8]-[1-4]$/.test(this.level.id))return [];
+  const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===areaId);if(!binding)return [];
+  const bytes=nativeEnemyBytes(nativePhysicalAreas[binding.code].enemy);if(!bytes)return [];
+  const out:{offset:number;column:number}[]=[];let page=0,selected=false;
+  for(let offset=0;bytes[offset]!==255;){const first=bytes[offset],second=bytes[offset+1],row=first&15;if(second&128&&!selected){page++;selected=true;}if(row===15&&!selected){page=second&63;selected=true;offset+=2;continue;}if(row===14)out.push({offset,column:page*256+(first&240)+binding.offset});offset+=row===14?3:2;selected=false;}
+  return out;
+ }
  /** WarpZoneObject runs in its enemy slot after this frame's ScrollHandler.
   * Its Y test is the source bytewise AND, including the offscreen Y page. */
  private updateNativeWarpZones(){
@@ -2012,8 +2023,10 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   * The handler is not reached on the row after the camera crosses a 32 px boundary (AreaParserTaskNum, as for list objects: 6-1 row 775 holds the egg one row). */
  private spinyFrenzyAfter(bufferBefore:boolean){
   if(this.spinyTimer>0||this.scrollCrossFrame===this.frame-1||this.pendingPlacedLakitu())return;
-  const slot=this.frenzyNativeSlot(false),lakitu=this.enemies.find(e=>e.kind==='lakitu'&&e.active&&!e.dead);if(slot>=5)return;
-  const low=lakitu?.enemySlot!==undefined&&slot<lakitu.enemySlot;
+  let slot=this.frenzyNativeSlot(false);const lakitu=this.enemies.find(e=>e.kind==='lakitu'&&e.active&&!e.dead);if(slot>=5)return;
+  let low=lakitu?.enemySlot!==undefined&&slot<lakitu.enemySlot;
+  // Every free slot reads the buffer in turn: with none set before Lakitu steps, a free slot above his takes the egg (4-1 smb-fast e251c69a RAM 29095: Lakitu in slot 3, slots 1, 2 free, egg in slot 4).
+  if(low&&!bufferBefore&&this.spinyBuffer){let next=lakitu!.enemySlot!+1;while(next<5&&this.enemies.some(e=>e.enemySlot===next&&e.active&&!e.slotFreed&&(!e.dead||this.holdsNativeSlot(e))))next++;if(next<5){slot=next;low=false;}}
   if(!(low?bufferBefore:this.spinyBuffer))return;
   if(!lakitu){
    const used=new Set(this.enemies.filter(e=>!e.slotFreed&&this.holdsNativeSlot(e)).flatMap(e=>e.enemySlot===undefined?[]:[e.enemySlot]));
@@ -2650,13 +2663,16 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(this.placedStream){this.passNativePlacedStream();return;}
   if(this.walkerStream){this.passNativeWalkerStream();return;}
   const entries=[...this.enemies.filter(e=>!e.active&&!e.slotLost&&(e.nativeId!==undefined||e.nativeGroup?.index===0)).map(enemy=>({offset:enemy.nativeOffset??enemy.nativeGroup?.offset??0,column:enemy.nativeColumn??enemy.nativeGroup!.column,enemy,controller:undefined as NativeFrenzyController|undefined})),...this.frenzyControllers.filter(c=>c.slot===undefined&&!c.lost).map(controller=>({offset:controller.offset,column:controller.column,enemy:undefined,controller}))].sort((a,b)=>a.offset-b.offset);
+  for(const pointer of this.pointerRecords)entries.push({offset:pointer.offset,column:pointer.column,enemy:undefined,controller:undefined,pointer} as any);entries.sort((a,b)=>a.offset-b.offset);
   let cursor=this.groupParserSlot;
   for(const entry of entries){
-   const {column,enemy:e,controller}=entry;
-   if(column<Math.floor(this.camera)+255){if(e){if(e.nativeGroup){for(const m of this.nativeGroupMembers(e)!)if(!m.active)m.slotLost=true;}else e.slotLost=true;}else controller!.lost=true;continue;}
-   if(column>((Math.floor(this.camera)+303)&~15))break;
+   const {column,enemy:e,controller}=entry,pointer=(entry as any).pointer;
+   const behind=column<Math.floor(this.camera)+255;
+   if(!behind&&column>((Math.floor(this.camera)+303)&~15))break;
    const busy=this.busyNativeSlots();while(cursor<5&&(this.groupSlotsBefore[cursor]||busy.has(cursor)))cursor++;
-   if(cursor>=5)break;this.groupParserSlot=cursor;
+   if(cursor>=5)break;
+   if(pointer||behind){if(pointer)this.pointerRecords=this.pointerRecords.filter(p=>p!==pointer);else if(e){if(e.nativeGroup){for(const m of this.nativeGroupMembers(e)!)if(!m.active)m.slotLost=true;}else e.slotLost=true;}else controller!.lost=true;cursor++;continue;} // a skipped record still takes this slot's turn
+   this.groupParserSlot=cursor;
    if(controller){
     if(controller.hardOnly&&!this.secondaryHardMode){controller.lost=true;continue;}
     if(controller.id===52){controller.slot=cursor;controller.x=column+this.slotSub[cursor]/256;cursor++;continue;}
