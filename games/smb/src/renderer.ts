@@ -337,10 +337,11 @@ export class GameRenderer {
     if(!entry&&vine.nativeHeight!==undefined&&vine.nativeHeight<8)continue; // no vine sprite until VineHeight reaches 8; OAM Y = base - VineHeight (cf537977 2-1 RAM 11448, 6ef303eb 11320)
     // VineObjectDraw writes VineHeight/8+1 whole tiles behind the background: the one below the block's top shows only while its cell is still blank
     // before the used block is written (cf537977 2-1 picture 11449: tiles at OAM Y 72 and 80).
+    const vineSlot=s.specialSlot5.vineSlots[0],vineZ=!entry&&vineSlot!==undefined?2+(255-s.spriteShuffle.offsets[vineSlot+1])/4096:1.5; // VineObjectDraw uses the first vine slot's OAM offset: entries 42-43 cover the bumped block at 58-61 (cf537977 2-1 picture 11449)
     const blank=!entry&&vine.nativeHeight!==undefined&&!s.blockBackground.get(`${Math.floor((vine.x+4)/16)},${Math.floor((vine.baseY+1)/16)}`)&&s.blockBackground.has(`${Math.floor((vine.x+4)/16)},${Math.floor((vine.baseY+1)/16)}`),drawn=blank?Math.floor(vine.nativeHeight!/8)*8+8:height;
     for(let offset=0;offset<drawn;offset+=8){
      const side=Math.floor(offset/8)%2===1,tile=offset===0?224:225,visible=Math.min(8,drawn-offset);
-     this.quad('sprite-tiles-0f-1a-30-27.png',[tile%16*8,Math.floor(tile/16)*8,8,visible],vine.x+(side?6:0)-s.camera,top+offset,1.5,side);
+     this.quad('sprite-tiles-0f-1a-30-27.png',[tile%16*8,Math.floor(tile/16)*8,8,visible],vine.x+(side?6:0)-s.camera,top+offset,vineZ,side);
     }
    }
    this.worldClip=true;
