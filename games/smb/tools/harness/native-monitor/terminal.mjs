@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {parseArgs} from 'node:util';import {emitKeypressEvents,cursorTo,clearScreenDown} from 'node:readline';
-import {emptyResult,summarizeCombined,inventoryHash,sha,validateCombinedRegistration} from './combined-replay.mjs';import {renderCombined} from './combined-view.mjs';import {summarizeCurrent,failingRecordings} from './current-results.mjs';import {execFileSync} from 'node:child_process';import {policyHash} from './visual-check.mjs';
+import {emptyResult,summarizeCombined,inventoryHash,sha,validateCombinedRegistration} from './combined-replay.mjs';import {renderCombined} from './combined-view.mjs';import {summarizeCurrent,failingRecordings} from './current-results.mjs';import {execFileSync} from 'node:child_process';import {policyHash} from './visual-check.mjs';import {collectIssues,renderIssues} from './issues.mjs';
 const dir=path.dirname(fileURLToPath(import.meta.url)),read=p=>JSON.parse(fs.readFileSync(p));
 const {values:args}=parseArgs({options:{monitor:{type:'string'},watch:{type:'boolean'},'add-combined':{type:'string'},'follow-live':{type:'string'},'await-v2':{type:'boolean'},'add-current':{type:'string'},'plan-failures':{type:'string'}}});
 const configFile=path.join(path.resolve(args.monitor??path.join(dir,'.local')),'sources.json');if(!fs.existsSync(configFile)){console.error('Missing '+configFile+'. See README.md for setup, or pass --monitor /ABS/DATA_DIR.');process.exit(1);}
@@ -61,10 +61,10 @@ function currentResults(){
 }
 const historyFiles={full:path.join(path.dirname(configFile),'last-completed-every-frame-audit.json'),scoped:path.join(path.dirname(configFile),'last-completed-scoped-every-frame-audit.json')};
 const histories=Object.fromEntries(Object.entries(historyFiles).map(([key,file])=>[key,fs.existsSync(file)?read(file):null]));
-let running=true,world=0,wake,cache;
+let running=true,world='i',wake,cache;
 function exit(){running=false;if(process.stdin.isTTY)process.stdin.setRawMode(false);process.stdin.pause();if(args.watch&&process.stdout.isTTY)process.stdout.write('\x1b[?1049l\x1b[?25h');wake?.();}
 process.on('SIGINT',exit);process.on('SIGTERM',exit);process.stdout.on('resize',()=>wake?.());
-if(args.watch&&process.stdin.isTTY){emitKeypressEvents(process.stdin);process.stdin.setRawMode(true);process.stdin.resume();process.stdout.write('\x1b[?1049h\x1b[?25l');process.stdin.on('keypress',(text,key)=>{if(text==='q'||key?.ctrl&&key.name==='c')exit();else if(/^[0-8]$/.test(text??''))world=Number(text);wake?.();});}
+if(args.watch&&process.stdin.isTTY){emitKeypressEvents(process.stdin);process.stdin.setRawMode(true);process.stdin.resume();process.stdout.write('\x1b[?1049h\x1b[?25l');process.stdin.on('keypress',(text,key)=>{if(text==='q'||key?.ctrl&&key.name==='c')exit();else if(/^[0-8]$/.test(text??''))world=Number(text);else if(text==='i')world='i';wake?.();});}
 while(running){
  try{
   const c=read(configFile),file=c.combined;config.current=c.current;
@@ -79,7 +79,10 @@ while(running){
    fs.writeFileSync(lastCompletedFile+'.partial',JSON.stringify(lastCompleted,null,2)+'\n');fs.renameSync(lastCompletedFile+'.partial',lastCompletedFile);
   }
   const current=currentResults();current.fullCurrent=Boolean(result.reported&&current.head&&!current.dirty&&sameGame(result.runtime,current.head));
-  const text=renderCombined({moodCount:mood.runs.length,referenceCount:32,result,lastCompleted,current,totals},{world,width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY)});
+  // Issues (default screen): registered results, the followed report and targeted rechecks (recheck.mjs) in DATA_DIR/recheck.
+  const recheckDir=path.join(path.dirname(configFile),'recheck'),recheckFiles=fs.existsSync(recheckDir)?fs.readdirSync(recheckDir).filter(n=>n.endsWith('.json')).map(n=>path.join(recheckDir,n)):[];
+  const issueText=world==='i'?renderIssues(collectIssues([...(config.current??[]),...(file?[file]:[]),...recheckFiles],runtime=>Boolean(current.head&&!current.dirty&&runtime&&sameGame(runtime,current.head))),{totals,head:current.head||'unknown',width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY),activity:result.progress?.status&&!['complete','scoped-complete'].includes(result.progress.status)?`Audit running: ${result.progress.done}/${result.progress.total} recordings${result.scope?' · levels '+result.scope.levels.join(', '):''} · build ${String(result.runtime).slice(0,7)}`:''}):'';
+  const text=issueText||renderCombined({moodCount:mood.runs.length,referenceCount:32,result,lastCompleted,current,totals},{world,width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY)});
   if(args.watch&&process.stdout.isTTY){cursorTo(process.stdout,0,0);clearScreenDown(process.stdout);}
   process.stdout.write(text);if(invalid)process.stderr.write(`Rejected report: ${invalid}\n`);
  }catch(e){process.stderr.write(`No result accepted: ${e.message}\n`);if(!args.watch)process.exitCode=1;}
