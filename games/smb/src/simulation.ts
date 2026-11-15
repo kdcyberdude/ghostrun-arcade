@@ -1902,6 +1902,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const byte=this.random.bytes[1],slot=(byte&7)||(byte&8),guard=[4,4,4,5,5,5,6,6,6][slot];
   if(this.items.some(i=>(i.nativeHammer??i.nativeCoin)?.slot===slot&&i.life>0))return false;
   if(guard<5&&this.enemies.some(o=>o.active&&!o.dead&&o.enemySlot===guard))return false;
+  // Enemy_Flag is set for every object in the slot, not only enemies: a lift, firebar, flame, Bowser's rear half or controller blocks it too (ba9b128f 6-4 row 53319: misc slot 2 checks enemy slot 4, a $28 lift, so no hammer)
+  if(guard<5&&([...this.platformSlots.values()].includes(guard)||this.firebarSlots?.held().has(guard)||[...this.springSlots.values()].includes(guard)||this.items.some(i=>i.nativeFlame?.slot===guard&&i.life>0)||this.enemies.some(o=>o.active&&!o.dead&&o.nativeBowser?.rearSlot===guard)||this.frenzyControllers.some(c=>c.slot===guard)))return false;
   if(guard===5&&this.specialSlot5.flag)return false;
   const x=(e.nativeBowser?.x??e.x)+2,y=(e.nativeBowser?e.nativeBowser.y+24:e.y)-34;
   this.miscPositions[slot]={x:Math.floor(x),y:Math.floor(y)};
