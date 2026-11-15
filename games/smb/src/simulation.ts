@@ -2271,12 +2271,14 @@ export class Simulation {
     p.vx=this.motor.step({direction:walk?1:0,ground:wasGrounded,jump:false,b:false,down:false,buttons:walk})/4096;
     const motion=motionOf(this.motor.speed);p.x+=motion;p.anim+=p.vx;if(wasGrounded&&walk)p.facing=1;p.grounded=false;
     // ScrollHandler/ChkPOffscr clamps the integer coordinate, preserving its fraction.
+    const clamped=Math.floor(p.x)>Math.floor(this.camera)+239||Math.floor(p.x)<Math.floor(this.camera);
     if(Math.floor(p.x)>Math.floor(this.camera)+239){p.x=Math.floor(this.camera)+239+p.x-Math.floor(p.x);this.motor.speed&=255;p.vx=this.motor.speed/4096;}
     if(Math.floor(p.x)<Math.floor(this.camera)){p.x=Math.floor(this.camera)+p.x-Math.floor(p.x);this.motor.speed&=255;p.vx=this.motor.speed/4096;}
     this.wallSpeed=undefined;this.wallSide=undefined;this.footPushed=false;this.movePlayerY(p.vy,this.height);
     if(!p.grounded)p.vy=this.nativeFallCap(p.vy+this.fallGravity);
     else{this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';}
-    this.motor.clearContacts();this.movePlayerX(p.x-oldX,this.height,false);this.walkOffStart(wasGrounded);
+    // a clamp zeroed the speed byte, so ImpedePlayerMove backs out of either side, as with no motion (6a6cac6d 1-4 RAM 9755: X 2270 clamped to 2269, then the wall at its left pushes it back to 2270)
+    this.motor.clearContacts();this.movePlayerX(clamped?0:p.x-oldX,this.height,false);this.walkOffStart(wasGrounded);
     const axe=this.axeFootContact();
     if(axe){this.eraseAxeMetatile();this.motor.speed=24*256+(this.motor.speed&255);p.vx=this.motor.speed/4096;}
     return {playerX:Math.floor(p.x),axe};
