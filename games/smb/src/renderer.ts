@@ -254,7 +254,7 @@ export class GameRenderer {
    if(i.nativeCoin){
     const y=Math.floor(i.y),screenX=Math.floor(x)&255;const context=this.oamContext;this.oamContext=this.oamRows?{base:s.spriteShuffle.miscOffset(i.nativeCoin.slot),count:2}:undefined;
     if(i.nativeCoin.state>=2){this.spriteTile(0xf7,screenX,(y&255)+1,'0f-16-30-27',false,false,2.5);this.spriteTile(0xfb,(screenX+8)&255,(y&255)+1,'0f-16-30-27',false,false,2.5);}
-    else{const tile=0x60+((s.random.frame>>1)&3);this.spriteTile(tile,screenX,(y&255)+1,'0f-16-30-27');this.spriteTile(tile,screenX,((y+8)&255)+1,'0f-16-30-27',false,true);}
+    else{const tile=0x60+((s.random.frame>>1)&3),z=2+(255-s.spriteShuffle.miscOffset(i.nativeCoin.slot))/4096;this.spriteTile(tile,screenX,(y&255)+1,'0f-16-30-27',false,false,z);this.spriteTile(tile,screenX,((y+8)&255)+1,'0f-16-30-27',false,true,z);} // its misc slot's OAM depth: entries 20-21 cover a Bowser flame at 34-36 (2ea80944 1-4 picture 18689)
     this.oamContext=context;
    }else this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
   }
