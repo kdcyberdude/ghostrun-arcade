@@ -250,7 +250,7 @@ export class Simulation {
  private pendingScore:{value:number|'1up',left:number,slot?:number}[]=[];private floateyPaid:{slot:number,value:number,busy:boolean,buffer:boolean}[]=[];
  private stompedThisStep=false;
  private activatedHidden1ups=new Set<string>();
- private brickCoinTimer=0;private brickCoinStarted=false; // BrickCoinTimer $079D, BrickCoinTimerFlag $06BC
+ private brickCoinTimer=0;private brickCoinStarted=false;private brickCoinTickedAt=-1; // BrickCoinTimer $079D, BrickCoinTimerFlag $06BC
  swimPoseFrame=0;
  lives=3; score=0; coins=0; time=400; paused=false; muted=false; twoPlayer=false; currentPlayer=0;
  nativeGameOver?:NativeGameOver;private gameOverDispatch=false;
@@ -1091,6 +1091,9 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   }else if((content?.kind==='multiCoin'||id===88||id===93)&&id!==196){ // metatiles $58/$5D are the multi-coin bricks wherever they stand (e2a3c165 row 1887: Block_Metatile stays $58)
    // One timer for every multi-coin brick: the first hit sets it to 11, it counts down on the 21-row interval clock, and a hit while it reads 0 still
    // pays and leaves a used block (smb-fast 6-2 d09224d1 RAM 48787-49029, 83121118 49495-49713: $079D 11 -> 0 with $077F, $06BC 1).
+   // TimerControl (NMI) counts the timer down before the hit on a tick row: the hit reads the new value and a first hit's 11 is not counted that row
+   // (0d13669b 6-2 RAM 47789: $077F tick and first hit, $079D 11, 10 at 47810; 48020 0 before the hit at 48033 pays and leaves a used block).
+   if(this.brickCoinTickedAt!==this.frame&&nativeIntervalStep(this.intervalControl,this.player.star).tick&&this.brickCoinTimer>0)this.brickCoinTimer--;this.brickCoinTickedAt=this.frame;
    if(!this.brickCoinStarted){this.brickCoinStarted=true;this.brickCoinTimer=11;}
    if(this.brickCoinTimer===0)this.tiles.set(key,196);
    this.coin();this.spawnNativeBlockCoin(x);
@@ -1817,7 +1820,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const n=nativeIntervalStep(this.intervalControl,this.player.star);
   this.intervalControl=n.interval;this.player.star=n.star;
   if(!n.tick)return;
-  if(this.brickCoinTimer>0)this.brickCoinTimer--;
+  if(this.brickCoinTimer>0&&this.brickCoinTickedAt!==this.frame)this.brickCoinTimer--;
   if(this.nativeCastleFlag&&this.nativeCastleFlag.interval>0)this.nativeCastleFlag.interval--;
   if(this.screenTimer>0)this.screenTimer--;
   for(const e of this.enemies){if(e.shellTimer)e.shellTimer--;if(e.pod&&e.pod.timer>0)e.pod.timer--;if(e.bloop&&e.bloop.timer>0)e.bloop.timer--;if(e.hbro&&e.hbro.interval>0)e.hbro.interval--;}
