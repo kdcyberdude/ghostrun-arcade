@@ -1007,7 +1007,7 @@ export class Simulation {
  private stompBounceVy(vy:number,kind?:string){return (kind!==undefined&&STOMP_SPEED_THREE.includes(kind)?-3:-4)+(vy-Math.floor(vy));}
  /** A stomp made standing on the ground leaves Mario in the ground state for one more row: no vertical move and no gravity, then the bounce
   * (2-3 8f90807f row 18567 and 8c0dadd8 row 18861, the corpus's two grounded stomps: y held, speed -3.0 kept, up 3 px the row after). */
- private groundStomp=false;private coinEndsCollision=false;
+ private groundStomp=false;private coinEndsCollision=false;private headTileHit=false;
  private stompBounce(){this.bounceGravity=this.fallGravity===FALL_GRAVITY_AFTER_LOAD?0.5625:this.fallGravity;}
  private airGravity(b:Set<Button>){const p=this.player;return this.bouncing?this.bounceGravity:b.has('a')&&this.landJump!=='released'&&p.vy<0?(this.runJump?0.15625:this.mediumJump?0.1171875:PHYSICS.heldGravity):(this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity);}
  // Native big Mario (evidence/power-findings-20261111.md, 1-1 probes): the head probe is 28 px above the feet standing and 14 crouched (bump at feet - ceiling 24..26 / 13, none at 28 / 16). A used block gives speed 1 plus the fraction, a question block 0 plus the fraction;
@@ -1024,7 +1024,7 @@ export class Simulation {
  // up 1 px runs the foot probes, not the head probe, and lands on a floor top his feet are under 5 px into (feet 83 -> 80, 1-3 row 992).
  private apexFootProbe(dy:number,nativeHead:boolean,gravity:number){return dy<0&&gravity>0&&!nativeHead&&this.area.theme!=='water';}
  private movePlayerY(dy:number,h:number,nativeHead=false,gravity=0,cutoff=false){
-  const p=this.player,oldY=p.y;p.y+=dy;this.piranhaTouchFeetY=p.y;this.springFeet=undefined;
+  const p=this.player,oldY=p.y;p.y+=dy;this.piranhaTouchFeetY=p.y;this.springFeet=undefined;this.headTileHit=false;
   if(cutoff&&nativeBackgroundSkipped(p.y))return;
   const water=this.area.theme==='water',down=water?this.water.contactSpeed>=0:dy>0||(dy===0&&!nativeHead)||this.apexFootProbe(dy,nativeHead,gravity);
   const waterFeet=water?p.y-this.water.whirlMoved:p.y;
@@ -1048,7 +1048,7 @@ export class Simulation {
     // Native BlockBounceTimer ($0784, 16 after a block hit, counted down every frame): while it runs a brick, ?-block or hidden block bumps like a
     // solid cell (speed 1 plus the fraction, no hit, no sound; PlayerBGCollision NYSpd; 7-1 v2 row 440: timer 7, speed 1 + 80/256).
     if(nativeHead&&this.blockBounceTimer>0&&isHitBlock(tile.id)&&tile.id!==196){this.bumpHead(dy,1,gravity);this.footDepthAfterBump(nativeHead);break;}
-    if(nativeHead)this.bumpHead(dy,isHitBlock(tile.id)&&tile.id!==196&&(p.size===0||!(tile.id>=81&&tile.id<=83))?0:1,gravity);else{if(!water)p.y=tile.y+tile.height+h;p.vy=0.5;this.runJump=false;this.mediumJump=false;}
+    if(nativeHead)this.bumpHead(dy,isHitBlock(tile.id)&&tile.id!==196&&(p.size===0||!(tile.id>=81&&tile.id<=83))?0:1,gravity);else{if(!water)p.y=tile.y+tile.height+h;p.vy=0.5;this.headTileHit=true;this.runJump=false;this.mediumJump=false;}
     if(water){if(tile.id!==0x26&&tile.id>=[0x10,0x61,0x88,0xc4][tile.id>>6])this.emit('sfx_bump');}
     else if('col' in tile){const wasBroken=this.brokenBrick;this.hitBlock(tile.col!,tile.row!,tile.id);if(nativeHead&&this.brokenBrick&&this.brokenBrick!==wasBroken)this.bumpHead(dy,-2,gravity);}else if('piece' in tile&&tile.piece.interactive&&(tile.id===192||tile.id===196))this.hitBlock(tile.piece.x/16,tile.piece.y/16,tile.id,tile.piece);else this.emit('sfx_bump');
     this.footDepthAfterBump(nativeHead);
@@ -1190,7 +1190,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   // A head bump keeps the position the move reached (no clamp to the tile) and only turns the speed around. Inside a whirlpool zone the bump
   // falls between the ordinary pass and the trailing whirlpool pass, which is redone at speed 1 (2-2/7-2 free-play strokes under a ceiling
   // in a zone: the swimmer does not move on the bump row, 172 of 177; outside a zone it moves, 338 of 338).
-  if(p.grounded)w.land();else if(w.contactSpeed<0&&p.vy===0.5){p.y=oldY+dy;p.y+=w.bump();}
+  if(p.grounded)w.land();else if(w.contactSpeed<0&&this.headTileHit){ // a flag, not the 0.5 speed the head contact writes: a stroke from speed 0, force $80 also leaves 0.5 (5e981db3 7-2 row 59116: no ceiling, native rises $FE)
+ p.y=oldY+dy;p.y+=w.bump();}
   if(this.wallSpeed!==undefined)p.vx=w.wall(Math.round(this.wallSpeed*4096),this.swimDirection===0||this.swimDirection*this.wallSpeed>0)/4096;
   p.vy=p.grounded?0:w.speed+w.force/256;
  }
