@@ -613,7 +613,7 @@ export class Simulation {
   }
   if(this.phase==='castle'){this.updateCastle();this.restoreStarMusic();return;}
   // GameEngine's UpdScrollVar tail also runs after engine4/5 actor visits.
-  if(this.phase==='flag'){this.gameTimerStep(false);this.tickIntervalTimers();this.parserVramBusy=false;const wasGrounded=this.player.grounded,oldFeet=this.player.y,previousCamera=this.camera,previousArea=this.area;this.updateFlag();if(this.phase==='flag'&&this.area===previousArea){this.updateFlagPlatforms(oldFeet,previousCamera);this.eraseOffscreenEnemies(); /* OffscreenBoundsCheck still runs for enemies at the flag (078b1bcf 3-1 RAM 23718: a stunned shell at camera - 74 erased) */this.updateLocomotionPose(wasGrounded,this.motor.absolute,false,new Set<Button>(['right']));this.advanceNativeAreaParser(this.camera-previousCamera);this.updateNativeCannons();this.passNativeCannons();}this.restoreStarMusic();return;} // the cannons still fire on the flagpole (7-1 original row 2990)
+  if(this.phase==='flag'){this.gameTimerStep(false);this.tickIntervalTimers();this.parserVramBusy=false;const wasGrounded=this.player.grounded,oldFeet=this.player.y,previousCamera=this.camera,previousArea=this.area;this.updateFlag();if(this.phase==='flag'&&this.area===previousArea){this.updateFlagPlatforms(oldFeet,previousCamera);this.eraseOffscreenEnemies();this.lakituScroll=0;this.enemyContactOff=true;this.updateEnemies(oldFeet);this.enemyContactOff=false; /* the flag has already scrolled; the enemies still move at the flag (6-1 smb-fast 31d6ea1a RAM 61760: a falling Spiny goes on 194 -> 197) */ /* OffscreenBoundsCheck still runs for enemies at the flag (078b1bcf 3-1 RAM 23718: a stunned shell at camera - 74 erased) */this.updateLocomotionPose(wasGrounded,this.motor.absolute,false,new Set<Button>(['right']));this.advanceNativeAreaParser(this.camera-previousCamera);this.updateNativeCannons();this.passNativeCannons();}this.restoreStarMusic();return;} // the cannons still fire on the flagpole (7-1 original row 2990)
   if(this.powerChange){
    this.lifeFrozen++;const next=nativeTransformStep(this.powerChange.kind,this.powerChange.remaining);this.powerChange.remaining=next.remaining;
    if(next.done){this.player.size=this.powerChange.to;this.powerChange=undefined;this.resumeWorldAfterTransform();}
@@ -2039,7 +2039,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  /** LakituAndSpinyHandler in the first free slot (CheckFrenzyBuffer): a slot below Lakitu's runs before Lakitu steps (pre-step x, last row's buffer), a higher one after.
   * The handler is not reached on the row after the camera crosses a 32 px boundary (AreaParserTaskNum, as for list objects: 6-1 row 775 holds the egg one row). */
  private spinyFrenzyAfter(bufferBefore:boolean){
-  if(this.spinyTimer>0||this.scrollCrossFrame===this.frame-1||this.pendingPlacedLakitu())return;
+  if(this.phase==='flag'||this.spinyTimer>0||this.scrollCrossFrame===this.frame-1||this.pendingPlacedLakitu())return; // the flag step moves the enemies but, as before, runs no loader or frenzy
   let slot=this.frenzyNativeSlot(false);const lakitu=this.enemies.find(e=>e.kind==='lakitu'&&e.active&&!e.dead);if(slot>=5)return;
   let low=lakitu?.enemySlot!==undefined&&slot<lakitu.enemySlot;
   // Every free slot reads the buffer in turn: with none set before Lakitu steps, a free slot above his takes the egg (4-1 smb-fast e251c69a RAM 29095: Lakitu in slot 3, slots 1, 2 free, egg in slot 4).
@@ -2952,7 +2952,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.currentNativeBankSlot=slot;
   // RunNormalEnemies releases its post-movement bounds before the next slot can parse a group.
   if(this.placedActorStream&&slot>0){this.rememberSlotVertical(slot-1);this.eraseOffscreenEnemies(slot-1,this.camera+this.lakituScroll);}
-  if((this.placedCastle||this.placedActorStream)&&this.placedStream&&!this.parserClock.blocked&&!this.busyNativeSlots().has(slot)&&!(slot===5&&this.specialSlot5.flag)&&this.slotReleaseFrame[slot]!==this.frame){
+  if((this.placedCastle||this.placedActorStream)&&this.placedStream&&this.phase!=='flag'&&!this.parserClock.blocked&&!this.busyNativeSlots().has(slot)&&!(slot===5&&this.specialSlot5.flag)&&this.slotReleaseFrame[slot]!==this.frame){
    const context={camera:this.camera+this.lakituScroll-this.placedOrigin,hard:this.secondaryHardMode,primaryHard:this.primaryHardMode,slot,frenzy:this.specialSlot5.frenzyBuffer,vine:this.specialSlot5.vineCount,queue:this.specialSlot5.frenzyQueue};this.placedStream.attempt(context,init=>this.initializeNativePlacedObject(init));this.specialSlot5.frenzyQueue=context.queue;return;
   }
   const alias=this.firebarSlots?.visitAlias(slot);if(alias){if(alias==='cleared')this.slotReleaseFrame[slot]=this.frame;return;}
