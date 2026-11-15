@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {parseArgs} from 'node:util';import {emitKeypressEvents,cursorTo,clearScreenDown} from 'node:readline';
-import {emptyResult,summarizeCombined,inventoryHash,sha,validateCombinedRegistration} from './combined-replay.mjs';import {renderCombined} from './combined-view.mjs';import {summarizeCurrent,failingRecordings} from './current-results.mjs';import {execFileSync} from 'node:child_process';import {policyHash} from './visual-check.mjs';import {collectIssues,renderIssues} from './issues.mjs';
+import {emptyResult,summarizeCombined,inventoryHash,sha,validateCombinedRegistration} from './combined-replay.mjs';import {renderCombined} from './combined-view.mjs';import {summarizeCurrent,failingRecordings} from './current-results.mjs';import {execFileSync} from 'node:child_process';import {policyHash} from './visual-check.mjs';import {collectValidation,renderValidation} from './issues.mjs';
 const dir=path.dirname(fileURLToPath(import.meta.url)),read=p=>JSON.parse(fs.readFileSync(p));
 const {values:args}=parseArgs({options:{monitor:{type:'string'},watch:{type:'boolean'},'add-combined':{type:'string'},'follow-live':{type:'string'},'await-v2':{type:'boolean'},'add-current':{type:'string'},'plan-failures':{type:'string'}}});
 const configFile=path.join(path.resolve(args.monitor??path.join(dir,'.local')),'sources.json');if(!fs.existsSync(configFile)){console.error('Missing '+configFile+'. See README.md for setup, or pass --monitor /ABS/DATA_DIR.');process.exit(1);}
@@ -79,9 +79,9 @@ while(running){
    fs.writeFileSync(lastCompletedFile+'.partial',JSON.stringify(lastCompleted,null,2)+'\n');fs.renameSync(lastCompletedFile+'.partial',lastCompletedFile);
   }
   const current=currentResults();current.fullCurrent=Boolean(result.reported&&current.head&&!current.dirty&&sameGame(result.runtime,current.head));
-  // Issues (default screen): registered results, the followed report and targeted rechecks (recheck.mjs) in DATA_DIR/recheck.
-  const recheckDir=path.join(path.dirname(configFile),'recheck'),recheckFiles=fs.existsSync(recheckDir)?fs.readdirSync(recheckDir).filter(n=>n.endsWith('.json')).map(n=>path.join(recheckDir,n)):[];
-  const issueText=world==='i'?renderIssues(collectIssues([...(config.current??[]),...(file?[file]:[]),...recheckFiles],runtime=>Boolean(current.head&&!current.dirty&&runtime&&sameGame(runtime,current.head))),{totals,head:current.head||'unknown',width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY),activity:result.progress?.status&&!['complete','scoped-complete'].includes(result.progress.status)?`Audit running: ${result.progress.done}/${result.progress.total} recordings${result.scope?' · levels '+result.scope.levels.join(', '):''} · build ${String(result.runtime).slice(0,7)}`:''}):'';
+  // Validation (default screen): pass/fail per recording from the validation queue (validate.mjs) in DATA_DIR/validate.
+  let headKey='';try{headKey=git('rev-parse','HEAD:games/smb/src')+git('rev-parse','HEAD:games/smb/data');}catch{}
+  const issueText=world==='i'?renderValidation(collectValidation(path.dirname(configFile),inventory),{headKey,head:current.head||'unknown',width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY)}):'';
   const text=issueText||renderCombined({moodCount:mood.runs.length,referenceCount:32,result,lastCompleted,current,totals},{world,width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY)});
   if(args.watch&&process.stdout.isTTY){cursorTo(process.stdout,0,0);clearScreenDown(process.stdout);}
   process.stdout.write(text);if(invalid)process.stderr.write(`Rejected report: ${invalid}\n`);
