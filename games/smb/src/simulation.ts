@@ -626,7 +626,8 @@ export class Simulation {
     if(frozen>=7)this.playerAnim.ctrl=0;
     if((frozen<7||grow==='big')&&this.locomotionPose.kind==='walk'&&(this.player.grounded||this.powerupStateZero))this.locomotionPose.frame=this.playerAnim.animate(3);
    }
-   else{const before=this.camera;this.shrinkScroll();this.advanceNativeAreaParser(this.camera-before);for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
+   else{if(this.swimActive&&this.powerChange.remaining<40&&pressed('a')&&this.water.canStroke(true,false,this.player.grounded)){this.water.strokeOnly(Math.floor(this.player.y)-32);this.player.vy=this.water.speed+this.water.force/256;}
+    const before=this.camera;this.shrinkScroll();this.advanceNativeAreaParser(this.camera-before);for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
    if(this.powerChange?.kind!=='shrink'||this.powerChange.remaining>2||this.area.theme==='water')return; // in water Mario holds through them too (6a8b71a3 2-2 rows 13093-13095: TimerControl $CA/$C9/$C8, x 1230.75, y 47, camera 1129 unchanged) // the last two shrink frames run Mario's own step while enemies stay held (2-1 a3899256 row 12421, 371fe2fe row 18287)
   }
   this.gameTimerStep(false); // NMI precedes player/actor routines, including automatic entrances.

@@ -102,6 +102,8 @@ export class NativeWater{
  }
  /** Whether an A press this frame starts a stroke (the timer is decremented first, as in `vertical`). Pure. */
  canStroke(a:boolean,aPrev:boolean,grounded:boolean):boolean{return a&&!aPrev&&(this.timer>1||this.speed>=0||grounded);}
+ /** A stroke's bytes alone, no gravity pass: PlayerCtrlRoutine runs on the injury rows below TimerControl $F0 but Mario does not move (6a8b71a3 2-2 row 13060: TimerControl $EB, A pressed, $9F/$433 1/$B2 -> $FE/$80, y held). */
+ strokeOnly(y:number){const s=this.whirl?STROKE.b:STROKE.a;this.speed=(y&255)<SURFACE_Y?0:s.speed;this.force=s.force;this.frac=0;this.rise=s.rise;this.fall=s.fall;this.timer=STROKE_TIMER;}
  /** Advance the vertical state one frame. `y` is the native y (feet minus 32) before the move; `grounded` is whether
   * the player stands on something; `inZone` whether the whirlpool zone contains the player at the start of the frame. */
  vertical(a:boolean,aPrev:boolean,y:number,grounded:boolean,inZone:boolean):WaterStep{
