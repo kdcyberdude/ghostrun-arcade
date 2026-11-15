@@ -1712,9 +1712,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private passFishLoader(){
   const taken=new Set<number>(),l=this.fishLoader;if(!l||this.parserClock.blocked)return taken;const used=this.busyNativeSlots();
-  // A record already behind the right edge is dropped within the same slot's turn (7-3 original row 458: slot 0 still takes the Cheep).
   // The placed actor that just took a slot is that slot's own parser record: its turn consumes it (7-3 5e981db3 RAM 62394: the Paratroopa at offset 18 loads into slot 4 and the cursor moves on).
-  for(let slot=0;slot<5;slot++){if(used.has(slot)&&!this.enemies.some(e=>e.active&&!e.slotFreed&&e.enemySlot===slot&&e.nativeOffset===l.stream.offset)||this.groupSlotsBefore[slot])continue;const ev=l.stream.next(this.camera-l.origin,this.secondaryHardMode,slot,()=>true);if(ev.kind!=='skip')break;if(ev.y===undefined)slot--;else taken.add(slot);}
+  for(let slot=0;slot<5;slot++){if(used.has(slot)&&!this.enemies.some(e=>e.active&&!e.slotFreed&&e.enemySlot===slot&&e.nativeOffset===l.stream.offset)||this.groupSlotsBefore[slot])continue;const ev=l.stream.next(this.camera-l.origin,this.secondaryHardMode,slot,()=>true);if(ev.kind!=='skip')break;taken.add(slot);} // a record dropped behind the right edge ends that slot's turn too (a97e9fe8 7-3 RAM 62012: $0739 $12 -> $14 on slot 1's turn, slot 1 stays free, slot 5 takes $14 and $078F reloads)
   return taken;
  }
  private updateFishFrenzy(){
