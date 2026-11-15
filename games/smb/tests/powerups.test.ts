@@ -23,10 +23,11 @@ test('source growth holds Mario for59 turns and resumes enemies on the DonePlaye
 });
 
 // Expectation changed from 64/128 (image brackets) by native rows: engine 10 lasts 55 rows; RAM 0x79e protects 147..167 play rows (evidence/power-findings-20261111.md).
-test('Fire Mario damage loses both power stages after55 frozen frames then protects for157play frames',()=>{
- const sim=game();sim.player.size=2;sim.hurt();assert.equal(sim.powerChange?.to,0);
- sim.step(['right'],55);assert.equal(sim.player.size,0);assert.equal(sim.player.invincible,157);
- sim.hurt();assert.equal(sim.phase,'play');sim.step([],156);assert.equal(sim.player.invincible,1);
+// The protection is InjuryTimer 8 counted on the 21-row interval clock: 148 plus that clock's count at the hit (371fe2fe 2-1 RAM 18234-18439).
+test('Fire Mario damage loses both power stages after55 frozen frames then protects for148 plus the interval clock play frames',()=>{
+ const sim=game();sim.player.size=2;const rows=148+sim.intervalControl;sim.hurt();assert.equal(sim.powerChange?.to,0);
+ sim.step(['right'],55);assert.equal(sim.player.size,0);assert.equal(sim.player.invincible,rows);
+ sim.hurt();assert.equal(sim.phase,'play');sim.step([],rows-1);assert.equal(sim.player.invincible,1);
  sim.step([],1);sim.hurt();assert.equal(sim.phase,'dying');
 });
 

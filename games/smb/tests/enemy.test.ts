@@ -46,9 +46,9 @@ test('late-castle Bowser throws ballistic hammers but early Bowser does not',()=
 test('hammer collision respects damage and temporary invulnerability',()=>{
  const sim=fixture();sim.player.size=1;
  sim.items.push({kind:'hammer',x:44,y:190,vx:0,vy:0,age:0,life:40});
- sim.step([],1);assert.equal(sim.powerChange?.kind,'shrink');assert.equal(sim.player.invincible,157);
- sim.step([],55);assert.equal(sim.player.size,0);assert.equal(sim.phase,'play');assert.equal(sim.player.invincible,157);
- sim.step([],1);assert.equal(sim.player.invincible,156);
+ sim.step([],1);assert.equal(sim.powerChange?.kind,'shrink');const rows=sim.player.invincible;assert.ok(rows>=148&&rows<=168);
+ sim.step([],55);assert.equal(sim.player.size,0);assert.equal(sim.phase,'play');assert.equal(sim.player.invincible,rows);
+ sim.step([],1);assert.equal(sim.player.invincible,rows-1);
 });
 
 test('flame collision covers the supplied 24px assembly rather than only its first tile',()=>{
