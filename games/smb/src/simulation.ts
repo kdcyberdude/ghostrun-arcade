@@ -1873,7 +1873,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(e.dead>=100||e.slotFreed)return;
   const n=e.hbro!;if(n.y>=256){if(e.enemySlot!==undefined){Object.assign(this.slotVertical[e.enemySlot],{speed:n.speed,force:n.force,fraction:n.fraction});this.slotYSpeed[e.enemySlot]=n.speed&255;this.slotYFraction[e.enemySlot]=this.slotYFrac[e.enemySlot]=n.fraction;this.slotFrameTimers[e.enemySlot]=0;}n.state=0;n.frameTimer=0;n.interval=0;e.x+=e.vx;e.dead=100;e.active=false;e.slotFreed=true;e.slotLost=true;return;}
   if(!this.nmiTimersHeld&&this.frameTimersAt!==this.frame&&n.frameTimer)n.frameTimer--;
-  const move={...n,timer:0};nativeImposeGravity(move,0x3d,3);Object.assign(n,{y:move.y,speed:move.speed,force:move.force,fraction:move.fraction});e.dead++;e.x+=e.vx;e.y=n.y+24;e.vy=n.speed+n.force/256;
+  const move={...n,timer:0};nativeImposeGravity(move,0x3d,3);Object.assign(n,{y:move.y,speed:move.speed,force:move.force,fraction:move.fraction});e.dead=Math.min(e.dead+1,89);e.x+=e.vx;e.y=n.y+24;e.vy=n.speed+n.force/256; // it keeps its slot until y page 1 however long the fall (724df0f9 5-2 row 41215: slot 2 state $22 still at y 228, 90 rows after the hit)
  }
  private spawnNativeHammer(e:Enemy){
   const byte=this.random.bytes[1],slot=(byte&7)||(byte&8),guard=[4,4,4,5,5,5,6,6,6][slot];
