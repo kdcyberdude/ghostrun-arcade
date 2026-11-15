@@ -2112,6 +2112,11 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.area={...this.area,pipes:redraw(this.area.pipes,source.pipes),springs:redraw(this.area.springs,source.springs),decorations:redraw(this.area.decorations,source.decorations),patternOverrides:overrides(this.area.patternOverrides,source.patternOverrides)};
   // KillAllEnemies, and the enemy data restarts from its first object: objects left of the screen's right edge are skipped, the rest load again as they come in range.
   const edge=this.camera+256;
+  // The enemy loop runs the loop command in the first empty slot's turn, so the slots below it were drawn this row before KillAllEnemies, at their positions of the row before
+  // against this row's screen (8-4 original RAM 674: flags 1,1,0 before, OAM 12-17 keep slot 0's Piranha Plant at X 140 = 142 less this row's 2 px scroll, Y 121 = RAM 673's;
+  // RAM 9567: flags 0,0,1,1,1 before, nothing drawn).
+  const busy=this.busyNativeSlots();let first=0;while(busy.has(first))first++;
+  this.warpErased={frame:this.frame,enemies:this.enemies.filter(e=>e.active&&!e.slotFreed&&e.dead<100&&e.enemySlot!==undefined&&e.enemySlot<first).map(e=>({...e,graphics:undefined,x:e.x-LOOP_BACK,graphicsX:e.x-LOOP_BACK,graphicsY:e.y}))};
   this.firebarSlots?.loopBack(edge); // preserve the source pre-loop angle before erasing bank ownership
   this.loopFractions.forEach((sub,slot)=>{if(sub!==undefined)this.slotSub[slot]=sub;}); // the erased slots keep the x fraction of the row before (the loop back precedes this row's enemy moves; 8-4 original rows 9812/9834)
   for(const [slot,v]of this.loopVertical){Object.assign(this.slotVertical[slot],v.m);this.slotYSpeed[slot]=v.speed;this.slotYFraction[slot]=v.fraction;this.slotYFrac[slot]=v.frac;this.slotFrameTimers[slot]=v.timer;} // and their vertical bytes, also from the row before (rows 9566/10173: slot 4 keeps force 28, fraction 172)
