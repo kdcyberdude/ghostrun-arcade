@@ -143,7 +143,7 @@ if(import.meta.env.DEV){
   step(buttons:Button[],frames:number,buttons2:Button[]=[]){controlled=true;const before=sim.frame;sim.step(buttons,frames,buttons2);soundEvents();draw();return {frame:sim.frame,framesRequested:frames,framesAdvanced:sim.frame-before,image:view.screenshot()};},
   observe(){draw();return {frame:sim.frame,framesAdvanced:0,image:view.screenshot()};},
   resume(){controlled=false;last=performance.now();accumulator=0;},pause(){controlled=true;},ready:true};
- Object.assign(window,{mario:bridge,marioDebug:{snapshot:()=>({frame:sim.frame,phase:sim.phase,level:sim.level.id,area:sim.area.id,player:{...sim.player},camera:sim.camera,lives:sim.lives,score:sim.score,time:sim.time,coins:sim.coins,enemies:sim.enemies.map(e=>({...e})),audioErrors:audio.errors}),simulation:sim}});
+ Object.assign(window,{mario:bridge,marioDebug:{snapshot:()=>({frame:sim.frame,phase:sim.phase,level:sim.level.id,area:sim.area.id,player:{...sim.player},camera:sim.camera,lives:sim.lives,score:sim.score,time:sim.time,coins:sim.coins,enemies:sim.enemies.map(e=>({...e})),audioErrors:audio.errors}),simulation:sim,view}});
 }
 // Slow-device notice. The game shows every frame, so when the GPU draws fewer than 60 a second the whole game slows down; say why and offer a lighter setting.
 const perf=document.querySelector<HTMLElement>('#perf')!,perfText=document.querySelector<HTMLElement>('#perf-text')!,perfLower=document.querySelector<HTMLButtonElement>('#perf-lower')!;

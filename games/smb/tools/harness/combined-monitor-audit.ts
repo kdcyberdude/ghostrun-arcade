@@ -8,7 +8,7 @@ import fs from 'node:fs';import path from 'node:path';import {createHash} from '
 import {decodeEntrance} from './native-entrance.mjs';import {bundleStateReplay,replayStateInWorker,levelAt} from './native-state-replay.js';import {nativeLagFrames} from './native-lag-frames.mjs';
 import {auditSourceHashes,verifyAuditSource,sourceManifestHash} from './native-monitor/source-provenance.mjs';
 import {policy,policyHash} from './native-monitor/visual-check.mjs';import {inventoryHash,counting,validateScope} from './native-monitor/combined-replay.mjs';
-const {values:a}=parseArgs({options:{monitor:{type:'string'},out:{type:'string'},ids:{type:'string'},levels:{type:'string'},jobs:{type:'string',default:'1'},batch:{type:'string',default:'16'},port:{type:'string',default:'54021'},dump:{type:'string'},'pilot-frames':{type:'string'},windows:{type:'string'}}});if(!a.monitor||!a.out)throw Error('--monitor and --out required');
+const {values:a}=parseArgs({options:{monitor:{type:'string'},out:{type:'string'},ids:{type:'string'},levels:{type:'string'},jobs:{type:'string',default:'1'},batch:{type:'string',default:'16'},port:{type:'string',default:'54021'},dump:{type:'string'},cache:{type:'string'},'no-cache':{type:'boolean'},'pilot-frames':{type:'string'},windows:{type:'string'}}});if(!a.monitor||!a.out)throw Error('--monitor and --out required');
 const batch=Number(a.batch),pilot=a['pilot-frames']?Number(a['pilot-frames']):undefined;if(!Number.isInteger(batch)||batch<1||batch>32||pilot!==undefined&&(!a.ids||!Number.isInteger(pilot)||pilot<1||pilot>512))throw Error('batch1..32; pilot requires explicit ids and1..512 frames');
 // --windows FILE: {id:[[from,to],...]} re-checks only those frames (a targeted re-verification, never a level total): other frames are
 // still drawn (skipping draws left stale renderer state: whole later recordings mismatched) but not compared, and the run stops after the last window.
@@ -20,6 +20,22 @@ execFileSync('git',['diff','--exit-code',runtimeCommit,'--','games/smb/src','gam
 const sourceHashes=auditSourceHashes(root),manifestHash=sourceManifestHash(sourceHashes);
 const paletteSource=fs.readFileSync(path.join(root,'tools/harness/native-pixels.ts'),'utf8'),palette=paletteSource.match(/const remakeRgb=\[([\s\S]*?)\];/)![1].match(/0x[0-9a-f]+/g)!.map(x=>parseInt(x));
 const fceux=fs.readFileSync('/home/kd/Desktop/proj/ghostrun/ghostrun-lab/rl/fceux_palette.py','utf8'),rgb=Array.from(fceux.matchAll(/\((\d+), (\d+), (\d+)\)/g),m=>[Number(m[1]),Number(m[2]),Number(m[3])]);if(rgb.length!==512)throw Error('Expected512 palette');
+// --cache DIR (default MONITOR/picture-cache): per-frame picture verdicts keyed by a content hash of the scene each draw would render
+// (native-monitor/scene-hash.mjs). Draws are deferred: a compared row whose scene hash equals a stored passing verdict for the same native
+// frame reuses it without drawing; every other compared row draws, reads back and compares as before; rows never compared are never drawn.
+const cacheDir=a['no-cache']?undefined:path.resolve(a.cache??path.join(monitor,'picture-cache'));
+const cacheHeader=JSON.stringify({version:1,three:read(path.join(root,'../../node_modules/three/package.json')).version,policyHash,remakePalette:sha(JSON.stringify(palette)),nativePalette:sha(fceux),sceneHash:sha(fs.readFileSync(path.join(root,'tools/harness/native-monitor/scene-hash.mjs'))),visualCore:sha(fs.readFileSync(path.join(root,'tools/harness/native-monitor/visual-core.mjs')))});
+const cacheFile=(id:string)=>path.join(cacheDir!,sha(cacheHeader).slice(0,16),id.replace(/[^a-z0-9-]/gi,'_')+'.bin');
+function loadCache(id:string,frames:number,pixelsSha256:string){
+ const file=cacheFile(id);if(!cacheDir||!fs.existsSync(file))return new Uint32Array(frames*2);
+ const meta=read(file+'.json');if(meta.header!==cacheHeader||meta.pixelsSha256!==pixelsSha256||meta.frames!==frames)return new Uint32Array(frames*2);
+ const bytes=fs.readFileSync(file);return new Uint32Array(bytes.buffer,bytes.byteOffset,frames*2).slice();
+}
+function saveCache(id:string,frames:number,pixelsSha256:string,keys:Uint32Array){
+ if(!cacheDir)return;const file=cacheFile(id);fs.mkdirSync(path.dirname(file),{recursive:true});
+ fs.writeFileSync(file+'.partial',Buffer.from(keys.buffer,keys.byteOffset,keys.byteLength));fs.renameSync(file+'.partial',file);
+ fs.writeFileSync(file+'.json',JSON.stringify({header:cacheHeader,pixelsSha256,frames})+'\n');
+}
 const report:any={schema:'smb-combined-replay-v2',...(windows?{frameWindows:{file:path.resolve(a.windows!),sha256:sha(fs.readFileSync(a.windows!))}}:{}),counting,unit:'input-frame',...(scope?{scope}:{}),protocol:'continuous-from-recorded-start',runtimeCommit,inventorySha256:inventoryHash(inventory),visualPolicyHash:policyHash,toolSha256:sha(fs.readFileSync(new URL(import.meta.url))),sourceHashes,paletteSha256:sha(fceux),runs:[],errors:[],progress:{status:'running',done:0,total:inventory.length,started:new Date().toISOString(),updated:null,finished:null,active:[],directlyComparedFrames:0}};
 fs.mkdirSync(path.dirname(path.resolve(a.out)),{recursive:true});const checkpoint=()=>{report.progress.updated=new Date().toISOString();report.progress.done=report.runs.length;report.progress.directlyComparedFrames=report.runs.reduce((n:number,r:any)=>n+r.directlyComparedFrames,0);fs.writeFileSync(a.out+'.partial',JSON.stringify(report)+'\n');fs.renameSync(a.out+'.partial',a.out!);};checkpoint();
 process.on('uncaughtExceptionMonitor',error=>{report.errors.push({error:String(error)});report.progress.status='failed';checkpoint();});
@@ -45,7 +61,10 @@ async function audit(input:any,page:any){
  // State runs in a child process while this process drives the pictures.
  const statePromise=replayStateInWorker(stateBundle.file,monitor,input.id,scope?.levels);statePromise.catch(()=>{});
  await page.evaluate(async({entrance,original,rgb,palette,policy}:any)=>{
-  const w=window as any,canvas=document.querySelector('#game') as HTMLCanvasElement;canvas.toDataURL=()=>'';w.mario.reset({playing:original});
+  const w=window as any,canvas=document.querySelector('#game') as HTMLCanvasElement;canvas.toDataURL=()=>'';
+  // Defer every draw: remember the scene of the latest render call (and its hash); a compared row draws it only when no cached verdict applies.
+  if(!w.auditDraw){const {deferDraws}=await import(String('/tools/harness/native-monitor/scene-hash.mjs'));w.auditDraw=deferDraws(w.marioDebug.view.renderer);}
+  w.auditDraw.pending=null;w.mario.reset({playing:original});
   if(original){const {initializeEntrance}=await import(String('/tools/harness/native-entrance.mjs'));initializeEntrance(w.marioDebug.simulation,entrance);w.mario.step([],0);w.marioDebug.simulation.inputs=[];}
   // Read the renderer's own preserved drawing buffer (byte-identical to the former drawImage/getImageData crop).
   const gl=(canvas.getContext('webgl2')??canvas.getContext('webgl')) as WebGL2RenderingContext;if(!gl?.getContextAttributes()?.preserveDrawingBuffer)throw Error('Renderer drawing buffer unavailable');
@@ -53,30 +72,39 @@ async function audit(input:any,page:any){
   w.audit={gl,flip:new Uint8Array(240*224*4),compareFrame,rgb,palette,policy,mapping,native:new Uint8Array(240*224*4),work:{mismatch:new Uint8Array(240*224),queue:new Int32Array(240*224)},pictures:[]};
  },{entrance,original,rgb,palette,policy});
  const out:any={id:input.id,frames:input.frames,reseeded:false,nativeLagFrames:[...lag].filter(f=>f<limit),initialStateVerified:original,spans:[],directlyComparedFrames:0,firstFailure:null,stateAudit:null,provenance:{ramSha256:meta.ramSha256,initialRamSha256:sha(initial),nativePixelsSha256:meta.pixelsSha256,nativeEmphasisSha256:meta.emphasisSha256,lag:1,start:input.start,paletteNormalization:'native-pixels.ts native palette-index equivalence',fullPictureStreamAuthenticated:false}};
+ const cached=loadCache(input.id,pads.length,meta.pixelsSha256),keys=cached.slice();out.pictureCache={reused:0,drawn:0};
  const pixelFd=fs.openSync(path.join(pixelDir,'pixels.bin'),'r'),emphFd=fs.openSync(path.join(pixelDir,'emph.bin'),'r'),pixelsHash=createHash('sha256'),emphasisHash=createHash('sha256');
  const pictures:{status:string;picture?:any}[]=[],firstPictures=new Map<number,{pix:Buffer;emph:Buffer;i:number;remake?:Buffer}>();let candidate=-1;
  // --dump F,G: diagnostic only, saves native | remake | difference PNGs of those frames beside --out.
  const dumpFrames=new Set((a.dump??'').split(',').filter(Boolean).map(Number));
  try{
   for(let from=0;from<limit;from+=batch){
-   const count=Math.min(batch,limit-from),body=Buffer.alloc(count*240*224+count*224),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224);
+   const count=Math.min(batch,limit-from),body=Buffer.alloc(count*240*224+count*224+count*8),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224,count*240*224+count*224);
+   Buffer.from(cached.buffer,cached.byteOffset+from*8,count*8).copy(body,count*240*224+count*224);
    if(fs.readSync(pixelFd,pix,0,pix.length,from*240*224)!==pix.length||fs.readSync(emphFd,emph,0,emph.length,from*224)!==emph.length)throw Error('Native picture truncated');pixelsHash.update(pix);emphasisHash.update(emph);
    const key=String(++feedKey);feed.set(key,body);
-   const compare=Array.from({length:count},(_,i)=>chosen(from+i)&&!lag.has(from+i)),skip=Array.from({length:count},(_,i)=>lag.has(from+i))
-   const rows=await page.evaluate(async({key,count,pads,names,compare,skip}:any)=>{
-    const w=window as any,a=w.audit,body=new Uint8Array(await (await fetch('/__native-feed/'+key)).arrayBuffer()),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224),rows=[];a.pictures=[];
+   const compare=Array.from({length:count},(_,i)=>chosen(from+i)&&!lag.has(from+i)),skip=Array.from({length:count},(_,i)=>lag.has(from+i)),fresh=Array.from({length:count},(_,i)=>dumpFrames.has(from+i));
+   const rows=await page.evaluate(async({key,count,pads,names,compare,skip,fresh}:any)=>{
+    const w=window as any,a=w.audit,d=w.auditDraw,buffer=await (await fetch('/__native-feed/'+key)).arrayBuffer(),body=new Uint8Array(buffer),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224,count*240*224+count*224),cache=new Uint32Array(buffer.slice(count*240*224+count*224)),rows=[];a.pictures=[];
     for(let f=0;f<pads.length;f++){
      if(compare[f]){
+      const p=d.pending;if(!p)throw Error('No render call before a compared row');
+      const key=d.hash(p.scene,p.camera);if(key[0]!==p.key[0]||key[1]!==p.key[1])throw Error('Scene changed after its render call: a deferred draw would not match');
+      if(!fresh[f]&&(cache[f*2]|cache[f*2+1])&&cache[f*2]===key[0]&&cache[f*2+1]===key[1]){a.pictures.push(null);rows.push({picture:{status:'pass',cached:true},key});}
+      else{
+      d.draw();
       const gl=a.gl,remake=new Uint8ClampedArray(240*224*4);gl.readPixels(8,8,240,224,gl.RGBA,gl.UNSIGNED_BYTE,a.flip);for(let y=0;y<224;y++)remake.set(a.flip.subarray((223-y)*960,(224-y)*960),y*960);
       for(let y=0;y<224;y++)for(let x=0;x<240;x++){const k=y*240+x,index=pix[f*240*224+k],c=a.rgb[index|emph[f*224+y]<<6],j=k*4;if(!c)throw Error('Unknown emphasis');a.native[j]=c[0];a.native[j+1]=c[1];a.native[j+2]=c[2];a.native[j+3]=255;const packed=remake[j]<<16|remake[j+1]<<8|remake[j+2],mapped=a.palette[index]===packed?a.rgb[index]:a.mapping.get(packed);if(mapped){remake[j]=mapped[0];remake[j+1]=mapped[1];remake[j+2]=mapped[2];}}
-      const picture=a.compareFrame(a.native,remake,240,224,a.policy,a.work);a.pictures.push(remake);rows.push({picture});
+      const picture=a.compareFrame(a.native,remake,240,224,a.policy,a.work);a.pictures.push(remake);rows.push({picture,key});
+      }
      }else{a.pictures.push(null);rows.push(null);}
      if(!skip[f])w.mario.step(names.filter((_:any,b:number)=>pads[f]&(1<<b)),1);
     }return rows;
-   },{key,count,pads:Array.from(pads.subarray(from,from+count)),names,compare,skip});
+   },{key,count,pads:Array.from(pads.subarray(from,from+count)),names,compare,skip,fresh});
    feed.delete(key);
    for(let i=0;i<count;i++){
     const f=from+i,row=rows[i];pictures[f]=row?{status:row.picture.status==='pass'?'match':'mismatch',picture:row.picture}:{status:'unchecked'};
+    if(row){const pass=row.picture.status==='pass';keys[f*2]=pass?row.key[0]:0;keys[f*2+1]=pass?row.key[1]:0;if(row.picture.cached)out.pictureCache.reused++;else out.pictureCache.drawn++;}
     if(f+1===warmup)steadyStarted=performance.now();
     // Keep the remake image of the earliest picture mismatch (state is joined after the loop).
     if(row&&dumpFrames.has(f))firstPictures.set(f,{pix:Buffer.from(pix.subarray(i*240*224,(i+1)*240*224)),emph:Buffer.from(emph.subarray(i*224,(i+1)*224)),i});
@@ -120,6 +148,7 @@ async function audit(input:any,page:any){
  out.provenance.observedPixelStreamSha256=pixelsHash.digest('hex');out.provenance.observedEmphasisStreamSha256=emphasisHash.digest('hex');
  // Bounded pilots are deliberately not valid completed-cohort receipts.
  if(limit===end){if(out.provenance.observedPixelStreamSha256!==meta.pixelsSha256||out.provenance.observedEmphasisStreamSha256!==meta.emphasisSha256)throw Error('Native streamed picture/emphasis hash mismatch');out.provenance.fullPictureStreamAuthenticated=true;}
+ saveCache(input.id,pads.length,meta.pixelsSha256,keys);
  return out;
 }
 try{
