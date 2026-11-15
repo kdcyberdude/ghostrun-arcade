@@ -1123,6 +1123,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    // JumpSwimSub (ProcSwim) runs GetPlayerAnimSpeed every swimming frame; ActionSwimming animates while the swim timer runs, the frame is
    // not 0 or A is held.
    if(refreshSpeed)anim.setSpeed(absolute);
+   if(Math.floor(p.vx*16))this.swimMovingDir=Math.sign(p.vx); // Player_MovingDir follows a non-zero speed byte while swimming too (193bb510 2-2 RAM 19400-19462: right while swimming, so the landing row skids)
    pose.kind='jump';this.swimPoseFrame=this.water.timer||anim.ctrl||buttons.has('a')?anim.animate(3):anim.hold();
   }else if(this.jumpPose||p.duck){pose.kind='jump';anim.still();}
   else{pose.kind='walk';pose.frame=anim.hold();} // a walk-off fall keeps its walking frame and facing
