@@ -11,7 +11,7 @@ export function nativeOamPicture(s:any){
  // 30,689 rows with rows 1-2 eight apart, at the drawn top less one; a row reaching Y 248 stays hidden: 243 / 248).
  const defeatTop=(e:any)=>!e.dead||e.squashed?undefined:e.greenShellLaunchFrame!==undefined||e.defeat&&e.kind==='goomba'?Math.floor(e.y)+shellLaunchRules.visibleBodyTopFromFeet:e.defeat&&(e.kind==='koopa'||e.kind==='redKoopa')?Math.floor(e.graphicsY??e.y)-15:undefined;
  const powerup=(i:any)=>['mushroom','flower','star','1up'].includes(i.kind)&&i.nativePowerState!==undefined&&!i.emerging;
- if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i)&&!i.nativeFlame)||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed&&defeatTop(p.victim)===undefined||!p.victim.dead&&!p.victim.shell)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup)))reasons.push('other-writer'); // a frenzy controller (ID23 before its Bullet, ID52 WarpZoneObject) holds a slot but draws nothing
+ if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i)&&!i.nativeFlame)||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed&&defeatTop(p.victim)===undefined||!p.victim.dead&&!p.victim.shell&&p.victim.nativeId===undefined)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup)))reasons.push('other-writer'); // a frenzy controller (ID23 before its Bullet, ID52 WarpZoneObject) holds a slot but draws nothing
  // Springboards: six entries at their slot's offset, rows Enemy_Y, +8, +16 (Enemy_Y: the spring's top, 8 lower per compression step) and columns X, X+8;
  // a column off X 1..255 keeps Y 248 (1ae7aeeb 2-1 rows 11640-11664 entering at the right, 13205-13223 compressed).
  const springs:{base:number,x:number,y:number}[]=[];
@@ -84,9 +84,10 @@ export function nativeOamPicture(s:any){
  for(const i of s.items)if(powerup(i)){const base=s.spriteShuffle.offsets[6],x=Math.floor(i.x-s.camera),y=Math.floor(i.y);
   for(let row=0;row<2;row++)for(let col=0;col<2;col++){const xx=x+col*8;write(base+row*8+col*4,xx<=0||xx>255?248:y+row*8,0x76,2,xx&255,false);}}
  // Floatey numbers: the victim slot's first two entries at Y = FloateyNum_Y - 8 (popup.y - 1), X and X+8 (fltpat: 17,618 of 23,640 rows; the rest read a shuffled offset).
- // A victim still walking (a stomped paratroopa's Koopa) keeps its own entries and its number moves to offset index 8 or 9 by a rule
- // not yet measured (all captures: 4,617 rows at 8, 699 at 9; 24a4c03d 1-3 rows 7146-7148 at 9), so such frames are refused above.
- for(const popup of s.popups){const v=popup.victim,base=s.spriteShuffle.offsets[v.enemySlot+1];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
+ // ChkTallEnemy: a Spiny, Piranha Plant or Cheep Cheep, or an ID below 9 other than the Hammer Bro in state 2 or more (dead or a shell),
+ // uses its own slot; any other victim (a stomped paratroopa's walking Koopa) uses Alt_SprDataOffset[SprDataOffset_Ctrl], offset index 8 + blockControl
+ // (889741ec 3-1 RAM 24050-24051: $03EE 0 -> entry 54 = $D8, 1 -> entry 26 = $68).
+ for(const popup of s.popups){const v=popup.victim,id=v.nativeId??-1,own=[0x0a,0x0b,0x0d,0x12].includes(id)||id>=0&&id<9&&id!==5&&(Boolean(v.dead)||Boolean(v.shell)),base=s.spriteShuffle.offsets[own?v.enemySlot+1:8+s.blockControl];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
  // A bumped block: four entries at Block_SprDataOffset (offset table entry 8 + its slot), rows at its picture Y and Y+8, a column hidden by
  // its misc offscreen bits left at Y 248 (1-2 9d8b2405 rows 3028-3041: entries 22-25 / 40-43 at offsets[8]).
  for(const b of s.blockGraphics){if(b.pictureY===undefined)continue;const base=s.spriteShuffle.offsets[8+b.slot],bits=nativeMiscOffscreen(b.x,b.pictureY,s.camera);
