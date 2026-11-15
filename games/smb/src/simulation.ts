@@ -3292,6 +3292,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(!this.placedStream&&this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&!this.parserClock.blocked){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot,this.vineSegmentAnchor(slot));}}
   if(reservedClaim)Object.assign(this.specialSlot5,{flag:reservedClaim.flag,id:reservedClaim.id,frenzyBuffer:reservedClaim.buffer});
   this.specialSlot5.stepVine(this.random.frame,this.camera+this.lakituScroll);
+  // The stop-frenzy record is parsed whether or not its Lakitu still lives: with him defeated it only clears the Spiny buffer (8-2 bd15161f RAM 71265: Lakitu erased at 71206, slot 1 takes id $18, $06CB $12 -> 0, so no Lakitu reappears at 71992)
+  if(!this.enemies.some(e=>e.kind==='lakitu'&&e.active&&!e.dead))for(const e of this.enemies)if(e.kind==='lakitu'&&e.stopFrenzyX!==undefined&&stopFrenzyParsed(e.stopFrenzyX,this.scrollCrossCamera,this.frame-this.scrollCrossFrame)&&(this.freeNativeSlot()<5||!this.specialSlot5.flag)){e.stopFrenzyX=undefined;this.spinyBuffer=false;this.specialSlot5.frenzyBuffer=0;}
   this.spinyFrenzyAfter(frenzy);
   this.rememberSlotVertical();
  }
