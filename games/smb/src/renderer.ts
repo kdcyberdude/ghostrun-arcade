@@ -16,7 +16,7 @@ import {nativeStartupTitleShown} from './native-startup-picture.js';
 import {nativeFlagSprites} from './native-flag-picture.js';
 import {nativeBlockSprites,nativeBrickChunkSprites} from './native-block-picture.js';
 import {enemyRenderPicture,nativeBulletPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeShellPhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
-import {platformMotionModel,nativePlatformArtworkYs,nativePlatformObject} from './platform-motion.js';
+import {platformMotionModel,nativePlatformArtworkYs,nativePlatformObject,nativeSmallPlatform} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
 import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
@@ -326,7 +326,7 @@ export class GameRenderer {
     const ys=nativePlatformArtworkYs(platform,context,pos.y);
     for(const y of ys){
      if(platformMotionModel(platform,context)==='contact-cloud')this.special(s.platformWidth(platform)===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,y);
-     else{const slot=s.spriteObjectSlot(platform),base=slot===undefined?undefined:s.spriteShuffle.offsets[slot+1];this.oamContext=this.oamRows&&base!==undefined?{base,count:s.platformWidth(platform)/8+(ys.length>1?3:0)}:undefined;for(let i=0;i<s.platformWidth(platform);i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27',false,false,base===undefined?2:2+(255-base)/4096);this.oamContext=undefined;} // lower OAM offsets draw in front, as for enemies (0d12a2e4 row 18152: lift over Bowser); a small lift's second surface is on entries 3-5, so its dropped ninth sprite hides too (2-4 24a4c03d picture 22164)
+     else{const slot=s.spriteObjectSlot(platform),base=slot===undefined?undefined:s.spriteShuffle.offsets[slot+1];this.oamContext=this.oamRows&&base!==undefined?{base,count:s.platformWidth(platform)/8+(ys.length>1||nativeSmallPlatform(platform,context)?3:0)}:undefined;for(let i=0;i<s.platformWidth(platform);i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27',false,false,base===undefined?2:2+(255-base)/4096);this.oamContext=undefined;} // lower OAM offsets draw in front, as for enemies (0d12a2e4 row 18152: lift over Bowser); a small lift's second surface is on entries 3-5, so its dropped ninth sprite hides too (2-4 24a4c03d picture 22164), also when the first is hidden above the HUD (67829346 2-4 picture 23650)
     }
    }
    // Reference vines remain visible in the HUD rows while growing offscreen.
