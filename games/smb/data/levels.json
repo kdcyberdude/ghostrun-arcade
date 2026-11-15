@@ -137636,60 +137636,6 @@
             "background-tiles-0f-30-00-10.png"
           ],
           [
-            290,
-            13,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            291,
-            13,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            292,
-            13,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            293,
-            13,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            298,
-            17,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            299,
-            17,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            300,
-            17,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            301,
-            17,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            306,
-            15,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
             164,
             16,
             162,
@@ -137700,30 +137646,6 @@
             16,
             163,
             "background-tiles-0f-30-00-10.png"
-          ],
-          [
-            298,
-            17,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            299,
-            17,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            300,
-            17,
-            255,
-            "background-tiles-22-27-16-0f.png"
-          ],
-          [
-            301,
-            17,
-            255,
-            "background-tiles-22-27-16-0f.png"
           ]
         ],
         "generators": [
