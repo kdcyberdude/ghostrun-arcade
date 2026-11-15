@@ -1033,7 +1033,8 @@ export class Simulation {
   this.coinEndsCollision=false;
   for(const x of (down?[p.x+3,p.x+12]:[p.x+8])){
    // A coin under the left foot ends PlayerBGCollision (collectTiles): no right-foot landing and no side check this row (4-2 df3651d6 row 32472, the corpus's one coin/block foot pair).
-   if(down&&!water&&x===p.x+3&&[194,195].includes(this.tiles.get(`${Math.floor(x/16)},${Math.floor(edge/16)}`)!)){this.coinEndsCollision=true;break;}
+   // So does one under the right foot when the left finds nothing (smb-fast 6f1d6800 row 18765: coin at the right foot, used block beside the head, $0490 stays $FF and x keeps moving).
+   if(down&&!water&&[194,195].includes(this.tiles.get(`${Math.floor(x/16)},${Math.floor(edge/16)}`)!)){this.coinEndsCollision=true;break;}
    const tile=this.collisionAt(x,edge,!down&&(this.area.theme==='water'||hiddenBlockBumps(p.y)));
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
    // A foot deep in a resting springboard cell is pushed like a wall (2-1 mood rows 12473-12474: right foot 6 px into the top cell, x -1, speed 0).
