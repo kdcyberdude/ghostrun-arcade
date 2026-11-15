@@ -1585,7 +1585,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private spawnFrenzyBullet(slot:number){
   const pick=nativeFrenzyHeight(this.random.bytes[slot],this.swimBag);this.swimBag=pick.bag;
-  this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,pick.y+BULLETS.generatorFeetOffset,-1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,frenzy:true,age:1,graphicsVisible:false});this.slotSub[slot]=0;this.slotVertical[slot].fraction=0;this.slotYFrac[slot]=0;this.slotYFraction[slot]=0; // made after this frame's enemy step
+  this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,pick.y+BULLETS.generatorFeetOffset,-1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,frenzy:true,age:1,graphicsVisible:false});if(slot<5){this.slotSub[slot]=0;this.slotVertical[slot].fraction=0;this.slotYFrac[slot]=0;this.slotYFraction[slot]=0;}else{this.specialSlot5.flag=1;this.specialSlot5.id=8;} // made after this frame's enemy step
   this.spinyTimer=this.nativeFrenzyTimer=32;
  }
  // EraseEnemyObject releases the actual bank flag immediately. Its cannon pass
@@ -2000,7 +2000,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   return flag===undefined||decoded.some(c=>c.id===48)?decoded:[...decoded,{x:flag*16,id:48}];
  }
  private applySpecialAreaCommand(command:AreaControl){
-  if(command.id===48){this.specialSlot5.claimFlag(command.x);this.flagNumber.y=176;this.items=this.items.filter(i=>!['mushroom','flower','star','1up'].includes(i.kind));}
+  if(command.id===48){this.specialSlot5.claimFlag(command.x);this.flagNumber.y=176;this.items=this.items.filter(i=>!['mushroom','flower','star','1up'].includes(i.kind));for(const e of this.enemies)if(e.enemySlot===5&&e.active&&!e.slotFreed){this.eraseEnemy(e);e.slotFreed=true;}} // the flagpole object takes slot 5 over whatever holds it (5-3 smb-fast 7642e228 RAM 43066: a frenzy Bullet Bill in slot 5 replaced by id $30)
   else{
    const ids=Array.from({length:5},()=>this.specialSlot5.frenzyBuffer);
    for(const enemy of this.enemies)if(enemy.active&&!enemy.slotFreed&&enemy.enemySlot!==undefined&&enemy.enemySlot<5&&this.holdsNativeSlot(enemy))ids[enemy.enemySlot]=enemy.kind==='lakitu'?17:enemy.kind==='spiny'?18:enemy.kind==='cheep'&&enemy.motion==='flying'?20:enemy.kind==='bullet'?8:-1;
@@ -2587,7 +2587,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));
  private rememberSlotVertical(onlySlot?:number){
   for(const e of this.enemies){
-   if(!e.active||e.enemySlot===undefined||e.slotFreed||onlySlot!==undefined&&e.enemySlot!==onlySlot)continue;const m=this.slotVertical[e.enemySlot];
+   if(!e.active||e.enemySlot===undefined||e.slotFreed||onlySlot!==undefined&&e.enemySlot!==onlySlot)continue;const m=this.slotVertical[e.enemySlot];if(!m)continue; // slot 5 has no enemy speed bytes here
    if(e.defeat)Object.assign(m,e.defeat);
    else if(e.hbro){Object.assign(m,{speed:e.hbro.speed,force:e.hbro.force,fraction:e.hbro.fraction});this.slotYSpeed[e.enemySlot]=e.hbro.speed&255;this.slotYFraction[e.enemySlot]=this.slotYFrac[e.enemySlot]=e.hbro.fraction;this.slotFrameTimers[e.enemySlot]=e.hbro.frameTimer;}
    else if(e.nativeSwim&&!e.dead){Object.assign(m,{speed:0,force:e.nativeSwim.originY,fraction:e.nativeSwim.fraction});this.slotYSpeed[e.enemySlot]=0;this.slotYFraction[e.enemySlot]=this.slotYFrac[e.enemySlot]=m.fraction;}
@@ -2772,6 +2772,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  /** A frenzy Bullet Bill's bound check is its own slot's turn in the enemy loop, so it also runs on task-7 rows that block the enemy loader (5-3 smb-fast ba9b128f row 42493:
   * task $071F 7 -> 6, slot 3 x 1370 vs camera 1444 erased natively while the loader stood still; 89e72bd1, d09224d1, 1dfdd022 the same). */
  private eraseNativeFrenzyBullets(){
+  if(this.specialSlot5.id===8&&!this.enemies.some(e=>e.frenzy&&e.enemySlot===5&&e.active&&!e.slotFreed))this.specialSlot5.erase(); // a slot-5 shot gone on an earlier row frees slot 5
   for(const e of this.enemies)if(e.frenzy&&e.kind==='bullet'&&e.active&&!e.slotFreed&&e.dead===0&&e.x+(e.age>1?BULLETS.speed:0)-this.camera<=-BULLETS.generatorRemoveLeft){this.eraseEnemy(e);e.slotFreed=true;e.goneFrame=this.frame;if(e.enemySlot!==undefined){this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}}
  }
  private passNativePlacedStream(){
@@ -2811,7 +2812,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(init.id===23){
    this.specialSlot5.frenzyBuffer=23;
    const bullet=this.enemies.some(e=>e.frenzy&&e.kind==='bullet'&&(e.active&&!e.slotFreed&&e.dead<100||e.goneFrame===this.frame&&(e.enemySlot??5)>=slot));
-   if(slot<5&&!retainNativeFrenzyController(this.nativeFrenzyTimer,bullet)){this.spawnFrenzyBullet(slot);return 1;}
+   if(!retainNativeFrenzyController(this.nativeFrenzyTimer,bullet)){this.spawnFrenzyBullet(slot);return 1;} // slot 5 too, when it is free (5-3 smb-fast 7642e228 RAM 42982: slot 1's shot erased, slots 2-4 busy, the next shot in slot 5 at camera + 287)
    if(init.flag&&slot<5){const c=this.frenzyControllers.find(c=>c.offset===init.offset);if(c){c.slot=slot;c.x=init.x!+this.placedOrigin+this.slotSub[slot]/256;}}
    return init.flag;
   }
