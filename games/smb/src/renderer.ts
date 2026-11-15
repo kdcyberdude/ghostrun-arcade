@@ -250,7 +250,11 @@ export class GameRenderer {
   if(!itemShown(i)||s.itemPictureShown?.(i)===false)return;const x=i.x-s.camera; // a flame is drawn from the frame after it appears (32183fd4 1-4 row 9196: in RAM, first in OAM row 9197)
   if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up'){const context=this.oamContext;this.oamContext=this.oamRows&&i.nativePowerState!==undefined?{base:s.spriteShuffle.offsets[6],count:4}:undefined;const powerZ=i.emerging?-0.1:i.nativePowerState!==undefined?2+(255-s.spriteShuffle.offsets[6])/4096:1.5; // its slot's OAM depth: a Star at entries 10-13 covers a Koopa at 46-51 (1f738e06 1-1 picture 1549)
    if(i.kind==='star'){const k=(s.random.frame>>1)&3,palette=this.palettes[s.area.palette].slice(16+k*4,20+k*4).map(v=>v.toString(16).padStart(2,'0')).join('-'),y=i.y+(i.nativePowerState===undefined?0:1);for(const [row,tile] of [[0,0x8d],[1,0xe4]])for(let col=0;col<2;col++)this.spriteTile(tile,Math.floor(x)+col*8,y+row*8,palette,col===1,false,powerZ);} // DrawPowerUp: every Star tile takes sprite palette (FrameCounter>>1)&3 (2-1 4426d320 rows 12020-12034, PowerUpType 2: $20-$23 in turn)
-   else this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),powerZ);this.oamContext=context;}
+   // An emerging power-up is behind the background yet keeps its entries' OAM priority: it hides a later Goomba where the sky is clear
+   // (ebc1bc65 1-1 RAM 814: mushroom entries 10-13 attribute $22 at X 4-12, Goomba entries 40-45 at X 14-22, picture 815 shows the mushroom over him).
+   // The block it rises from is background by then and covers it (6ef303eb 2-1 pictures 10610-10637 and 11782-11814).
+   else{const draw=(z:number)=>this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),z);
+    if(i.emerging&&i.nativePowerState!==undefined&&s.spriteShuffle){const z=2+(255-s.spriteShuffle.offsets[6])/4096,cover=s.blockGraphics.map((b:any)=>({id:b.metatile,x:Math.floor(b.x-s.camera),y:b.y,palette:this.rotation(s.area.palette)}));this.backgroundDraws.push(...cover);this.behindBackgroundSprite(Math.floor(x),Math.floor(i.y+1),16,16,z,()=>draw(z));this.backgroundDraws.length-=cover.length;}else draw(powerZ);}this.oamContext=context;}
   if(i.kind==='coin'){
    if(i.nativeCoin){
     const y=Math.floor(i.y),screenX=Math.floor(x)&255;const context=this.oamContext;this.oamContext=this.oamRows?{base:s.spriteShuffle.miscOffset(i.nativeCoin.slot),count:2}:undefined;
