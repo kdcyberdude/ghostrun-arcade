@@ -211,6 +211,11 @@ export class GameRenderer {
    const tiles=tables.enemy_cells[12].tiles;for(let row=1;row<3;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[row*2+col],x+col*8,y+(3-row)*8,palette,false,true); // the first frame only (row 24699: B2/B4 on the left, never B6/B7)
    return;
   }
+  if(e.kind==='beetle'&&e.dead>0&&!e.shell&&!e.squashed){
+   // A Buzzy Beetle killed by a hit is its shell upside down: $F5 over $F4, the right column mirrored, not flipped vertically, 9 and 17 lines below its top (0d13669b 8-4 RAM 78059: slot 2 state $22, Enemy_Y 166, entries 48-51 at Y 176/184, attributes $03/$43).
+   const tiles=tables.enemy_cells[19].tiles;for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(2-row)*2+col],x+col*8,y+9+row*8,palette,col===1,false);
+   return;
+  }
   if(e.squashed){
    const top=Math.floor(e.y)-6;
    this.spriteTile(239,x,top,palette,false,true);this.spriteTile(239,x+8,top,palette,true,true);return;
