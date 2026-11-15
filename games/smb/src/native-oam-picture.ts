@@ -1,4 +1,4 @@
-import {nativeMiscOffscreen} from './native-misc.js';import {enemyRenderPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,nativeSmallPlatform,platformMotionModel} from './platform-motion.js';import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
+import {nativeMiscOffscreen} from './native-misc.js';import {enemyRenderPicture,enemyPictureTimersStopped,nativeBlooperPicture} from './enemy-picture.js';import {nativeBubbleShown} from './view-rules.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,nativeSmallPlatform,platformMotionModel} from './platform-motion.js';import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
 /** Explicit capability: normal Mario, live Goombas and lifts. Unknown writers
  * refuse the whole composition; they are never silently omitted from the cap. */
 /** ChkTallEnemy: a Spiny, Piranha Plant or Cheep Cheep, or an ID below 9 other than the Hammer Bro in state 2 or more (dead or a shell),
@@ -9,7 +9,7 @@ export function nativeOamPicture(s:any){
  const pic=(e:any)=>enemyRenderPicture(e,s.frame,s.nativeTimersStopped);
  const reasons:string[]=[];
  if(s.paused||!['play','dying'].includes(s.phase)||s.spritePictureOwner!=='engine'||s.nativeScreen||s.nativeTimersStopped&&s.phase!=='dying'||s.powerChange)reasons.push('control-owner');
- if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.area.theme==='water'||s.player.dead&&s.phase!=='dying')reasons.push('player-variant');
+ if(s.currentPlayer||s.player.size===2||s.player.star||s.starDrawPalette!==undefined||s.player.climbing||s.player.duck||s.player.dead&&s.phase!=='dying')reasons.push('player-variant');
  // A Goomba or Koopa knocked over (not squashed): its picture's two rows at entries 2-5, its floatey number on 0-1 (all captures, state bit 5:
  // 30,689 rows with rows 1-2 eight apart, at the drawn top less one; a row reaching Y 248 stays hidden: 243 / 248).
  const defeatTop=(e:any)=>!e.dead||e.squashed?undefined:e.greenShellLaunchFrame!==undefined||e.defeat&&e.kind==='goomba'?Math.floor(e.y)+shellLaunchRules.visibleBodyTopFromFeet:e.defeat&&(e.kind==='koopa'||e.kind==='redKoopa')?Math.floor(e.graphicsY??e.y)-15:undefined;
@@ -47,9 +47,9 @@ export function nativeOamPicture(s:any){
  // Entry rows (OAM Y less Enemy_Y) per drawn state, measured over World 1 captures (entpat): walkers 0/8/16 (Goomba id6 130,604 rows, Koopa id0 17,358);
  // a shell 2/10/18 (id0 states 4/84), a waking shell 0/8/16 (state 3: 82 of 82 sampled rows; 17a2baf0 2-1 picture 11987); a squashed Goomba 9/17 below its floatey number, which owns the slot's first two entries.
  const walker=(e:any)=>['koopa','redKoopa','beetle','paratroopa','piranha'].includes(e.kind);
- const rowsOf=(e:any,body:any):(number|undefined)[]|undefined=>(e.kind==='goomba'||e.kind==='podoboo')&&!e.dead?[0,8,16]:e.kind==='goomba'&&e.squashed&&e.dead?[s.popups.some((p:any)=>p.victim===body)||body.erasedFrame===s.frame?undefined:1,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?(e.walkerState===3?[0,8,16]:[2,10,18]):defeatTop(e)!==undefined&&s.popups.some((p:any)=>p.victim===body)?[undefined,defeatTop(e)!-1-(Math.floor(e.y)-24),defeatTop(e)!+7-(Math.floor(e.y)-24)]:undefined;
+ const rowsOf=(e:any,body:any):(number|undefined)[]|undefined=>(e.kind==='goomba'||e.kind==='podoboo'||e.kind==='cheep')&&!e.dead?[0,8,16]:e.kind==='blooper'&&!e.dead?[0,8,16].map(r=>r+nativeBlooperPicture(e.bloop?.timer??0,false,enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped)).yOffset):e.kind==='goomba'&&e.squashed&&e.dead?[s.popups.some((p:any)=>p.victim===body)||body.erasedFrame===s.frame?undefined:1,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?(e.walkerState===3?[0,8,16]:[2,10,18]):defeatTop(e)!==undefined&&s.popups.some((p:any)=>p.victim===body)?[undefined,defeatTop(e)!-1-(Math.floor(e.y)-24),defeatTop(e)!+7-(Math.floor(e.y)-24)]:undefined;
  if(enemies.some((body:any)=>{const e=pic(body);return e.enemySlot===undefined||!hidden(e)&&!undrawn(e,body)&&(!rowsOf(e,body)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
- const pose=playerCell(s);if(pose.throwing||pose.swimKick!==undefined)reasons.push('player-extra-piece');
+ const pose=playerCell(s);if(pose.throwing)reasons.push('player-extra-piece');
  const at=s.playerPicturePosition(),px=Math.floor(at.x-s.camera),py=Math.floor(at.y)-32;
  if(px<0||px>240)reasons.push('player-offscreen');
  if(s.spriteShuffle.offsets[0]!==4)reasons.push('player-offset');
@@ -63,7 +63,7 @@ export function nativeOamPicture(s:any){
  // ChkForPlayerAttrib forces symmetry at table offsets50/B8/C0/C8.
  // A row at Y 248 or below the screen stays hidden (all captures, Player_Y 170-300 in states 8 and 11: rows end where Y + 8 x row reaches 248).
  // Above the screen, PlayerOffscreenChk parks each row lying wholly above it at $F8; the rest keep their wrapped Y (df3651d6 4-3 RAM 35589: Player_Y 235 page 0, bits $C0: rows 248 248 251 3).
- if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)if(py+row*8<248)write(4+row*8+col*4,py<0&&row<Math.floor(-py/8)?248:py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||[22,25].includes(pose.cell)&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
+ if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)if(py+row*8<248)write(4+row*8+col*4,py<0&&row<Math.floor(-py/8)?248:py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||[22,25].includes(pose.cell)&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8,pose.swimKick===undefined); // a swim kick swaps a foot tile only
  for(const e of bowsers){const feet=Math.floor(e.graphicsY??e.y),x=Math.floor((e.graphicsX??e.x)-s.camera),right=e.bowser?e.bowser.side>0:e.vx>0,head=right?x+16:x;
   for(const [slot,hx,top] of [[e.enemySlot,head,feet-32],[e.nativeBowser.rearSlot,head+(right?-16:16),feet-24]]){const base=s.spriteShuffle.offsets[slot+1];
    for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=hx+col*8;write(base+row*8+col*4,xx<=0||xx>255?248:top+row*8,0,0,xx&255,false);}}}
@@ -97,6 +97,8 @@ export function nativeOamPicture(s:any){
  for(const b of s.blockGraphics){if(b.pictureY===undefined)continue;const base=s.spriteShuffle.offsets[8+b.slot],bits=nativeMiscOffscreen(b.x,b.pictureY,s.camera);
   for(let row=0;row<2;row++)for(let col=0;col<2;col++)write(base+row*8+col*4,bits&(col?4:8)?248:(b.pictureY+row*8)&255,0x86,3,(Math.floor(b.x)-Math.floor(s.camera)+col*8)&255,false);}
  for(const sp of springs)for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=sp.x+col*8;write(sp.base+row*8+col*4,xx<=0||xx>255?248:sp.y+row*8,0xfc,2,xx,false);}
+ // Air bubbles: one entry each at offset table entry 10 + its slot, Y = its Y (2-2 308c986d RAM 13279-13285).
+ if(s.area.theme==='water')for(const [slot,bubble]of s.bubbles.entries())write(s.spriteShuffle.offsets[10+slot],nativeBubbleShown(bubble,s.player.y,s.camera)?Math.floor(bubble.y):248,0x74,2,(Math.floor(bubble.x)-Math.floor(s.camera))&255,false);
  for(const bar of bars)bar.balls.forEach((b,k)=>write(bar.base+k*4,b.x<0||b.x>255?248:b.y-1,0x75,2,b.x,false));
  // A lift at Y 0 that came from above the screen keeps Y 248 (0d12a2e4 row 6023); one already at the top is drawn (b230c302 1-2 row 6853: X 5, Y 0).
  for(const lift of lifts)for(let i=0;i*8<lift.width;i++){const xx=lift.x+i*8;write(lift.base+i*4,xx<=0||xx>255||lift.fromAbove?248:lift.y,91,2,xx);}
