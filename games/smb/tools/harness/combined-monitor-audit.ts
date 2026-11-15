@@ -27,7 +27,7 @@ const cacheDir=a['no-cache']?undefined:path.resolve(a.cache??path.join(monitor,'
 const cacheHeader=JSON.stringify({version:1,three:read(path.join(root,'../../node_modules/three/package.json')).version,policyHash,remakePalette:sha(JSON.stringify(palette)),nativePalette:sha(fceux),sceneHash:sha(fs.readFileSync(path.join(root,'tools/harness/native-monitor/scene-hash.mjs'))),visualCore:sha(fs.readFileSync(path.join(root,'tools/harness/native-monitor/visual-core.mjs')))});
 const cacheFile=(id:string)=>path.join(cacheDir!,sha(cacheHeader).slice(0,16),id.replace(/[^a-z0-9-]/gi,'_')+'.bin');
 function loadCache(id:string,frames:number,pixelsSha256:string){
- const file=cacheFile(id);if(!cacheDir||!fs.existsSync(file))return new Uint32Array(frames*2);
+ if(!cacheDir)return new Uint32Array(frames*2);const file=cacheFile(id);if(!fs.existsSync(file))return new Uint32Array(frames*2);
  const meta=read(file+'.json');if(meta.header!==cacheHeader||meta.pixelsSha256!==pixelsSha256||meta.frames!==frames)return new Uint32Array(frames*2);
  const bytes=fs.readFileSync(file);return new Uint32Array(bytes.buffer,bytes.byteOffset,frames*2).slice();
 }
