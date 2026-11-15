@@ -31,11 +31,11 @@ export function nativePlatformLanding(feet:number,vy:number,x:number,prior:Platf
 
 /** Native head bump on a platform's underside (ProcLPlatCollisions): with the boxes overlapping and Player_Y_Speed < 0 after this frame's gravity,
  * platform bottom (top + 13, BoundBoxCtrlData rows 5/6) minus player box top (y + 8 big, y + 20 small or crouching) 0..3 sets the speed to 1
- * (the move force stays). In feet terms: feet - top 34..37 big, 22..25 small. */
+ * (the move force stays). In feet terms: feet - top 34..37 big, 22..25 small (mod 256). */
 export function nativePlatformHeadBump(feet:number,big:boolean,x:number,prior:PlatformPosition,width:number,wide=big,bottom=13):boolean{
  if(!platformSupportsX(x,prior.x,width,wide))return false;
- const d=Math.floor(prior.y)+bottom-(feet-32+(big?8:20));
- return d>=0&&d<4;
+ const d=(Math.floor(prior.y)+bottom-(feet-32+(big?8:20)))&255; // 8-bit box bytes: above the screen top (Player_Y_HighPos 0) Mario still bumps (981b9c61 2-4 row 19613: Mario y 229, lift 244 + 6 - (229 + 20) = 1, speed -> 1)
+ return d<4;
 }
 
 /** Native PlayerBGCollision runs only while Player_Y_HighPos is 1 and Player_Y_Position ($CE) < $CF: a Mario lower on the screen (or above it)
