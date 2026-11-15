@@ -126,12 +126,14 @@ test('the 5-3 generator spawns a bullet at camera + 287 at a frenzy height as so
  gaps.forEach(g=>assert.ok(g>=89&&g<=93,`gap ${g}`));
 });
 
-test('the generator stops outside its camera range (5-3 recorded range 0 to 1802)',()=>{
+// The area parser opens the frenzy on the first row past fromCamera with parser task 6 before it and closes it past toCamera on a task-3 row (6-3 RAM $06CB, 12 starts and 11 stops).
+test('the generator runs between its parser rows past fromCamera and toCamera',()=>{
  const generator:GeneratorSpec={kind:'bullet',from:0,to:99999,interval:1,heights:[40],fromCamera:100,toCamera:200};
- const sim=fixture({generators:[generator]});
+ const sim=fixture({generators:[generator]}),clock=(sim as any).parserClock;
  sim.step([],5);assert.equal(shots(sim).length,0);
- sim.camera=150;sim.step([],1);assert.equal(shots(sim).length,1);
- sim.camera=300;sim.step([],400);assert.equal(shots(sim).length,1);
+ sim.camera=150;sim.step([],1);assert.equal(shots(sim).length,0,'not open before a task-6 row');
+ clock.task=6;sim.step([],1);assert.equal(shots(sim).length,1);
+ sim.camera=300;clock.task=3;sim.step([],400);assert.equal(shots(sim).length,1);
 });
 
 // Contact box (native RAM box rows: Bullet Bill x+3..x+13, y+14..y+20 at its moved position; small Mario x+3..x+13, y+20..y+32; edges touching count).
