@@ -38,7 +38,7 @@ test('mushroom growth steps with FrameCounter from freeze row 7',()=>{
 // Native shrink (371fe2fe 2-1 RAM 18234..18288): rows 0-15 keep the pose, then HandleChangeSize alternates big/small swim frame 1 every 4 FrameCounter steps.
 test('shrink freeze keeps the pose for 16 rows, then alternates big and small swim frame 1 by PlayerAnimCtrl',()=>{
  let s='';for(let n=0;n<=52;n++){const c=shrinkCell(n,104+n);s+=c===undefined?'.':c===5?'B':'s';}
- assert.equal(s,'................BBBBssssBBBBssssBBBBssssBBBBssssBBBB.');
+ assert.equal(s,'................BBBBssssBBBBssssBBBBssssBBBBssssBBBBs');
 });
 // Native 1-1 fire flower pickup (view5 capture, engine-12 rows 218..280, one PNG per row, palette by colour role in Mario's box):
 // row 0 normal, row 1 fire, rows 2-4 dark (K o p), then 4-row cells fire (R c s) / green (G W s) / white (R W s) / dark, rows 61-63 white, fire after.

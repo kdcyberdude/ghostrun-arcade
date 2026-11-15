@@ -33,7 +33,7 @@ export function playerCell(s:Simulation){
  // Pose cadence between7/8-frame observations remains inferred. All three
  // supplied growth sizes are used while the measured gameplay freeze runs.
  if(change?.kind==='grow'){const grow=growCell(POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue-change.remaining,s.random.frame);if(grow==='big')cell=cell>=12&&cell<=17?cell-12:cell===23?25:cell;else if(grow!==undefined)cell=grow;}
- if(change?.kind==='shrink'){const shrink=shrinkCell(POWERUPS.transformFreezeNativeFrames.shrinkValue-change.remaining,s.random.frame);if(shrink!==undefined)cell=shrink;}
+ if(change?.kind==='shrink'){const frozen=POWERUPS.transformFreezeNativeFrames.shrinkValue-change.remaining,shrink=shrinkCell(frozen,s.random.frame);if(shrink!==undefined)cell=shrink;else if(frozen>=54)cell=cell===25||cell>=10&&cell<12?23:cell<10?cell+12:cell;}
  const facing=pose&&s.area.theme!=='water'&&!p.climbing?pose.facing:p.facing;
  const throwing=p.size===2&&throwPoseShown(s.fireballThrowAge,p.grounded,Math.abs(p.vx))&&!p.duck&&!p.dead&&!p.climbing;
  if(throwing&&Math.abs(p.vx)<=0.1)cell=11;

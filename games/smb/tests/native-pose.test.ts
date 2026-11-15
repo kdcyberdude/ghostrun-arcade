@@ -45,5 +45,6 @@ test('the shrink freeze keeps the big pose for 16 rows, then HandleChangeSize dr
  const sim=new Simulation(observedLevels());sim.reset(true);sim.player.size=1;sim.playerAnim.fresh=false;sim.hurt();
  for(const age of [0,1,2,15]){sim.powerChange!.remaining=55-age;assert.equal(playerCell(sim).cell,25,`native shrink freeze row ${age}`);}
  for(const age of [16,30]){sim.powerChange!.remaining=55-age;assert.ok([5,17].includes(playerCell(sim).cell),`native shrink freeze row ${age}`);}
+ sim.powerChange!.remaining=1;assert.equal(playerCell(sim).cell,23,'the last shrink row draws the small ordinary pose (371fe2fe 2-1 RAM 18288)');
  assert.equal(sim.player.size,1,'the renderer selects a small cell while the physical size change still waits for the end of the freeze');
 });
