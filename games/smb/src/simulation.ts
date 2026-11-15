@@ -409,7 +409,7 @@ export class Simulation {
  private awardPopup(value:number|'1up',x:number,y:number,victim?:Enemy){
   // SetupFloateyNumber overwrites the label in this enemy slot (or the special power-up slot5).
   this.popups=this.popups.filter(p=>victim?p.victim!==victim&&(victim.enemySlot===undefined||p.victim?.enemySlot!==victim.enemySlot):p.victim!==undefined);
-  this.popups.push({value,x:Math.floor(x-this.camera),y:Math.floor(y),age:0,life:0x30,victim,born:this.frame});
+  this.popups.push({value,x:Math.floor(x-this.camera),y:Math.floor(y),age:0,life:victim?.kind==='bullet'&&!victim.frenzy?0x31:0x30,victim,born:this.frame}); // a stomped cannon Bullet Bill ($33) sets its number's timer on a row it is not counted: 48 on its first row, drawn through its 0 row (8 of 8: 0d13669b 5-2 RAM 38682-38730, 8bcc28f6 59427, 907339ec 56207, a3ca705b 58339); other numbers start at 47
  }
  private enemyPopup(value:number|'1up',enemy:Enemy){
   const picture=enemyPicture(enemy);this.awardPopup(value,picture.x,picture.y-popupRules.enemyFeetYOffset,enemy);
