@@ -3336,7 +3336,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(e.kind==='paratroopa'){e.kind=e.nativeId===15?'redKoopa':'koopa';e.nativeId=(e.nativeId??14)&1;}
  }
  private moveDefeatedRespawnLakitu(e:Enemy){
-  const n=e.pod!;if(n.y>=(e.lak?.box===8?272:280)){e.dead=100;e.active=false;e.slotFreed=true;e.slotLost=true;return;}
+  const n=e.pod!;if(n.y>=(e.lak?.box===8?272:280)){e.dead=100;e.active=false;e.slotFreed=true;e.slotLost=true;if(e.enemySlot!==undefined)this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;return;} // its X fraction stays in the slot too (0d13669b 8-2 RAM 70511-70686: slot 1 Lakitu falls out with $0402 144, the Paratroopa loaded there moves from it)
   e.dead++;nativeImposeGravity(n,0x3d,3);e.y=n.y;e.vy=n.speed+n.force/256;if(e.enemySlot!==undefined&&!e.slotFreed)Object.assign(this.slotVertical[e.enemySlot],{speed:n.speed,force:n.force,fraction:n.fraction}); // its fall bytes stay in the slot for the next object (8-2 bd15161f RAM 71206 -> 71308: speed 3, fraction $9A carried into the Paratroopa)
  }
  private contactNativeLakitu(e:Enemy,priorX:number,priorY:number){
