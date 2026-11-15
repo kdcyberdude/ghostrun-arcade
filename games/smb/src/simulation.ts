@@ -2919,7 +2919,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    e.active=true;this.takeNativeSlot(e);
    if(e.enemySlot===undefined){e.active=false;if(e.x<this.camera+256)e.slotLost=true;continue;}
    if(e.kind==='blooper')e.bloop=newNativeBlooper();
-   else e.nativeSwim={y:Math.floor(e.y)-24,fraction:this.slotYFrac[e.enemySlot],flag:this.random.bytes[e.enemySlot]&16,originY:(Math.floor(e.originY)-24)&255};
+   else e.nativeSwim={y:Math.floor(e.y)-24,fraction:this.slotVertical[e.enemySlot].fraction,flag:this.random.bytes[e.enemySlot]&16,originY:(Math.floor(e.originY)-24)&255}; // the y fraction is the slot's $0417 byte (slotVertical) as the last occupant left it (7-3 5e981db3 RAM 62318: id $0A in slot 4 starts at $A2, the falling Koopa's last fraction)
   }
  }
  /** TimerControl stops sprite alternation as well as motion. Death initializes $FF; the NMI counts it down. */
@@ -3111,7 +3111,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     if(e.kind==='blooper'&&e.stroke)this.updateNativeBlooper(e);
     else if(e.kind==='cheep'&&e.swim){
      if(e.enemySlot===undefined)this.freeNativeSlot();
-     const slot=e.enemySlot!,n=e.nativeSwim??={y:Math.floor(e.y)-24,fraction:this.slotYFrac[slot],flag:this.random.prev[slot]&16,originY:(Math.floor(e.originY)-24)&255};
+     const slot=e.enemySlot!,n=e.nativeSwim??={y:Math.floor(e.y)-24,fraction:this.slotVertical[slot].fraction,flag:this.random.prev[slot]&16,originY:(Math.floor(e.originY)-24)&255};
      e.x=moveSwimmingCheep(n,e.x,e.palette==='0f-16-30-27'?11:10,slot);e.y=n.y+24;
     }else{
     const speed=e.kind==='cheep'?SWIMMING_CHEEP_SPEEDS[e.palette??'']:undefined;
