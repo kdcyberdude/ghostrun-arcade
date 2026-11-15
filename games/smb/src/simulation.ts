@@ -3190,7 +3190,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    if(e.kind==='hammerBro')continue; // native contact already preceded ProcHammerBro
    if(e.kind==='lakitu')continue; // its native contact already preceded MoveLakitu
    // A cannon shot has the same native box as a leaping Cheep Cheep, at its position after this frame's move (5-1 original row 3238: box 107..117 against Mario's 118..128, no touch).
-   const boxed=(e.nativeFlight||cannonShot(e))&&!e.dead,cheepStomp=boxed?this.flyingCheepContact(p,e.nativeFlight?priorX:e.x,e.nativeFlight?priorY:e.y):undefined;
+   // A frenzy Bullet Bill has that box too, at its position before its move (5-3 smb-fast f80bc447 row 44533: Mario x 1269 y $CE 39 against the shot at x 1277 y $CF 56, stomped; the 16-px sprite box missed it).
+   const frenzyShot=e.kind==='bullet'&&e.frenzy,boxed=(e.nativeFlight||cannonShot(e)||frenzyShot)&&!e.dead,cheepStomp=boxed?this.flyingCheepContact(p,e.nativeFlight||frenzyShot?priorX:e.x,e.nativeFlight||frenzyShot?priorY:e.y):undefined;
    if(boxed&&(cheepStomp===undefined||!cheepStomp&&!p.star)){if(cheepStomp===false)hurtBeforeMove();continue;}
    const eh=e.kind==='bowser'?32:e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
