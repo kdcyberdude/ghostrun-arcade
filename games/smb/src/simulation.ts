@@ -1131,7 +1131,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  /** Native-exact swimming (src/native-water.ts) starts with the room unless the legacy entry fall still plays (5-2, 6-2). */
  private startSwim(spawnAtEntry:boolean,arrival=false){
-  const area=this.area,p=this.player,w=this.water;w.reset();this.swimActive=false;this.swimLock=0;this.swimDy=0;this.swimAbsolute=0;
+  const area=this.area,p=this.player,w=this.water;w.reset();this.swimPull=0;this.swimActive=false;this.swimLock=0;this.swimDy=0;this.swimAbsolute=0;
   if(area.theme!=='water'||area.entryFall&&!(area.waterEntryFall&&spawnAtEntry))return;
   this.swimActive=true;this.waterEntryFall=false;this.swimFreshA=true;
   // The pipe rooms of 5-2/6-2 fall exactly like the 2-2 entry (measured with small and big Mario, 34 rows): from the room load the state is

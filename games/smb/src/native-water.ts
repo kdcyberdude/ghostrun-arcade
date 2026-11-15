@@ -65,7 +65,7 @@ export class NativeWater{
  pullFromStart=false;
  constructor(){this.motor.cap=SWIM_CAP;}
  /** Fresh level state at the water entry spawn (native y 0, nothing applied yet). */
- reset(){this.steering=0;Object.assign(this.horizontalState,{speed:0,facing:1,moving:0,absolute:0,collision:255,running:0,grounded:false});this.speed=0;this.force=0;this.frac=0;this.rise=40;this.fall=40;this.timer=0;this.whirl=false;this.moving=0;this.lastDirection=0;this.motor.reset();this.motor.cap=SWIM_CAP;}
+ reset(){this.beforeWhirl=undefined;this.steering=0;Object.assign(this.horizontalState,{speed:0,facing:1,moving:0,absolute:0,collision:255,running:0,grounded:false});this.speed=0;this.force=0;this.frac=0;this.rise=40;this.fall=40;this.timer=0;this.whirl=false;this.moving=0;this.lastDirection=0;this.motor.reset();this.motor.cap=SWIM_CAP;}
  /** The state before this frame's trailing whirlpool pass, which contact with a floor or ceiling must precede. */
  private beforeWhirl?:{speed:number;force:number;frac:number;moved:number};
  /** Pixels this frame's trailing whirlpool pass moved. */
