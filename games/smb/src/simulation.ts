@@ -259,7 +259,7 @@ export class Simulation {
  private activatedCheckpointArea?:string;
  castleStage:'bridge'|'fall'|'walk'|'message'='bridge';castleArrivalFrame=0;nativeVictory?:NativeVictory;private victoryBoss?:Enemy;private victoryMessages:number[]=[];private victoryPending=-1;levelLoad?:NativeLevelLoad;private pipeLoad?:{target:NonNullable<Simulation['destination']>;alternate:number;header:number;page:number;offset:number};private victoryErase?:'axe'|'chain'|'bridge';
  readonly flagNumber={y:0,fraction:0};flagTop=49;flagInside=false;flagBonus=0;
- powerChange?:{from:0|1|2;to:0|1|2;remaining:number;kind:'grow'|'fire'|'shrink';born?:number};
+ powerChange?:{from:0|1|2;to:0|1|2;remaining:number;kind:'grow'|'fire'|'shrink';born?:number;steps?:number};
  /** Water pipe drop-in (2-2, 7-2): native PlayerEntrance runs until Mario's y reaches $30, and the game timer starts with control (2-2 v2: y49 on row 385, routine 8 and 401 -> 400 on row 386). */
  private waterEntryTimerHold=0;
  private waterEntryFall=false;private waterSurface={active:false,contacted:false};
@@ -633,7 +633,8 @@ export class Simulation {
     if(this.swimActive&&this.powerChange.remaining<40&&pressed('a')&&this.water.canStroke(true,false,this.player.grounded)){this.water.strokeOnly(Math.floor(this.player.y)-32);this.player.vy=this.water.speed+this.water.force/256;}
     const before=this.camera;this.releaseNativeSlots();{const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,s)=>busy.has(s));}this.shrinkScroll();this.eraseOffscreenEnemies();{const swim=this.swimTimer;this.birthNativeWaterEnemies();if(swim>0)this.swimTimer=swim;}this.advanceNativeAreaParser(this.camera-before); // the held enemies still leave by the left bound and new ones are made (5708387c 2-2 RAM 13344: slot 2's Cheep at X 1430 freed as the camera reaches 1504; RAM 13346 a Cheep made there at X 1793)
    for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
-   if(this.powerChange?.kind!=='shrink'||this.powerChange.remaining>2||this.area.theme==='water')return; // in water Mario holds through them too (6a8b71a3 2-2 rows 13093-13095: TimerControl $CA/$C9/$C8, x 1230.75, y 47, camera 1129 unchanged) // the last two shrink frames run Mario's own step while enemies stay held (2-1 a3899256 row 12421, 371fe2fe row 18287)
+   if(this.powerChange?.kind==='shrink'&&this.area.theme==='water'){const pc=this.powerChange,done=(pc.steps??0)>=10;if(pc.remaining<40&&!done&&!(this.random.frame&3))pc.steps=(pc.steps??0)+1;if(!done)return;} // in water the size change takes ten steps on rows with FrameCounter & 3 = 0 after its flag row (TimerControl 240), the last clearing PlayerChangeSizeFlag $070B; on the rows after it, while TimerControl still runs, Mario takes his own step (5708387c 2-2 RAM 13364: $070B 0 at TimerControl 203, x 1598.875 -> 1600.125 -> 1601.375 on 13365-13366; 6a8b71a3 RAM 13094 clears at TimerControl 201, no row left, Mario held)
+   else if(this.powerChange?.kind!=='shrink'||this.powerChange.remaining>2)return; // the last two shrink frames run Mario's own step while enemies stay held (2-1 a3899256 row 12421, 371fe2fe row 18287)
   }
   this.gameTimerStep(false); // NMI precedes player/actor routines, including automatic entrances.
   this.parserVramBusy=false;
@@ -792,7 +793,7 @@ export class Simulation {
   // previous frame (1-3 f574: own 3, carry -1 this frame, scroll 3; f575: own 2 + previous carry -1, scroll 1); screen position, and SideCollisionTimer ($0785, counted down once per frame)
   // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
-  if(waterScroll!==undefined)this.camera+=waterScroll;
+  if(waterScroll!==undefined&&this.powerChange?.kind!=='shrink')this.camera+=waterScroll; // the steps Mario takes as the water shrink ends do not scroll (5708387c 2-2 RAM 13365-13366: camera 1520)
   else if(!this.shrinkEndStep){const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'||this.player.invincible?this.waterScrollX:Math.floor(oldX)-previousCamera; /* a blinking Mario's scroll position updates only on the frames he is drawn (2-1 a3899256 row 12454) */this.playerXScroll=scrollMove&255;
    if(!scrollLocked&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
