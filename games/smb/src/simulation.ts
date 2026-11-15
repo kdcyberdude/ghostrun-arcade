@@ -280,6 +280,8 @@ export class Simulation {
  private bridge:string[]=[];private springTimers=new Map<SpringSpec,NativeSpring>();private erasedVineSlots=new Set<number>();private mazeStates:MazeState[]=[];private mazeSource!:Area;
  vines:Vine[]=[];private climbingVine?:Vine;private vineProgress=new Map<string,number>();private vineDetached=false;private entryVineActive=false;private autoVineActive=false;private entryVineStage:'grow'|'climb'|'right'|'fall'='climb';
  warpZoneActive=false;
+ /** The Piranha Plants the warp zone object erased this frame, after the engine drew them (3802a107 1-2 RAM 5650: slots cleared, six entries still drawn). */
+ warpErased?:{frame:number;enemies:Enemy[]};
  private footPushed=false;private piranhaTouchFeetY?:number;private landingFraction=0;private fallGravity=FALL_GRAVITY_AFTER_LOAD;private walkingOff=false;
  private motor=new PlayerMotor();private wallSide?:1|-1;private wallSpeed?:number;private wallBackOut=false;
  readonly bubbleState=new NativeBubbles();
@@ -2597,8 +2599,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   for(const event of events){
    const e=event.plant;
    if(!e){
-    warp=true;this.warpZoneActive=true;this.areaControls.locked=!this.areaControls.locked;
-    for(const p of this.enemies)if(p.kind==='piranha'&&p.active&&!p.slotFreed&&p.dead<100){if(p.enemySlot!==undefined)this.slotReleaseFrame[p.enemySlot]=this.frame;p.active=false;p.slotHeld=false;p.slotFreed=true;p.slotLost=true;p.dead=100;}continue;
+    warp=true;this.warpZoneActive=true;this.areaControls.locked=!this.areaControls.locked;this.warpErased={frame:this.frame,enemies:[]};
+    for(const p of this.enemies)if(p.kind==='piranha'&&p.active&&!p.slotFreed&&p.dead<100){this.warpErased.enemies.push({...p});if(p.enemySlot!==undefined)this.slotReleaseFrame[p.enemySlot]=this.frame;p.active=false;p.slotHeld=false;p.slotFreed=true;p.slotLost=true;p.dead=100;}continue;
    }
    if(e.active&&!e.slotFreed&&!e.dead)continue;
    const used=new Set(this.enemies.filter(o=>o!==e&&!o.slotFreed&&this.holdsNativeSlot(o)).flatMap(o=>o.enemySlot===undefined?[]:[o.enemySlot]));for(const held of this.objectSlots(used))used.add(held);let slot=0;while(used.has(slot))slot++;

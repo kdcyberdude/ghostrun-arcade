@@ -39,7 +39,7 @@ export function nativeOamPicture(s:any){
  // Bowser alive: his head on his slot's six entries (rows feet-32, -24, -16), his rear on the rear slot's six, 8 lower and 16 behind
  // (32183fd4 1-4 rows 14079-14080: head 18-23 / 40-45 at X 224, rear 24-29 / 46-51 at X 240).
  const bowsers=s.enemies.filter((e:any)=>e.active&&e.kind==='bowser'&&!e.dead&&e.nativeBowser?.rearSlot!==undefined&&e.graphicsVisible!==false&&e.enemySlot!==undefined);
- const enemies=s.enemies.filter((e:any)=>e.active&&pic(e).dead<90&&!bowsers.includes(e));
+ const enemies=[...s.enemies,...(s.warpErased?.frame===s.frame?s.warpErased.enemies:[])].filter((e:any)=>e.active&&pic(e).dead<90&&!bowsers.includes(e));
  // An enemy with both columns off screen writes only hidden entries (SprObjectOffscrChk), whatever its kind.
  const hidden=(e:any)=>{const x=Math.floor((e.graphicsX??e.x)-s.camera);return [x,x+8].every(xx=>xx<=0||xx>255);};
  // EnemyGfxHandler skips a Piranha Plant moving with its frame timer running: all six entries stay cleared (entpat id $0D: 37,724 of 68,266 on-screen rows).
