@@ -330,10 +330,12 @@ export class GameRenderer {
    // Reference vines remain visible in the HUD rows while growing offscreen.
    this.worldClip=false;
    for(const vine of s.vines)if(vine.height>0){
-    const top=vine.baseY-vine.height;
-    for(let offset=0;offset<vine.height;offset+=8){
-     const side=Math.floor(offset/8)%2===1,tile=offset===0?224:225,visible=Math.min(8,vine.height-offset);
-     this.quad('sprite-tiles-0f-1a-30-27.png',[tile%16*8,Math.floor(tile/16)*8,8,visible],vine.x+(side?6:0)-s.camera,top+offset+(s.area.entryVine?.vineId===vine.id?1:0),1.5,side);
+    // A block's vine: OAM Y is its half-pixel top rounded half to even, drawn a line lower, still ending at the block's top
+    // (6ef303eb 2-1 rows 11320-11330: 72.5 -> 72, 71.5 -> 72, 70.5 -> 70, 69.5 -> 70).
+    const entry=s.area.entryVine?.vineId===vine.id,exact=vine.baseY-vine.height,even=Math.floor(exact)+(exact%1===0.5?Math.floor(exact)&1:Math.round(exact%1)),top=entry?exact+1:even+1,height=entry?vine.height:vine.baseY-top;
+    for(let offset=0;offset<height;offset+=8){
+     const side=Math.floor(offset/8)%2===1,tile=offset===0?224:225,visible=Math.min(8,height-offset);
+     this.quad('sprite-tiles-0f-1a-30-27.png',[tile%16*8,Math.floor(tile/16)*8,8,visible],vine.x+(side?6:0)-s.camera,top+offset,1.5,side);
     }
    }
    this.worldClip=true;
