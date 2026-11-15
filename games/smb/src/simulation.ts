@@ -1825,7 +1825,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(e.waitedForNativeSlot&&e.age===1){e.y=n.y-256+24;return;}
   if(n.timer===0){const force=this.random.bytes[(e.enemySlot??0)+1]|0x80;Object.assign(n,{y:514,speed:-7,force,timer:(force&15)|6});}
   nativeImposeGravity(n,28,3);
-  e.y=n.y-256+24;e.vy=n.speed+n.force/256;e.podobooFalling=e.vy>0;
+  e.y=n.y-256+24;e.vy=n.speed+n.force/256;e.podobooFalling=n.speed>=0; // the vertical flip tests the speed byte's sign: speed 0 with force 0 already draws falling (smb-fast 056d914c 3-4 RAM 26518 slot 0 $A0/$0434 0/0 -> picture 26520 flipped; 25843 is 0/$1A after $FF, so picture 25844 is still upright)
  }
  /** Native Piranha Plant (InitPiranhaPlant / MovePiranhaPlant): made hidden at its pipe (native y = feet - 24) with speed +1, move flag 0; down y is that y, up y 24 px higher.
   * Each frame EnemyFrameTimer ($078A+s) counts down; at 0, a still plant (flag 0) about to rise stays while |plant x - Mario x| (low byte) < 0x21, else its speed is negated
