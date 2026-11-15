@@ -1437,7 +1437,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.updateGenerators(false);this.lakituScroll=scroll;this.enemyContactOff=true;
   const beforeX=this.player.x;this.platformEjection=0;this.updatePlatforms(oldFeet,scroll,(this.area.platforms??[]).filter(p=>!nativePlatformObject(p,this.platformMotion.context)));
   this.platformScroll=Math.floor(this.player.x)-Math.floor(beforeX)-this.platformEjection;
-  this.updateEnemies(oldFeet);this.updateItems();this.enemyContactOff=false;
+  // The enemy pass reads camera + ScrollAmount as in play, where the camera has not moved yet: here it already has, so it starts from the previous one (5d076ae5 2-1 row 11681: the goomba at 1856 loads with the camera at 1553, not a row early).
+  {const camera=this.camera;this.camera=previousCamera;this.updateEnemies(oldFeet);this.camera=camera;}this.updateItems();this.enemyContactOff=false;
   this.firebarSlots?.finishFrame(this.camera);
    for(const [bar,motor]of this.firebarMotors)if(!motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   this.eraseOffscreenEnemies();this.birthNativeWaterEnemies();
