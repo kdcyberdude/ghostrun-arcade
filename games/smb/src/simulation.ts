@@ -2466,7 +2466,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    const slot=e.enemySlot??index,from=stepFrom.get(e);
    const corpse=e.squashed&&e.dead<90; // a flat Goomba still occupies its native slot until its erase (the remake's slot accounting may have let it go)
    if(!from||!e.active||slot>=5||e.slotFreed&&!corpse||!kinds.includes(e.kind)&&!(e.nativeFlight&&!e.dead)||e.movingShell||e.dead&&!corpse||corpse&&bySlot.has(slot))continue; // a leaping Cheep Cheep (Goomba-sized box) turns a walker it touches but keeps its own course (7-3 original row 692)
-   const turns=!e.nativeFlight&&!e.dead&&!e.shell&&!(e.egg&&e.motion==='falling')&&(e.kind!=='paratroopa'||isGreenParatroopa(e)&&(e.paratroopaMotion??'bounce')==='bounce');
+   const turns=!e.nativeFlight&&!e.dead&&!e.shell&&!(e.egg&&e.motion==='falling')&&(e.kind!=='paratroopa'||isGreenParatroopa(e)&&e.nativeId!==16&&(e.paratroopaMotion??'bounce')==='bounce'); // the horizontal flyer ($10) keeps its course (8bcc28f6 7-3 RAM 66953: slot 4 $10 touches slot 3's Cheep Cheep, X still 2427)
    bodies.push({slot,x:Math.floor(from.x),y:Math.floor(from.y)-24,tall:e.kind!=='goomba'&&e.kind!=='spiny'&&!e.nativeFlight,turns,reacts:true});bySlot.set(slot,e);
   }
   // A frenzy Bullet Bill (id $08, below $15; a cannon shot is $33) is an EnemiesCollision body too; it never turns, but a walker it touches does (123771fa 5-3 RAM 43420,
