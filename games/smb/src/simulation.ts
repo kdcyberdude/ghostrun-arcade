@@ -555,6 +555,7 @@ export class Simulation {
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath)this.updateNativeWarpZones(); // WarpZoneObject still runs while Mario dies: PlayerHole's ScrollLock with y $00 on page 2 releases it (3b15135b 4-2 row 34542: slot 1 id $34 erased)
    this.updateBubbles(this.phaseFrame>=255,false); // injury sets TimerControl=$ff; the bubble timer holds while that byte counts down
    if(this.offscreenLavaDeath||this.offscreenPitDeath?this.phaseFrame>=this.offscreenDeathRows:this.player.y>=LIFE_FLOW.deathArcEndFeetY&&this.phaseFrame>=181)this.loseLife=true; // PlayerHole also waits for the death music (EventMusicBuffer, 180 rows from the kill): a Mario killed already below the screen keeps engine $0B until it ends (08d3f28d 5-2 rows 43267-43448)
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.gateNativePlatforms(this.camera);this.busyNativeSlots();} // the enemy loader still runs while Mario dies: a lift held back by a task-7 row is made on the next free row (7642e228 6-3 RAM 53167 task 7, 53168 engine $0B, 53169 slot 1 id $28 at x 1936)
    this.parserLoaderWasBlocked=this.parserClock.blocked;this.advanceNativeAreaParser(0);return;
   }
   if(this.phase==='pipe'){
