@@ -234,7 +234,7 @@ export class Simulation {
  private offscreenLavaDeath=false;
  private offscreenPitDeath=false;
  private offscreenDeathRows=0;
- private timeUpDeath=false;private loseLife=false;
+ timeUpDeath=false;private loseLife=false;
  private lastJumpFallForce=0.5625;
  private fallingThroughCastleLava=false;private pitMusic=false;
  private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;private platformEjection=0;private slotReleaseFrame=[-1,-1,-1,-1,-1];
