@@ -1941,7 +1941,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private updateNativeLakitu(e:Enemy){
   let timer=this.spinyTimer;
-  if(timer===0&&this.spinyBuffer&&!this.pendingPlacedLakitu()&&this.scrollCrossFrame!==this.frame-1){const slot=this.freeNativeSlot(false,true);if(slot<5&&slot<(e.enemySlot??5))timer=SPINY_EGG.timer;}
+  if(timer===0&&this.spinyBuffer&&!this.pendingPlacedLakitu()&&this.scrollCrossFrame!==this.frame-1){const slot=this.frenzyNativeSlot(true);if(slot<5&&slot<(e.enemySlot??5))timer=SPINY_EGG.timer;}
   e.graphicsFrenzyTimer=timer;if(e.graphics)e.graphics.graphicsFrenzyTimer=timer;
   if(e.dead||this.nativeTimersStopped)return; // RunNormalEnemies tests TimerControl after PlayerEnemyCollision.
   const p=this.player,lak=e.lak??={dir:0,speed:0};
@@ -1993,11 +1993,18 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(!this.nmiTimersHeld&&this.spinyTimer>0)this.spinyTimer--;
   return this.spinyBuffer;
  }
+ /** The free slot that reaches CheckFrenzyBuffer: a placed Lakitu record held back by InitLakitu (pendingPlacedLakitu) and now left behind the screen
+  * is skipped (Inc2B) on the lowest free slot's turn, and the next free slot reads the frenzy buffer (4-1, 18 smb-fast recordings: offset $0739 11 -> 13 and the egg in slot 2 above a Lakitu in slot 1, slot 0 free). */
+ private frenzyNativeSlot(readOnly:boolean){
+  const slot=this.freeNativeSlot(false,readOnly),camera=Math.floor(this.camera+this.lakituScroll);
+  if(slot>=5||!this.enemies.some(e=>!e.active&&!e.slotLost&&e.nativeId===17&&e.nativeColumn!<camera+255))return slot;
+  let next=slot+1;while(next<5&&this.enemies.some(e=>e.enemySlot===next&&e.active&&!e.slotFreed&&(!e.dead||this.holdsNativeSlot(e))))next++;return next;
+ }
  /** LakituAndSpinyHandler in the first free slot (CheckFrenzyBuffer): a slot below Lakitu's runs before Lakitu steps (pre-step x, last row's buffer), a higher one after.
   * The handler is not reached on the row after the camera crosses a 32 px boundary (AreaParserTaskNum, as for list objects: 6-1 row 775 holds the egg one row). */
  private spinyFrenzyAfter(bufferBefore:boolean){
   if(this.spinyTimer>0||this.scrollCrossFrame===this.frame-1||this.pendingPlacedLakitu())return;
-  const slot=this.freeNativeSlot(),lakitu=this.enemies.find(e=>e.kind==='lakitu'&&e.active&&!e.dead);if(slot>=5)return;
+  const slot=this.frenzyNativeSlot(false),lakitu=this.enemies.find(e=>e.kind==='lakitu'&&e.active&&!e.dead);if(slot>=5)return;
   const low=lakitu?.enemySlot!==undefined&&slot<lakitu.enemySlot;
   if(!(low?bufferBefore:this.spinyBuffer))return;
   if(!lakitu){
