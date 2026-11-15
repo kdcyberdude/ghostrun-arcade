@@ -362,7 +362,7 @@ export class GameRenderer {
     const z=offset!==undefined?2+(255-offset)/4096:2.5; // its slot's OAM depth: a bumped brick at entries 26-29 covers a floatey at 40-41 (97387d10 1-2 picture 3582)
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,z);this.oamContext=undefined;
    }
-   for(const bar of s.area.firebars??[]){const slot=s.spriteObjectSlot(bar),centers=s.firebarCenters(bar);this.oamContext=this.oamRows&&slot!==undefined?{base:s.spriteShuffle.offsets[slot+1],count:centers.length}:undefined;for(const {x,y}of centers)this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x-4-s.camera,y-4+(bar.visualOffsetY??0));this.oamContext=undefined;}
+   for(const bar of s.area.firebars??[]){const slot=s.spriteObjectSlot(bar),centers=s.firebarCenters(bar);this.oamContext=this.oamRows&&slot!==undefined?{base:s.spriteShuffle.offsets[slot+1],count:centers.length}:undefined;for(const {x,y}of centers)this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x-4-s.camera,y-4+(bar.visualOffsetY??0),slot===undefined?2:2+(255-s.spriteShuffle.offsets[slot+1])/4096);this.oamContext=undefined;} // its slot's OAM depth: entries 27-29 cover a Podoboo at 30-35 (67829346 3-4 picture 34241)
    const pole=s.area.exit;
    if(pole?.kind==='flag'){
     const flagPalette=this.palettes[s.area.palette].slice(20,24).map(n=>n.toString(16).padStart(2,'0')).join('-');
