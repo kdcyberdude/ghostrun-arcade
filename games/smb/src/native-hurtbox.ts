@@ -2,7 +2,7 @@
  * dy = enemy native y - Mario native y (feet: enemy y + 24, Mario y + 32), integers, Mario after his move and the enemy before its own. */
 /** Podoboo uses BoundBoxCtrlData9: top+14/bottom+20 against small Mario top+20/bottom+32, so dy0..18 inclusive.
  * Lowest enemy that still touches (largest dy), per kind. Piranha: controlled native rectangles put its top at prior y+14 against Mario bottom y+32, before a floor snap. */
-const BELOW:Record<string,number>={goomba:18,koopa:23,redKoopa:23,beetle:23,paratroopa:12,/* Paratroopa: 98 hurts at dy -1..12, none in 204 rows at dy 13..23 (evidence/contact3-findings-20261111.md) */hammerBro:23,spiny:17,piranha:18,podoboo:18,blooper:17,cheep:12,bullet:15};
+const BELOW:Record<string,number>={goomba:18,koopa:23,redKoopa:23,beetle:23,paratroopa:12,/* Paratroopa: 98 hurts at dy -1..12, none in 204 rows at dy 13..23 (evidence/contact3-findings-20261111.md) */hammerBro:23,spiny:18,/* Spiny: BoundBoxCtrlData9 like the Goomba, dy 18 touches (4-1 smb-fast d493144c RAM 29755: small Mario $CE 166 dies on the Spiny at $CF 184, dx 2) */piranha:18,podoboo:18,blooper:17,cheep:12,bullet:15};
 /** Highest enemy that still touches small Mario (smallest dy): 0, a Paratroopa -1. Big Mario's head is unmeasured, so his top edge is not tested here. */
 const aboveSmall=(kind:string)=>kind==='paratroopa'?-1:0;
 
