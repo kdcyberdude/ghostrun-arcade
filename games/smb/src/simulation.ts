@@ -1070,7 +1070,8 @@ export class Simulation {
   const content=this.area.blockContents?.find(block=>block.col===x&&block.row===y);
   const powerupContent=content&&content.kind!=='vine'&&content.kind!=='multiCoin'&&id!==196?content.kind:undefined;
   if(content?.kind==='vine'&&id!==196){
-   const vine=this.vines.find(v=>v.id===content.vineId)!;this.tiles.set(key,196);vine.growing=true;this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativePowerState===undefined);
+   const vine=this.vines.find(v=>v.id===content.vineId)!;this.tiles.set(key,196);vine.growing=true;vine.nativeHeight=(this.random.frame&3)>=2?1:0; // VineHeight already steps on the bump row (cf537977 2-1 RAM 11435: FrameCounter 6, VineHeight 1)
+this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativePowerState===undefined);
    this.vineProgress.set(this.vineKey(vine.id),vine.height);this.emit('sfx_vine_grows');
   }else if((content?.kind==='multiCoin'||id===88||id===93)&&id!==196){ // metatiles $58/$5D are the multi-coin bricks wherever they stand (e2a3c165 row 1887: Block_Metatile stays $58)
    const expiry=this.multiCoinExpiries.get(key)??multiCoinExpiry(this.frame);
@@ -1214,7 +1215,7 @@ export class Simulation {
  private coin(){this.blockUpdateBusy=this.graphicsBuffer1=true;this.coins++;this.emit('sfx_coin');if(this.coins>=100){this.coins-=100;this.lives++;this.emit('sfx_1up');}this.hud.queue({coins:hudDigits(this.score,this.coins).coins});this.addScore(200);}
  private vineKey(id:string){return `${this.currentPlayer}/${this.level.id}/${this.area.id}/${id}`;}
  private growVines(){
-  for(const vine of this.vines)if(vine.growing){vine.height=Math.min(vine.baseY-vine.topY,vine.height+VINE_PHYSICS.growth);vine.growing=vine.height<vine.baseY-vine.topY;this.vineProgress.set(this.vineKey(vine.id),vine.height);}
+  for(const vine of this.vines)if(vine.growing){vine.height=Math.min(vine.baseY-vine.topY,vine.height+VINE_PHYSICS.growth);vine.nativeHeight=Math.min(vine.baseY-vine.topY,(vine.nativeHeight??0)+((this.random.frame&3)>=2?1:0));vine.growing=vine.height<vine.baseY-vine.topY;this.vineProgress.set(this.vineKey(vine.id),vine.height);}
  }
  private moveOnVine(b:Set<Button>,jump:boolean):'climbing'|'transition'|undefined{
   const p=this.player;
