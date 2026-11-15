@@ -121,8 +121,11 @@ export class GameRenderer {
   const base=`metatiles-palette-${String(palette).padStart(3,'0')}.png`,name=base+'#castle-priority';
   if(!this.textures.has(name)){
    const source=this.textures.get(base)!;const canvas=document.createElement('canvas');canvas.width=source.image.width;canvas.height=source.image.height;
-   const context=canvas.getContext('2d')!;context.drawImage(source.image,0,0);const pixels=context.getImageData(0,0,canvas.width,canvas.height),background=[...pixels.data.slice(0,3)];
-   for(let at=0;at<pixels.data.length;at+=4)if(background.every((color,c)=>pixels.data[at+c]===color))pixels.data[at+3]=0;
+   const context=canvas.getContext('2d')!,read=(image:CanvasImageSource)=>{context.drawImage(image,0,0);return context.getImageData(0,0,canvas.width,canvas.height);};
+   // Colour index 0 is the transparent one, read from palette 000 whose backdrop blue no other index uses: a night palette's black
+   // index-3 mortar stays opaque (df3651d6 3-3 picture 26914: the star flag stays hidden in the tower's mortar).
+   const mask=read(this.textures.get('metatiles-palette-000.png')!.image),pixels=read(source.image),background=[...mask.data.slice(0,3)];
+   for(let at=0;at<pixels.data.length;at+=4)if(background.every((color,c)=>mask.data[at+c]===color))pixels.data[at+3]=0;
    context.putImageData(pixels,0,0);const texture=new THREE.CanvasTexture(canvas);texture.magFilter=texture.minFilter=THREE.NearestFilter;texture.generateMipmaps=false;texture.colorSpace=THREE.SRGBColorSpace;this.textures.set(name,texture);
   }
   this.quad(name,this.rects.get(id)!,x,y,z);
