@@ -229,7 +229,7 @@ export class Simulation {
  private offscreenLavaDeath=false;
  private offscreenPitDeath=false;
  private offscreenDeathRows=0;
- timeUpDeath=false;/** Killed by a hammer: MiscObjectsCore runs after PlayerGfxHandler drew the row's pose. */lateDeath=false;private loseLife=false;
+ timeUpDeath=false;/** A seeded start's first picture: the pose the previous row drew (tools/harness/native-entrance.mjs). */entryPicture?:{frame:number;cell:number;facing:number};/** Killed by a hammer: MiscObjectsCore runs after PlayerGfxHandler drew the row's pose. */lateDeath=false;private loseLife=false;
  private lastJumpFallForce=0.5625;
  private fallingThroughCastleLava=false;private pitMusic=false;
  private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;private platformEjection=0;private slotReleaseFrame=[-1,-1,-1,-1,-1];

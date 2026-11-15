@@ -20,6 +20,7 @@ export function nativeSwimKick(cell:number,frameCounter:number){
 }
 
 export function playerCell(s:Simulation){
+ if(s.entryPicture?.frame===s.frame)return {cell:s.entryPicture.cell,facing:s.entryPicture.facing,throwing:false,swimKick:undefined};
  // The time-up row: the game timer kills Mario after PlayerGfxHandler drew this row's pose (b7fcc3e4 1-1 row 9839: engine 11, PlayerGfxOffset still the walk).
  // So does a hammer, its misc-object pass also following PlayerGfxHandler (8-3 original RAM 4001: engine 11, OAM 5-8 still the jump tiles $41/$32/$43/$42 facing left).
  const timeUpRow=s.player.dead&&(s.timeUpDeath||s.lateDeath)&&s.phase==='dying'&&s.phaseFrame===0;
