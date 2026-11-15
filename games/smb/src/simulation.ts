@@ -3320,7 +3320,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private moveDefeatedRespawnLakitu(e:Enemy){
   const n=e.pod!;if(n.y>=(e.lak?.box===8?272:280)){e.dead=100;e.active=false;e.slotFreed=true;e.slotLost=true;return;}
-  e.dead++;nativeImposeGravity(n,0x3d,3);e.y=n.y;e.vy=n.speed+n.force/256;
+  e.dead++;nativeImposeGravity(n,0x3d,3);e.y=n.y;e.vy=n.speed+n.force/256;if(e.enemySlot!==undefined&&!e.slotFreed)Object.assign(this.slotVertical[e.enemySlot],{speed:n.speed,force:n.force,fraction:n.fraction}); // its fall bytes stay in the slot for the next object (8-2 bd15161f RAM 71206 -> 71308: speed 3, fraction $9A carried into the Paratroopa)
  }
  private contactNativeLakitu(e:Enemy,priorX:number,priorY:number){
   const p=this.player,lak=e.lak??={dir:0,speed:0},camera=this.camera+this.lakituScroll,n={collision:Boolean(lak.collision)};
