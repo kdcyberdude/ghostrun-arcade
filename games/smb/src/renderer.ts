@@ -443,9 +443,12 @@ export class GameRenderer {
   let variant:string=(change?.kind==='fire'?fireFlashVariant(POWERUPS.transformFreezeNativeFrames.fireValue-change.remaining):undefined)??(p.size===2?'fire':s.currentPlayer?'luigi':'mario');
   if(s.starDrawPalette!==undefined)variant=starVariant(s.starDrawPalette,variant);
   let sheet=`player-${variant}-${facing<0?'left':'right'}.png`;if(swimKick!==undefined)sheet=this.swimKickSheet(sheet,facing);
-  const z=s.playerDrawBackgroundPriority||s.phase==='pipe'||s.pipeRising?-0.1:3;
+  const behind=s.playerDrawBackgroundPriority||s.phase==='pipe'||s.pipeRising,z=behind?-0.1:3;
   const at=s.playerPicturePosition();
-  this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],at.x-s.camera,at.y-31,z);
+  // Behind the background Mario's entries 1-8 still win over every later sprite; only an opaque background pixel covers him
+  // (c67a0a28 4-2 RAM 32728-32732: engine 3 down the pipe, his pixels over the Piranha Plant's in slot 4 where the sky is clear).
+  if(behind)this.behindBackgroundSprite(Math.floor(at.x-s.camera),Math.floor(at.y-31),16,32,3,()=>this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],at.x-s.camera,at.y-31,3));
+  else this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],at.x-s.camera,at.y-31,z);
   if(throwing&&Math.abs(p.vx)>0.1)this.quad(sheet,[176,0,16,24],at.x-s.camera,at.y-31,z+0.1);
  }
  private hud(s:Simulation,paletteIndex=s.area.palette,hideTime=false,titlePicture=false){
