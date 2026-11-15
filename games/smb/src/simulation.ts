@@ -1105,6 +1105,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   pose.facing=water?p.facing:this.motor.facing; // the sprite flip is PlayerFacingDir, which on land only a ground press changes (1-2 row 484: Left pressed on the landing row, still drawn facing right)
   if(jumped)this.jumpPose=true;
   if(p.climbing){if(this.phase==='flag'){anim.setClimb(p.vy);this.climbPoseFrame=Math.floor(p.vy)!==0?anim.animate(2):anim.still();}return;}
+  if(p.grounded&&!jumped)this.jumpPose=false; // Player_State leaves 1 on landing even on a row PlayerGfxHandler skips, so a walk-off next row falls in the walk pose (371fe2fe 2-1 RAM 18385-18386)
   if(p.invincible&&this.random.frame&1)return; // PlayerGfxHandler returns at once on odd FrameCounter rows while the injury timer runs
   // DoChangeSize replaces ProcessPlayerAction from the next row. The pickup row still runs it, with the Player_State 0 the pickup wrote
   // (371fe2fe 2-1 row 15014: landing-row pickup in the air, drawn walking; the walk frame it advances is shown on the freeze rows).
