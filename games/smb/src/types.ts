@@ -17,7 +17,7 @@ export interface CannonSpec {nativeColumn?:number;nativeOffset?:number;x:number;
 // representative seams are inferences, not exposed native engine parameters.
 export interface MazeSpec {loopAt:number;loopTo:number;evidence:string;unresolved?:string[];gates?:{from:number;to:number;minFeetY:number;maxFeetY:number}[]}
 export interface VineSpec {id:string;x:number;baseY:number;topY:number;initialHeight?:number;to?:string;spawn?:[number,number];camera?:number;autoClimbFeetY?:number;transitionFeetY?:number;evidence:string}
-export interface Vine extends VineSpec {height:number;growing:boolean;/** VineObjectHandler's integer VineHeight: +1 on rows whose FrameCounter&3 is 2 or 3 (picture only) */nativeHeight?:number}
+export interface Vine extends VineSpec {height:number;growing:boolean;/** VineObjectHandler's integer VineHeight: +1 on rows whose FrameCounter&3 is 2 or 3 (picture only) */nativeHeight?:number;/** the row VineObjectHandler erased its slots (offscreen left); no sprites after it */erasedFrame?:number}
 export interface VineBlockSpec {col:number;row:number;kind:'vine';vineId:string}
 export interface PowerupBlockSpec {col:number;row:number;kind:'powerup'|'star'|'1up';evidence:string}
 export interface MultiCoinBlockSpec {col:number;row:number;kind:'multiCoin';evidence:string}

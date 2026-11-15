@@ -336,6 +336,7 @@ export class GameRenderer {
     // A block's vine: OAM Y is its half-pixel top rounded half to even, drawn a line lower, still ending at the block's top
     // (6ef303eb 2-1 rows 11320-11330: 72.5 -> 72, 71.5 -> 72, 70.5 -> 70, 69.5 -> 70).
     const entry=s.area.entryVine?.vineId===vine.id,exact=vine.baseY-vine.height,even=Math.floor(exact)+(exact%1===0.5?Math.floor(exact)&1:Math.round(exact%1)),top=entry?exact+1:vine.nativeHeight!==undefined?vine.baseY-vine.nativeHeight+1:even+1,height=entry?vine.height:vine.baseY-top;
+    if(vine.erasedFrame!==undefined&&vine.erasedFrame<s.frame)continue; // VineObjectHandler erased it off the left edge (b754754a 3-1 picture 19808, 334c685d 2-1 picture 11152)
     if(!entry&&vine.nativeHeight!==undefined&&vine.nativeHeight<8)continue; // no vine sprite until VineHeight reaches 8; OAM Y = base - VineHeight (cf537977 2-1 RAM 11448, 6ef303eb 11320)
     // VineObjectDraw writes VineHeight/8+1 whole tiles behind the background: the one below the block's top shows only while its cell is still blank
     // before the used block is written (cf537977 2-1 picture 11449: tiles at OAM Y 72 and 80).
