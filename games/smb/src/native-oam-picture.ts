@@ -3,8 +3,9 @@ import {nativeMiscOffscreen} from './native-misc.js';import {enemyRenderPicture,
  * refuse the whole composition; they are never silently omitted from the cap. */
 /** ChkTallEnemy: a Spiny, Piranha Plant or Cheep Cheep, or an ID below 9 other than the Hammer Bro in state 2 or more (dead or a shell),
  * puts its floatey number in its own slot's first two entries; any other victim uses Alt_SprDataOffset[SprDataOffset_Ctrl]. */
-// A cannon Bullet Bill (ID $33, no nativeId in the model) takes the Alt entries, so a later slot's stomp 200 hides an earlier Alt-slot number (a3ca705b 7-1 RAM 58339: slot 1 $33 state $20 control 2 over slot 0 Koopa state 0 control 3, whose 400 is gone from the picture).
-export const floateyOwnSlot=(v:any)=>{const id=v?.nativeId??(v?.kind==='bullet'&&v.nativeShot&&!v.frenzy?0x33:-1);return id<0||[0x0a,0x0b,0x0d,0x12].includes(id)||id<9&&id!==5&&(Boolean(v.dead)||Boolean(v.shell));};
+/** A cannon's Bullet Bill is ID $33 (a frenzy one ID 8): a stomped cannon bullet's number goes to the Alt entries, where a later slot's number replaces it
+ * (ba9b128f 8-2 RAM 73973-73974: slot 0 ID $33 stomped, its own entries keep the bullet, entries 54-55 hold slot 3's 400 only; a3ca705b 7-1 RAM 58339: slot 1's 200 hides slot 0's 400). */
+export const floateyOwnSlot=(v:any)=>{const id=v?.nativeId??(v?.kind==='bullet'?(v.frenzy?8:0x33):-1);return id<0||[0x0a,0x0b,0x0d,0x12].includes(id)||id<9&&id!==5&&(Boolean(v.dead)||Boolean(v.shell));};
 export function nativeOamPicture(s:any){
  // The picture the renderer draws: with timers stopped (Mario dying) the frozen one (abf3a46f 1-1 row 1095: X one less than the pre-move picture).
  const pic=(e:any)=>enemyRenderPicture(e,s.frame,s.nativeTimersStopped);
