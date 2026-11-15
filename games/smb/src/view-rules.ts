@@ -19,8 +19,14 @@ export const growCell=(frozen:number,frameCounter:number):number|'big'|undefined
  let step=0;for(let k=7;k<=frozen;k++)if(((frameCounter-frozen+k)&3)===0&&++step===10)return k===frozen?23:'big';
  return [23,24,23,24,23,24,25,23,24,25][step];
 };
-/** Shrink freeze (native 1-1 hurt by a Goomba, every frame of the 55 engine-10 rows): the big pose alternates with the small one each frame on freeze rows 1,3 .. 15 (big) / 2,4 .. (small), small from row 16. Row 0 keeps the pose. */
-export const shrinkBig=(frozen:number)=>frozen<1||frozen<=15&&frozen%2===1;
+/** HandleChangeSize while shrinking: PlayerChangeSizeFlag is set on freeze row 15 (TimerControl $F0) with PlayerAnimCtrl 0; the counter steps on each later
+ * row whose FrameCounter&3 is 0, and ChangeSizeOffsetAdder's shrink half (2,0,2,0..) picks small swim frame 1 ($88, cell 17) or big swim frame 1 ($28, cell 5)
+ * (371fe2fe 2-1 RAM 18250-18262: anim 1 tiles 08 09 28.., anim 2 fc.. 32 33 44 45). Rows 0-15 keep the ordinary pose. */
+export const shrinkCell=(frozen:number,frameCounter:number):number|undefined=>{
+ if(frozen<16)return undefined;
+ let anim=0;for(let k=16;k<=frozen;k++)if(((frameCounter-frozen+k)&3)===0)anim++;
+ return anim>=10?undefined:anim%2?5:17;
+};
 /** Fire flower freeze (native 1-1, every frame of the 63 engine-12 rows, evidence/view5-findings-20261111.md): row 0 keeps the old palette, row 1 is fire,
  * then 4-row cells dark, fire, green, white repeating from row 2 (the 61st-63rd rows are white), fire after the freeze. No normal-palette rows. */
 export const fireFlashVariant=(frozen:number)=>frozen<1?undefined:frozen===1?'fire':(['star-dark','fire','star-green','star-white'] as const)[Math.floor((frozen-1)/4)%4];

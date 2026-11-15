@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette,bumpShown,liftRopeColumns} from '../src/view-rules.js';
+import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkCell,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette,bumpShown,liftRopeColumns} from '../src/view-rules.js';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import manifest from '../assets/graphics/graphics-manifest.json';
@@ -35,10 +35,10 @@ test('mushroom growth steps with FrameCounter from freeze row 7',()=>{
  assert.equal(run(2,47),'AAAAAAAAABBBBAAAABBBBAAAABBBBCCCCAAAABBBBCCCCAC');
  assert.equal(growCell(0,0),undefined);assert.equal(growCell(6,0),undefined);
 });
-// Native 1-1 shrink (engine 10 rows 568..622): sprite height alternates big/small each frame on image rows 569..583, then small.
-test('shrink freeze flickers big/small each frame for 15 rows, then stays small',()=>{
- let s='';for(let n=1;n<=20;n++)s+=shrinkBig(n)?'B':'s';
- assert.equal(s,'BsBsBsBsBsBsBsBsssss');assert.ok(shrinkBig(0));
+// Native shrink (371fe2fe 2-1 RAM 18234..18288): rows 0-15 keep the pose, then HandleChangeSize alternates big/small swim frame 1 every 4 FrameCounter steps.
+test('shrink freeze keeps the pose for 16 rows, then alternates big and small swim frame 1 by PlayerAnimCtrl',()=>{
+ let s='';for(let n=0;n<=52;n++){const c=shrinkCell(n,104+n);s+=c===undefined?'.':c===5?'B':'s';}
+ assert.equal(s,'................BBBBssssBBBBssssBBBBssssBBBBssssBBBB.');
 });
 // Native 1-1 fire flower pickup (view5 capture, engine-12 rows 218..280, one PNG per row, palette by colour role in Mario's box):
 // row 0 normal, row 1 fire, rows 2-4 dark (K o p), then 4-row cells fire (R c s) / green (G W s) / white (R W s) / dark, rows 61-63 white, fire after.

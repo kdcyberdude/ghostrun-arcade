@@ -3,7 +3,7 @@
  * small walk 12-14, skid 15, jump 16, swim 17-19, climb 20-21, death 22, small stand 23, big stand 25. */
 import {nativeScreenPicture} from './native-screen-picture.js';
 import {Simulation,POWERUPS} from './simulation.js';
-import {growCell,shrinkBig,throwPoseShown} from './view-rules.js';
+import {growCell,shrinkCell,throwPoseShown} from './view-rules.js';
 
 /** PlayerGfxHandler exits on odd FrameCounter rows while InjuryTimer is nonzero, including the shrink animation.
  * Native source: https://github.com/Xkeeper0/smb1/blob/master/src/prg.asm (PlayerGfxHandler). */
@@ -33,7 +33,7 @@ export function playerCell(s:Simulation){
  // Pose cadence between7/8-frame observations remains inferred. All three
  // supplied growth sizes are used while the measured gameplay freeze runs.
  if(change?.kind==='grow'){const grow=growCell(POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue-change.remaining,s.random.frame);if(grow==='big')cell=cell>=12&&cell<=17?cell-12:cell===23?25:cell;else if(grow!==undefined)cell=grow;}
- if(change?.kind==='shrink'&&!shrinkBig(POWERUPS.transformFreezeNativeFrames.shrinkValue-change.remaining)&&(cell<13||cell===25))cell=cell===25?23:cell===10?23:cell+12; // native: the big pose flickers against the small one every frame for 16 rows, then small
+ if(change?.kind==='shrink'){const shrink=shrinkCell(POWERUPS.transformFreezeNativeFrames.shrinkValue-change.remaining,s.random.frame);if(shrink!==undefined)cell=shrink;}
  const facing=pose&&s.area.theme!=='water'&&!p.climbing?pose.facing:p.facing;
  const throwing=p.size===2&&throwPoseShown(s.fireballThrowAge,p.grounded,Math.abs(p.vx))&&!p.duck&&!p.dead&&!p.climbing;
  if(throwing&&Math.abs(p.vx)<=0.1)cell=11;
