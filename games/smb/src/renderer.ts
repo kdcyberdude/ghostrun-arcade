@@ -208,7 +208,7 @@ export class GameRenderer {
   }
   if(e.kind==='cheep'&&e.dead>0&&!e.defeat){
    // A stomped Cheep Cheep: its blank row stays on top and only rows 1-2 swap, flipped vertically, never mirrored (904408d8 2-3 row 24699: B4/B5 at Y+8, B2/B3 at Y+16, attribute $82).
-   const tiles=tables.enemy_cells[cell].tiles;for(let row=1;row<3;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[row*2+col],x+col*8,y+(3-row)*8,palette,false,true);
+   const tiles=tables.enemy_cells[12].tiles;for(let row=1;row<3;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[row*2+col],x+col*8,y+(3-row)*8,palette,false,true); // the first frame only (row 24699: B2/B4 on the left, never B6/B7)
    return;
   }
   if(e.squashed){
