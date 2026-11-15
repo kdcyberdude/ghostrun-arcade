@@ -25,7 +25,7 @@ export function nativeOamPicture(s:any){
  const context={levelId:s.level.id,areaId:s.area.id},lifts:{base:number,x:number,y:number,width:number,fromAbove:boolean}[]=[];
  for(const platform of s.area.platforms??[]){
   const ys=nativePlatformArtworkYs(platform,context,s.platformPicturePosition(platform).y);if(!ys.length)continue;
-  const slot=s.spriteObjectSlot(platform);if(slot===undefined&&ys.every(y=>y<-16||y>=240))continue; // an unloaded lift is parked far off screen
+  const slot=s.spriteObjectSlot(platform),screenX=Math.floor(s.platformPicturePosition(platform).x-s.camera);if(slot===undefined&&(ys.every(y=>y<-16||y>=240)||screenX>=256||screenX+s.platformWidth(platform)<=0))continue; // an unloaded lift is parked far off screen, or not reached yet (308c986d 4-3 row 36999: X 326 and right of it)
   if(slot===undefined||platformMotionModel(platform,context)==='contact-cloud'){reasons.push('area-writer');break;}
   // DrawSmallPlatform: the first surface on entries 0-2, the one 128 lower on entries 3-5; a surface above the HUD line stays at Y 248 (e79163dc 2-4 row 20640: entries 13-15 at Y 144, 10-12 hidden).
   const first=s.platformPicturePosition(platform).y,surfaces=nativeSmallPlatform(platform,context)?[[0,first],[12,((first-1+128)&255)+1]].filter(([,y])=>y>=33):[[0,ys[0]]];
