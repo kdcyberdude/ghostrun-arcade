@@ -2557,6 +2557,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(e.kind==='hammerBro'&&e.nativeId===5)return (left&255)+57>255?left-271:left-16;
   if(e.dead&&!e.squashed){
    // MoveNormalEnemy's defeated branch still returns through OffscreenBoundsCheck.
+   if(e.kind==='lakitu')return left-72; // a defeated Lakitu too (8-2 smb-fast bd15161f RAM 71206: state $20 at x 426 erased with ScreenLeft 499, -73)
    if(!e.defeat||!Simulation.SUBPIXEL_WALKERS.includes(e.kind))return;
    const id=e.nativeId??(e.kind==='paratroopa'?14:0);return left-(id<13?73:72);
   }
