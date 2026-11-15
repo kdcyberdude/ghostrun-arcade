@@ -90,7 +90,7 @@ export function nativeOamPicture(s:any){
  // ChkTallEnemy: a Spiny, Piranha Plant or Cheep Cheep, or an ID below 9 other than the Hammer Bro in state 2 or more (dead or a shell),
  // uses its own slot; any other victim (a stomped paratroopa's walking Koopa) uses Alt_SprDataOffset[SprDataOffset_Ctrl], offset index 8 + blockControl
  // (889741ec 3-1 RAM 24050-24051: $03EE 0 -> entry 54 = $D8, 1 -> entry 26 = $68).
- for(const popup of s.popups){const v=popup.victim,own=floateyOwnSlot(v),base=s.spriteShuffle.offsets[own?v.enemySlot+1:8+s.blockControl];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
+ for(const popup of [...s.popups].sort((a:any,b:any)=>a.victim.enemySlot-b.victim.enemySlot)){const v=popup.victim,own=floateyOwnSlot(v),base=s.spriteShuffle.offsets[own?v.enemySlot+1:8+s.blockControl];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
  // A bumped block: four entries at Block_SprDataOffset (offset table entry 8 + its slot), rows at its picture Y and Y+8, a column hidden by
  // its misc offscreen bits left at Y 248 (1-2 9d8b2405 rows 3028-3041: entries 22-25 / 40-43 at offsets[8]).
  for(const b of s.blockGraphics){if(b.pictureY===undefined)continue;const base=s.spriteShuffle.offsets[8+b.slot],bits=nativeMiscOffscreen(b.x,b.pictureY,s.camera);

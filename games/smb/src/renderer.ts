@@ -351,7 +351,9 @@ export class GameRenderer {
    if(s.area.theme==='water')for(const [slot,bubble]of s.bubbles.entries())if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27',false,false,2+(255-s.spriteShuffle.offsets[10+slot])/4096);
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly||popup.hiddenFrame===s.frame)continue; // a lower slot's floatey ran before the shell reached it
-    const v=popup.victim,offset=v?.enemySlot===undefined?undefined:s.spriteShuffle.offsets[floateyOwnSlot(v)?v.enemySlot+1:8+s.blockControl]; // ChkTallEnemy
+    const floatey=(q:typeof popup)=>q.victim?.enemySlot===undefined?undefined:s.spriteShuffle.offsets[floateyOwnSlot(q.victim)?q.victim.enemySlot+1:8+s.blockControl];
+    const v=popup.victim,offset=floatey(popup); // ChkTallEnemy
+    if(offset!==undefined&&s.popups.some(q=>q!==popup&&q.victim?.enemySlot!==undefined&&q.victim.enemySlot>v!.enemySlot!&&floatey(q)===offset))continue; // a later slot's number takes the same Alt entries (5ed33322 2-1 picture 11100: slot 4's 400 over slot 3's)
     this.oamContext=this.oamRows&&offset!==undefined?{base:offset,count:2}:undefined; // the composer's floatey entries
     const z=offset!==undefined?2+(255-offset)/4096:2.5; // its slot's OAM depth: a bumped brick at entries 26-29 covers a floatey at 40-41 (97387d10 1-2 picture 3582)
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,z);this.oamContext=undefined;
