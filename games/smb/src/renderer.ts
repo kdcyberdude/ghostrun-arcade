@@ -1,5 +1,5 @@
 import {nativeOamScanlines} from './native-oam.js';
-import {nativeOamPicture} from './native-oam-picture.js';
+import {nativeOamPicture,floateyOwnSlot} from './native-oam-picture.js';
 import {nativeHammerPicturePhase} from './native-misc.js';
 import {nativeFireballPhase} from './native-fireball-picture.js';
 import * as THREE from 'three';
@@ -342,7 +342,7 @@ export class GameRenderer {
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring),slot=s.spriteObjectSlot(spring);this.oamContext=this.oamRows&&slot!==undefined?{base:s.spriteShuffle.offsets[slot+1],count:6}:undefined;this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??this.palettes[s.area.palette].slice(24,28).map(v=>v.toString(16).padStart(2,'0')).join('-'));this.oamContext=undefined;}
    }
-   for(const e of s.enemies){const picture=enemyRenderPicture(e,s.frame,s.nativeTimersStopped);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90){this.oamContext=this.oamRows?{base:s.spriteShuffle.offsets[picture.enemySlot!+1],count:6}:undefined;this.enemyTopRowHidden=!picture.dead&&!picture.shell&&Boolean(e.shell||e.dead)&&s.popups.some(p=>p.victim===e&&p.hiddenFrame!==s.frame); // the stomp row's floatey takes the slot's first two entries over the pre-stomp picture's top row (1-1 b47452ef picture 901); a paratroopa that only loses its wings keeps its picture (1-3 536bc848 picture 5508)
+   for(const e of s.enemies){const picture=enemyRenderPicture(e,s.frame,s.nativeTimersStopped);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90){this.oamContext=this.oamRows?{base:s.spriteShuffle.offsets[picture.enemySlot!+1],count:6}:undefined;this.enemyTopRowHidden=!picture.dead&&!picture.shell&&Boolean(e.shell||e.dead)&&floateyOwnSlot(e)&&s.popups.some(p=>p.victim===e&&p.hiddenFrame!==s.frame); // the stomp row's floatey takes the slot's first two entries over the pre-stomp picture's top row (1-1 b47452ef picture 901); a paratroopa that only loses its wings keeps its picture (1-3 536bc848 picture 5508)
     this.enemy(e,s);this.enemyTopRowHidden=false;this.oamContext=undefined;}}this.enemyOamZ=2;
    if(ordinary){
    for(const b of s.blockGraphics){this.oamContext=this.oamRows&&b.pictureY!==undefined?{base:s.spriteShuffle.offsets[8+b.slot],count:4}:undefined;for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY,2+(255-s.spriteShuffle.offsets[8+b.slot])/4096);}this.oamContext=undefined;}
@@ -351,7 +351,7 @@ export class GameRenderer {
    if(s.area.theme==='water')for(const [slot,bubble]of s.bubbles.entries())if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27',false,false,2+(255-s.spriteShuffle.offsets[10+slot])/4096);
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly||popup.hiddenFrame===s.frame)continue; // a lower slot's floatey ran before the shell reached it
-    const v=popup.victim,id=v?.nativeId??-1,own=[0x0a,0x0b,0x0d,0x12].includes(id)||id>=0&&id<9&&id!==5&&(Boolean(v?.dead)||Boolean(v?.shell)),offset=v?.enemySlot===undefined?undefined:s.spriteShuffle.offsets[own||v.nativeId===undefined?v.enemySlot+1:8+s.blockControl]; // ChkTallEnemy (see the composer)
+    const v=popup.victim,offset=v?.enemySlot===undefined?undefined:s.spriteShuffle.offsets[floateyOwnSlot(v)?v.enemySlot+1:8+s.blockControl]; // ChkTallEnemy
     this.oamContext=this.oamRows&&offset!==undefined?{base:offset,count:2}:undefined; // the composer's floatey entries
     const z=offset!==undefined?2+(255-offset)/4096:2.5; // its slot's OAM depth: a bumped brick at entries 26-29 covers a floatey at 40-41 (97387d10 1-2 picture 3582)
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,z);this.oamContext=undefined;

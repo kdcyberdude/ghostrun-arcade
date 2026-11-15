@@ -1,6 +1,9 @@
 import {nativeMiscOffscreen} from './native-misc.js';import {enemyRenderPicture,enemyPictureTimersStopped} from './enemy-picture.js';import {playerCell,playerVisible} from './player-cell.js';import tables from '../assets/graphics/tables.json';import {nativePlatformArtworkYs,nativeSmallPlatform,platformMotionModel} from './platform-motion.js';import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
 /** Explicit capability: normal Mario, live Goombas and lifts. Unknown writers
  * refuse the whole composition; they are never silently omitted from the cap. */
+/** ChkTallEnemy: a Spiny, Piranha Plant or Cheep Cheep, or an ID below 9 other than the Hammer Bro in state 2 or more (dead or a shell),
+ * puts its floatey number in its own slot's first two entries; any other victim uses Alt_SprDataOffset[SprDataOffset_Ctrl]. */
+export const floateyOwnSlot=(v:any)=>{const id=v?.nativeId??-1;return id<0||[0x0a,0x0b,0x0d,0x12].includes(id)||id<9&&id!==5&&(Boolean(v.dead)||Boolean(v.shell));};
 export function nativeOamPicture(s:any){
  // The picture the renderer draws: with timers stopped (Mario dying) the frozen one (abf3a46f 1-1 row 1095: X one less than the pre-move picture).
  const pic=(e:any)=>enemyRenderPicture(e,s.frame,s.nativeTimersStopped);
@@ -87,7 +90,7 @@ export function nativeOamPicture(s:any){
  // ChkTallEnemy: a Spiny, Piranha Plant or Cheep Cheep, or an ID below 9 other than the Hammer Bro in state 2 or more (dead or a shell),
  // uses its own slot; any other victim (a stomped paratroopa's walking Koopa) uses Alt_SprDataOffset[SprDataOffset_Ctrl], offset index 8 + blockControl
  // (889741ec 3-1 RAM 24050-24051: $03EE 0 -> entry 54 = $D8, 1 -> entry 26 = $68).
- for(const popup of s.popups){const v=popup.victim,id=v.nativeId??-1,own=[0x0a,0x0b,0x0d,0x12].includes(id)||id>=0&&id<9&&id!==5&&(Boolean(v.dead)||Boolean(v.shell)),base=s.spriteShuffle.offsets[own?v.enemySlot+1:8+s.blockControl];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
+ for(const popup of s.popups){const v=popup.victim,own=floateyOwnSlot(v),base=s.spriteShuffle.offsets[own?v.enemySlot+1:8+s.blockControl];for(let col=0;col<2;col++){const a=(base+col*4)&255;written[a/4]=0;write(a,popup.y-1,0xf6,2,popup.x+col*8,false);}}
  // A bumped block: four entries at Block_SprDataOffset (offset table entry 8 + its slot), rows at its picture Y and Y+8, a column hidden by
  // its misc offscreen bits left at Y 248 (1-2 9d8b2405 rows 3028-3041: entries 22-25 / 40-43 at offsets[8]).
  for(const b of s.blockGraphics){if(b.pictureY===undefined)continue;const base=s.spriteShuffle.offsets[8+b.slot],bits=nativeMiscOffscreen(b.x,b.pictureY,s.camera);
