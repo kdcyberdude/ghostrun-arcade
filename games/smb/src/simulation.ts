@@ -3137,7 +3137,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     }else if(e.egg&&e.motion==='falling')this.updateSpinyEgg(e);
     else if(normalWalker){
      const n=e.fall??=(e.pod?{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction}:{speed:0,force:0,fraction:e.enemySlot!==undefined?this.slotVertical[e.enemySlot].fraction:0});
-     e.walkerState??=(n.speed||n.force||e.unwingedAir?1:0);
+     e.walkerState??=(n.speed||n.force?1:0); // a Paratroopa demoted on the ground stays state0 and keeps its direction; one in the air gets state1 from the no-ground check below (0e398c9b / 981b9c61 2-1 rows 10001 / 10177: slot 3 state 0, X speed $F8 after the stomp)
      const rawY=(Math.floor(e.y)-24)&255;
      // EnemyToBGCollisionDet precedes MoveNormalEnemy. The feet probe is
      // rawY+24, but LandEnemyProperly tests rawY's low nibble, 8..12.
