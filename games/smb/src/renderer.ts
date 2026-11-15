@@ -263,7 +263,8 @@ export class GameRenderer {
   if(i.kind==='hammer'){
    const phase=i.nativeHammer?nativeHammerPicturePhase(i.nativeHammer,s.random.frame,s.frame,s.nativeTimersStopped):Math.floor(i.age/4)%4;
    const descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor,palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
-   for(const piece of descriptor.sprites)this.spriteTile(piece.tile,i.nativeHammer?(Math.floor(x)+piece.x)&255:x+piece.x,i.nativeHammer?((Math.floor(i.y)+piece.y)&255)+1:i.y+piece.y,palette,piece.flip_x,piece.flip_y,i.nativeHammer?2+(255-s.spriteShuffle.miscOffset(i.nativeHammer.slot))/4096:2);
+   const context=this.oamContext;this.oamContext=this.oamRows&&i.nativeHammer?{base:s.spriteShuffle.miscOffset(i.nativeHammer.slot),count:2}:undefined; // its two misc entries take the eight-per-line cap (5e981db3 6-4 RAM 54437: Bowser's hammers)
+   for(const piece of descriptor.sprites)this.spriteTile(piece.tile,i.nativeHammer?(Math.floor(x)+piece.x)&255:x+piece.x,i.nativeHammer?((Math.floor(i.y)+piece.y)&255)+1:i.y+piece.y,palette,piece.flip_x,piece.flip_y,i.nativeHammer?2+(255-s.spriteShuffle.miscOffset(i.nativeHammer.slot))/4096:2);this.oamContext=context;
   }
   if(i.kind==='flame'){const context=this.oamContext;this.oamContext=this.oamRows&&i.nativeFlame?{base:s.spriteShuffle.offsets[i.nativeFlame.slot+1],count:3}:undefined;this.special('bowser_flame-'+(s.random.frame>>1&1),x,i.y+1,i.nativeFlame?2+(255-s.spriteShuffle.offsets[i.nativeFlame.slot+1])/4096:2); // its enemy slot's OAM depth, so it can pass in front of a lift (e79163dc 2-4 row 23413); OAM attribute $82/$02 flips on FrameCounter bit 1; drawn one line below OAM y = flame y (0d12a2e4 rows 12380..12465)
   this.oamContext=context;}
