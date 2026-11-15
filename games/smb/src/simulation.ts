@@ -552,6 +552,7 @@ export class Simulation {
     const move=this.deathMove!;nativeImposeGravity(move,40,4);this.player.y=move.y+move.fraction/256;this.player.vy=move.speed+move.force/256;
     if(nativePlayerHoleLocks(Math.floor((this.player.y-32)/256)+1))this.areaControls.locked=true;
    }
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath)this.updateNativeWarpZones(); // WarpZoneObject still runs while Mario dies: PlayerHole's ScrollLock with y $00 on page 2 releases it (3b15135b 4-2 row 34542: slot 1 id $34 erased)
    this.updateBubbles(this.phaseFrame>=255,false); // injury sets TimerControl=$ff; the bubble timer holds while that byte counts down
    if(this.offscreenLavaDeath||this.offscreenPitDeath?this.phaseFrame>=this.offscreenDeathRows:this.player.y>=LIFE_FLOW.deathArcEndFeetY)this.loseLife=true;
    this.parserLoaderWasBlocked=this.parserClock.blocked;this.advanceNativeAreaParser(0);return;
