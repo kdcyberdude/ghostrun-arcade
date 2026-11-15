@@ -3284,7 +3284,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
     if(['goomba','koopa','redKoopa','beetle'].includes(e.kind))this.nativeStompTimer=(this.nativeStompTimer+1)&255;
     if(e.kind==='bullet'&&e.frenzy)e.x=priorX;
-    const award=e.kind==='bullet'||e.nativeFlight?200:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award,cannonShot(e)?6:5,e.enemySlot); // a cannon shot's turn follows the floatey pass of its slot: paid a frame later (7-1 original row 2280)
+    const award=e.kind==='bullet'||e.nativeFlight?200:e.kind==='paratroopa'?stompRules.firstParatroopa:this.stompAward(); /* a wing-loss stomp pays 400 and leaves the chain whatever it holds (0d13669b 8-4 RAM 77669: $0484 1 before and after, slot 4 $0E -> $00, floatey 3) */this.stompedThisStep=true;this.floateyScore(award,cannonShot(e)?6:5,e.enemySlot); // a cannon shot's turn follows the floatey pass of its slot: paid a frame later (7-1 original row 2280)
     // A Paratroopa stomp shows a popup in the reference; its Koopa offset and lifetime are inferred.
     if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='beetle'||e.kind==='paratroopa'||e.kind==='bullet'||e.nativeFlight){this.enemyPopup(award,e);if(cannonShot(e))this.popups[this.popups.length-1].hiddenFrame=this.frame;} // its slot's floatey pass already ran: a cannon shot's number is first drawn the next row (7-1 original RAM 2274: slot 2 control 2, timer still 48, OAM empty; 2275 timer 47, 200 at OAM y 159) // a leaping Cheep Cheep too (904408d8 2-3 row 24603: 200 at X 106, Y 118)
     this.emit('sfx_stomp');

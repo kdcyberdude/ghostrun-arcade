@@ -46,10 +46,11 @@ for (const [color,palette] of [['green','0f-1a-30-27'],['red','0f-16-30-27']] as
    if(next==='wingless')assert.equal(target.shell,true);else assert.ok(target.dead>0);
   });
  }
- test(`${color} pre-existing nonzero chain retains the current 200-point fallback`,()=>{
+ // 0d13669b 8-4 RAM 77669: a wing-loss stomp at $0484 1 pays 400 (floatey 3) and leaves the chain at 1.
+ test(`${color} pre-existing nonzero chain still pays 400 and keeps the chain`,()=>{
   const sim=setup(palette,1);sim.broClock=1;sim.step([],1);
   assert.equal(sim.enemies[0].kind,color==='red'?'redKoopa':'koopa');
-  assert.equal(sim.awardedScore,200);
-  assert.equal((sim as unknown as ChainAccess).stompChain,2);
+  assert.equal(sim.awardedScore,400);
+  assert.equal((sim as unknown as ChainAccess).stompChain,1);
  });
 }
