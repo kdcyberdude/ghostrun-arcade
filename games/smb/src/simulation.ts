@@ -2486,7 +2486,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   // $15. Only free slots visited after this slot can consume it this frame.
   this.mouthFlame=undefined;
   if(action.flame){this.mouthFlame=e;if(this.placedCastle)this.specialSlot5.frenzyBuffer=21;else this.passNativeMouthFlame(slot+1,5);}
-  if(action.hammer&&e.bowserHammers!==false)this.spawnNativeHammer(e);
+  const p=this.player,hits=!p.star&&!p.invincible&&this.broClock%2===0&&nativeBowserHit(m,p,this.random.frame); // Bowser's touch this row hurts Mario before his hammer: the master timer then stops the throw (ba9b128f 7-4 row 63815: Bowser moves, Mario dies, misc slot 7 stays empty)
+  if(action.hammer&&e.bowserHammers!==false&&!hits)this.spawnNativeHammer(e);
  }
  /** CheckFrenzyBuffer / SpawnFromMouth: a pending request is consumed in slot order. */
  private passNativeMouthFlame(from:number,to:number){
