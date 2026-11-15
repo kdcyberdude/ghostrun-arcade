@@ -4,20 +4,23 @@ import {nativeBoxesOverlap,nativeMiscOffscreen,type NativeBox} from './native-mi
 export interface HammerBroState {collision?:boolean;state:number;jumpTimer:number;throwTimer:number;frameTimer:number;interval:number;speed:number;force:number;fraction:number;y:number}
 export interface HammerBroInputs {timerTicked?:boolean;x:number;marioX:number;frame:number;random1:number;random2:number;hard:boolean;supported:boolean;sideBlocked:boolean;onScreen:boolean;spawnHammer:()=>boolean;tickTimer?:boolean;afterBackground?:()=>boolean}
 export function hammerBroStep(n:HammerBroState,i:HammerBroInputs){
- let steps=1;
+ let steps=1,sideJump=false;
  const gravity=()=>{const fraction=n.fraction+n.force;n.fraction=fraction&255;n.y+=n.speed+(fraction>>8);const force=n.force+0x3d;n.force=force&255;n.speed+=force>>8;if(n.speed>=3&&n.force>=0x80){n.speed=3;n.force=0;}};
  if(!i.timerTicked&&i.tickTimer!==false&&n.frameTimer>0)n.frameTimer--;
 
  // EnemyToBGCollisionDet returns outside this vertical range (SubtEnemyYPos).
  if(!(n.state&0x20)&&(((n.y&255)+0x3e)&255)>=0x44){
   if(i.supported&&n.frameTimer===0){n.state&=0x88;n.speed=0;n.force=0;n.y=(n.y&~15)|8;
-   if(i.sideBlocked){n.speed=-6;n.state|=1;n.frameTimer=0x20;n.jumpTimer=i.random1|0xc0;gravity();steps++;}
+   if(i.sideBlocked)sideJump=true;
   }
   else n.state|=1;
  }
  // RunNormalEnemies performs player contact after background collision and before ProcHammerBro.
  if(i.afterBackground?.())return {speed:0,steps:0};
  if(n.state&0x20){gravity();return {speed:0,steps:1};} // defeated horizontal speed is retained by MoveDefeatedEnemy, not Shimmy
+ // The jump off a blocked side follows the player contact: the contact reads the box where it stood (dd1cd511 5-2 RAM 42384: Mario falling onto the Hammer Bro at Y 152,
+ // no stomp, then speed -6, two gravity passes, Y 141).
+ if(sideJump){n.speed=-6;n.state|=1;n.frameTimer=0x20;n.jumpTimer=i.random1|0xc0;gravity();steps++;}
  if(n.jumpTimer){
   n.jumpTimer--;
   if(i.onScreen){
