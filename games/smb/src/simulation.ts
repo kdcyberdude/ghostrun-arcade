@@ -93,7 +93,6 @@ import flagRules from '../data/flag-completion-rules.json';
 import {stepNativeVictory,nativeVictoryText,type NativeVictory} from './native-victory.js';
 import {nativeLevelLoad,stepNativeLevelLoad,type NativeLevelLoad} from './native-level-load.js';
 import {NativeAreaControls} from './native-area-controls.js';
-import multiCoinRules from '../data/multi-coin-rules.json';
 import {nativeEnemiesCollision,nativeUnwingedStomp,nativeEnemyBoxesTouch} from './enemy-collision.js';
 import {advanceNativeRedFlight,createNativeRedFlight} from './red-paratroopa.js';
 import {prepareNativeGreenParatroopa,moveNativeGreenParatroopa} from './native-paratroopa.js';
@@ -126,10 +125,6 @@ export function nativeFrenzyHeight(byte:number,bag:number){
 }
 const BULLETS=bulletData.rules; // native Bullet Bill cannons and 5-3/6-3 generator (data/native-bullets.json, docs/NATIVE_ROLES.md, Bullet Bill section)
 const HAMMER_NATIVE=hammerBroData.rules; // native Hammer Bro roster, clock patrol, hammers and jumps (data/native-hammer-bros.json, docs/NATIVE_ROLES.md, Hammer Bro section)
-export function multiCoinExpiry(firstHitFrame:number){
- const {periodActiveNativeFrames:period,additionalQuantaAfterNextBoundary:quanta,phaseAtFreshReset:phase}=multiCoinRules;
- return phase+Math.ceil((firstHitFrame-phase)/period)*period+quanta*period;
-}
 // Native swimming Cheep Cheep height: constant, or a bobbing fish moves 1 px every 8 frames, 15 steps first and 30 per later leg (+-15 around its
 // spawn height), each turn costing one more frame (tools/derive-water-actors.mjs). `k` is the frame count since the fish appeared.
 export function swimBobOffset(bob:{dir:number;first:number}|undefined,k:number){
@@ -255,7 +250,7 @@ export class Simulation {
  private pendingScore:{value:number|'1up',left:number,slot?:number}[]=[];private floateyPaid:{slot:number,value:number,busy:boolean,buffer:boolean}[]=[];
  private stompedThisStep=false;
  private activatedHidden1ups=new Set<string>();
- private multiCoinExpiries=new Map<string,number>();
+ private brickCoinTimer=0;private brickCoinStarted=false; // BrickCoinTimer $079D, BrickCoinTimerFlag $06BC
  swimPoseFrame=0;
  lives=3; score=0; coins=0; time=400; paused=false; muted=false; twoPlayer=false; currentPlayer=0;
  nativeGameOver?:NativeGameOver;private gameOverDispatch=false;
@@ -355,7 +350,7 @@ export class Simulation {
   const source=this.level.areas.find(a=>a.id===id);if(!source)throw new Error(`Unmapped area ${this.level.id}/${id}`);
   this.nativeAreaOffset=/^[1-8]-[1-4]$/.test(this.level.id)?nativeAreaBindings(this.level).bindings.find(b=>b.area===id)?.offset??0:0;
   this.stompChain=0;
-  this.multiCoinExpiries.clear();
+  this.brickCoinTimer=0;this.brickCoinStarted=false;
   // Stream inserts belong to this visit. Reset/death must reload the explicit
   // observed map rather than retain a previous failed route's extra sections.
   const area=structuredClone(source);if(/^[1-8]-[1-4]$/.test(this.level.id))for(const pipe of area.pipes??[])pipe.nativeSourceX??=pipe.x;this.mazeSource=source;
@@ -1084,9 +1079,10 @@ export class Simulation {
 this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativePowerState===undefined);
    this.vineProgress.set(this.vineKey(vine.id),vine.height);this.emit('sfx_vine_grows');
   }else if((content?.kind==='multiCoin'||id===88||id===93)&&id!==196){ // metatiles $58/$5D are the multi-coin bricks wherever they stand (e2a3c165 row 1887: Block_Metatile stays $58)
-   const expiry=this.multiCoinExpiries.get(key)??multiCoinExpiry(this.frame);
-   this.multiCoinExpiries.set(key,expiry);
-   if(this.frame>=expiry)this.tiles.set(key,196);
+   // One timer for every multi-coin brick: the first hit sets it to 11, it counts down on the 21-row interval clock, and a hit while it reads 0 still
+   // pays and leaves a used block (smb-fast 6-2 d09224d1 RAM 48787-49029, 83121118 49495-49713: $079D 11 -> 0 with $077F, $06BC 1).
+   if(!this.brickCoinStarted){this.brickCoinStarted=true;this.brickCoinTimer=11;}
+   if(this.brickCoinTimer===0)this.tiles.set(key,196);
    this.coin();this.spawnNativeBlockCoin(x);
   }else if(powerupContent||id===192||id===193||id===95||id===96||id>=85&&id<=94){
    let item:Item['kind']='coin';
@@ -1786,6 +1782,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const n=nativeIntervalStep(this.intervalControl,this.player.star);
   this.intervalControl=n.interval;this.player.star=n.star;
   if(!n.tick)return;
+  if(this.brickCoinTimer>0)this.brickCoinTimer--;
   if(this.nativeCastleFlag&&this.nativeCastleFlag.interval>0)this.nativeCastleFlag.interval--;
   if(this.screenTimer>0)this.screenTimer--;
   for(const e of this.enemies){if(e.shellTimer)e.shellTimer--;if(e.pod&&e.pod.timer>0)e.pod.timer--;if(e.bloop&&e.bloop.timer>0)e.bloop.timer--;if(e.hbro&&e.hbro.interval>0)e.hbro.interval--;}

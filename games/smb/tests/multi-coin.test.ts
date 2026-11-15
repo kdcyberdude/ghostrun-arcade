@@ -1,7 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
-import {Simulation,multiCoinExpiry} from '../src/simulation.js';
+import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 
 function fixture(big=false){
@@ -14,17 +13,11 @@ function fixture(big=false){
 }
 const jump=(sim:Simulation)=>{sim.step(['a'],16);sim.step([],24);};
 
-test('bounded coin clock predicts all four untouched native heldouts under the declared event registration',()=>{
- for(const pair of [1,2]){
-  const report=JSON.parse(fs.readFileSync(`evidence/coin-clock-heldout-pair-${pair}-results.json`,'utf8'));
-  assert.equal(report.passed,true);assert.equal(report.noRetuning,true);
-  for(const row of report.results){
-   // These are inferred collision-to-image offsets, not measured event epochs.
-   const first=row.firstSample-report.representative.firstOffset;
-   const hit=row.hitSample-report.representative.repeatOffset;
-   assert.equal(hit>=multiCoinExpiry(first),row.used,row.id);
-  }
- }
+test('the multi-coin timer starts at 11 on the first hit and ticks on the 21-row interval clock',()=>{
+ // Native BrickCoinTimer $079D (smb-fast 6-2 d09224d1 RAM 48787: 11 on the first hit, one less each time $077F wraps).
+ const sim=fixture();jump(sim);const s=sim as any;assert.equal(s.brickCoinStarted,true);
+ const timer=s.brickCoinTimer;assert.ok(timer>=10&&timer<=11);
+ sim.step([],21);assert.equal(s.brickCoinTimer,timer-1);
 });
 
 test('ordinary repeated jumps award coins, keep the brick until a late hit, then stop at used',()=>{
