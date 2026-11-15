@@ -62,7 +62,11 @@ export function nativeOamPicture(s:any){
  // MoveSpritesOffscreen clears Y only; unused tile/attribute/X bytes stay unknown.
  let overlapping=false;const oam=new Uint8Array(256),written=new Uint8Array(64);for(let a=0;a<256;a+=4)oam[a]=248;
  // written: 1 = all four bytes reconstructed, 2 = Y and X only (tile and attribute bytes are placeholders).
- const write=(address:number,y:number,tile:number,attribute:number,x:number,exact=true)=>{const a=address&255;if(written[a/4])overlapping=true;written[a/4]=exact?1:2;oam.set([y&255,tile,attribute,x&255],a);};
+ // MiscObjectsCore runs after the enemy slots, PlayerGfxHandler and the block objects: a hammer's entry is the last write, whatever the
+ // composer draws after it (f80bc447 5-2 RAM 40800: $0200 entries 60-61 hold the hammer's $82/$83 though an enemy slot's offset also covers them;
+ // the composed page equals $0200 on every written entry over pictures 40799-40806).
+ const hammerOwned=new Set<number>(),stolen=new Uint8Array(64); // stolen: an entry an earlier writer lost to the hammer, so that writer's tile there is not drawn
+ const write=(address:number,y:number,tile:number,attribute:number,x:number,exact=true)=>{const a=address&255;if(hammerOwned.has(a))return;if(written[a/4])overlapping=true;written[a/4]=exact?1:2;oam.set([y&255,tile,attribute,x&255],a);};
  write(0,24,255,35,88);
  const tiles=tables.player_cells[pose.cell].tiles;
  // ChkForPlayerAttrib forces symmetry at table offsets50/B8/C0/C8.
@@ -92,7 +96,7 @@ export function nativeOamPicture(s:any){
  // A hammer: its picture's two tiles on its misc offset's two entries, in the picture's own order, at Y and X of each tile (8-3 original RAM 2458: entries 42-43 $80/$81 at X 111, Y 110/118; 2496: 28-29 $83/$82 at Y 99, X 54/62).
  for(const i of s.pictureItems){const n=i.nativeHammer;if(!n||!itemShown(i)||s.itemPictureShown(i)===false)continue;const base=s.spriteShuffle.miscOffset(n.slot),x=Math.floor(i.x-s.camera),y=Math.floor(i.y);
   const pieces=specialSprites.records.find((r:any)=>r.file===`sprite-hammers-${nativeHammerPicturePhase(n,s.random.frame,s.frame,s.nativeTimersStopped)}.png`)!.descriptor.sprites;
-  pieces.forEach((p:any,k:number)=>write(base+k*4,(y+p.y)&255,p.tile,p.attributes,(x+p.x)&255,false));}
+  pieces.forEach((p:any,k:number)=>{const a=(base+k*4)&255;if(written[a/4])stolen[a/4]=1;written[a/4]=0;write(a,(y+p.y)&255,p.tile,p.attributes,(x+p.x)&255,false);hammerOwned.add(a);});}
  // A power-up out of its block (an emerging one from state 6: 6ef303eb 2-1 RAM 11001-11005): four entries at slot 5's offset, its 16x16 picture one line below (all captures: id $2E rows at Enemy_Y+8/+16, X/X+8).
  for(const i of s.pictureItems)if(powerup(i)&&i.nativePowerState>=6){const base=s.spriteShuffle.offsets[6],x=Math.floor(i.x-s.camera),y=Math.floor(i.y);
   for(let row=0;row<2;row++)for(let col=0;col<2;col++){const xx=x+col*8;write(base+row*8+col*4,xx<=0||xx>255?248:y+row*8,0x76,2,xx&255,false);}}
@@ -112,5 +116,5 @@ export function nativeOamPicture(s:any){
  // A lift at Y 0 that came from above the screen keeps Y 248 (0d12a2e4 row 6023); one already at the top is drawn (b230c302 1-2 row 6853: X 5, Y 0).
  for(const lift of lifts)for(let i=0;i*8<lift.width;i++){const xx=lift.x+i*8;write(lift.base+i*4,xx<=0||xx>255||lift.fromAbove?248:lift.y,91,2,xx);}
  if(overlapping)return {supported:false as const,reasons:['overlapping-writer']};
- return {supported:true as const,reasons,oam,written};
+ return {supported:true as const,reasons,oam,written,stolen};
 }

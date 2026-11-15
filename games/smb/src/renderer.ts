@@ -24,7 +24,7 @@ import type {Area,Enemy,Item} from './types.js';
 const A=(import.meta.env?.BASE_URL??'/')+'assets/graphics/';
 export class GameRenderer {
  renderer:THREE.WebGLRenderer;scene=new THREE.Scene();camera=pixelCamera(THREE);textures=new Map<string,THREE.Texture>();
- private castleHeld=false;private enemyTopRowHidden=false;private hudMeshes:THREE.Object3D[]=[];private retainerMeshes:THREE.Object3D[]=[];private oamRows:number[]|undefined;private oam:Uint8Array|undefined;private oamWritten:Uint8Array|undefined;private oamContext:{base:number,count:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
+ private castleHeld=false;private enemyTopRowHidden=false;private hudMeshes:THREE.Object3D[]=[];private retainerMeshes:THREE.Object3D[]=[];private oamRows:number[]|undefined;private oam:Uint8Array|undefined;private oamWritten:Uint8Array|undefined;private oamStolen:Uint8Array|undefined;private oamContext:{base:number,count:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();private ropeColumns:number[]=[];
@@ -82,9 +82,9 @@ export class GameRenderer {
   const context=this.oamContext,rows=this.oamRows;
   if(context&&rows&&sprite&&rect[2]%8===0&&rect[3]%8===0){
    const width=rect[2]/8,height=rect[3]/8,px=Math.floor(x),py=Math.floor(y);
-   // The entry drawing this 8x8 tile: among the object's written entries, the one at its X whose Y is one line above it; a hidden entry at that X hides it.
+   // The entry drawing this 8x8 tile: among the object's written entries, the one at its X whose Y is one line above it; a hidden entry at that X hides it, and so does one of its entries a hammer took.
    const mask=(col:number,row:number)=>{const X=(px+col*8)&255,Y=py+row*8;let hidden=false;
-    for(let k=0;k<context.count;k++){const n=((context.base+k*4)&255)/4;if(!this.oamWritten![n]||this.oam![n*4+3]!==X)continue;const y=this.oam![n*4];if(y+1===Y)return rows[n];if(y>=0xef)hidden=true;}
+    for(let k=0;k<context.count;k++){const n=((context.base+k*4)&255)/4;if(this.oamStolen?.[n])hidden=true;if(!this.oamWritten![n]||this.oam![n*4+3]!==X)continue;const y=this.oam![n*4];if(y+1===Y)return rows[n];if(y>=0xef)hidden=true;}
     return hidden?0:255;};
    if(Array.from({length:width*height},(_,i)=>mask(i%width,Math.floor(i/width))).some(v=>v!==255)){
     this.oamContext=undefined;
@@ -270,7 +270,7 @@ export class GameRenderer {
   this.oamContext=context;}
  }
  render(s:Simulation){
-  const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oam=oam.supported?oam.oam:undefined;this.oamWritten=oam.supported?oam.written:undefined;this.oamContext=undefined;
+  const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oam=oam.supported?oam.oam:undefined;this.oamWritten=oam.supported?oam.written:undefined;this.oamStolen=oam.supported?oam.stolen:undefined;this.oamContext=undefined;
   const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorDrawRotations));return r;};
   // After a castle victory InitializeArea's first rows keep the castle picture: the retainer is gone from the first, the status bar from the second (2-1 1ae7aeeb pictures 8686, 8687).
   const victoryHold=s.phase==='intro'&&s.levelLoad?.engine===8&&s.levelLoad.task===0;
