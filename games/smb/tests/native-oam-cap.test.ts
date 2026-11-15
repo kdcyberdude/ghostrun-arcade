@@ -23,7 +23,7 @@ test('unknown writers refuse the whole cap rather than disappear from its sprite
  const sim:any=new Simulation(observedLevels());sim.reset(true);sim.phase='play';sim.items=[];sim.popups=[];sim.vines=[];sim.blockGraphics=[];sim.frenzyControllers=[];sim.nativeCastleFlag=undefined;sim.specialSlot5.flag=0;sim.area={...sim.area,platforms:[],firebars:[],springs:[]};sim.enemies=[];Object.assign(sim.player,{x:112,y:208,dead:false,size:0,star:0});sim.camera=0;
  assert.equal(nativeOamPicture(sim).supported,true);
  sim.items=[{kind:'coin'}];assert.ok(nativeOamPicture(sim).reasons.includes('other-writer'));sim.items=[];
- sim.enemies=[{active:true,dead:0,kind:'hammerBro',enemySlot:0}];assert.ok(nativeOamPicture(sim).reasons.includes('enemy-writer'));sim.enemies=[];
+ sim.enemies=[{active:true,dead:0,kind:'lakitu',enemySlot:0}];assert.ok(nativeOamPicture(sim).reasons.includes('enemy-writer'));sim.enemies=[];
  sim.area.platforms=[{}];assert.ok(nativeOamPicture(sim).reasons.includes('area-writer'));sim.area.platforms=[];
  sim.paused=true;assert.ok(nativeOamPicture(sim).reasons.includes('control-owner'));
 });
