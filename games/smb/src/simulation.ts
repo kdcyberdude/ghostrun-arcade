@@ -801,6 +801,10 @@ export class Simulation {
   else if(this.area.theme!=='water'&&oldBottom<288&&!scrollLocked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
   this.eraseOffscreenEnemies();this.releaseNativeSprings();this.birthNativeWaterEnemies();this.items=this.items.filter(i=>i.nativePowerState===undefined||i.x>=this.camera-72&&i.x<this.camera+328);
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
+  // Grabbing the pole (Mario's code, before the enemies and ProcessCannons) erases every cannon Bullet Bill (id $33), not the frenzy's $08, so its slot is free for this row's
+  // cannon pass and a shot the cannons make later on the grab row stays (5-1 smb-fast c67a0a28 RAM 40681, 1d3cb409 43847, a42be64f 41379; f29203f8 39751: new slot-1 shot kept;
+  // 5-2 31d6ea1a 54942: last row's new shot in slot 1 erased and slot 1 then counts the x-272 cannon's timer 2 -> 1).
+  if(this.phase==='play'&&this.area.exit?.kind==='flag'&&nativeFlagPoleSideContact(p.x,p.y,(x,y)=>this.tileAt(x,y)))for(const e of this.enemies)if(e.kind==='bullet'&&!e.frenzy&&e.active&&!e.slotFreed&&e.dead<100){this.eraseBulletObject(e);e.bbCheck=false;e.goneFrame=undefined;}
   this.passNativeObjects();this.updateFishFrenzy();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();
   this.gateNativePlatforms(previousCamera);this.busyNativeSlots(); // register newly eligible platforms on their native birth row
   for(const popup of this.popups)if(popup.born===this.frame)popup.x+=previousCamera-this.camera; // includes a shell victim's label already advanced this frame (19011e4d row 3208: X 191 = victim 926 - screen left 735)
@@ -2189,7 +2193,6 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.jumpPose=false;this.wallDisplayPose=undefined;this.playerAnim.timer=this.playerAnimNmiTimer;this.playerAnim.ctrl=this.playerAnimNmiCtrl;this.climbPoseFrame=Math.floor(this.player.vy)!==0?this.playerAnim.animate(2):this.playerAnim.still();
   this.flagScrollLocked=true;
   this.items=this.items.filter(i=>i.nativePowerState===undefined);
-  for(const e of this.enemies)if(e.kind==='bullet'&&!e.frenzy&&!e.bbCheck&&e.active&&!e.slotFreed&&e.dead<100)this.eraseBulletObject(e); // grabbing the pole erases every cannon Bullet Bill (id $33), not the frenzy's id $08 (5-1 smb-fast c67a0a28 row 40681, 1d3cb409 43847, a42be64f 41379: slot $16+s 33 cleared on the grab row); the cannons run after Mario, so this row's new shot stays (f29203f8 row 39751: slot 1 id 33 state 0 born on the grab row)
   this.flagAwardFrame=-1;this.flagTop=FLAG_COMPLETION.flagTopY-1;this.advanceFlag();this.flagInside=false;
   this.player.climbing=true;this.player.facing=1;
  }
