@@ -2049,7 +2049,9 @@ export class Simulation {
   this.tiles=tiles;
   const redraw=<T extends {x:number}>(now:T[]|undefined,original:T[]|undefined)=>[...(now??[]).filter(t=>t.x<lo),...(now??[]).filter(t=>t.x>=lo+LOOP_BACK&&t.x<hi+LOOP_BACK).map(t=>({...t,x:t.x-LOOP_BACK})),...(original??[]).filter(t=>t.x>=hi).map(t=>({...t}))];
   this.freeTiles=redraw(this.freeTiles,source.freeTiles);
-  this.area={...this.area,pipes:redraw(this.area.pipes,source.pipes),springs:redraw(this.area.springs,source.springs),decorations:redraw(this.area.decorations,source.decorations)};
+  // Tile pattern overrides (8-pixel columns) move with the name table too (7-4 original rows 9606-9824: the first pass's row-15 strip at 288-319 is gone after the loop).
+  const overrides=(now:NonNullable<Area['patternOverrides']>|undefined,original:NonNullable<Area['patternOverrides']>|undefined)=>[...(now??[]).filter(o=>o[0]*8<lo),...(now??[]).filter(o=>o[0]*8>=lo+LOOP_BACK&&o[0]*8<hi+LOOP_BACK).map(o=>[o[0]-LOOP_BACK/8,...o.slice(1)] as typeof o),...(original??[]).filter(o=>o[0]*8>=hi).map(o=>[...o] as typeof o)];
+  this.area={...this.area,pipes:redraw(this.area.pipes,source.pipes),springs:redraw(this.area.springs,source.springs),decorations:redraw(this.area.decorations,source.decorations),patternOverrides:overrides(this.area.patternOverrides,source.patternOverrides)};
   // KillAllEnemies, and the enemy data restarts from its first object: objects left of the screen's right edge are skipped, the rest load again as they come in range.
   const edge=this.camera+256;
   this.firebarSlots?.loopBack(edge); // preserve the source pre-loop angle before erasing bank ownership
