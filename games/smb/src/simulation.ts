@@ -2168,6 +2168,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.jumpPose=false;this.wallDisplayPose=undefined;this.playerAnim.timer=this.playerAnimNmiTimer;this.playerAnim.ctrl=this.playerAnimNmiCtrl;this.climbPoseFrame=Math.floor(this.player.vy)!==0?this.playerAnim.animate(2):this.playerAnim.still();
   this.flagScrollLocked=true;
   this.items=this.items.filter(i=>i.nativePowerState===undefined);
+  for(const e of this.enemies)if(e.kind==='bullet'&&!e.frenzy&&!e.bbCheck&&e.active&&!e.slotFreed&&e.dead<100)this.eraseBulletObject(e); // grabbing the pole erases every cannon Bullet Bill (id $33), not the frenzy's id $08 (5-1 smb-fast c67a0a28 row 40681, 1d3cb409 43847, a42be64f 41379: slot $16+s 33 cleared on the grab row); the cannons run after Mario, so this row's new shot stays (f29203f8 row 39751: slot 1 id 33 state 0 born on the grab row)
   this.flagAwardFrame=-1;this.flagTop=FLAG_COMPLETION.flagTopY-1;this.advanceFlag();this.flagInside=false;
   this.player.climbing=true;this.player.facing=1;
  }
