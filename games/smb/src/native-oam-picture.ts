@@ -47,7 +47,9 @@ export function nativeOamPicture(s:any){
  // An enemy with both columns off screen writes only hidden entries (SprObjectOffscrChk), whatever its kind.
  const hidden=(e:any)=>{const x=Math.floor((e.graphicsX??e.x)-s.camera);return [x,x+8].every(xx=>xx<=0||xx>255);};
  // EnemyGfxHandler skips a Piranha Plant moving with its frame timer running: all six entries stay cleared (entpat id $0D: 37,724 of 68,266 on-screen rows).
- const undrawn=(e:any,body:any)=>e.kind==='piranha'&&(body.graphicsVisible===false||!s.enemyPictureShown(body)||e.pir&&e.pir.speed>=0&&e.pir.timer!==0);
+ // An enemy not drawn on the row it is made (graphicsVisible false) writes none of its slot's entries either (c67a0a28 5-1 RAM 39719: slot 3's Goomba
+ // loaded at X 1217, entries 52-57 from SprDataOffset[3] $D0 all hidden while slots 0-2 and 4 draw).
+ const undrawn=(e:any,body:any)=>body.graphicsVisible===false||e.kind==='piranha'&&(!s.enemyPictureShown(body)||e.pir&&e.pir.speed>=0&&e.pir.timer!==0);
  // Entry rows (OAM Y less Enemy_Y) per drawn state, measured over World 1 captures (entpat): walkers 0/8/16 (Goomba id6 130,604 rows, Koopa id0 17,358);
  // a shell 2/10/18 (id0 states 4/84), a waking shell 0/8/16 (state 3: 82 of 82 sampled rows; 17a2baf0 2-1 picture 11987); a squashed Goomba 9/17 below its floatey number, which owns the slot's first two entries.
  const walker=(e:any)=>['koopa','redKoopa','beetle','paratroopa','piranha'].includes(e.kind);
@@ -55,7 +57,7 @@ export function nativeOamPicture(s:any){
  // A cannon's Bullet Bill (ID $33), live or stomped: rows Enemy_Y-1, +7, +15 (captures, ID $33 on screen: 469 of 476 sampled rows have its body rows at +7/+15; original 8-2 RAM 1999: entries 52-57 at Y 167/175/183 for Enemy_Y 168).
  const rowsOf=(e:any,body:any):(number|undefined)[]|undefined=>e.kind==='bullet'&&!e.frenzy?[-1,7,15]:e.kind==='hammerBro'&&!e.dead?[0,8,16]:(e.kind==='goomba'||e.kind==='podoboo'||e.kind==='cheep')&&!e.dead?[0,8,16]:e.kind==='blooper'&&!e.dead?[0,8,16].map(r=>r+nativeBlooperPicture(e.bloop?.timer??0,false,enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped)).yOffset):e.kind==='goomba'&&e.squashed&&e.dead?[s.popups.some((p:any)=>p.victim===body)||body.erasedFrame===s.frame?undefined:1,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?(e.walkerState===3||e.walkerState===2&&e.kind!=='beetle'?[0,8,16]:[2,10,18]):defeatTop(e)!==undefined&&s.popups.some((p:any)=>p.victim===body)?[undefined,defeatTop(e)!-1-(Math.floor(e.y)-24),defeatTop(e)!+7-(Math.floor(e.y)-24)]:undefined;
  // A wholly hidden enemy is checked before its slot: an enemy loaded this row keeps a picture taken before it had one (8-1 original RAM 1043: slot 4's Piranha Plant at X 359).
- if(enemies.some((body:any)=>{const e=pic(body);return !hidden(e)&&(e.enemySlot===undefined||!undrawn(e,body)&&(!rowsOf(e,body)||body.graphicsVisible===false));}))reasons.push('enemy-writer');
+ if(enemies.some((body:any)=>{const e=pic(body);return !hidden(e)&&(e.enemySlot===undefined||!undrawn(e,body)&&!rowsOf(e,body));}))reasons.push('enemy-writer');
  const pose=playerCell(s);if(pose.throwing)reasons.push('player-extra-piece');
  const at=s.playerPicturePosition(),px=Math.floor(at.x-s.camera),py=Math.floor(at.y)-32;
  if(px<0||px>240)reasons.push('player-offscreen');
