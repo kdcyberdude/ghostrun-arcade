@@ -41,10 +41,9 @@ test('injury flicker follows native FrameCounter through a shrink freeze and acr
  sim.flagInside=true;assert.equal(playerVisible(sim),false,'castle entry still hides Mario');
 });
 
-test('the big standing pose joins the measured shrinking size sequence before the freeze ends',()=>{
+test('the shrink freeze keeps the big pose for 16 rows, then HandleChangeSize draws a swim frame 1',()=>{
  const sim=new Simulation(observedLevels());sim.reset(true);sim.player.size=1;sim.playerAnim.fresh=false;sim.hurt();
- for(const [age,cell] of [[0,25],[1,25],[2,23],[15,25],[16,23],[54,23]]){
-  sim.powerChange!.remaining=55-age;assert.equal(playerCell(sim).cell,cell,`native shrink freeze row ${age}`);
- }
+ for(const age of [0,1,2,15]){sim.powerChange!.remaining=55-age;assert.equal(playerCell(sim).cell,25,`native shrink freeze row ${age}`);}
+ for(const age of [16,30]){sim.powerChange!.remaining=55-age;assert.ok([5,17].includes(playerCell(sim).cell),`native shrink freeze row ${age}`);}
  assert.equal(sim.player.size,1,'the renderer selects a small cell while the physical size change still waits for the end of the freeze');
 });
