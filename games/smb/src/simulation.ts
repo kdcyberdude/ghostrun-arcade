@@ -757,6 +757,7 @@ export class Simulation {
   const height=this.height;
   let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom,this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom),(this.area.platforms??[]).filter(p=>!nativePlatformObject(p,this.platformMotion.context)));springJumped=this.updateSprings(oldBottom,b.has('a'));if(groundStomp){p.y+=this.landingFraction;this.walkingOff=true;}else if(!springJumped&&!nativeGroundOnly)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
+  this.collectTiles(); // PlayerBGCollision (GameRoutines) takes a coin before GameEngine's BlockObjMT_Updater, whose write-back then waits for the busy VRAM buffer (d1f890a9 / 6ae4b0fb 1-2 RAM 3242 / 5242)
   this.updateBubbles();this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom);if(nativePlayerHoleLocks(Math.floor((p.y-(this.swimActive?this.water.whirlMoved:0)-32)/256)+1))this.areaControls.locked=true;this.hammerPlayerBox??=nativePlayerBox(p.x,p.y,p.size,p.duck,this.camera);if(this.hammerPlayerBox){this.hammerPlayerBox[0]=(this.hammerPlayerBox[0]-this.lakituScroll)&255;this.hammerPlayerBox[2]=(this.hammerPlayerBox[2]-this.lakituScroll)&255;}if(this.area.theme==='castle'&&CASTLE_LOOPS[Number(this.level.id[0])]){this.loopFractions=[];for(const e of this.enemies)if(e.active&&!e.slotFreed&&e.enemySlot!==undefined&&e.enemySlot<5&&e.dead<100&&Simulation.SUBPIXEL_WALKERS.includes(e.kind))this.loopFractions[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;this.snapshotLoopVertical();}this.updateEnemies(oldBottom);this.updateItems();this.restoreStarMusic();
   // A spring launch leaves Player_State falling, so the walking frame holds (every capture's launch: state 0->2 keeps $06D5 96/104/112, big 16); its big-Mario jump sound is not a jump.
   let jumped=false;if(!springJumped)for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
@@ -768,7 +769,6 @@ export class Simulation {
   }else this.wallDisplayPose=undefined;
   for(const [key,age]of this.bump){if(age>=15){ // the same block bumps again 16 rows after its last hit (a14e9c25 1-2 rows 4293, 4309)
  this.bump.delete(key);this.usedBlockRehits.delete(key);}else this.bump.set(key,age+1);}
-  this.collectTiles();
   if(!p.dead&&this.area.fallExit&&p.vy>=0&&p.y>this.area.fallExit.belowY){const exit=this.area.fallExit;this.enterArea(exit.to,exit.spawn,exit.camera);return;}
   // PlayerHole keeps engine 8 and ordinary movement through the offscreen fall. Only page 6 selects PlayerLoseLife (engine 6).
   // Native coordinates have page 1 on screen: remake feet 288 is page 2, and 1312 is page 6.
