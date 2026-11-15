@@ -24,7 +24,9 @@ export function nativeOamPicture(s:any){
  // Firebars: ball k on entry slot offset + 4k, Y one line above the drawn ball, hidden off the screen's X 0..255 (19011e4d 1-4 rows 9500-11200: 8,182 of 8,182 entries; X 249-255 still drawn, rows 9585, 9724).
  const bars:{base:number,balls:{x:number,y:number}[]}[]=[];
  for(const bar of s.area.firebars??[]){const slot=s.spriteObjectSlot(bar);if(!s.firebarCenters(bar).length)continue; // not loaded: nothing drawn
-  if(slot===undefined||s.firebarDuplicateSlot(bar)!==undefined){reasons.push('area-writer');break;}
+  // A long firebar draws all twelve balls from its own slot's offset; its duplicate slot writes none (c67a0a28 5-4 RAM 45543: slot 2 $1F, slot 3 flag $82,
+  // twelve $65 entries 10-21 from SprDataOffset[3] $28 though SprDataOffset[4] $40 starts at entry 16).
+  if(slot===undefined){reasons.push('area-writer');break;}
   bars.push({base:s.spriteShuffle.offsets[slot+1],balls:s.firebarCenters(bar).map((c:any)=>({x:Math.floor(c.x-4-s.camera),y:Math.floor(c.y-4+(bar.visualOffsetY??0))}))});}
  // Lifts (DrawLargePlatform): one row of width/8 tiles at their slot's OAM offset (0d12a2e4 row 6018: slot 2, offset 96, entries 24..29).
  const context={levelId:s.level.id,areaId:s.area.id},lifts:{base:number,x:number,y:number,width:number,fromAbove:boolean}[]=[];
