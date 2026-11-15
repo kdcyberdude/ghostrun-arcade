@@ -86048,38 +86048,7 @@
         ],
         "firebars": [],
         "springs": [],
-        "freeTiles": [
-          {
-            "x": 752,
-            "y": 48,
-            "id": 70,
-            "palette": 3
-          },
-          {
-            "x": 752,
-            "y": 64,
-            "id": 70,
-            "palette": 3
-          },
-          {
-            "x": 752,
-            "y": 80,
-            "id": 70,
-            "palette": 3
-          },
-          {
-            "x": 1056,
-            "y": 80,
-            "id": 70,
-            "palette": 3
-          },
-          {
-            "x": 1936,
-            "y": 80,
-            "id": 70,
-            "palette": 3
-          }
-        ],
+        "freeTiles": [],
         "decorations": [],
         "patternOverrides": [
           [
