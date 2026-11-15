@@ -2642,6 +2642,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  private primeNativeEntryObjects(visitTerrain=false){if(visitTerrain)this.primeNativePiranhas();const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,slot)=>busy.has(slot));const slot=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=slot<0?5:slot;this.passNativeObjects();if(!this.placedStream)for(const generator of this.area.generators??[])if(generator.kind==='bullet'&&generator.heights){this.frenzyDue=generator;this.passNativeFrenzy();}if(visitTerrain){this.updateNativeCannons();this.passNativeCannons();}}
 
  private passNativeObjects(){
+  if(this.placedStream)this.eraseNativeFrenzyBullets();
   if(this.parserClock.blocked)return;
   if(this.placedStream){this.passNativePlacedStream();return;}
   if(this.walkerStream){this.passNativeWalkerStream();return;}
@@ -2730,9 +2731,13 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.placedStream=new NativeEnemyStream(bytes);this.placedOrigin=binding.offset;this.castlePictures.managed=this.placedCastle;if(this.placedCastle&&this.firebarSlots)this.firebarSlots.managed=true;
   for(const p of this.area.platforms??[])this.platformMotion.waiting.add(p);
  }
+ /** A frenzy Bullet Bill's bound check is its own slot's turn in the enemy loop, so it also runs on task-7 rows that block the enemy loader (5-3 smb-fast ba9b128f row 42493:
+  * task $071F 7 -> 6, slot 3 x 1370 vs camera 1444 erased natively while the loader stood still; 89e72bd1, d09224d1, 1dfdd022 the same). */
+ private eraseNativeFrenzyBullets(){
+  for(const e of this.enemies)if(e.frenzy&&e.kind==='bullet'&&e.active&&!e.slotFreed&&e.dead===0&&e.x+(e.age>1?BULLETS.speed:0)-this.camera<=-BULLETS.generatorRemoveLeft){this.eraseEnemy(e);e.slotFreed=true;e.goneFrame=this.frame;if(e.enemySlot!==undefined){this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}}
+ }
  private passNativePlacedStream(){
   if((this.placedCastle||this.placedActorStream)&&this.placedBankFrame===this.frame)return;
-  for(const e of this.enemies)if(e.frenzy&&e.kind==='bullet'&&e.active&&!e.slotFreed&&e.dead===0&&e.x+(e.age>1?BULLETS.speed:0)-this.camera<=-BULLETS.generatorRemoveLeft){this.eraseEnemy(e);e.slotFreed=true;e.goneFrame=this.frame;if(e.enemySlot!==undefined){this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}}
   const stream=this.placedStream!,context={camera:this.camera-this.placedOrigin,hard:this.secondaryHardMode,primaryHard:this.primaryHardMode,slot:0,frenzy:this.specialSlot5.frenzyBuffer,vine:this.specialSlot5.vineCount,queue:this.specialSlot5.frenzyQueue};
   for(let slot=0;slot<6;slot++){
    if(slot<5?this.groupSlotsBefore[slot]||this.busyNativeSlots().has(slot):this.specialSlot5.flag)continue;
