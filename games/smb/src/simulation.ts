@@ -1518,10 +1518,11 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   }
  }
  // BulletBillHandler, state 0 (the frame after the cannon made it): erased when off screen or Mario is close, else it starts flying away from him (and moves this frame).
+ // Off screen on the left is 8+ px left of the camera, not any part (5-2 smb-fast b09d9c74 row 41737: x 272 vs camera 278 flies on; 2376 native births: -6..-1 kept, -14 and below erased).
  private nativeBulletBillCheck(e:Enemy){
   e.bbCheck=false;
   const d=Math.floor(e.x)-Math.floor(this.player.x);
-  if(e.x<this.camera||e.x-this.camera>BULLETS.cannonScreenRight||d>=BULLETS.cannonEraseLeft&&d<=BULLETS.cannonEraseRight){this.eraseBulletObject(e);return;}
+  if(Math.floor(this.camera)-Math.floor(e.x)>=8||e.x-this.camera>BULLETS.cannonScreenRight||d>=BULLETS.cannonEraseLeft&&d<=BULLETS.cannonEraseRight){this.eraseBulletObject(e);return;}
   e.cannonFrameTimer=10;if(e.enemySlot!==undefined)this.slotFrameTimers[e.enemySlot]=10;e.vx=(d<0?1:-1)*Math.abs(e.vx);e.x+=Math.sign(e.vx)*BULLETS.speed;
 
  }
