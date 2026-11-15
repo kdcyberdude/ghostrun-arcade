@@ -1891,7 +1891,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const rawY=(Math.floor(e.y)-24)&255,key=`${Math.floor((Math.floor(e.x)+8)/16)},${Math.floor(e.y/16)}`;
   if(((rawY+0x3e)&255)<0x44||this.enemyBumpCells.get(key)!==0x23)return false;
   this.enemyBumpCells.set(key,0);
-  e.dead=1;n.state=(n.state&0x10)|0x22;n.y-=2;n.speed=-4;n.force=0;e.nativeDir=Math.floor(e.x)-Math.floor(this.player.x)<0?-1:1;e.vx=e.nativeDir;
+  e.dead=1;n.state=(n.state&0x10)|0x22;n.y-=2;n.speed=-4;e.nativeDir=Math.floor(e.x)-Math.floor(this.player.x)<0?-1:1;e.vx=e.nativeDir; // the move force is kept (b25cdc78 5-2 RAM 40924-40925: hit mid-jump with $0435 122, Y 120 frac 238 -> 115 frac 104, force 183)
   this.floateyScore(1000);this.enemyPopup(1000,e);this.popups[this.popups.length-1].y=n.y-8;this.moveDefeatedHammerBro(e); // FloateyNum_Y = the Y after the 2-pixel lift, counted down once that frame (all three: Y 120 -> $011E 117, OAM 109)
   return true;
  }
