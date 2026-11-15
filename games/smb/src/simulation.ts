@@ -1707,7 +1707,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  private passFishLoader(){
   const taken=new Set<number>(),l=this.fishLoader;if(!l||this.parserClock.blocked)return taken;const used=this.busyNativeSlots();
   // A record already behind the right edge is dropped within the same slot's turn (7-3 original row 458: slot 0 still takes the Cheep).
-  for(let slot=0;slot<5;slot++){if(used.has(slot)||this.groupSlotsBefore[slot])continue;const ev=l.stream.next(this.camera-l.origin,this.secondaryHardMode,slot,()=>true);if(ev.kind!=='skip')break;if(ev.y===undefined)slot--;else taken.add(slot);}
+  // The placed actor that just took a slot is that slot's own parser record: its turn consumes it (7-3 5e981db3 RAM 62394: the Paratroopa at offset 18 loads into slot 4 and the cursor moves on).
+  for(let slot=0;slot<5;slot++){if(used.has(slot)&&!this.enemies.some(e=>e.active&&!e.slotFreed&&e.enemySlot===slot&&e.nativeOffset===l.stream.offset)||this.groupSlotsBefore[slot])continue;const ev=l.stream.next(this.camera-l.origin,this.secondaryHardMode,slot,()=>true);if(ev.kind!=='skip')break;if(ev.y===undefined)slot--;else taken.add(slot);}
   return taken;
  }
  private updateFishFrenzy(){
@@ -1721,7 +1722,10 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   // A slot already visited while occupied cannot be revisited after its erasure.
   for(let s=0;s<5;s++)if(this.groupSlotsBefore[s]||skipped.has(s))used.add(s);
   let slot=0;while(used.has(slot))slot++;const wait=bytes[slot+1]&3;
-  if(slot>=5)return; // all five native slots busy: the timer stays at 0 until one is free (7-3 rows 451, 244)
+  if(slot>=5){ // all five enemy slots busy: a free slot 5 reaches CheckFrenzyBuffer only when its parser turn finds no pending record (end of data or past the right extent), then takes the id $14 with no flag and reloads the timer like any rejected slot (7-3 5e981db3 RAM 62402/62418: slots 0-4 busy, $1B = $14, $78F 1 -> 16/96 from random byte 6); while a record waits slot 5 is blocked and the timer stays at 0 (RAM 62330-62353, original 7-3 rows 451, 244)
+   const l=this.fishLoader;let ev=l&&!this.specialSlot5.flag?l.stream.next(this.camera-l.origin,this.secondaryHardMode,5,()=>false):undefined;while(ev?.kind==='skip'&&ev.y===undefined)ev=l!.stream.next(this.camera-l!.origin,this.secondaryHardMode,5,()=>false);
+   if(ev?.kind==='frenzy'){this.specialSlot5.id=20;this.nativeFrenzyTimer=F.waits[wait];}return;
+  }
   // InitFlyingCheepCheep calls SmallBBox/InitVStf before its max-slot test:
   // A0/0434 clear even on a rejected attempt; the shared0417 fraction remains.
   this.slotVertical[slot].speed=0;this.slotVertical[slot].force=0;this.slotYSpeed[slot]=0;
