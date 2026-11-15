@@ -133810,7 +133810,7 @@
           [
             14,
             7,
-            82
+            93
           ],
           [
             14,
@@ -133944,7 +133944,13 @@
         "autoWalk": false,
         "mazes": [],
         "vines": [],
-        "blockContents": [],
+        "blockContents": [
+          {
+            "col": 14,
+            "row": 7,
+            "kind": "multiCoin"
+          }
+        ],
         "evidence": "Image observations: evidence/local/optional-6-2/trace.jsonl ticks6531..6808; initial actors/motion remain inferred.",
         "unresolved": [
           "Hidden blocks/contents absent from screenshots are not established.",
