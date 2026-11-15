@@ -8,7 +8,8 @@ test('a normal jump after stomping and landing on a moving platform has full hei
  const area=level.areas.find(a=>a.id==='main')!;
  area.tiles=[];area.freeTiles=[];area.enemies=[];area.generators=[];area.firebars=[];
  area.platforms=area.platforms!.filter(p=>p.x===1466);
- const game=new Simulation([level]);game.reset(true);game.loadArea('main',[1474,133],1362);
+ const game=new Simulation([level]);game.reset(true);game.loadArea('main',[1474,133],1362);(game as any).platformMotion.lost.clear();(game as any).platformCatchUp=undefined; // natively this load skips the lift record (column < camera + 255); the physics fixture re-arms it
+
  const platform=game.area.platforms![0],position=game.platformPosition(platform);
  const enemy=(game as any).makeEnemy({kind:'goomba',x:position.x+8,y:position.y-1});
  enemy.active=true;enemy.vx=0;game.enemies=[enemy];

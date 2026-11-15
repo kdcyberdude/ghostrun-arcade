@@ -395,7 +395,7 @@ export class Simulation {
   const waterSource=nativeWaterStreams.streams.find(s=>s.areas.some(a=>a.level===this.level.id&&a.area===area.id));this.waterEnemyStream=waterSource?new NativeWaterStream(waterSource.bytes):undefined;this.waterSlotPositions=Array.from({length:6},()=>({x:0,y:0,yHigh:0}));this.walkerStream=area.nativeWalkerStream?new NativeWaterStream(area.nativeWalkerStream.bytes):undefined;this.setupNativeWaterObjects();
   this.areaControls.origin=-this.nativeAreaOffset/16;
   this.piranhaColumns=new PiranhaColumns(this.camera);
-  this.bindNativeHammerBros();this.setupNativePlacedStream();this.setupFishLoader();
+  this.bindNativeHammerBros();this.setupNativePlacedStream();this.setupFishLoader();this.setupPlatformCatchUp();
   if(!deferTerrain)for(const command of this.specialAreaCommands())if(command.x>=Math.floor(this.camera/256)*256&&command.x<Math.floor(this.camera/256)*256+384)this.applySpecialAreaCommand(command);
   if(area.entryVine)this.specialSlot5.claimVine(Math.floor(this.player.x+8)&~15,240);
   this.climbPoseFrame=0;this.locomotionPose={kind:'stand',frame:0,facing:1};this.playerAnim.reset();this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -1634,6 +1634,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private objectSlots(enemySlots:Set<number|undefined>,platformSlots=this.platformSlots){
   const held=new Set<number>([...(this.firebarSlots?.held()??[]),...this.specialSlot5.vineSlots.filter(s=>s<5&&!this.erasedVineSlots.has(s))]),context=this.platformMotion.context;
+  const catchUp=this.platformCatchUp;if(catchUp&&catchUp.frame!==this.frame){catchUp.frame=this.frame;if(catchUp.turns-catchUp.passes++*5<=0)this.platformCatchUp=undefined;}
   for(const slot of this.springSlots.values())if(slot<5)held.add(slot);
   if(this.nativeCastleFlag)held.add(this.nativeCastleFlag.slot);for(const f of this.nativeFireworks)if(f.active)held.add(f.slot);
   for(const item of this.items)if(item.nativeFlame&&item.life>0)held.add(item.nativeFlame.slot);
@@ -1642,7 +1643,10 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   for(const [platform,slot] of platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else{if(platformSlots===this.platformSlots){const xByte=this.platformMotion.slotXByte(platform as any,this.platformFrame);if(xByte!==undefined)this.slotSub[slot]=xByte;} /* the erased lift leaves its last fraction (1-3 row 7340: 128) */platformSlots.delete(platform);if(platformSlots===this.platformSlots&&!this.platformMotion.waiting.has(platform as PlatformSpec))this.platformMotion.lost.add(platform as PlatformSpec);}
   if(!this.placedStream&&!this.waterStreamPlatforms.size)for(const platform of this.area.platforms??[])if(!platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
    if(this.parserClock.blocked)continue; // task7 blocks initialization as well as the creation clock
-   let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){platformSlots.set(platform,slot);if(platformSlots===this.platformSlots){this.platformMotion.slotSub(platform,this.slotSub[slot]);this.platformMotion.slotFraction(platform,this.slotVertical[slot].fraction);this.platformMotion.create(platform,this.platformFrame);}held.add(slot);}
+   let slot=0;
+   if(catchUp&&this.platformCatchUp){const behind=catchUp.turns-(catchUp.passes-1)*5;if(behind>=5)continue;if(behind>0)slot=behind;}
+   while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;
+   if(slot<5){platformSlots.set(platform,slot);if(platformSlots===this.platformSlots){this.platformMotion.slotSub(platform,this.slotSub[slot]);this.platformMotion.slotFraction(platform,this.slotVertical[slot].fraction);this.platformMotion.create(platform,this.platformFrame);}held.add(slot);}
   }
   return held;
  }
@@ -2673,6 +2677,21 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private resetNativeEnemyCursor(){for(const stream of [this.placedStream,this.walkerStream,this.waterEnemyStream])if(stream)Object.assign(stream,{offset:0,page:0,selected:false});}
  private placedStream?:NativeEnemyStream;private placedOrigin=0;private placedPlatforms=new Map<number,PlatformSpec>();private placedBars=new Map<number,FirebarSpec>();private placedCastle=false;private placedActorStream=false;private placedBankFrame=-1;private castleSlotXSpeed=[0,0,0,0,0];
+ /** Area (re)start: ProcessEnemyData reads one enemy-data record per free slot per row from the start of the stream and skips (Inc2B) each record left of
+  * camera + 255. A lift record among those is lost, and the first lift in range waits until the cursor reaches it (3-3 midpoint respawn, 6 smb-fast
+  * recordings, e.g. 68f4516c RAM 26306-26307: $0739 0 -> 10 -> 16, the 960 lift and 1168 Koopa skipped and the 1296 balance lift in slot 2 one row later). */
+ private platformCatchUp?:{turns:number;passes:number;frame?:number};
+ private setupPlatformCatchUp(){
+  this.platformCatchUp=undefined;if(this.placedStream||this.walkerStream||this.waterEnemyStream||!this.area.platforms?.length||!/^[1-8]-[1-4]$/.test(this.level.id))return;
+  const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.area.id);if(!binding)return;
+  const bytes=nativeEnemyBytes(nativePhysicalAreas[binding.code].enemy);if(!bytes)return;
+  const edge=Math.floor(this.camera)+255;let turns=0;
+  for(const r of nativeEnemyRecords(bytes)){
+   if(r.x+binding.offset>=edge)break;turns++;
+   if(r.id>=36&&r.id<=44)for(const p of this.area.platforms){const o=nativePlatformObject(p,this.platformMotion.context);if(o?.x===r.x+binding.offset+([38,39,43,44].includes(r.id)?12:0)&&o.y===r.y)this.platformMotion.lost.add(p);}
+  }
+  if(turns)this.platformCatchUp={turns,passes:0};
+ }
  private setupNativePlacedStream(){
   this.placedStream=undefined;this.placedPlatforms.clear();this.placedBars.clear();this.placedCastle=false;this.placedActorStream=false;
   if(this.walkerStream||this.waterEnemyStream||!/^[1-8]-[1-4]$/.test(this.level.id))return;
@@ -3440,7 +3459,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   return li.end>0&&p>=li.end;
  }
  private startPlayAfterIntro(){const fromDeath=Boolean(this.deathLoad);if(this.deathLoad)this.screenTimer=this.deathLoad.state.timer;this.deathLoad=undefined;if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);}if(!fromDeath)this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.primeNativeReadyEnemies();if(this.phase==='play')this.consumeGameTimer(!this.entryControlLocked&&!this.area.autoWalk);this.emit(this.areaMusic());}
- private primeNativeReadyEnemies(){if(this.placedStream){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);this.passNativeObjects();}else if(!this.entryFalling&&this.enemies.some(e=>e.active&&(e.nativePipe||e.nativeId!==undefined||e.frenzy||e.nativeShot))){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else{this.broClock=this.random.frame&255;this.primeEntryPodoboos();} /* FrameCounter runs on: the next enemy pass reads the next count (7-3 original row 1860 after a respawn) */this.updateNativeCannons();this.passNativeCannons();}
+ private primeNativeReadyEnemies(){if(this.placedStream){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);this.passNativeObjects();}else if(!this.entryFalling&&this.enemies.some(e=>e.active&&(e.nativePipe||e.nativeId!==undefined||e.frenzy||e.nativeShot))){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else{this.broClock=this.random.frame&255;this.primeEntryPodoboos();if(this.platformCatchUp)this.busyNativeSlots();} /* FrameCounter runs on: the next enemy pass reads the next count (7-3 original row 1860 after a respawn) */this.updateNativeCannons();this.passNativeCannons();}
 
  private primeEntryPodoboos(){
   // InitializeGame already loads the in-range Podoboo on engine7. On the first engine8 row it takes its first MoveJ gravity step.

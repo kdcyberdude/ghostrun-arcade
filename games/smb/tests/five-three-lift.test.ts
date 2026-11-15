@@ -22,7 +22,7 @@ test('a falling player lands on and rides the moving 5-3 lift',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='5-3')!);
  level.areas.find(a=>a.id==='main')!.enemies=[];
  // The 93 frames only advance the lift clock: Mario waits standing on the ledge top at feet 64 (a mid-air spawn fell into the pit under the native no-jump-yet fall).
- const game=new Simulation([level]);game.reset(true);game.loadArea('main',[700,64],660);game.step([],93);
+ const game=new Simulation([level]);game.reset(true);game.loadArea('main',[700,64],660);(game as any).platformMotion.lost.clear();(game as any).platformCatchUp=undefined; /* natively a load at camera 660 skips the lift record (column < camera + 255); this physics fixture re-arms it */game.step([],93);
  const platform=game.area.platforms!.find(p=>p.x===880)!;
  Object.assign(game.player,{x:884,y:game.platformPosition(platform).y-3,vy:4,grounded:false});
  game.step([],1);assert.equal(game.player.grounded,true);assert.equal(game.player.y,game.platformPosition(platform).y-1);
