@@ -335,10 +335,11 @@ export class GameRenderer {
     // (6ef303eb 2-1 rows 11320-11330: 72.5 -> 72, 71.5 -> 72, 70.5 -> 70, 69.5 -> 70).
     const entry=s.area.entryVine?.vineId===vine.id,exact=vine.baseY-vine.height,even=Math.floor(exact)+(exact%1===0.5?Math.floor(exact)&1:Math.round(exact%1)),top=entry?exact+1:vine.nativeHeight!==undefined?vine.baseY-vine.nativeHeight+1:even+1,height=entry?vine.height:vine.baseY-top;
     if(!entry&&vine.nativeHeight!==undefined&&vine.nativeHeight<8)continue; // no vine sprite until VineHeight reaches 8; OAM Y = base - VineHeight (cf537977 2-1 RAM 11448, 6ef303eb 11320)
-    if(!entry&&vine.nativeHeight!==undefined){ // VineObjectDraw: VineHeight/8+1 whole tiles (SixSpriteStacker: at most six), all behind the background (OAM attribute $21), so the one below the block's top shows over its blank cell before the used block is written (cf537977 2-1 picture 11449: tiles at 72 and 80)
-     for(let offset=0;offset<=vine.nativeHeight&&offset<48;offset+=8){const side=Math.floor(offset/8)%2===1,tile=offset===0?224:225,x=vine.x+(side?6:0)-s.camera;this.behindBackgroundSprite(x,top+offset,8,8,1.5,()=>this.quad('sprite-tiles-0f-1a-30-27.png',[tile%16*8,Math.floor(tile/16)*8,8,8],x,top+offset,1.5,side));}
-    }else for(let offset=0;offset<height;offset+=8){
-     const side=Math.floor(offset/8)%2===1,tile=offset===0?224:225,visible=Math.min(8,height-offset);
+    // VineObjectDraw writes VineHeight/8+1 whole tiles behind the background: the one below the block's top shows only while its cell is still blank
+    // before the used block is written (cf537977 2-1 picture 11449: tiles at OAM Y 72 and 80).
+    const blank=!entry&&vine.nativeHeight!==undefined&&!s.blockBackground.get(`${Math.floor((vine.x+4)/16)},${Math.floor((vine.baseY+1)/16)}`)&&s.blockBackground.has(`${Math.floor((vine.x+4)/16)},${Math.floor((vine.baseY+1)/16)}`),drawn=blank?Math.floor(vine.nativeHeight!/8)*8+8:height;
+    for(let offset=0;offset<drawn;offset+=8){
+     const side=Math.floor(offset/8)%2===1,tile=offset===0?224:225,visible=Math.min(8,drawn-offset);
      this.quad('sprite-tiles-0f-1a-30-27.png',[tile%16*8,Math.floor(tile/16)*8,8,visible],vine.x+(side?6:0)-s.camera,top+offset,1.5,side);
     }
    }
