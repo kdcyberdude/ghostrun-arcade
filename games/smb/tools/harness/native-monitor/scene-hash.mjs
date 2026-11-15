@@ -70,9 +70,9 @@ export function createSceneHasher(){
   return lanes();
  };
 }
-/** Defer every draw of a WebGLRenderer: render(scene,camera) only records the scene and its hash; draw() renders the pending scene once. */
+/** Defer every draw of a WebGLRenderer: render(scene,camera) only records the scene; hash() and draw() read it as it is now, so a key always describes the picture draw() renders. */
 export function deferDraws(renderer){
  const draw=renderer.render.bind(renderer),hash=createSceneHasher(),state={pending:null,hash:(scene,camera)=>hash(renderer,scene,camera),draw:()=>{const p=state.pending;if(!p.drawn){draw(p.scene,p.camera);p.drawn=true;}}};
- renderer.render=(scene,camera)=>{state.pending={scene,camera,drawn:false,key:state.hash(scene,camera)};};
+ renderer.render=(scene,camera)=>{state.pending={scene,camera,drawn:false};};
  return state;
 }

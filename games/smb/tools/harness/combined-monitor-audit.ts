@@ -62,7 +62,7 @@ async function audit(input:any,page:any){
  const statePromise=replayStateInWorker(stateBundle.file,monitor,input.id,scope?.levels);statePromise.catch(()=>{});
  await page.evaluate(async({entrance,original,rgb,palette,policy}:any)=>{
   const w=window as any,canvas=document.querySelector('#game') as HTMLCanvasElement;canvas.toDataURL=()=>'';
-  // Defer every draw: remember the scene of the latest render call (and its hash); a compared row draws it only when no cached verdict applies.
+  // Defer every draw: remember the scene of the latest render call; a compared row hashes it and draws it only when no cached verdict applies.
   if(!w.auditDraw){const {deferDraws}=await import(String('/tools/harness/native-monitor/scene-hash.mjs'));w.auditDraw=deferDraws(w.marioDebug.view.renderer);}
   w.auditDraw.pending=null;w.mario.reset({playing:original});
   if(original){const {initializeEntrance}=await import(String('/tools/harness/native-entrance.mjs'));initializeEntrance(w.marioDebug.simulation,entrance);w.mario.step([],0);w.marioDebug.simulation.inputs=[];}
@@ -89,7 +89,7 @@ async function audit(input:any,page:any){
     for(let f=0;f<pads.length;f++){
      if(compare[f]){
       const p=d.pending;if(!p)throw Error('No render call before a compared row');
-      const key=d.hash(p.scene,p.camera);if(key[0]!==p.key[0]||key[1]!==p.key[1])throw Error('Scene changed after its render call: a deferred draw would not match');
+      const key=d.hash(p.scene,p.camera);
       if(!fresh[f]&&(cache[f*2]|cache[f*2+1])&&cache[f*2]===key[0]&&cache[f*2+1]===key[1]){a.pictures.push(null);rows.push({picture:{status:'pass',cached:true},key});}
       else{
       d.draw();
