@@ -63,6 +63,7 @@ test('?-block palette cycle follows the native colour rotation',()=>{
  const palettes=manifest.palette_observations.map(o=>o.palette),entry=(i:number)=>palettes[i][13].toString(16).padStart(2,'0');
  assert.deepEqual(Array.from({length:9},(_,n)=>entry(rotatedPalette(palettes,0,n))),['27','27','27','27','17','07','17','27','27']);
  assert.deepEqual([0,4,5,6].map(n=>rotatedPalette(palettes,3,n)),[3,4,5,4]); // 1-2 underground triplet
+ assert.deepEqual([0,1,4].map(n=>rotatedPalette(palettes,27,n)),[6,27,28]); // 6-3 loads $3F0F = $00; the first write sets $0F (original pixels 2576 / 2582)
  assert.equal(rotatedPalette(palettes,11,5),10); // castle atlas with the green-koopa sprite palette keeps its other entries
  const sim=new Simulation(observedLevels());sim.reset(true);sim.loadArea(sim.level.main);sim.phase='play';
  assert.equal(sim.colorRotations,0);sim.random.frame=157;sim.colorRotations=1;

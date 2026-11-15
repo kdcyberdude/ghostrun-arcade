@@ -41,7 +41,9 @@ export const starVariant=(palette:number,own:string)=>[own,'star-green','star-wh
  * (palette entry 13), shown from the next picture. rotations = runs since the area was initialized (0: the loaded palette). Returns the palette observation
  * index equal to `index` except for entry 13, or `index` when there is none. */
 export const rotatedPalette=(palettes:number[][],index:number,rotations:number)=>{
- if(rotations<1)return index;
+ // Before the first write the area's loaded colours stand, $3F0F included: 6-3 loads $00 there, which ColorRotation's 0F 27 17 0F replaces
+ // (6-3 original pixels 2576 / 2582: the coin edge $00, then $0F).
+ if(rotations<1){const base=palettes[index],loaded=palettes.findIndex(p=>p[15]===0&&base[15]!==0&&p.every((c,i)=>i===15||c===base[i]));return loaded<0?index:loaded;}
  const color=[0x27,0x27,0x27,0x17,0x07,0x17][(rotations-1)%6],base=palettes[index];
  const found=palettes.findIndex(p=>p[13]===color&&p.every((c,i)=>i===13||c===base[i]));return found<0?index:found;
 };
