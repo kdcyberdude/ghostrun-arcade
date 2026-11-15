@@ -14,7 +14,7 @@ export function nativeOamPicture(s:any){
  // 30,689 rows with rows 1-2 eight apart, at the drawn top less one; a row reaching Y 248 stays hidden: 243 / 248).
  const defeatTop=(e:any)=>!e.dead||e.squashed?undefined:e.greenShellLaunchFrame!==undefined||e.defeat&&e.kind==='goomba'?Math.floor(e.y)+shellLaunchRules.visibleBodyTopFromFeet:e.defeat&&(e.kind==='koopa'||e.kind==='redKoopa')?Math.floor(e.graphicsY??e.y)-15:undefined;
  const powerup=(i:any)=>['mushroom','flower','star','1up'].includes(i.kind)&&i.nativePowerState!==undefined; // an emerging one too: the same four entries, behind the background (6ef303eb 2-1 RAM 11030-11048)
- if(s.items.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i)&&!i.nativeFlame)||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed&&defeatTop(p.victim)===undefined||!p.victim.dead&&!p.victim.shell&&p.victim.nativeId===undefined)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup)))reasons.push('other-writer'); // a frenzy controller (ID23 before its Bullet, ID52 WarpZoneObject) holds a slot but draws nothing
+ if(s.pictureItems.some((i:any)=>!(i.kind==='coin'&&i.nativeCoin)&&!powerup(i)&&!i.nativeFlame)||s.popups.some((p:any)=>p.victim?.enemySlot===undefined||p.victim.dead&&!p.victim.squashed&&defeatTop(p.victim)===undefined||!p.victim.dead&&!p.victim.shell&&p.victim.nativeId===undefined)||s.vines.some((v:any)=>v.height>0||v.growing)||s.nativeFireworks?.length||s.nativeCastleFlag||s.specialSlot5.flag&&!(s.specialSlot5.id===46&&s.items.some(powerup)))reasons.push('other-writer'); // a frenzy controller (ID23 before its Bullet, ID52 WarpZoneObject) holds a slot but draws nothing
  // Springboards: six entries at their slot's offset, rows Enemy_Y, +8, +16 (Enemy_Y: the spring's top, 8 lower per compression step) and columns X, X+8;
  // a column off X 1..255 keeps Y 248 (1ae7aeeb 2-1 rows 11640-11664 entering at the right, 13205-13223 compressed).
  const springs:{base:number,x:number,y:number}[]=[];
@@ -85,7 +85,7 @@ export function nativeOamPicture(s:any){
  for(const i of s.items){const c=i.nativeCoin;if(!c||c.state===0)continue;const base=s.spriteShuffle.miscOffset(c.slot),x=Math.floor(i.x-s.camera)&255,y=Math.floor(i.y)&255,score=c.state>=2;
   write(base,y,score?0xf7:0x60,2,x,false);write(base+4,score?y:(y+8)&255,score?0xfb:0x60,2,score?(x+8)&255:x,false);}
  // A power-up out of its block (an emerging one from state 6: 6ef303eb 2-1 RAM 11001-11005): four entries at slot 5's offset, its 16x16 picture one line below (all captures: id $2E rows at Enemy_Y+8/+16, X/X+8).
- for(const i of s.items)if(powerup(i)&&i.nativePowerState>=6){const base=s.spriteShuffle.offsets[6],x=Math.floor(i.x-s.camera),y=Math.floor(i.y);
+ for(const i of s.pictureItems)if(powerup(i)&&i.nativePowerState>=6){const base=s.spriteShuffle.offsets[6],x=Math.floor(i.x-s.camera),y=Math.floor(i.y);
   for(let row=0;row<2;row++)for(let col=0;col<2;col++){const xx=x+col*8;write(base+row*8+col*4,xx<=0||xx>255?248:y+row*8,0x76,2,xx&255,false);}}
  // Floatey numbers: the victim slot's first two entries at Y = FloateyNum_Y - 8 (popup.y - 1), X and X+8 (fltpat: 17,618 of 23,640 rows; the rest read a shuffled offset).
  // ChkTallEnemy: a Spiny, Piranha Plant or Cheep Cheep, or an ID below 9 other than the Hammer Bro in state 2 or more (dead or a shell),

@@ -282,6 +282,9 @@ export class Simulation {
  warpZoneActive=false;
  /** The Piranha Plants the warp zone object erased this frame, after the engine drew them (3802a107 1-2 RAM 5650: slots cleared, six entries still drawn). */
  warpErased?:{frame:number;enemies:Enemy[]};
+ private collectedPicture?:{frame:number;item:Item};
+ /** The items drawn this frame: the live ones, and a power-up collected after it was drawn. */
+ get pictureItems(){return this.collectedPicture?.frame===this.frame?[...this.items,this.collectedPicture.item]:this.items;}
  private footPushed=false;private piranhaTouchFeetY?:number;private landingFraction=0;private fallGravity=FALL_GRAVITY_AFTER_LOAD;private walkingOff=false;
  private motor=new PlayerMotor();private wallSide?:1|-1;private wallSpeed?:number;private wallBackOut=false;
  readonly bubbleState=new NativeBubbles();
@@ -3383,6 +3386,9 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private collectItem(i:Item){
   const p=this.player;
+  // A falling mushroom that grows Mario was already drawn this frame, after its move (all captures: 4 of 4 state $C0 pickups that start
+  // the grow keep its four entries, 0 of 99 others; a3899256 2-1 RAM 12066: Y 99 at X 103, PowerUpFlag cleared).
+  this.collectedPicture=i.kind==='mushroom'&&i.nativePowerState===0xc0&&p.size===0?{frame:this.frame,item:{...i}}:undefined;
     i.life=0;
     if(i.kind==='1up'){this.lives++;this.awardPopup('1up',i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_1up');}
     else if(i.kind==='star'){this.nativeEndLevelMusicAreaQueue=64;p.star=NATIVE_STAR_PICKUP;if(i.nativePowerState!==undefined)this.floateyScore(POWERUPS.starCollectionScore.value);else this.addScore(POWERUPS.starCollectionScore.value);this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset);this.emit(this.time<=100?'music_star_hurry':'music_star');}

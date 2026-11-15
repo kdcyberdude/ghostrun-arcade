@@ -353,7 +353,7 @@ export class GameRenderer {
    if(ordinary){
    for(const b of s.blockGraphics){this.oamContext=this.oamRows&&b.pictureY!==undefined?{base:s.spriteShuffle.offsets[8+b.slot],count:4}:undefined;for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY,2+(255-s.spriteShuffle.offsets[8+b.slot])/4096);}this.oamContext=undefined;}
    for(const c of s.brickChunkPictures())for(const p of nativeBrickChunkSprites(c,s.random.frame,s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY,2+(255-s.spriteShuffle.offsets[8+c.slot])/4096);} // its own OAM depth: a bumped brick at entries 26-29 covers a Koopa head at entry 40 (1-2 4340c9fa picture 3456)
-   for(const i of s.items)this.item(i,s);
+   for(const i of s.pictureItems)this.item(i,s);
    if(s.area.theme==='water')for(const [slot,bubble]of s.bubbles.entries())if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27',false,false,2+(255-s.spriteShuffle.offsets[10+slot])/4096);
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly||popup.hiddenFrame===s.frame)continue; // a lower slot's floatey ran before the shell reached it
