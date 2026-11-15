@@ -2081,7 +2081,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   for(const [slot,v]of this.loopVertical){Object.assign(this.slotVertical[slot],v.m);this.slotYSpeed[slot]=v.speed;this.slotYFraction[slot]=v.fraction;this.slotYFrac[slot]=v.frac;this.slotFrameTimers[slot]=v.timer;} // and their vertical bytes, also from the row before (rows 9566/10173: slot 4 keeps force 28, fraction 172)
   this.clearVictoryEnemyBank(); // the same KillAllEnemies erases every owner in slots0–4
   for(const platform of this.area.platforms??[])this.platformMotion.loopBack(platform,edge);
-  for(const spec of this.area.enemies)if(spec.x>=edge&&!this.enemies.some(e=>e.originX===spec.x&&e.originY===spec.y&&e.kind===spec.kind))this.enemies.push(this.makeEnemy(spec));
+  for(const spec of this.area.enemies){const x=spec.kind==='bowser'?nativeBowserSpawnX(this.level.id,spec.x):spec.x;if(x>=edge&&!this.enemies.some(e=>e.originX===x&&e.originY===spec.y&&e.kind===spec.kind))this.enemies.push(this.makeEnemy({...spec,x}));} // Bowser at his native spawn x, as on reset (cda1b64f 4-4 RAM 39531: no second Bowser from the compiled x 2656 after a loop back)
   if(this.placedCastle){this.setupNativePlacedStream();this.resetNativeEnemyCursor();this.placedBankFrame=-1;this.primeNativeEntryObjects();}
   else if(this.walkerStream)this.resetNativeEnemyCursor(); // 8-4 original row 9812: the Beetle record at x 2048 loads again after the loop back
  }
