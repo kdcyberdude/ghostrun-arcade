@@ -2079,7 +2079,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  /** A falling egg (state 5): the background test runs before the move; landed, it turns into a Spiny walking toward Mario and steps on that row. */
  private updateSpinyEgg(e:Enemy){
   const n=e.pod!,floor=n.speed>=0?this.enemyCollisionAt(e.x+8,e.y):undefined;
-  if(floor){e.y=floor.y;e.vy=0;n.speed=0;n.force=0;e.motion=undefined;e.vx=this.spinyLandingVx(e.x);e.x+=e.vx;this.spinyWallTurn(e);return;}
+  if(floor){e.y=floor.y;e.vy=0;n.speed=0;n.force=0;e.motion=undefined;e.vx=this.spinyLandingVx(e.x);e.x+=e.vx;e.hatchFacing=Math.sign(e.vx);this.spinyWallTurn(e);return;}
   nativeImposeGravity(n,SPINY_EGG.down,SPINY_EGG.max);e.y=n.y;e.vy=n.speed+n.force/256;
  }
  /** Castle areas whose loop objects follow the native loop-command table (a remake maze spec on such a page is replaced by it). */
@@ -3037,7 +3037,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){if(e.nativeId===undefined||this.placedStream||this.walkerStream)e.slotLost=true;continue;} // a list record waits at the parser cursor while every slot is busy and is dropped on the next free slot's turn (passNativeObjects)
    if(!e.active&&e.nativeWaterOffset!==undefined)continue;
    if(!e.active&&(e.nativeGroup||e.nativeId!==undefined))continue; // native group loading runs after this frame's scroll
-   if((e.kind!=='bullet'||e.frenzy)&&e.kind!=='bowser'){e.graphicsFacing=e.kind==='bullet'?(e.direction??-1):e.kind==='paratroopa'&&e.nativeId===16?((e.horizontalFlight?.primary??0)&2?1:-1):Math.sign(e.vx);e.graphicsX=e.x;e.graphicsY=e.y;} // RunNormalEnemies draws before this slot's movement and enemy turns
+   if((e.kind!=='bullet'||e.frenzy)&&e.kind!=='bowser'){e.graphicsFacing=e.kind==='bullet'?(e.direction??-1):e.kind==='paratroopa'&&e.nativeId===16?((e.horizontalFlight?.primary??0)&2?1:-1):e.hatchFacing??Math.sign(e.vx);delete e.hatchFacing;e.graphicsX=e.x;e.graphicsY=e.y;} // a Spiny is drawn the row after hatching with the hatch row's direction, its wall turn coming only after (dddbf583 4-1 RAM 28764: Enemy_MovingDir 1 at the hatch beside a wall, 2 from RAM 28765, whose OAM 34-39 are still unflipped) // RunNormalEnemies draws before this slot's movement and enemy turns
    this.captureEnemyGraphics(e);
    if(e.active&&this.nativeTimersStopped){this.settleFrozenWalker(e);this.tickHeldEnemyFrameTimers(e);if(e.kind==='bowser')this.graphicsScratch.enemy(45,{bowser:2});continue;}
    if(!e.active&&this.nativeSlotDenied(e))continue;
