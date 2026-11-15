@@ -2682,7 +2682,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     // InitHammerBro/SetBBox clears throw/X speed and Y speed/force, retaining frame/jump timers and fractional bytes.
     if(e.nativeId===5){e.vx=0;e.nativeDir=-1;e.hbro={state:0,jumpTimer:this.slotBroJump[slot],throwTimer:0,frameTimer:this.slotFrameTimers[slot],interval:this.secondaryHardMode?0x50:0x80,speed:0,force:0,fraction:left.fraction,y:Math.floor(e.y)-24};}
     else if(e.nativeId===17){e.lak={dir:0,speed:0,box:3};this.lakituReappearCount=0;}
-    else if(e.nativeId===14)e.pod={...nativeMoveState(e.y),...left};
+    else if(e.nativeId===14)e.pod={...nativeMoveState(e.y),speed:left.speed,force:left.force,fraction:left.fraction}; // the slot's speed bytes only: a defeated predecessor's y must not come along (25e5814b 2-1 row 9906: slot 3 Paratroopa made at y 184 after a corpse left y 277)
     else if(e.nativeId===15)e.redFlight=createNativeRedFlight(e.y,left.fraction);
     else if(e.nativeId===16)e.horizontalFlight={x:e.x,y:e.y,primary:0,secondary:0,fraction:left.fraction};
     else e.fall={speed:0,force:0,fraction:left.fraction};
