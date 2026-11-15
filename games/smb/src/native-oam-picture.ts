@@ -49,7 +49,8 @@ export function nativeOamPicture(s:any){
  // a shell 2/10/18 (id0 states 4/84), a waking shell 0/8/16 (state 3: 82 of 82 sampled rows; 17a2baf0 2-1 picture 11987); a squashed Goomba 9/17 below its floatey number, which owns the slot's first two entries.
  const walker=(e:any)=>['koopa','redKoopa','beetle','paratroopa','piranha'].includes(e.kind);
  const rowsOf=(e:any,body:any):(number|undefined)[]|undefined=>(e.kind==='goomba'||e.kind==='podoboo'||e.kind==='cheep')&&!e.dead?[0,8,16]:e.kind==='blooper'&&!e.dead?[0,8,16].map(r=>r+nativeBlooperPicture(e.bloop?.timer??0,false,enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped)).yOffset):e.kind==='goomba'&&e.squashed&&e.dead?[s.popups.some((p:any)=>p.victim===body)||body.erasedFrame===s.frame?undefined:1,9,17]:walker(e)&&!e.dead&&!e.shell?[0,8,16]:walker(e)&&!e.dead&&e.shell?(e.walkerState===3?[0,8,16]:[2,10,18]):defeatTop(e)!==undefined&&s.popups.some((p:any)=>p.victim===body)?[undefined,defeatTop(e)!-1-(Math.floor(e.y)-24),defeatTop(e)!+7-(Math.floor(e.y)-24)]:undefined;
- if(enemies.some((body:any)=>{const e=pic(body);return e.enemySlot===undefined||!hidden(e)&&!undrawn(e,body)&&(!rowsOf(e,body)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
+ // A wholly hidden enemy is checked before its slot: an enemy loaded this row keeps a picture taken before it had one (8-1 original RAM 1043: slot 4's Piranha Plant at X 359).
+ if(enemies.some((body:any)=>{const e=pic(body);return !hidden(e)&&(e.enemySlot===undefined||!undrawn(e,body)&&(!rowsOf(e,body)||body.graphicsVisible===false));}))reasons.push('enemy-writer');
  const pose=playerCell(s);if(pose.throwing)reasons.push('player-extra-piece');
  const at=s.playerPicturePosition(),px=Math.floor(at.x-s.camera),py=Math.floor(at.y)-32;
  if(px<0||px>240)reasons.push('player-offscreen');
