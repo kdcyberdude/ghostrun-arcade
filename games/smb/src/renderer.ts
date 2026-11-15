@@ -350,8 +350,9 @@ export class GameRenderer {
    if(s.area.theme==='water')for(const [slot,bubble]of s.bubbles.entries())if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27',false,false,2+(255-s.spriteShuffle.offsets[10+slot])/4096);
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly||popup.hiddenFrame===s.frame)continue; // a lower slot's floatey ran before the shell reached it
-    const v=popup.victim;this.oamContext=this.oamRows&&v?.enemySlot!==undefined?{base:s.spriteShuffle.offsets[v.enemySlot+1],count:2}:undefined; // the composer's floatey entries
-    const z=v?.enemySlot!==undefined?2+(255-s.spriteShuffle.offsets[v.enemySlot+1])/4096:2.5; // its slot's OAM depth: a bumped brick at entries 26-29 covers a floatey at 40-41 (97387d10 1-2 picture 3582)
+    const v=popup.victim,id=v?.nativeId??-1,own=[0x0a,0x0b,0x0d,0x12].includes(id)||id>=0&&id<9&&id!==5&&(Boolean(v?.dead)||Boolean(v?.shell)),offset=v?.enemySlot===undefined?undefined:s.spriteShuffle.offsets[own||v.nativeId===undefined?v.enemySlot+1:8+s.blockControl]; // ChkTallEnemy (see the composer)
+    this.oamContext=this.oamRows&&offset!==undefined?{base:offset,count:2}:undefined; // the composer's floatey entries
+    const z=offset!==undefined?2+(255-offset)/4096:2.5; // its slot's OAM depth: a bumped brick at entries 26-29 covers a floatey at 40-41 (97387d10 1-2 picture 3582)
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,z);this.oamContext=undefined;
    }
    for(const bar of s.area.firebars??[]){const slot=s.spriteObjectSlot(bar),centers=s.firebarCenters(bar);this.oamContext=this.oamRows&&slot!==undefined?{base:s.spriteShuffle.offsets[slot+1],count:centers.length}:undefined;for(const {x,y}of centers)this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x-4-s.camera,y-4+(bar.visualOffsetY??0));this.oamContext=undefined;}

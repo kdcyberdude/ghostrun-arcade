@@ -1805,7 +1805,7 @@ export class Simulation {
   e.x=next.x+e.x-Math.floor(e.x);e.y=next.y+24;e.nativeDir=b.dir===1?1:-1;if(this.waterStreamPlatforms.size&&e.enemySlot!==undefined)this.waterSlotXSpeed[e.enemySlot]=b.force;
  }
  // Hammer Bro roster entries supply level object positions only. All decisions use native slot state (src/hammer-bro.ts).
- private slotBroJump=[0,0,0,0,0];private miscHammerBytes=Array.from({length:9},()=>({force:0,fraction:0,collision:false}));private miscOffscreen=0;private hammerPlayerBox?:NativeBox;private miscPositions=Array.from({length:9},()=>({x:0,y:0}));private blockControl=0;private nativeBlockBounce=0;private nativeBlocks=Array.from({length:4},(_,slot)=>({slot,x:0,y:0,state:0,speed:0,force:0,fraction:0,origX:0}));
+ private slotBroJump=[0,0,0,0,0];private miscHammerBytes=Array.from({length:9},()=>({force:0,fraction:0,collision:false}));private miscOffscreen=0;private hammerPlayerBox?:NativeBox;private miscPositions=Array.from({length:9},()=>({x:0,y:0}));blockControl=0;private nativeBlockBounce=0;private nativeBlocks=Array.from({length:4},(_,slot)=>({slot,x:0,y:0,state:0,speed:0,force:0,fraction:0,origX:0}));
  private bindNativeHammerBros(){
   this.broClock=HAMMER_NATIVE.levelClock;
   const roster=(hammerBroData.bros as unknown as NativeHammerBro[]).filter(b=>b.level===this.level.id&&b.area===this.area.id),taken=new Set<NativeHammerBro>();
