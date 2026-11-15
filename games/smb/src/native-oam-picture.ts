@@ -99,9 +99,11 @@ export function nativeOamPicture(s:any){
  for(const i of s.items){const c=i.nativeCoin;if(!c||c.state===0)continue;const base=s.spriteShuffle.miscOffset(c.slot),x=Math.floor(i.x-s.camera)&255,y=Math.floor(i.y)&255,score=c.state>=2;
   write(base,y,score?0xf7:0x60,2,x,false);write(base+4,score?y:(y+8)&255,score?0xfb:0x60,2,score?(x+8)&255:x,false);}
  // A hammer: its picture's two tiles on its misc offset's two entries, in the picture's own order, at Y and X of each tile (8-3 original RAM 2458: entries 42-43 $80/$81 at X 111, Y 110/118; 2496: 28-29 $83/$82 at Y 99, X 54/62).
- for(const i of s.pictureItems){const n=i.nativeHammer;if(!n||!itemShown(i)||s.itemPictureShown(i)===false)continue;const base=s.spriteShuffle.miscOffset(n.slot),x=Math.floor(i.x-s.camera),y=Math.floor(i.y);
+ // The row MiscObjectsCore kills a hammer off screen it still draws it: both entries at Y 248, X from the left screen edge (f80bc447 5-2 RAM 40847: misc slot 1 state 0, entries 60-61 $82/$83 at Y $F8, X 0/8).
+ const killed=s.offscreenHammers.filter((h:any)=>h.frame===s.frame).map((h:any)=>h.item);
+ for(const i of [...s.pictureItems,...killed]){const n=i.nativeHammer,gone=killed.includes(i);if(!n||!gone&&(!itemShown(i)||s.itemPictureShown(i)===false))continue;const base=s.spriteShuffle.miscOffset(n.slot),x=Math.floor(i.x-s.camera),y=gone?248:Math.floor(i.y);
   const pieces=specialSprites.records.find((r:any)=>r.file===`sprite-hammers-${nativeHammerPicturePhase(n,s.random.frame,s.frame,s.nativeTimersStopped)}.png`)!.descriptor.sprites;
-  pieces.forEach((p:any,k:number)=>{const a=(base+k*4)&255;if(written[a/4])stolen[a/4]=1;written[a/4]=0;write(a,(y+p.y)&255,p.tile,p.attributes,(x+p.x)&255,false);hammerOwned.add(a);});}
+  pieces.forEach((p:any,k:number)=>{const a=(base+k*4)&255;if(written[a/4])stolen[a/4]=1;written[a/4]=0;write(a,gone?248:(y+p.y)&255,p.tile,p.attributes,(x+p.x)&255,false);hammerOwned.add(a);});}
  // A power-up out of its block (an emerging one from state 6: 6ef303eb 2-1 RAM 11001-11005): four entries at slot 5's offset, its 16x16 picture one line below (all captures: id $2E rows at Enemy_Y+8/+16, X/X+8).
  for(const i of s.pictureItems)if(powerup(i)&&i.nativePowerState>=6){const base=s.spriteShuffle.offsets[6],x=Math.floor(i.x-s.camera),y=Math.floor(i.y);
   for(let row=0;row<2;row++)for(let col=0;col<2;col++){const xx=x+col*8;write(base+row*8+col*4,xx<=0||xx>255?248:y+row*8,0x76,2,xx&255,false);}}

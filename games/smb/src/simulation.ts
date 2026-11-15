@@ -279,6 +279,7 @@ export class Simulation {
  warpErased?:{frame:number;enemies:Enemy[]};
  private collectedPicture?:{frame:number;item:Item};
  /** The items drawn this frame: the live ones, and a power-up collected after it was drawn. */
+ offscreenHammers:{frame:number;item:Item}[]=[]; // a hammer killed off screen this row still draws its two entries, hidden
  get pictureItems(){return this.collectedPicture?.frame===this.frame?[...this.items,this.collectedPicture.item]:this.items;}
  private footPushed=false;private piranhaTouchFeetY?:number;private landingFraction=0;private fallGravity=FALL_GRAVITY_AFTER_LOAD;private walkingOff=false;
  private motor=new PlayerMotor();private wallSide?:1|-1;private wallSpeed?:number;private wallBackOut=false;
@@ -1974,7 +1975,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   n.drawFrame=this.frame;n.drawTimersStopped=this.nativeTimersStopped;
   i.vy=n.speed+n.force/256;Object.assign(this.miscHammerBytes[n.slot],{force:n.force,fraction:n.fraction,collision:n.collision??false});
   const camera=this.camera+this.lakituScroll;this.miscOffscreen=nativeMiscOffscreen(Math.floor(i.x),Math.floor(i.y),camera);n.box=nativeHammerBox(Math.floor(i.x),Math.floor(i.y),camera,n.slot<4?this.nativeBlocks[n.slot].x:this.miscPositions[n.slot-4].x);this.miscPositions[n.slot]={x:Math.floor(i.x),y:Math.floor(i.y)};
-  if(this.miscOffscreen&0xfc)i.life=0;
+  if(this.miscOffscreen&0xfc){i.life=0;this.offscreenHammers=[...this.offscreenHammers.filter(h=>h.frame===this.frame),{frame:this.frame,item:i}];}
  }
  // Native Lakitu (src/lakitu.ts): MoveLakitu on its pre-step integer x against this frame's Mario x, speed byte and scroll, after its initialization-only creation turn. Flee (EndFrenzy sets Lakitu's state): when the area parser queues the Stop_Frenzy object and the enemy pass has a free slot.
  private pendingPlacedLakitu(){
