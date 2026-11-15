@@ -287,10 +287,10 @@ export class GameRenderer {
    for(const spring of s.area.springs??[]){const col=Math.floor(spring.x/16),row=Math.floor((spring.y-8)/16);pictureTiles.set(`${col},${row-1}`,0x67);pictureTiles.set(`${col},${row}`,0x68);}
    for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
    // Balance lift ropes (SetupPlatformRope): each frame the pair writes its rope's 8-pixel row at the lift's Y, rope ($A2/$A3) moving down and
-   // blank one row lower moving up, in the column of Enemy X + 24, so the rope ends on the tile row holding the lift's top (6-3 original picture 500).
+   // blank one row lower moving up, in the column of Enemy X + 24 (X + 8 for SecondaryHardMode's 32-pixel lifts: 6-3 rope columns 71/75/79/82), so the rope ends on the tile row holding the lift's top (6-3 original picture 500).
    const ropes:{col:number,top:number,bottom:number}[]=[],context={levelId:s.level.id,areaId:s.area.id};
    for(const platform of s.area.platforms??[]){const object=nativePlatformObject(platform,context);if(object?.kind!=='balance'||platformMotionModel(platform,context)!=='native-balance')continue;
-    const at=s.platformPosition(platform),col=Math.floor((at.x+24)/16),rows=[...pictureTiles].filter(([key,id])=>id===64&&key.startsWith(col+',')).map(([key])=>Number(key.split(',')[1]));if(!rows.length)continue;
+    const at=s.platformPosition(platform),col=Math.floor((at.x+(s.platformWidth(platform)===32?8:24))/16),rows=[...pictureTiles].filter(([key,id])=>id===64&&key.startsWith(col+',')).map(([key])=>Number(key.split(',')[1]));if(!rows.length)continue;
     for(const row of rows)pictureTiles.delete(`${col},${row}`);ropes.push({col,top:Math.min(...rows)*2,bottom:Math.floor((Math.floor(at.y)-1)/8)});}
    for(const[key,id]of pictureTiles){const[col,row]=key.split(',').map(Number);const x=col*16-Math.floor(s.camera);if(x<-16||x>=256||row<2)continue;
     if(id===95||id===96)continue;let y=row*16;
