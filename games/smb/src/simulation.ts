@@ -252,7 +252,7 @@ export class Simulation {
   * The run timer is refreshed only while it equals the pressed direction (0 of 6,436 B presses refresh it otherwise). */
  movingDir:-1|1=1;
  /** Floatey-number points: native FloateyNumbersRoutine adds them when FloateyNum_Timer, set to $30, reaches $2B, five frames after the award (4-3 v2: stomps at 187/203 pay at 192/208; coins and bricks pay at once). */
- private pendingScore:{value:number|'1up',left:number}[]=[];
+ private pendingScore:{value:number|'1up',left:number,slot?:number}[]=[];private floateyPaid:{slot:number,value:number,busy:boolean,buffer:boolean}[]=[];
  private stompedThisStep=false;
  private activatedHidden1ups=new Set<string>();
  private multiCoinExpiries=new Map<string,number>();
@@ -423,8 +423,10 @@ export class Simulation {
  }
  /** Score with the floatey-number points still waiting to be paid (what has been awarded, independent of when the HUD shows it). */
  get awardedScore(){return this.pendingScore.reduce((n,s)=>n+(typeof s.value==='number'?s.value:0),this.score);}
- private floateyScore(value:number|'1up',delay=5){this.pendingScore.push({value,left:delay});}
- private payFloateyScore(){for(const s of this.pendingScore)if(--s.left===0){if(s.value==='1up'){this.lives++;this.emit('sfx_1up');}else{this.addScore(s.value);this.blockUpdateBusy=this.graphicsBuffer1=true;}}this.pendingScore=this.pendingScore.filter(s=>s.left>0);}
+ /** SetupFloateyNumber on an enemy slot restarts that slot's timer, so points still waiting there are never paid (smb-fast 2-1 dcb9ad3f row 11333 stomp of slot 2 then shell kill at 11336: native pays only the 500; ebc1bc65 1-2 row 4114 stomp then kick at 4118: only the kick's 500).
+  *  A setup in the slot's own turn (delay 5) comes before that slot's floatey pass, so even points due this row are lost (0003f2f7 2-1 row 9317: slot 3 timer $2B overwritten by the shell kill to control 7 / timer $2F, the stomp's 200 never paid). */
+ private floateyScore(value:number|'1up',delay=5,slot?:number){if(slot!==undefined){this.pendingScore=this.pendingScore.filter(s=>s.slot!==slot);if(delay===5)for(const paid of this.floateyPaid.filter(p=>p.slot===slot)){this.addScore(-paid.value);this.blockUpdateBusy=paid.busy;this.graphicsBuffer1=paid.buffer;}this.floateyPaid=this.floateyPaid.filter(p=>p.slot!==slot);}this.pendingScore.push({value,left:delay,slot});}
+ private payFloateyScore(){this.floateyPaid=[];for(const s of this.pendingScore)if(--s.left===0){if(s.value==='1up'){this.lives++;this.emit('sfx_1up');}else{if(s.slot!==undefined)this.floateyPaid.push({slot:s.slot,value:s.value,busy:this.blockUpdateBusy,buffer:this.graphicsBuffer1});this.addScore(s.value);this.blockUpdateBusy=this.graphicsBuffer1=true;}}this.pendingScore=this.pendingScore.filter(s=>s.left>0);}
  private advancePopups(){
   this.popups=this.popups.filter(p=>p.lastFrame===undefined||p.lastFrame>=this.frame);
   for(const popup of this.popups){popup.age++;if(popup.y>=16)popup.y--;}
@@ -3213,7 +3215,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     if(normalContact===undefined){if(slot!==undefined&&this.collisionBits[slot]&1)continue;if(slot!==undefined)this.collisionBits[slot]|=1;}
     if(!e.movingShell){
      e.movingShell=true;e.shellAge=0;e.kickOverlap=true;e.vx=(Math.floor(priorX)>=Math.floor(p.x)?1:-1)*shellRules.speedPixelsPerNativeFrame;e.x=priorX+e.vx;e.y=stompY;e.fall=stompFall;
-     const award=this.shellKickAward();this.enemyPopup(award,e);this.floateyScore(award);this.emit('sfx_kick');continue;
+     const award=this.shellKickAward();this.enemyPopup(award,e);this.floateyScore(award,5,e.enemySlot);this.emit('sfx_kick');continue;
     }
    }
    const stompWindow=normalContact??shellContact??this.nativeStompWindow(e,p,priorX,priorY),chkInj=cheepStomp||(normalContact?normalStomp&&Math.floor(p.vy)<=0:this.nativeChkInjStomp(e,p,priorX,priorY))||Boolean(e.shell&&shellContact&&this.nativeStompTimer);
@@ -3229,7 +3231,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
     if(['goomba','koopa','redKoopa','beetle'].includes(e.kind))this.nativeStompTimer=(this.nativeStompTimer+1)&255;
     if(e.kind==='bullet'&&e.frenzy)e.x=priorX;
-    const award=e.kind==='bullet'||e.nativeFlight?200:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award,cannonShot(e)?6:5); // a cannon shot's turn follows the floatey pass of its slot: paid a frame later (7-1 original row 2280)
+    const award=e.kind==='bullet'||e.nativeFlight?200:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award,cannonShot(e)?6:5,e.enemySlot); // a cannon shot's turn follows the floatey pass of its slot: paid a frame later (7-1 original row 2280)
     // A Paratroopa stomp shows a popup in the reference; its Koopa offset and lifetime are inferred.
     if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='paratroopa'||e.kind==='bullet'||e.nativeFlight)this.enemyPopup(award,e); // a leaping Cheep Cheep too (904408d8 2-3 row 24603: 200 at X 106, Y 118)
     this.emit('sfx_stomp');
@@ -3261,10 +3263,10 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    if(other===e||!other.active||other.dead>=100||other.dead&&!other.squashed||other.slotFreed||other.enemySlot===undefined||other.enemySlot>=e.enemySlot||!kinds.includes(other.kind)||!from.has(other))continue;
    if(!e.movingShell&&!other.movingShell||!nativeEnemyBoxesTouch(body(e),body(other),Math.floor(this.camera+this.lakituScroll)))continue;
    const both=e.movingShell&&other.movingShell,shell=e.movingShell?e:other,victim=e.movingShell?other:e;
-   if(both){this.stunShellVictim(e);this.floateyScore(200);this.awardPopup(200,e.graphicsX??e.x,e.y-31,e);const label=this.popups[this.popups.length-1];label.life++;label.age++;label.y--;} // the processed shell's own label: 200 at its stunned Y (778a843b row 10788: slot 2 X $1C, Y $B5) // ShellOrBlockDefeat overwrites the earlier control6 with control2.
+   if(both){this.stunShellVictim(e);this.floateyScore(200,5,e.enemySlot);this.awardPopup(200,e.graphicsX??e.x,e.y-31,e);const label=this.popups[this.popups.length-1];label.life++;label.age++;label.y--;} // the processed shell's own label: 200 at its stunned Y (778a843b row 10788: slot 2 X $1C, Y $B5) // ShellOrBlockDefeat overwrites the earlier control6 with control2.
    const award=([500,800,1000,2000,4000,5000,8000,'1up'] as const)[Math.min(shell.shellChain??0,7)];
    const earlier=victim!==e?this.popups.filter(p=>p.victim===victim||p.victim?.enemySlot===victim.enemySlot):[]; // a lower slot already drew its label this row
-   this.stunShellVictim(victim);this.floateyScore(award,victim.enemySlot!<e.enemySlot?6:5);shell.shellChain=(shell.shellChain??0)+1;this.emit('sfx_kick');
+   this.stunShellVictim(victim);this.floateyScore(award,victim.enemySlot!<e.enemySlot?6:5,victim.enemySlot);shell.shellChain=(shell.shellChain??0)+1;this.emit('sfx_kick');
    this.awardPopup(award,e.graphicsX??e.x,victim.y-31,victim); // SetupFloateyNumber: victim slot and stunned Y, X from Enemy_Rel_XPos of the object being processed (24614c5e row 3257, 0d12a2e4 row 5416)
    {const label=this.popups[this.popups.length-1];label.life++;if(victim===e){label.age++;label.y--;}else label.hiddenFrame=this.frame;}
    for(const old of earlier)this.popups.push({...old,lastFrame:this.frame}); // ...and keeps it on screen there (778a843b row 10788: slot 1's earlier 500 at x 110 under its new hidden one) // a shell-kill number is drawn until its timer's 0 row, one row longer than a stomp's: the processed slot's floatey also runs this frame (e2a3c165 row 4324: timer 47, Y 181; bce85ccb rows 4446-4493, 48 rows), a lower slot's already ran, so it starts at timer 48 (02013a1a rows 4453-4501, 49 rows)
