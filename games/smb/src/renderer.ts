@@ -206,6 +206,11 @@ export class GameRenderer {
    for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(2-row)*2+col],x+col*8,top+row*8,palette,col===1,false);
    return;
   }
+  if(e.kind==='cheep'&&e.dead>0&&!e.defeat){
+   // A stomped Cheep Cheep: its blank row stays on top and only rows 1-2 swap, flipped vertically, never mirrored (904408d8 2-3 row 24699: B4/B5 at Y+8, B2/B3 at Y+16, attribute $82).
+   const tiles=tables.enemy_cells[cell].tiles;for(let row=1;row<3;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[row*2+col],x+col*8,y+(3-row)*8,palette,false,true);
+   return;
+  }
   if(e.squashed){
    const top=Math.floor(e.y)-6;
    this.spriteTile(239,x,top,palette,false,true);this.spriteTile(239,x+8,top,palette,true,true);return;
@@ -229,7 +234,7 @@ export class GameRenderer {
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
   }else if(e.kind==='piranha'){const z=this.enemyOamZ??2;this.behindBackgroundSprite(x,y,16,24,z,()=>this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20,z));}
-  else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20||e.kind==='cheep'&&e.dead>0,this.enemyOamZ); // a stomped Cheep Cheep is drawn upside down at once (904408d8 2-3 row 24609: attribute $82)
+  else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:0),palette,e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.kind==='lakitu'&&e.lak&&!e.dead?e.lak.dir===0:e.vx>0,Boolean(e.defeat)||Boolean((e.hbro?.state??0)&32)||e.dead>20,this.enemyOamZ);
  }
  private enemyCell(cell:number,x:number,y:number,palette:string,flipX=false,flipY=false,z=this.enemyOamZ??2){
   const data=tables.enemy_cells[cell];
