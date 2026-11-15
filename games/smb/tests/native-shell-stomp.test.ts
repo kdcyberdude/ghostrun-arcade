@@ -67,5 +67,5 @@ test('ShellOrBlockDefeat clears moving/falling shell high bits on both members o
  const actors=[0,1].map(slot=>Object.assign(sim.makeEnemy({kind:'koopa',x:100+slot*10,y:208}),{active:true,enemySlot:slot,shell:true,movingShell:true,shellFalling:true,vx:slot?-3:3,walkerState:4}));sim.enemies=actors;
  sim.nativeShellContacts(actors[1],new Map(actors.map(e=>[e,{x:e.x,y:e.y}])));
  for(const actor of actors){assert.ok(actor.defeat);assert.equal(actor.movingShell,false);assert.equal(actor.shellFalling,false);assert.equal(actor.walkerState,2);}
- assert.deepEqual(sim.pendingScore,[{value:200,left:5},{value:500,left:6}]);
+ assert.deepEqual(sim.pendingScore,[{value:200,left:5,slot:1},{value:500,left:6,slot:0}]);
 });

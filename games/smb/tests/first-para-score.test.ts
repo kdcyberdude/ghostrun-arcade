@@ -39,6 +39,7 @@ for (const [color,palette] of [['green','0f-1a-30-27'],['red','0f-16-30-27']] as
    assert.equal(sim.enemies[0].kind,color==='red'?'redKoopa':'koopa');
    assert.equal(sim.awardedScore,400);
    assert.equal((sim as unknown as ChainAccess).stompChain,0);
+   for(let i=0;i<5;i++)sim.step([],1); // let the 400 pay first: a new floatey on the same slot drops unpaid points
    const before=sim.awardedScore,target=hitNext(sim,next);
    assert.equal(sim.awardedScore-before,100);
    assert.equal((sim as unknown as ChainAccess).stompChain,1);
