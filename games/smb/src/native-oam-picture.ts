@@ -51,7 +51,7 @@ export function nativeOamPicture(s:any){
  if(enemies.some((body:any)=>{const e=pic(body);return e.enemySlot===undefined||!hidden(e)&&!undrawn(e,body)&&(!rowsOf(e,body)||body.graphicsVisible===false);}))reasons.push('enemy-writer');
  const pose=playerCell(s);if(pose.throwing||pose.swimKick!==undefined)reasons.push('player-extra-piece');
  const at=s.playerPicturePosition(),px=Math.floor(at.x-s.camera),py=Math.floor(at.y)-32;
- if(px<0||px>240||py<0)reasons.push('player-offscreen');
+ if(px<0||px>240)reasons.push('player-offscreen');
  if(s.spriteShuffle.offsets[0]!==4)reasons.push('player-offset');
  if(reasons.length)return {supported:false as const,reasons};
  // MoveSpritesOffscreen clears Y only; unused tile/attribute/X bytes stay unknown.
@@ -62,7 +62,8 @@ export function nativeOamPicture(s:any){
  const tiles=tables.player_cells[pose.cell].tiles;
  // ChkForPlayerAttrib forces symmetry at table offsets50/B8/C0/C8.
  // A row at Y 248 or below the screen stays hidden (all captures, Player_Y 170-300 in states 8 and 11: rows end where Y + 8 x row reaches 248).
- if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)if(py+row*8<248)write(4+row*8+col*4,py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||[22,25].includes(pose.cell)&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
+ // Above the screen, PlayerOffscreenChk parks each row lying wholly above it at $F8; the rest keep their wrapped Y (df3651d6 4-3 RAM 35589: Player_Y 235 page 0, bits $C0: rows 248 248 251 3).
+ if(playerVisible(s))for(let row=0;row<4;row++)for(let col=0;col<2;col++)if(py+row*8<248)write(4+row*8+col*4,py<0&&row<Math.floor(-py/8)?248:py+row*8,tiles[row*2+(pose.facing<0?1-col:col)],(([10,23,24].includes(pose.cell)&&row===3||[22,25].includes(pose.cell)&&row>=2)?col*64:pose.facing<0?64:0)|(s.playerDrawBackgroundPriority?32:0),px+col*8);
  for(const e of bowsers){const feet=Math.floor(e.graphicsY??e.y),x=Math.floor((e.graphicsX??e.x)-s.camera),right=e.bowser?e.bowser.side>0:e.vx>0,head=right?x+16:x;
   for(const [slot,hx,top] of [[e.enemySlot,head,feet-32],[e.nativeBowser.rearSlot,head+(right?-16:16),feet-24]]){const base=s.spriteShuffle.offsets[slot+1];
    for(let row=0;row<3;row++)for(let col=0;col<2;col++){const xx=hx+col*8;write(base+row*8+col*4,xx<=0||xx>255?248:top+row*8,0,0,xx&255,false);}}}
