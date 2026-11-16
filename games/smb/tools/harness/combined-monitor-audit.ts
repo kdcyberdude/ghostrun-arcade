@@ -5,7 +5,7 @@
  * the remaining native picture stream is still hashed. Nonselected rows stay unchecked.
  * Native lag frames (native-lag-frames.mjs): the remake is not stepped on that input and the row is unchecked. */
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {parseArgs} from 'node:util';import {execFileSync} from 'node:child_process';import {createServer} from 'vite';import {chromium} from 'playwright';import {PNG} from 'pngjs';
-import {decodeEntrance} from './native-entrance.mjs';import {bundleStateReplay,replayStateInWorker,levelAt} from './native-state-replay.js';import {nativeLagFrames} from './native-lag-frames.mjs';
+import {decodeEntrance} from './native-entrance.mjs';import {nativeCapture} from './native-captures.mjs';import {bundleStateReplay,replayStateInWorker,levelAt} from './native-state-replay.js';import {nativeLagFrames} from './native-lag-frames.mjs';
 import {auditSourceHashes,verifyAuditSource,sourceManifestHash} from './native-monitor/source-provenance.mjs';
 import {policy,policyHash} from './native-monitor/visual-check.mjs';import {inventoryHash,counting,validateScope} from './native-monitor/combined-replay.mjs';
 const {values:a}=parseArgs({options:{monitor:{type:'string'},out:{type:'string'},ids:{type:'string'},levels:{type:'string'},jobs:{type:'string',default:'1'},batch:{type:'string',default:'16'},port:{type:'string',default:'54021'},dump:{type:'string'},cache:{type:'string'},'no-cache':{type:'boolean'},'pilot-frames':{type:'string'},windows:{type:'string'}}});if(!a.monitor||!a.out)throw Error('--monitor and --out required');
@@ -14,7 +14,7 @@ const batch=Number(a.batch),pilot=a['pilot-frames']?Number(a['pilot-frames']):un
 // still drawn (skipping draws left stale renderer state: whole later recordings mismatched) but not compared, and the run stops after the last window.
 const windows:Record<string,[number,number][]>|undefined=a.windows?JSON.parse(fs.readFileSync(a.windows,'utf8')):undefined;
 const scope=a.levels?validateScope({levels:a.levels.split(',').filter(Boolean),frameSelection:'all-target-level-frames'}):undefined;
-const monitor=path.resolve(a.monitor),root=path.resolve('games/smb'),recovered='/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native',read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8')),sha=(b:any)=>createHash('sha256').update(b).digest('hex');
+const monitor=path.resolve(a.monitor),root=path.resolve('games/smb'),read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8')),sha=(b:any)=>createHash('sha256').update(b).digest('hex');
 const inventory=read(path.join(monitor,'combined-inputs.json')).runs,runtimeCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
 execFileSync('git',['diff','--exit-code',runtimeCommit,'--','games/smb/src','games/smb/data'],{stdio:'pipe'});
 const sourceHashes=auditSourceHashes(root),manifestHash=sourceManifestHash(sourceHashes);
@@ -50,14 +50,15 @@ const names=['a','b','select','start','up','down','left','right'],stateBundle=aw
 function span(out:any[],f:number,level:string|null,state:string,picture:string){const last=out.at(-1);if(last&&last.to===f&&last.level===level&&last.state===state&&last.picture===picture)last.to++;else out.push({from:f,to:f+1,level,state,picture});}
 async function audit(input:any,page:any){
  const auditStarted=performance.now(),warmup=Math.max(8,batch);let steadyStarted:number|undefined;
- const original=input.id.startsWith('original:'),level=original?input.id.split(':')[1]:undefined,dir=original?path.join(recovered,'original32/traces',level!):path.join(recovered,'moods/captures',input.padsSha256),pixelDir=original?dir:path.join(dir,'pixels');
+ // original: an entrance start (original:<level> or entrance44:<sha>), seeded from its observed initial RAM; otherwise power-on
+ const capture=nativeCapture(input),original=capture.entranceReceipt!==undefined,{dir,pixelDir}=capture;
  const meta=read(path.join(pixelDir,'pixels.json')),initial=fs.readFileSync(path.join(dir,'initial.ram')),pads=fs.readFileSync(path.join(dir,'pads.bin')),ram=fs.readFileSync(path.join(dir,'ram.bin'));
  if(sha(pads)!==input.padsSha256||pads.length!==input.frames||ram.length!==pads.length*2048||sha(ram)!==meta.ramSha256||meta.padSha256!==input.padsSha256||meta.frames!==pads.length||meta.step!==1)throw Error('Native input/RAM/length authentication');
  if(sha(initial)!==(original?input.initialRamSha256:read(path.join(dir,'capture.json')).initialRamSha256))throw Error('Native initialRAM differs');
  if(fs.statSync(path.join(pixelDir,'pixels.bin')).size!==pads.length*240*224||fs.statSync(path.join(pixelDir,'emph.bin')).size!==pads.length*224)throw Error('Native picture length');
  const labels=Array.from({length:pads.length},(_,f)=>levelAt(ram.subarray(f*2048,(f+1)*2048))),win=windows?.[input.id]??(windows?[]:undefined),inLevels=(f:number)=>!scope||scope.levels.includes(labels[f]!),chosen=(f:number)=>inLevels(f)&&(!win||win.some(([a,b])=>f>=a&&f<b));
  const lag=new Set<number>(nativeLagFrames(ram));let end=pads.length;if(scope){end=0;for(let f=0;f<pads.length;f++)if(inLevels(f))end=f+1;}
- const winEnd=win?Math.max(0,...win.map(([,b])=>b)):end,limit=Math.min(pilot===undefined?end:Math.min(pilot,end),winEnd),entrance=original?decodeEntrance(initial,read(path.join(recovered,'original32/entrances',level!,'entrance.json'))):undefined;
+ const winEnd=win?Math.max(0,...win.map(([,b])=>b)):end,limit=Math.min(pilot===undefined?end:Math.min(pilot,end),winEnd),entrance=original?decodeEntrance(initial,read(capture.entranceReceipt!)):undefined;
  // State runs in a child process while this process drives the pictures.
  const statePromise=replayStateInWorker(stateBundle.file,monitor,input.id,scope?.levels);statePromise.catch(()=>{});
  await page.evaluate(async({entrance,original,rgb,palette,policy}:any)=>{
