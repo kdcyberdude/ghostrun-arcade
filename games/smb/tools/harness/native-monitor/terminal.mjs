@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {parseArgs} from 'node:util';import {emitKeypressEvents,cursorTo,clearScreenDown} from 'node:readline';
-import {emptyResult,summarizeCombined,inventoryHash,sha,validateCombinedRegistration} from './combined-replay.mjs';import {renderCombined} from './combined-view.mjs';import {summarizeCurrent,failingRecordings} from './current-results.mjs';import {execFileSync} from 'node:child_process';import {policyHash} from './visual-check.mjs';import {collectValidation,renderValidation} from './issues.mjs';
+import {emptyResult,summarizeCombined,inventoryHash,sha,validateCombinedRegistration} from './combined-replay.mjs';import {renderCombined} from './combined-view.mjs';import {summarizeCurrent,failingRecordings} from './current-results.mjs';import {execFileSync} from 'node:child_process';import {nativeCapture} from '../native-captures.mjs';import {policyHash} from './visual-check.mjs';import {collectValidation,renderValidation} from './issues.mjs';
 const dir=path.dirname(fileURLToPath(import.meta.url)),read=p=>JSON.parse(fs.readFileSync(p));
 const {values:args}=parseArgs({options:{monitor:{type:'string'},watch:{type:'boolean'},'add-combined':{type:'string'},'follow-live':{type:'string'},'await-v2':{type:'boolean'},'add-current':{type:'string'},'plan-failures':{type:'string'}}});
 const configFile=path.join(path.resolve(args.monitor??path.join(dir,'.local')),'sources.json');if(!fs.existsSync(configFile)){console.error('Missing '+configFile+'. See README.md for setup, or pass --monitor /ABS/DATA_DIR.');process.exit(1);}
@@ -8,8 +8,10 @@ const config=read(configFile),latest=config.snapshots.at(-1),mood=read(latest.mo
 const inventory=mood.runs.map(r=>({id:`mood:${r.sha256}`,frames:r.frames,padsSha256:r.sha256,start:'power-on'}));
 const references=path.join(path.dirname(latest.mood),'traces');
 for(let w=1;w<=8;w++)for(let l=1;l<=4;l++){const level=`${w}-${l}`,pads=fs.readFileSync(path.join(references,level,'pads.bin')),initial=fs.readFileSync(path.join(references,level,'initial.ram'));inventory.push({id:`original:${level}`,frames:pads.length,padsSha256:sha(pads),initialRamSha256:sha(initial),start:'native-entrance'});}
+// Rows the mood report does not list (entrance44 attempts, moods appended later) are kept from the existing inventory.
+const inventoryFile=path.join(path.dirname(configFile),'combined-inputs.json');if(fs.existsSync(inventoryFile)){const have=new Set(inventory.map(r=>r.id));for(const r of read(inventoryFile).runs)if(!have.has(r.id))inventory.push(r);}
 const descriptor={schema:'smb-combined-inventory-v1',inventorySha256:inventoryHash(inventory),unit:'input-frame',runs:inventory};
-const inventoryFile=path.join(path.dirname(configFile),'combined-inputs.json'),encoded=JSON.stringify(descriptor,null,2)+'\n';if(!fs.existsSync(inventoryFile)||fs.readFileSync(inventoryFile,'utf8')!==encoded)fs.writeFileSync(inventoryFile,encoded);
+const encoded=JSON.stringify(descriptor,null,2)+'\n';if(!fs.existsSync(inventoryFile)||fs.readFileSync(inventoryFile,'utf8')!==encoded)fs.writeFileSync(inventoryFile,encoded);
 if(args['await-v2']){
  if(config.combined&&fs.existsSync(config.combined)&&read(config.combined).schema==='smb-combined-replay-v2')throw Error('Refuse to clear an existing v2 result');
  const notes=path.dirname(latest.mood),archive=path.join(notes,'legacy-sticky-reports',new Date().toISOString().replace(/[:.]/g,'-'));fs.mkdirSync(archive,{recursive:true});
@@ -39,9 +41,9 @@ if(args['plan-failures']){
 // Frames per level over the whole inventory (native RAM labels: $075F world, $075C level, $0770 mode 1-3), cached by inventory hash.
 function levelTotals(){
  const file=path.join(path.dirname(configFile),'level-frames.json');try{const c=read(file);if(c.inventorySha256===descriptor.inventorySha256)return c.levels;}catch{}
- const recovered=path.join(path.dirname(latest.mood),'recovered-native'),levels={},buf=Buffer.alloc(2048*4096);
+ const levels={},buf=Buffer.alloc(2048*4096);
  for(const r of inventory){
-  const ram=r.id.startsWith('original:')?path.join(recovered,'original32/traces',r.id.slice(9),'ram.bin'):path.join(recovered,'moods/captures',r.padsSha256,'ram.bin');
+  const ram=path.join(nativeCapture(r).dir,'ram.bin');
   const fd=fs.openSync(ram,'r'),seen=new Set();let pos=0,got;
   while((got=fs.readSync(fd,buf,0,buf.length,pos))>0){for(let o=0;o+2048<=got;o+=2048){const w=buf[o+0x75f]+1,l=buf[o+0x75c]+1;if([1,2,3].includes(buf[o+0x770])&&w<=8&&l<=4){const k=`${w}-${l}`;(levels[k]??={frames:0,recordings:0}).frames++;seen.add(k);}}pos+=got;}
   fs.closeSync(fd);for(const k of seen)levels[k].recordings++;
