@@ -838,13 +838,13 @@ export class Simulation {
   for(const pipe of this.area.pipes??[]){
    if(pipe.requiresWarpActivation&&!this.warpZoneActive)continue;
    // Native 8-4 area-3 pipe: Mario slid along the pipe top with Down+Right held for 14 rows (x 3645..3654) and went in only the row after Right was released.
-   const down=pipe.direction==='down'&&b.has('down')&&downPipeFooting(p)&&!downPipeLateralBlocks(poseGrounded,b)&&Math.abs(Math.floor(p.x)+8-pipe.x)<(pipe.entryHorizontalTolerance??(pipe.requiresWarpActivation?9:5))&&Math.abs(p.y-pipe.y)<3;
+   const down=pipe.direction==='down'&&b.has('down')&&downPipeFooting(p)&&!downPipeLateralBlocks(poseGrounded,b)&&Math.abs(Math.floor(p.x)+8-pipe.x)<(pipe.entryHorizontalTolerance??5)&&Math.abs(p.y-pipe.y)<3;
    // CheckSideMTiles starts native pipes from the actual bottom metatile probe.
    // Non-native/synthetic pipe geometry retains its declared approach rule.
    const nativeSide=[0x1c,0x6b].includes(this.tileAt(pipe.x,pipe.y-32));
    const side=pipe.direction==='right'&&(nativeSide?this.sidePipeContact===pipe.x:p.facing===1&&(this.area.autoWalk?b.has('right')&&Math.floor(p.x)+TRANSITIONS.autoWalkPipe.triggerOffset>=pipe.x:pipe.entryTriggerX!==undefined?(b.has('right')||p.vx>0||(this.wallSpeed??0)>0)&&p.grounded&&(Math.floor(p.x)>=pipe.entryTriggerX||(this.wallSpeed??0)>0&&Math.floor(p.x)+1>=pipe.entryTriggerX)&&Math.floor(p.x)<pipe.entryTriggerX+32:b.has('right')&&Math.abs(p.x+14-pipe.x)<3)&&Math.abs(p.y-pipe.y)<12);
    const up=pipe.direction==='up'&&b.has('up')&&Math.abs(p.x+8-pipe.x)<9&&Math.abs(p.y-this.height-pipe.y)<3;
-   if(down||side||up){this.playerBackgroundPriority=true;this.phase='pipe';this.phaseFrame=0;this.destination={area:pipe.to,sourceX:pipe.nativeSourceX??pipe.x,level:pipe.targetLevel,spawn:pipe.spawn,camera:pipe.camera,direction:pipe.direction,frames:(p.size===0?pipe.smallPlayerRoomEntry?.transitionFrames:undefined)??pipe.transitionFrames??64,smallPlayerRoomPreviewFrames:pipe.smallPlayerRoomPreviewFrames,smallPlayerRoomEntry:p.size===0?pipe.smallPlayerRoomEntry:undefined,ordinaryEnemyFrontier:pipe.ordinaryEnemyFrontier,returnCloudOffsetX:pipe.returnCloudOffsetX,riseFrames:pipe.riseFrames};this.pipeLoad=this.nativePipeTarget(this.destination);this.pipeTimer=down?0x30:side?(this.camera+this.areaControls.origin*16<256?0xa0:0x34):0;if(up)p.vx=0;p.vy=0;this.emit('sfx_pipe');return;}
+   if(down||side||up){this.playerBackgroundPriority=true;this.phase='pipe';this.phaseFrame=0;this.destination={area:pipe.to,sourceX:pipe.nativeSourceX??pipe.x,level:pipe.targetLevel,spawn:pipe.spawn,camera:pipe.camera,direction:pipe.direction,frames:(p.size===0?pipe.smallPlayerRoomEntry?.transitionFrames:undefined)??pipe.transitionFrames??64,smallPlayerRoomPreviewFrames:pipe.smallPlayerRoomPreviewFrames,smallPlayerRoomEntry:p.size===0?pipe.smallPlayerRoomEntry:undefined,ordinaryEnemyFrontier:pipe.ordinaryEnemyFrontier,returnCloudOffsetX:pipe.returnCloudOffsetX,riseFrames:pipe.riseFrames};this.pipeLoad=pipe.targetLevel?this.beginNativeWarp(pipe.targetLevel):this.nativePipeTarget(this.destination);this.pipeTimer=down?0x30:side?(this.camera+this.areaControls.origin*16<256?0xa0:0x34):0;if(up)p.vx=0;p.vy=0;this.emit('sfx_pipe');return;}
   }
   this.updateMaze(oldX);this.nativeLoopCommand();
   const exit=this.area.exit;
@@ -3601,9 +3601,18 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const alternate=this.area.autoWalk?0:target.direction==='right'||this.area.theme==='castle'?2:1;
   return {target,alternate,header:nativePhysicalAreas[binding.code].header[0],page:chosen[0].page,offset:binding.offset};
  }
+ /** A warp pipe switches the logical level on its entry row, before the sink: WorldNumber/LevelNumber/AreaNumber go to the new level's first area,
+  * the game timer is refetched and EventMusicQueue gets Silence; the sink is the ordinary $30-row VerticalPipeEntry, then the load shows the
+  * new level's intermediate screen (a2a3dd81 1-2 RAM 5890: $0E 8 -> 3, $075F/$075C/$0760 0/1/2 -> 1/0/0, $0757 1, $FC $80, $06DE $30; RAM 5938 $06DE 0, $0772 3 -> 0; $07A0 counts the WORLD 2-1 screen from 5946). */
+ private beginNativeWarp(level:string){
+  const index=this.levels.findIndex(l=>l.id===level);if(index<0)throw new Error(`Unmapped warp level ${level}`);
+  this.levelIndex=index;this.fetchGameTimer=true;this.checkpoint=false;this.activatedCheckpointArea=undefined;this.vineProgress.clear();this.nativeEndLevelMusicQueue=128;this.emit('command_silence');
+  const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.level.main);if(!binding)throw new Error(`Unbound warp level ${level}`);
+  return {target:{area:this.level.main,spawn:this.level.areas.find(a=>a.id===this.level.main)!.spawn,direction:'level',frames:0},alternate:0,header:nativePhysicalAreas[binding.code].header[0],page:0,offset:binding.offset};
+ }
  private beginPipeAreaLoad(){
-  const load=this.pipeLoad!;if(this.area.autoWalk){this.fetchGameTimer=true;this.nativeEndLevelMusicQueue=128;}
-  this.levelLoad={...nativeLevelLoad(),engine:this.area.autoWalk?7:load.target.direction==='down'?3:2,disable:1,timer:this.screenTimer,columns:255,skipIntermediate:true};
+  const load=this.pipeLoad!,warp=Boolean(this.destination?.level);if(this.area.autoWalk){this.fetchGameTimer=true;this.nativeEndLevelMusicQueue=128;}
+  this.levelLoad={...nativeLevelLoad(),engine:this.area.autoWalk?7:warp||load.target.direction==='down'?3:2,disable:1,timer:this.screenTimer,columns:255,skipIntermediate:!warp};
   this.destination=undefined;this.phase='intro';this.phaseFrame=0;this.alignLifeClock(this.intervalControl);
  }
  private finishNativePipeLoad(){
