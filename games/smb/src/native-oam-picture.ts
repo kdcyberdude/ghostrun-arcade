@@ -5,7 +5,8 @@ import {nativeMiscOffscreen,nativeHammerPicturePhase} from './native-misc.js';im
  * puts its floatey number in its own slot's first two entries; any other victim uses Alt_SprDataOffset[SprDataOffset_Ctrl]. */
 /** A cannon's Bullet Bill is ID $33 (a frenzy one ID 8): a stomped cannon bullet's number goes to the Alt entries, where a later slot's number replaces it
  * (ba9b128f 8-2 RAM 73973-73974: slot 0 ID $33 stomped, its own entries keep the bullet, entries 54-55 hold slot 3's 400 only; a3ca705b 7-1 RAM 58339: slot 1's 200 hides slot 0's 400). */
-export const floateyOwnSlot=(v:any)=>{const id=v?.nativeId??(v?.kind==='bullet'?(v.frenzy?8:0x33):-1);return id<0||[0x0a,0x0b,0x0d,0x12].includes(id)||id<9&&id!==5&&(Boolean(v.dead)||Boolean(v.shell));};
+// A leaping Cheep (ID $14) draws its number at the Alt entries like other high IDs (d40a5e5d 2-3 RAM 12518: two stomped leapers' 200s, slots 1 and 2, share OAM $D8; only slot 2's shows).
+export const floateyOwnSlot=(v:any)=>{const id=v?.nativeId??(v?.kind==='bullet'?(v.frenzy?8:0x33):v?.kind==='cheep'&&v.motion==='flying'?0x14:-1);return id<0||[0x0a,0x0b,0x0d,0x12].includes(id)||id<9&&id!==5&&(Boolean(v.dead)||Boolean(v.shell));};
 export function nativeOamPicture(s:any){
  // The picture the renderer draws: with timers stopped (Mario dying) the frozen one (abf3a46f 1-1 row 1095: X one less than the pre-move picture).
  const pic=(e:any)=>enemyRenderPicture(e,s.frame,s.nativeTimersStopped);
