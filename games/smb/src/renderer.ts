@@ -260,7 +260,7 @@ export class GameRenderer {
    // (ebc1bc65 1-1 RAM 814: mushroom entries 10-13 attribute $22 at X 4-12, Goomba entries 40-45 at X 14-22, picture 815 shows the mushroom over him).
    // The block it rises from is background by then and covers it (6ef303eb 2-1 pictures 10610-10637 and 11782-11814).
    else{const draw=(z:number)=>this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),z);
-    if(i.emerging&&i.nativePowerState!==undefined&&s.spriteShuffle){const z=2+(255-s.spriteShuffle.offsets[6])/4096,cover=s.blockGraphics.filter((b:any)=>s.blockBackground.get(b.key)===b.metatile).map((b:any)=>({id:b.metatile,x:Math.floor(b.x-s.camera),y:b.y,palette:this.rotation(s.area.palette)}));this.backgroundDraws.push(...cover);this.behindBackgroundSprite(Math.floor(x),Math.floor(i.y+1),16,16,z,()=>draw(z),i.y+1<32?[[s.currentPlayer?'LUIGI':'MARIO',24,16],['WORLD',144,16],['TIME',200,16],[s.hud.draw.score,24,24],['×'+s.hud.draw.coins,96,24],[s.level.id,152,24],[s.hud.draw.time,208,24]]:undefined);this.backgroundDraws.length-=cover.length;}else draw(powerZ);}this.oamContext=context;} // the used block covers it only once its metatile is in the name table: a write held behind a busy buffer leaves the cell clear (3a9d96b1 2-1 picture 10252: the block's write waits for RAM row 10252, the mushroom shows whole); rising into the HUD rows it goes behind the status-bar digits too (44d7a855 4-3 picture 35417: the score's 9 covers the mushroom)
+    if(i.emerging&&i.nativePowerState!==undefined&&s.spriteShuffle){const z=2+(255-s.spriteShuffle.offsets[6])/4096,cover=s.blockGraphics.filter((b:any)=>s.blockBackground.get(b.key)===b.metatile).map((b:any)=>({id:b.metatile,x:Math.floor(b.x-s.camera),y:b.y,palette:this.rotation(s.area.palette)}));this.backgroundDraws.push(...cover);this.behindBackgroundSprite(Math.floor(x),Math.floor(i.y+1),16,16,z,()=>draw(z),i.y+1<32?[[s.currentPlayer?'LUIGI':'MARIO',24,16],['WORLD',144,16],['TIME',200,16],[s.hud.draw.score,24,24],['×'+s.hud.draw.coins,96,24],[s.hudLevelId,152,24],[s.hud.draw.time,208,24]]:undefined);this.backgroundDraws.length-=cover.length;}else draw(powerZ);}this.oamContext=context;} // the used block covers it only once its metatile is in the name table: a write held behind a busy buffer leaves the cell clear (3a9d96b1 2-1 picture 10252: the block's write waits for RAM row 10252, the mushroom shows whole); rising into the HUD rows it goes behind the status-bar digits too (44d7a855 4-3 picture 35417: the score's 9 covers the mushroom)
   if(i.kind==='coin'){
    if(i.nativeCoin){
     const y=Math.floor(i.y),screenX=Math.floor(x)&255;const context=this.oamContext;this.oamContext=this.oamRows?{base:s.spriteShuffle.miscOffset(i.nativeCoin.slot),count:2}:undefined;
@@ -474,7 +474,7 @@ export class GameRenderer {
    this.quad(this.hudCoinTextures[this.rotation(paletteIndex)],[0,0,8,8],88,24,1);
   }
   this.text('×'+s.hud.draw.coins,96,24);
-  this.text('WORLD',144,16);this.text(s.level.id,152,24);this.text('TIME',200,16);if(!hideTime&&s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden)this.text(s.hud.draw.time,208,24);
+  this.text('WORLD',144,16);this.text(s.hudLevelId,152,24);this.text('TIME',200,16);if(!hideTime&&s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden)this.text(s.hud.draw.time,208,24);
   this.textZ=5;
  }
  private title(s:Simulation){
