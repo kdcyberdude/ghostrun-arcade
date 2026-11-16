@@ -3427,8 +3427,10 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const rawY=(Math.floor(e.y)-24)&255,ground=this.enemyCollisionAt(Math.floor(e.x)+8,e.y),depth=((rawY&15)-8)&255;
   if(((rawY+0x3e)&255)<0x44||e.kind==='spiny'&&rawY<0x25)return;
   // ...and its side check still turns a standing walker that faces a wall (smb-fast 2cd12b47 3-1 RAM 22242: slot 0 Koopa at x 2961 by the stair, X speed 8 -> $F8 on Mario's second death row; c028ee9c RAM 30346 the same)
-  if(e.walkerState===0){if(rawY>=0x20&&this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4)){if(e.graphicsFrame!==this.frame){e.graphicsX=e.x;e.graphicsY=e.y;e.graphicsFacing=Math.sign(e.vx);this.captureEnemyGraphics(e);}e.vx=-e.vx;}return;}
-  if(!ground||depth>=5&&ground.y%16===0)return;
+  const sideCheck=()=>{if(rawY>=0x20&&this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4)){if(e.graphicsFrame!==this.frame){e.graphicsX=e.x;e.graphicsY=e.y;e.graphicsFacing=Math.sign(e.vx);this.captureEnemyGraphics(e);}e.vx=-e.vx;}};
+  if(e.walkerState===0){sideCheck();return;}
+  // a falling walker that does not land goes on to the same side check, as when moving (de088146 3-1 RAM 16077: slot 1 Koopa in state 1 at y 176 by the stair turns $08 -> $F8 on the row after Mario's death)
+  if(!ground||depth>=5&&ground.y%16===0){sideCheck();return;}
   if(e.graphicsFrame!==this.frame){e.graphicsX=e.x;e.graphicsY=e.y;e.graphicsFacing=Math.sign(e.vx);this.captureEnemyGraphics(e);}
   const step={x:e.x,y:e.y,vx:e.vx,...e.fall};landNativeWalker(step,e.kind==='goomba'||e.kind==='spiny',this.player.x);
   e.y=ground.y%16?ground.y:step.y;e.vx=step.vx;e.vy=0;e.walkerState=0;e.fall.speed=0;e.fall.force=0;
