@@ -366,7 +366,7 @@ export class Simulation {
  reset(playing=false){
   this.victoryScrollFraction=0;
   this.nativeStartup=undefined;this.coldStartup=undefined;this.nativeStartupPicture.reset();this.random=new NativeRandom();this.intervalControl=20;
-  this.frame=0;this.playerColorsFrame=-1;this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.timeUpDeath=false;this.lateDeath=false;this.offscreenDeathRows=0;this.firebarDeathFrame=0;this.deathMove=undefined;this.playerAnimNmiTimer=0;this.playerAnimNmiCtrl=0;this.lastJumpFallForce=0.5625;this.scrollCrossCamera=0;this.slotCamera=0;this.marioMotion=1;this.firebarMarioScreenX=0;this.flagAwardFrame=-1;this.flagScrollLocked=true;this.placedBankFrame=-1;this.nativeBankItemFrame=-1;this.slotScroll=false;this.jumpArc=false;this.springPrevA=false;this.swimDirection=0;this.swimMovingDir=0;this.bounceGravity=0.5625;this.springPinX=0;this.springPinY=0;this.springLaunchSpeed=0;this.waterCollisionPose=undefined;this.water=new NativeWater();this.paletteClock.buffer1.data.fill(0);this.offscreenPitDeath=false;this.offscreenLavaDeath=false;this.colorRotationPending=false;this.graphicsBuffer1=false;this.wallSpeed=undefined;this.wallSide=undefined;this.wallBackOut=false;this.sidePipeContact=undefined;this.swimPull=0;this.headBumped=false;this.deathLoad=undefined;this.levelLoad=undefined;this.warpHudLevel=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
+  this.frame=0;this.playerColorsFrame=-1;this.warpTextRow={frame:-1,offset:0};this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.timeUpDeath=false;this.lateDeath=false;this.offscreenDeathRows=0;this.firebarDeathFrame=0;this.deathMove=undefined;this.playerAnimNmiTimer=0;this.playerAnimNmiCtrl=0;this.lastJumpFallForce=0.5625;this.scrollCrossCamera=0;this.slotCamera=0;this.marioMotion=1;this.firebarMarioScreenX=0;this.flagAwardFrame=-1;this.flagScrollLocked=true;this.placedBankFrame=-1;this.nativeBankItemFrame=-1;this.slotScroll=false;this.jumpArc=false;this.springPrevA=false;this.swimDirection=0;this.swimMovingDir=0;this.bounceGravity=0.5625;this.springPinX=0;this.springPinY=0;this.springLaunchSpeed=0;this.waterCollisionPose=undefined;this.water=new NativeWater();this.paletteClock.buffer1.data.fill(0);this.offscreenPitDeath=false;this.offscreenLavaDeath=false;this.colorRotationPending=false;this.graphicsBuffer1=false;this.wallSpeed=undefined;this.wallSide=undefined;this.wallBackOut=false;this.sidePipeContact=undefined;this.swimPull=0;this.headBumped=false;this.deathLoad=undefined;this.levelLoad=undefined;this.warpHudLevel=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
   this.nativeEndLevelMusic=emptyNativeEndLevelMusic();this.soundQueues.fill(0);this.soundRam.fill(0);this.flagpoleSoundQueue=0;
   this.slots=[0,1].map(()=>({level:0,lives:3,score:0,coins:0,size:0,checkpoint:false}));this.previous.clear();this.inputs=[new Set(),new Set()];this.events=[];this.paused=false;this.pauseCooldown=0;
@@ -871,7 +871,7 @@ export class Simulation {
   if(this.player.dead)return;
   const warp=this.area.warpZone;
   if(warp&&!this.warpZoneActive&&!this.area.nativePiranhaKills?.length&&this.camera>=warp.activateAtCamera){
-   this.warpZoneActive=true;
+   this.warpZoneActive=true;this.writeWarpZoneText();
    // ScrollLockObject_Warp calls KillEnemies(PiranhaPlant), independent of a fitted artwork x.
    this.enemies=this.enemies.filter(e=>e.kind!=='piranha'||!this.holdsNativeSlot(e));
   }
@@ -1400,10 +1400,12 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  private addScore(value:number,first:'coins'|'time'='coins'){if(value){this.score+=value;const d=hudDigits(this.score,this.coins,this.time);this.hud.queue(first==='coins'?{coins:d.coins,score:d.score}:{time:d.time,score:d.score});}}
  get vramBuffer1(){return this.paletteClock.buffer1;}
  private flushColorRotation(){
-  if(!this.colorRotationPending||!nativeColorRotationAllowed(this.random.frame,this.vramBuffer1.offset))return;
+  // ColorRotation runs before the warp-zone text, which then writes over its packet (1512e53a 1-2 RAM 4049: $06D4 0 -> 1, no $3F0C)
+  const overwritten=this.warpTextRow.frame===this.frame;
+  if(!this.colorRotationPending||!nativeColorRotationAllowed(this.random.frame,overwritten?this.warpTextRow.offset:this.vramBuffer1.offset))return;
   const type=this.area.theme==='water'?0:this.area.theme==='underground'?2:this.area.theme==='castle'?3:1;
   const palette=nativePalette3.slice(type*4,type*4+4);palette[1]=nativeColorCycle[this.colorRotations%6];
-  this.vramBuffer1.append({address:0x3f0c,control:4,payload:palette});this.colorRotations++;
+  if(!overwritten)this.vramBuffer1.append({address:0x3f0c,control:4,payload:palette});this.colorRotations++;
  }
  private queueBlockMetatile(key:string,id:number|null){
   const [column,row]=key.split(',').map(Number),raw=column+this.areaControls.origin,tiles=graphics.metatiles.find(t=>t.id===(id??0))!.tiles;
@@ -2732,12 +2734,23 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.areaControls.advance(task,warpHandled);
  }
  /** VerticalPipe and ScrollLockObject_Warp are terrain callbacks, outside ProcessEnemyData. */
+ /** WriteGameText for the warp zone writes VRAM_Buffer1 from its start: the 21-tile WELCOME TO WARP ZONE! row, the three world numbers and two
+  * attribute repeats, $2C bytes over whatever the row had queued (1512e53a 1-2 RAM 4049: $0300 $2C, the row's color rotation gone). */
+ private warpTextRow={frame:-1,offset:0};
+ private writeWarpZoneText(){
+  const warp=this.area.warpZone;if(!warp)return;const [text,...numbers]=warp.overlays,world=[0x24,0x24,0x24];
+  for(const n of numbers)world[Math.round((n.x-text.x-8)/64)]=Number(n.text);
+  const b=this.vramBuffer1;this.warpTextRow={frame:this.frame,offset:b.offset};b.clear();
+  b.append({address:0x2584,control:21,payload:[...'WELCOME TO WARP ZONE!'].map(c=>c===' '?0x24:c==='!'?0x2b:c.charCodeAt(0)-55)});
+  world.forEach((n,i)=>b.append({address:0x2625+i*8,control:1,payload:[n]}));
+  b.append({address:0x27d9,control:0x46,payload:[0xaa]});b.append({address:0x27e1,control:0x45,payload:[0xaa]});
+ }
  private createNativePipeObjects(column:number){
   const events=[...this.enemies.filter(e=>e.nativePipe?.column===column).map(plant=>({offset:plant.nativePipe!.offset,plant})),...(this.area.nativePiranhaKills??[]).filter(k=>k.column===column).map(k=>({offset:k.offset,plant:undefined}))].sort((a,b)=>a.offset-b.offset);let warp=false;
   for(const event of events){
    const e=event.plant;
    if(!e){
-    warp=true;this.warpZoneActive=true;this.areaControls.locked=!this.areaControls.locked;this.warpErased={frame:this.frame,enemies:[]};
+    warp=true;this.warpZoneActive=true;this.writeWarpZoneText();this.areaControls.locked=!this.areaControls.locked;this.warpErased={frame:this.frame,enemies:[]};
     for(const p of this.enemies)if(p.kind==='piranha'&&p.active&&!p.slotFreed&&p.dead<100){this.warpErased.enemies.push({...p});if(p.enemySlot!==undefined)this.slotReleaseFrame[p.enemySlot]=this.frame;p.active=false;p.slotHeld=false;p.slotFreed=true;p.slotLost=true;p.dead=100;}continue;
    }
    if(e.active&&!e.slotFreed&&!e.dead)continue;
