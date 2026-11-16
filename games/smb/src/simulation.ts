@@ -2288,7 +2288,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    const firework=this.nativeFireworks.find(f=>f.active&&f.slot===slot);
    if(firework){const score=runNativeFirework(firework);firework.draw=firework.active;if(score){this.addScore(score);this.emit('sfx_blast_fireworks');}continue;}
    if(slot===flag.slot){
-    const out=runNativeStarFlag(flag,{time:this.time,fireworks:this.nativeFireworksCounter,music:this.nativeEndLevelMusic.eventMusicBuffer,endWalk:true,blocked:this.flagInside});
+    const out=runNativeStarFlag(flag,{time:this.time,fireworks:this.nativeFireworksCounter,music:this.soundRam[0x7b1],endWalk:true,blocked:this.flagInside});
     if(out.time!==this.time)this.hud.queue({time:hudDigits(this.score,this.coins,out.time).time});this.time=out.time;this.addScore(out.score);this.nativeFireworksCounter=out.fireworks;flag.draw=out.draw;frenzy=out.frenzy;
     if(out.score&&(this.random.frame&4)){this.emit('sfx_timer_tick');this.timerTickAge=0;}continue;
    }
