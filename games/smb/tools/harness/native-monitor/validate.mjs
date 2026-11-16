@@ -3,7 +3,7 @@
  * matched once is never run again. Within each group the recording that reaches the latest level goes first. Each commit's audits run in their
  * own clean worktree (WORKTREES/<sha>), so commits made meanwhile never disturb a running audit. Runs until stopped.
  * usage: node validate.mjs --worktrees DIR [--monitor DATA_DIR] [--jobs 16] [--ids id,id] (--ids, or ids written to DATA_DIR/validate/requests/<file>: validate those next) */
-import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {parseArgs} from 'node:util';import {execFileSync,spawn} from 'node:child_process';
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {parseArgs} from 'node:util';import {execFileSync,spawn} from 'node:child_process';import {nativeCapture} from '../native-captures.mjs';
 const dir=path.dirname(fileURLToPath(import.meta.url)),repo=path.resolve(dir,'../../../../..');
 const {values:a}=parseArgs({options:{worktrees:{type:'string'},monitor:{type:'string'},jobs:{type:'string',default:'16'},ids:{type:'string'},'base-port':{type:'string',default:'57100'}}});
 if(!a.worktrees)throw Error('--worktrees DIR required');
@@ -14,9 +14,9 @@ const statusFile=id=>path.join(out,id.replace(/[^a-z0-9-]/gi,'_')+'.json');
 const LEVELS=[];for(let w=1;w<=8;w++)for(let l=1;l<=4;l++)LEVELS.push(`${w}-${l}`);
 /** Furthest level each recording reaches (native RAM $075F/$075C in play modes, every 30th frame), cached by recording id. */
 function furthest(inv){
- const file=path.join(out,'levels.json'),cache=fs.existsSync(file)?read(file):{},notes=path.dirname(read(path.join(monitor,'sources.json')).snapshots.at(-1).mood),buf=Buffer.alloc(2048);let added=0;
+ const file=path.join(out,'levels.json'),cache=fs.existsSync(file)?read(file):{},buf=Buffer.alloc(2048);let added=0;
  for(const r of inv){if(cache[r.id])continue;
-  const ram=r.id.startsWith('original:')?path.join(notes,'recovered-native/original32/traces',r.id.slice(9),'ram.bin'):path.join(notes,'recovered-native/moods/captures',r.padsSha256,'ram.bin');
+  const ram=path.join(nativeCapture(r).dir,'ram.bin');
   const fd=fs.openSync(ram,'r'),seen=new Set();for(let f=0;f<r.frames;f+=30){fs.readSync(fd,buf,0,2048,f*2048);const w=buf[0x75f]+1,l=buf[0x75c]+1;if([1,2,3].includes(buf[0x770])&&w<=8&&l<=4)seen.add(`${w}-${l}`);}fs.closeSync(fd);
   cache[r.id]=LEVELS.filter(l=>seen.has(l));added++;}
  if(added)fs.writeFileSync(file,JSON.stringify(cache)+'\n');return cache;

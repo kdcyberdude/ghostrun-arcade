@@ -16,11 +16,10 @@
  */
 import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import {createHash} from 'node:crypto';import {parseArgs} from 'node:util';import {spawn,execFileSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
 import {Simulation} from '../../src/simulation.js';import {observedLevels} from '../../src/levels.js';import type {Button} from '../../src/types.js';
-import {decodeEntrance} from './native-entrance.mjs';import {nativeLagFrames} from './native-lag-frames.mjs';import {strictCompare,type StrictFrameObservation} from './native-strict.js';
+import {decodeEntrance} from './native-entrance.mjs';import {nativeCapture} from './native-captures.mjs';import {nativeLagFrames} from './native-lag-frames.mjs';import {strictCompare,type StrictFrameObservation} from './native-strict.js';
 import {LiveWorld1StateAudit,compareLiveWorld1Start,captureLiveWorld1State} from './native-continuous-state.js';
 
 export const STATE_SCHEMA='smb-state-replay-v1';
-const recovered='/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native';
 const names:Button[]=['a','b','select','start','up','down','left','right'];
 const sha=(b:any)=>createHash('sha256').update(b).digest('hex'),read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8'));
 /** Same level label rule as combined-monitor-audit.ts. */
@@ -29,8 +28,8 @@ type Span={from:number;to:number;level:string|null;state:string;picture:'uncheck
 function push(out:Span[],f:number,level:string|null,state:string){const last=out.at(-1);if(last&&last.to===f&&last.level===level&&last.state===state)last.to++;else out.push({from:f,to:f+1,level,state,picture:'unchecked'});}
 
 export function replayState(input:{id:string;frames:number;padsSha256:string;initialRamSha256?:string},levels?:string[]){
- const started=performance.now(),original=input.id.startsWith('original:'),level=original?input.id.split(':')[1]:undefined;
- const dir=original?path.join(recovered,'original32/traces',level!):path.join(recovered,'moods/captures',input.padsSha256);
+ // original (an entrance start: original:<level> or entrance44:<sha>, strict comparator) or power-on (continuous)
+ const started=performance.now(),capture=nativeCapture(input),original=capture.entranceReceipt!==undefined,level=capture.level,dir=capture.dir;
  const pads=fs.readFileSync(path.join(dir,'pads.bin')),ram=fs.readFileSync(path.join(dir,'ram.bin')),initial=fs.readFileSync(path.join(dir,'initial.ram'));
  if(sha(pads)!==input.padsSha256||pads.length!==input.frames||ram.length!==pads.length*2048)throw Error('Native input/RAM authentication');
  if(sha(initial)!==(original?input.initialRamSha256:read(path.join(dir,'capture.json')).initialRamSha256))throw Error('Native initial RAM differs');
@@ -43,7 +42,7 @@ export function replayState(input:{id:string;frames:number;padsSha256:string;ini
  const note=(f:number,status:string,fields:()=>string[],differences?:()=>unknown[])=>{states[f]=status;if(status==='mismatch'&&!firstStateMismatch&&selected(f))firstStateMismatch={frame:f,fields:fields(),differences:differences?.().slice(0,12)};};
  const continuous:any=original?undefined:{scope:'continuous World1-1 and source-owned boot/title',fullyComparedFrames:0,partiallyComparedFrames:0,uncheckedFrames:0,knownMismatchFrames:0,gaps:{}};
  if(original){
-  const entrance=decodeEntrance(initial,read(path.join(recovered,'original32/entrances',level!,'entrance.json')));
+  const entrance=decodeEntrance(initial,read(capture.entranceReceipt!));
   const audit=strictCompare(entrance,pads.subarray(0,end),ram.subarray(0,end*2048),level!,(row:StrictFrameObservation)=>note(row.frame,row.status,()=>row.fields),lag);
   strict={first:audit.first,firstCoverageGap:audit.firstCoverageGap,fields:audit.fields};
  }else{
@@ -83,7 +82,7 @@ export function replayStateInWorker(bundle:string,monitor:string,id:string,level
 
 /** Hash of every runtime source/data file plus the comparators, so receipts name the build they measured. */
 export function stateSourceHashes(game:string){
- const files=['tools/harness/native-state-replay.ts','tools/harness/native-strict.ts','tools/harness/native-strict-entities.ts','tools/harness/native-continuous-state.ts','tools/harness/native-entrance.mjs','tools/harness/native-lag-frames.mjs'];
+ const files=['tools/harness/native-state-replay.ts','tools/harness/native-strict.ts','tools/harness/native-strict-entities.ts','tools/harness/native-continuous-state.ts','tools/harness/native-entrance.mjs','tools/harness/native-captures.mjs','tools/harness/native-lag-frames.mjs'];
  for(const dir of ['src','data'])for(const f of fs.readdirSync(path.join(game,dir),{recursive:true}) as string[])if(/\.(ts|json|mjs)$/.test(f))files.push(path.join(dir,f));
  return Object.fromEntries(files.sort().filter(f=>fs.existsSync(path.join(game,f))).map(f=>[f,sha(fs.readFileSync(path.join(game,f)))]));
 }
