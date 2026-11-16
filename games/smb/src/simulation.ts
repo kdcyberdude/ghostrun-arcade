@@ -721,7 +721,8 @@ export class Simulation {
   springScroll=this.springTimers.values().next().value?.control;
   const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;
   // ChkPOffscr holds Mario at the left screen edge before BG collision: the feet then probe from the held x (3-1 37d55efe row 24537: skidding left against the edge on a step, he stays standing).
-  if(!water&&(p.x<this.camera||useMotor&&direction<=0&&(p.vx<0||this.motor.facing===-1)&&Math.floor(p.x)===Math.floor(this.camera))){
+  // At the edge pixel the speed byte is cleared unless Right alone is held, whichever way he moves or faces (b6ff81a0 1-1 RAM 1284: rel X 0, speed 3 -> 0 with no direction held, x stays 1297).
+  if(!water&&(p.x<this.camera||useMotor&&direction<=0&&Math.floor(p.x)===Math.floor(this.camera))){
    // The screen edge retains position/speed fractions; steering away also keeps the negative speed byte (native4-4 rows2597..2599).
    if(useMotor){
     p.x=this.camera+p.x-Math.floor(p.x);
