@@ -1286,7 +1286,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const col=Math.floor(x/16),row=Math.floor(y/16),key=`${col},${row}`,id=this.tiles.get(key);
   if(id===194||id===195){this.tiles.delete(key);this.parserVramBusy=true;this.paletteRemove=true;this.coin();return;}
  }}
- private coin(){this.blockUpdateBusy=this.graphicsBuffer1=true;this.coins++;this.emit('sfx_coin');if(this.coins>=100){this.coins-=100;this.lives++;this.emit('sfx_1up');}this.hud.queue({coins:hudDigits(this.score,this.coins).coins});this.addScore(200);}
+ private coin(){this.blockUpdateBusy=this.graphicsBuffer1=true;this.coins++;this.emit('sfx_coin');if(this.coins>=100){this.coins-=100;this.lives++;this.emit('sfx_1up');}this.addScore(200);}
  private vineKey(id:string){return `${this.currentPlayer}/${this.level.id}/${this.area.id}/${id}`;}
  private growVines(){
   for(const vine of this.vines)if(vine.growing){vine.height=Math.min(vine.baseY-vine.topY,vine.height+VINE_PHYSICS.growth);vine.nativeHeight=Math.min(vine.baseY-vine.topY,(vine.nativeHeight??0)+((this.random.frame&3)>=2?1:0));vine.growing=vine.height<vine.baseY-vine.topY;this.vineProgress.set(this.vineKey(vine.id),vine.height);}
@@ -1395,7 +1395,9 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   * RunGameTimer. A pending zero is consumed on the same row engine8 resumes.
   * timerFrames is the elapsed form of that byte (24 means a pending zero). */
  private gameTimerState(){return {time:this.time,control:Math.max(0,24-this.timerFrames),fetch:this.fetchGameTimer};}
- private addScore(value:number){if(value){this.score+=value;this.hud.queue({score:hudDigits(this.score,this.coins).score});}}
+ /** AddToScore prints the coin count and then the score (StatusBarNybbles $02: coins, player score; 3d43b7b4 1-1 RAM 3017: $206D then $2062 in VRAM_Buffer1);
+  * a firework's points print the time first instead (3d43b7b4 RAM 2023: $207A then $2062). */
+ private addScore(value:number,first:'coins'|'time'='coins'){if(value){this.score+=value;const d=hudDigits(this.score,this.coins,this.time);this.hud.queue(first==='coins'?{coins:d.coins,score:d.score}:{time:d.time,score:d.score});}}
  get vramBuffer1(){return this.paletteClock.buffer1;}
  private flushColorRotation(){
   if(!this.colorRotationPending||!nativeColorRotationAllowed(this.random.frame,this.vramBuffer1.offset))return;
@@ -2286,10 +2288,10 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   for(let slot=0;slot<6;slot++){
    if([...this.springSlots.values()].includes(slot)){this.releaseNativeSprings(slot);continue;}
    const firework=this.nativeFireworks.find(f=>f.active&&f.slot===slot);
-   if(firework){const score=runNativeFirework(firework);firework.draw=firework.active;if(score){this.addScore(score);this.emit('sfx_blast_fireworks');}continue;}
+   if(firework){const score=runNativeFirework(firework);firework.draw=firework.active;if(score){this.addScore(score,'time');this.emit('sfx_blast_fireworks');}continue;}
    if(slot===flag.slot){
     const out=runNativeStarFlag(flag,{time:this.time,fireworks:this.nativeFireworksCounter,music:this.soundRam[0x7b1],endWalk:true,blocked:this.flagInside});
-    if(out.time!==this.time)this.hud.queue({time:hudDigits(this.score,this.coins,out.time).time});this.time=out.time;this.addScore(out.score);this.nativeFireworksCounter=out.fireworks;flag.draw=out.draw;frenzy=out.frenzy;
+    const timeChanged=out.time!==this.time;this.time=out.time;if(out.score)this.addScore(out.score,'time');else if(timeChanged)this.hud.queue({time:hudDigits(this.score,this.coins,out.time).time});this.nativeFireworksCounter=out.fireworks;flag.draw=out.draw;frenzy=out.frenzy;
     if(out.score&&(this.random.frame&4)){this.emit('sfx_timer_tick');this.timerTickAge=0;}continue;
    }
    if(slot===5&&this.specialSlot5.flag)continue;
