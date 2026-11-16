@@ -132,8 +132,9 @@ export class GameRenderer {
  }
  /** OAM priority ignores the background-priority bit: a behind-background sprite still hides later entries, and its opaque pixels then show the
   * background where that is not colour 0 (2-1 799a745a picture 14578: Piranha entries 12-17 hide a Goomba at 18-23 over the sky). */
- private behindBackgroundSprite(x:number,y:number,width:number,height:number,z:number,draw:()=>void){
+ private behindBackgroundSprite(x:number,y:number,width:number,height:number,z:number,draw:()=>void,text?:[string,number,number][]){
   this.stencilMode=1;draw();this.stencilMode=2;
+  if(text){const textZ=this.textZ;this.textZ=z+1e-6;for(const [line,tx,ty] of text)this.text(line,tx,ty);this.textZ=textZ;}
   for(const b of this.backgroundDraws??[]){const r=this.rects.get(b.id)!;if(b.x<x+width&&x<b.x+r[2]&&b.y<y+height&&y<b.y+r[3])this.castlePriorityTile(b.id,b.x,b.y,b.palette,z+1e-6);}
   this.stencilMode=0;
  }
@@ -259,7 +260,7 @@ export class GameRenderer {
    // (ebc1bc65 1-1 RAM 814: mushroom entries 10-13 attribute $22 at X 4-12, Goomba entries 40-45 at X 14-22, picture 815 shows the mushroom over him).
    // The block it rises from is background by then and covers it (6ef303eb 2-1 pictures 10610-10637 and 11782-11814).
    else{const draw=(z:number)=>this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),z);
-    if(i.emerging&&i.nativePowerState!==undefined&&s.spriteShuffle){const z=2+(255-s.spriteShuffle.offsets[6])/4096,cover=s.blockGraphics.filter((b:any)=>s.blockBackground.get(b.key)===b.metatile).map((b:any)=>({id:b.metatile,x:Math.floor(b.x-s.camera),y:b.y,palette:this.rotation(s.area.palette)}));this.backgroundDraws.push(...cover);this.behindBackgroundSprite(Math.floor(x),Math.floor(i.y+1),16,16,z,()=>draw(z));this.backgroundDraws.length-=cover.length;}else draw(powerZ);}this.oamContext=context;} // the used block covers it only once its metatile is in the name table: a write held behind a busy buffer leaves the cell clear (3a9d96b1 2-1 picture 10252: the block's write waits for RAM row 10252, the mushroom shows whole)
+    if(i.emerging&&i.nativePowerState!==undefined&&s.spriteShuffle){const z=2+(255-s.spriteShuffle.offsets[6])/4096,cover=s.blockGraphics.filter((b:any)=>s.blockBackground.get(b.key)===b.metatile).map((b:any)=>({id:b.metatile,x:Math.floor(b.x-s.camera),y:b.y,palette:this.rotation(s.area.palette)}));this.backgroundDraws.push(...cover);this.behindBackgroundSprite(Math.floor(x),Math.floor(i.y+1),16,16,z,()=>draw(z),i.y+1<32?[[s.currentPlayer?'LUIGI':'MARIO',24,16],['WORLD',144,16],['TIME',200,16],[s.hud.draw.score,24,24],['×'+s.hud.draw.coins,96,24],[s.level.id,152,24],[s.hud.draw.time,208,24]]:undefined);this.backgroundDraws.length-=cover.length;}else draw(powerZ);}this.oamContext=context;} // the used block covers it only once its metatile is in the name table: a write held behind a busy buffer leaves the cell clear (3a9d96b1 2-1 picture 10252: the block's write waits for RAM row 10252, the mushroom shows whole); rising into the HUD rows it goes behind the status-bar digits too (44d7a855 4-3 picture 35417: the score's 9 covers the mushroom)
   if(i.kind==='coin'){
    if(i.nativeCoin){
     const y=Math.floor(i.y),screenX=Math.floor(x)&255;const context=this.oamContext;this.oamContext=this.oamRows?{base:s.spriteShuffle.miscOffset(i.nativeCoin.slot),count:2}:undefined;
