@@ -135,7 +135,7 @@ export class GameRenderer {
  private behindBackgroundSprite(x:number,y:number,width:number,height:number,z:number,draw:()=>void,text?:[string,number,number][]){
   this.stencilMode=1;draw();this.stencilMode=2;
   if(text){const textZ=this.textZ;this.textZ=z+1e-6;for(const [line,tx,ty] of text)this.text(line,tx,ty);this.textZ=textZ;}
-  {const textZ=this.textZ;this.textZ=z+1e-6;for(const [line,tx,ty] of this.backgroundTexts)if(tx<x+width&&x<tx+line.length*8&&ty<y+height&&y<ty+8)this.text(line,tx,ty);this.textZ=textZ;}
+  {const textZ=this.textZ;this.textZ=z+1e-6;for(const [line,tx,ty] of this.backgroundTexts??[])if(tx<x+width&&x<tx+line.length*8&&ty<y+height&&y<ty+8)this.text(line,tx,ty);this.textZ=textZ;}
   for(const b of this.backgroundDraws??[]){const r=this.rects.get(b.id)!;if(b.x<x+width&&x<b.x+r[2]&&b.y<y+height&&y<b.y+r[3])this.castlePriorityTile(b.id,b.x,b.y,b.palette,z+1e-6);}
   this.stencilMode=0;
  }
