@@ -28,7 +28,7 @@ export class GameRenderer {
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();private ropeColumns:number[]=[];
- private hudCoinTextures:string[]=[];private backgroundDraws:{id:number,x:number,y:number,palette:number}[]=[];private backgroundTexts:[string,number,number][]=[];private stencilMode:0|1|2=0;private backgroundShift=0;private skyBand?:THREE.Mesh;
+ private hudCoinTextures:string[]=[];private backgroundDraws:{id:number,x:number,y:number,palette:number}[]=[];private backgroundTexts:[string,number,number][]=[];private stencilMode:0|1|2=0;private backgroundShift=0;private clip?:{x0:number,x1:number,y0:number,y1:number};private splitBackdrops:THREE.Mesh[]=[];private skyBand?:THREE.Mesh;
  private palettes=manifest.palette_observations.map(o=>o.palette);private rotation=(index:number)=>index;
  constructor(canvas:HTMLCanvasElement){
   this.renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,preserveDrawingBuffer:true,stencil:true});this.renderer.setPixelRatio(1);this.renderer.setSize(256,240,false);
@@ -98,6 +98,7 @@ export class GameRenderer {
    }
   }
   const clipTop=sprite?0:32;y=Math.floor(y)+(name.startsWith('metatiles-')||name.startsWith('background-tiles-')?this.backgroundShift:0); // the clip must cut whole pixel rows: a fractional top shifted Mario 1 px at the screen top (0d12a2e4 row 8403)
+  if(this.clip){const c=this.clip,left=Math.max(0,c.x0-Math.floor(x)),right=Math.max(0,Math.floor(x)+rect[2]-c.x1),top=Math.max(0,c.y0-y),bottom=Math.max(0,y+rect[3]-c.y1);if(left+right>=rect[2]||top+bottom>=rect[3])return;rect=[rect[0]+(flipX?right:left),rect[1]+(flipY?bottom:top),rect[2]-left-right,rect[3]-top-bottom];x=Math.floor(x)+left;y+=top;}
   if(this.worldClip&&(y<clipTop||y+rect[3]>240)){
    const top=Math.max(0,clipTop-y),bottom=Math.max(0,y+rect[3]-240);if(top+bottom>=rect[3])return;
    rect=[rect[0],rect[1]+(flipY?bottom:top),rect[2],rect[3]-top-bottom];y+=top;
@@ -108,6 +109,22 @@ export class GameRenderer {
   {const m=mesh.material as THREE.MeshBasicMaterial;m.stencilWrite=this.stencilMode!==0;m.stencilRef=1;m.stencilFunc=this.stencilMode===2?THREE.EqualStencilFunc:THREE.AlwaysStencilFunc;m.stencilZPass=this.stencilMode===1?THREE.ReplaceStencilOp:THREE.KeepStencilOp;}
   mesh.userData.drawOrder=this.scene.children.length;
   mesh.position.set(Math.floor(x)+rect[2]/2,240-Math.floor(y)-rect[3]/2,z);mesh.scale.set(flipX?-1:1,flipY?-1:1,1);this.scene.add(mesh);
+ }
+ /** Simulation.lateSplit: each listed line shows name-table position base+x at screen pixel x. A name-table position holds the
+  * latest level column written there, the one in [parser column - 512, parser column). The strip covers the normal background
+  * with the backdrop colour, then its metatiles; sprites stay in front. */
+ private lateSplitStrips(s:Simulation,pictureTiles:Map<string,number>){
+  const lines=s.lateSplit;if(!lines)return;
+  const camera=Math.floor(s.camera),scroll=((camera%512)+512)%512,backdrop=this.renderer.getClearColor(new THREE.Color());let strips=0;
+  const offset=(base:number,x:number)=>{let d=(((base-scroll+x)%512)+512)%512;if(camera+d>=s.parserColumnX)d-=512;return d-x;};
+  for(const {line,segments} of lines)for(const {from,to,base} of segments)for(let x=from;x<to;){
+   const shift=offset(base,x);let end=x+1;while(end<to&&offset(base,end)===shift)end++;
+   const mesh=this.splitBackdrops[strips]??=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial());strips++;
+   (mesh.material as THREE.MeshBasicMaterial).color.copy(backdrop);mesh.scale.set(end-x,1,1);mesh.position.set((x+end)/2,240-line-0.5,0.95);mesh.userData.drawOrder=this.scene.children.length;this.scene.add(mesh);
+   this.clip={x0:x,x1:end,y0:line,y1:line+1};
+   for(const [key,id]of pictureTiles){const [col,row]=key.split(',').map(Number),left=col*16-(camera+shift);if(row>=2&&left<end&&left+16>x&&id!==95&&id!==96)this.tile(id,left,row*16,this.rotation(s.area.palette),1);}
+   this.clip=undefined;x=end;
+  }
  }
  private tile(id:number,x:number,y:number,palette:number,z=0){const rect=this.rects.get(id);if(rect&&z<1)this.backgroundDraws.push({id,x,y,palette});if(rect)this.quad(`metatiles-palette-${String(palette).padStart(3,'0')}.png`,rect,x,y,z,false,false,false);}
  // Native water areas keep sky colour above the surface wave (rows 0-31, the HUD band); only the playfield below is water blue.
@@ -321,6 +338,7 @@ export class GameRenderer {
      this.tile(id,x,y,this.rotation(s.area.palette));
     }
    }
+   this.lateSplitStrips(s,pictureTiles);
    for(const rope of ropes){const x=rope.col*16-Math.floor(s.camera),palette=this.palettes[this.rotation(s.area.palette)],colors=[palette[0],...palette.slice(5,8)].map(n=>n.toString(16).padStart(2,'0')).join('-');if(x<=-16||x>=256)continue;
     for(let row=rope.top;row<=rope.bottom;row++)for(const [i,tile] of [162,163].entries())this.quad(`background-tiles-${colors}.png`,[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+i*8,row*8,0,false,false,false);}
    for(const col of this.ropeColumns){const x=col*16-Math.floor(s.camera);if(x>-16&&x<256)for(let row=2;row<15;row++)if(!s.tiles.has(`${col},${row}`))this.tile(64,x,row*16,this.rotation(s.area.palette));}

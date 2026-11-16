@@ -96,6 +96,7 @@ import {NativeAreaControls} from './native-area-controls.js';
 import {nativeEnemiesCollision,nativeUnwingedStomp,nativeEnemyBoxesTouch} from './enemy-collision.js';
 import {advanceNativeRedFlight,createNativeRedFlight} from './red-paratroopa.js';
 import {prepareNativeGreenParatroopa,moveNativeGreenParatroopa} from './native-paratroopa.js';
+import {lateSplitLines} from './native-split.js';
 const CONTROL_GRACE_ROWS=2; // native: an A held through the load jumps on the same row as an A first pressed on the first control row; the remake's 2-frame input queue makes that two grace rows (campaign-compare MODEL_LOCAL seeds its own constant); an empty queue (native RAM-trace replays: each pad on its native row) needs none
 export const TRANSITIONS=transitionMeasurements.runtimeCandidates;
 export const POWERUPS=powerupRules.timingAndScores;
@@ -320,6 +321,26 @@ export class Simulation {
  /** A buffer1 flush past its 63 bytes (into VRAM_Buffer2_Offset at $0340) outlasts vblank: that picture's background is one line lower, sprites are not
   * (offset $43 in all 45 such flushes of the corpus, every one a 1-3 flag row; $3C and below draw normally). */
  get backgroundRowShift(){return this.paletteClock.buffer1.pendingFlush>=0x40?1:0;}
+ /** Frames since the tally's timer tick was queued (Square2SoundQueue $10). */
+ timerTickAge=99;
+ /** The tally NMI's cost up to its sprite-0 split write, then the late split it draws (native-split.ts). Only the flag tally is
+  * modelled: there the sound engine's cost is known (one tick queued 454 cycles, a tick playing 372, the event music without a
+  * note fetch; the rest of SoundEngine is idle). CPU cycles from the NMI: UpdateScreen ends at 687 + 123 a packet + 18 a byte,
+  * Sprite0Clr follows the sound engine after 1365 more (1558 when $077F is 0: DecTimers then runs all 35 timers),
+  * MoveSpritesOffscreen with SpriteShuffler takes 1653/1658/1665 for 3/4/6 carried offsets, the first $2005 write comes 113
+  * after the hit poll. FCEUmm dot = 3 cycles - 7146 (NMI at line 241 dot 1 plus the idle loop's JMP phase, here 6, less
+  * the frame; NeSLE's OAM DMA is 513). Every term was measured on all 630 tally rows with buffer1 >= 37 bytes (exact, or 1
+  * low; four rows with a music note fetch are higher). Evidence: 7fa6d3dc 5-3 RAM 43228 ($0300 60, $077F 0, $FE $10, 6
+  * carries) gives write cycle 6110, picture 43229 rows 24-25 at the HUD scroll; 4ae93cc8 1-3 RAM 6289 ($0300 67, tick
+  * playing) gives 6222, picture 6290 rows 25-26 (that picture's background is also a line lower). */
+ get lateSplit(){
+  if(this.phase!=='flag'||this.timerTickAge>4)return;const b=this.paletteClock.buffer1;if(b.addressControl===6)return;
+  let packets=0,bytes=0;for(let at=1;b.data[at];){const n=b.data[at+2]&0x3f;packets++;bytes+=b.data[at+2]&0x40?0:n;at+=b.data[at+2]&0x40?4:3+n;}
+  const amount=this.spriteShuffle.amounts[this.spriteShuffle.index],carries=this.spriteShuffle.offsets.filter(o=>o>=0x28&&o+amount>255).length;
+  const shuffle=({3:1653,4:1658,6:1665} as Record<number,number>)[carries];if(shuffle===undefined)return;
+  const write=687+123*packets+18*bytes+(this.timerTickAge?372:454)+(this.intervalControl===0?1558:1365)+shuffle+113;
+  const lines=lateSplitLines(3*write-7146,((Math.floor(this.camera)%512)+512)%512);return lines.length?lines:undefined;
+ }
  get gameoverClosing(){return this.phase==='gameover'&&this.nativeGameOver?.mode===0;}
  get pipePreviewArea(){const d=this.destination;if(this.phase!=='pipe'||this.player.size!==0||!d?.smallPlayerRoomPreviewFrames||d.frames-this.phaseFrame>d.smallPlayerRoomPreviewFrames)return undefined;return this.level.areas.find(a=>a.id===d.area);}
  get pipeLoading(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames); }
@@ -476,6 +497,7 @@ export class Simulation {
   if(!Number.isInteger(frames)||frames<0||frames>18000)throw new Error('frames must be an integer in 0..18000');
   const held=[new Set(buttons),new Set(buttons2)];
   for(let i=0;i<frames;i++){
+   this.timerTickAge++;
    const player=this.phase==='title'||!this.twoPlayer?0:this.currentPlayer;
    this.inputs.push(new Set(held[player]));const effective=this.inputs.shift()!;
    for(const key of ['start','select'] as Button[]){if(held[0].has(key)||(this.phase==='title'&&held[1].has(key)))effective.add(key);else effective.delete(key);}
@@ -2236,7 +2258,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    if(slot===flag.slot){
     const out=runNativeStarFlag(flag,{time:this.time,fireworks:this.nativeFireworksCounter,music:this.nativeEndLevelMusic.eventMusicBuffer,endWalk:true,blocked:this.flagInside});
     if(out.time!==this.time)this.hud.queue({time:hudDigits(this.score,this.coins,out.time).time});this.time=out.time;this.addScore(out.score);this.nativeFireworksCounter=out.fireworks;flag.draw=out.draw;frenzy=out.frenzy;
-    if(out.score&&(this.random.frame&4))this.emit('sfx_timer_tick');continue;
+    if(out.score&&(this.random.frame&4)){this.emit('sfx_timer_tick');this.timerTickAge=0;}continue;
    }
    if(slot===5&&this.specialSlot5.flag)continue;
    if(frenzy!==22||this.nativeFrenzyTimer||this.parserClock.blocked)continue;
