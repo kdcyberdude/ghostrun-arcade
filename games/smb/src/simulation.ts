@@ -745,7 +745,7 @@ export class Simulation {
   // MovePlayerHorizontally returns the nonzero spring control in A without
   // moving; OnGroundStateSub still stores A as Player_X_Scroll ($06ff).
   springScroll=this.springTimers.values().next().value?.control;
-  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;
+  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;let sideMotion=motion;
   // ChkPOffscr holds Mario at the left screen edge before BG collision: the feet then probe from the held x (3-1 37d55efe row 24537: skidding left against the edge on a step, he stays standing).
   // At the edge pixel the speed byte is cleared unless Right alone is held, whichever way he moves or faces (b6ff81a0 1-1 RAM 1284: rel X 0, speed 3 -> 0 with no direction held, x stays 1297).
   if(!water&&(p.x<this.camera||useMotor&&edgeDirection<=0&&Math.floor(p.x)===Math.floor(this.camera))){
@@ -753,6 +753,8 @@ export class Simulation {
    if(useMotor){
     p.x=this.camera+p.x-Math.floor(p.x);
     if(!(edgeDirection>0&&p.vx<0)){this.motor.speed=Math.round(p.vx*4096)&255;p.vx=this.motor.speed/4096;}
+    // DoPlayerSideCheck/ImpedePlayerMove then read the speed byte the edge left: a cleared byte backs Mario out of a wall on his right (4cb406f6 4-4 RAM 34729: x 517 at screen-left 518, $57 0, $0705 112, held at 517 every row).
+    sideMotion=motionOf(this.motor.speed);
    }else{p.x=this.camera;p.vx=Math.max(0,p.vx);}
   }
   // ...and at the locked right edge (cam+239): the side probe then starts from the held x, so a wall just past the edge is not touched (1-4 3b15135b row 8157: x 2259.06 -> 2258.06, speed 0, $0490 stays $FF, SideCollisionTimer 0).
@@ -760,7 +762,7 @@ export class Simulation {
   if(swim){this.playerXScroll=(Math.floor(p.x)-Math.floor(oldX)+this.platformScroll)&255;waterScroll=this.nativeScrollPreview(oldX,p.x,oldBottom);const beforeBounds=p.x;this.waterScreenBounds(this.camera+waterScroll);waterBoundsShift=p.x-beforeBounds;waterBoundsVx=p.vx;}p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly||groundStomp?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;if(swim)this.waterCollisionPose={x:hammerBoxX,y:hammerBoxFeet-this.water.whirlMoved-32};this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);if(!groundStomp)this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
   if(!nativeGroundOnly&&!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(this.airGravity(b),this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom));
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
-  this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y)&&!this.coinEndsCollision)this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
+  this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y)&&!this.coinEndsCollision)this.movePlayerX(sideMotion,height,!useMotor&&!swim);this.footPushed=false;
   // Native contacts resume after one masked row (Player_CollisionBits are restored every frame); a zero-motion back-out row masks its side again (movePlayerX).
   // The jump class after a contact reads the stale Player_XSpeedAbsolute (native 4-2 r8m0 row373, 5-2 r8m3 row1325, 7-1 r8m5 row1933).
   // ImpedePlayerMove: the contact zeroes the speed byte (the fraction stays) and masks that side's press on the next frame.
