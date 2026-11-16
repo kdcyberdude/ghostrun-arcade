@@ -967,6 +967,8 @@ export class Simulation {
    }
    return;
   }
+  // DoPlayerSideCheck probes the left side first and stops at its first hit, so a block at the left probe hides one at the right edge from a rightward mover (3-1 d368ad65 RAM 20727: $0490 $FD, $23 at the left probe, $58 at the right).
+  if(dx>0)for(const [upper,y] of [[true,p.y-h+4],[false,p.y-8]] as const)if(this.sideTileAt(p.x+2,y,upper)??this.springSideAt(p.x+2,y))return;
   const edge=p.x+(dx>0?13:2);
   for(const [upper,y] of [[true,p.y-h+4],[false,p.y-8]] as const){const tile=this.sideTileAt(edge,y,upper)??this.springSideAt(edge,y);if(tile){
    if(this.acceptSidePipe(tile))return;
