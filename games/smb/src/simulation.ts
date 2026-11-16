@@ -2782,7 +2782,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  private writeWarpZoneText(){
   const warp=this.area.warpZone;if(!warp)return;const [text,...numbers]=warp.overlays,world=[0x24,0x24,0x24];
   for(const n of numbers)world[Math.round((n.x-text.x-8)/64)]=Number(n.text);
-  const b=this.vramBuffer1;this.warpTextRow={frame:this.frame,offset:b.offset};b.clear();
+  const b=this.vramBuffer1;this.warpTextRow={frame:this.frame,offset:b.offset};b.clear();this.hud.dropPending();
   b.append({address:0x2584,control:21,payload:[...'WELCOME TO WARP ZONE!'].map(c=>c===' '?0x24:c==='!'?0x2b:c.charCodeAt(0)-55)});
   world.forEach((n,i)=>b.append({address:0x2625+i*8,control:1,payload:[n]}));
   b.append({address:0x27d9,control:0x46,payload:[0xaa]});b.append({address:0x27e1,control:0x45,payload:[0xaa]});

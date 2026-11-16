@@ -29,6 +29,8 @@ export class NativeHud {
   this.buffer1.append({address:score?0x2062:specs[key][0],control:payload.length,payload});
  }
  clearTime(){this.draw.time='   ';delete this.pending.time;}
+ /** The packets queued so far are overwritten in VRAM_Buffer1 (WriteGameText for the warp zone writes from its start). */
+ dropPending(){this.pending={};}
  header(score:number,coins:number){this.draw=hudDigits(score,coins);this.pending={};}
  /** discarded: the NMI uploads another table ($0773=8, the Bowser palette) and still clears buffer1, so its digits never reach the screen (9c64d039 1-4 rows 14746-14771: TIME stays 254). */
  step(buffer2:boolean,discarded=false){this.buffer1.select(buffer2);if(!buffer2){if(!discarded)Object.assign(this.draw,this.pending);this.pending={};}}
