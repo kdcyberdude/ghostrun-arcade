@@ -319,6 +319,13 @@ export class PlatformMotion {
  }
  private advancePulleys(frame:number){for(const pulley of this.pulleys.values())this.turnPulley(pulley,frame);}
 
+ /** The pair a balance-lift driver moves this frame: its speed and force bytes and both halves' native X and Y (after the move), for SetupPlatformRope. */
+ pulleyRope(platform:PlatformSpec){
+  const object=nativePlatformObject(platform,this.context);if(object?.kind!=='balance'||!object.pair)return;
+  const pulley=this.pulleys.get(object.pair.join(','));if(!pulley||pulley.driver!==object||!pulley.partner)return;
+  const d=pulley.d[pulley.d.length-1],at=(o:NativePlatformObject)=>({x:o.x,y:nativeObjectPosition(o,d).y+(pulley.bias?.[String(o.side)]??0)});
+  return {speed:pulley.motor.speed,force:pulley.motor.force,driver:at(object),partner:at(pulley.partner)};
+ }
  contact(platform:PlatformSpec,frame:number){
   const model=platformMotionModel(platform,this.context);
   if(model==='native-balance'||model==='native-drop'){

@@ -3056,7 +3056,18 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
      this.updatePlatforms(oldBottom,this.lakituScroll,pair?[pair,p]:[p]);
     }else if(o.kind!=='balance')this.updatePlatforms(oldBottom,this.lakituScroll,[p]);
    }
-   this.platformMotion.turn(p,this.platformFrame,this.random.frame,run);if(this.placedCastle){const b=this.platformMotion.slotSpeedByte(p,this.platformFrame);if(b!==undefined)this.castleSlotXSpeed[slot]=b;}
+   this.platformMotion.turn(p,this.platformFrame,this.random.frame,run);this.writePulleyRope(p);if(this.placedCastle){const b=this.platformMotion.slotSpeedByte(p,this.platformFrame);if(b!==undefined)this.castleSlotXSpeed[slot]=b;}
+  }
+ }
+ /** SetupPlatformRope: while the pair moves (speed or force nonzero) and VRAM_Buffer1 holds fewer than $20 bytes, the driver writes one 2-tile row
+  * per half at its Y (8 lower when that half rises): rope $A2 $A3 for the falling half, blank $24 for the rising one (1d3cb409 RAM 30258: $221A, $2132). */
+ private writePulleyRope(platform:PlatformSpec){
+  const rope=this.platformMotion.pulleyRope(platform);if(!rope||!(rope.speed||rope.force)||this.vramBuffer1.offset>=0x20)return;
+  const wide=this.platformWidth(platform)!==32;
+  for(const [half,falling] of [[rope.driver,rope.speed>=0],[rope.partner,rope.speed<0]] as const){
+   const x=Math.floor(half.x)+8+(wide?16:0),y=(Math.floor(half.y)+(falling?0:8))&255;
+   let address=0x2000|((x>>8)&1)<<10|(y&0xf8)<<2|(x&0xf0)>>3;if(Math.floor(half.y)>=0xe8)address&=~0x40;
+   this.vramBuffer1.append({address,control:2,payload:falling?[0xa2,0xa3]:[0x24,0x24]});
   }
  }
  private enemyOldBottom=0;
