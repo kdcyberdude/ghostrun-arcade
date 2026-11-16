@@ -2411,7 +2411,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     // a clamp zeroed the speed byte, so ImpedePlayerMove backs out of either side, as with no motion (6a6cac6d 1-4 RAM 9755: X 2270 clamped to 2269, then the wall at its left pushes it back to 2270)
     this.motor.clearContacts();this.movePlayerX(clamped?0:p.x-oldX,this.height,false);this.walkOffStart(wasGrounded);
     const axe=this.axeFootContact();
-    if(axe){this.eraseAxeMetatile();this.motor.speed=24*256+(this.motor.speed&255);p.vx=this.motor.speed/4096;}
+    if(axe){this.eraseAxeMetatile();this.paletteRemove=true;this.motor.speed=24*256+(this.motor.speed&255);p.vx=this.motor.speed/4096;}
     return {playerX:Math.floor(p.x),axe};
    }});
   this.camera=result.camera;this.victoryScrollFraction=n.scrollFraction;
