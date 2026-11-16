@@ -2022,7 +2022,9 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const p=this.player,lak=e.lak??={dir:0,speed:0};
   if(this.nativeFrenzyTurn?.id===24&&this.nativeFrenzyTurn.slot<e.enemySlot!)lak.fleeing=true;
   lak.preX=Math.floor(e.x);
-  e.x+=lakituStep(lak,Math.floor(e.x),Math.floor(p.x),this.marioSpeedByte(),this.lakituScroll,Boolean(lak.fleeing))/16;
+  // ScrollHandler's ChkPOffscr holds a Mario below the screen at screen x 239 before the enemies run, so Lakitu measures from the held x (4-1 ad0d5646 RAM 24633: Mario 3019.b0 + 4/16 held at 3019, $58+1 is $0A from 3019, not 9 from 3020).
+  const camera=Math.floor(this.camera+this.lakituScroll),marioX=this.area.theme!=='water'&&this.enemyOldBottom>=288?Math.min(Math.floor(p.x),camera+239):Math.floor(p.x);
+  e.x+=lakituStep(lak,Math.floor(e.x),marioX,this.marioSpeedByte(),this.lakituScroll,Boolean(lak.fleeing))/16;
   if(lak.box===8&&e.enemySlot!==undefined)this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;
   if(!lak.fleeing){this.specialSlot5.frenzyBuffer=18;this.spinyBuffer=true;} // MoveLakitu in the normal state puts a Spiny in EnemyFrenzyBuffer
   if(e.stopFrenzyX!==undefined&&stopFrenzyParsed(e.stopFrenzyX,this.scrollCrossCamera,this.frame-this.scrollCrossFrame))lak.stopQueued=true;
@@ -3024,8 +3026,9 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    this.platformMotion.turn(p,this.platformFrame,this.random.frame,run);if(this.placedCastle){const b=this.platformMotion.slotSpeedByte(p,this.platformFrame);if(b!==undefined)this.castleSlotXSpeed[slot]=b;}
   }
  }
+ private enemyOldBottom=0;
  private updateEnemies(oldBottom:number){
-  this.broClock++;if((this.placedCastle||this.placedActorStream)&&this.placedStream)this.placedBankFrame=this.frame;this.nativeBankItemFrame=this.frame;this.firebarSlots?.beginFrame(this.camera);
+  this.enemyOldBottom=oldBottom;this.broClock++;if((this.placedCastle||this.placedActorStream)&&this.placedStream)this.placedBankFrame=this.frame;this.nativeBankItemFrame=this.frame;this.firebarSlots?.beginFrame(this.camera);
   // Retained component motors are independent of the native bank readout.
   for(const [bar,motor]of this.firebarMotors)if(motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   if(this.mouthFlame&&!this.placedCastle)this.passNativeMouthFlame(0,this.mouthFlame.enemySlot??0);
