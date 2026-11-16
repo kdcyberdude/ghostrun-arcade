@@ -1,4 +1,4 @@
-/** Validation queue: audits whole recordings (every level frame, state AND picture) one per process and keeps a pass/fail list in DATA_DIR/validate/.
+/** Validation queue: audits whole recordings (every frame from power-on to the end of the recording, state AND picture) one per process and keeps a pass/fail list in DATA_DIR/validate/.
  * Order: recordings never validated first, then failing recordings whose game code (src/, data/) changed since their last run; a recording that
  * matched once is never run again. Within each group the recording that reaches the latest level goes first. Each commit's audits run in their
  * own clean worktree (WORKTREES/<sha>), so commits made meanwhile never disturb a running audit. Runs until stopped.
@@ -39,7 +39,7 @@ const running=new Set(),forced=new Set((a.ids??'').split(',').filter(Boolean)),f
 async function audit(r,levels,head){
  const key=gameKey(head),tree=treeFor(head),name=r.id.replace(/[^a-z0-9-]/gi,'_'),partial=path.join(raw,name+'.partial'),port=freePorts.shift();
  fs.writeFileSync(path.join(out,'running',name),JSON.stringify({id:r.id,commit:head,started:new Date().toISOString()}));
- const code=await new Promise(res=>{const p=spawn(path.join(tree,'node_modules/.bin/tsx'),['games/smb/tools/harness/combined-monitor-audit.ts','--monitor',monitor,'--out',partial,'--ids',r.id,'--levels',levels.join(','),'--port',String(port)],{cwd:tree,stdio:['ignore','ignore','pipe']});let e='';p.stderr.on('data',b=>e=(e+b).slice(-4000));p.on('exit',c=>res(c?e:0));});freePorts.push(port);
+ const code=await new Promise(res=>{const p=spawn(path.join(tree,'node_modules/.bin/tsx'),['games/smb/tools/harness/combined-monitor-audit.ts','--monitor',monitor,'--out',partial,'--ids',r.id,'--port',String(port)],{cwd:tree,stdio:['ignore','ignore','pipe']});let e='';p.stderr.on('data',b=>e=(e+b).slice(-4000));p.on('exit',c=>res(c?e:0));});freePorts.push(port);
  fs.rmSync(path.join(out,'running',name),{force:true});release(tree,git('rev-parse','HEAD'));
  const status=code===0?(fs.renameSync(partial,path.join(raw,name+'.json')),verdict(read(path.join(raw,name+'.json')),r.id,head,key,levels)):{id:r.id,commit:head,gameKey:key,levels,result:'error',error:String(code).slice(-1500),finished:new Date().toISOString()};
  fs.writeFileSync(statusFile(r.id)+'.partial',JSON.stringify(status,null,1)+'\n');fs.renameSync(statusFile(r.id)+'.partial',statusFile(r.id));
@@ -51,7 +51,7 @@ for(;;){
  const req=path.join(out,'requests');fs.mkdirSync(req,{recursive:true});for(const n of fs.readdirSync(req)){for(const id of fs.readFileSync(path.join(req,n),'utf8').split(/\s+/).filter(Boolean))forced.add(id);fs.rmSync(path.join(req,n));}
  const inv=read(path.join(monitor,'combined-inputs.json')).runs,levels=furthest(inv),head=git('rev-parse','HEAD'),key=gameKey(head),rank=r=>-LEVELS.indexOf(levels[r.id].at(-1)??'1-1');
  const status=id=>fs.existsSync(statusFile(id))?read(statusFile(id)):null;
- const todo=inv.filter(r=>levels[r.id].length&&!running.has(r.id)).map(r=>({r,s:status(r.id)}))
+ const todo=inv.filter(r=>!running.has(r.id)).map(r=>({r,s:status(r.id)}))
   .filter(({r,s})=>forced.has(r.id)||!s||s.result==='error'||s.result!=='match'&&s.gameKey!==key) // an audit error (not a verdict) is always retried
   .sort((x,y)=>(forced.has(y.r.id)-forced.has(x.r.id))||(!!x.s-!!y.s)||rank(x.r)-rank(y.r));
  while(running.size<Number(a.jobs)&&todo.length){const {r}=todo.shift();forced.delete(r.id);running.add(r.id);audit(r,levels[r.id],head).catch(e=>console.error(r.id,e)).finally(()=>running.delete(r.id));}

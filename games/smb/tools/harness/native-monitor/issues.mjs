@@ -1,4 +1,4 @@
-/** smb-progress's default screen: which recordings match the remake on every level frame (state AND picture) and which do not, from the
+/** smb-progress's default screen: which recordings match the remake on every frame (state AND picture) and which do not, from the
  * validation queue (validate.mjs) in DATA_DIR/validate. A failing recording whose game code changed since its run is queued to run again. */
 import fs from 'node:fs';import path from 'node:path';
 const LEVELS=[];for(let w=1;w<=8;w++)for(let l=1;l<=4;l++)LEVELS.push(`${w}-${l}`);
@@ -11,9 +11,9 @@ export function collectValidation(dataDir,inventory){
 export function renderValidation(rows,{headKey,head,width=100,color=true}){
  const c=(code,s)=>color?`\x1b[${code}m${s}\x1b[0m`:s,red=s=>c('31',s),green=s=>c('32',s),yellow=s=>c('33',s),dim=s=>c('2',s),bold=s=>c('1',s);
  const match=rows.filter(r=>r.status?.result==='match'),fail=rows.filter(r=>r.status&&r.status.result!=='match'),stale=fail.filter(r=>r.status.gameKey!==headKey);
- const todo=rows.filter(r=>!r.status&&r.reaches),running=rows.filter(r=>r.running),skip=rows.filter(r=>!r.status&&!r.reaches);
+ const todo=rows.filter(r=>!r.status),running=rows.filter(r=>r.running),skip=[];
  const rank=r=>-LEVELS.indexOf(r.reaches??'1-1'),pad=(s,n)=>s+' '.repeat(Math.max(0,n-s.replace(/\x1b\[[0-9;]*m/g,'').length));
- const out=[bold('SMB · RECORDING VALIDATION')+dim(`   every level frame, state AND picture · HEAD ${head.slice(0,7)}`),
+ const out=[bold('SMB · RECORDING VALIDATION')+dim(`   every frame to the end, state AND picture · HEAD ${head.slice(0,7)}`),
   `${green(`MATCHING ${match.length}`)}   ${fail.length?red(`NOT MATCHING ${fail.length}`):'NOT MATCHING 0'}${stale.length?yellow(` (${stale.length} re-run queued: code changed since)`):''}   ${dim(`NOT YET VALIDATED ${todo.length}`)}   RUNNING ${running.length}   of ${rows.length-skip.length} recordings`,
   dim(`Queue: never-validated first, then failing ones after a fix; each group from the latest level back. A match is final.`),'',
   bold('by furthest level   matching / not matching / not yet')];
