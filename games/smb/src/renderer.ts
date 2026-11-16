@@ -28,7 +28,7 @@ export class GameRenderer {
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();private ropeColumns:number[]=[];
- private hudCoinTextures:string[]=[];private backgroundDraws:{id:number,x:number,y:number,palette:number}[]=[];private stencilMode:0|1|2=0;private backgroundShift=0;private skyBand?:THREE.Mesh;
+ private hudCoinTextures:string[]=[];private backgroundDraws:{id:number,x:number,y:number,palette:number}[]=[];private backgroundTexts:[string,number,number][]=[];private stencilMode:0|1|2=0;private backgroundShift=0;private skyBand?:THREE.Mesh;
  private palettes=manifest.palette_observations.map(o=>o.palette);private rotation=(index:number)=>index;
  constructor(canvas:HTMLCanvasElement){
   this.renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,preserveDrawingBuffer:true,stencil:true});this.renderer.setPixelRatio(1);this.renderer.setSize(256,240,false);
@@ -135,6 +135,7 @@ export class GameRenderer {
  private behindBackgroundSprite(x:number,y:number,width:number,height:number,z:number,draw:()=>void,text?:[string,number,number][]){
   this.stencilMode=1;draw();this.stencilMode=2;
   if(text){const textZ=this.textZ;this.textZ=z+1e-6;for(const [line,tx,ty] of text)this.text(line,tx,ty);this.textZ=textZ;}
+  {const textZ=this.textZ;this.textZ=z+1e-6;for(const [line,tx,ty] of this.backgroundTexts)if(tx<x+width&&x<tx+line.length*8&&ty<y+height&&y<ty+8)this.text(line,tx,ty);this.textZ=textZ;}
   for(const b of this.backgroundDraws??[]){const r=this.rects.get(b.id)!;if(b.x<x+width&&x<b.x+r[2]&&b.y<y+height&&y<b.y+r[3])this.castlePriorityTile(b.id,b.x,b.y,b.palette,z+1e-6);}
   this.stencilMode=0;
  }
@@ -285,7 +286,7 @@ export class GameRenderer {
   // After a castle victory InitializeArea's first rows keep the castle picture: the retainer is gone from the first, the status bar from the second (2-1 1ae7aeeb pictures 8686, 8687).
   const victoryHold=s.phase==='intro'&&s.levelLoad?.engine===8&&s.levelLoad.task===0;
   if(victoryHold&&this.castleHeld){for(const m of [...this.retainerMeshes,...(s.levelLoad!.screen===0?this.hudMeshes:[])])this.scene.remove(m);this.renderer.render(this.scene,this.camera);return;}
-  this.castleHeld=s.phase==='castle';this.hudMeshes=[];this.backgroundDraws=[];this.backgroundShift=s.backgroundRowShift;this.retainerMeshes=[];
+  this.castleHeld=s.phase==='castle';this.hudMeshes=[];this.backgroundDraws=[];this.backgroundTexts=[];this.backgroundShift=s.backgroundRowShift;this.retainerMeshes=[];
   this.scene.clear();this.used.clear();const titlePicture=nativeStartupTitleShown(s.nativeStartupPicture,s.phase,s.nativeScreen),startup=titlePicture?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
@@ -329,8 +330,11 @@ export class GameRenderer {
     const key=`${Math.floor(col/2)},${Math.floor(row/2)}`;if(this.originalTiles.has(key)&&this.originalTiles.get(key)!==s.tiles.get(key))continue;
     const x=col*8-s.camera;if(x>-8&&x<256&&row>=4)this.quad(file,[id%16*8,Math.floor(id/16)*8,8,8],x,row*8,0.2,false,false,false);
    }
-   for(const overlay of s.area.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
-   if(s.warpZoneActive)for(const overlay of s.area.warpZone?.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
+   // Area text is name-table background: sprites draw over it, and behind-background sprites under it (b3030da1 1-2 picture 5395: Mario jumping past
+   // the warp zone's 2 hides it; 1512e53a 1-2 picture 4050: the 3 and 2 stay in front of the Piranha Plants rising behind them).
+   {const textZ=this.textZ;this.textZ=0.2;
+   for(const overlay of [...s.area.overlays??[],...(s.warpZoneActive?s.area.warpZone?.overlays??[]:[])]){this.text(overlay.text,overlay.x-s.camera,overlay.y);this.backgroundTexts.push([overlay.text,overlay.x-s.camera,overlay.y]);}
+   this.textZ=textZ;}
    if(ordinary){
    for(const platform of s.area.platforms??[]){
     const context={levelId:s.level.id,areaId:s.area.id},pos=s.platformPicturePosition(platform);
