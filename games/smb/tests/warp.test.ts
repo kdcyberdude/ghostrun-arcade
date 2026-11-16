@@ -1,6 +1,5 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
 import {Simulation,TRANSITIONS} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import type {Area,Level,Tile} from '../src/types.js';
@@ -15,10 +14,12 @@ test('an ordinary down-pipe warp loads the destination intro while retaining inv
  source.tiles.push([4,10,16],[5,10,17],[4,11,20],[5,11,21],[4,12,20],[5,12,21]);
  const levels:Level[]=[{id:'4-2',time:400,main:'main',areas:[source],evidence:'Fixture'},{id:'6-1',time:300,main:'main',areas:[area({theme:'night',spawn:[40,208]})],evidence:'Fixture'}];
  const sim=new Simulation(levels);sim.reset(true);sim.score=16800;sim.coins=40;sim.lives=5;sim.player.size=2;sim.time=123;sim.checkpoint=true;
- sim.step(['down'],3);assert.equal(sim.phase,'pipe');assert.equal(sim.level.id,'4-2');sim.step([],64);
- assert.equal(sim.level.id,'6-1');assert.equal(sim.area.id,'main');assert.equal(sim.phase,'intro');assert.equal(sim.time,300);assert.equal(sim.checkpoint,false);
- assert.deepEqual([sim.score,sim.coins,sim.lives,sim.player.size],[16800,40,5,2]);assert.equal(sim.camera,0);
- sim.step([],TRANSITIONS.introFrames);assert.equal(sim.phase,'play');assert.equal(sim.player.x,40);assert.equal(sim.player.y,208);
+ // The level switches on the entry row (a2a3dd81 1-2 RAM 5890: $075F/$075C change with $0E 8 -> 3), then the $30-row sink, then the new level's load.
+ sim.step(['down'],3);assert.equal(sim.phase,'pipe');assert.equal(sim.level.id,'6-1');assert.equal(sim.checkpoint,false);
+ sim.step([],0x30);assert.equal(sim.phase,'intro');
+ let intermediate=false;for(let i=0;i<400&&sim.phase!=='play';i++){sim.step([],1);if(sim.levelLoad?.screen===7)intermediate=true;}
+ assert.ok(intermediate);assert.equal(sim.phase,'play');assert.equal(sim.level.id,'6-1');assert.equal(sim.area.id,'main');assert.notEqual(sim.time,123);assert.equal(sim.camera,0); // FetchNewGameTimerFlag: the new level's header timer, not the fixture's carried 123
+ assert.deepEqual([sim.score,sim.coins,sim.lives,sim.player.size],[16800,40,5,2]);assert.equal(sim.player.x,40);assert.equal(sim.player.y,208);
 });
 
 test('down held away from the physical warp entrance cannot change levels',()=>{
@@ -42,28 +43,21 @@ for(const [center,target]of [[944,'6-1'],[880,'7-1'],[816,'8-1']]as const)test(`
  // An isolated entrance fixture, not a fresh campaign traversal.
  room.spawn=[center-8,160];room.camera=768;room.entryVine=undefined;
  const sim=new Simulation([level,...all.filter(l=>l.id!=='4-2')]);sim.reset(true);
- sim.step(['down'],3);assert.equal(sim.phase,'pipe');sim.step([],64);
- assert.equal(sim.phase,'intro');assert.equal(sim.level.id,target);assert.equal(sim.area.id,'main');assert.equal(sim.camera,0);
+ sim.step(['down'],3);assert.equal(sim.phase,'pipe');assert.equal(sim.level.id,target);sim.step([],0x30);assert.equal(sim.phase,'intro');
+ for(let i=0;i<400&&sim.phase!=='play';i++)sim.step([],1);
+ assert.equal(sim.phase,'play');assert.equal(sim.level.id,target);assert.equal(sim.area.id,'main');assert.equal(sim.camera,0);
  assert.deepEqual([sim.player.x,sim.player.y],[40,208]);assert.equal(sim.lives,3);
 });
 
-test('the common warp candidate matches both independent transition timing brackets within two native frames',()=>{
- const observations=JSON.parse(readFileSync(new URL('../data/warp-destination-measurements.json',import.meta.url),'utf8'));
- const distance=(value:number,range:number[])=>Math.max(range[0]-value,value-range[1],0);
- for(const measured of observations.measurements){
+test('the vine-room warps keep the native row counts of a warp pipe: $30 sink rows, then the WORLD x-1 intermediate load',()=>{
+ // a2a3dd81 1-2 RAM: entry 5890, $06DE 0 and $0772 0 at 5938 (48 rows), $0E 8 again at 6096 (206 rows from the entry; the intermediate's
+ // $07A0 counts on IntervalTimerControl, so the load length depends on its phase, and the 4-2 fixtures land one row earlier).
+ for(const center of [944,880,816]){
   const all=observedLevels(),level=structuredClone(all.find(l=>l.id==='4-2')!);level.main='vine-warp-zone';const room=level.areas.find(a=>a.id===level.main)!;
-  room.spawn=[measured.entrance.centerX-8,160];room.camera=768;room.entryVine=undefined;
-  const sim=new Simulation([level,...all.filter(l=>l.id!=='4-2')]);sim.reset(true);let firstIntro:number|undefined;const phase=():string=>sim.phase;
-  sim.step(['down'],3);assert.equal(sim.frame,3);assert.equal(phase(),'pipe');
-  for(let frame=4;frame<=300;frame++){
-   const before:number=sim.frame;sim.step([],1);assert.equal(sim.frame-before,1);
-   if(phase()==='intro'&&sim.phaseFrame>=TRANSITIONS.introHiddenBeforeFrame&&firstIntro===undefined)firstIntro=sim.frame;
-   if(phase()==='play')break;
-  }
-  assert.equal(firstIntro,observations.timingCandidate.predictedFirstIntroAfter);assert.equal(sim.frame,observations.timingCandidate.predictedFirstPlayAfter);
-  assert.ok(distance(firstIntro!,measured.timing.firstIntroAfter)<=observations.timingCandidate.toleranceNativeFrames);
-  assert.ok(distance(sim.frame,measured.timing.firstPlayAfter)<=observations.timingCandidate.toleranceNativeFrames);
-  assert.equal(sim.level.id,measured.destination.level);
+  room.spawn=[center-8,160];room.camera=768;room.entryVine=undefined;
+  const sim=new Simulation([level,...all.filter(l=>l.id!=='4-2')]);sim.reset(true);sim.step(['down'],3);const entry=sim.frame;assert.equal(sim.phase,'pipe');
+  let intro=-1;for(let i=0;i<400&&sim.phase!=='play';i++){sim.step([],1);if(intro<0&&sim.phase==='intro')intro=sim.frame;}
+  assert.equal(intro-entry,48);assert.ok(sim.frame-entry>=205&&sim.frame-entry<=206+20);
  }
 });
 
