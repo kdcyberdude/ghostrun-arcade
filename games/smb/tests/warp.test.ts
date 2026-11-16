@@ -56,7 +56,7 @@ test('the vine-room warps keep the native row counts of a warp pipe: $30 sink ro
   const all=observedLevels(),level=structuredClone(all.find(l=>l.id==='4-2')!);level.main='vine-warp-zone';const room=level.areas.find(a=>a.id===level.main)!;
   room.spawn=[center-8,160];room.camera=768;room.entryVine=undefined;
   const sim=new Simulation([level,...all.filter(l=>l.id!=='4-2')]);sim.reset(true);sim.step(['down'],3);const entry=sim.frame;assert.equal(sim.phase,'pipe');
-  let intro=-1;for(let i=0;i<400&&sim.phase!=='play';i++){sim.step([],1);if(intro<0&&sim.phase==='intro')intro=sim.frame;}
+  let intro=-1;for(let i=0;i<400&&(sim.phase as string)!=='play';i++){sim.step([],1);if(intro<0&&(sim.phase as string)==='intro')intro=sim.frame;}
   assert.equal(intro-entry,48);assert.ok(sim.frame-entry>=205&&sim.frame-entry<=206+20);
  }
 });
