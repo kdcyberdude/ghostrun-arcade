@@ -2419,7 +2419,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(this.camera!==previousCamera)this.areaControls.advance(this.parserClock.advance(this.camera-previousCamera,false));
   this.updateLocomotionPose(poseGround,poseAbsolute,false,new Set<Button>(poseWalk?['right']:[]));
   // each BridgeCollapse removal (axe, chain, bridge pieces) queues Sfx_Blast and Sfx_BrickShatter; the last one is also BowserFall's row (17a2baf0 1-4 RAM 10521-10577)
-  if(result.remove>=0){this.soundQueues[1]=0x08;this.soundQueues[2]=0x01;this.victoryErase=result.remove===0?'axe':result.remove===1?'chain':'bridge';const object=this.areaControls.castleGraphics.find(o=>o.erase===result.remove);if(object)this.blockBackground.set(`${object.column},${object.row}`,null);}
+  if(result.remove>=0){this.soundQueues[1]=0x08;this.soundQueues[2]=0x01;this.victoryErase=result.remove===0?'axe':result.remove===1?'chain':'bridge';const object=this.areaControls.castleGraphics.find(o=>o.erase===result.remove);if(object){this.blockBackground.set(`${object.column},${object.row}`,null);const address=0x2000|((object.column>>4)&1)<<10|object.row*64|(object.column&15)*2;for(const at of [address,address+32])this.vramBuffer1.append({address:at,control:2,payload:[0x24,0x24]});}} // RemBridge writes the blank metatile as two 2-tile rows to VRAM_Buffer1 (17a2baf0 1-4 RAM 10521: $221A, $223A)
   if(this.victoryBoss){const e=this.victoryBoss;e.y=n.boss.y+32;e.vy=n.boss.speed+n.boss.force/256;delete e.graphics;
    if(e.nativeBowser){e.nativeBowser.y=n.boss.y;e.nativeBowser.move={...n.boss};e.nativeBowser.controls=n.controls;e.nativeBowser.feet=n.feet;}
    if(result.fall){e.dead=1;this.emit('sfx_bowser_falls');}
