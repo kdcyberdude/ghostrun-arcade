@@ -1,0 +1,7 @@
+{
+ "method": "tools/harness/native-nmi-timing.ts: every gameplay row of every power-on capture; NMI f from RAM row f-1 and pad f on native-cycle-cpu.mjs against nativeNmiTiming, SoundEngine alone against nativeSoundEngine (cycles and sound RAM).",
+ "recordings": 539,
+ "rows": 10602169,
+ "mismatches": 0,
+ "failing": []
+}
