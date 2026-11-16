@@ -12,7 +12,8 @@ export function seedNativeEndLevelMusic(r:Uint8Array):NativeEndLevelMusic{
  * This helper owns event $20 and the $80 silence terminator; other event lifetimes remain unimplemented. */
 export function tickNativeEndLevelMusic(s:NativeEndLevelMusic,input:{eventQueue?:number;areaQueue?:number;operMode?:number;pauseMode?:number;pauseQueue?:number}={}){
  if(input.operMode===0||input.pauseMode||input.pauseQueue===1)return;
- if(input.eventQueue){
+ // TimeRunningOut ($40) clears the buffer again when its tune ends, which this helper does not play: it leaves the buffer as it was (1d3cb409 RAM 28718: $07B1 0 at the flag after a hurry)
+ if(input.eventQueue&&input.eventQueue!==64){
   // SilenceHdr loads counter1, then consumes its single $00 terminator.
   if(input.eventQueue===128){s.eventMusicBuffer=0;s.counter=0;s.offset=1;return;}
   s.eventMusicBuffer=input.eventQueue;

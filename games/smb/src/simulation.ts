@@ -102,6 +102,11 @@ export const TRANSITIONS=transitionMeasurements.runtimeCandidates;
 export const POWERUPS=powerupRules.timingAndScores;
 export const FLAG_COMPLETION=flagRules.runtimeCandidates;
 // 6-4 native: the rescue walk starts 14 rows later (146 vs 132) and ends 16 rows later, and the load is one clock step later: native 716 rows control end -> load vs about 690; cause not found, scoped constant.
+/** Native sound-queue byte (queue index into Simulation.soundQueues, value) written for a sound event. */
+const SOUND_QUEUE_WRITES:Record<string,[number,number]>={sfx_jump_small:[0,0x80],sfx_jump_big:[0,0x01],sfx_bump:[0,0x02],sfx_stomp:[0,0x04],sfx_swim:[0,0x04],sfx_kick:[0,0x08],sfx_pipe:[0,0x10],sfx_fireball:[0,0x20],sfx_flagpole:[0,0x40],
+ sfx_coin:[1,0x01],sfx_powerup_appears:[1,0x02],sfx_vine_grows:[1,0x04],sfx_blast_fireworks:[1,0x08],sfx_timer_tick:[1,0x10],sfx_powerup:[1,0x20],sfx_1up:[1,0x40],sfx_bowser_falls:[1,0x80],
+ sfx_brick_shatter:[2,0x01],sfx_bowser_flame:[2,0x02],
+ event_death:[3,0x01],event_game_over:[3,0x02],event_castle_clear:[3,0x08],event_hurry:[3,0x40],command_silence:[3,0x80]};
 export const CASTLE_COMPLETION={secondMessageFrames:128}; // PrimaryMsgCounter2: 2*256/4 message updates
 const PIRANHA=enemyRules.piranha;
 const nativePalette3=nativeGraphicsTables.tables.find(t=>t.symbol==='Palette3Data')!.bytes,nativeColorCycle=nativeGraphicsTables.tables.find(t=>t.symbol==='ColorRotatePalette')!.bytes,nativePlayerColors=nativeGraphicsTables.tables.find(t=>t.symbol==='PlayerColors')!.bytes;
@@ -257,6 +262,10 @@ export class Simulation {
  nativeGameOver?:NativeGameOver;private gameOverDispatch=false;
  introFromGameover=false;
  slots:Slot[]=[]; events:string[]=[]; checkpoint=false; previous=new Set<Button>(); timerFrames=0;
+ /** Native sound queues written by this frame's game logic, in RAM order $FF,$FE,$FD,$FC,$FB,$FA (square 1, square 2, noise, event music, area music, pause). */
+ soundQueues=new Uint8Array(6);private flagpoleSoundQueue=0;
+ get nativeEndLevelMusicQueue(){return this.soundQueues[3];} set nativeEndLevelMusicQueue(v:number){this.soundQueues[3]=v;}
+ get nativeEndLevelMusicAreaQueue(){return this.soundQueues[4];} set nativeEndLevelMusicAreaQueue(v:number){this.soundQueues[4]=v;}
  private activatedCheckpointArea?:string;
  castleStage:'bridge'|'fall'|'walk'|'message'='bridge';castleArrivalFrame=0;nativeVictory?:NativeVictory;private victoryBoss?:Enemy;private victoryMessages:number[]=[];private victoryPending=-1;levelLoad?:NativeLevelLoad;private pipeLoad?:{target:NonNullable<Simulation['destination']>;alternate:number;header:number;page:number;offset:number};private victoryErase?:'axe'|'chain'|'bridge';
  readonly flagNumber={y:0,fraction:0};flagTop=49;flagInside=false;flagBonus=0;
@@ -356,7 +365,7 @@ export class Simulation {
   this.nativeStartup=undefined;this.coldStartup=undefined;this.nativeStartupPicture.reset();this.random=new NativeRandom();this.intervalControl=20;
   this.frame=0;this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.timeUpDeath=false;this.lateDeath=false;this.offscreenDeathRows=0;this.firebarDeathFrame=0;this.deathMove=undefined;this.playerAnimNmiTimer=0;this.playerAnimNmiCtrl=0;this.lastJumpFallForce=0.5625;this.scrollCrossCamera=0;this.slotCamera=0;this.marioMotion=1;this.firebarMarioScreenX=0;this.flagAwardFrame=-1;this.flagScrollLocked=true;this.placedBankFrame=-1;this.nativeBankItemFrame=-1;this.slotScroll=false;this.jumpArc=false;this.springPrevA=false;this.swimDirection=0;this.swimMovingDir=0;this.bounceGravity=0.5625;this.springPinX=0;this.springPinY=0;this.springLaunchSpeed=0;this.waterCollisionPose=undefined;this.water=new NativeWater();this.paletteClock.buffer1.data.fill(0);this.offscreenPitDeath=false;this.offscreenLavaDeath=false;this.colorRotationPending=false;this.graphicsBuffer1=false;this.wallSpeed=undefined;this.wallSide=undefined;this.wallBackOut=false;this.sidePipeContact=undefined;this.swimPull=0;this.headBumped=false;this.deathLoad=undefined;this.levelLoad=undefined;this.warpHudLevel=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
-  this.nativeEndLevelMusic=emptyNativeEndLevelMusic();this.nativeEndLevelMusicQueue=0;this.nativeEndLevelMusicAreaQueue=0;
+  this.nativeEndLevelMusic=emptyNativeEndLevelMusic();this.soundQueues.fill(0);this.flagpoleSoundQueue=0;
   this.slots=[0,1].map(()=>({level:0,lives:3,score:0,coins:0,size:0,checkpoint:false}));this.previous.clear();this.inputs=[new Set(),new Set()];this.events=[];this.paused=false;this.pauseCooldown=0;
   this.destination=undefined;this.pipeLoad=undefined;this.lastFire=-12;this.airRunning=false;this.runJump=false;this.mediumJump=false;this.bouncing=false;this.braking=PHYSICS.brake;this.skidAccel=0;this.motor.reset();this.jumpHeld=0;this.landJump='inactive';
   this.vineProgress.clear();this.climbingVine=undefined;this.activatedHidden1ups.clear();this.graphicsScratch.clear();
@@ -425,7 +434,7 @@ export class Simulation {
   if(!deferTerrain)for(const spring of this.area.springs??[])if(spring.nativeColumn!==undefined&&spring.nativeColumn>=this.parserColumnX-384&&spring.nativeColumn<this.parserColumnX)this.createNativeSpring(spring);
   this.emit(this.areaMusic());
  }
- private emit(id:string){this.events.push(id);}
+ private emit(id:string,queued=true){this.events.push(id);const q=SOUND_QUEUE_WRITES[id];if(q&&queued)this.soundQueues[q[0]]=q[1];}
  private areaMusic(){const area=this.area;return `music_${area.entryVine?'cloud':area.theme==='underground'?'underground':area.theme==='water'?'water':area.theme==='castle'?'castle':'ground'}${this.time<=100?'_hurry':''}`;}
  private awardPopup(value:number|'1up',x:number,y:number,victim?:Enemy){
   // SetupFloateyNumber overwrites the label in this enemy slot (or the special power-up slot5).
@@ -517,7 +526,7 @@ export class Simulation {
   }
   if(this.nativeStartup?.unsupported)return;
   const n=this.nativeStartup!,names:Button[]=['a','b','select','start','up','down','left','right'];let pad=0;for(const [bit,name]of names.entries())if(b.has(name))pad|=1<<bit;
-  tickNativeEndLevelMusic(this.nativeEndLevelMusic,{operMode:0,eventQueue:this.nativeEndLevelMusicQueue,areaQueue:this.nativeEndLevelMusicAreaQueue});this.nativeEndLevelMusicQueue=this.nativeEndLevelMusicAreaQueue=0;
+  tickNativeEndLevelMusic(this.nativeEndLevelMusic,{operMode:0,eventQueue:this.soundQueues[3],areaQueue:this.soundQueues[4]});this.soundQueues.fill(0);
   const effect=stepNativeTitleControls(n,pad);if(effect.unsupportedDemo||effect.resetTitle)n.unsupported=effect.unsupportedDemo?'title-demo-playback':'title-initializer-reentry';this.syncStartupClocks(n);
   if(n.queuedPalette.some(packet=>packet.address===0x3f0c))this.colorRotations++;
   if(effect.renderColumns)this.renderInitialSpringColumns();
@@ -526,14 +535,16 @@ export class Simulation {
   for(const packet of n.queuedPalette)this.vramBuffer1.append({address:packet.address,control:packet.bytes.length,payload:packet.bytes});
   this.nativeStartupPicture.step(n);
   if(effect.startGame){
+   this.soundQueues[4]=128; // the row that leaves the title queues area Silence (all 539 power-on captures, RAM 60: $FB $80)
    this.levelLoad={task:n.task,engine:n.engine,screen:n.screen,disable:n.disable,timer:n.timer,columns:n.columns};this.phase='intro';this.phaseFrame=0;this.lifeIntro=undefined;this.alignLifeClock(n.interval);this.nativeStartup=undefined;this.coldStartup=undefined;
   }
  }
  private update(b:Set<Button>){
   if(this.nativeStartup){this.updateStartup(b);return;}
   // SoundEngine consumes the preceding gameplay queue before ReadJoypads/PauseRoutine.
-  tickNativeEndLevelMusic(this.nativeEndLevelMusic,{eventQueue:this.nativeEndLevelMusicQueue,areaQueue:this.nativeEndLevelMusicAreaQueue,operMode:this.phase==='title'?0:1,pauseMode:this.paused?1:0});
-  this.nativeEndLevelMusicQueue=0;this.nativeEndLevelMusicAreaQueue=0;
+  tickNativeEndLevelMusic(this.nativeEndLevelMusic,{eventQueue:this.soundQueues[3],areaQueue:this.soundQueues[4],operMode:this.phase==='title'?0:1,pauseMode:this.paused?1:0});
+  // It clears the square, noise and pause queues every gameplay NMI, the music queues only when it is not running the pause tune.
+  this.soundQueues.fill(0,0,3);this.soundQueues[5]=0;if(!this.paused)this.soundQueues.fill(0,3,5);
   // Native: the row that ends the death sets engine 6 (PlayerLoseLife) to run on the NEXT row, so that row is still a death row (1-1 v2: e11 786..992, e6 993, lives screen
   // from 994). The lives screen is timed from the e6 row, as before, so the deferred respawn runs first, on the clock of the row that ended the death.
   if(this.phase==='dying'&&this.loseLife){this.loseLife=false;this.respawn();}
@@ -652,7 +663,7 @@ export class Simulation {
     if((frozen<7||grow==='big')&&this.locomotionPose.kind==='walk'&&(this.player.grounded||this.powerupStateZero))this.locomotionPose.frame=this.playerAnim.animate(3);
    }
    else{if(this.area.theme==='water'&&POWERUPS.transformFreezeNativeFrames.shrinkValue-this.powerChange.remaining===2){this.swimPoseFrame=this.playerAnim.ctrl=0;this.playerAnim.timer=this.playerAnim.timerSet;} // the shrink counts its steps in PlayerAnimCtrl, cleared on the injury row with PlayerAnimTimer reloaded and held (13040-13095: $0781 7, first advance at 13102); the swim pose shows frame 0 from the third row (6a8b71a3 2-2 RAM 13040: $070D 2 -> 0, $06D5 still 7*8; 13042 5*8 through the steps, 13094-13097 small frame 0)
-    if(this.swimActive&&this.powerChange.remaining<40&&pressed('a')&&this.water.canStroke(true,false,this.player.grounded)){this.water.strokeOnly(Math.floor(this.player.y)-32);this.player.vy=this.water.speed+this.water.force/256;}
+    if(this.swimActive&&this.powerChange.remaining<40&&pressed('a')&&this.water.canStroke(true,false,this.player.grounded)){this.water.strokeOnly(Math.floor(this.player.y)-32);this.emit('sfx_swim');this.player.vy=this.water.speed+this.water.force/256;}
     const before=this.camera;this.releaseNativeSlots();{const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,s)=>busy.has(s));}this.shrinkScroll();this.eraseOffscreenEnemies();{const swim=this.swimTimer;this.birthNativeWaterEnemies();if(swim>0)this.swimTimer=swim;}this.advanceNativeAreaParser(this.camera-before); // the held enemies still leave by the left bound and new ones are made (5708387c 2-2 RAM 13344: slot 2's Cheep at X 1430 freed as the camera reaches 1504; RAM 13346 a Cheep made there at X 1793)
    for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
    if(this.powerChange?.kind==='shrink'&&this.area.theme==='water'){const pc=this.powerChange,done=(pc.steps??0)>=10;if(pc.remaining<40&&!done&&!(this.random.frame&3))pc.steps=(pc.steps??0)+1;if(!done)return;} // in water the size change takes ten steps on rows with FrameCounter & 3 = 0 after its flag row (TimerControl 240), the last clearing PlayerChangeSizeFlag $070B; on the rows after it, while TimerControl still runs, Mario takes his own step (5708387c 2-2 RAM 13364: $070B 0 at TimerControl 203, x 1598.875 -> 1600.125 -> 1601.375 on 13365-13366; 6a8b71a3 RAM 13094 clears at TimerControl 201, no row left, Mario held)
@@ -726,7 +737,7 @@ export class Simulation {
   if(!useMotor&&!water)this.motor.reset(Math.round(p.vx*4096),p.facing<0?-1:1); // a fitted (non-native) entry fall hands the motor the steady-state bytes of its speed
   if(!water&&p.grounded)this.airRunning=Math.abs(p.vx)>PHYSICS.walkMax;
   if(water){
-   if(pressed('a')){this.waterEntryFall=false;p.grounded=false;this.emit('sfx_swim');}
+   if(pressed('a')){this.waterEntryFall=false;p.grounded=false;if(!swim)this.emit('sfx_swim');}
    if(this.waterEntryFall)p.vy=Math.min(PHYSICS.maxFall,p.vy+WATER_PHYSICS.entryGravity);
    else if(!swim){const next=advanceWater(p.y,p.vy,b.has('a'),pressed('a'),this.waterSurface);p.y=next.y;p.vy=next.vy;}
   }else{
@@ -808,7 +819,8 @@ export class Simulation {
   // Native coordinates have page 1 on screen: remake feet 288 is page 2, and 1312 is page 6.
   // PlayerHole runs before ProcessWhirlpools; its pending late step cannot select engine6 early.
   if(p.y-(this.swimActive?this.water.whirlMoved:0)>=LIFE_FLOW.pitEndFeetY){this.clampBelowScreen(oldBottom,b);this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;this.passNativeObjects();this.updateFishFrenzy();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();return;} // the rest of the frame's object pass still runs (2-3 80c23e3d row 18866: the Cheep timer reloads on the pit row)
-  if(oldBottom>=288&&!this.pitMusic){this.pitMusic=true;this.emit('event_death');}
+  // PlayerHole tests this row's moved Y high byte, so the death music is queued on the row Mario reaches page 2 (3d43b7b4 1-2 RAM 6402: Y high 2, $FC $01)
+  if(p.y-(this.swimActive?this.water.whirlMoved:0)>=288&&!this.pitMusic){this.pitMusic=true;this.emit('event_death');}
   const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true; // elsewhere these cells are scenery: Mario falls on to the pit (3-1 00276e8d rows 23337-23360)
   if(this.area.checkpoint&&this.camera>=this.area.checkpoint.camera){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;} // native halfway: the screen's page reached the halfway page (corpus deaths: 1-1 page 5, 1-3 page 4, 2-1 page 6; Mario's own page does not count)
   const previousCamera=this.camera,attemptX=cameraAttemptX??p.x;
@@ -879,7 +891,7 @@ export class Simulation {
    this.phase=exit.kind==='axe'?'castle':'flag';this.phaseFrame=0;if(exit.kind!=='axe')p.vx=0;
    this.flagBonus=exit.kind==='flag'?(FLAG_COMPLETION.scoreThresholds.find(t=>p.y<t.feetBelow)?.score??FLAG_COMPLETION.lowestScore):0;
    if(exit.kind==='axe'){this.beginCastle();
-   }else {p.x=exit.x-15+(p.x-Math.floor(p.x));this.beginFlag();this.emit('command_silence');this.emit('sfx_flagpole');}
+   }else {p.x=exit.x-15+(p.x-Math.floor(p.x));this.beginFlag();this.emit('command_silence');this.flagpoleSoundQueue=0x40;this.emit('sfx_flagpole',false);}
   }
   if(this.phase==='play')this.consumeGameTimer(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryControlLocked&&!this.entryTimerHidden&&this.waterEntryTimerHold===0);
  }
@@ -1075,6 +1087,8 @@ export class Simulation {
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
    // A foot deep in a resting springboard cell is pushed like a wall (2-1 mood rows 12473-12474: right foot 6 px into the top cell, x -1, speed 0).
    if(down&&!tile&&pipeTop===undefined&&this.area.theme!=='water'){const spring=this.springSideAt(x,edge);if(spring){if(Math.floor(p.y)-(spring.y+Math.floor((edge-spring.y)/16)*16)>=FOOT_LAND_DEPTH){this.footPush();break;}if(dy>0)this.springFeet=spring.spec;}}
+   // HeadChk finds the flagpole ($24/$25) solid: a rising head in its cell sounds the bump before the side check grabs the pole (fb8156cb 1-1 RAM 1618: speed -1 -> 1, $FF $02)
+   if(!down&&nativeHead&&!tile&&hiddenBlockBumps(p.y)&&[0x24,0x25].includes(this.tileAt(x,edge)))this.soundQueues[0]=0x02;
    if(!tile&&pipeTop===undefined)continue;
    if(tile&&this.area.theme==='water'&&down&&(waterFeet-tile.y>=SWIM_WALL_DEPTH||this.water.contactSpeed<0))continue;
    if(down&&tile&&this.area.theme!=='water'&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();break;}
@@ -1082,7 +1096,8 @@ export class Simulation {
    else{if(!tile)continue;
     // Native BlockBounceTimer ($0784, 16 after a block hit, counted down every frame): while it runs a brick, ?-block or hidden block bumps like a
     // solid cell (speed 1 plus the fraction, no hit, no sound; PlayerBGCollision NYSpd; 7-1 v2 row 440: timer 7, speed 1 + 80/256).
-    if(nativeHead&&this.blockBounceTimer>0&&isHitBlock(tile.id)&&tile.id!==196){this.bumpHead(dy,1,gravity);this.footDepthAfterBump(nativeHead);break;}
+    // The bouncing cell itself holds the solid $23 in the block buffer, so hitting it again sounds the bump (f951c00f RAM 3278: BlockBounceTimer 6, $FF $02).
+    if(nativeHead&&this.blockBounceTimer>0&&isHitBlock(tile.id)&&tile.id!==196){if('col' in tile&&this.enemyBumpCells.get(`${tile.col},${tile.row}`)===0x23)this.soundQueues[0]=0x02;this.bumpHead(dy,1,gravity);this.footDepthAfterBump(nativeHead);break;}
     if(nativeHead)this.bumpHead(dy,isHitBlock(tile.id)&&tile.id!==196&&(p.size===0||!(tile.id>=81&&tile.id<=83))?0:1,gravity);else{if(!water)p.y=tile.y+tile.height+h;p.vy=0.5;this.headTileHit=true;this.runJump=false;this.mediumJump=false;}
     if(water){if(tile.id!==0x26&&tile.id>=[0x10,0x61,0x88,0xc4][tile.id>>6])this.emit('sfx_bump');}
     else if('col' in tile){const wasBroken=this.brokenBrick;this.hitBlock(tile.col!,tile.row!,tile.id);if(nativeHead&&this.brokenBrick&&this.brokenBrick!==wasBroken)this.bumpHead(dy,-2,gravity);}else if('piece' in tile&&tile.piece.interactive&&(tile.id===192||tile.id===196))this.hitBlock(tile.piece.x/16,tile.piece.y/16,tile.id,tile.piece);else this.emit('sfx_bump');
@@ -1097,7 +1112,8 @@ export class Simulation {
   for(const x of [p.x+3,p.x+12]){const tile=this.collisionAt(x,p.y);if(tile&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();return;}}
  }
  private hitBlock(x:number,y:number,id:number,piece?:TilePiece){
-  const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(!this.nativeBlockBounce&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.queueBlockMetatile(key,null);if(id!==196&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
+  // a solid cell (SolidMTileUpperExt) sounds the bump on every hit, also within the 16 rows that keep a block from being hit again (c5bffc74 RAM 7739)
+  const key=`${x},${y}`;if(this.bump.has(key)){if(id>=[0x10,0x61,0x88,0xc4][id>>6])this.soundQueues[0]=0x02;return;}this.bump.set(key,0);if(!this.nativeBlockBounce&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.queueBlockMetatile(key,null);if(id!==196&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
   if(id===96)this.activatedHidden1ups.add(`${this.currentPlayer}/${this.level.id}/${this.area.id}/${key}`);
   const p=this.player;
   // Native CheckTopOfBlock (BumpBlock and BrickShatter): a coin ($C2) right above a bumped block is taken with it, +200 and a coin at once (1-2 v2 row 865: col 59 C2 -> 0, brick 52 -> 23).
@@ -1114,12 +1130,13 @@ export class Simulation {
   const newNativeBlock=nativeBlock.state>=16&&nativeBlock.x===(Math.floor(p.x+8)&~15);
   if(newNativeBlock){if(!this.blockBackground.has(key))this.blockBackground.set(key,id);this.blockBackgroundQueue.set(key,null);this.blockUpdateBusy=this.graphicsBuffer1=true;} // the name table keeps the hit metatile until the queued blank is written (0d12a2e4 rows 327..330)
   const content=this.area.blockContents?.find(block=>block.col===x&&block.row===y);
+  // BumpBlock queues Sfx_Bump before it runs the block's contents (3d43b7b4 1-1 RAM 1251: $FF $02 with the coin's $FE $01); only BrickShatter is silent on square 1.
   const powerupContent=content&&content.kind!=='vine'&&content.kind!=='multiCoin'&&id!==196?content.kind:undefined;
-  if(content?.kind==='vine'&&id!==196){
+  if(content?.kind==='vine'&&id!==196){this.soundQueues[0]=0x02;
    const vine=this.vines.find(v=>v.id===content.vineId)!;this.tiles.set(key,196);vine.growing=true;vine.nativeHeight=(this.random.frame&3)>=2?1:0; // VineHeight already steps on the bump row (cf537977 2-1 RAM 11435: FrameCounter 6, VineHeight 1)
 this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativePowerState===undefined);
    this.vineProgress.set(this.vineKey(vine.id),vine.height);this.emit('sfx_vine_grows');
-  }else if((content?.kind==='multiCoin'||id===88||id===93)&&id!==196){ // metatiles $58/$5D are the multi-coin bricks wherever they stand (e2a3c165 row 1887: Block_Metatile stays $58)
+  }else if((content?.kind==='multiCoin'||id===88||id===93)&&id!==196){this.soundQueues[0]=0x02; // metatiles $58/$5D are the multi-coin bricks wherever they stand (e2a3c165 row 1887: Block_Metatile stays $58)
    // One timer for every multi-coin brick: the first hit sets it to 11, it counts down on the 21-row interval clock, and a hit while it reads 0 still
    // pays and leaves a used block (smb-fast 6-2 d09224d1 RAM 48787-49029, 83121118 49495-49713: $079D 11 -> 0 with $077F, $06BC 1).
    // TimerControl (NMI) counts the timer down before the hit on a tick row: the hit reads the new value and a first hit's 11 is not counted that row
@@ -1128,7 +1145,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    if(!this.brickCoinStarted){this.brickCoinStarted=true;this.brickCoinTimer=11;}
    if(this.brickCoinTimer===0)this.tiles.set(key,196);
    this.coin();this.spawnNativeBlockCoin(x);
-  }else if(powerupContent||id===192||id===193||id===95||id===96||id>=85&&id<=94){
+  }else if(powerupContent||id===192||id===193||id===95||id===96||id>=85&&id<=94){this.soundQueues[0]=0x02;
    let item:Item['kind']='coin';
    if(id===193||id===85||id===90)item=p.size?'flower':'mushroom';
    if(id===96||id===89||id===94)item='1up';
@@ -1203,7 +1220,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   // The entry fall is uncontrolled until the player reaches native y 49; one more frame passes before the first input counts.
   // Below the map the controller no longer acts: the speed is kept and the fall goes on.
   const locked=this.swimLock===2,noInput=locked||p.y<32||p.y-32>=NO_INPUT_Y,held=!noInput&&b.has('a'),dir=(noInput?0:direction) as Direction;this.swimDirection=dir;
-  const heldBefore=held&&!pressedA&&!this.swimFreshA;if(held&&!pressedA&&this.swimFreshA)this.emit('sfx_swim');if(!locked)this.swimFreshA=false;
+  const heldBefore=held&&!pressedA&&!this.swimFreshA;if(!locked)this.swimFreshA=false;
+  if(w.canStroke(held,heldBefore,p.grounded))this.emit('sfx_swim'); // ProcJumping queues the swim sound with every stroke, from the masked controller bits (8f90807f 2-2 RAM 14184-14198: entry fall, no sound)
   w.motor.speed=Math.round(p.vx*4096);
   const bits=noInput?0:(b.has('a')?1:0)|(b.has('b')?2:0)|(b.has('select')?4:0)|(b.has('start')?8:0)|(b.has('up')?16:0)|(b.has('down')?32:0)|(b.has('left')?64:0)|(b.has('right')?128:0);
   const horizontal=w.horizontalSource(bits,p.grounded,w.canStroke(held,heldBefore,p.grounded));
@@ -1462,7 +1480,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    if(step.launch){
     p.vy=n.force;this.springLaunchSpeed=n.force;this.springRelease=true;this.springTimers.delete(spring);
     this.bouncing=true;this.bounceGravity=this.lastJumpFallForce;this.landJump='inactive';
-    if(p.size)this.emit('sfx_jump_big');return true;
+    if(p.size)this.emit('sfx_jump_big',false);return true; // the launch queues no sound (304c4e4a RAM 16263: speed $F4, $FF 0)
    }
   }
   return false;
@@ -1570,6 +1588,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   e.bbCheck=false;
   const d=Math.floor(e.x)-Math.floor(this.player.x);
   if(Math.floor(this.camera)-Math.floor(e.x)>=8||e.x-this.camera>BULLETS.cannonScreenRight||d>=BULLETS.cannonEraseLeft&&d<=BULLETS.cannonEraseRight){this.eraseBulletObject(e);return;}
+  this.soundQueues[1]=0x08; // the launch queues Sfx_Blast (1d3cb409 5-1 RAM 43516: state 0 -> 1, $FE $08)
   e.cannonFrameTimer=10;if(e.enemySlot!==undefined)this.slotFrameTimers[e.enemySlot]=10;e.vx=(d<0?1:-1)*Math.abs(e.vx);e.x+=Math.sign(e.vx)*BULLETS.speed;
 
  }
@@ -1622,6 +1641,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.spawnFrenzyBullet(slot);
  }
  private spawnFrenzyBullet(slot:number){
+  this.soundQueues[1]|=0x08; // the frenzy's InitBulletBill ORs Sfx_Blast into the square-2 queue (7642e228 RAM 42797: coin and blast, $FE $09)
   const pick=nativeFrenzyHeight(this.random.bytes[slot],this.swimBag);this.swimBag=pick.bag;
   this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,pick.y+BULLETS.generatorFeetOffset,-1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,frenzy:true,age:1,graphicsVisible:false});if(slot<5){this.slotSub[slot]=0;this.slotVertical[slot].fraction=0;this.slotYFrac[slot]=0;this.slotYFraction[slot]=0;}else{this.specialSlot5.flag=1;this.specialSlot5.id=8;} // made after this frame's enemy step
   this.spinyTimer=this.nativeFrenzyTimer=32;
@@ -1855,7 +1875,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(this.screenTimer>0)this.screenTimer--;
   for(const e of this.enemies){if(e.shellTimer)e.shellTimer--;if(e.pod&&e.pod.timer>0)e.pod.timer--;if(e.bloop&&e.bloop.timer>0)e.bloop.timer--;if(e.hbro&&e.hbro.interval>0)e.hbro.interval--;}
  }
- private restoreStarMusic(){if(nativeStarMusic(this.player.star,this.intervalControl,Math.floor((this.player.y-32)/256)+1)){this.emit(this.areaMusic());this.nativeEndLevelMusicAreaQueue=this.area.entryVine?16:this.area.autoWalk?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];}}
+ private restoreStarMusic(){if(nativeStarMusic(this.player.star,this.intervalControl,Math.floor((this.player.y-32)/256)+1)){this.emit(this.areaMusic());this.soundQueues[4]=this.area.entryVine?16:this.area.autoWalk?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];}}
  private updateNativePodoboo(e:Enemy){
   const n=e.pod??=nativePodobooState(this.slotYFraction[e.enemySlot??0]); // InitPodoboo zeroes speed and force, the slot keeps its y fraction $0417+s (3-4 row 616)
   if(e.waitedForNativeSlot&&e.age===1){e.y=n.y-256+24;return;}
@@ -1922,6 +1942,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(((rawY+0x3e)&255)<0x44||this.enemyBumpCells.get(key)!==0x23)return false;
   this.enemyBumpCells.set(key,0);
   e.dead=1;n.state=(n.state&0x10)|0x22;n.y-=2;n.speed=-4;e.nativeDir=Math.floor(e.x)-Math.floor(this.player.x)<0?-1:1;e.vx=e.nativeDir; // the move force is kept (b25cdc78 5-2 RAM 40924-40925: hit mid-jump with $0435 122, Y 120 frac 238 -> 115 frac 104, force 183)
+  this.soundQueues[0]=0x08; // ShellOrBlockDefeat queues Sfx_EnemySmack
   this.floateyScore(1000);this.enemyPopup(1000,e);this.popups[this.popups.length-1].y=n.y-8;this.moveDefeatedHammerBro(e); // FloateyNum_Y = the Y after the 2-pixel lift, counted down once that frame (all three: Y 120 -> $011E 117, OAM 109)
   return true;
  }
@@ -2113,6 +2134,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   * v2 traces: 17 of 17 landings face Mario (none on a FrameCounter multiple of 8); the turn one row later at 4-1 row 733 and 6-1 row 247 is the ordinary wall turn. */
  private spinyLandingVx(x:number){return (this.random.frame&7)===0||Math.floor(this.player.x)-Math.floor(x)>=0?SPINY_EGG.walk:-SPINY_EGG.walk;}
  /** The walker side probe after the landing step (as the walker pass does after its own step: nativeWalkerWallTurn). */
+ /** DoEnemySideCheck's turn (RXSpd): a kicked shell outside slot 5 queues Sfx_Bump on the way (ChkForBump_HammerBroJ; 3d43b7b4 1-2 RAM 3814: state $84, $FF $02). */
+ private wallTurnEnemy(e:Enemy){e.vx=-e.vx;if(e.movingShell&&e.enemySlot!==5)this.soundQueues[0]=0x02;}
  private spinyWallTurn(e:Enemy){if(this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;}
  /** A falling egg (state 5): the background test runs before the move; landed, it turns into a Spiny walking toward Mario and steps on that row. */
  private updateSpinyEgg(e:Enemy){
@@ -2239,7 +2262,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  nativePowerSlot={speed:0,force:0,fraction:0};
  private flagAwardFrame=-1;
- nativeEndLevelMusic=emptyNativeEndLevelMusic();nativeEndLevelMusicQueue=0;nativeEndLevelMusicAreaQueue=0;
+ nativeEndLevelMusic=emptyNativeEndLevelMusic();
  nativeFrenzyTimer=0;nativeCastleFlag?:NativeStarFlag&{slot:number;x:number;draw:boolean};
  nativeFireworks:{slot:number;x:number;y:number;timer:number;cell:number;active:boolean;index:number;draw:boolean}[]=[];
  nativeFireworksCounter=255;private nativeFireworksBorn=0;
@@ -2285,6 +2308,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private updateFlag(){
   const p=this.player,exit=this.area.exit!,rules=FLAG_COMPLETION;
+  // FlagpoleSlide moves FlagpoleSoundQueue, set at the grab, into the square-1 queue on the first slide row (3d43b7b4 1-1 RAM 1444 grab, 1445 $40)
+  if(this.flagpoleSoundQueue){this.soundQueues[0]=this.flagpoleSoundQueue;this.flagpoleSoundQueue=0;}
   if(this.flagAwardFrame<0){
    p.climbing=true;if(Math.floor(p.y)<0x9e+32){p.vy=1+255/256;p.y+=p.vy;}else p.vy=0;
    // AutoControlPlayer still runs PlayerBGCollision after the climb, including a low grab on the pedestal.
@@ -2322,7 +2347,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    if(this.wallSpeed!==undefined){this.motor.contact(1,true);p.vx=this.motor.speed/4096;this.flagInside=true;this.playerBackgroundPriority=true;}
    if(this.wallSpeed!==undefined||this.wallBackOut)this.sideCollisionTimer=16;
    // PlayerEndLevel clears ScrollLock after AutoControlPlayer, at native y >= $ae; this frame still used the lock.
-   if(this.flagScrollLocked&&Math.floor(p.y)>=0xae+32){this.flagScrollLocked=false;this.nativeEndLevelMusicQueue=32;}
+   if(this.flagScrollLocked&&Math.floor(p.y)>=0xae+32){this.flagScrollLocked=false;this.soundQueues[3]=32;}
   }
   if(this.nativeCastleFlag?.task===5){this.nextLevel();return;}
   this.runNativeFlagActors();
@@ -2333,7 +2358,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.colorRotationPending=false; // GameCoreRoutine skips the GameEngine tail on axe contact.
   this.paletteRemove=true;this.phase='castle';this.phaseFrame=0;this.flagBonus=0;
   this.bridge=[...this.tiles].filter(([,id])=>id===137).sort((a,b)=>Number(b[0].split(',')[0])-Number(a[0].split(',')[0])).map(([key])=>key);
-  this.castleStage='bridge';this.emit('command_silence');this.beginNativeVictory();
+  this.castleStage='bridge';this.emit('command_silence',false);this.beginNativeVictory(); // native queues no music at the axe (17a2baf0 1-4 RAM 10510)
  }
  get spritePictureOwner(){return this.castlePictures.owner;}
  get castleRetainer(){return this.castlePictures.retainer;}
@@ -2388,7 +2413,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   // PlayerVictoryWalk calls UpdScrollVar before VictoryMode's slot0 enemy pass.
   if(this.camera!==previousCamera)this.areaControls.advance(this.parserClock.advance(this.camera-previousCamera,false));
   this.updateLocomotionPose(poseGround,poseAbsolute,false,new Set<Button>(poseWalk?['right']:[]));
-  if(result.remove>=0){this.victoryErase=result.remove===0?'axe':result.remove===1?'chain':'bridge';const object=this.areaControls.castleGraphics.find(o=>o.erase===result.remove);if(object)this.blockBackground.set(`${object.column},${object.row}`,null);}
+  // each BridgeCollapse removal (axe, chain, bridge pieces) queues Sfx_Blast and Sfx_BrickShatter; the last one is also BowserFall's row (17a2baf0 1-4 RAM 10521-10577)
+  if(result.remove>=0){this.soundQueues[1]=0x08;this.soundQueues[2]=0x01;this.victoryErase=result.remove===0?'axe':result.remove===1?'chain':'bridge';const object=this.areaControls.castleGraphics.find(o=>o.erase===result.remove);if(object)this.blockBackground.set(`${object.column},${object.row}`,null);}
   if(this.victoryBoss){const e=this.victoryBoss;e.y=n.boss.y+32;e.vy=n.boss.speed+n.boss.force/256;delete e.graphics;
    if(e.nativeBowser){e.nativeBowser.y=n.boss.y;e.nativeBowser.move={...n.boss};e.nativeBowser.controls=n.controls;e.nativeBowser.feet=n.feet;}
    if(result.fall){e.dead=1;this.emit('sfx_bowser_falls');}
@@ -2841,7 +2867,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    this.groupParserSlot=slot;if(members.length)this.passNativeGroups(members[0].nativeGroup!.column,init.offset,this.placedActorStream?this.camera+this.lakituScroll:this.camera);
    return members.some(e=>e.active&&e.enemySlot===slot)?1:0;
   }
-  if(init.id===47){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot,this.vineSegmentAnchor(slot));return init.flag;}
+  if(init.id===47){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot,this.vineSegmentAnchor(slot));this.soundQueues[1]=0x04;return init.flag;} // its init is Setup_Vine, which queues Sfx_GrowVine
   if(init.id===52){const controller=this.frenzyControllers.find(c=>c.offset===init.offset)!;controller.slot=slot;controller.x=init.x!+this.placedOrigin;return 1;}
   if(init.id>=27&&init.id<=31){const bar=this.placedBars.get(init.offset!)!;this.firebarSlots!.initializeNative(bar,slot,{id:init.id,high:this.slotYSpeed[slot],low:0,...nativeFirebarParameters(init.id)});this.castleSlotXSpeed[slot]=0;return 1;}
   if(init.id===12){const e=this.enemies.find(e=>e.nativeOffset===init.offset&&!e.active)!;Object.assign(e,{active:true,slotFreed:false,enemySlot:slot,slotBorn:this.frame,graphicsVisible:false,x:init.x!+this.placedOrigin+this.slotSub[slot]/256,y:282,age:0,pod:nativePodobooState(this.slotYFraction[slot])});Object.assign(this.slotVertical[slot],{speed:0,force:0});this.slotYSpeed[slot]=0;return 1;}
@@ -3107,6 +3133,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
      const points=nativeGoombaBlockStun(n,Math.floor(e.x),Math.floor(p.x));
      e.y=((Math.floor(e.y)-24)&~255)+n.y+24;e.vx=((n.xSpeed<<24)>>24)/16;e.direction=n.direction===1?1:-1;
      e.defeat={y:e.y,speed:n.speed,force:n.force,fraction:n.fraction,timer:0};e.dead=1;e.squashed=false;e.walkerState=n.state;e.vy=n.speed+n.force/256;
+     this.soundQueues[0]=0x08; // ShellOrBlockDefeat queues Sfx_EnemySmack (8f90807f 1-1 RAM 780)
      this.floateyScore(points);
     }
    }
@@ -3201,12 +3228,12 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     if(!greenBounce&&!normalWalker){
      if(e.kind==='beetle'){
       // Background collision precedes the move (8-1 Beetle rows 624-625).
-      if(this.enemySolid(Math.floor(e.x)+(dx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;
+      if(this.enemySolid(Math.floor(e.x)+(dx>0?16:0),e.y-wallHeight(e)))this.wallTurnEnemy(e);
       e.x+=dx===0?0:Math.sign(e.vx)*Math.abs(dx);
      }else{
       e.x+=dx;
-      if(nativeWalkerWallTurn(e.kind)){if(this.enemySolid(Math.floor(e.x)+(dx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;}
-      else if(this.enemySolid(e.x+(dx>0?15:1)+wallReach(e,dx),e.y-wallHeight(e))){e.x-=dx;e.vx=-e.vx;}
+      if(nativeWalkerWallTurn(e.kind)){if(this.enemySolid(Math.floor(e.x)+(dx>0?16:0),e.y-wallHeight(e)))this.wallTurnEnemy(e);}
+      else if(this.enemySolid(e.x+(dx>0?15:1)+wallReach(e,dx),e.y-wallHeight(e))){e.x-=dx;this.wallTurnEnemy(e);}
      }
     }
     if(greenBounce){
@@ -3241,7 +3268,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
         if(e.kind==='spiny')e.vx=this.spinyLandingVx(e.x);
        }
       }else if(!(e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&e.walkerState===0)){if(e.movingShell)e.shellFalling=true;else e.walkerState=e.shell||e.squashed?2:1;}
-      if(!landed&&rawY>=0x20&&this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4))e.vx=-e.vx;
+      if(!landed&&rawY>=0x20&&this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4))this.wallTurnEnemy(e);
      }
      if(!this.nativeTimersStopped&&(e.shell||e.squashed)&&!e.movingShell&&e.walkerState>=3&&e.shellTimer===0){if(e.squashed){e.squashed=false;e.dead=0;}e.shell=false;e.walkerState=0;e.shellAge=0;e.shellChain=0;e.direction=(this.random.frame&1)?-1:1;e.vx=e.direction*(this.primaryHardMode?0.75:0.5);revivedShell=true;}
      stompY=e.y;stompFall={...n};
@@ -3335,7 +3362,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   }
   while(nativeSlot<6)this.visitNativeBankSlot(nativeSlot++,oldBottom);this.currentNativeBankSlot=-1;
   this.nativeWalkerContacts(stepFrom);
-  if(!this.placedStream&&this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&!this.parserClock.blocked){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot,this.vineSegmentAnchor(slot));}}
+  if(!this.placedStream&&this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&!this.parserClock.blocked){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot,this.vineSegmentAnchor(slot));this.soundQueues[1]=0x04;}} // Setup_Vine queues Sfx_GrowVine again (5fd2b7fb RAM 10017: slot 3 $2F, $FE $04)
   if(reservedClaim)Object.assign(this.specialSlot5,{flag:reservedClaim.flag,id:reservedClaim.id,frenzyBuffer:reservedClaim.buffer});
   {const held=this.specialSlot5.vineSlots.length>0;this.specialSlot5.stepVine(this.random.frame,this.camera+this.lakituScroll);if(held&&!this.specialSlot5.vineSlots.length)for(const vine of this.vines)if(vine.nativeHeight!==undefined)vine.erasedFrame??=this.frame;} // its sprites are drawn on the erase row, not after (b754754a 3-1 RAM 19806: camera 2096 = vine X, slots 3/5 freed, OAM still at x 0; 19807 none)
   // The stop-frenzy record is parsed whether or not its Lakitu still lives: with him defeated it only clears the Spiny buffer (8-2 bd15161f RAM 71265: Lakitu erased at 71206, slot 1 takes id $18, $06CB $12 -> 0, so no Lakitu reappears at 71992)
@@ -3529,7 +3556,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.collectedPicture=i.kind==='mushroom'&&i.nativePowerState===0xc0&&p.size===0?{frame:this.frame,item:{...i}}:undefined;
     i.life=0;
     if(i.kind==='1up'){this.lives++;this.awardPopup('1up',i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_1up');}
-    else if(i.kind==='star'){this.nativeEndLevelMusicAreaQueue=64;p.star=NATIVE_STAR_PICKUP;if(i.nativePowerState!==undefined)this.floateyScore(POWERUPS.starCollectionScore.value);else this.addScore(POWERUPS.starCollectionScore.value);this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset);this.emit(this.time<=100?'music_star_hurry':'music_star');}
+    else if(i.kind==='star'){this.soundQueues[4]=64;p.star=NATIVE_STAR_PICKUP;if(i.nativePowerState!==undefined)this.floateyScore(POWERUPS.starCollectionScore.value);else this.addScore(POWERUPS.starCollectionScore.value);this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset);this.emit(this.time<=100?'music_star_hurry':'music_star');}
     else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size){this.powerChange={from:p.size,to:size,remaining:nativeTransformRows(i.kind==='flower'?'fire':'grow'),kind:i.kind==='flower'?'fire':'grow',born:this.frame};this.powerupStateZero=true;this.transformPreviousAB=this.nativePlayerAB;p.climbing=false;this.climbingVine=undefined;}if(i.nativePowerState!==undefined)this.floateyScore(1000);else this.addScore(1000);this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_powerup');}
  }
  private cancelWaterPass(){
@@ -3581,9 +3608,10 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   }
  }
  private respawn(){
+  this.soundQueues[3]=128; // PlayerLoseLife queues Silence before it counts the life down, game over or not (3d43b7b4 1-2 RAM 3240)
   this.vineProgress.clear();this.climbingVine=undefined;
   this.lives--;this.slots[this.currentPlayer]={level:this.levelIndex,lives:this.lives,score:this.score,coins:this.coins,size:0,checkpoint:this.checkpoint,checkpointArea:this.activatedCheckpointArea};
-  if(this.lives<=0){this.nativeGameOver={mode:3,task:0,engine:6,screen:12,disable:1,timer:this.screenTimer,master:this.nativeTimersStopped?255-this.phaseFrame:0,timeUp:this.timeUpDeath,columns:255};this.gameOverDispatch=true;this.phase='gameover';this.phaseFrame=0;this.nativeEndLevelMusicQueue=128;return;}
+  if(this.lives<=0){this.nativeGameOver={mode:3,task:0,engine:6,screen:12,disable:1,timer:this.screenTimer,master:this.nativeTimersStopped?255-this.phaseFrame:0,timeUp:this.timeUpDeath,columns:255};this.gameOverDispatch=true;this.phase='gameover';this.phaseFrame=0;return;}
   if(this.twoPlayer&&this.slots[1-this.currentPlayer].lives>0){
    this.currentPlayer=1-this.currentPlayer;const s=this.slots[this.currentPlayer];this.levelIndex=s.level;this.lives=s.lives;this.score=s.score;this.coins=s.coins;this.checkpoint=s.checkpoint;this.activatedCheckpointArea=s.checkpointArea;
   }
@@ -3597,7 +3625,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(!held){this.gameTimerStep(false);this.tickIntervalTimers();}n.timer=this.screenTimer;
   if(this.gameOverDispatch){this.gameOverDispatch=false;return;}
   const effect=runNativeGameOver(n,{start:b.has('start'),canContinue:this.twoPlayer&&this.slots[1-this.currentPlayer].lives>0});this.screenTimer=n.timer;
-  if(effect.eventQueue!==undefined){this.nativeEndLevelMusicQueue=effect.eventQueue;if(effect.eventQueue===2)this.emit('event_game_over');}
+  if(effect.eventQueue!==undefined){this.soundQueues[3]=effect.eventQueue;if(effect.eventQueue===2)this.emit('event_game_over');}
   if(effect.leave==='continue'){this.nativeGameOver=undefined;this.finishGameover();}
   else if(effect.leave==='title'){this.phase='title';this.phaseFrame=0;}
  }
@@ -3614,11 +3642,13 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const n=load.state;if(n.task===3&&n.engine===7)return;
   if(!(n.task===0&&n.screen===0))this.gameTimerStep(false);
   const tick=((this.lifeRow-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase;
+  if(n.task===2)this.soundQueues[4]=this.loadAreaMusic(); // as in a level load (3d43b7b4 1-2 RAM 3408: $FB $04)
   const result=stepNativeLevelLoad(n,tick);
   if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=-this.areaControls.origin*16;this.parserColumnX=-this.areaControls.origin*16;this.areaControls.locked=false;this.parserClock.task=0;this.parserClock.scroll=0;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
   if(result.clear){
    this.graphicsScratch.clear();
    const time=this.time;this.loadArea(load.area,load.spawn,load.camera,false,true);this.time=time;load.player={...this.player};
+   this.soundQueues[4]=128; // InitializeArea queues area Silence (3d43b7b4 1-2 RAM 3242)
    this.timerFrames=24;this.player.x=0;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.player.grounded=false;
   }
   if(result.preload&&load.player){Object.assign(this.player,load.player);this.seedPlayerPriority(0,Boolean(load.camera));this.initializeGameTimer();this.timerFrames=24;}
@@ -3640,12 +3670,12 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  warpHudLevel?:string;get hudLevelId(){return this.warpHudLevel??this.level.id;}
  private beginNativeWarp(level:string){
   const index=this.levels.findIndex(l=>l.id===level);if(index<0)throw new Error(`Unmapped warp level ${level}`);
-  this.warpHudLevel=this.level.id;this.levelIndex=index;this.fetchGameTimer=true;this.checkpoint=false;this.activatedCheckpointArea=undefined;this.vineProgress.clear();this.nativeEndLevelMusicQueue=128;this.emit('command_silence');
+  this.warpHudLevel=this.level.id;this.levelIndex=index;this.fetchGameTimer=true;this.checkpoint=false;this.activatedCheckpointArea=undefined;this.vineProgress.clear();this.soundQueues[3]=128;this.emit('command_silence');
   const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.level.main);if(!binding)throw new Error(`Unbound warp level ${level}`);
   return {target:{area:this.level.main,spawn:this.level.areas.find(a=>a.id===this.level.main)!.spawn,direction:'level',frames:0},alternate:0,header:nativePhysicalAreas[binding.code].header[0],page:0,offset:binding.offset};
  }
  private beginPipeAreaLoad(){
-  const load=this.pipeLoad!,warp=Boolean(this.destination?.level);if(this.area.autoWalk){this.fetchGameTimer=true;this.nativeEndLevelMusicQueue=128;}
+  const load=this.pipeLoad!,warp=Boolean(this.destination?.level);if(this.area.autoWalk){this.fetchGameTimer=true;this.soundQueues[3]=128;}
   this.levelLoad={...nativeLevelLoad(),engine:this.area.autoWalk?7:warp||load.target.direction==='down'?3:2,disable:1,timer:this.screenTimer,columns:255,skipIntermediate:!warp};
   this.destination=undefined;this.phase='intro';this.phaseFrame=0;this.alignLifeClock(this.intervalControl);
  }
@@ -3666,18 +3696,20 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if((this.random.frame&7)===0)this.colorRotationPending=true;
   this.levelLoad=undefined;this.pipeLoad=undefined;this.emit(this.areaMusic());
  }
+ /** The area-music queue byte the load's task 2 writes. */
+ private loadAreaMusic(){return this.area.entryVine?16:this.area.autoWalk&&this.pipeLoad?.alternate!==2?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];}
  private updateLevelLoad(){
   const n=this.levelLoad!,task=n.task,render=n.task===1&&n.screen===8,hold=n.task===0&&n.screen===0;
   if(task!==0)this.nativeStartupPicture.title=false; // InitializeArea has blanked the retained title nametable: later task-0 rows keep the old picture (2-1 1ae7aeeb rows 8685-8686 show 1-4's castle)
   if(!hold){this.gameTimerStep(false);this.tickIntervalTimers();}else this.lifeFrozen++;
   const result=stepNativeLevelLoad(n,!hold&&this.intervalControl===20);if(render)this.renderInitialSpringColumns();
-  if(task===2)this.nativeEndLevelMusicAreaQueue=this.area.entryVine?16:this.area.autoWalk&&this.pipeLoad?.alternate!==2?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];
+  if(task===2)this.soundQueues[4]=this.loadAreaMusic();
   if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=-this.areaControls.origin*16;this.parserColumnX=-this.areaControls.origin*16;this.areaControls.locked=false;this.parserClock.task=0;this.parserClock.scroll=0;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
   if(result.clear){
    this.graphicsScratch.clear();this.warpHudLevel=undefined;
    const time=this.time,load=this.pipeLoad;this.loadArea(load?.target.area??this.level.main,undefined,load?load.page*256+load.offset:undefined,true,Boolean(load),true);this.time=time;
    // InitializeMemory clears raw Player_PageLoc/X; map that zero through the loaded scene origin.
-   this.timerFrames=24;this.player.x=this.nativeAreaOffset;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.random.frame=0;this.nativeEndLevelMusic.offset=0;this.nativeEndLevelMusicAreaQueue=128;
+   this.timerFrames=24;this.player.x=this.nativeAreaOffset;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.random.frame=0;this.nativeEndLevelMusic.offset=0;this.soundQueues[4]=128;
   }
   if(result.preload&&this.pipeLoad){const levelEntry=this.pipeLoad.target.direction==='level';this.finishNativePipeLoad();if(levelEntry&&!this.area.autoWalk&&!this.entryControlLocked)this.levelLoad=n;return;}
   if(result.preload){
@@ -3699,7 +3731,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.levelIndex++;this.fetchGameTimer=true;this.checkpoint=false;this.activatedCheckpointArea=undefined;this.phase='intro';this.phaseFrame=0;
   // NextArea changes the logical destination before InitializeArea clears the retained physical scene.
   this.levelLoad={...nativeLevelLoad(),engine:victory?8:5,columns:255,...(!victory?{disable:1}:{})}; // the column byte still reads 255 from the end-of-level modes (2-1 entry after 1-4: 141 corpus runs)
-  if(!victory){this.nativeEndLevelMusicQueue=128;const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.level.main);if(binding)this.pipeLoad={target:{area:this.level.main,spawn:this.level.areas.find(a=>a.id===this.level.main)!.spawn,direction:'level',frames:0},alternate:0,header:nativePhysicalAreas[binding.code].header[0],page:0,offset:binding.offset};}
+  if(!victory){this.soundQueues[3]=128;const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.level.main);if(binding)this.pipeLoad={target:{area:this.level.main,spawn:this.level.areas.find(a=>a.id===this.level.main)!.spawn,direction:'level',frames:0},alternate:0,header:nativePhysicalAreas[binding.code].header[0],page:0,offset:binding.offset};}
   this.alignLifeClock(this.intervalControl);
  }
 }
