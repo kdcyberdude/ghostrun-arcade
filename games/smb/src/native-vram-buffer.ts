@@ -16,6 +16,8 @@ export class NativeVramBuffer1 {
  get pendingFlush(){return this.selector!==6?this.offset:0;}
  beginFrame(){if(this.selector!==6)this.clear();this.selector=0;}
  select(buffer2:boolean){this.selector=buffer2?6:0;}
+ /** A ROM buffer for the next NMI (VRAM_AddrTable: 8 BowserPaletteData, 12 + n the victory messages); buffer1 is cleared unwritten. */
+ rom(control:number){this.selector=control;}
 }
 /** ColorRotation: AND7 / CPX#$31 before appending its seven-byte command. */
 export const nativeColorRotationAllowed=(counter:number,offset:number)=>(counter&7)===0&&offset<0x31;
