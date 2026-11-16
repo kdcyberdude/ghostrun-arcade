@@ -677,6 +677,8 @@ export class Simulation {
   this.growVines();const vineMovement=this.moveOnVine(b,pressed('a'));if(vineMovement==='transition')return;
   if(!vineMovement){
   const direction=Number(b.has('right'))-Number(b.has('left'));
+  // Left_Right_Buttons as the left-edge check reads it: Down held on the ground (state at frame start) clears it (entrance44 6dbfc144 4-4 RAM 70: $0C/$0B 0 after Down+Right from the ground).
+  const edgeDirection=b.has('down')&&p.grounded?0:direction;
   const water=this.area.theme==='water';
   // The fitted float path below runs only in water and in non-native entry falls, where the run step never applies.
   const running=false;
@@ -722,11 +724,11 @@ export class Simulation {
   const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;
   // ChkPOffscr holds Mario at the left screen edge before BG collision: the feet then probe from the held x (3-1 37d55efe row 24537: skidding left against the edge on a step, he stays standing).
   // At the edge pixel the speed byte is cleared unless Right alone is held, whichever way he moves or faces (b6ff81a0 1-1 RAM 1284: rel X 0, speed 3 -> 0 with no direction held, x stays 1297).
-  if(!water&&(p.x<this.camera||useMotor&&direction<=0&&Math.floor(p.x)===Math.floor(this.camera))){
+  if(!water&&(p.x<this.camera||useMotor&&edgeDirection<=0&&Math.floor(p.x)===Math.floor(this.camera))){
    // The screen edge retains position/speed fractions; steering away also keeps the negative speed byte (native4-4 rows2597..2599).
    if(useMotor){
     p.x=this.camera+p.x-Math.floor(p.x);
-    if(!(direction>0&&p.vx<0)){this.motor.speed=Math.round(p.vx*4096)&255;p.vx=this.motor.speed/4096;}
+    if(!(edgeDirection>0&&p.vx<0)){this.motor.speed=Math.round(p.vx*4096)&255;p.vx=this.motor.speed/4096;}
    }else{p.x=this.camera;p.vx=Math.max(0,p.vx);}
   }
   // ...and at the locked right edge (cam+239): the side probe then starts from the held x, so a wall just past the edge is not touched (1-4 3b15135b row 8157: x 2259.06 -> 2258.06, speed 0, $0490 stays $FF, SideCollisionTimer 0).
