@@ -1,4 +1,5 @@
 import {nativeEnemyInjuryTurn} from './native-enemy-injury-turn.js';
+import {NativeTimerBank} from './native-timer-bank.js';
 import {nativeFootImpediment} from './native-player-bg.js';
 import {nativePlayerHoleLocks} from './native-player-hole.js';
 import {nativeGoombaBlockStun} from './native-block-enemy.js';
@@ -31,7 +32,7 @@ import {nativePlayerPriorityCleared} from './native-player-priority.js';
 import {nativeEntranceSetup,nativeEntranceAction} from './native-entrance.js';
 import {NativePalette} from './native-palette.js';
 import {emptyNativeEndLevelMusic,tickNativeEndLevelMusic} from './native-event-music.js';
-import {nativeSoundEngine} from './native-nmi-timing.js';
+import {nativeSoundEngine,nativeNmiTiming} from './native-nmi-timing.js';
 import {nativeIntervalStep,nativeStarMusic,nativeStarPalette,NATIVE_STAR_PICKUP} from './native-interval.js';
 import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-spring.js';
 import {nativeFrenzyControllers,retainNativeFrenzyController,nativeWarpZoneRelease,seedNativePageControllers,type NativeFrenzyController} from './native-frenzy-controllers.js';
@@ -366,7 +367,7 @@ export class Simulation {
  reset(playing=false){
   this.victoryScrollFraction=0;
   this.nativeStartup=undefined;this.coldStartup=undefined;this.nativeStartupPicture.reset();this.random=new NativeRandom();this.intervalControl=20;
-  this.frame=0;this.playerColorsFrame=-1;this.warpTextRow={frame:-1,offset:0};this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.timeUpDeath=false;this.lateDeath=false;this.offscreenDeathRows=0;this.firebarDeathFrame=0;this.deathMove=undefined;this.playerAnimNmiTimer=0;this.playerAnimNmiCtrl=0;this.lastJumpFallForce=0.5625;this.scrollCrossCamera=0;this.slotCamera=0;this.marioMotion=1;this.firebarMarioScreenX=0;this.flagAwardFrame=-1;this.flagScrollLocked=true;this.placedBankFrame=-1;this.nativeBankItemFrame=-1;this.slotScroll=false;this.jumpArc=false;this.springPrevA=false;this.swimDirection=0;this.swimMovingDir=0;this.bounceGravity=0.5625;this.springPinX=0;this.springPinY=0;this.springLaunchSpeed=0;this.waterCollisionPose=undefined;this.water=new NativeWater();this.paletteClock.buffer1.data.fill(0);this.offscreenPitDeath=false;this.offscreenLavaDeath=false;this.colorRotationPending=false;this.graphicsBuffer1=false;this.wallSpeed=undefined;this.wallSide=undefined;this.wallBackOut=false;this.sidePipeContact=undefined;this.swimPull=0;this.headBumped=false;this.deathLoad=undefined;this.levelLoad=undefined;this.warpHudLevel=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
+  this.frame=0;this.timerBank=new NativeTimerBank();this.timerBank.set(0x09,0x18,-1);this.nativeTopScore=0;this.nativeJoypadMask=0;this.padBits=0;this.sprite0KeptFrame=-1;this.playerColorsFrame=-1;this.warpTextRow={frame:-1,offset:0};this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.timeUpDeath=false;this.lateDeath=false;this.offscreenDeathRows=0;this.firebarDeathFrame=0;this.deathMove=undefined;this.playerAnimNmiTimer=0;this.playerAnimNmiCtrl=0;this.lastJumpFallForce=0.5625;this.scrollCrossCamera=0;this.slotCamera=0;this.marioMotion=1;this.firebarMarioScreenX=0;this.flagAwardFrame=-1;this.flagScrollLocked=true;this.placedBankFrame=-1;this.nativeBankItemFrame=-1;this.slotScroll=false;this.jumpArc=false;this.springPrevA=false;this.swimDirection=0;this.swimMovingDir=0;this.bounceGravity=0.5625;this.springPinX=0;this.springPinY=0;this.springLaunchSpeed=0;this.waterCollisionPose=undefined;this.water=new NativeWater();this.paletteClock.buffer1.data.fill(0);this.offscreenPitDeath=false;this.offscreenLavaDeath=false;this.colorRotationPending=false;this.graphicsBuffer1=false;this.wallSpeed=undefined;this.wallSide=undefined;this.wallBackOut=false;this.sidePipeContact=undefined;this.swimPull=0;this.headBumped=false;this.deathLoad=undefined;this.levelLoad=undefined;this.warpHudLevel=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
   this.nativeEndLevelMusic=emptyNativeEndLevelMusic();this.soundQueues.fill(0);this.soundRam.fill(0);this.flagpoleSoundQueue=0;
   this.slots=[0,1].map(()=>({level:0,lives:3,score:0,coins:0,size:0,checkpoint:false}));this.previous.clear();this.inputs=[new Set(),new Set()];this.events=[];this.paused=false;this.pauseCooldown=0;
@@ -437,7 +438,7 @@ export class Simulation {
   if(!deferTerrain)for(const spring of this.area.springs??[])if(spring.nativeColumn!==undefined&&spring.nativeColumn>=this.parserColumnX-384&&spring.nativeColumn<this.parserColumnX)this.createNativeSpring(spring);
   this.emit(this.areaMusic());
  }
- private emit(id:string,queued=true){this.events.push(id);const q=SOUND_QUEUE_WRITES[id];if(q&&queued)this.soundQueues[q[0]]=q[1];}
+ private emit(id:string,queued=true){this.events.push(id);const q=SOUND_QUEUE_WRITES[id];if(q&&queued)this.soundQueues[q[0]]=q[1];if(id==='sfx_jump_small'||id==='sfx_jump_big'||id==='sfx_swim')this.timerBank.set(0x02,0x20,this.frame);} // InitJS starts JumpSwimTimer $0782 at $20 with every jump and swim stroke
  private areaMusic(){const area=this.area;return `music_${area.entryVine?'cloud':area.theme==='underground'?'underground':area.theme==='water'?'water':area.theme==='castle'?'castle':'ground'}${this.time<=100?'_hurry':''}`;}
  private awardPopup(value:number|'1up',x:number,y:number,victim?:Enemy){
   // SetupFloateyNumber overwrites the label in this enemy slot (or the special power-up slot5).
@@ -513,6 +514,7 @@ export class Simulation {
    const player=this.phase==='title'||!this.twoPlayer?0:this.currentPlayer;
    this.inputs.push(new Set(held[player]));const effective=this.inputs.shift()!;
    for(const key of ['start','select'] as Button[]){if(held[0].has(key)||(this.phase==='title'&&held[1].has(key)))effective.add(key);else effective.delete(key);}
+   this.nmiBookkeeping(held[0]);
    {this.paletteClock.buffer1.beginFrame();this.colorRotationPending=false;const starBefore=this.player.star,bowserPaletteBefore=this.bowserPalette,warpBefore=this.warpZoneActive,paletteBefore=this.starPalette,areaBefore=this.area,cameraBefore=this.camera,phaseBefore=this.phase,engineBefore=!['title','intro','gameover','ending','castle'].includes(this.phase),fresh=this.freshA,grace=this.phase==='play'&&this.controlGrace>0;if(grace){effective.delete('a');this.controlGrace--;}this.paletteRemove=false;this.graphicsBuffer1=false;this.blockUpdateBusy=false;this.loopScrollAdjustment=0;this.update(effective);this.flushColorRotation();if(this.nativeScreen?.task===1&&this.nativeScreen.screen>=1)this.hud.header(this.score,this.coins);this.snapshotPlayerPriority();this.nativeBackdrop=nativeScreenBackdrop(this.nativeBackdrop,this.nativeScreen?nativeScreenPicture(this.nativeScreen,this.area.theme==='water'):undefined,graphics.palette_observations[this.area.palette].palette[0]);if(!this.paused&&(areaBefore===this.area||this.loopScrollAdjustment!==0)){if(engineBefore||phaseBefore==='castle'&&this.phase==='castle'&&this.castleStage!=='message'){const buffer2=this.paletteClock.step(Math.max(0,Math.floor(this.camera)-Math.floor(cameraBefore)+this.loopScrollAdjustment),this.colorRotations,this.paletteRemove,this.graphicsBuffer1||(this.random.frame&7)===0,this.bowserPalette&&!bowserPaletteBefore||this.warpZoneActive&&!warpBefore); /* the warp-zone text is written over buffer1 on its row, dropping that row's rotation (1512e53a 1-2 RAM 4049: $06D4 0 -> 1, $0300 $2C with the WELCOME text; the coin keeps its old color until the 4057 rotation) */this.hud.step(buffer2,this.bowserPalette&&!bowserPaletteBefore);if(!buffer2){for(const [key,id]of this.blockBackgroundQueue)this.blockBackground.set(key,id);this.blockBackgroundQueue.clear();for(const p of this.area.platforms??[])if(platformMotionModel(p,this.platformMotion.context)==='native-balance')this.ropeShown.set(p,this.platformPosition(p).y);}}else{this.paletteClock.draw=this.colorRotations;this.hud.step(false);this.ropeShown.clear();}if(this.victoryPending>=0)this.vramBuffer1.rom(12+this.victoryPending);else if(this.bowserPalette&&!bowserPaletteBefore)this.vramBuffer1.rom(8); /* PrintVictoryMessages' message buffer (17a2baf0 1-4 RAM 10834: $0773 12) and the BowserPaletteData buffer (8f90807f RAM 10195: 8) */this.starDrawPalette=starBefore||this.player.star?paletteBefore:undefined;this.starPalette=nativeStarPalette(this.player.star,this.random.frame);}if(this.paused)this.hud.step(false);if(fresh&&!grace)this.freshA=false;}this.previous=effective;
   }
  }
@@ -608,17 +610,17 @@ export class Simulation {
      const previousCamera=this.camera,oldFeet=this.player.y;
      this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
      const n={y:(Math.floor(this.player.y)-32)&255,change:this.pipeTimer,camera:this.camera,xScroll:this.playerXScroll,platformScroll:this.platformScroll&255};
-     const scroll=nativeVerticalPipe(n,this.waterScrollX,this.sideCollisionTimer,this.areaControls.locked);
+     const scroll=nativeVerticalPipe(n,this.waterScrollX,this.sideCollisionTimer,this.areaControls.locked);this.scrollScreenRow(scroll);
      this.player.y=n.y+32+this.player.y-Math.floor(this.player.y);this.camera=n.camera;this.playerXScroll=n.xScroll;this.platformScroll=n.platformScroll;this.pipeTimer=n.change;
      if(this.pipeTimer)this.updatePipeWorld(previousCamera,oldFeet,scroll);
     }
    }
    else if(this.destination?.direction==='right'){if(this.pipeTimer>0){
     const previousCamera=this.camera,oldFeet=this.player.y,oldX=this.player.x,absolute=this.motor.absolute;this.sidePipeStep();
-    if(this.sidePipeGraphics){if(this.player.grounded)this.playerAnim.setSpeed(absolute);this.updateLocomotionPose(this.player.grounded,absolute,false,new Set<Button>(['right']),false);} // the walk into a side pipe keeps animating (0d12a2e4 rows 866..880: $070D steps every 7 rows)
+    if(this.sidePipeGraphics){if(this.player.grounded)this.playerAnim.setSpeed(absolute);this.updateLocomotionPose(this.player.grounded,absolute,false,new Set<Button>((Math.floor(oldX)&15)!==0?['right']:[]),false);} /* EnterSidePipe releases Right on a 16-pixel boundary, so the pose stops animating there (3d43b7b4 RAM 915-919: $070D 0, PlayerAnimTimer runs out without a reload) */ // the walk into a side pipe keeps animating (0d12a2e4 rows 866..880: $070D steps every 7 rows)
     this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
     const n={camera:this.camera,xScroll:(Math.floor(this.player.x)-Math.floor(oldX))&255,platformScroll:this.platformScroll&255};
-    const scroll=nativeSavedScroll(n,this.waterScrollX,this.sideCollisionTimer,this.areaControls.locked);
+    const scroll=nativeSavedScroll(n,this.waterScrollX,this.sideCollisionTimer,this.areaControls.locked);this.scrollScreenRow(scroll);
     this.camera=n.camera;this.playerXScroll=n.xScroll;this.platformScroll=n.platformScroll;
     if(this.pipeTimer)this.updatePipeWorld(previousCamera,oldFeet,scroll);
    }}
@@ -722,7 +724,7 @@ export class Simulation {
   const max=water?(p.grounded?WATER_PHYSICS.groundMax:WATER_PHYSICS.swimMax):(p.grounded?(pressed('a')?Math.abs(p.vx)>PHYSICS.walkMax:running):this.airRunning)?PHYSICS.runMax:PHYSICS.walkMax;
   // Native horizontal motor (src/native-player-motor.ts): the native speed bytes in 1/4096 px, stepped every land frame; water and
   // non-native entry falls keep the fitted float rules below. p.vx is always motor speed / 4096, so outside writes stay exact.
-  const useMotor=!water&&(!this.entryFalling||Boolean(nativeEntry));
+  const useMotor=!water&&(!this.entryFalling||Boolean(nativeEntry));this.playerControlRow();
   const swim=water&&this.swimActive;
   if(useMotor)this.motor.speed=Math.round(p.vx*4096);
   const jumpClassByte=this.motor.absolute; // native InitJS reads Player_XSpeedAbsolute, last written by the previous frame's ImposeFriction (a wall stop leaves it)
@@ -834,9 +836,9 @@ export class Simulation {
   // previous frame (1-3 f574: own 3, carry -1 this frame, scroll 3; f575: own 2 + previous carry -1, scroll 1); screen position, and SideCollisionTimer ($0785, counted down once per frame)
   // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
-  if(waterScroll!==undefined&&this.powerChange?.kind!=='shrink')this.camera+=waterScroll; // the steps Mario takes as the water shrink ends do not scroll (5708387c 2-2 RAM 13365-13366: camera 1520)
+  if(waterScroll!==undefined&&this.powerChange?.kind!=='shrink'){this.camera+=waterScroll;this.scrollScreenRow(waterScroll);} // the steps Mario takes as the water shrink ends do not scroll (5708387c 2-2 RAM 13365-13366: camera 1520)
   else if(!this.shrinkEndStep){const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'||this.player.invincible?this.waterScrollX:Math.floor(oldX)-previousCamera; /* a blinking Mario's scroll position updates only on the frames he is drawn (2-1 a3899256 row 12454) */this.playerXScroll=scrollMove&255;
-   if(!scrollLocked&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
+   if(!scrollLocked&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0){this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;this.scrollScreenRow(1);}}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
   if(cameraContact||this.wallSpeed!==undefined||this.wallBackOut)this.sideCollisionTimer=16;
@@ -1306,7 +1308,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    if(jump){p.vy=PHYSICS.jump;this.runJump=false;this.mediumJump=false;this.bouncing=false;this.landJump='inactive';this.emit(p.size?'sfx_jump_big':'sfx_jump_small');}
    return;
   }
-  p.climbing=true;p.duck=false;p.grounded=false;p.vx=0;p.vy=0;p.x=vine.x+(p.facing>0?-7:7);
+  p.climbing=true;p.duck=false;p.grounded=false;p.vx=0;p.vy=0;p.x=vine.x+(p.facing>0?-7:7);this.playerControlRow();
   const dy=b.has('up')?-VINE_PHYSICS.climbUp:b.has('down')?VINE_PHYSICS.climbDown:0;
   if(dy<0)p.y=Math.max(vine.baseY-vine.height,p.y+dy);
   else if(dy>0){
@@ -1345,7 +1347,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  /** EnterSidePipe replaces only the native speed byte; its fraction and
   * normal motor latches determine the first step on every approach. */
  private sidePipeStep(){
-  const p=this.player,water=this.area.theme==='water';
+  const p=this.player,water=this.area.theme==='water';this.playerControlRow(); // SideExitPipeEntry walks through AutoControlPlayer
   if(water&&this.phaseFrame===1){
    this.motor.reset(this.water.motor.speed,p.facing<0?-1:1,this.marioMotion as -1|0|1,this.swimAbsolute);
   }
@@ -1399,6 +1401,47 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   * a firework's points print the time first instead (3d43b7b4 RAM 2023: $207A then $2062). */
  private addScore(value:number,first:'coins'|'time'='coins'){if(value){this.score+=value;const d=hudDigits(this.score,this.coins,this.time);this.hud.queue(first==='coins'?{coins:d.coins,score:d.score}:{time:d.time,score:d.score});}}
  get vramBuffer1(){return this.paletteClock.buffer1;}
+ private timerBank=new NativeTimerBank();private timerControlFrame=0;
+ /** $07D7 TopScoreDisplay and $074A SavedJoypad1Bits as the NMI leaves them: UpdateTopScore copies the score of the row before when higher;
+  * ReadJoypads keeps the pad bits unless Select or Start is held in both. padBits is this row's pad in recording bit order (bit 0 = A). */
+ private nativeTopScore=0;private nativeJoypadMask=0;private padBits=0;private sprite0KeptFrame=-1;
+ private nmiBookkeeping(pad:Set<Button>){
+  this.padBits=(['a','b','select','start','up','down','left','right'] as Button[]).reduce((v,k,i)=>pad.has(k)?v|1<<i:v,0);
+  let bits=0;for(let i=0;i<8;i++)if(this.padBits&1<<i)bits|=0x80>>i;
+  if((bits&0x30&this.nativeJoypadMask)===0)this.nativeJoypadMask=bits;
+  this.nativeTopScore=Math.max(this.nativeTopScore,this.score);
+ }
+ /** The RAM the next NMI's timing reads ($0300 VRAM_Buffer1, $0341 VRAM_Buffer2's packet layout, $0773, the sound bytes and queues,
+  * the joypad mask, OperMode and its task, the scores, the timers, IntervalTimerControl, the random bytes, Sprite0HitDetectFlag and the
+  * sprite shuffle), from the model state after this row; bytes the timing does not read stay 0. */
+ nmiTimingRow(){
+  const r=new Uint8Array(2048),b=this.paletteClock.buffer1;
+  r.set(b.data.subarray(0,0x41),0x300);r[0x773]=b.addressControl;
+  if(b.addressControl===6){let at=0x341;const put=(c:number,n:number)=>{r[at]=0x20;r[at+1]=0;r[at+2]=c;r.fill(0x24,at+3,at+3+n);at+=3+n;};
+   if(this.paletteRemove){put(2,2);put(2,2);}else if(this.parserClock.task===0)for(let i=0;i<7;i++)put(1,1);else put(0x80|26,26);r[at]=0;} // RemoveCoin_Axe's metatile rows, or the parser's attribute bytes / column
+  r.set(this.soundRam.subarray(0xf0,0xfa),0xf0);r.set(Array.from(this.soundQueues).reverse(),0xfa);r.set(this.soundRam.subarray(0x7b0,0x7cb),0x7b0);
+  r[0x74a]=this.nativeJoypadMask;
+  const castle=this.phase==='castle'&&this.nativeVictory;r[0x770]=castle?2:1;const introTask=this.levelLoad?.task??0;r[0x772]=castle?this.nativeVictory!.task:this.phase==='intro'?introTask:3;
+  const digits=(v:number)=>[...String(Math.floor(v/10)%1000000).padStart(6,'0')].map(Number);
+  r.set(digits(this.nativeTopScore),0x7d7);r.set(digits(this.score),0x7dd);
+  const t=this.nativeTimerBytes();r.set(t.subarray(0,0x24),0x780);r[0x747]=t[0x24];r[0x77f]=this.intervalControl;
+  r.set(this.random.bytes,0x7a7);
+  r[0x722]=this.phase==='intro'?Number(introTask===3||this.frame===0||this.sprite0KeptFrame===this.frame):Number(!['title','gameover','ending'].includes(this.phase));
+  const sh=this.spriteShuffle;r[0x6e0]=sh.index;r.set(sh.amounts,0x6e1);r.set(sh.offsets,0x6e4);
+  return r;
+ }
+ /** The next NMI's timing (PPU-mask write, Sprite0Clr and Sprite0Hit polls), its pad taken as this row's. */
+ get nextNmiTiming(){return nativeNmiTiming(this.nmiTimingRow(),this.padBits);}
+ /** The native frame and interval timers $0780-$07A3 (index 0-$23) and TimerControl $0747 (index $24) as the NMI reads them on the next row:
+  * the bytes the NMI's timer pass counts down, from the model state that mirrors each. */
+ nativeTimerBytes(){
+  const t=new Uint8Array(0x25),spring=[...this.springTimers.values()];
+  t[0x01]=this.playerAnim.timer;t[0x03]=this.motor.runningTimer;t[0x04]=this.blockBounceTimer;t[0x05]=this.sideCollisionTimer;
+  t[0x06]=spring.length?Math.max(...spring.map(n=>n.timer)):0;t[0x07]=Math.max(0,24-this.timerFrames);t[0x02]=this.timerBank.get(0x02);for(const e of this.enemies)if(e.active&&!e.slotFreed&&e.enemySlot!==undefined&&e.enemySlot<5){const v=e.shellTimer||e.pod?.timer||e.bloop?.timer||e.hbro?.interval||0;if(v)t[0x16+e.enemySlot]=v;}{const flag=this.nativeCastleFlag;if(flag&&flag.interval)t[0x16+flag.slot]=flag.interval;}if(this.phase==='castle')t[0x10]=this.timerBank.get(0x10);if(this.nativeVictory)t[0x21]=this.nativeVictory.endTimer;else for(const e of this.enemies)if(e.nativeBowser&&e.active)t[0x10]=e.nativeBowser.fireTimer;const change=this.powerChange;t[0x24]=this.phase==='dying'&&!this.offscreenPitDeath&&!this.offscreenLavaDeath?Math.max(0,255-this.phaseFrame):change&&change.kind!=='fire'?Math.max(0,255-(this.frame-(change.kind==='grow'?change.born!:this.timerControlFrame))):0; /* TimerControl: $FF from a death, a growth or an injury, counted down every NMI (0a766fa4 RAM 3409-3467) */t[0x09]=this.timerBank.get(0x09);t[0x15]=this.timerBank.get(0x15);
+  for(let s=0;s<5;s++)t[0x0a+s]=this.slotFrameTimers[s];
+  t[0x0f]=this.nativeFrenzyTimer;t[0x11]=this.nativeStompTimer;t[0x12]=this.bubbleState.timer;t[0x1d]=this.brickCoinTimer;t[0x20]=this.phase==='intro'?(this.levelLoad?.timer??this.deathLoad?.state.timer??this.screenTimer):this.screenTimer;
+  return t;
+ }
  private flushColorRotation(){
   // ColorRotation runs before the warp-zone text, which then writes over its packet (1512e53a 1-2 RAM 4049: $06D4 0 -> 1, no $3F0C)
   const overwritten=this.warpTextRow.frame===this.frame;
@@ -1870,16 +1913,26 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  // fraction $0417+s) to y and 28/256 to the speed, capped at 3. Interval timers count down once every 21 frames (IntervalTimerControl $077F). 5-4/6-4 traces, tests/native-podoboo.test.ts.
  playerBackgroundPriority=false;playerDrawBackgroundPriority=false;starPalette=0;starDrawPalette:number|undefined; // stored $03C4 palette bits, and the prior bits used by this frame's player OAM
  intervalControl=20; // native $077F: counts 20..0 once per frame; at 0 the interval timers tick
+ /** ClimbSideTimer $0789: PlayerCtrlRoutine writes $18 on every row it runs while the player is not climbing; ClimbingSub writes 0 on a
+  * climbing row without a held side, and $18 again when one is held (with contact) and the timer has run out (96c081d8 1-1 RAM 1495-1497:
+  * $18 on the grab row, then 0; RAM 1557, the first end-walk row: $18, then counting down). The title's demo leaves it $18 for the first game row (RAM 60: $17). */
+ /** ScrollScreen sets ScrollIntervalTimer $0795 to 8 on every row it scrolls (ScrollHandler with an amount of 1 or more). */
+ private scrollScreenRow(amount:number){if(amount>0)this.timerBank.set(0x15,8,this.frame);}
+ private playerControlRow(side=false){
+  const value=this.timerBank.get(0x09);
+  if(!this.player.climbing||side&&value===0)this.timerBank.set(0x09,0x18,this.frame);else if(!side)this.timerBank.set(0x09,0,this.frame);
+ }
  private tickIntervalTimers(){
   if(this.nmiTimersHeld||this.shrinkEndStep)return;
   if(!this.nativeTimersStopped&&this.frameTimersAt!==this.frame){
-   this.frameTimersAt=this.frame;for(let slot=0;slot<5;slot++)if(this.slotFrameTimers[slot]>0)this.slotFrameTimers[slot]--;
+   this.frameTimersAt=this.frame;this.timerBank.pass(0,this.frame);for(let slot=0;slot<5;slot++)if(this.slotFrameTimers[slot]>0)this.slotFrameTimers[slot]--;
    for(const e of this.enemies)if(e.active&&!e.slotFreed&&e.dead<100&&e.enemySlot!==undefined){if(e.pir)e.pir.timer=this.slotFrameTimers[e.enemySlot];if(e.hbro)e.hbro.frameTimer=this.slotFrameTimers[e.enemySlot];if(e.nativeShot)e.cannonFrameTimer=this.slotFrameTimers[e.enemySlot];}
   } // EnemyFrameTimer counts every native timer pass, independently of Enemy_Flag and the21-frame interval timers.
 
   const n=nativeIntervalStep(this.intervalControl,this.player.star);
   this.intervalControl=n.interval;this.player.star=n.star;
   if(!n.tick)return;
+  this.timerBank.pass(1,this.frame);
   if(this.brickCoinTimer>0&&this.brickCoinTickedAt!==this.frame)this.brickCoinTimer--;
   if(this.nativeCastleFlag&&this.nativeCastleFlag.interval>0)this.nativeCastleFlag.interval--;
   if(this.screenTimer>0)this.screenTimer--;
@@ -2283,7 +2336,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.flagScrollLocked=true;
   this.items=this.items.filter(i=>i.nativePowerState===undefined);
   this.flagAwardFrame=-1;this.flagTop=FLAG_COMPLETION.flagTopY-1;this.advanceFlag();this.flagInside=false;
-  this.player.climbing=true;this.player.facing=1;
+  this.playerControlRow();this.player.climbing=true;this.player.facing=1; // the grab row's PlayerCtrlRoutine ran before the grab (96c081d8 RAM 1495: $18)
  }
  get castleFlag(){const flag=this.nativeCastleFlag;return flag?.draw?{x:flag.x,y:flag.y+1}:undefined;}
  get flagFireworks(){return this.nativeFireworks.filter(f=>f.active&&f.draw).map(f=>({index:f.index,x:f.x-4,y:f.y-4+1,phase:f.cell}));}
@@ -2321,7 +2374,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   // FlagpoleSlide moves FlagpoleSoundQueue, set at the grab, into the square-1 queue on the first slide row (3d43b7b4 1-1 RAM 1444 grab, 1445 $40)
   if(this.flagpoleSoundQueue){this.soundQueues[0]=this.flagpoleSoundQueue;this.flagpoleSoundQueue=0;}
   if(this.flagAwardFrame<0){
-   p.climbing=true;if(Math.floor(p.y)<0x9e+32){p.vy=1+255/256;p.y+=p.vy;}else p.vy=0;
+   p.climbing=true;this.playerControlRow();this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);this.motor.tickTimers();if(Math.floor(p.y)<0x9e+32){p.vy=1+255/256;p.y+=p.vy;}else p.vy=0;
    // AutoControlPlayer still runs PlayerBGCollision after the climb, including a low grab on the pedestal.
    const feet=p.y,grounded=p.grounded;this.movePlayerY(0,this.height);
    if(!grounded&&p.grounded)this.landingFraction=feet-Math.floor(feet);
@@ -2331,8 +2384,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   }
   if(this.phaseFrame===this.flagAwardFrame+1)this.emit('event_level_clear');
   const walkFrom=this.flagAwardFrame+rules.flipFrames+1;
-  if(this.phaseFrame<walkFrom){p.x=exit.x-1+(p.x-Math.floor(p.x));p.climbing=true;p.facing=-1;p.vy=0;return;} // the flip clears Player_Y_Speed, so the climb frame holds (e255e4c1 row 6215: $9F 0, $070D 0)
-  p.climbing=false;p.facing=1;
+  if(this.phaseFrame<walkFrom){p.x=exit.x-1+(p.x-Math.floor(p.x));p.climbing=true;p.facing=-1;p.vy=0;this.playerControlRow(true);this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);this.motor.tickTimers();return;} /* the NMI counts SideCollisionTimer and RunningTimer down on the slide and flip rows too (8f90807f RAM 19634, 17a2baf0 RAM 1533) */ // the flip clears Player_Y_Speed, so the climb frame holds (e255e4c1 row 6215: $9F 0, $070D 0)
+  p.climbing=false;p.facing=1;this.playerControlRow();
 
   {
    if(this.phaseFrame===walkFrom){
@@ -2351,7 +2404,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    // ScrollHandler sees the previous screen position and this frame's integer horizontal move.
    const scroll=Math.floor(p.x)-Math.floor(oldX),screenX=Math.floor(oldX)-this.camera;
    this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
-   if(!this.flagScrollLocked&&this.sideCollisionTimer===0&&screenX>=80&&scroll>0)this.camera+=screenX>=112||scroll<2?scroll:scroll-1;
+   if(!this.flagScrollLocked&&this.sideCollisionTimer===0&&screenX>=80&&scroll>0){this.camera+=screenX>=112||scroll<2?scroll:scroll-1;this.scrollScreenRow(1);}
    // ScrollHandler has no compiled-area width bound; PlayerEndLevel releases ScrollLock.
    this.wallBackOut=false;this.motor.clearContacts();this.movePlayerX(motionOf(this.motor.speed),this.height,false);this.footPushed=false;
    if(this.wallSpeed!==undefined){this.motor.contact(1,true);p.vx=this.motor.speed/4096;this.flagInside=true;this.playerBackgroundPriority=true;}
@@ -2364,6 +2417,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
 
  }
  private beginCastle(){
+  {const bowser=this.enemies.find(e=>e.nativeBowser&&e.active);this.timerBank.set(0x10,bowser?Math.max(0,bowser.nativeBowser!.fireTimer-1):0,-1);} // the victory rows keep counting BowserFireBreathTimer, the axe row's pass included (17a2baf0 1-4 RAM 10511-10541: 30 -> 0)
   this.eraseAxeMetatile();
   this.colorRotationPending=false; // GameCoreRoutine skips the GameEngine tail on axe contact.
   this.paletteRemove=true;this.phase='castle';this.phaseFrame=0;this.flagBonus=0;
@@ -2399,9 +2453,10 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   }
   this.gameTimerStep(false);this.tickIntervalTimers();
   let poseGround=p.grounded,poseAbsolute=this.motor.absolute,poseWalk=false;
+  this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1); // the NMI keeps counting SideCollisionTimer on the victory rows (28756928 RAM 19140)
   const result=stepNativeVictory(n,{world:Number(this.level.id[0]),camera:Math.floor(this.camera),playerX:Math.floor(p.x),bossPresent:Boolean(this.victoryBoss),intervalTick:this.intervalControl===20,
    autoControl:walk=>{
-    const oldX=p.x,wasGrounded=p.grounded;poseGround=wasGrounded;poseAbsolute=this.motor.absolute;poseWalk=walk;
+    const oldX=p.x,wasGrounded=p.grounded;this.playerControlRow();poseGround=wasGrounded;poseAbsolute=this.motor.absolute;poseWalk=walk;
     if(wasGrounded)this.playerAnim.setSpeed(poseAbsolute);
     this.motor.speed=Math.round(p.vx*4096);
     p.vx=this.motor.step({direction:walk?1:0,ground:wasGrounded,jump:false,b:false,down:false,buttons:walk})/4096;
@@ -2414,12 +2469,12 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
     if(!p.grounded)p.vy=this.nativeFallCap(p.vy+this.fallGravity);
     else{this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';}
     // a clamp zeroed the speed byte, so ImpedePlayerMove backs out of either side, as with no motion (6a6cac6d 1-4 RAM 9755: X 2270 clamped to 2269, then the wall at its left pushes it back to 2270)
-    this.motor.clearContacts();this.movePlayerX(clamped?0:p.x-oldX,this.height,false);this.walkOffStart(wasGrounded);
+    this.motor.clearContacts();this.movePlayerX(clamped?0:p.x-oldX,this.height,false);this.walkOffStart(wasGrounded);if(this.wallSpeed!==undefined||this.wallBackOut)this.sideCollisionTimer=16;
     const axe=this.axeFootContact();
     if(axe){this.eraseAxeMetatile();this.paletteRemove=true;this.motor.speed=24*256+(this.motor.speed&255);p.vx=this.motor.speed/4096;}
     return {playerX:Math.floor(p.x),axe};
    }});
-  this.camera=result.camera;this.victoryScrollFraction=n.scrollFraction;
+  this.scrollScreenRow(Math.floor(result.camera)-Math.floor(this.camera));this.camera=result.camera;this.victoryScrollFraction=n.scrollFraction;
   // PlayerVictoryWalk calls UpdScrollVar before VictoryMode's slot0 enemy pass.
   if(this.camera!==previousCamera)this.areaControls.advance(this.parserClock.advance(this.camera-previousCamera,false));
   this.updateLocomotionPose(poseGround,poseAbsolute,false,new Set<Button>(poseWalk?['right']:[]));
@@ -2438,7 +2493,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(result.message>=0){this.victoryPending=result.message;if(Number(this.level.id[0])===8&&result.message===3)this.emit('event_victory');}
   this.castleStage=n.task===0?(n.bossState&64?'fall':'bridge'):n.task<2?'fall':n.task===2?'walk':'message';
   if(oldTask!==3&&n.task===3)this.castleArrivalFrame=this.phaseFrame+1;
-  if(result.advance){this.nextLevel(true);return;}
+  if(result.advance){this.sprite0KeptFrame=this.frame;this.nextLevel(true);return;} // the first row after the castle keeps Sprite0HitDetectFlag (17a2baf0 RAM 11204)
   if(Number(this.level.id[0])===8&&n.task===4&&n.endTimer===0)this.phase='ending';
  }
  /** KillAllEnemies / EraseEnemyObject clears slots0–4; movement bytes and slot5 remain. */
@@ -3596,7 +3651,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.player.x-=this.swimPull;this.swimPull=0;
   this.player.y+=this.water.cancelLatePass();this.player.vy=this.water.speed+this.water.force/256;
  }
- hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.cancelWaterPass();this.powerupStateZero=false;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:nativeTransformRows('shrink'),kind:'shrink'};p.invincible=148+this.intervalControl; /* InjuryTimer 8 ticks on the interval clock ($077F), frozen by the shrink: the blink ends 148 + that clock rows on (371fe2fe 2-1 RAM 18234-18439, a3899256: every injured row equals native) */this.emit('sfx_pipe');}else this.die();}
+ hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.cancelWaterPass();this.powerupStateZero=false;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:nativeTransformRows('shrink'),kind:'shrink'};this.timerControlFrame=this.frame;p.invincible=148+this.intervalControl; /* InjuryTimer 8 ticks on the interval clock ($077F), frozen by the shrink: the blink ends 148 + that clock rows on (371fe2fe 2-1 RAM 18234-18439, a3899256: every injured row equals native) */this.emit('sfx_pipe');}else this.die();}
  die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;this.lateDeath=false;if(!offscreenLava&&!offscreenPit)this.cancelWaterPass();this.powerupStateZero=false;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:this.swimActive?this.water.frac:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=(Math.round(this.player.vx*4096)&255)/4096;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!offscreenLava&&!offscreenPit){this.player.y=this.deathMove.y+this.deathMove.fraction/256;this.player.grounded=false;}if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
  // Native death/lives-screen flow (evidence/lifeflow-findings-20261111.md): the 21-row interval clock is frozen on n+2 rows per death (the second death row to the row after the engine change, and the first lives-screen row); the screen timer is set 6 rows into the screen, counts clock ticks and ends 19 rows after its last tick.
  /* Native pit/lava falls keep the whole level running (engine stays 8 until the fall ends): 118 of 119 non-inert slots moved during 260-row falls; arc deaths freeze them after the first row. */
@@ -3629,7 +3684,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(!li.end&&p>li.set&&((this.lifeRow-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase&&++li.seen>=li.ticks)li.end=p+LIFE_FLOW.screenTail-(this.entryFalling&&this.area.entryFall?.native?1:0);
   return li.end>0&&p>=li.end;
  }
- private startPlayAfterIntro(){const fromDeath=Boolean(this.deathLoad);if(this.deathLoad)this.screenTimer=this.deathLoad.state.timer;this.deathLoad=undefined;if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);}if(!fromDeath)this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.primeNativeReadyEnemies();if(this.phase==='play')this.consumeGameTimer(!this.entryControlLocked&&!this.area.autoWalk);this.emit(this.areaMusic());}
+ private startPlayAfterIntro(){const fromDeath=Boolean(this.deathLoad);if(this.deathLoad)this.screenTimer=this.deathLoad.state.timer;this.deathLoad=undefined;if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);this.playerControlRow();} /* PlayerEntrance's water start runs PlayerCtrlRoutine on this row (31d6ea1a RAM 21771: $0789 $18) */if(!fromDeath)this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.primeNativeReadyEnemies();if(this.phase==='play')this.consumeGameTimer(!this.entryControlLocked&&!this.area.autoWalk);this.emit(this.areaMusic());}
  private primeNativeReadyEnemies(){if(this.placedStream){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);this.passNativeObjects();}else if(!this.entryFalling&&this.enemies.some(e=>e.active&&(e.nativePipe||e.nativeId!==undefined||e.frenzy||e.nativeShot))){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else{this.broClock=this.random.frame&255;this.primeEntryPodoboos();if(this.platformCatchUp)this.busyNativeSlots();} /* FrameCounter runs on: the next enemy pass reads the next count (7-3 original row 1860 after a respawn) */this.updateNativeCannons();this.passNativeCannons();}
 
  private primeEntryPodoboos(){
@@ -3730,7 +3785,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  /** InitializeArea's InitializeMemory clears pages 0-6, so the zero-page sound bytes and queues; $07B0-$07CA on page 7 stay (3d43b7b4 RAM 62: $F0-$F9 0).
   * The clear runs past the next frame's NMI, so the row it ends on has no SoundEngine turn: page 7 keeps its bytes from before this row's turn (3d43b7b4 RAM 678-679: $07B5 2, 2). */
- private clearZeroPageSound(){this.soundRam.fill(0,0xf0,0x100);this.soundRam.set(this.soundPage7Before,0x7b0);this.soundQueues.fill(0);}
+ private clearZeroPageSound(){this.timerBank.clear();this.soundRam.fill(0,0xf0,0x100);this.soundRam.set(this.soundPage7Before,0x7b0);this.soundQueues.fill(0);}
  /** The area-music queue byte the load's task 2 writes. */
  private loadAreaMusic(){return this.area.entryVine?16:this.area.autoWalk&&this.pipeLoad?.alternate!==2?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];}
  private updateLevelLoad(){
