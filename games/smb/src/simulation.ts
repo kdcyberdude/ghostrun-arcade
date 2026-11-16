@@ -969,6 +969,8 @@ export class Simulation {
    }
    return;
   }
+  // DoPlayerSideCheck probes the left side first and stops at its first hit, so a block at the left probe hides one at the right edge from a rightward mover (3-1 d368ad65 RAM 20727: $0490 $FD, $23 at the left probe, $58 at the right).
+  if(dx>0)for(const [upper,y] of [[true,p.y-h+4],[false,p.y-8]] as const)if(this.sideTileAt(p.x+2,y,upper)??this.springSideAt(p.x+2,y))return;
   const edge=p.x+(dx>0?13:2);
   for(const [upper,y] of [[true,p.y-h+4],[false,p.y-8]] as const){const tile=this.sideTileAt(edge,y,upper)??this.springSideAt(edge,y);if(tile){
    if(this.acceptSidePipe(tile))return;
@@ -2022,7 +2024,9 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const p=this.player,lak=e.lak??={dir:0,speed:0};
   if(this.nativeFrenzyTurn?.id===24&&this.nativeFrenzyTurn.slot<e.enemySlot!)lak.fleeing=true;
   lak.preX=Math.floor(e.x);
-  e.x+=lakituStep(lak,Math.floor(e.x),Math.floor(p.x),this.marioSpeedByte(),this.lakituScroll,Boolean(lak.fleeing))/16;
+  // ScrollHandler's ChkPOffscr holds a Mario below the screen at screen x 239 before the enemies run, so Lakitu measures from the held x (4-1 ad0d5646 RAM 24633: Mario 3019.b0 + 4/16 held at 3019, $58+1 is $0A from 3019, not 9 from 3020).
+  const camera=Math.floor(this.camera+this.lakituScroll),marioX=this.area.theme!=='water'&&this.enemyOldBottom>=288?Math.min(Math.floor(p.x),camera+239):Math.floor(p.x);
+  e.x+=lakituStep(lak,Math.floor(e.x),marioX,this.marioSpeedByte(),this.lakituScroll,Boolean(lak.fleeing))/16;
   if(lak.box===8&&e.enemySlot!==undefined)this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;
   if(!lak.fleeing){this.specialSlot5.frenzyBuffer=18;this.spinyBuffer=true;} // MoveLakitu in the normal state puts a Spiny in EnemyFrenzyBuffer
   if(e.stopFrenzyX!==undefined&&stopFrenzyParsed(e.stopFrenzyX,this.scrollCrossCamera,this.frame-this.scrollCrossFrame))lak.stopQueued=true;
@@ -3024,8 +3028,9 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    this.platformMotion.turn(p,this.platformFrame,this.random.frame,run);if(this.placedCastle){const b=this.platformMotion.slotSpeedByte(p,this.platformFrame);if(b!==undefined)this.castleSlotXSpeed[slot]=b;}
   }
  }
+ private enemyOldBottom=0;
  private updateEnemies(oldBottom:number){
-  this.broClock++;if((this.placedCastle||this.placedActorStream)&&this.placedStream)this.placedBankFrame=this.frame;this.nativeBankItemFrame=this.frame;this.firebarSlots?.beginFrame(this.camera);
+  this.enemyOldBottom=oldBottom;this.broClock++;if((this.placedCastle||this.placedActorStream)&&this.placedStream)this.placedBankFrame=this.frame;this.nativeBankItemFrame=this.frame;this.firebarSlots?.beginFrame(this.camera);
   // Retained component motors are independent of the native bank readout.
   for(const [bar,motor]of this.firebarMotors)if(motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   if(this.mouthFlame&&!this.placedCastle)this.passNativeMouthFlame(0,this.mouthFlame.enemySlot??0);
@@ -3057,7 +3062,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    while(nativeSlot<=Math.min(5,e.enemySlot??5))this.visitNativeBankSlot(nativeSlot++,oldBottom);
    if((this.placedCastle||this.placedActorStream)&&e.slotBorn===this.frame&&(!e.nativeGroup||!e.graphicsVisible))continue;
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??e.horizontalFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
-   let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined,stompPod=e.pod?{...e.pod}:undefined;const stompRed=e.redFlight?{...e.redFlight}:undefined;
+   let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined,stompPod=e.pod?{...e.pod}:undefined;const stompFalling=e.podobooFalling,stompRed=e.redFlight?{...e.redFlight}:undefined;
    const hurtBeforeMove=()=>{
     if(!p.invincible&&!p.star&&!this.powerChange&&this.phase==='play'){
      const id=e.nativeId??({goomba:6,koopa:0,redKoopa:3,beetle:2,paratroopa:14,spiny:18} as Record<string,number>)[e.kind]??255,camera=this.camera+this.lakituScroll;
@@ -3065,7 +3070,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
      const playerRelative=this.hammerPlayerBox?((this.hammerPlayerBox[0]-(p.size===0?3:2))&255):(Math.floor(p.x)-Math.floor(camera))&255;
      if(nativeEnemyInjuryTurn(n,{id,playerRelative,enemyRelative:(Math.floor(priorX)-Math.floor(camera))&255,playerSpeed:Math.floor(p.vy),stompTimer:this.nativeStompTimer,injuryTimer:p.invincible,water:this.area.theme==='water'})){e.vx=((n.speed<<24)>>24)/16;e.direction=n.direction===1?1:-1;}
     }
-    if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;const alive=!p.dead;this.hurt();if(alive&&p.dead&&cannonShot(e))this.lateDeath=true; /* a cannon shot's turn comes after PlayerGfxHandler drew the row's pose (078b1bcf 5-1 RAM 40810: engine 11 by the $33 in slot 0, entries 5-8 still $32/$41/$42/$43, $9E/$9F the next row) */if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.nativeFlight&&stompPod){e.x=priorX;e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&stompRed){e.y=priorY;e.redFlight=stompRed;e.vy=stompRed.speed+stompRed.force/256;} /* 1-3 rows 7989/8034: the red flyer that injures Mario holds its row */if(this.nativeTimersStopped&&e.egg&&e.motion==='falling'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;} /* the falling Spiny egg that kills Mario holds its row (709e3676 4-1 RAM 29426: y 112 kept) */if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&greenBounceSpec(e)&&stompPod){e.x=priorX;e.y=stompPod.y;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
+    if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;const alive=!p.dead;this.hurt();if(alive&&p.dead&&cannonShot(e))this.lateDeath=true; /* a cannon shot's turn comes after PlayerGfxHandler drew the row's pose (078b1bcf 5-1 RAM 40810: engine 11 by the $33 in slot 0, entries 5-8 still $32/$41/$42/$43, $9E/$9F the next row) */if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.nativeFlight&&stompPod){e.x=priorX;e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&stompRed){e.y=priorY;e.redFlight=stompRed;e.vy=stompRed.speed+stompRed.force/256;} /* 1-3 rows 7989/8034: the red flyer that injures Mario holds its row */if(this.nativeTimersStopped&&e.egg&&e.motion==='falling'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;} /* the falling Spiny egg that kills Mario holds its row (709e3676 4-1 RAM 29426: y 112 kept) */if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;e.podobooFalling=stompFalling;} /* its flip too: the Podoboo that kills Mario keeps last row's upright tiles (9813e4d3 2-4 RAM 12545: slot 1 $A0/$0434 $FF/$FC, OAM $D0/$D7 unflipped) */if(this.nativeTimersStopped&&greenBounceSpec(e)&&stompPod){e.x=priorX;e.y=stompPod.y;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
    if(!e.active&&this.area.theme==='water'&&(e.stroke||e.swim)&&Math.floor(e.x)<Math.floor(this.camera)+255){e.slotLost=true;continue;} // native PositionEnemyObj discards columns left of ScreenRight
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){if(e.nativeId===undefined||this.placedStream||this.walkerStream)e.slotLost=true;continue;} // a list record waits at the parser cursor while every slot is busy and is dropped on the next free slot's turn (passNativeObjects)
@@ -3424,8 +3429,10 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const rawY=(Math.floor(e.y)-24)&255,ground=this.enemyCollisionAt(Math.floor(e.x)+8,e.y),depth=((rawY&15)-8)&255;
   if(((rawY+0x3e)&255)<0x44||e.kind==='spiny'&&rawY<0x25)return;
   // ...and its side check still turns a standing walker that faces a wall (smb-fast 2cd12b47 3-1 RAM 22242: slot 0 Koopa at x 2961 by the stair, X speed 8 -> $F8 on Mario's second death row; c028ee9c RAM 30346 the same)
-  if(e.walkerState===0){if(rawY>=0x20&&this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4)){if(e.graphicsFrame!==this.frame){e.graphicsX=e.x;e.graphicsY=e.y;e.graphicsFacing=Math.sign(e.vx);this.captureEnemyGraphics(e);}e.vx=-e.vx;}return;}
-  if(!ground||depth>=5&&ground.y%16===0)return;
+  const sideCheck=()=>{if(rawY>=0x20&&this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4)){if(e.graphicsFrame!==this.frame){e.graphicsX=e.x;e.graphicsY=e.y;e.graphicsFacing=Math.sign(e.vx);this.captureEnemyGraphics(e);}e.vx=-e.vx;}};
+  if(e.walkerState===0){sideCheck();return;}
+  // a falling walker that does not land goes on to the same side check, as when moving (de088146 3-1 RAM 16077: slot 1 Koopa in state 1 at y 176 by the stair turns $08 -> $F8 on the row after Mario's death)
+  if(!ground||depth>=5&&ground.y%16===0){sideCheck();return;}
   if(e.graphicsFrame!==this.frame){e.graphicsX=e.x;e.graphicsY=e.y;e.graphicsFacing=Math.sign(e.vx);this.captureEnemyGraphics(e);}
   const step={x:e.x,y:e.y,vx:e.vx,...e.fall};landNativeWalker(step,e.kind==='goomba'||e.kind==='spiny',this.player.x);
   e.y=ground.y%16?ground.y:step.y;e.vx=step.vx;e.vy=0;e.walkerState=0;e.fall.speed=0;e.fall.force=0;
