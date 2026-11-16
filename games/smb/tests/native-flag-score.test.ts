@@ -1,7 +1,9 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import {gunzipSync} from 'node:zlib';import {createHash} from 'node:crypto';import {Simulation} from '../src/simulation.js';import {observedLevels} from '../src/levels.js';import type {Button} from '../src/types.js';import {initializeEntrance} from '../tools/harness/native-entrance.mjs';import {strictCompare} from '../tools/harness/native-strict.js';import fixture from './fixtures/native-flag-score-cases.json';
 const unpack=(s:string)=>new Uint8Array(gunzipSync(Buffer.from(s,'base64'))),buttons:Button[]=['a','b','select','start','up','down','left','right'];
 for(const c of fixture.cases)test(`${c.sourcePadSha256.slice(0,8)}: flag engine keeps parser tasks, fireworks and every score row in native order`,()=>{
- const initial=unpack(c.initial),pads=unpack(c.pads),ram=unpack(c.ram),sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,c.entrance);sim.step([],0);sim.inputs=[];let flagRows=0,births=0,awards=0;
+ const initial=unpack(c.initial),pads=unpack(c.pads),ram=unpack(c.ram),sim:any=new Simulation(observedLevels());
+ // the stored decoded entrances predate the sound RAM seed; decodeEntrance reads it from the same initial RAM
+ const entrance={...c.entrance,sound:{zeroPage:Array.from(initial.subarray(0xf0,0x100)),page7:Array.from(initial.subarray(0x7b0,0x7cb))}};sim.reset(true);initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];let flagRows=0,births=0,awards=0;
  for(const [bytes,expected]of [[initial,c.initialRamSha256],[pads,c.padsSha256],[ram,c.ramSha256]] as const)assert.equal(createHash('sha256').update(bytes).digest('hex'),expected);
  for(let f=0;f<pads.length;f++){
   const r=ram.subarray(f*2048,(f+1)*2048),scoreBefore=sim.score;sim.step(buttons.filter((_,bit)=>pads[f]&(1<<bit)),1);const nativeScore=Array.from(r.subarray(0x7dd,0x7e3)).reduce((n,v)=>n*10+v,0)*10;assert.equal(sim.score,nativeScore,`score source${c.sourceFrameOffset+f}`);
@@ -13,5 +15,5 @@ for(const c of fixture.cases)test(`${c.sourcePadSha256.slice(0,8)}: flag engine 
   const previous=f?ram.subarray((f-1)*2048,f*2048):initial;births+=native.filter(e=>!previous[15+e.slot]).length;if(sim.score-scoreBefore===500)awards++;
  }
  assert.ok(flagRows>0);assert.ok(births>0);assert.equal(awards,births);
- const audit=strictCompare(c.entrance,pads,ram,c.level);assert.equal(audit.status,'pass',JSON.stringify(audit));assert.equal(audit.coverage.frames,pads.length);assert.equal(audit.coverage.unsteppedFrames,0);
+ const audit=strictCompare(entrance,pads,ram,c.level);assert.equal(audit.status,'pass',JSON.stringify(audit));assert.equal(audit.coverage.frames,pads.length);assert.equal(audit.coverage.unsteppedFrames,0);
 });

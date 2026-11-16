@@ -58,6 +58,7 @@ export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8A
   }
   sim.step(buttons.filter((_,bit)=>pads[f]&(1<<bit)),1);coverage.frames++;
   check('sound.queues',Array.from(raw.subarray(0xfa,0x100)).reverse(),Array.from(sim.soundQueues as Uint8Array),f); // $FF..$FA: square 1, square 2, noise, event, area, pause
+  check('sound.ram',[...raw.subarray(0xf0,0xfa),...raw.subarray(0x7b0,0x7cb)],[...(sim.soundRam as Uint8Array).subarray(0xf0,0xfa),...(sim.soundRam as Uint8Array).subarray(0x7b0,0x7cb)],f); // SoundEngine state
   while(index+1<regionVisits.length&&regionVisits[index+1].frame<=f)index++;
   const ptr=raw[0xe7]+raw[0xe8]*256,currentVisit=regionVisits[index],fallback=(!currentVisit?.area||currentVisit.ptr!==ptr)&&lastVisit?.ptr===ptr&&nativeId!==level;
   const visit=fallback?lastVisit:currentVisit,area=visit?.area??'unresolved';

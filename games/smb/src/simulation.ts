@@ -31,6 +31,7 @@ import {nativePlayerPriorityCleared} from './native-player-priority.js';
 import {nativeEntranceSetup,nativeEntranceAction} from './native-entrance.js';
 import {NativePalette} from './native-palette.js';
 import {emptyNativeEndLevelMusic,tickNativeEndLevelMusic} from './native-event-music.js';
+import {nativeSoundEngine} from './native-nmi-timing.js';
 import {nativeIntervalStep,nativeStarMusic,nativeStarPalette,NATIVE_STAR_PICKUP} from './native-interval.js';
 import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-spring.js';
 import {nativeFrenzyControllers,retainNativeFrenzyController,nativeWarpZoneRelease,seedNativePageControllers,type NativeFrenzyController} from './native-frenzy-controllers.js';
@@ -263,7 +264,9 @@ export class Simulation {
  introFromGameover=false;
  slots:Slot[]=[]; events:string[]=[]; checkpoint=false; previous=new Set<Button>(); timerFrames=0;
  /** Native sound queues written by this frame's game logic, in RAM order $FF,$FE,$FD,$FC,$FB,$FA (square 1, square 2, noise, event music, area music, pause). */
- soundQueues=new Uint8Array(6);private flagpoleSoundQueue=0;
+ soundQueues=new Uint8Array(6);
+ /** Native sound RAM ($F0-$FF, $07B0-$07CA) after this frame's SoundEngine turn; $0770 holds the operating mode SoundEngine reads. */
+ soundRam=new Uint8Array(2048);private soundPage7Before=new Uint8Array(27);private flagpoleSoundQueue=0;
  get nativeEndLevelMusicQueue(){return this.soundQueues[3];} set nativeEndLevelMusicQueue(v:number){this.soundQueues[3]=v;}
  get nativeEndLevelMusicAreaQueue(){return this.soundQueues[4];} set nativeEndLevelMusicAreaQueue(v:number){this.soundQueues[4]=v;}
  private activatedCheckpointArea?:string;
@@ -365,7 +368,7 @@ export class Simulation {
   this.nativeStartup=undefined;this.coldStartup=undefined;this.nativeStartupPicture.reset();this.random=new NativeRandom();this.intervalControl=20;
   this.frame=0;this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.timeUpDeath=false;this.lateDeath=false;this.offscreenDeathRows=0;this.firebarDeathFrame=0;this.deathMove=undefined;this.playerAnimNmiTimer=0;this.playerAnimNmiCtrl=0;this.lastJumpFallForce=0.5625;this.scrollCrossCamera=0;this.slotCamera=0;this.marioMotion=1;this.firebarMarioScreenX=0;this.flagAwardFrame=-1;this.flagScrollLocked=true;this.placedBankFrame=-1;this.nativeBankItemFrame=-1;this.slotScroll=false;this.jumpArc=false;this.springPrevA=false;this.swimDirection=0;this.swimMovingDir=0;this.bounceGravity=0.5625;this.springPinX=0;this.springPinY=0;this.springLaunchSpeed=0;this.waterCollisionPose=undefined;this.water=new NativeWater();this.paletteClock.buffer1.data.fill(0);this.offscreenPitDeath=false;this.offscreenLavaDeath=false;this.colorRotationPending=false;this.graphicsBuffer1=false;this.wallSpeed=undefined;this.wallSide=undefined;this.wallBackOut=false;this.sidePipeContact=undefined;this.swimPull=0;this.headBumped=false;this.deathLoad=undefined;this.levelLoad=undefined;this.warpHudLevel=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
-  this.nativeEndLevelMusic=emptyNativeEndLevelMusic();this.soundQueues.fill(0);this.flagpoleSoundQueue=0;
+  this.nativeEndLevelMusic=emptyNativeEndLevelMusic();this.soundQueues.fill(0);this.soundRam.fill(0);this.flagpoleSoundQueue=0;
   this.slots=[0,1].map(()=>({level:0,lives:3,score:0,coins:0,size:0,checkpoint:false}));this.previous.clear();this.inputs=[new Set(),new Set()];this.events=[];this.paused=false;this.pauseCooldown=0;
   this.destination=undefined;this.pipeLoad=undefined;this.lastFire=-12;this.airRunning=false;this.runJump=false;this.mediumJump=false;this.bouncing=false;this.braking=PHYSICS.brake;this.skidAccel=0;this.motor.reset();this.jumpHeld=0;this.landJump='inactive';
   this.vineProgress.clear();this.climbingVine=undefined;this.activatedHidden1ups.clear();this.graphicsScratch.clear();
@@ -535,7 +538,7 @@ export class Simulation {
   for(const packet of n.queuedPalette)this.vramBuffer1.append({address:packet.address,control:packet.bytes.length,payload:packet.bytes});
   this.nativeStartupPicture.step(n);
   if(effect.startGame){
-   this.soundQueues[4]=128; // the row that leaves the title queues area Silence (all 539 power-on captures, RAM 60: $FB $80)
+   this.soundQueues[4]=128; // the title's Silence still waits in the area queue: title rows run no SoundEngine (all 539 power-on captures, RAM 10-60: $FB $80)
    this.levelLoad={task:n.task,engine:n.engine,screen:n.screen,disable:n.disable,timer:n.timer,columns:n.columns};this.phase='intro';this.phaseFrame=0;this.lifeIntro=undefined;this.alignLifeClock(n.interval);this.nativeStartup=undefined;this.coldStartup=undefined;
   }
  }
@@ -543,8 +546,8 @@ export class Simulation {
   if(this.nativeStartup){this.updateStartup(b);return;}
   // SoundEngine consumes the preceding gameplay queue before ReadJoypads/PauseRoutine.
   tickNativeEndLevelMusic(this.nativeEndLevelMusic,{eventQueue:this.soundQueues[3],areaQueue:this.soundQueues[4],operMode:this.phase==='title'?0:1,pauseMode:this.paused?1:0});
-  // It clears the square, noise and pause queues every gameplay NMI, the music queues only when it is not running the pause tune.
-  this.soundQueues.fill(0,0,3);this.soundQueues[5]=0;if(!this.paused)this.soundQueues.fill(0,3,5);
+  // SoundEngine itself (src/native-nmi-timing.ts) runs over the sound RAM with this queue: it plays them and clears the square, noise and pause queues, and the music queues off the pause path.
+  this.soundPage7Before.set(this.soundRam.subarray(0x7b0,0x7cb));this.soundRam.set([...this.soundQueues].reverse(),0xfa);this.soundRam[0x770]=this.phase==='title'?0:1;nativeSoundEngine(this.soundRam);this.soundQueues.set(Array.from(this.soundRam.subarray(0xfa,0x100)).reverse());
   // Native: the row that ends the death sets engine 6 (PlayerLoseLife) to run on the NEXT row, so that row is still a death row (1-1 v2: e11 786..992, e6 993, lives screen
   // from 994). The lives screen is timed from the e6 row, as before, so the deferred respawn runs first, on the clock of the row that ended the death.
   if(this.phase==='dying'&&this.loseLife){this.loseLife=false;this.respawn();}
@@ -3648,7 +3651,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if(result.clear){
    this.graphicsScratch.clear();
    const time=this.time;this.loadArea(load.area,load.spawn,load.camera,false,true);this.time=time;load.player={...this.player};
-   this.soundQueues[4]=128; // InitializeArea queues area Silence (3d43b7b4 1-2 RAM 3242)
+   this.clearZeroPageSound();this.soundQueues[4]=128; // InitializeArea queues area Silence (3d43b7b4 1-2 RAM 3242)
    this.timerFrames=24;this.player.x=0;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.player.grounded=false;
   }
   if(result.preload&&load.player){Object.assign(this.player,load.player);this.seedPlayerPriority(0,Boolean(load.camera));this.initializeGameTimer();this.timerFrames=24;}
@@ -3696,6 +3699,9 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   if((this.random.frame&7)===0)this.colorRotationPending=true;
   this.levelLoad=undefined;this.pipeLoad=undefined;this.emit(this.areaMusic());
  }
+ /** InitializeArea's InitializeMemory clears pages 0-6, so the zero-page sound bytes and queues; $07B0-$07CA on page 7 stay (3d43b7b4 RAM 62: $F0-$F9 0).
+  * The clear runs past the next frame's NMI, so the row it ends on has no SoundEngine turn: page 7 keeps its bytes from before this row's turn (3d43b7b4 RAM 678-679: $07B5 2, 2). */
+ private clearZeroPageSound(){this.soundRam.fill(0,0xf0,0x100);this.soundRam.set(this.soundPage7Before,0x7b0);this.soundQueues.fill(0);}
  /** The area-music queue byte the load's task 2 writes. */
  private loadAreaMusic(){return this.area.entryVine?16:this.area.autoWalk&&this.pipeLoad?.alternate!==2?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];}
  private updateLevelLoad(){
@@ -3709,7 +3715,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    this.graphicsScratch.clear();this.warpHudLevel=undefined;
    const time=this.time,load=this.pipeLoad;this.loadArea(load?.target.area??this.level.main,undefined,load?load.page*256+load.offset:undefined,true,Boolean(load),true);this.time=time;
    // InitializeMemory clears raw Player_PageLoc/X; map that zero through the loaded scene origin.
-   this.timerFrames=24;this.player.x=this.nativeAreaOffset;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.random.frame=0;this.nativeEndLevelMusic.offset=0;this.soundQueues[4]=128;
+   this.timerFrames=24;this.player.x=this.nativeAreaOffset;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.random.frame=0;this.nativeEndLevelMusic.offset=0;this.clearZeroPageSound();this.soundQueues[4]=128;
   }
   if(result.preload&&this.pipeLoad){const levelEntry=this.pipeLoad.target.direction==='level';this.finishNativePipeLoad();if(levelEntry&&!this.area.autoWalk&&!this.entryControlLocked)this.levelLoad=n;return;}
   if(result.preload){
