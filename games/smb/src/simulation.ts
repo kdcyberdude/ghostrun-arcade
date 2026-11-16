@@ -1431,7 +1431,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   const n=this.gameTimerState(),result=runNativeGameTimer(n,1,run?8:7,Math.floor((this.player.y-32)/256)+1);
   this.time=n.time;this.timerFrames=24-n.control;
   if(result.timeUp){this.timeUpDeath=true;this.die();return true;}
-  if(result.tick){this.graphicsBuffer1=true;this.hud.queue({time:hudDigits(this.score,this.coins,this.time).time});}if(result.hurry)this.emit('event_hurry');return false;
+  // RunGameTimer runs before the warp-zone text, which then writes over its digits (a837c790 1-2 RAM 3916: $07FA 0 -> 9, $0300 $2C, TIME shows 350 for 24 pictures)
+  if(result.tick){this.graphicsBuffer1=true;if(this.warpTextRow.frame!==this.frame)this.hud.queue({time:hudDigits(this.score,this.coins,this.time).time});}if(result.hurry)this.emit('event_hurry');return false;
  }
  // Pipe exits rise without control (engine7) until the native spawn feet row.
  private beginPipeRise(frames:number){this.playerBackgroundPriority=true;this.pipeRise=frames;this.player.y+=frames;this.player.grounded=false;this.player.vx=0;this.player.vy=0;}
