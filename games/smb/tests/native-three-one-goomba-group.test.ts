@@ -35,7 +35,8 @@ test('the omitted third Goomba supplies the native stomp at 3-1 mood0 row453',()
  const before=native.stomp['452'],contact=native.stomp['453'];
  Object.assign(third,{x:867,y:208,vx:-0.5,vy:0});
  Object.assign(sim.player,{x:contact.x,y:contact.feet,vy:before.vy,grounded:false});
- sim.broClock=609;sim.updateEnemies(before.feet);
+ // Contact uses screen-relative boxes (7798c7e): the camera trails a scrolling Mario at screen x 112, and the hit box is the one taken for this placement, not the step before.
+ sim.camera=Math.floor(contact.x)-112;sim.broClock=609;sim.hammerPlayerBox=undefined;sim.updateEnemies(before.feet);
  assert.equal(third.squashed,true);assert.equal(sim.player.vy,contact.vy);
  assert.ok(sim.events.includes('sfx_stomp'));
 });
