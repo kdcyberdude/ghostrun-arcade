@@ -13,6 +13,7 @@ import {Simulation} from '../../src/simulation.js';
 import {observedLevels} from '../../src/levels.js';
 import type {Button} from '../../src/types.js';
 import {decodeEntrance,initializeEntrance} from './native-entrance.mjs';
+import {nativeLagFrames} from './native-lag-frames.mjs';
 import {nativeEntities,simEntities,unmatchedEntity} from './native-entities.js';
 import {strictCompare,type StrictAudit} from './native-strict.js';
 
@@ -29,18 +30,18 @@ export function divergence(dir:string,receiptPath:string,level:string,detail=fal
  const initial=new Uint8Array(fs.readFileSync(path.join(dir,'initial.ram'))),pads=fs.readFileSync(path.join(dir,'pads.bin')),ram=fs.readFileSync(path.join(dir,'ram.bin'));
  const receipt=JSON.parse(fs.readFileSync(receiptPath,'utf8'));
  // Strict diagnostics must survive malformed input rather than reading beyond the available native buffer.
- const entrance=decodeEntrance(initial,receipt),legacyPads=strict?pads.subarray(0,Math.floor(ram.length/2048)):pads,legacy=compareRun(entrance,legacyPads,f=>new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048),level,detail);legacy.frames=pads.length;
+ const entrance=decodeEntrance(initial,receipt),legacyPads=strict?pads.subarray(0,Math.floor(ram.length/2048)):pads,legacy=compareRun(entrance,legacyPads,f=>new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048),level,detail,new Set(nativeLagFrames(ram)));legacy.frames=pads.length;
  return strict?{...legacy,strict:strictCompare(entrance,pads,ram,level)}:legacy;
 }
 /** The comparison itself, over any source of per-frame native RAM (full traces, or the excerpts in evidence/native-runs). */
-export function compareRun(entrance:unknown,pads:ArrayLike<number>,frameRam:(f:number)=>Uint8Array,level:string,detail=false):Divergence{
+export function compareRun(entrance:unknown,pads:ArrayLike<number>,frameRam:(f:number)=>Uint8Array,level:string,detail=false,lag:ReadonlySet<number>=new Set()):Divergence{
  const sim:any=new Simulation(observedLevels());sim.reset(true);
  initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];
  const fields:Record<string,number|null>={dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null,enemy:null};const at:{field:string,native:number,sim:number}[]=[];
  /* Native x is level-absolute: a bonus/pipe room can continue at a later page, so each later area visit is aligned on its first compared frame. */
  let area=sim.area.id,xOffset:number|undefined=-((entrance as {areaOffset?:number}).areaOffset??0);
  for(let f=0;f<pads.length;f++){
-  sim.step(nesButtons.filter((_,b)=>pads[f]&(1<<b)),1);
+  if(!lag.has(f))sim.step(nesButtons.filter((_,b)=>pads[f]&(1<<b)),1);  // a native lag frame skips the whole update
   const raw=frameRam(f),n=nativeRow(raw);
   if(n.mode!==1||n.level!==level||sim.level.id!==level)break;
   if(sim.area.id!==area){area=sim.area.id;xOffset=undefined;}
