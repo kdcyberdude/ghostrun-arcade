@@ -98,12 +98,13 @@ export class World{
  }
  private trunkRuns=new Set<string>();
  /** `repeatX` > 1: the model's textures repeat that often around it (a trunk widened over several columns keeps its bark proportions).
-  * `shape`: a drawn shape other than the model's own, keeping the tile's pool name ('cannon' / 'cannon-plain': a blaster pedestal). */
- private pool(name:string,theme:string,palette=0,tint?:readonly number[],repeatX=1,shape?:'cannon'|'cannon-plain'){
+  * `shape`: a drawn shape other than the model's own, keeping the tile's pool name ('cannon' / 'cannon-plain': a blaster pedestal; else another model). */
+ private pool(name:string,theme:string,palette=0,tint?:readonly number[],repeatX=1,shape?:string){
   const v=VARIANT[this.snowLook?'snow':theme]??'',want=v&&this.kit.has(name+v)?name+v:name;
   tint??=this.whiteScenery&&name.startsWith('plat_tree_')?STEEL:this.whiteStone&&name==='trunk'?this.stone:undefined;
   const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join()+(this.nightLook?'@moon':''):'')+(cycles?'@palette'+palette:'')+(repeatX>1?'@x'+repeatX:'')+(shape?'@'+shape:'');let p=this.pools.get(key);
-  if(!p){let parts=shape?cannonPedestal(this.kit.parts('cannon_top'),shape==='cannon'):this.kit.parts(want)??this.fallback(name,theme);
+  const model=shape&&!shape.startsWith('cannon')?(v&&this.kit.has(shape+v)?shape+v:shape):want;
+  if(!p){let parts=shape?.startsWith('cannon')?cannonPedestal(this.kit.parts('cannon_top'),shape==='cannon'):this.kit.parts(model)??this.fallback(shape??name,theme);
    // The barrel model leaves 0.08 tile open above and below: stretched to the full tile so it meets the pedestal under it (its mouth keeps its shape).
    if(name==='cannon_top')parts=parts.map(q=>/Skull/.test(q.material.name)?q:{...q,matrix:new THREE.Matrix4().makeScale(1,1/0.84,1).multiply(q.matrix)});
    // Castle bricks and battlements are the same brick picture as brick blocks in 2D: draw them with the brick block's colour texture (both share its normal/roughness maps).
@@ -113,7 +114,7 @@ export class World{
     return {...q,material:m};});
    if(brick?.map)parts=parts.map(q=>{const m=(q.material as THREE.MeshStandardMaterial).clone();m.map=brick.map;m.color.copy(brick.color);return {...q,material:m};});if(tint){const rgb=this.nightLook?tint.map((v,i)=>v*MOON_BALANCE[i]):tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
    if(cycles){const materials:THREE.MeshStandardMaterial[]=[];parts=parts.map(part=>{if(name==='block_question'&&parts.length>1&&!part.material.name.startsWith('M_Question'))return part;const material=part.material.clone() as THREE.MeshStandardMaterial;materials.push(material);return {...part,material};});this.paletteMaterials.push({palette,materials,coin:name==='coin_tile'});}
-   p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,!shape&&VARY.test(want));this.pools.set(key,p);}
+   p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,!shape?.startsWith('cannon')&&VARY.test(model));this.pools.set(key,p);}
   return p;
  }
  private light(camPx:number,frame:number){
@@ -128,14 +129,16 @@ export class World{
   const pipe=kind==='pipe'||kind==='sidePipe'?pipeTint(palette,id):undefined,put=(name:string,x:number,y:number,dz=0)=>this.pool(name,theme,palette,pipe).add(this.m.makeTranslation(x,y,dz));
   switch(kind){
    case 'ground':{const above=kindOf(s.tiles.get(`${col},${row-1}`)??0);put(GRASS_THEMES.has(theme)&&!SOLIDISH.has(above)?'block_ground_top':'block_ground',col+0.5,14.5-row);break;}
-   case 'wall':put('block_wall',col+0.5,14.5-row);break;
+   // Item bricks (85-89) are the brick picture in 2D (nothing gives their contents away): drawn with the brick model, bumping like a brick.
+   case 'wall':if(id>=85&&id<=89){this.pool('block_wall',theme,palette,undefined,1,'block_brick').add(this.m.makeTranslation(col+0.5,14.5-row+bump,0));break;}put('block_wall',col+0.5,14.5-row);break;
    case 'brick':put('block_brick',col+0.5,14.5-row+bump);break;
    case 'question':put('block_question',col+0.5,14.5-row+bump);break;
    case 'used':{
     // A block write-back keeps its cell's original palette group (grey in 1-4 / 6-4, teal in the 6-2 bonus room), as in the 2D picture.
     const original=key&&s.blockBackground.get(key)===id?this.originalTiles.get(key):undefined,group=original!==undefined&&original>>6!==id>>6?original>>6:undefined;
     this.pool('block_used',theme,palette,group===undefined?undefined:nesLinear(nativePalettes[palette][group*4+2])).add(this.m.makeTranslation(col+0.5,14.5-row+bump,0));break;}
-   case 'hard':put('block_hard',col+0.5,14.5-row);break;
+   // A hard block carrying a cannon barrel is drawn as the blaster's skull pedestal (8-2's brick row), so the column is one piece as in the 2D picture.
+   case 'hard':if(s.tiles.get(`${col},${row-1}`)===100){this.pool('block_hard',theme,palette,undefined,1,'cannon').add(this.m.makeTranslation(col+0.5,14.5-row,0));break;}put('block_hard',col+0.5,14.5-row);break;
    // Tiles 70 / 72 are the castle's dark doorway / window; in an underground area (4-2) the 2D picture shows the open black cave there, so nothing is drawn.
    case 'castle':if((id===70||id===72)&&theme==='underground')break;put(id===71?'castle_brick':id===69||id===73?'castle_crenel':'castle_dark',col+0.5,14.5-row);break;
    case 'pipe':
