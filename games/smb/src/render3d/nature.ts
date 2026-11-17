@@ -39,8 +39,14 @@ export function terrainStrip(x0:number,x1:number,zFront:number,zBack:number,y0:n
  * (one InstancedMesh spanning a whole level would be drawn in full every frame). */
 const CHUNK=24;
 function chunked<T>(items:T[],x:(t:T)=>number){const by=new Map<number,T[]>();for(const t of items){const k=Math.floor(x(t)/CHUNK);(by.get(k)??by.set(k,[]).get(k)!).push(t);}return [...by.values()];}
-export function scatter(kit:Kit,name:string,mats:THREE.Matrix4[],shadows=true){
- const g=new THREE.Group(),parts=kit.parts(name);if(!parts||!mats.length)return g;const tmp=new THREE.Matrix4();
+/** Snow-laden copy of a lit plant material (white-scenery areas): the leaves' luminance lifted to cold white, the scan's shape and shading kept. */
+const frosted=new Map<THREE.Material,THREE.Material>();
+function frostMaterial(m:THREE.Material){let f=frosted.get(m);if(f)return f;const c=m.clone() as THREE.MeshStandardMaterial;
+ c.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\n diffuseColor.rgb=(dot(diffuseColor.rgb,vec3(0.3,0.59,0.11))*1.6+0.45)*vec3(0.9,0.95,1.04);');};
+ c.customProgramCacheKey=()=>'frost-plant';frosted.set(m,c);return c;}
+export function scatter(kit:Kit,name:string,mats:THREE.Matrix4[],shadows=true,frost=false){
+ const g=new THREE.Group(),found=kit.parts(name);if(!found||!mats.length)return g;
+ const parts=frost?found.map(p=>({...p,material:frostMaterial(p.material)})):found;const tmp=new THREE.Matrix4();
  for(const part of parts){const mat=part.material as THREE.MeshStandardMaterial;if(mat.map&&mat.transparent){mat.alphaTest=0.45;mat.transparent=false;mat.side=THREE.DoubleSide;}}
  for(const chunk of chunked(mats,m=>m.elements[12]))for(const part of parts){
   const im=new THREE.InstancedMesh(part.geometry,part.material,chunk.length);chunk.forEach((m,i)=>im.setMatrixAt(i,tmp.multiplyMatrices(m,part.matrix)));
@@ -50,8 +56,9 @@ export function scatter(kit:Kit,name:string,mats:THREE.Matrix4[],shadows=true){
 }
 /** Poly Haven plant scans are rows of separate plants up to ~1.5 m from the file origin. Each instance here gets ONE of those plants, recentred (x, z) on
  * the instance point, so a scaled, rotated scan never reaches past its placement (no leaves poking out in front of the gameplay blocks) and variety goes up. */
-export function plants(kit:Kit,name:string,mats:THREE.Matrix4[],shadows=false){
- const g=new THREE.Group(),parts=kit.parts(name);if(!parts||!mats.length)return g;const tmp=new THREE.Matrix4(),b=new THREE.Box3(),c=new THREE.Vector3();
+export function plants(kit:Kit,name:string,mats:THREE.Matrix4[],shadows=false,frost=false){
+ const g=new THREE.Group(),found=kit.parts(name);if(!found||!mats.length)return g;
+ const parts=frost?found.map(p=>({...p,material:frostMaterial(p.material)})):found;const tmp=new THREE.Matrix4(),b=new THREE.Box3(),c=new THREE.Vector3();
  for(const part of parts){const mat=part.material as THREE.MeshStandardMaterial;if(mat.map&&mat.transparent){mat.alphaTest=0.45;mat.transparent=false;mat.side=THREE.DoubleSide;}}
  const centred=parts.map(p=>{p.geometry.computeBoundingBox();b.copy(p.geometry.boundingBox!).applyMatrix4(p.matrix).getCenter(c);return new THREE.Matrix4().makeTranslation(-c.x,0,-c.z).multiply(p.matrix);});
  const by=parts.map(()=>[] as THREE.Matrix4[]);mats.forEach((m,i)=>by[i%parts.length].push(m));
@@ -127,7 +134,7 @@ export function photoBackdrop(kit:Kit,theme:string,x0:number,x1:number,night=the
  if(snow)trees.splice(0,trees.length,...trees.filter((_,i)=>i%3===0));  // winter: sparse frosted wood
  if(night&&!snow)g.add(fireflies(x0,x1,r));
  g.add(impostors(trees,snow?(night?MOONLIT_FROST:0xffffff):night?MOONLIT_LEAVES:SUNLIT_LEAVES,snow?0.55:0),...FLOWERS.map((f,i)=>plants(kit,f,flowers[i])),
-  plants(kit,'veg_grass_medium_02',grass[1]),scatter(kit,'veg_rock_moss_set_01',rocks),plants(kit,'veg_fern_02',ferns));
+  plants(kit,'veg_grass_medium_02',grass[1]),scatter(kit,'veg_rock_moss_set_01',rocks,true,snow),plants(kit,'veg_fern_02',ferns));
  return g;
 }
 /** Realistic stand-ins for the original scenery clusters (hill -> grassy knoll with rocks, bush -> real shrubs, tree -> scanned tree). */
@@ -137,7 +144,8 @@ export function photoCluster(kit:Kit,c:Cluster,w:number,h:number,snow=false):THR
   const depth=Math.max(3,w*0.6),geo=new THREE.SphereGeometry(1,72,36,0,Math.PI*2,0,Math.PI/2);geo.scale(w/2,h,depth/2);
   const p=geo.attributes.position;for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getZ(i),y=p.getY(i);p.setY(i,y*(1+0.06*Math.sin(x*2.1+z*1.7))+0.0);}
   geo.computeVertexNormals();worldUV(geo,3);
-  const knoll=new THREE.Mesh(geo,photoMaterial('leafy_grass',LAWN));knoll.receiveShadow=true;g.add(knoll);
+  const knoll=new THREE.Mesh(geo,snow?photoMaterial('snow_02',[1.08,1.14,1.3]):photoMaterial('leafy_grass',LAWN));knoll.receiveShadow=true;g.add(knoll);
+  if(snow)return g;  // white-scenery areas: a snow-covered knoll
   const grass:THREE.Matrix4[]=[],rocks:THREE.Matrix4[]=[];
   const bloom:THREE.Matrix4[]=[];for(let i=0;i<w*9;i++){const a=r()*Math.PI*2,d=Math.sqrt(r())*0.85,x=Math.cos(a)*d*w/2,z=Math.sin(a)*d*depth/2;bloom.push(pose(x,h*Math.sqrt(Math.max(0,1-d*d))-0.05,z,2.2+r()*0.8,r()*6.28));}
   g.add(plants(kit,'veg_flower_ursinia',bloom));
@@ -148,10 +156,10 @@ export function photoCluster(kit:Kit,c:Cluster,w:number,h:number,snow=false):THR
   const n=Math.max(6,Math.round(w*5)),ferns:THREE.Matrix4[]=[],bloom:THREE.Matrix4[]=[];
   for(let i=0;i<n;i++)ferns.push(pose((i/(n-1)-0.5)*(w-0.4),0,-0.4-r()*0.6,0.9+r()*0.4,r()*6.28));
   for(let i=0;i<Math.max(5,w*3);i++)bloom.push(pose((r()-0.5)*(w-0.4),0,-0.9-r()*0.4,1.8+r()*0.4,r()*6.28));  // kept behind the ground blocks so no leaf pokes through their front face
-  g.add(plants(kit,'veg_fern_02',ferns),plants(kit,['veg_periwinkle_plant','veg_flower_gazania','veg_flower_ursinia'][c.col0%3],bloom));
+  g.add(plants(kit,'veg_fern_02',ferns,false,snow));if(!snow)g.add(plants(kit,['veg_periwinkle_plant','veg_flower_gazania','veg_flower_ursinia'][c.col0%3],bloom));  // snow: a snow-laden clump, no flowers
  }else if(c.kind==='tree'){
   const id=c.col0%2?'tree_small_02':'island_tree_02',im=IMP[id];
-  if(im)g.add(impostors([{id,x:0,y:0,z:0,s:h/(im.height_m*METRE)*1.6,v:c.col0,flip:c.row0%2===1}],0xffffff,snow?0.55:0));
+  if(im)g.add(impostors([{id,x:0,y:0,z:0,s:h/(im.height_m*METRE)*1.6,v:c.col0,flip:c.row0%2===1}],0xffffff,snow?0.9:0));
  }
  return g;
 }
