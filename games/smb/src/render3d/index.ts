@@ -7,6 +7,7 @@ import {World,TILE_MODELS,areaLook} from './world.js';
 import {Entities,ACTOR_MODELS} from './entities.js';
 import {Hud} from './hud.js';
 import {Props} from './props.js';
+import {LavaFx} from './lava-fx.js';
 import {NES_W,NES_H} from './coords.js';
 import {loadImpostors} from './nature.js';
 import {IntroAvatar} from './avatar.js';
@@ -18,7 +19,7 @@ const query=new URLSearchParams(location.search);
 /** Output heights (16:15 game frame): 0.5K (480p), 1K (960p), 2K (1440p), 4K (2160p). `?res=` picks one at load (older 960p/1080p links still work), `?scale=` too. */
 export const RESOLUTIONS:Record<string,number>={'0.5K':480,'1K':960,'960p':960,'1080p':1080,'2K':1440,'4K':2160};
 export class Renderer3D{
- private gl:THREE.WebGLRenderer;private atmosphere:Atmosphere;private kit=new Kit();private world!:World;private entities!:Entities;private hud:Hud;private props=new Props(this.kit);private avatar?:IntroAvatar;scale:number;private castleHeld=false;private hudShown=false;
+ private gl:THREE.WebGLRenderer;private atmosphere:Atmosphere;private kit=new Kit();private world!:World;private entities!:Entities;private hud:Hud;private props=new Props(this.kit);private lava=new LavaFx();private avatar?:IntroAvatar;scale:number;private castleHeld=false;private hudShown=false;
  /** True while the held castle picture is shown (read by tools/visual3d). */
  held=false;
  constructor(private canvas:HTMLCanvasElement){
@@ -35,7 +36,7 @@ export class Renderer3D{
  async load(){
   await Promise.all([this.kit.load([...TILE_MODELS,...ACTOR_MODELS]),this.hud.load(),this.atmosphere.loadSkies(),loadImpostors()]);
   this.world=new World(this.kit);this.entities=new Entities(this.kit,query.has('debug'));
-  this.atmosphere.scene.add(this.world.group,this.entities.group,this.props.group);
+  this.atmosphere.scene.add(this.world.group,this.entities.group,this.props.group,this.lava.group);
   this.avatar=new IntroAvatar(this.kit);
  }
  render(s:Simulation){
@@ -43,7 +44,7 @@ export class Renderer3D{
   // The title's unlit rows show the PPU backdrop, as the 2D view (renderer.ts startup): power-on grey/black/sky, and the rows after a game over or a demo.
   const startup=nativeStartupTitleShown(s.nativeStartupPicture,s.onTitle?'title':s.phase,s.nativeScreen)?s.nativeStartupPicture:undefined;
   const boot=startup&&!startup.rendering?'#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''):undefined;
-  if(boot){this.world.group.visible=this.entities.group.visible=this.props.group.visible=false;this.gl.setRenderTarget(null);this.gl.setClearColor(boot);this.gl.clear();return;}
+  if(boot){this.world.group.visible=this.entities.group.visible=this.props.group.visible=this.lava.group.visible=false;this.gl.setRenderTarget(null);this.gl.setClearColor(boot);this.gl.clear();return;}
   // After a castle victory the first InitializeArea frames keep the castle picture, as the 2D view does: the scene is not re-synced (the new area's
   // map and camera would show); the retainer leaves on the first frame, the status bar on the second (renderer.ts victoryHold).
   const held=s.phase==='intro'&&s.levelLoad?.engine===8&&s.levelLoad.task===0&&this.castleHeld;this.castleHeld=s.phase==='castle'||held;this.held=held;
@@ -52,10 +53,10 @@ export class Renderer3D{
   const screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined;
   const camPx=Math.floor(s.camera),over=s.gameOverScreen;const black=over?true:screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
   this.atmosphere.setTheme(areaLook(s.area).night?'night':s.area.theme,s.area.id);
-  this.world.group.visible=this.entities.group.visible=this.props.group.visible=!black;
+  this.world.group.visible=this.entities.group.visible=this.props.group.visible=this.lava.group.visible=!black;
   this.atmosphere.setBlackout(black);
   this.atmosphere.place(camPx);
-  if(!black){this.world.sync(s,camPx);this.entities.sync(s,camPx);this.props.sync(s);}
+  if(!black){this.world.sync(s,camPx);this.entities.sync(s,camPx);this.props.sync(s);this.lava.sync(s,camPx);}
   const sprites:import('./sprite-pass.js').SpriteDraw[]=[];for(const bank of [this.world.group,this.entities.group,this.props.group])for(const root of bank.children)if(root.visible)sprites.push({root,offset:root.userData.nativeSprite?.offset??255,background:root.userData.nativeSprite?.background??false,clipRow:root.userData.nativeSprite?.clipRow});
   this.atmosphere.spritesFor(sprites.filter(d=>d.root.parent!==this.world.group||d.root.userData.nativeSprite),[this.world.group,this.entities.group,this.props.group]);
   if(screen&&black){this.gl.setRenderTarget(null);this.gl.setClearColor(!over&&s.nativeBackdrop===0x22?0x6888fc:0x000000);this.gl.clear();}else this.atmosphere.render();

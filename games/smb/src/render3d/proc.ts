@@ -38,36 +38,157 @@ export function coinGeometry(){
  coinGeo=mergeGeometries(parts)!;return coinGeo;
 }
 const water=new THREE.MeshPhysicalMaterial({color:0x1a7fc0,roughness:0.04,metalness:0,clearcoat:1,clearcoatRoughness:0.02,transparent:true,opacity:0.62,depthWrite:false,envMapIntensity:1.6});
-/** Tileable molten-rock texture: dark crust broken by glowing orange-yellow veins (periodic value noise, deterministic). */
-function lavaTexture(){
- const N=128,c=document.createElement('canvas');c.width=c.height=N;const ctx=c.getContext('2d')!,img=ctx.createImageData(N,N);
- const hash=(x:number,y:number,o:number)=>{const h=Math.sin(x*127.1+y*311.7+o*74.7)*43758.5453;return h-Math.floor(h);};
- const noise=(x:number,y:number,p:number,o:number)=>{const xi=Math.floor(x),yi=Math.floor(y),fx=x-xi,fy=y-yi,sx=fx*fx*(3-2*fx),sy=fy*fy*(3-2*fy);
-  const v=(a:number,b:number)=>hash(((xi+a)%p+p)%p,((yi+b)%p+p)%p,o);
-  return (v(0,0)*(1-sx)+v(1,0)*sx)*(1-sy)+(v(0,1)*(1-sx)+v(1,1)*sx)*sy;};
- for(let y=0;y<N;y++)for(let x=0;x<N;x++){
-  let n=0,amp=0.5;for(let k=0,p=4;k<4;k++,p*=2,amp/=2)n+=amp*noise(x/N*p,y/N*p,p,k);
-  const vein=Math.pow(1-Math.min(1,Math.abs(n-0.5)*5),3);           // bright where the fbm crosses its midline
-  const heat=Math.min(1,0.18+vein*0.95),i=(y*N+x)*4;
-  img.data[i]=Math.round(60+195*heat);img.data[i+1]=Math.round(8+180*Math.pow(heat,2.2));img.data[i+2]=Math.round(2+50*Math.pow(heat,5));img.data[i+3]=255;}
- ctx.putImageData(img,0,0);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.colorSpace=THREE.SRGBColorSpace;return t;
-}
-const lavaMap=typeof document==='undefined'?null:lavaTexture();
-const lava=new THREE.MeshStandardMaterial({color:0xffffff,map:lavaMap,emissive:0xffffff,emissiveMap:lavaMap,emissiveIntensity:0.9,roughness:0.85});
+/** Molten lava, all in the shader from world position and time (seamless across tiles, deterministic from the frame): a domain-warped flow of dark,
+ * cooling basalt crust plates drifting over the melt, broken by bright cracks and open molten pools whose black-body glow goes above 1 (HDR, caught by
+ * the bloom pass). The surface heaves gently (top faces only, mean height unchanged) and the crust is bump-shaded. `lavaTime` is set per frame. */
+export const lavaTime={value:0};
+const LAVA_NOISE=`
+uniform float uLavaT;varying vec3 vLavaW;varying vec3 vLavaN;
+float lavaHash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+float lavaNoise(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.0-2.0*f);
+ return mix(mix(lavaHash(i),lavaHash(i+vec2(1,0)),u.x),mix(lavaHash(i+vec2(0,1)),lavaHash(i+vec2(1,1)),u.x),u.y);}
+float lavaFbm(vec2 p){float v=0.0,a=0.5;mat2 r=mat2(0.8,0.6,-0.6,0.8);for(int i=0;i<5;i++){v+=a*lavaNoise(p);p=r*p*2.03+11.7;a*=0.5;}return v;}
+`;
+const lava=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffffff,roughness:0.9,metalness:0});
+lava.onBeforeCompile=sh=>{
+ sh.uniforms.uLavaT=lavaTime;
+ sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nuniform float uLavaT;varying vec3 vLavaW;varying vec3 vLavaN;').replace('#include <begin_vertex>',`#include <begin_vertex>
+ vec4 lw=vec4(transformed,1.0);
+ #ifdef USE_INSTANCING
+ lw=instanceMatrix*lw;
+ #endif
+ lw=modelMatrix*lw;
+ // The surface (the 0.2 top of a liquid_top tile) heaves with slow crossing swells; the mean height stays where it is.
+ if(position.y>0.15&&position.y<0.3){float d=0.03*sin(lw.x*2.1+lw.z*1.3+uLavaT*0.9)+0.02*sin(lw.x*3.7-lw.z*2.3-uLavaT*1.4);transformed.y+=d;lw.y+=d;}
+ vLavaW=lw.xyz;vLavaN=normal;`);
+ sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>'+LAVA_NOISE).replace('#include <map_fragment>',`
+ bool lavaTop=vLavaN.y>0.5;
+ vec2 lp=lavaTop?vLavaW.xz*vec2(1.0,1.4):vLavaW.xy*vec2(1.0,1.6);
+ float lt=uLavaT;
+ vec2 lq=lp*0.9+vec2(lt*0.045,lt*0.012);
+ vec2 lwarp=vec2(lavaFbm(lq+vec2(0.0,lt*0.03)),lavaFbm(lq+vec2(5.2,1.3)-lt*0.025));
+ float ln=lavaFbm(lq+1.7*lwarp);
+ float lr=1.0-abs(lavaFbm(lq*2.1+2.2*lwarp+3.1)*2.0-1.0);
+ float lcrack=pow(lr,22.0);
+ float lpool=smoothstep(0.6,0.74,ln);
+ float lheat=clamp(max(lpool,lcrack*1.1),0.0,1.0);
+ lheat*=0.85+0.15*sin(lt*1.7+ln*14.0);
+ float lgrain=lavaFbm(lp*7.0);
+ vec3 lcrust=mix(vec3(0.012,0.01,0.01),vec3(0.06,0.04,0.032),lgrain)*(0.8+0.4*ln);
+ diffuseColor=vec4(mix(lcrust,vec3(0.95,0.32,0.04),lheat),opacity);`).replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
+ roughnessFactor=mix(0.92,0.35,lheat);`).replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
+ {// Bump: crust plates stand above the melt, with a fine rocky grain.
+  float lh=(1.0-lheat)*0.7+lgrain*0.25;vec3 dpx=dFdx(-vViewPosition),dpy=dFdy(-vViewPosition);float dhx=dFdx(lh),dhy=dFdy(lh);
+  vec3 r1=cross(dpy,normal),r2=cross(normal,dpx);float det=dot(dpx,r1);vec3 g=sign(det)*(dhx*r1+dhy*r2);normal=normalize(abs(det)*normal-0.06*g);}`).replace('#include <emissivemap_fragment>',`
+ // Black-body ramp: dull red under the crust, orange in the cracks, yellow-white at the hottest.
+ vec3 lglow=vec3(0.07,0.008,0.0)*(0.3+ln)*(1.0-lheat);
+ lglow+=mix(vec3(0.9,0.09,0.0),vec3(2.2,0.6,0.05),smoothstep(0.3,0.85,lheat))*smoothstep(0.1,0.55,lheat);
+ lglow+=vec3(2.2,1.4,0.4)*smoothstep(0.8,1.0,lheat);
+ totalEmissiveRadiance=lglow;`);
+};
+lava.customProgramCacheKey=()=>'lava-v2';
+/** Water surface seen from below (water areas' top row): a thin, rippling, see-through sheet whose underside shimmers with moving caustic light and
+ * whose front edge is the bright wave line of the 2D picture. Waves move with `lavaTime` (frame-deterministic) and keep the sheet's mean height. */
+const waterTop=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffffff,roughness:0.06,metalness:0,transparent:true,depthWrite:false,envMapIntensity:1.5});
+waterTop.onBeforeCompile=sh=>{
+ sh.uniforms.uLavaT=lavaTime;
+ sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nuniform float uLavaT;varying vec3 vWaterW;varying vec3 vWaterN;varying float vWaterY;').replace('#include <begin_vertex>',`#include <begin_vertex>
+ vec4 ww=vec4(transformed,1.0);
+ #ifdef USE_INSTANCING
+ ww=instanceMatrix*ww;
+ #endif
+ ww=modelMatrix*ww;
+ float wave=0.05*sin(ww.x*2.4-uLavaT*1.5+ww.z*0.6)+0.025*sin(ww.x*5.1+ww.z*1.9+uLavaT*2.2)+0.015*sin(ww.z*3.3-uLavaT*1.2+ww.x*1.3);
+ transformed.y+=wave;ww.y+=wave;vWaterW=ww.xyz;vWaterN=normal;vWaterY=position.y;`);
+ sh.fragmentShader=sh.fragmentShader.replace('#include <common>',`#include <common>
+uniform float uLavaT;varying vec3 vWaterW;varying vec3 vWaterN;varying float vWaterY;
+// Tileable caustic network (iterated warp, after the classic "water caustic" pattern).
+float caustic(vec2 p,float t){vec2 i=p;float c=1.0;const float inten=0.005;
+ for(int n=0;n<4;n++){float tt=t*(1.0-(3.5/float(n+1)));i=p+vec2(cos(tt-i.x)+sin(tt+i.y),sin(tt-i.y)+cos(tt+i.x));c+=1.0/length(vec2(p.x/(sin(i.x+tt)/inten),p.y/(cos(i.y+tt)/inten)));}
+ c/=4.0;c=1.17-pow(c,1.4);return clamp(pow(abs(c),8.0),0.0,1.0);}`).replace('#include <map_fragment>',`
+ bool wFront=abs(vWaterN.z)>0.5;
+ vec2 wp=wFront?vec2(vWaterW.x,vWaterW.y*3.0):vWaterW.xz;
+ float wc=caustic(wp*1.6+vec2(0.0,uLavaT*0.05),uLavaT*0.35+23.0);
+ // Front edge: the surface line, brightest at the crest.
+ float wCrest=wFront?smoothstep(0.1,0.2,vWaterY):0.0;
+ diffuseColor=vec4(mix(vec3(0.2,0.55,0.85),vec3(0.9,0.98,1.0),max(wc*0.85,wCrest)),wFront?0.55+0.4*wCrest:0.42+0.45*wc);`).replace('#include <emissivemap_fragment>',`
+ totalEmissiveRadiance=vec3(0.35,0.7,0.95)*(0.18+1.1*wc)+vec3(0.9,1.0,1.0)*1.3*wCrest;`);
+};
+waterTop.customProgramCacheKey=()=>'water-top';
 /** Liquids are shared materials so the renderer can animate them once per frame. */
 export const LIQUIDS={water,lava};
-const ROPE=std(0x7a5a32,0.9);  // hemp brown: reads against both snow and night skies
+/** Laid steel wire rope: six helical strands (a periodic canvas pattern, 1 lay per 0.25 tile along the cable) as colour and bump. */
+function strandTexture(){
+ const N=64,c=document.createElement('canvas');c.width=c.height=N;const ctx=c.getContext('2d')!,img=ctx.createImageData(N,N);
+ for(let y=0;y<N;y++)for(let x=0;x<N;x++){const v=0.5+0.5*Math.cos(2*Math.PI*(6*x/N+y/N)),k=Math.round(255*Math.pow(v,0.6)),i=(y*N+x)*4;img.data[i]=img.data[i+1]=img.data[i+2]=k;img.data[i+3]=255;}
+ ctx.putImageData(img,0,0);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1,4);return t;
+}
+const strands=typeof document==='undefined'?null:strandTexture();
+const ROPE=new THREE.MeshStandardMaterial({color:0x9ba1aa,metalness:0.85,roughness:0.42,bumpMap:strands,bumpScale:1.2,envMapIntensity:1.1});
+const WHEEL=std(0xa7adb5,0.3,1),HOUSING=std(0x2f343b,0.5,0.7),BOLT=std(0x7c8189,0.35,1);
+/** Radius of the rope's centre line around a pulley wheel; the wheel sits where the horizontal rope (0.22 above the tile centre, as in the 2D tile)
+ * meets the vertical rope (tile centre). */
+const CABLE=0.035,GROOVE=0.27,RC=GROOVE+CABLE,TOP=0.22;
+let wheelGeo:THREE.BufferGeometry|undefined;
+/** Cast pulley sheave: grooved rim on a thin web with a hub (axis along z). */
+function sheave(){
+ if(wheelGeo)return wheelGeo;
+ const prof=[[0.07,-0.075],[0.09,-0.03],[0.22,-0.022],[0.25,-0.06],[0.335,-0.07],[0.345,-0.055],[0.3,-0.03],[GROOVE,0],[0.3,0.03],[0.345,0.055],[0.335,0.07],[0.25,0.06],[0.22,0.022],[0.09,0.03],[0.07,0.075]];
+ wheelGeo=new THREE.LatheGeometry(prof.map(([r,y])=>new THREE.Vector2(r,y)),48);wheelGeo.rotateX(Math.PI/2);return wheelGeo;
+}
+/** Pulley block at a lift's rope corner (`side` 1: tile 66, the rope rises at the tile centre and turns right; -1: tile 67, mirrored): grooved sheave
+ * on an axle between two dark steel cheek plates joined by a top cross-bar, with the cable wrapped over its quarter. */
+function pulleyBlock(side:1|-1):Part[]{
+ const cx=side*RC,cy=TOP-RC,at=(x:number,y:number,z:number)=>new THREE.Matrix4().makeTranslation(x,y,z);
+ const wrap=new THREE.TorusGeometry(RC,CABLE,8,20,Math.PI/2);  // quarter from +x to +y: rotate so it runs from the vertical rope side to the top
+ const wrapM=new THREE.Matrix4().makeTranslation(cx,cy,0).multiply(new THREE.Matrix4().makeRotationZ(side>0?Math.PI/2:0));
+ const drop=new THREE.CylinderGeometry(CABLE,CABLE,cy+0.5,8);  // the rope from the tile bottom up to where it meets the wheel
+ const cheekH=0.5-(cy-0.1),cheek=new RoundedBoxGeometry(0.2,cheekH,0.03,3,0.012);
+ const axle=new THREE.CylinderGeometry(0.03,0.03,0.3,12);axle.rotateX(Math.PI/2);
+ const nut=new THREE.CylinderGeometry(0.05,0.05,0.03,6);nut.rotateX(Math.PI/2);
+ return [
+  {geometry:sheave(),material:WHEEL,matrix:at(cx,cy,0)},
+  {geometry:wrap,material:ROPE,matrix:wrapM},
+  {geometry:drop,material:ROPE,matrix:at(0,(cy-0.5)/2,0)},
+  {geometry:cheek,material:HOUSING,matrix:at(cx,cy-0.1+cheekH/2,0.105)},
+  {geometry:cheek,material:HOUSING,matrix:at(cx,cy-0.1+cheekH/2,-0.105)},
+  {geometry:new RoundedBoxGeometry(0.2,0.06,0.24,3,0.015),material:HOUSING,matrix:at(cx,0.47,0)},
+  {geometry:axle,material:BOLT,matrix:at(cx,cy,0)},
+  {geometry:nut,material:BOLT,matrix:at(cx,cy,0.135)},
+  {geometry:nut,material:BOLT,matrix:at(cx,cy,-0.135)},
+ ];
+}
 export function procDeco(name:string,theme:string):Part[]|undefined{
  const liquid=theme==='castle'?lava:water;
  if(name==='liquid'){const g=new THREE.BoxGeometry(1,1,1.6);return [{geometry:g,material:liquid,matrix:I()}];}
- if(name==='liquid_top'){const g=new THREE.BoxGeometry(1,0.7,1.6,8,1,4);g.translate(0,-0.15,0);
-  if(liquid===lava){const pos=g.attributes.position;for(let i=0;i<pos.count;i++)if(pos.getY(i)>0.19)pos.setY(i,0.2+0.05*Math.sin((pos.getX(i)+0.5)*Math.PI*2)*Math.cos(pos.getZ(i)*2.2));g.computeVertexNormals();}  // tile-periodic ripple, seamless across neighbours
+ // Water areas' surface: a thin wavy sheet from 0.08 to the 0.2 surface (the old 0.7-tall slab read as a wall); pools elsewhere (3-1) and lava keep their slab.
+ if(name==='liquid_top'&&theme==='water'){const g=new THREE.BoxGeometry(1,0.12,1.6,16,1,8);g.translate(0,0.14,0);return [{geometry:g,material:waterTop,matrix:I()}];}
+ if(name==='liquid_top'){const g=new THREE.BoxGeometry(1,0.7,1.6,liquid===lava?12:8,1,liquid===lava?16:4);g.translate(0,-0.15,0);  // lava: dense top so the shader's swell is smooth
   return [{geometry:g,material:liquid,matrix:I()}];}
- if(name==='rope_v'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);return [{geometry:g,material:ROPE,matrix:I()}];}
- if(name==='rope_h'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);g.rotateZ(Math.PI/2);return [{geometry:g,material:ROPE,matrix:I()}];}
- if(name==='pulley'){const g=new THREE.TorusGeometry(0.28,0.07,10,24);return [{geometry:g,material:std(0x8a8f98,0.3,0.9),matrix:I()}];}
+ if(name==='rope_v'){const g=new THREE.CylinderGeometry(CABLE,CABLE,1,10);return [{geometry:g,material:ROPE,matrix:I()}];}
+ // The horizontal rope runs at the 2D tile's rope line (0.22 above the centre), over the top of the pulley wheels.
+ if(name==='rope_h'){const g=new THREE.CylinderGeometry(CABLE,CABLE,1,10);g.rotateZ(Math.PI/2);return [{geometry:g,material:ROPE,matrix:new THREE.Matrix4().makeTranslation(0,TOP,0)}];}
+ if(name==='pulley'||name==='pulley_r')return pulleyBlock(name==='pulley'?1:-1);
  if(name==='chain'){const g=new THREE.TorusGeometry(0.12,0.035,8,16),material=std(0x9aa0a8,0.3,0.9);g.scale(1,1.6,1);return Array.from({length:5},(_,i)=>({geometry:g,material,matrix:new THREE.Matrix4().makeRotationZ(-Math.PI/4).setPosition((i-2)*0.1875,(i-2)*0.1875,0)}));}
  if(name==='deco_coral'){const g=new THREE.ConeGeometry(0.16,1,8);g.translate(0,0,0);const m=std(0x3ac06a,0.8);
   return [-0.25,0,0.25].map((x,i)=>({geometry:g,material:m,matrix:new THREE.Matrix4().makeRotationZ((i-1)*0.35).setPosition(x,0,0)}));}
  return undefined;
+}
+/** Bullet Bill blaster pedestal under a barrel (metatile 101 skull piece, 102 plain lower piece, a hard block directly under a barrel): a full tile tall,
+ * so stacked pieces and the barrel above form one continuous column as in 2D. `skull`: the bone skull medallion on its front face. Materials come from
+ * the barrel model (iron / brass / bone) so the column reads as one casting. */
+export function cannonPedestal(barrel:Part[]|undefined,skull:boolean):Part[]{
+ const byName=(re:RegExp)=>barrel?.find(p=>re.test(p.material.name))?.material;
+ const iron=byName(/Iron/)??std(0x15161a,0.45,0.6),brass=byName(/Brass/)??std(0xc8962a,0.3,1),bone=byName(/Skull/)??std(0xf2e6cc,0.5);
+ const at=(x:number,y:number,z:number)=>new THREE.Matrix4().makeTranslation(x,y,z);
+ // Iron body, with a brass collar where it meets the piece above (a plain lower piece also gets a foot band).
+ const parts:Part[]=[{geometry:box(0.84,1,0.84,0.03),material:iron,matrix:I()},{geometry:box(0.9,0.07,0.9,0.02),material:brass,matrix:at(0,0.465,0)}];
+ if(!skull){parts.push({geometry:box(0.9,0.07,0.9,0.02),material:brass,matrix:at(0,-0.465,0)});return parts;}
+ const disc=new THREE.CylinderGeometry(0.27,0.29,0.05,40);disc.rotateX(Math.PI/2);
+ const cranium=new THREE.SphereGeometry(0.15,32,20);cranium.scale(1,0.92,0.45);
+ const eye=new THREE.SphereGeometry(0.045,16,10);eye.scale(1,1.15,0.6);
+ const nose=new THREE.ConeGeometry(0.022,0.045,3);nose.rotateZ(Math.PI);
+ parts.push({geometry:disc,material:brass,matrix:at(0,-0.04,0.43)},{geometry:cranium,material:bone,matrix:at(0,0,0.46)},{geometry:box(0.15,0.09,0.06,0.02),material:bone,matrix:at(0,-0.14,0.46)},
+  {geometry:eye,material:iron,matrix:at(-0.06,0,0.52)},{geometry:eye,material:iron,matrix:at(0.06,0,0.52)},{geometry:nose,material:iron,matrix:at(0,-0.07,0.525)});
+ return parts;
 }
