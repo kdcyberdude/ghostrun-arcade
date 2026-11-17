@@ -52,7 +52,7 @@ try{
   const inputFrames=[];let effectiveMask=0;const update=simulation.update.bind(simulation),inputNames=['up','down','left','right','a','b','start','select'];simulation.update=buttons=>{effectiveMask=inputNames.reduce((mask,name,i)=>mask|(buttons.has(name)?1<<i:0),0);return update(buttons);};
   const config={codec:'avc1.420033',width:canvas.width,height:canvas.height,bitrate:bitrate,framerate:fps,latencyMode:'realtime',hardwareAcceleration:acceleration,avc:{format:'annexb'}};
   if(!(await VideoEncoder.isConfigSupported(config)).supported)throw Error('H264 unavailable');
-  let chunks=[],encoded=0,failure,run=0,remaining=actions[0][1],limit=frames,terminal,seenPlay=playing;const names=['up','down','left','right','a','b','start','select'];
+  let chunks=[],encoded=0,failure,run=0,remaining=actions[0][1],limit=frames,terminal,levelTransition,seenPlay=playing;const names=['up','down','left','right','a','b','start','select'];
   const encoder=new VideoEncoder({output:c=>{const b=new Uint8Array(c.byteLength);c.copyTo(b);chunks.push(b);timestamps.push({timestamp:c.timestamp,duration:c.duration});encoded++;},error:e=>failure=e.message});encoder.configure(config);
   const b64=bytes=>{let s='';for(let n=0;n<bytes.length;n+=32768)s+=String.fromCharCode(...bytes.subarray(n,n+32768));return btoa(s);};
   window.gameAudioCapture={commands,timestamps,states,inputFrames,initialization,initialState:structuredClone(window.marioDebug.snapshot()),AudioEngine,b64,async batch(){
@@ -63,22 +63,22 @@ try{
     if(transport==='direct-ppu'&&applied!==mask)throw Error('Direct transport changed a requested mask');
     const phase=window.marioDebug.simulation.phase;if(phase==='play')seenPlay=true;
     if(!lagSet.has(frame)&&reply.framesAdvanced!==1&&!(reply.framesAdvanced===0&&phase==='title'&&!seenPlay))throw Error(`No advance at input frame ${frame}: phase ${phase}`);
-    const transition=entrance&&window.marioDebug.simulation.level.id!==entrance.level;const stopped=Boolean(transition)||(seenPlay&&['gameover','ending','title'].includes(phase));
+    const transition=entrance&&window.marioDebug.simulation.level.id!==entrance.level;if(transition&&!levelTransition)levelTransition={reason:'observed level transition',inputFrame:frame,fromLevel:entrance.level,toLevel:window.marioDebug.simulation.level.id};const stopped=seenPlay&&['gameover','ending','title'].includes(phase); // like the NES clip, the next level's WORLD / lives screen is recorded until the inputs end
     if(frame===0)first=png.call(canvas,'image/png');
     if(frame%60===0||frame===frames-1||stopped)states.push({inputFrame:frame,state:structuredClone(window.marioDebug.snapshot())});
     const timestamp=Math.round(frame*1e6/fps),duration=Math.round((frame+1)*1e6/fps)-timestamp;
     const v=new VideoFrame(canvas,{timestamp,duration});encoder.encode(v,{keyFrame:frame%120===0});v.close();frame++;remaining--;
     if(!remaining&&frame<frames){run++;remaining=actions[run][1];}
     if(encoder.encodeQueueSize>=8)await encoder.flush();if(failure)throw Error(failure);
-    if(stopped){limit=frame;terminal={phase,inputFrame:frame-1,...(transition?{reason:'observed level transition',fromLevel:entrance.level,toLevel:window.marioDebug.simulation.level.id}:{})};break;}
+    if(stopped){limit=frame;terminal={phase,inputFrame:frame-1,...(levelTransition?{levelTransition}:{})};break;}
    }
    await encoder.flush();if(failure)throw Error(failure);
    const data=new Uint8Array(chunks.reduce((n,c)=>n+c.length,0));let pos=0;for(const c of chunks){data.set(c,pos);pos+=c.length;}chunks=[];
    if(frame===limit){encoder.close();canvas.toDataURL=png;}
-   return {data:b64(data),first,frame,encoded,terminal,done:frame===limit};
+   return {data:b64(data),first,frame,encoded,terminal,levelTransition,done:frame===limit};
   }};return config;
  },{acceleration:process.platform==='darwin'?'prefer-hardware':'no-preference',bitrate:Number(a.bitrate??(a.view==='3d'?12000000:2000000)),actions,frames,fps,playing:Boolean(entrance)||log.start!=='power_on',entrance,transport:a.transport,offset,lag});
- for(;;){const b=await page.evaluate(()=>window.gameAudioCapture.batch());assert.equal(b.frame,b.encoded,'Video frames dropped');await video.write(Buffer.from(b.data,'base64'));if(b.first)await fs.writeFile(path.join(out,'first.png'),Buffer.from(b.first.split(',')[1],'base64'));if(b.done){capturedFrames=b.frame;outcome=b.terminal??{phase:await page.evaluate(()=>window.marioDebug.simulation.phase),reason:'requested prefix ended'};break;}}
+ for(;;){const b=await page.evaluate(()=>window.gameAudioCapture.batch());assert.equal(b.frame,b.encoded,'Video frames dropped');await video.write(Buffer.from(b.data,'base64'));if(b.first)await fs.writeFile(path.join(out,'first.png'),Buffer.from(b.first.split(',')[1],'base64'));if(b.done){capturedFrames=b.frame;outcome=b.terminal??{phase:await page.evaluate(()=>window.marioDebug.simulation.phase),reason:'requested prefix ended',...(b.levelTransition?{levelTransition:b.levelTransition}:{})};break;}}
  await video.close();
  const audio=await page.evaluate(async({frames,fps})=>{
   const cap=window.gameAudioCapture,tracks=await fetch('/data/audio-tracks.json').then(r=>r.json());
