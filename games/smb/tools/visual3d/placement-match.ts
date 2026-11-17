@@ -3,7 +3,9 @@
 // projected rect of the 3D object of the same family, matched greedily by distance; compared by horizontal centre and bottom (feet), since 3D models are
 // not sprite-sized.
 import {kindIn} from '../../src/render3d/semantics.js';
-export interface Obj{id:string;sourceId?:string;kind:string;x:number;y:number;w:number;h:number;state?:string}
+export interface Obj{id:string;sourceId?:string;kind:string;x:number;y:number;w:number;h:number;state?:string;
+ /** 2D only: the NES sprite hardware hid it this frame (8 per line / OAM cycling); the 3D view may show it or not. */
+ oamHidden?:boolean}
 export interface Cell{col:number;row:number;id:number}
 export interface Issue{type:'tile-missing-3d'|'tile-extra-3d'|'tile-overlap-3d'|'look-3d'|'object-missing-3d'|'object-extra-3d'|'object-offset'|'object-state';what:string;at:string;dx?:number;dy?:number}
 export interface FrameReport{issues:Issue[];counts:{tiles2d:number;tiles3d:number;objects2d:number;objects3d:number}}
@@ -58,6 +60,8 @@ export function compareLooks(a:Look[],b:Look[]):Issue[]{
   if(l.rgb&&m.rgb&&colourFamily(l.rgb)!==colourFamily(m.rgb))issues.push({type:'look-3d',what:l.what,at:`${l.at} ${colourFamily(l.rgb)}->${colourFamily(m.rgb)}`});}
  return issues;
 }
+/** The part of a rect inside the 256x240 picture: both renderers cut objects at the screen edges (a Goomba falling out of the bottom). */
+export function shown(o:{x:number;y:number;w:number;h:number}){const x0=Math.max(0,o.x),y0=Math.max(0,o.y),x1=Math.min(256,o.x+o.w),y1=Math.min(240,o.y+o.h);return x1>x0&&y1>y0?{x:x0,y:y0,w:x1-x0,h:y1-y0}:o;}
 export function compareFrame(f:{theme:string;camera:number;tiles2d:Cell[];tiles3d:{name:string;x:number;y:number}[];objects2d:Obj[];objects3d:Obj[];pieceModel?:(c:string)=>string;looks2d?:Look[];looks3d?:Look[]}):FrameReport{
  const issues:Issue[]=[],norm=f.pieceModel??((c:string)=>c);
  // Only fully visible columns are compared (both renderers cull differently at the edges).
@@ -75,12 +79,13 @@ export function compareFrame(f:{theme:string;camera:number;tiles2d:Cell[];tiles3
  for(const [k,cats] of have)for(const c of cats)if(!want.get(k)?.has(c)&&!(c==='piece:mush_stem'))issues.push({type:'tile-extra-3d',what:c,at:k});
  // Objects: greedy nearest pairs within the same family.
  const a=f.objects2d,b=f.objects3d,pairs:{i:number;j:number;d:number;dx:number;dy:number;identity:boolean}[]=[];
- a.forEach((p,i)=>b.forEach((q,j)=>{if(family(p.kind)!==family(q.kind)||p.sourceId&&q.sourceId&&p.sourceId!==q.sourceId)return;const identity=Boolean(p.sourceId&&p.sourceId===q.sourceId),dx=(q.x+q.w/2)-(p.x+p.w/2),dy=(q.y+q.h)-(p.y+p.h),d=Math.hypot(dx,dy);if(identity||d<=MATCH)pairs.push({i,j,d,dx,dy,identity});}));
+ a.forEach((p,i)=>b.forEach((q,j)=>{if(family(p.kind)!==family(q.kind)||p.sourceId&&q.sourceId&&p.sourceId!==q.sourceId)return;const identity=Boolean(p.sourceId&&p.sourceId===q.sourceId),P=shown(p),Q=shown(q),dx=(Q.x+Q.w/2)-(P.x+P.w/2),dy=(Q.y+Q.h)-(P.y+P.h),d=Math.hypot(dx,dy);if(identity||d<=MATCH)pairs.push({i,j,d,dx,dy,identity});}));
  pairs.sort((x,y)=>Number(y.identity)-Number(x.identity)||x.d-y.d);const ua=new Set<number>(),ub=new Set<number>();
  for(const p of pairs){if(ua.has(p.i)||ub.has(p.j))continue;ua.add(p.i);ub.add(p.j);
+  if(a[p.i].oamHidden)continue;
   if(onScreen(a[p.i])&&a[p.i].state&&b[p.j].state&&a[p.i].state!==b[p.j].state)issues.push({type:'object-state',what:a[p.i].id,at:`${a[p.i].state}->${b[p.j].state}`});
   if(onScreen(a[p.i])&&(Math.abs(p.dx)>TOLERANCE||Math.abs(p.dy)>TOLERANCE))issues.push({type:'object-offset',what:`${a[p.i].id}(${a[p.i].kind})`,at:`${Math.round(a[p.i].x)},${Math.round(a[p.i].y)}`,dx:Math.round(p.dx),dy:Math.round(p.dy)});}
- a.forEach((p,i)=>{if(onScreen(p)&&!ua.has(i))issues.push({type:'object-missing-3d',what:`${p.id}(${p.kind})`,at:`${Math.round(p.x)},${Math.round(p.y)}`});});
+ a.forEach((p,i)=>{if(onScreen(p)&&!ua.has(i)&&!p.oamHidden)issues.push({type:'object-missing-3d',what:`${p.id}(${p.kind})`,at:`${Math.round(p.x)},${Math.round(p.y)}`});});
  b.forEach((q,j)=>{if(onScreen(q)&&!ub.has(j))issues.push({type:'object-extra-3d',what:q.id,at:`${Math.round(q.x)},${Math.round(q.y)}`});});
  issues.push(...compareLooks(f.looks2d??[],f.looks3d??[]));
  return {issues,counts:{tiles2d:f.tiles2d.length,tiles3d:f.tiles3d.length,objects2d:a.length,objects3d:b.length}};

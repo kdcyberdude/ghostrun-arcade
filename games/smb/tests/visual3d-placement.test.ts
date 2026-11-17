@@ -51,3 +51,16 @@ test('palette identity: night sky and pipe / block colour families are compared 
  const r=compareFrame({...frame,looks2d,looks3d:[{what:'sky',at:'',night:false},{what:'pipe',at:'4,10',rgb:[184,248,24]},{what:'used',at:'7,9',rgb:[228,92,16]},{what:'pipe',at:'9,10',rgb:[184,248,24]}]});
  assert.deepEqual(r.issues.map(i=>`${i.type} ${i.what} ${i.at}`),['look-3d sky night->day','look-3d pipe 4,10 grey->green','look-3d used 7,9 grey->orange']);
 });
+
+test('an object the NES sprite hardware hid in 2D may be shown or not in 3D, but still claims its 3D twin',()=>{
+ const p={id:'fire#0.0',sourceId:'fire#0.0',kind:'fire',x:55,y:149,w:8,h:8,oamHidden:true};
+ assert.deepEqual(compareFrame({...frame,objects2d:[p],objects3d:[{...p,oamHidden:undefined,id:'fire@0',x:60}]}).issues,[]);
+ assert.deepEqual(compareFrame({...frame,objects2d:[p]}).issues,[]);
+ assert.deepEqual(compareFrame({...frame,objects2d:[{...p,oamHidden:undefined}]}).issues.map(i=>i.type),['object-missing-3d']);
+});
+
+test('objects cut by the screen edge are compared by the part on screen',()=>{
+ const p={id:'enemy#0',sourceId:'enemy#0',kind:'goomba',x:40,y:228,w:16,h:12};
+ assert.deepEqual(compareFrame({...frame,objects2d:[p],objects3d:[{...p,id:'goomba@0',y:226,h:30}]}).issues,[]);
+ assert.equal(compareFrame({...frame,objects2d:[p],objects3d:[{...p,id:'goomba@0',y:200,h:30}]}).issues[0]?.type,'object-offset');
+});
