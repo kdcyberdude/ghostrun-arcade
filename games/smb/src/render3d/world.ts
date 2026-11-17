@@ -67,6 +67,8 @@ const SCENERY=new Set(['hill','bush','cloud','tree','empty','void']);const PHOTO
 function paletteTint(m:THREE.Material,rgb:readonly number[]){const c=m.clone() as THREE.MeshStandardMaterial,v=rgb.map(x=>(x*3.4).toFixed(3)).join(',');
  c.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>\n diffuseColor.rgb=vec3(dot(diffuseColor.rgb,vec3(0.299,0.587,0.114)))*vec3(${v});`);};
  c.customProgramCacheKey=()=>'tint-'+v;return c;}
+/** Night areas: the tint is warmed and lifted against the blue moon and fill light (atmosphere night), so light-grey pipes still read light grey (3-1 / 3-2 / 6-3). */
+const MOON_BALANCE=[3.1,2.45,1.65];
 /** Light steel grey (NES white 0x30 in a scenery group). */
 const STEEL=[1,1.015,1.059];
 const nesLinear=(index:number)=>new THREE.Color().setRGB(...(nesPalette.colors[index].map(c=>c/255) as [number,number,number]),THREE.SRGBColorSpace).toArray();
@@ -82,7 +84,7 @@ export class World{
  readonly group=new THREE.Group();private pools=new Map<string,Pool>();private area?:object;private statics?:THREE.Group;
  readonly unmapped=new Set<number>();private m=new THREE.Matrix4();
  private paletteMaterials:{palette:number;materials:THREE.MeshStandardMaterial[];coin:boolean}[]=[];
- private whiteScenery=false;private snowLook=false;private whiteStone=false;private stone:number[]=STEEL;private originalTiles=new Map<string,number>();
+ private whiteScenery=false;private snowLook=false;private nightLook=false;private whiteStone=false;private stone:number[]=STEEL;private originalTiles=new Map<string,number>();
  private flag=makeFlag();private spots:LightSpot[]=[];private ropeArea?:object;private ropes:number[]=[];
  /** A few point lights re-aimed every frame at the torches / crystals nearest the camera (only visible in cave and castle areas). */
  private lamps=Array.from({length:6},()=>{const l=new THREE.PointLight(0xffffff,0,14,2);l.visible=false;return l;});
@@ -97,8 +99,8 @@ export class World{
  private pool(name:string,theme:string,palette=0,tint?:readonly number[]){
   const v=VARIANT[this.snowLook?'snow':theme]??'',want=v&&this.kit.has(name+v)?name+v:name;
   tint??=this.whiteScenery&&name.startsWith('plat_tree_')?STEEL:this.whiteStone&&name==='trunk'?this.stone:undefined;
-  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join():'')+(cycles?'@palette'+palette:'');let p=this.pools.get(key);
-  if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);if(tint){const rgb=tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
+  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join()+(this.nightLook?'@moon':''):'')+(cycles?'@palette'+palette:'');let p=this.pools.get(key);
+  if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);if(tint){const rgb=this.nightLook?tint.map((v,i)=>v*MOON_BALANCE[i]):tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
    if(cycles){const materials:THREE.MeshStandardMaterial[]=[];parts=parts.map(part=>{if(name==='block_question'&&parts.length>1&&!part.material.name.startsWith('M_Question'))return part;const material=part.material.clone() as THREE.MeshStandardMaterial;materials.push(material);return {...part,material};});this.paletteMaterials.push({palette,materials,coin:name==='coin_tile'});}
    p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,VARY.test(want));this.pools.set(key,p);}
   return p;
@@ -153,7 +155,7 @@ export class World{
    this.area=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));
    this.whiteScenery=whiteGroup(s.area.palette,0);this.whiteStone=whiteGroup(s.area.palette,1);this.stone=nesLinear(nativePalettes[s.area.palette][6]);
    if(this.statics){this.group.remove(this.statics);disposeGroup(this.statics);}
-   const photo=PHOTO_THEMES.has(s.area.theme)&&!s.area.id.includes('sky')&&this.kit.has('veg_shrub_02'),look=areaLook(s.area),scenery=look.snow?'snow':s.area.theme;this.snowLook=look.snow;
+   const photo=PHOTO_THEMES.has(s.area.theme)&&!s.area.id.includes('sky')&&this.kit.has('veg_shrub_02'),look=areaLook(s.area),scenery=look.snow?'snow':s.area.theme;this.snowLook=look.snow;this.nightLook=look.night;
    this.statics=buildStatics(analyseArea(s.area),scenery,photo?this.kit:undefined);const wallPart=this.kit.parts(s.area.theme==='castle'?'block_wall_castle':'block_ground_ug')?.[0];const bd=photo?photoBackdrop(this.kit,scenery,-40,s.area.width/16+60,look.night):buildBackdrop(s.area.theme,s.area.width,wallPart?.material as THREE.MeshStandardMaterial|undefined,s.area.id);this.statics.add(bd);this.group.add(this.statics);
    this.spots=(bd.userData.lights as LightSpot[]|undefined)??[];
   }

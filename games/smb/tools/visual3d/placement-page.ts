@@ -121,9 +121,9 @@ function cells3d(r3:Any,s:Simulation){
  return log as {name:string;x:number;y:number;key:string}[];
 }
 const nes=(index:number)=>nesPalette.colors[index] as number[];
-/** Colour of a 3D pool: its palette tint (linear, x3.4 in the shader key), else the model's own colour (green pipes, gold used blocks). */
+/** Colour of a 3D pool: its palette tint (linear, before the night light balance), else the model's own colour (green pipes, gold used blocks). */
 function poolColour(key:string,natural:number){const m=/@tint([\d.,]+)/.exec(key);if(!m)return nes(natural);
- return m[1].split(',').map(Number).map(v=>{const c=Math.min(1,v/3.4);return Math.round(255*(c<=0.0031308?12.92*c:1.055*c**(1/2.4)-0.055));});}
+ const v=m[1].split(',').map(Number),max=Math.max(...v,1);return v.map(v=>{const c=v/max;return Math.round(255*(c<=0.0031308?12.92*c:1.055*c**(1/2.4)-0.055));});}
 /** Palette identity of both pictures: outdoor sky night/day, pipe colour per cell, block write-back colour per cell. */
 function looks(s:Simulation,r3:Any,tiles2d:{id:number;x:number;y:number;z:number;palette?:number}[],tiles3d:{name:string;x:number;y:number;key:string}[]){
  const cam=Math.floor(s.camera),outdoor=['ground','night','snow'].includes(s.area.theme),a:Look[]=[],b:Look[]=[];if(!tiles2d.length)return {a,b};
