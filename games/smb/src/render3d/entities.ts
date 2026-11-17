@@ -13,7 +13,27 @@ import {Kit} from './kit.js';
 import {ActorPool,Actor,turnToward,yawFor} from './actors.js';
 import {coinGeometry,GOLD} from './proc.js';
 import nesPalette from '../../assets/nes-rgb-palette.json';
-const PIRANHA_GREEN=new THREE.Color().fromArray(nesPalette.colors[0x1a].map(v=>v/255)).convertSRGBToLinear();
+const NES_COLORS=nesPalette.colors.map(([r,g,b])=>new THREE.Color().setRGB(r/255,g/255,b/255,THREE.SRGBColorSpace));
+/** Sprite palette the 2D renderer draws a kind with when the enemy carries none (renderer.ts enemy()). */
+export const BASE_PALETTE:Partial<Record<EnemyKind,string>>={goomba:'0f-0f-36-17',koopa:'0f-1a-30-27',redKoopa:'0f-16-30-27',paratroopa:'0f-1a-30-27',beetle:'0f-1a-30-27',spiny:'0f-16-30-27',piranha:'0f-1a-30-27',blooper:'0f-00-30-10',cheep:'0f-16-30-27',lakitu:'0f-1a-30-27',hammerBro:'0f-1a-30-27',podoboo:'0f-16-30-27'};
+/** Area palette variants (blue underground Goombas, grey Cheep Cheeps, red Koopas...): material -> sprite palette colour index. A material keeps its
+ * authored colour while that colour index equals the model's reference palette (`ref`, the palette the model was authored as); otherwise it takes the NES colour.
+ * The Piranha Plant has no reference: its authored red head is always painted as the 2D one (head colour 1, lips 2, spots, stem and leaves 3). */
+const PAINT:Record<string,{ref?:string;materials:Record<string,number>;twoSided?:boolean}>={
+ goomba:{ref:'0f-0f-36-17',materials:{M_Brow:1,M_Feet:1,M_Stem:2,M_Head:3}},
+ koopa:{ref:'0f-1a-30-27',materials:{M_Shell:1,M_Belly:2,M_Skin:3}},koopa_shell:{ref:'0f-1a-30-27',materials:{M_Shell:1,M_Belly:2,M_Skin:3}},
+ beetle:{ref:'0f-0f-36-17',materials:{M_Shell:1,M_Skin:2}},beetle_shell:{ref:'0f-0f-36-17',materials:{M_Shell:1}},
+ cheep:{ref:'0f-16-30-27',materials:{M_Body:1}},blooper:{ref:'0f-0f-30-10',materials:{M_Mask:1,M_Body:2}},spiny:{ref:'0f-16-30-27',materials:{M_Shell:1}},
+ lakitu:{ref:'0f-1a-30-27',materials:{M_Shell:1}},hammer_bro:{ref:'0f-1a-30-27',materials:{M_Shell:1,M_Helmet:1}},
+ piranha:{materials:{M_Head:1,M_Lip:2,M_Spot:3,M_Stem:3},twoSided:true},  // one jaw's faces wind inward: lit black from the front unless drawn two-sided
+};
+const authored=new WeakMap<THREE.Material,THREE.Color>();
+/** Paint an actor with the sprite palette the 2D renderer uses for it; the palette is kept on the root for the placement check. */
+function paint(a:Actor,model:string,palette:string){
+ const p=PAINT[model];if(!p)return;a.root.userData.nativePalette=palette;
+ const want=palette.split('-').map(h=>parseInt(h,16)),ref=p.ref?.split('-').map(h=>parseInt(h,16));
+ for(const [name,index] of Object.entries(p.materials))for(const m of a.materials.get(name)??[]){let base=authored.get(m);if(!base){authored.set(m,base=m.color.clone());if(p.twoSided){m.side=THREE.DoubleSide;m.needsUpdate=true;}}m.color.copy(ref&&ref[index]===want[index]?base:NES_COLORS[want[index]]??base);}
+}
 const DIMS:Record<EnemyKind,[number,number]>={goomba:[1,1],koopa:[1,1.5],redKoopa:[1,1.5],paratroopa:[1,1.5],beetle:[1,1],spiny:[1,1],piranha:[1,1.5],blooper:[1,1.5],cheep:[1,1],bullet:[1,1],lakitu:[1,1.5],hammerBro:[1,1.5],podoboo:[1,1],bowser:[2,2]};
 const COLORS:Record<EnemyKind,number>={goomba:0x8a4a1a,koopa:0x2fae3a,redKoopa:0xd23a2a,paratroopa:0x2fae3a,beetle:0x222233,spiny:0xd23a2a,piranha:0x2fae3a,blooper:0xf0f0f0,cheep:0xd23a2a,bullet:0x333333,lakitu:0xeeeeee,hammerBro:0x2fae3a,podoboo:0xff6a00,bowser:0x3a8a2a};
 /** Model per enemy kind (absent = procedural stand-in). */
@@ -115,7 +135,7 @@ export class Entities{
   const name=shell?(e.kind==='beetle'?'beetle_shell':'koopa_shell'):ENEMY_MODEL[e.kind];
   const a=name?this.pool(name).take(physical):undefined;
   if(!a){const m=this.take('e'+e.kind,()=>new THREE.Mesh(new THREE.CapsuleGeometry(w*0.4,Math.max(0.1,h-w*0.8),8,16),std(COLORS[e.kind])));m.position.set(cx,feet+h/2,0);m.scale.y=e.squashed?0.3:1;return;}
-  this.mark(a.root);
+  this.mark(a.root);paint(a,name!,e.palette??BASE_PALETTE[e.kind]??'');
   const squashed=e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20&&e.greenShellLaunchFrame===undefined&&!e.defeat;
   const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(physical):Boolean(e.defeat)||e.kind==='hammerBro'&&Boolean((e.hbro?.state??0)&0x20)||e.greenShellLaunchFrame!==undefined||e.dead>20&&!squashed,facing=e.kind==='bowser'?(e.bowser?.side??(e.vx<0?-1:1)):(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
   a.root.position.set(cx,feet,0);a.root.scale.set(1,squashed?0.28:1,1);
@@ -128,11 +148,9 @@ export class Entities{
    // Koopa's alternate CHR adds one row to the lower rim (14→15px); Beetle's two cells have identical artwork.
    const rim=e.kind==='beetle'?0:nativeShellPhase(e.shellTimer??0,s.random.frame,timersStopped||Boolean(e.dead)||Boolean(e.movingShell));
    a.root.scale.y=(14+rim)/14;a.root.position.y-=rim/16;
-   a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
-  if(e.kind==='redKoopa'||e.kind==='koopa'||e.kind==='paratroopa')a.recolor('M_Shell',(e.palette??'').includes('16')||e.kind==='redKoopa'?'#d23a2a':'#2fae3a');
-  if(e.kind==='piranha')a.recolor('M_Head',PIRANHA_GREEN); // Native Piranha palette is $0f/$1a/$30/$27.
+   a.root.rotation.y=e.movingShell?e.age*0.5:0;a.pose('idle',0,s.frame);return;}
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
-  a.root.rotation.y=e.kind==='piranha'?Math.PI/2:this.yaw(physical,yawFor(e.kind==='hammerBro'?(e.nativeDir??-1):facing),s.frame);
+  a.root.rotation.y=e.kind==='piranha'?0.35:this.yaw(physical,yawFor(e.kind==='hammerBro'?(e.nativeDir??-1):facing),s.frame); // Piranha: head upright with its jaw seam toward the camera, as the 2D sprite
   const broCell=e.kind==='hammerBro'&&e.hbro?nativeHammerBroCell(e.dead?0x20:e.hbro.state,s.random.frame,timersStopped):undefined;
   const blooper=e.kind==='blooper'?nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),timersStopped):undefined;
   if(blooper)a.root.position.y-=blooper.yOffset/16;

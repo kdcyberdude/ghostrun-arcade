@@ -152,7 +152,7 @@ test('swim feet use the independent native kick bit while body time is unchanged
 
 test('Piranha mouth follows the native frame-counter cell rather than actor age',()=>{
  const {sim}=scene({kind:'piranha'}),animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['idle',new THREE.AnimationClip('idle',1,[new THREE.NumberKeyframeTrack('.position[x]',[0,1],[0,1])])]])};}} as unknown as Kit;
- const entities=new Entities(animated,false);sim.random.frame=0;entities.sync(sim,0);assert.equal(actor(entities,'piranha').rotation.y,Math.PI/2);const model=actor(entities,'piranha').getObjectByName('piranha')!;assert.equal(model.position.x,0);
+ const entities=new Entities(animated,false);sim.random.frame=0;entities.sync(sim,0);assert.equal(actor(entities,'piranha').rotation.y,0.35);const model=actor(entities,'piranha').getObjectByName('piranha')!;assert.equal(model.position.x,0);
  sim.random.frame=8;entities.sync(sim,0);assert.equal(model.position.x,0.5);
  sim.powerChange={kind:'grow',from:0,to:1,remaining:10};sim.random.frame=0;entities.sync(sim,0);assert.equal(model.position.x,0.5);
 });
@@ -208,4 +208,12 @@ test('native hammer pictures retain their own draw timer on the first hurt row',
 test('Hammer Bro defeat uses native state32 immediately and retains moving direction',()=>{
  const {sim,entities}=scene({kind:'hammerBro',dead:1,age:0,vx:1,nativeDir:-1,hbro:{state:0x20} as Enemy['hbro']});entities.sync(sim,0);
  const root=actor(entities,'hammer_bro');assert.equal(root.rotation.z,Math.PI);assert.equal(root.rotation.y,Math.PI+0.5);
+});
+
+test('enemy colour variants follow the 2D sprite palette; the reference palette keeps the authored material',()=>{
+ const make=(material:string,color:number)=>({instance(name:string){const root=new THREE.Group();root.name=name;const m=new THREE.MeshStandardMaterial({color});m.name=material;root.add(new THREE.Mesh(new THREE.SphereGeometry(0.5),m));return {root,clips:new Map<string,THREE.AnimationClip>()};}}) as unknown as Kit;
+ const body=(entities:Entities,name:string)=>((actor(entities,name).getObjectByName(name)!.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial);
+ const {sim}=scene({kind:'cheep',palette:'0f-10-30-27'}),entities=new Entities(make('M_Body',0xf84232),false);entities.sync(sim,0);
+ assert.equal(body(entities,'cheep').color.getHexString(),'bcbcbc');assert.equal(actor(entities,'cheep').userData.nativePalette,'0f-10-30-27');
+ sim.enemies[0].palette='0f-16-30-27';sim.frame++;entities.sync(sim,0);assert.equal(body(entities,'cheep').color.getHexString(),'f84232');
 });
