@@ -10,3 +10,13 @@
 @media(max-width:620px){#lobby{align-content:start;padding:96px 20px 40px}#lobby h1{font-size:34px;letter-spacing:-1.5px;margin:14px 0 12px}.lobby-footer{display:none}#lobby .eyebrow{font-size:9px}}
 
 #fps{position:absolute;z-index:4;top:max(14px,env(safe-area-inset-top));left:16px;display:flex;gap:10px;align-items:center;font:10px ui-monospace,monospace;letter-spacing:.4px;color:#ffffff99;pointer-events:none;text-shadow:0 1px 2px #0008}#fps.slow{color:#f2c46de6}#fps button{pointer-events:auto;font:10px ui-monospace,monospace;color:inherit;background:none;padding:2px 0;text-decoration:underline;text-underline-offset:3px;opacity:.9}#fps button:hover{opacity:1;color:#f2c46d}body:not(.playing) #fps{display:none}
+
+.level-select{margin:14px 0 0;max-width:520px;border:1px solid var(--line);border-radius:12px;background:#ffffff05}
+.level-select summary{display:flex;align-items:center;gap:10px;cursor:pointer;padding:11px 14px;font-size:12px;font-weight:600;color:#e6eddc;list-style:none}
+.level-select summary::-webkit-details-marker{display:none}.level-select summary::after{content:'▾';margin-left:auto;color:var(--muted);transition:transform .15s}.level-select[open] summary::after{transform:rotate(180deg)}
+.level-select summary b{font:9px ui-monospace,monospace;letter-spacing:1.3px;text-transform:uppercase;color:#1d1a10;background:var(--lime);border-radius:4px;padding:3px 6px;font-weight:600}
+.level-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;padding:2px 12px 12px}
+.level-grid span{font:9px ui-monospace,monospace;letter-spacing:1px;color:var(--muted);text-align:center;padding-bottom:2px}
+.level-grid button{font:11px ui-monospace,monospace;color:#e6eddc;background:#ffffff08;border:1px solid #ffffff1c;border-radius:7px;padding:6px 0;cursor:pointer;min-width:0}
+.level-grid button:hover,.level-grid button:focus-visible{border-color:var(--lime);color:var(--lime);background:#d4f77d10;outline:none}
+#lobby{overflow-y:auto}

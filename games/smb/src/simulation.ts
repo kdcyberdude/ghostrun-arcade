@@ -533,6 +533,8 @@ export class Simulation {
   if(effect.startGame){
    // StartWorld1's InitScores (c5564067 RAM 2996: $07DD-$07E2 0); the retained title keeps the old status bar until InitializeArea blanks it (pictures 2997-2998: 001400 x05, WORLD 1-1 after A+Start in 68b5ca9f 7013)
    if(effect.continueGame&&this.continueWorld){this.warpHudLevel=this.level.id;this.levelIndex=this.levels.findIndex(l=>l.id===`${this.continueWorld+1}-1`);}
+   // Level select (site feature, not in the NES): start at the chosen level the way a continue starts at its world.
+   if(this.startLevel){const index=this.levels.findIndex(l=>l.id===this.startLevel);if(index>=0){this.warpHudLevel=this.level.id;this.levelIndex=index;}this.startLevel=undefined;}
    this.score=0;this.coins=0;
    this.soundQueues[4]=128; // the title's Silence still waits in the area queue: title rows run no SoundEngine (all 539 power-on captures, RAM 10-60: $FB $80)
    this.levelLoad={task:n.task,engine:n.engine,screen:n.screen,disable:n.disable,timer:n.timer,columns:n.columns};this.phase='intro';this.phaseFrame=0;this.lifeIntro=undefined;this.alignLifeClock(n.interval);this.nativeStartup=undefined;this.coldStartup=undefined;
@@ -3742,6 +3744,8 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  /** ContinueWorld $07FD: the world a game over left, restored by A+Start at the title. */
  private continueWorld=0;
+ /** A level id ('3-2') to start the next new game at, chosen on the site's level select. */
+ startLevel?:string;
  /** The task-1 row of InitializeGame (picture black from it): the game restarts at 1-1 (WorldNumber cleared; c5564067 RAM 2801-), while the
   * clocks, TopScoreDisplay and the retained score/coin digits of the status bar stay (picture 2829: 001400 x05, TOP- 001400, WORLD 1-1); the title's
   * status line prints those coin digits, not the cleared tally (f4c718d1 picture 25400: x17; af0ba437 after the demo's coin: x26). */

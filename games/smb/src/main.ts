@@ -130,6 +130,11 @@ addEventListener('keyup',event=>heldKeys.delete(event.code));
 addEventListener('blur',()=>{clearInput();if(sim.phase==='play'&&!controlled){setPaused(true);shell.wake();}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){clearInput();if(shell.playing&&!controlled)setPaused(true);}});
 document.querySelector('#start')!.addEventListener('click',start);
+// Level select (early feature): every world's four levels; a choice starts a new game there, the way a continue starts at its world.
+{const grid=document.querySelector<HTMLDivElement>('#level-grid')!;
+ for(let w=1;w<=8;w++){const head=document.createElement('span');head.textContent=`W${w}`;grid.append(head);}
+ for(let l=1;l<=4;l++)for(let w=1;w<=8;w++){const b=document.createElement('button');b.type='button';b.textContent=`${w}-${l}`;b.setAttribute('aria-label',`Play World ${w}-${l}`);
+  b.addEventListener('click',()=>{if(document.body.classList.contains('loading'))return;if(!sim.onTitle){sim.reset();soundEvents();draw();}sim.startLevel=`${w}-${l}`;start();});grid.append(b);}}
 document.querySelector('#pause')!.addEventListener('click',pause);document.querySelector('#mute')!.addEventListener('click',()=>{mute();void activate();});
 for(const button of document.querySelectorAll<HTMLButtonElement>('[data-button]')){
  button.addEventListener('pointerdown',event=>{event.preventDefault();if(shell.blocking)return;button.setPointerCapture(event.pointerId);heldPointers.set(event.pointerId,button.dataset.button as Button);tappedPointers.add(button.dataset.button as Button);void activate();});
