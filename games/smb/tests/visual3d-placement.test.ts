@@ -52,6 +52,13 @@ test('palette identity: night sky and pipe / block colour families are compared 
  assert.deepEqual(r.issues.map(i=>`${i.type} ${i.what} ${i.at}`),['look-3d sky night->day','look-3d pipe 4,10 grey->green','look-3d used 7,9 grey->orange']);
 });
 
+test('palette variant mismatch (grey vs red Cheep Cheep) is reported when both renderers name one',()=>{
+ const p={id:'enemy#0',sourceId:'enemy#0',kind:'cheep',x:70,y:150,w:16,h:16,variant:'0f-10-30-27'};
+ assert.deepEqual(compareFrame({...frame,objects2d:[p],objects3d:[{...p,id:'cheep@0'}]}).issues,[]);
+ assert.deepEqual(compareFrame({...frame,objects2d:[p],objects3d:[{...p,id:'cheep@0',variant:'0f-16-30-27'}]}).issues.map(i=>[i.type,i.at]),[['object-variant','0f-10-30-27->0f-16-30-27']]);
+ assert.deepEqual(compareFrame({...frame,objects2d:[p],objects3d:[{...p,id:'cheep@0',variant:undefined}]}).issues,[]);
+});
+
 test('an object the NES sprite hardware hid in 2D may be shown or not in 3D, but still claims its 3D twin',()=>{
  const p={id:'fire#0.0',sourceId:'fire#0.0',kind:'fire',x:55,y:149,w:8,h:8,oamHidden:true};
  assert.deepEqual(compareFrame({...frame,objects2d:[p],objects3d:[{...p,oamHidden:undefined,id:'fire@0',x:60}]}).issues,[]);

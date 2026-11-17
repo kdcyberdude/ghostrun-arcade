@@ -9,6 +9,8 @@ import {trackedLoad} from './loading.js';
 export class Hud{
  private canvas=document.createElement('canvas');private ctx:CanvasRenderingContext2D;private texture:THREE.CanvasTexture;private material:THREE.MeshBasicMaterial;
  readonly scene=new THREE.Scene();readonly camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);private last='';
+ /** Score popups drawn this frame (index into Simulation.popups), read by the placement check. */
+ popups:{index:number;value:number|string;x:number;y:number}[]=[];
  constructor(private scale:number){
   this.ctx=this.canvas.getContext('2d')!;this.texture=this.makeTexture();
   this.material=new THREE.MeshBasicMaterial({map:this.texture,transparent:true,depthTest:false,toneMapped:false});this.scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),this.material));
@@ -47,7 +49,7 @@ export class Hud{
   if(world)for(const o of [...s.area.overlays??[],...(s.warpZoneActive?s.area.warpZone?.overlays??[]:[])])if(o.x-cam>-200&&o.x-cam<256)lines.push(`O|${o.text}|${o.x-cam}|${o.y}`);
   if(world&&s.phase==='flag'&&exit?.kind==='flag'&&s.flagBonus>0){const score=nativeFlagSprites(s.specialSlot5,{y:s.flagNumber.y,score:s.flagBonus},cam)[3];if(score)lines.push(`P|${s.flagBonus}|${score.x}|${score.y}`);}
   if(world&&s.spritePictureOwner==='engine')for(const item of s.items)if(item.kind==='coin'&&(item.nativeCoin?.state??0)>=2)lines.push(`P|200|${Math.floor(item.x-cam)&255}|${(Math.floor(item.y)&255)+1}`);
-  if((hudOn||s.phase==='flag')&&s.spritePictureOwner==='engine')for(const pu of s.popups)lines.push(`P|${pu.value}|${Math.round(pu.x)}|${Math.round(pu.y)}`);
+  this.popups=[];if((hudOn||s.phase==='flag')&&s.spritePictureOwner==='engine')s.popups.forEach((pu,index)=>{const x=Math.round(pu.x),y=Math.round(pu.y);lines.push(`P|${pu.value}|${x}|${y}`);this.popups.push({index,value:pu.value,x,y});});
   const key=lines.join('~');if(key===this.last)return key!=='';this.last=key;
   const c=this.ctx;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.canvas.width,this.canvas.height);c.setTransform(this.scale,0,0,this.scale,0,0);
   for(const l of lines){const [t,...a]=l.split('|');

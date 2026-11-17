@@ -3,11 +3,11 @@
 // projected rect of the 3D object of the same family, matched greedily by distance; compared by horizontal centre and bottom (feet), since 3D models are
 // not sprite-sized.
 import {kindIn} from '../../src/render3d/semantics.js';
-export interface Obj{id:string;sourceId?:string;kind:string;x:number;y:number;w:number;h:number;state?:string;
+export interface Obj{id:string;sourceId?:string;kind:string;x:number;y:number;w:number;h:number;state?:string;variant?:string;
  /** 2D only: the NES sprite hardware hid it this frame (8 per line / OAM cycling); the 3D view may show it or not. */
  oamHidden?:boolean}
 export interface Cell{col:number;row:number;id:number}
-export interface Issue{type:'tile-missing-3d'|'tile-extra-3d'|'tile-overlap-3d'|'look-3d'|'object-missing-3d'|'object-extra-3d'|'object-offset'|'object-state';what:string;at:string;dx?:number;dy?:number}
+export interface Issue{type:'tile-missing-3d'|'tile-extra-3d'|'tile-overlap-3d'|'look-3d'|'object-missing-3d'|'object-extra-3d'|'object-offset'|'object-state'|'object-variant';what:string;at:string;dx?:number;dy?:number}
 export interface FrameReport{issues:Issue[];counts:{tiles2d:number;tiles3d:number;objects2d:number;objects3d:number}}
 /** Offsets above this many NES pixels (centre x or feet y) are reported. */
 export const TOLERANCE=6;
@@ -84,6 +84,7 @@ export function compareFrame(f:{theme:string;camera:number;tiles2d:Cell[];tiles3
  for(const p of pairs){if(ua.has(p.i)||ub.has(p.j))continue;ua.add(p.i);ub.add(p.j);
   if(a[p.i].oamHidden)continue;
   if(onScreen(a[p.i])&&a[p.i].state&&b[p.j].state&&a[p.i].state!==b[p.j].state)issues.push({type:'object-state',what:a[p.i].id,at:`${a[p.i].state}->${b[p.j].state}`});
+  if(onScreen(a[p.i])&&a[p.i].variant&&b[p.j].variant&&a[p.i].variant!==b[p.j].variant)issues.push({type:'object-variant',what:a[p.i].id,at:`${a[p.i].variant}->${b[p.j].variant}`});
   if(onScreen(a[p.i])&&(Math.abs(p.dx)>TOLERANCE||Math.abs(p.dy)>TOLERANCE))issues.push({type:'object-offset',what:`${a[p.i].id}(${a[p.i].kind})`,at:`${Math.round(a[p.i].x)},${Math.round(a[p.i].y)}`,dx:Math.round(p.dx),dy:Math.round(p.dy)});}
  a.forEach((p,i)=>{if(onScreen(p)&&!ua.has(i)&&!p.oamHidden)issues.push({type:'object-missing-3d',what:`${p.id}(${p.kind})`,at:`${Math.round(p.x)},${Math.round(p.y)}`});});
  b.forEach((q,j)=>{if(onScreen(q)&&!ub.has(j))issues.push({type:'object-extra-3d',what:q.id,at:`${Math.round(q.x)},${Math.round(q.y)}`});});

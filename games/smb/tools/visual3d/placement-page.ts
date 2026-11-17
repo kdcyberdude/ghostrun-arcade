@@ -17,6 +17,7 @@ import {nativeBubbleShown} from '../../src/view-rules.js';
 import {nativeBlockSprites} from '../../src/native-block-picture.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
 import {PIECES} from '../../src/render3d/semantics.js';
+import popupAssemblies from '../../data/popup-assemblies.json';
 type Any=any;  // eslint-disable-line @typescript-eslint/no-explicit-any
 interface Rect{x:number;y:number;w:number;h:number;draws?:number[]}
 const union=(rs:Rect[]):Rect|undefined=>{if(!rs.length)return undefined;const x0=Math.min(...rs.map(r=>r.x)),y0=Math.min(...rs.map(r=>r.y)),x1=Math.max(...rs.map(r=>r.x+r.w)),y1=Math.max(...rs.map(r=>r.y+r.h));return {x:x0,y:y0,w:x1-x0,h:y1-y0,draws:rs.flatMap(r=>r.draws??[])};};
@@ -67,6 +68,8 @@ function draw2d(s:Simulation):Draw2d{
  return lastDraw={quads,tiles,draws,camera:cam};
 }
 let lastDraw:Draw2d|undefined;
+/** The sprite palette most of an object's quads were drawn with (its colour variant: red/green Koopa, grey/red Cheep Cheep...). */
+function spritePalette(quads:{sourceName?:string}[]){const n=new Map<string,number>();for(const q of quads){const m=/^sprite-tiles-(.+)\.png$/.exec(q.sourceName??'');if(m)n.set(m[1],(n.get(m[1])??0)+1);}return [...n].sort((a,b)=>b[1]-a[1])[0]?.[0];}
 /** Sim objects with the rect the 2D renderer drew for each (union of its quads). */
 function objects2d(s:Simulation,all:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string;hidden?:boolean}[]):Obj[]{
  // Tiles the NES sprite hardware hid (8 per line, OAM cycling) still place their object; an object with every tile hidden is marked oamHidden.
@@ -75,7 +78,7 @@ function objects2d(s:Simulation,all:{tag:string;r:Rect;source?:Rect;z:number;chr
  const near=(r:Rect)=>union(misc.filter(q=>hit(q.r,r)).map(q=>q.r));
  const exact=(x:number,y:number)=>union(misc.filter(q=>(q.source??q.r).x===Math.floor(x)&&(q.source??q.r).y===Math.floor(y)).map(q=>q.r));
  const ps=quads.filter(q=>q.tag==='player'),pr=union(ps.map(q=>q.r));if(pr)out.push({id:'player',sourceId:'player',kind:'player',oamHidden:allHidden(ps),...pr});
- s.enemies.forEach((physical,i)=>{const e=enemyPicture(physical),sprites=quads.filter(q=>q.tag==='enemy#'+i),r=union(sprites.map(q=>q.r));if(r)out.push({oamHidden:allHidden(sprites),id:'enemy#'+i,sourceId:'enemy#'+i,kind:e.kind,state:e.kind==='blooper'?(sprites.some(q=>q.chr===223)?'contracted':'extended'):e.kind==='lakitu'?(sprites.some(q=>q.chr===189)?'ducked':'normal'):e.kind==='piranha'?(sprites.some(q=>q.chr===229)?'open':'closed'):e.shell?(e.kind!=='beetle'&&sprites.some(q=>q.chr===109)?'shell-expanded':'shell'):e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.greenShellLaunchFrame!==undefined||e.defeat||(e.hbro?.state??0)&32||e.dead>0&&(e.kind==='cheep'||e.kind==='lakitu'||e.kind==='beetle'&&!e.squashed)?'flipped':e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',...r});});
+ s.enemies.forEach((physical,i)=>{const e=enemyPicture(physical),sprites=quads.filter(q=>q.tag==='enemy#'+i),r=union(sprites.map(q=>q.r));if(r)out.push({oamHidden:allHidden(sprites),id:'enemy#'+i,sourceId:'enemy#'+i,kind:e.kind,state:e.kind==='blooper'?(sprites.some(q=>q.chr===223)?'contracted':'extended'):e.kind==='lakitu'?(sprites.some(q=>q.chr===189)?'ducked':'normal'):e.kind==='piranha'?(sprites.some(q=>q.chr===229)?'open':'closed'):e.shell?(e.kind!=='beetle'&&sprites.some(q=>q.chr===109)?'shell-expanded':'shell'):e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.greenShellLaunchFrame!==undefined||e.defeat||(e.hbro?.state??0)&32||e.dead>0&&(e.kind==='cheep'||e.kind==='lakitu'||e.kind==='beetle'&&!e.squashed)?'flipped':e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',variant:spritePalette(sprites),...r});});
  s.items.forEach((it,i)=>{const r=typeof r2.item==='function'?union(quads.filter(q=>q.tag==='item#'+i&&q.z!==2.5).map(q=>q.r)):near({x:it.x-cam,y:it.y,w:it.kind==='debris'?8:16,h:16});if(r)out.push({id:'item#'+i,kind:it.kind,...r});});
  (s.area.platforms??[]).forEach((pl,i)=>{const p=s.platformPicturePosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=nativePlatformArtworkYs(pl,context,p.y);
   ys.forEach((y,copy)=>{const cloud=platformMotionModel(pl,context)==='contact-cloud',r=cloud?near({x:p.x-cam,y,w:pl.width,h:8}):union(misc.filter(q=>(q.source??q.r).y===Math.floor(y)&&(q.source??q.r).w===8&&(q.source??q.r).h<=8&&(q.source??q.r).x>=Math.floor(p.x-cam)&&(q.source??q.r).x<Math.floor(p.x-cam)+pl.width).map(q=>q.r));if(r)out.push({id:`platform#${i}.${copy}`,kind:platformMotionModel(pl,context)==='contact-cloud'?'cloud':'lift',...r});});
@@ -94,6 +97,9 @@ function objects2d(s:Simulation,all:{tag:string;r:Rect;source?:Rect;z:number;chr
  // Each bubble is the tile drawn at its own position (renderer.ts: x & 255, y + 1); one the OAM rows hide draws none.
  if(s.area.theme==='water')(s.bubbles??[]).forEach((b,i)=>{if(nativeBubbleShown(b,s.player.y,s.camera)){const at={x:(Math.floor(b.x)-Math.floor(s.camera))&255,y:Math.floor(b.y+1)},q=bubbleDraws.find(q=>q.source?.x===at.x&&q.source?.y===at.y);if(q){bubbleDraws.splice(bubbleDraws.indexOf(q),1);out.push({id:'bubble#'+i,sourceId:'bubble#'+i,kind:'bubble',oamHidden:q.hidden,...q.r});}}});
  for(const [i,vine]of s.vines.entries()){const r=union(misc.filter(q=>(q.chr===224||q.chr===225)&&q.r.x>=vine.x-cam&&q.r.x<vine.x-cam+16&&q.r.y>=vine.baseY-vine.height&&q.r.y<vine.baseY).map(q=>q.r));if(r)out.push({id:'vine#'+i,kind:'vine',...r});}
+ // Score popups (floatey numbers): the tiles of the popup's assembly at its position; the 3D view draws them as HUD text.
+ s.popups.forEach((popup,i)=>{const pieces=popupAssemblies.records.find(record=>record.value===popup.value)?.pieces??[],mine=(q:{chr?:number;source?:Rect;sourceName?:string})=>q.sourceName==='sprite-tiles-0f-16-30-27.png'&&pieces.some(p=>q.chr===p.tile&&q.source?.x===Math.floor(popup.x+p.x)&&q.source?.y===Math.floor(popup.y+p.y));
+  const list=all.filter(mine),r=union(list.map(q=>q.r));if(r)out.push({id:'popup#'+i,sourceId:'popup#'+i,kind:'popup',state:String(popup.value),oamHidden:allHidden(list),...r});});
  const rt=union(quads.filter(q=>q.tag==='retainer').map(q=>q.r));if(rt)out.push({id:'retainer',kind:'retainer',state:s.level.id==='8-4'?'princess':'toad',...rt});
  return out;
 }
@@ -111,7 +117,7 @@ function objects3d(r3:Any,s:Simulation):(Obj&{root:THREE.Object3D})[]{
  const enemyModels=new Set(Object.values(ENEMY_MODEL));
  // Midpoints between the two sampled authored asset poses distinguish actual bone transforms, not simulation tags.
  const state=(kind:string,o:THREE.Object3D)=>kind==='blooper'?((o.getObjectByName('Body')?.position.y??0.65)<0.6?'contracted':'extended'):kind==='lakitu'?((o.getObjectByName('Body')?.position.y??0.35)<0?'ducked':'normal'):kind==='piranha'?(Math.sin(o.rotation.y)<=0?'back-facing':Math.abs(o.getObjectByName('JawF')?.quaternion.z??0)>0.3?'open':'closed'):kind==='toad'||kind==='princess'?kind:kind.endsWith('_shell')?(o.rotation.z?'flipped':kind==='koopa_shell'&&o.scale.y>1?'shell-expanded':'shell'):kind==='espinyEgg'?'egg':kind==='podoboo'?(o.rotation.z?'falling':'rising'):enemyModels.has(kind)?(kind==='goomba'&&o.scale.y<1?'squashed':o.rotation.z?'flipped':'normal'):undefined;
- const add=(kind:string,o:THREE.Object3D|undefined,i:number,sourceId?:string)=>{if(!o?.visible)return;const r=project(o);if(r)out.push({id:`${kind}@${i}`,kind,state:state(kind,o),root:o,sourceId,...r});};
+ const add=(kind:string,o:THREE.Object3D|undefined,i:number,sourceId?:string)=>{if(!o?.visible)return;const r=project(o);if(r)out.push({id:`${kind}@${i}`,kind,state:state(kind,o),variant:o.userData.nativePalette,root:o,sourceId,...r});};
  const e=r3.entities;
  if(e.mario)add('player',e.mario.root,0,'player');
  for(const [name,pool] of e.pools as Map<string,Any>)(pool.items as Any[]).forEach((a,i)=>{const index=s.enemies.indexOf(pool.owners.get(a));add(name,a.root,i,index>=0?'enemy#'+index:undefined);});
@@ -120,6 +126,7 @@ function objects3d(r3:Any,s:Simulation):(Obj&{root:THREE.Object3D})[]{
  const bubbleIds=s.bubbles.map((bubble,i)=>({bubble,i})).filter(({bubble})=>nativeBubbleShown(bubble,s.player.y,s.camera)).map(({i})=>'bubble#'+i),fireIds=(s.area.firebars??[]).flatMap((bar,i)=>s.firebarCenters(bar).map((_,j)=>`fire#${i}.${j}`));
  for(const [key,list] of r3.props.pools as Map<string,THREE.Object3D[]>)list.forEach((o,i)=>add(key.startsWith('blockUsed@')?'blockUsed':key.startsWith('blockBrick@')?'blockBrick':key.replace(/[\d.]+$/,''),o,i,key==='bubble'?bubbleIds[i]:key==='fire'?fireIds[i]:undefined));
  if(r3.world.flag.visible&&r3.world.group.visible)add('flag',r3.world.flag,0);
+ for(const p of r3.hud.popups as {index:number;value:string|number;x:number;y:number}[])out.push({id:'popup@'+p.index,sourceId:'popup#'+p.index,kind:'popup',state:String(p.value),root:r3.hud.scene,x:p.x,y:p.y,w:String(p.value).length*6,h:6});  // hud.ts: 6 px text
  return out;
 }
 /** Tiles the 3D world drew this frame, by the pool model name, recorded by re-running World.sync with a logging pool(). */
