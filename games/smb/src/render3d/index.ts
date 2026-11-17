@@ -12,7 +12,8 @@ import {loadImpostors} from './nature.js';
 import {IntroAvatar} from './avatar.js';
 import {TRANSITIONS} from '../simulation.js';
 import {nativeScreenPicture} from '../native-screen-picture.js';
-import {titleBootColor} from '../view-rules.js';
+import {nativeStartupTitleShown} from '../native-startup-picture.js';
+import nesPalette from '../../assets/nes-rgb-palette.json';
 const query=new URLSearchParams(location.search);
 /** Output heights (16:15 game frame): 0.5K (480p), 1K (960p), 2K (1440p), 4K (2160p). `?res=` picks one at load (older 960p/1080p links still work), `?scale=` too. */
 export const RESOLUTIONS:Record<string,number>={'0.5K':480,'1K':960,'960p':960,'1080p':1080,'2K':1440,'4K':2160};
@@ -39,7 +40,9 @@ export class Renderer3D{
  }
  render(s:Simulation){
   this.gl.info.reset();
-  const boot=s.phase==='title'?titleBootColor(s.titleFrame):undefined;
+  // The title's unlit rows show the PPU backdrop, as the 2D view (renderer.ts startup): power-on grey/black/sky, and the rows after a game over or a demo.
+  const startup=nativeStartupTitleShown(s.nativeStartupPicture,s.onTitle?'title':s.phase,s.nativeScreen)?s.nativeStartupPicture:undefined;
+  const boot=startup&&!startup.rendering?'#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''):undefined;
   if(boot){this.world.group.visible=this.entities.group.visible=this.props.group.visible=false;this.gl.setRenderTarget(null);this.gl.setClearColor(boot);this.gl.clear();return;}
   // After a castle victory the first InitializeArea frames keep the castle picture, as the 2D view does: the scene is not re-synced (the new area's
   // map and camera would show); the retainer leaves on the first frame, the status bar on the second (renderer.ts victoryHold).
@@ -47,7 +50,7 @@ export class Renderer3D{
   if(held){this.entities.hideRetainer();this.props.hideRetainer();this.atmosphere.render();
    if(this.hudShown&&s.levelLoad!.screen!==0){this.gl.autoClear=false;this.gl.clearDepth();this.gl.render(this.hud.scene,this.hud.camera);this.gl.autoClear=true;}return;}
   const screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined;
-  const camPx=Math.floor(s.camera);const black=screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
+  const camPx=Math.floor(s.camera),over=s.gameOverScreen;const black=over?true:screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
   this.atmosphere.setTheme(areaLook(s.area).night?'night':s.area.theme,s.area.id);
   this.world.group.visible=this.entities.group.visible=this.props.group.visible=!black;
   this.atmosphere.setBlackout(black);
@@ -55,7 +58,7 @@ export class Renderer3D{
   if(!black){this.world.sync(s,camPx);this.entities.sync(s,camPx);this.props.sync(s);}
   const sprites:import('./sprite-pass.js').SpriteDraw[]=[];for(const bank of [this.world.group,this.entities.group,this.props.group])for(const root of bank.children)if(root.visible)sprites.push({root,offset:root.userData.nativeSprite?.offset??255,background:root.userData.nativeSprite?.background??false,clipRow:root.userData.nativeSprite?.clipRow});
   this.atmosphere.spritesFor(sprites.filter(d=>d.root.parent!==this.world.group||d.root.userData.nativeSprite),[this.world.group,this.entities.group,this.props.group]);
-  if(screen&&black){this.gl.setRenderTarget(null);this.gl.setClearColor(s.nativeBackdrop===0x22?0x6888fc:0x000000);this.gl.clear();}else this.atmosphere.render();
+  if(screen&&black){this.gl.setRenderTarget(null);this.gl.setClearColor(!over&&s.nativeBackdrop===0x22?0x6888fc:0x000000);this.gl.clear();}else this.atmosphere.render();
   // Same visibility rule as the HUD's lives screen.
   if(screen?screen.avatar:s.phase==='intro'&&!(!s.introFromGameover&&s.introHiddenEarly||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame))this.avatar?.render(this.gl,s.frame,Boolean(s.currentPlayer));
   if(this.hudShown=this.hud.draw(s,true)){this.gl.autoClear=false;this.gl.clearDepth();this.gl.render(this.hud.scene,this.hud.camera);this.gl.autoClear=true;}

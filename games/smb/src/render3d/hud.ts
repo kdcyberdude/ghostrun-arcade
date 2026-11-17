@@ -39,13 +39,13 @@ export class Hud{
   const player=s.currentPlayer?'LUIGI':'MARIO',screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined;
   const introLoading=s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame);
   const lines:string[]=[];
-  const hudOn=showHud&&(screen?screen.hud:!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing);
-  const timeOn=!(screen&&s.nativeScreen!.engine<8)&&s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden&&!s.pipePreviewArea;
+  const over=s.gameOverScreen,hudOn=showHud&&(over?over.text:screen?screen.hud:!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing);
+  const timeOn=!(screen&&s.nativeScreen!.engine<8)&&!s.onTitle&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden&&!s.pipePreviewArea;
   if(hudOn)lines.push(`H|${player}|${s.hud.draw.score}|${s.hud.draw.coins}|${s.hudLevelId}|${timeOn?s.hud.draw.time:''}`);
-  if(s.phase==='title')lines.push(`T|${s.twoPlayer?1:0}`);
+  if(s.onTitle)lines.push(`T|${s.twoPlayer?1:0}|${s.topScoreText}|${-Math.floor(s.camera)}`); // the demo scrolls the title away with the world
   if(screen?screen.message==='lives':s.phase==='intro'&&!introLoading)lines.push(`I|${s.level.id}|${s.lives}`);
   if(screen?.message==='time-up')lines.push('U');
-  if(!screen&&s.phase==='gameover'&&!s.gameoverClosing)lines.push(`G|${s.twoPlayer?player:''}`);
+  if(over?over.text:!screen&&s.phase==='gameover'&&!s.gameoverClosing)lines.push(`G|${s.twoPlayer?player:''}`);
   const exit=s.area.exit;let rescue='';
   if(exit?.kind==='axe'&&exit.retainerX!==undefined&&!['intro','gameover','title'].includes(s.phase)&&(s.castleStage==='message'||s.phase==='ending')){
    const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
@@ -64,7 +64,7 @@ export class Hud{
   const c=this.ctx;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.canvas.width,this.canvas.height);c.setTransform(this.scale,0,0,this.scale,0,0);
   for(const l of lines){const [t,...a]=l.split('|');
    if(t==='H'){this.text(a[0],24,16);this.text(a[1],24,24);this.coin(89,23);this.text('×'+a[2],96,24);this.text('WORLD',144,16);this.text(a[3],152,24);this.text('TIME',200,16);if(a[4])this.text(a[4],208,24);}
-   if(t==='T'){this.centered('SUPER MARIO BROS.',64,'#ffd84a',10);this.centered('1 PLAYER GAME',144);this.centered('2 PLAYER GAME',160);this.text('▶',72,a[0]==='1'?160:144,'#ffd84a');this.centered('©1985 NINTENDO',120,'#ffffff');this.centered('TOP- 000000',184);}
+   if(t==='T'){const c=this.ctx;c.save();c.translate(Number(a[2]),0);this.centered('SUPER MARIO BROS.',64,'#ffd84a',10);this.centered('1 PLAYER GAME',144);this.centered('2 PLAYER GAME',160);this.text('▶',72,a[0]==='1'?160:144,'#ffd84a');this.centered('©1985 NINTENDO',120,'#ffffff');this.centered('TOP- '+a[1],184);c.restore();}
    if(t==='I'){this.text('WORLD '+a[0],88,80);this.text('×  '+a[1],120,112);}
    if(t==='U')this.centered('TIME UP',128);
    if(t==='G'){if(a[0])this.text(a[0],104,112);this.text('GAME OVER',88,128);}

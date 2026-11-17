@@ -2,6 +2,7 @@
  * graphics-table offset / 8 (PlayerGfxOffset $06D5): big walk 0-2, skid 3, jump 4, swim 5-7, climb 8-9, crouch 10, throw 11,
  * small walk 12-14, skid 15, jump 16, swim 17-19, climb 20-21, death 22, small stand 23, big stand 25. */
 import {nativeScreenPicture} from './native-screen-picture.js';
+import {nativeStartupTitleShown} from './native-startup-picture.js';
 import {Simulation,POWERUPS} from './simulation.js';
 import {growCell,shrinkCell,throwPoseShown} from './view-rules.js';
 
@@ -9,6 +10,7 @@ import {growCell,shrinkCell,throwPoseShown} from './view-rules.js';
  * Native source: https://github.com/Xkeeper0/smb1/blob/master/src/prg.asm (PlayerGfxHandler). */
 export function playerVisible(s:Simulation){
  if(s.nativeScreen&&!nativeScreenPicture(s.nativeScreen,s.area.theme==='water').player)return false;
+ if(nativeStartupTitleShown(s.nativeStartupPicture,s.onTitle?'title':s.phase,s.nativeScreen)&&!s.nativeStartupPicture.player)return false; // the retained title after Start (renderer.ts startup.player; the 3D view shares this rule)
  return s.spritePictureOwner!=='empty'&&s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(!s.player.invincible||(s.random.frame&1)===0);
 }
 
