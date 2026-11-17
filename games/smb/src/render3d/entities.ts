@@ -100,7 +100,9 @@ export class Entities{
  }
  private yaw(e:Enemy,target:number,frame:number){const prev=this.enemyYaw.get(e);if(prev?.frame===frame)return prev.yaw;const y=turnToward(prev?.yaw??target,target);this.enemyYaw.set(e,{frame,yaw:y});return y;}
  private enemy(e:Enemy,s:Simulation){
-  const physical=e;e=enemyPicture(e);this.draw={offset:s.spriteShuffle.offsets[(e.enemySlot??0)+1],background:e.kind==='piranha',clipRow:e.kind==='piranha'&&!e.dead?e.pir?.down:undefined};const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
+  const physical=e;e=enemyPicture(e);
+  if(e.kind==='piranha'&&e.pir&&e.pir.speed>=0&&e.pir.timer!==0)return; // not drawn while it moves with its frame timer running, as in the 2D renderer (EnemyGfxHandler)
+  this.draw={offset:s.spriteShuffle.offsets[(e.enemySlot??0)+1],background:e.kind==='piranha',clipRow:e.kind==='piranha'&&!e.dead?e.pir?.down:undefined};const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
   const pictureX=!e.dead?e.graphicsX??e.x:e.x,pictureY=!e.dead?e.graphicsY??e.y:e.y;
   const [w,h]=DIMS[e.kind],cx=(pictureX+(e.kind==='bowser'?16:8))/16,feet=(239-pictureY)/16;this.box(physical.x/16,(239-physical.y)/16,physical.x/16+w,(239-physical.y)/16+h,0xff3030);
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead){
