@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import type {Simulation} from '../simulation.js';
 import {Kit,type Part} from './kit.js';
-import {procBlock,procPipe,procCoin,procDeco,LIQUIDS} from './proc.js';
+import {procBlock,procPipe,procCoin,procDeco,cannonPedestal,LIQUIDS} from './proc.js';
 import {kindOf,kindIn,isPipeTop,isPipeBody,PIECES} from './semantics.js';
 import {analyseArea} from './layout.js';
 import {buildStatics,disposeGroup} from './scenery.js';
@@ -97,12 +97,15 @@ export class World{
   return procBlock(name.startsWith('castle_')?(name==='castle_dark'?'used':'castle'):base)??procBlock('hard')!;
  }
  private trunkRuns=new Set<string>();
- /** `repeatX` > 1: the model's textures repeat that often around it (a trunk widened over several columns keeps its bark proportions). */
- private pool(name:string,theme:string,palette=0,tint?:readonly number[],repeatX=1){
+ /** `repeatX` > 1: the model's textures repeat that often around it (a trunk widened over several columns keeps its bark proportions).
+  * `shape`: a drawn shape other than the model's own, keeping the tile's pool name ('cannon' / 'cannon-plain': a blaster pedestal). */
+ private pool(name:string,theme:string,palette=0,tint?:readonly number[],repeatX=1,shape?:'cannon'|'cannon-plain'){
   const v=VARIANT[this.snowLook?'snow':theme]??'',want=v&&this.kit.has(name+v)?name+v:name;
   tint??=this.whiteScenery&&name.startsWith('plat_tree_')?STEEL:this.whiteStone&&name==='trunk'?this.stone:undefined;
-  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join()+(this.nightLook?'@moon':''):'')+(cycles?'@palette'+palette:'')+(repeatX>1?'@x'+repeatX:'');let p=this.pools.get(key);
-  if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);
+  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join()+(this.nightLook?'@moon':''):'')+(cycles?'@palette'+palette:'')+(repeatX>1?'@x'+repeatX:'')+(shape?'@'+shape:'');let p=this.pools.get(key);
+  if(!p){let parts=shape?cannonPedestal(this.kit.parts('cannon_top'),shape==='cannon'):this.kit.parts(want)??this.fallback(name,theme);
+   // The barrel model leaves 0.08 tile open above and below: stretched to the full tile so it meets the pedestal under it (its mouth keeps its shape).
+   if(name==='cannon_top')parts=parts.map(q=>/Skull/.test(q.material.name)?q:{...q,matrix:new THREE.Matrix4().makeScale(1,1/0.84,1).multiply(q.matrix)});
    // Castle bricks and battlements are the same brick picture as brick blocks in 2D: draw them with the brick block's colour texture (both share its normal/roughness maps).
    const brick=(want==='castle_brick'||want==='castle_crenel')?this.kit.parts('block_brick')?.[0]?.material as THREE.MeshStandardMaterial|undefined:undefined;
    if(repeatX>1)parts=parts.map(q=>{const m=(q.material as THREE.MeshStandardMaterial).clone();
@@ -110,7 +113,7 @@ export class World{
     return {...q,material:m};});
    if(brick?.map)parts=parts.map(q=>{const m=(q.material as THREE.MeshStandardMaterial).clone();m.map=brick.map;m.color.copy(brick.color);return {...q,material:m};});if(tint){const rgb=this.nightLook?tint.map((v,i)=>v*MOON_BALANCE[i]):tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
    if(cycles){const materials:THREE.MeshStandardMaterial[]=[];parts=parts.map(part=>{if(name==='block_question'&&parts.length>1&&!part.material.name.startsWith('M_Question'))return part;const material=part.material.clone() as THREE.MeshStandardMaterial;materials.push(material);return {...part,material};});this.paletteMaterials.push({palette,materials,coin:name==='coin_tile'});}
-   p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,VARY.test(want));this.pools.set(key,p);}
+   p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,!shape&&VARY.test(want));this.pools.set(key,p);}
   return p;
  }
  private light(camPx:number,frame:number){
@@ -152,6 +155,7 @@ export class World{
     if(id===76){const grid=s.tiles.get(`${col},${row}`)===76;let start=col;if(grid){while(s.tiles.get(`${start-1},${row}`)===76)start--;if(this.trunkRuns.has(`${start},${row}`))break;this.trunkRuns.add(`${start},${row}`);}  // a free trunk piece is its own log
      let n=1;if(grid)while(s.tiles.get(`${start+n},${row}`)===76)n++;
      this.pool('trunk',theme,palette,undefined,Math.max(1,Math.round(n*0.94/TRUNK_WIDTH))).add(this.m.makeScale(n*0.94/TRUNK_WIDTH,1,Math.min(n,1.5)*0.9/TRUNK_WIDTH).setPosition(start+n/2,14.5-row,pc.dz??0));break;}
+    if(id===101||id===102){this.pool('cannon_base',theme,palette,undefined,1,id===101?'cannon':'cannon-plain').add(this.m.makeTranslation(col+0.5,14.5-row,0));break;}
     put(pc.model,col+0.5,14.5-row,pc.dz??0);
     // Mushroom stems run from their top piece (79) to the ground; the observed tile data skips some stem rows (4-3), so fill empty rows below.
     if(id===79)for(let r=row+1;r<15;r++){const below=s.tiles.get(`${col},${r}`);if(below===undefined)put('mush_stem',col+0.5,14.5-r,pc.dz??0);else if(below!==80)break;}

@@ -71,3 +71,21 @@ export function procDeco(name:string,theme:string):Part[]|undefined{
   return [-0.25,0,0.25].map((x,i)=>({geometry:g,material:m,matrix:new THREE.Matrix4().makeRotationZ((i-1)*0.35).setPosition(x,0,0)}));}
  return undefined;
 }
+/** Bullet Bill blaster pedestal under a barrel (metatile 101 skull piece, 102 plain lower piece, a hard block directly under a barrel): a full tile tall,
+ * so stacked pieces and the barrel above form one continuous column as in 2D. `skull`: the bone skull medallion on its front face. Materials come from
+ * the barrel model (iron / brass / bone) so the column reads as one casting. */
+export function cannonPedestal(barrel:Part[]|undefined,skull:boolean):Part[]{
+ const byName=(re:RegExp)=>barrel?.find(p=>re.test(p.material.name))?.material;
+ const iron=byName(/Iron/)??std(0x15161a,0.45,0.6),brass=byName(/Brass/)??std(0xc8962a,0.3,1),bone=byName(/Skull/)??std(0xf2e6cc,0.5);
+ const at=(x:number,y:number,z:number)=>new THREE.Matrix4().makeTranslation(x,y,z);
+ // Iron body, with a brass collar where it meets the piece above (a plain lower piece also gets a foot band).
+ const parts:Part[]=[{geometry:box(0.84,1,0.84,0.03),material:iron,matrix:I()},{geometry:box(0.9,0.07,0.9,0.02),material:brass,matrix:at(0,0.465,0)}];
+ if(!skull){parts.push({geometry:box(0.9,0.07,0.9,0.02),material:brass,matrix:at(0,-0.465,0)});return parts;}
+ const disc=new THREE.CylinderGeometry(0.27,0.29,0.05,40);disc.rotateX(Math.PI/2);
+ const cranium=new THREE.SphereGeometry(0.15,32,20);cranium.scale(1,0.92,0.45);
+ const eye=new THREE.SphereGeometry(0.045,16,10);eye.scale(1,1.15,0.6);
+ const nose=new THREE.ConeGeometry(0.022,0.045,3);nose.rotateZ(Math.PI);
+ parts.push({geometry:disc,material:brass,matrix:at(0,-0.04,0.43)},{geometry:cranium,material:bone,matrix:at(0,0,0.46)},{geometry:box(0.15,0.09,0.06,0.02),material:bone,matrix:at(0,-0.14,0.46)},
+  {geometry:eye,material:iron,matrix:at(-0.06,0,0.52)},{geometry:eye,material:iron,matrix:at(0.06,0,0.52)},{geometry:nose,material:iron,matrix:at(0,-0.07,0.525)});
+ return parts;
+}
