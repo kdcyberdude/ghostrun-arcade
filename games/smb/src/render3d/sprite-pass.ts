@@ -38,19 +38,19 @@ export class SpritePass extends Pass{
  }
  render(renderer:THREE.WebGLRenderer,_write:THREE.WebGLRenderTarget,read:THREE.WebGLRenderTarget){
   if(!read.depthTexture)throw Error('native sprite composition requires world depth');
-  const target=renderer.getRenderTarget(),background=this.scene.background,auto=renderer.autoClear,shadow=renderer.shadowMap.autoUpdate,needs=renderer.shadowMap.needsUpdate,bankVisibility=this.banks.map(b=>b.visible),saved:{mesh:THREE.Mesh;material:THREE.Material|THREE.Material[];order:number}[]=[],moved:{root:THREE.Object3D;parent:THREE.Object3D;index:number}[]=[];
+  const target=renderer.getRenderTarget(),background=this.scene.background,auto=renderer.autoClear,shadow=renderer.shadowMap.autoUpdate,needs=renderer.shadowMap.needsUpdate,bankVisibility=this.banks.map(b=>b.visible),saved:{mesh:THREE.Mesh;material:THREE.Material|THREE.Material[];order:number;receive:boolean}[]=[],moved:{root:THREE.Object3D;parent:THREE.Object3D;index:number}[]=[];
   const size=new THREE.Vector2(read.width,read.height),draws=this.draws.filter(d=>d.root.visible&&d.root.parent?.visible);
   try{
    (this.copy.material as THREE.ShaderMaterial).uniforms.map.value=read.texture;(this.copy.material as THREE.ShaderMaterial).uniforms.depth.value=read.depthTexture;renderer.setRenderTarget(this.world);renderer.render(this.copy,this.copyCamera);
    this.scene.background=null;renderer.autoClear=false;renderer.shadowMap.autoUpdate=renderer.shadowMap.needsUpdate=false;
-   for(const draw of draws){draw.root.updateWorldMatrix(true,true);draw.root.traverse(o=>{const mesh=o as THREE.Mesh;if(!mesh.isMesh)return;const material=mesh.material;saved.push({mesh,material,order:mesh.renderOrder});mesh.renderOrder=255-draw.offset;mesh.material=Array.isArray(material)?material.map(m=>this.material(m,draw.root,draw,this.world.depthTexture!,size)):this.material(material,draw.root,draw,this.world.depthTexture!,size);});
+   for(const draw of draws){draw.root.updateWorldMatrix(true,true);draw.root.traverse(o=>{const mesh=o as THREE.Mesh;if(!mesh.isMesh)return;const material=mesh.material;saved.push({mesh,material,order:mesh.renderOrder,receive:mesh.receiveShadow});mesh.renderOrder=255-draw.offset;mesh.receiveShadow=false; /* an NES sprite is never shaded by the background: a block it overlaps must not darken it as if it were inside */mesh.material=Array.isArray(material)?material.map(m=>this.material(m,draw.root,draw,this.world.depthTexture!,size)):this.material(material,draw.root,draw,this.world.depthTexture!,size);});
     // All three banks use the scene coordinate system. Reparent only during this pass, restoring exact child order below.
     const parent=draw.root.parent!;moved.push({root:draw.root,parent,index:parent.children.indexOf(draw.root)});this.scene.add(draw.root);
    }
    for(const bank of this.banks)bank.visible=false;
    renderer.setRenderTarget(read);renderer.clearDepth();renderer.render(this.scene,this.camera);
   }finally{
-   for(const {mesh,material,order}of saved){mesh.material=material;mesh.renderOrder=order;}
+   for(const {mesh,material,order,receive}of saved){mesh.material=material;mesh.renderOrder=order;mesh.receiveShadow=receive;}
    for(const {root,parent,index}of moved.reverse()){parent.add(root);parent.children.splice(parent.children.indexOf(root),1);parent.children.splice(index,0,root);}
    this.banks.forEach((b,i)=>b.visible=bankVisibility[i]);this.scene.background=background;renderer.autoClear=auto;renderer.shadowMap.autoUpdate=shadow;renderer.shadowMap.needsUpdate=needs;renderer.setRenderTarget(target);
   }
