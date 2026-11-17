@@ -305,7 +305,7 @@ export class PlatformMotion {
  // The second balance object owns ImposeGravity; its partner mirrors integer
  // movement. Drop platforms apply 127/256 gravity only while ridden. Both keep
  // the slot's fraction and integrate position before changing speed.
- private turnPulley(pulley:{driver:NativePlatformObject;motor:PlatformVerticalState;load:Record<string,number>;d:number[];turned?:number},frame:number,run=true){
+ private turnPulley(pulley:{driver:NativePlatformObject;partner?:NativePlatformObject;bias?:Record<string,number>;motor:PlatformVerticalState;load:Record<string,number>;d:number[];turned?:number},frame:number,run=true){
   if(pulley.turned===frame)return;pulley.turned=frame;
   const {driver,motor}=pulley,load=(pulley.load['1']===frame?1:0)-(pulley.load['-1']===frame?1:0);
   // ChkForFall / ChkOtherForFall, before the move: a balance lift at y $2D or above the top is set to $2F and both stop (StopPlatforms), the partner
