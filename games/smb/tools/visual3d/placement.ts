@@ -4,7 +4,8 @@
 // Frames (every --every frames): the recorded route (data/observed-winning-inputs.json, as far as it still plays), or --native: each level replayed from
 // its native trace (pads.bin per level, entrance.json receipts as for tools/harness/native-divergence.ts), or --staged scenes (every area of all 32 levels
 // at camera steps of --step px; enemies not yet spawned there). Render-only: the simulation is stepped exactly as the game does.
-// Usage: npx tsx tools/visual3d/placement.ts [--every=15] [--frames=N] [--staged [--step=96]] [--native=TRACES --entrances=DIR [--levels=1-1,4-4]] [--out=file.json]
+// --recordings=ID,ID: power-on recordings of the audit inventory (native-monitor/.local), stepped as the picture audit steps them.
+// Usage: npx tsx tools/visual3d/placement.ts [--every=15] [--recordings=ID,..] [--frames=N] [--staged [--step=96]] [--native=TRACES --entrances=DIR [--levels=1-1,4-4]] [--out=file.json]
 // (V25_PORT picks the dev port)
 import {openGame,routeRuns} from './lib.js';
 import {observedLevels} from '../../src/levels.js';
@@ -12,15 +13,34 @@ import {writeFile,readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {decodeEntrance} from '../harness/native-entrance.mjs';
 import type {FrameReport,Issue} from './placement-match.js';
+import {nativeCapture} from '../harness/native-captures.mjs';
+import {nativeLagFrames} from '../harness/native-lag-frames.mjs';
 const arg=(k:string,d:string)=>process.argv.find(a=>a.startsWith(`--${k}=`))?.slice(k.length+3)??d;
-const every=Number(arg('every','15')),limit=Number(arg('frames','1e9')),staged=process.argv.includes('--staged'),step=Number(arg('step','96')),native=arg('native',''),only=arg('levels','').split(',').filter(Boolean);
+const every=Number(arg('every','15')),limit=Number(arg('frames','1e9')),staged=process.argv.includes('--staged'),step=Number(arg('step','96')),native=arg('native',''),only=arg('levels','').split(',').filter(Boolean),recordings=arg('recordings','').split(',').filter(Boolean);
 if(!Number.isInteger(every)||every<=0||!Number.isFinite(step)||step<=0||!(limit>0))throw Error('Expected positive --every, --step and --frames');
 const g=await openGame({view:'3d',query:'quality=low&scale=1'});const p=g.page;
 await p.evaluate(async()=>{const m=await import('/tools/visual3d/placement-page.ts');await m.setup();});
 type Row={frame:number|string;level:string;area:string;phase:string;camera:number;issues:Issue[]};const rows:Row[]=[];
 const audit=()=>p.evaluate(()=>{const w=window as any,s=w.marioDebug.simulation;s.events.length=0;w.render3d.render(s);const r:FrameReport=w.placement.audit();
  return {level:s.level.id as string,area:s.area.id as string,phase:s.phase as string,camera:Math.floor(s.camera),r};});
-if(native){
+if(recordings.length){
+ // Power-on recordings from the audit inventory, stepped exactly as the picture audit steps them (native lag frames skipped).
+ const inv=JSON.parse(await readFile(new URL('../harness/native-monitor/.local/combined-inputs.json',import.meta.url),'utf8')).runs;
+ const keys=['a','b','select','start','up','down','left','right'];
+ for(const want of recordings){const run=inv.find((r:{id:string})=>r.id===want||r.id==='mood:'+want||r.id.startsWith('mood:'+want));if(!run)throw Error('Unknown recording '+want);
+  const before=rows.length,cap=nativeCapture(run),pads=await readFile(path.join(cap.dir,'pads.bin')),lag=new Set(nativeLagFrames(await readFile(path.join(cap.dir,'ram.bin'))));
+  await p.evaluate(()=>{const w=window as any;w.mario.reset({playing:false});});
+  for(let f=0;f<Math.min(pads.length,limit);f+=every*128){
+   const end=Math.min(f+every*128,pads.length,limit),chunk=[...pads.subarray(f,end)].map(b=>keys.filter((_,i)=>b&(1<<i))),skip=Array.from({length:end-f},(_,i)=>lag.has(f+i));
+   const batch=await p.evaluate(({chunk,skip,every,from,id})=>{const w=window as any,s=w.marioDebug.simulation,out:Row[]=[];
+    for(let i=0;i<chunk.length;i++){if(!skip[i])s.step(chunk[i],1,[]);
+     if((from+i+1)%every===0){s.events.length=0;w.render3d.render(s);const r:FrameReport=w.placement.audit();out.push({frame:`${id}@${from+i+1}`,level:s.level.id,area:s.area.id,phase:s.phase,camera:Math.floor(s.camera),issues:r.issues});}}
+    return out;
+   },{chunk,skip,every,from:f,id:run.id.replace(/^mood:/,'').slice(0,8)});rows.push(...batch);
+  }
+  console.log(`recording ${run.id.slice(0,20)}: ${rows.length-before} frames audited`);
+ }
+}else if(native){
  const keys=['a','b','select','start','up','down','left','right'];
  for(const l of observedLevels()){if(only.length&&!only.includes(l.id))continue;
   const before=rows.length,dir=path.join(native,l.id);let pads:Buffer,entrance:unknown;
