@@ -28,6 +28,8 @@ class Pool{
 /** Per-block variety for stone/soil/brick pieces, so walls of identical blocks stop looking copy-pasted: from the block's TILE cell (stable while a brick
  * bumps) each instance gets a mirror of its texture in u and/or v; the colour stays the same, as every block of one kind is one colour in 2D. UV mirroring is safe for the normal map: without
  * a tangent attribute three.js derives the tangent frame from the UV derivatives. Render-only; one shader variant per material. */
+/** Diameter of the trunk model in tiles (assets3d/models/trunk.glb). */
+export const TRUNK_WIDTH=0.72;
 const VARY=/^(block_(ground|brick|hard|wall)|castle_(brick|crenel|dark))/;
 function vary(material:THREE.Material){
  const m=material as THREE.MeshStandardMaterial;if(m.userData.varied)return;m.userData.varied=true;
@@ -94,14 +96,19 @@ export class World{
   const base=name.replace(/^block_/,'').replace(/^castle_/,'');
   return procBlock(name.startsWith('castle_')?(name==='castle_dark'?'used':'castle'):base)??procBlock('hard')!;
  }
- private pool(name:string,theme:string,palette=0,tint?:readonly number[]){
+ private trunkRuns=new Set<string>();
+ /** `repeatX` > 1: the model's textures repeat that often around it (a trunk widened over several columns keeps its bark proportions). */
+ private pool(name:string,theme:string,palette=0,tint?:readonly number[],repeatX=1){
   const v=VARIANT[this.snowLook?'snow':theme]??'',want=v&&this.kit.has(name+v)?name+v:name;
   tint??=this.whiteScenery&&name.startsWith('plat_tree_')?STEEL:this.whiteStone&&name==='trunk'?this.stone:undefined;
-  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join()+(this.nightLook?'@moon':''):'')+(cycles?'@palette'+palette:'');let p=this.pools.get(key);
+  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join()+(this.nightLook?'@moon':''):'')+(cycles?'@palette'+palette:'')+(repeatX>1?'@x'+repeatX:'');let p=this.pools.get(key);
   if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);
    // Castle bricks and battlements are the same brick picture as brick blocks in 2D: draw them with the brick block's colour texture (both share its normal/roughness maps).
    const brick=(want==='castle_brick'||want==='castle_crenel')?this.kit.parts('block_brick')?.[0]?.material as THREE.MeshStandardMaterial|undefined:undefined;
-   if(brick?.map)parts=parts.map(q=>{const m=(q.material as THREE.MeshStandardMaterial).clone();m.map=brick.map;m.color.copy(brick.color);return {...q,material:m};});if(tint){const rgb=this.nightLook?tint.map((v,i)=>v*MOON_BALANCE[i]):tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}if(tint){const rgb=this.nightLook?tint.map((v,i)=>v*MOON_BALANCE[i]):tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
+   if(repeatX>1)parts=parts.map(q=>{const m=(q.material as THREE.MeshStandardMaterial).clone();
+    for(const k of ['map','normalMap','roughnessMap','metalnessMap','aoMap'] as const){const t=m[k];if(t){const c=t.clone();c.wrapS=THREE.RepeatWrapping;c.repeat.x=repeatX;c.needsUpdate=true;m[k]=c;}}
+    return {...q,material:m};});
+   if(brick?.map)parts=parts.map(q=>{const m=(q.material as THREE.MeshStandardMaterial).clone();m.map=brick.map;m.color.copy(brick.color);return {...q,material:m};});if(tint){const rgb=this.nightLook?tint.map((v,i)=>v*MOON_BALANCE[i]):tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
    if(cycles){const materials:THREE.MeshStandardMaterial[]=[];parts=parts.map(part=>{if(name==='block_question'&&parts.length>1&&!part.material.name.startsWith('M_Question'))return part;const material=part.material.clone() as THREE.MeshStandardMaterial;materials.push(material);return {...part,material};});this.paletteMaterials.push({palette,materials,coin:name==='coin_tile'});}
    p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,VARY.test(want));this.pools.set(key,p);}
   return p;
@@ -140,7 +147,12 @@ export class World{
     if(id===28||id===29||id===30||id===107)this.pool(id===28||id===107?'pipe_top':'pipe_body',theme,palette,pipe).add(this.m.makeRotationZ(Math.PI/2).setPosition(col+0.5,14-row,0));
     break;
    case 'coin':this.pool('coin_tile',theme,palette).add(this.m.makeRotationY(s.frame*0.06).setPosition(col+0.5,14.5-row,0));break;
-   case 'piece':{const pc=PIECES[id];put(pc.model,col+0.5,14.5-row,pc.dz??0);
+   case 'piece':{const pc=PIECES[id];
+    // A tree platform's trunk is one solid trunk across its trunk columns, as in 2D (not one log per 16-px column): one log per row run, as wide as the run.
+    if(id===76){const grid=s.tiles.get(`${col},${row}`)===76;let start=col;if(grid){while(s.tiles.get(`${start-1},${row}`)===76)start--;if(this.trunkRuns.has(`${start},${row}`))break;this.trunkRuns.add(`${start},${row}`);}  // a free trunk piece is its own log
+     let n=1;if(grid)while(s.tiles.get(`${start+n},${row}`)===76)n++;
+     this.pool('trunk',theme,palette,undefined,Math.max(1,Math.round(n*0.94/TRUNK_WIDTH))).add(this.m.makeScale(n*0.94/TRUNK_WIDTH,1,Math.min(n,1.5)*0.9/TRUNK_WIDTH).setPosition(start+n/2,14.5-row,pc.dz??0));break;}
+    put(pc.model,col+0.5,14.5-row,pc.dz??0);
     // Mushroom stems run from their top piece (79) to the ground; the observed tile data skips some stem rows (4-3), so fill empty rows below.
     if(id===79)for(let r=row+1;r<15;r++){const below=s.tiles.get(`${col},${r}`);if(below===undefined)put('mush_stem',col+0.5,14.5-r,pc.dz??0);else if(below!==80)break;}
     break;}
@@ -160,7 +172,7 @@ export class World{
    this.statics=buildStatics(analyseArea(s.area),scenery,photo?this.kit:undefined);const wallPart=this.kit.parts(s.area.theme==='castle'?'block_wall_castle':'block_ground_ug')?.[0];const bd=photo?photoBackdrop(this.kit,scenery,-40,s.area.width/16+60,look.night):buildBackdrop(s.area.theme,s.area.width,wallPart?.material as THREE.MeshStandardMaterial|undefined,s.area.id);this.statics.add(bd);this.group.add(this.statics);
    this.spots=(bd.userData.lights as LightSpot[]|undefined)??[];
   }
-  const theme=s.area.theme;for(const p of this.pools.values())p.begin();
+  const theme=s.area.theme;for(const p of this.pools.values())p.begin();this.trunkRuns.clear();
   const c0=Math.floor(camPx/16)-2,c1=c0+21;
   // Off-grid pieces (castle stone in 4-4 / 8-4, seabed, trunks, mushroom stems, ...) are drawn over the grid like the 2D picture: a piece covers the
   // grid tile of its cell. Interactive pieces bump with their cell.

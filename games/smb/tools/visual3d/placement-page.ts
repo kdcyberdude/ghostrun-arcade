@@ -10,6 +10,7 @@ import {enemyPicture} from '../../src/enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from '../../src/platform-motion.js';
 import {renderEquivalenceSnapshot} from './equivalence-snapshot.js';
 import {sceneState,visiblePixels} from './visibility-pass.js';
+import {TRUNK_WIDTH} from '../../src/render3d/world.js';
 import {compareFrame,family,pieceModels,cells3d as cellsOf,type Obj,type Cell,type FrameReport,type Look} from './placement-match.js';
 import {kindIn} from '../../src/render3d/semantics.js';
 import nesPalette from '../../assets/nes-rgb-palette.json';
@@ -140,7 +141,10 @@ function cells3d(r3:Any,s:Simulation){
 function logCells(r3:Any,s:Simulation){
  const w=r3.world,orig=w.pool,log:{name:string;x:number;y:number}[]=[];
  const keys=()=>new Map([...(w.pools as Map<string,unknown>)].map(([k,p])=>[p,k]));
- w.pool=function(name:string,...rest:Any[]){const p=orig.call(this,name,...rest),key=keys().get(p) as string;return {add:(m:THREE.Matrix4)=>{log.push({name,x:m.elements[12],y:m.elements[13],key});return p.add(m);}};};
+ w.pool=function(name:string,...rest:Any[]){const p=orig.call(this,name,...rest),key=keys().get(p) as string;return {add:(m:THREE.Matrix4)=>{
+  // A trunk run is one log scaled over its columns (world.ts): it covers each of them.
+  const n=name==='trunk'?Math.max(1,Math.round(Math.hypot(m.elements[0],m.elements[1],m.elements[2])*TRUNK_WIDTH/0.94)):1;
+  for(let i=0;i<n;i++)log.push({name,x:m.elements[12]-n/2+i+0.5,y:m.elements[13],key});return p.add(m);}};};
  try{w.sync(s,Math.floor(s.camera));}finally{delete w.pool;}
  return log as {name:string;x:number;y:number;key:string}[];
 }
