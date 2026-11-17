@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import type {Simulation} from '../simulation.js';
 import {Atmosphere,type Quality} from './atmosphere.js';
 import {Kit} from './kit.js';
-import {World,TILE_MODELS} from './world.js';
+import {World,TILE_MODELS,areaLook} from './world.js';
 import {Entities,ACTOR_MODELS} from './entities.js';
 import {Hud} from './hud.js';
 import {Props} from './props.js';
@@ -41,7 +41,7 @@ export class Renderer3D{
   if(boot){this.world.group.visible=this.entities.group.visible=this.props.group.visible=false;this.gl.setRenderTarget(null);this.gl.setClearColor(boot);this.gl.clear();return;}
   const screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined;
   const camPx=Math.floor(s.camera);const black=screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
-  this.atmosphere.setTheme(s.area.theme,s.area.id);
+  this.atmosphere.setTheme(areaLook(s.area).night?'night':s.area.theme,s.area.id);
   this.world.group.visible=this.entities.group.visible=this.props.group.visible=!black;
   this.atmosphere.setBlackout(black);
   this.atmosphere.place(camPx);

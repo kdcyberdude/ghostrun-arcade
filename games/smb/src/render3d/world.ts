@@ -62,15 +62,25 @@ function vary(material:THREE.Material){
 }
 export const TILE_MODELS=['block_ground','block_ground_top','block_brick','block_question','block_used','block_hard','block_wall','pipe_top','pipe_body','castle_brick','castle_crenel','castle_dark'];
 const SCENERY=new Set(['hill','bush','cloud','tree','empty','void']);const PHOTO_THEMES=new Set(['ground','snow','night']);const GRASS_THEMES=new Set(['ground','night','snow']);const SOLIDISH=new Set(['ground','wall','hard','brick','question','used','pipe','castle']);
-/** Castle pipes are grey in the original palette: same pipe model, its green albedo turned to light steel grey. */
-function castlePipe(m:THREE.Material){const c=m.clone() as THREE.MeshStandardMaterial;
- c.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\n diffuseColor.rgb=vec3(dot(diffuseColor.rgb,vec3(0.299,0.587,0.114)))*vec3(3.4,3.45,3.6);');};
- c.customProgramCacheKey=()=>'castle-pipe';return c;}
+/** Palette recolour, as the 2D picture's palette group colours a metatile: the albedo's luminance times an NES colour, the model's texture and shading
+ * kept (castle / night / snow pipes are light grey, write-back blocks keep their cell's original group). */
+function paletteTint(m:THREE.Material,rgb:readonly number[]){const c=m.clone() as THREE.MeshStandardMaterial,v=rgb.map(x=>(x*3.4).toFixed(3)).join(',');
+ c.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>\n diffuseColor.rgb=vec3(dot(diffuseColor.rgb,vec3(0.299,0.587,0.114)))*vec3(${v});`);};
+ c.customProgramCacheKey=()=>'tint-'+v;return c;}
+/** Light steel grey (NES white 0x30 in a scenery group). */
+const STEEL=[1,1.015,1.059];
+const nesLinear=(index:number)=>new THREE.Color().setRGB(...(nesPalette.colors[index].map(c=>c/255) as [number,number,number]),THREE.SRGBColorSpace).toArray();
+/** The 2D picture's scenery group (pipes, tree tops; group 0) and stone group (group 1) are white in castle, 3-1/3-2 night, snow and 6-3 night-snow palettes. */
+export const whiteGroup=(palette:number,group:number)=>nativePalettes[palette]?.[group*4+1]===0x30;
+/** Outdoor look of an area as its palette shows it: night = black backdrop, snow = white scenery (3-1/3-2 are snowy nights, 6-3 too). */
+export function areaLook(area:{theme:string;palette:number}){const outdoor=PHOTO_THEMES.has(area.theme);
+ return {night:outdoor&&nativePalettes[area.palette]?.[0]===0x0f,snow:outdoor&&whiteGroup(area.palette,0)};}
 const VARIANT:Record<string,string>={underground:'_ug',castle:'_castle',water:'_water',snow:'_snow'};
 export class World{
  readonly group=new THREE.Group();private pools=new Map<string,Pool>();private area?:object;private statics?:THREE.Group;
  readonly unmapped=new Set<number>();private m=new THREE.Matrix4();
  private paletteMaterials:{palette:number;materials:THREE.MeshStandardMaterial[];coin:boolean}[]=[];
+ private whiteScenery=false;private snowLook=false;private whiteStone=false;private stone:number[]=STEEL;private originalTiles=new Map<string,number>();
  private flag=makeFlag();private spots:LightSpot[]=[];private ropeArea?:object;private ropes:number[]=[];
  /** A few point lights re-aimed every frame at the torches / crystals nearest the camera (only visible in cave and castle areas). */
  private lamps=Array.from({length:6},()=>{const l=new THREE.PointLight(0xffffff,0,14,2);l.visible=false;return l;});
@@ -82,10 +92,11 @@ export class World{
   const base=name.replace(/^block_/,'').replace(/^castle_/,'');
   return procBlock(name.startsWith('castle_')?(name==='castle_dark'?'used':'castle'):base)??procBlock('hard')!;
  }
- private pool(name:string,theme:string,palette=0){
-  const v=VARIANT[theme]??'',want=v&&this.kit.has(name+v)?name+v:name,greyPipe=theme==='castle'&&name.startsWith('pipe_');
-  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):greyPipe?want+'@castle':want)+(cycles?'@palette'+palette:'');let p=this.pools.get(key);
-  if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);if(greyPipe)parts=parts.map(q=>({...q,material:castlePipe(q.material)}));
+ private pool(name:string,theme:string,palette=0,tint?:readonly number[]){
+  const v=VARIANT[this.snowLook?'snow':theme]??'',want=v&&this.kit.has(name+v)?name+v:name;
+  tint??=this.whiteScenery&&(name.startsWith('pipe_')||name.startsWith('plat_tree_'))?STEEL:this.whiteStone&&name==='trunk'?this.stone:undefined;
+  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join():'')+(cycles?'@palette'+palette:'');let p=this.pools.get(key);
+  if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);if(tint){const rgb=tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
    if(cycles){const materials:THREE.MeshStandardMaterial[]=[];parts=parts.map(part=>{if(name==='block_question'&&parts.length>1&&!part.material.name.startsWith('M_Question'))return part;const material=part.material.clone() as THREE.MeshStandardMaterial;materials.push(material);return {...part,material};});this.paletteMaterials.push({palette,materials,coin:name==='coin_tile'});}
    p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,VARY.test(want));this.pools.set(key,p);}
   return p;
@@ -105,7 +116,10 @@ export class World{
    case 'wall':put('block_wall',col+0.5,14.5-row);break;
    case 'brick':put('block_brick',col+0.5,14.5-row+bump);break;
    case 'question':put('block_question',col+0.5,14.5-row+bump);break;
-   case 'used':put('block_used',col+0.5,14.5-row+bump);break;
+   case 'used':{
+    // A block write-back keeps its cell's original palette group (grey in 1-4 / 6-4, teal in the 6-2 bonus room), as in the 2D picture.
+    const original=key&&s.blockBackground.get(key)===id?this.originalTiles.get(key):undefined,group=original!==undefined&&original>>6!==id>>6?original>>6:undefined;
+    this.pool('block_used',theme,palette,group===undefined?undefined:nesLinear(nativePalettes[palette][group*4+2])).add(this.m.makeTranslation(col+0.5,14.5-row+bump,0));break;}
    case 'hard':put('block_hard',col+0.5,14.5-row);break;
    // Tile 70 is the castle's dark doorway; over an underground wall (4-2) the 2D picture shows the open cave there, so nothing is drawn.
    case 'castle':if(id===70&&theme==='underground')break;put(id===71?'castle_brick':id===69||id===73?'castle_crenel':'castle_dark',col+0.5,14.5-row);break;
@@ -134,9 +148,11 @@ export class World{
  }
  sync(s:Simulation,camPx:number){
   if(this.area!==s.area){
-   this.area=s.area;if(this.statics){this.group.remove(this.statics);disposeGroup(this.statics);}
-   const photo=PHOTO_THEMES.has(s.area.theme)&&!s.area.id.includes('sky')&&this.kit.has('veg_shrub_02');
-   this.statics=buildStatics(analyseArea(s.area),s.area.theme,photo?this.kit:undefined);const wallPart=this.kit.parts(s.area.theme==='castle'?'block_wall_castle':'block_ground_ug')?.[0];const bd=photo?photoBackdrop(this.kit,s.area.theme,-40,s.area.width/16+60):buildBackdrop(s.area.theme,s.area.width,wallPart?.material as THREE.MeshStandardMaterial|undefined,s.area.id);this.statics.add(bd);this.group.add(this.statics);
+   this.area=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));
+   this.whiteScenery=whiteGroup(s.area.palette,0);this.whiteStone=whiteGroup(s.area.palette,1);this.stone=nesLinear(nativePalettes[s.area.palette][6]);
+   if(this.statics){this.group.remove(this.statics);disposeGroup(this.statics);}
+   const photo=PHOTO_THEMES.has(s.area.theme)&&!s.area.id.includes('sky')&&this.kit.has('veg_shrub_02'),look=areaLook(s.area),scenery=look.snow?'snow':s.area.theme;this.snowLook=look.snow;
+   this.statics=buildStatics(analyseArea(s.area),scenery,photo?this.kit:undefined);const wallPart=this.kit.parts(s.area.theme==='castle'?'block_wall_castle':'block_ground_ug')?.[0];const bd=photo?photoBackdrop(this.kit,scenery,-40,s.area.width/16+60,look.night):buildBackdrop(s.area.theme,s.area.width,wallPart?.material as THREE.MeshStandardMaterial|undefined,s.area.id);this.statics.add(bd);this.group.add(this.statics);
    this.spots=(bd.userData.lights as LightSpot[]|undefined)??[];
   }
   const theme=s.area.theme;for(const p of this.pools.values())p.begin();

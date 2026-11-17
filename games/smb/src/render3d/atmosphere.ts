@@ -125,7 +125,8 @@ export class Atmosphere{
   this.skyLoads.set(id,pending);return pending;
  }
  setTheme(name:string,areaId=''){
-  const key=areaId.includes('sky')?'sky':name;if(key===this.theme)return;this.theme=key;const t=THEMES[name]??THEMES.ground;
+  // A vine sky area at night (3-1, 6-2: black backdrop in the 2D picture) keeps the night sky.
+  const key=areaId.includes('sky')&&name!=='night'?'sky':name;if(key===this.theme)return;this.theme=key;const t=THEMES[name]??THEMES.ground;
   if(SKIES[key]&&!this.skies.has(key))void this.loadSkies(key);
   const c=document.createElement('canvas');c.width=4;c.height=256;const g=c.getContext('2d')!,grad=g.createLinearGradient(0,0,0,256);
   grad.addColorStop(0,t.skyTop);grad.addColorStop(0.55,t.skyMid);grad.addColorStop(1,t.skyBottom);g.fillStyle=grad;g.fillRect(0,0,4,256);

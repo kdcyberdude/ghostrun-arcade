@@ -88,7 +88,7 @@ function impostors(spots:TreeSpot[],tint:number|THREE.Color,frost=0):THREE.Group
 /** Lush emerald lawn: linear multipliers on the olive grass scans (green above 1 lifts the scan's own green). */
 const LAWN:[number,number,number]=[0.4,0.92,0.24],LAWN_FAR:[number,number,number]=[0.5,0.95,0.34];
 /** Impostors are unlit (baked in Cycles): a lift towards fresh sunlit green. */
-const SUNLIT_LEAVES=new THREE.Color().setRGB(1.12,1.3,0.95,THREE.LinearSRGBColorSpace),MOONLIT_LEAVES=new THREE.Color().setRGB(0.3,0.42,0.62,THREE.LinearSRGBColorSpace);
+const SUNLIT_LEAVES=new THREE.Color().setRGB(1.12,1.3,0.95,THREE.LinearSRGBColorSpace),MOONLIT_LEAVES=new THREE.Color().setRGB(0.3,0.42,0.62,THREE.LinearSRGBColorSpace),MOONLIT_FROST=new THREE.Color().setRGB(0.55,0.62,0.8,THREE.LinearSRGBColorSpace);
 /** Night: glowing fireflies drifting over the meadow (unlit additive points; bloom gives the halo). */
 function fireflies(x0:number,x1:number,r:()=>number){
  const n=Math.round((x1-x0)*1.2),p=new Float32Array(n*3);for(let i=0;i<n;i++){const x=x0+r()*(x1-x0),z=-2.5-r()*r()*30;p.set([x,1.1+heightAt(x,z,6)+0.3+r()*2.6,z],i*3);}
@@ -98,8 +98,8 @@ function fireflies(x0:number,x1:number,r:()=>number){
 }
 const TREE_SCALE:Record<string,number>={island_tree_02:2.0,tree_small_02:1.9,jacaranda_tree:0.5};
 const pose=(x:number,y:number,z:number,s:number,ry:number)=>new THREE.Matrix4().compose(new THREE.Vector3(x,y,z),new THREE.Quaternion().setFromEuler(new THREE.Euler(0,ry,0)),new THREE.Vector3(s,s,s));
-export function photoBackdrop(kit:Kit,theme:string,x0:number,x1:number):THREE.Group{
- const g=new THREE.Group(),r=rand(97),snow=theme==='snow',night=theme==='night';
+export function photoBackdrop(kit:Kit,theme:string,x0:number,x1:number,night=theme==='night'):THREE.Group{
+ const g=new THREE.Group(),r=rand(97),snow=theme==='snow';
  const ground=photoMaterial(snow?'snow_02':'aerial_grass_rock',snow?[1.02,1.08,1.25]:LAWN_FAR);
  const near=photoMaterial(snow?'snow_02':'leafy_grass',snow?[1.08,1.14,1.3]:LAWN);
  const far=terrainStrip(x0-150,x1+150,-57,-420,1.1,ground,6,6);far.receiveShadow=false;  // outside the shadow camera: would show its edge as a seam
@@ -125,13 +125,13 @@ export function photoBackdrop(kit:Kit,theme:string,x0:number,x1:number):THREE.Gr
  if(snow){flowers.forEach(a=>{a.length=0;});grass[1].length=0;ferns.length=0;}  // winter: bare snowfield, trees only
  trees.sort((a,b)=>a.z-b.z);
  if(snow)trees.splice(0,trees.length,...trees.filter((_,i)=>i%3===0));  // winter: sparse frosted wood
- if(night)g.add(fireflies(x0,x1,r));
- g.add(impostors(trees,night?MOONLIT_LEAVES:snow?0xffffff:SUNLIT_LEAVES,snow?0.55:0),...FLOWERS.map((f,i)=>plants(kit,f,flowers[i])),
+ if(night&&!snow)g.add(fireflies(x0,x1,r));
+ g.add(impostors(trees,snow?(night?MOONLIT_FROST:0xffffff):night?MOONLIT_LEAVES:SUNLIT_LEAVES,snow?0.55:0),...FLOWERS.map((f,i)=>plants(kit,f,flowers[i])),
   plants(kit,'veg_grass_medium_02',grass[1]),scatter(kit,'veg_rock_moss_set_01',rocks),plants(kit,'veg_fern_02',ferns));
  return g;
 }
 /** Realistic stand-ins for the original scenery clusters (hill -> grassy knoll with rocks, bush -> real shrubs, tree -> scanned tree). */
-export function photoCluster(kit:Kit,c:Cluster,w:number,h:number):THREE.Group{
+export function photoCluster(kit:Kit,c:Cluster,w:number,h:number,snow=false):THREE.Group{
  const g=new THREE.Group(),r=rand(c.col0*31+c.row0*7+3);
  if(c.kind==='hill'){
   const depth=Math.max(3,w*0.6),geo=new THREE.SphereGeometry(1,72,36,0,Math.PI*2,0,Math.PI/2);geo.scale(w/2,h,depth/2);
@@ -151,7 +151,7 @@ export function photoCluster(kit:Kit,c:Cluster,w:number,h:number):THREE.Group{
   g.add(plants(kit,'veg_fern_02',ferns),plants(kit,['veg_periwinkle_plant','veg_flower_gazania','veg_flower_ursinia'][c.col0%3],bloom));
  }else if(c.kind==='tree'){
   const id=c.col0%2?'tree_small_02':'island_tree_02',im=IMP[id];
-  if(im)g.add(impostors([{id,x:0,y:0,z:0,s:h/(im.height_m*METRE)*1.6,v:c.col0,flip:c.row0%2===1}],0xffffff));
+  if(im)g.add(impostors([{id,x:0,y:0,z:0,s:h/(im.height_m*METRE)*1.6,v:c.col0,flip:c.row0%2===1}],0xffffff,snow?0.55:0));
  }
  return g;
 }

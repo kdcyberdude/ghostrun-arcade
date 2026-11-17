@@ -52,7 +52,7 @@ export function buildStatics(layout:Layout,theme:string,kit?:Kit):THREE.Group{
   // Exact registration: extend the camera ray through the original on-plane base point back to depth d (camera centred on the object).
   const w=c.col1-c.col0+1,h=c.row1-c.row0+1,x=c.col0+w/2,yBase=14-c.row1,d=DEPTH[c.kind],camY=TARGET_Y+DIST*Math.sin(PITCH),camZ=DIST*Math.cos(PITCH),k=(camZ+d)/camZ;
   if(kit&&c.kind==='cloud')continue;
-  const obj=kit?photoCluster(kit,c,w,h):c.kind==='hill'?hill(w,h):c.kind==='bush'?bush(w):c.kind==='tree'?tree(w,h):cloud(w,h);
+  const obj=kit?photoCluster(kit,c,w,h,theme==='snow'):c.kind==='hill'?hill(w,h):c.kind==='bush'?bush(w):c.kind==='tree'?tree(w,h):cloud(w,h);
   // Register about the camera line: keep the screen position of the original tile cluster, push it back in depth.
   obj.scale.setScalar(k);obj.position.set(x,camY+(yBase-camY)*k,-d);root.add(obj);
  }
@@ -61,6 +61,6 @@ export function buildStatics(layout:Layout,theme:string,kit?:Kit):THREE.Group{
   const pole=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.07,top-bottom,20),metal);pole.position.set(p.col+0.5,(top+bottom)/2,0);pole.castShadow=true;root.add(pole);
   const ball=new THREE.Mesh(new THREE.SphereGeometry(0.26,28,20),new THREE.MeshStandardMaterial({color:0x35d06a,roughness:0.2,metalness:0.4}));ball.position.set(p.col+0.5,top+0.05,0);ball.castShadow=true;root.add(ball);
  }
- void theme;return root;
+ return root;
 }
 export function disposeGroup(g:THREE.Object3D){g.traverse(o=>{const m=o as THREE.Mesh;if(m.isMesh){m.geometry.dispose();const mm=m.material;(Array.isArray(mm)?mm:[mm]).forEach(x=>x.dispose());}});}
