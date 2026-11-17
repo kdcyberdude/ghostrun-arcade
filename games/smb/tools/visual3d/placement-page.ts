@@ -34,7 +34,7 @@ export async function setup(){
  r2=new GameRenderer(document.createElement('canvas'));await r2.load();
 }
 /** Everything the 2D renderer draws this frame: tiles (cell + id) and sprite quads tagged with the object being drawn. */
-type Draw2d={quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[];draws:{id:number;tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[];tiles:{id:number;x:number;y:number;z:number;tag:string;palette?:number}[]};
+type Draw2d={quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[];draws:{id:number;tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[];tiles:{id:number;x:number;y:number;z:number;tag:string;palette?:number}[];camera?:number};
 function draw2d(s:Simulation):Draw2d{
  const quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[]=[],draws:{id:number;tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[]=[],tiles:{id:number;x:number;y:number;z:number;tag:string}[]=[];let tag='misc',drawId=0;
  const q0=r2.quad,t0=r2.tile,p0=r2.player,e0=r2.enemy,i0=r2.item,c0=r2.castlePriorityTile,txt=r2.text,hud=r2.hud,cr=r2.castleRescue;
@@ -58,7 +58,7 @@ function draw2d(s:Simulation):Draw2d{
  // A block write-back keeps the cell's original palette group and is then drawn as four background tile quads, not a metatile: record its cell.
  const cam=Math.floor(s.camera);
  if(tiles.length)for(const [key,id] of s.blockBackground){const original=r2.originalTiles.get(key);if(id===null||original===undefined||original>>6===id>>6)continue;const [col,row]=key.split(',').map(Number);tiles.push({id,x:col*16-cam,y:row*16,z:0,tag:'misc'});}
- return lastDraw={quads,tiles,draws};
+ return lastDraw={quads,tiles,draws,camera:cam};
 }
 let lastDraw:Draw2d|undefined;
 /** Sim objects with the rect the 2D renderer drew for each (union of its quads). */
@@ -113,7 +113,12 @@ function objects3d(r3:Any,s:Simulation):(Obj&{root:THREE.Object3D})[]{
  return out;
 }
 /** Tiles the 3D world drew this frame, by the pool model name, recorded by re-running World.sync with a logging pool(). */
+let lastCells:{name:string;x:number;y:number;key:string}[]=[];
 function cells3d(r3:Any,s:Simulation){
+ if(r3.held)return lastCells;  // the held castle picture: the world was not re-synced
+ return lastCells=logCells(r3,s);
+}
+function logCells(r3:Any,s:Simulation){
  const w=r3.world,orig=w.pool,log:{name:string;x:number;y:number}[]=[];
  const keys=()=>new Map([...(w.pools as Map<string,unknown>)].map(([k,p])=>[p,k]));
  w.pool=function(name:string,...rest:Any[]){const p=orig.call(this,name,...rest),key=keys().get(p) as string;return {add:(m:THREE.Matrix4)=>{log.push({name,x:m.elements[12],y:m.elements[13],key});return p.add(m);}};};
@@ -135,8 +140,9 @@ function looks(s:Simulation,r3:Any,tiles2d:{id:number;x:number;y:number;z:number
 }
 /** One audit of the current frame (call after the page has drawn it). */
 export function audit():FrameReport{
- const win=window as Any,s:Simulation=win.marioDebug.simulation,r3=win.render3d,cam=Math.floor(s.camera);
- const {quads,tiles}=draw2d(s);
+ const win=window as Any,s:Simulation=win.marioDebug.simulation,r3=win.render3d;
+ // A held castle picture keeps the camera it was drawn with.
+ const {quads,tiles,camera}=draw2d(s),cam=camera??Math.floor(s.camera);
  // z 1: late scroll-split strips (single shifted scanlines of the NES picture, a raster artifact the 3D view does not reproduce).
  const t2:Cell[]=tiles.filter(t=>t.z!==2&&t.z!==1).map(t=>({col:Math.round((t.x+cam)/16),row:Math.round(t.y/16),id:t.id}));
  // Debris is a tile-sheet sprite in 2D (z 2): it is an object, not terrain.
