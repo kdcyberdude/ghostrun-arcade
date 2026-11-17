@@ -164,7 +164,9 @@ export class World{
     // A tree platform's trunk is one solid trunk across its trunk columns, as in 2D (not one log per 16-px column): one log per row run, as wide as the run.
     if(id===76){const grid=s.tiles.get(`${col},${row}`)===76;let start=col;if(grid){while(s.tiles.get(`${start-1},${row}`)===76)start--;if(this.trunkRuns.has(`${start},${row}`))break;this.trunkRuns.add(`${start},${row}`);}  // a free trunk piece is its own log
      let n=1;if(grid)while(s.tiles.get(`${start+n},${row}`)===76)n++;
-     this.pool('trunk',theme,palette,undefined,Math.max(1,Math.round(n*0.94/TRUNK_WIDTH))).add(this.m.makeScale(n*0.94/TRUNK_WIDTH,1,Math.min(n,1.5)*0.9/TRUNK_WIDTH).setPosition(start+n/2,14.5-row,pc.dz??0));break;}
+     // The top run sits under a treetop whose underside is 0.3 tile above the cell (plat_tree_*): stretched up to meet it, centre kept in its cell.
+     const top=[22,23,24].includes(s.tiles.get(`${start},${row-1}`)??-1)?0.3:0;
+     this.pool('trunk',theme,palette,undefined,Math.max(1,Math.round(n*0.94/TRUNK_WIDTH))).add(this.m.makeScale(n*0.94/TRUNK_WIDTH,1+top,Math.min(n,1.5)*0.9/TRUNK_WIDTH).setPosition(start+n/2,14.5-row+top/2,pc.dz??0));break;}
     if(id===101||id===102){this.pool('cannon_base',theme,palette,undefined,1,id===101?'cannon':'cannon-plain').add(this.m.makeTranslation(col+0.5,14.5-row,0));break;}
     // The stem's top piece sits under a mushroom cap whose underside is 0.38 tile above the cell (plat_mush_*): stretched up to meet it, centre kept in its cell.
     if(id===79){this.pool('mush_stem',theme,palette).add(this.m.makeScale(1,1.4,1).setPosition(col+0.5,14.5-row+0.2,pc.dz??0));}else
