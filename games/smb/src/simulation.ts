@@ -273,7 +273,7 @@ export class Simulation {
  private activatedCheckpointArea?:string;
  castleStage:'bridge'|'fall'|'walk'|'message'='bridge';castleArrivalFrame=0;nativeVictory?:NativeVictory;private victoryBoss?:Enemy;private victoryMessages:number[]=[];private victoryPending=-1;levelLoad?:NativeLevelLoad;private pipeLoad?:{target:NonNullable<Simulation['destination']>;alternate:number;header:number;page:number;offset:number};private victoryErase?:'axe'|'chain'|'bridge';
  readonly flagNumber={y:0,fraction:0};flagTop=49;flagInside=false;flagBonus=0;
- powerChange?:{from:0|1|2;to:0|1|2;remaining:number;kind:'grow'|'fire'|'shrink';born?:number;steps?:number};
+ powerChange?:{from:0|1|2;to:0|1|2;remaining:number;kind:'grow'|'fire'|'shrink';born?:number;steps?:number;jump?:boolean};
  /** Water pipe drop-in (2-2, 7-2): native PlayerEntrance runs until Mario's y reaches $30, and the game timer starts with control (2-2 v2: y49 on row 385, routine 8 and 401 -> 400 on row 386). */
  private waterEntryTimerHold=0;
  private waterEntryFall=false;private waterSurface={active:false,contacted:false};
@@ -3666,9 +3666,9 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private collectItem(i:Item){
   const p=this.player;
-  // A falling mushroom that grows Mario was already drawn this frame, after its move (all captures: 4 of 4 state $C0 pickups that start
-  // the grow keep its four entries, 0 of 99 others; a3899256 2-1 RAM 12066: Y 99 at X 103, PowerUpFlag cleared).
-  this.collectedPicture=i.kind==='mushroom'&&i.nativePowerState===0xc0&&p.size===0?{frame:this.frame,item:{...i}}:undefined;
+  // A mushroom that grows Mario was already drawn this frame, after its move (all captures: 10 of 10 grow starts keep its OAM entries, falling
+  // state $C0 or moving $80 (the demo's: af0ba437 RAM 58008 at Y 128 X 55); a3899256 2-1 RAM 12066: Y 99 at X 103, PowerUpFlag cleared).
+  this.collectedPicture=i.kind==='mushroom'&&(i.nativePowerState===0xc0||i.nativePowerState===0x80)&&p.size===0?{frame:this.frame,item:{...i}}:undefined;
     i.life=0;
     if(i.kind==='1up'){this.lives++;this.awardPopup('1up',i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_1up');}
     else if(i.kind==='star'){this.soundQueues[4]=64;p.star=NATIVE_STAR_PICKUP;if(i.nativePowerState!==undefined)this.floateyScore(POWERUPS.starCollectionScore.value);else this.addScore(POWERUPS.starCollectionScore.value);this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset);this.emit(this.time<=100?'music_star_hurry':'music_star');}
@@ -3679,7 +3679,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
   this.player.x-=this.swimPull;this.swimPull=0;
   this.player.y+=this.water.cancelLatePass();this.player.vy=this.water.speed+this.water.force/256;
  }
- hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.cancelWaterPass();this.powerupStateZero=false;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:nativeTransformRows('shrink'),kind:'shrink'};this.timerControlFrame=this.frame;p.invincible=148+this.intervalControl; /* InjuryTimer 8 ticks on the interval clock ($077F), frozen by the shrink: the blink ends 148 + that clock rows on (371fe2fe 2-1 RAM 18234-18439, a3899256: every injured row equals native) */this.emit('sfx_pipe');}else this.die();}
+ hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.cancelWaterPass();this.powerupStateZero=false;this.stompChain=0;if(p.size){const jump=p.grounded&&this.area.theme!=='water';this.powerChange={from:p.size,to:0,remaining:nativeTransformRows('shrink'),kind:'shrink',jump};if(jump)this.playerAnim.ctrl=this.locomotionPose.frame=0; /* InjurePlayer sets Player_State 1: from the ground the jump pose, PlayerAnimCtrl 0, so the shrink ends on walk frame 0 (af0ba437 RAM 58286, 1bfc3ee2 69654: $1D 0 -> 1, $06D5 16 -> 32, $070D 2 -> 0, 69708 $06D5 96; the only grounded injuries in all captures) */this.timerControlFrame=this.frame;p.invincible=148+this.intervalControl; /* InjuryTimer 8 ticks on the interval clock ($077F), frozen by the shrink: the blink ends 148 + that clock rows on (371fe2fe 2-1 RAM 18234-18439, a3899256: every injured row equals native) */this.emit('sfx_pipe');}else this.die();}
  die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;this.lateDeath=false;if(!offscreenLava&&!offscreenPit)this.cancelWaterPass();this.powerupStateZero=false;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:this.swimActive?this.water.frac:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=(Math.round(this.player.vx*4096)&255)/4096;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!offscreenLava&&!offscreenPit){this.player.y=this.deathMove.y+this.deathMove.fraction/256;this.player.grounded=false;}if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
  // Native death/lives-screen flow (evidence/lifeflow-findings-20261111.md): the 21-row interval clock is frozen on n+2 rows per death (the second death row to the row after the engine change, and the first lives-screen row); the screen timer is set 6 rows into the screen, counts clock ticks and ends 19 rows after its last tick.
  /* Native pit/lava falls keep the whole level running (engine stays 8 until the fall ends): 118 of 119 non-inert slots moved during 260-row falls; arc deaths freeze them after the first row. */

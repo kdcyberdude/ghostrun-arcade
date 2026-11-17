@@ -42,8 +42,11 @@ test('injury flicker follows native FrameCounter through a shrink freeze and acr
 });
 
 test('the shrink freeze keeps the big pose for 16 rows, then HandleChangeSize draws a swim frame 1',()=>{
- const sim=new Simulation(observedLevels());sim.reset(true);sim.player.size=1;sim.playerAnim.fresh=false;sim.hurt();
+ const sim=new Simulation(observedLevels());sim.reset(true);sim.player.size=1;sim.playerAnim.fresh=false;sim.player.grounded=false;sim.hurt();
  for(const age of [0,1,2,15]){sim.powerChange!.remaining=55-age;assert.equal(playerCell(sim).cell,25,`native shrink freeze row ${age}`);}
+ // From the ground InjurePlayer's Player_State 1 draws the big jump pose for those rows (af0ba437 RAM 58286, 1bfc3ee2 69654-69669: $06D5 32).
+ const ground=new Simulation(observedLevels());ground.reset(true);ground.player.size=1;ground.playerAnim.fresh=false;ground.hurt();
+ for(const age of [0,15]){ground.powerChange!.remaining=55-age;assert.equal(playerCell(ground).cell,4,`grounded shrink freeze row ${age}`);}
  for(const age of [16,30]){sim.powerChange!.remaining=55-age;assert.ok([5,17].includes(playerCell(sim).cell),`native shrink freeze row ${age}`);}
  sim.powerChange!.remaining=1;assert.equal(playerCell(sim).cell,23,'the last shrink row draws the small ordinary pose (371fe2fe 2-1 RAM 18288)');
  assert.equal(sim.player.size,1,'the renderer selects a small cell while the physical size change still waits for the end of the freeze');
