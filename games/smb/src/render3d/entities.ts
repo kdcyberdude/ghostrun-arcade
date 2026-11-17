@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import {nativeHammerPicturePhase} from '../native-misc.js';
 import {framePiranha} from './piranha-frame.js';
+import {dressHammerBro} from './hammer-bro.js';
 import {enemyPicture,enemyRenderPicture,nativeHammerBroCell,nativeShellPhase,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
 import {nativeFireballPhase} from '../native-fireball-picture.js';
@@ -139,7 +140,7 @@ export class Entities{
   const shellPicture=!e.shell&&e.dead>0&&(Boolean(e.defeat)&&(e.kind==='koopa'||e.kind==='redKoopa')||e.kind==='beetle'&&!e.squashed);
   const shell=e.shell&&(e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='beetle')||shellPicture;
   const name=shell?(e.kind==='beetle'?'beetle_shell':'koopa_shell'):ENEMY_MODEL[e.kind];
-  const a=name?this.pool(name).take(physical):undefined;
+  const a=name?this.pool(name).take(physical):undefined;if(a&&name==='hammer_bro')dressHammerBro(a);
   if(!a){const m=this.take('e'+e.kind,()=>new THREE.Mesh(new THREE.CapsuleGeometry(w*0.4,Math.max(0.1,h-w*0.8),8,16),std(COLORS[e.kind])));m.position.set(cx,feet+h/2,0);m.scale.y=e.squashed?0.3:1;return;}
   this.mark(a.root);paint(a,name!,e.palette??BASE_PALETTE[e.kind]??'');
   const squashed=e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20&&e.greenShellLaunchFrame===undefined&&!e.defeat;
