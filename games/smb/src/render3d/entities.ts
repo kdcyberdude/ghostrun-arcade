@@ -131,23 +131,26 @@ export class Entities{
     for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const v=new THREE.Vector3(...d),spike=new THREE.Mesh(new THREE.ConeGeometry(0.09,0.2,8),material);spike.position.copy(v).multiplyScalar(0.4);spike.quaternion.setFromUnitVectors(up,v);m.add(spike);}return m;});
    egg.position.set(cx,feet+0.5,0);egg.rotation.z=e.age*Math.PI/8;return;
   }
-  const shell=e.shell&&(e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='beetle');
+  // A Koopa defeated by a hit, and a Buzzy Beetle killed by one, are drawn as their shell upside down (renderer.ts enemy()).
+  const shellPicture=!e.shell&&e.dead>0&&(Boolean(e.defeat)&&(e.kind==='koopa'||e.kind==='redKoopa')||e.kind==='beetle'&&!e.squashed);
+  const shell=e.shell&&(e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='beetle')||shellPicture;
   const name=shell?(e.kind==='beetle'?'beetle_shell':'koopa_shell'):ENEMY_MODEL[e.kind];
   const a=name?this.pool(name).take(physical):undefined;
   if(!a){const m=this.take('e'+e.kind,()=>new THREE.Mesh(new THREE.CapsuleGeometry(w*0.4,Math.max(0.1,h-w*0.8),8,16),std(COLORS[e.kind])));m.position.set(cx,feet+h/2,0);m.scale.y=e.squashed?0.3:1;return;}
   this.mark(a.root);paint(a,name!,e.palette??BASE_PALETTE[e.kind]??'');
   const squashed=e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20&&e.greenShellLaunchFrame===undefined&&!e.defeat;
-  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(physical):Boolean(e.defeat)||e.kind==='hammerBro'&&Boolean((e.hbro?.state??0)&0x20)||e.greenShellLaunchFrame!==undefined||e.dead>20&&!squashed,facing=e.kind==='bowser'?(e.bowser?.side??(e.vx<0?-1:1)):(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
+  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(physical):Boolean(e.defeat)||e.kind==='hammerBro'&&Boolean((e.hbro?.state??0)&0x20)||e.greenShellLaunchFrame!==undefined||e.kind==='cheep'&&e.dead>0||e.dead>20&&!squashed,facing=e.kind==='bowser'?(e.bowser?.side??(e.vx<0?-1:1)):(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
   a.root.position.set(cx,feet,0);a.root.scale.set(1,squashed?0.28:1,1);
   a.root.rotation.set(0,0,flipped?Math.PI:0);if(flipped)a.root.position.y+=h;
   // Flipping a native 24px enemy cell moves a 16px body above its transparent leading row.
-  if(flipped&&h===1&&e.greenShellLaunchFrame===undefined&&!(e.defeat&&e.kind==='goomba'))a.root.position.y+=0.5;
+  if(flipped&&h===1&&e.greenShellLaunchFrame===undefined&&!(e.defeat&&e.kind==='goomba')&&!(e.kind==='cheep'&&e.dead>0&&!e.defeat))a.root.position.y+=0.5;  // a stomped Cheep Cheep keeps its blank row on top (renderer.ts)
   // Podoboo is authored around its glowing center; walkers are authored from the feet.
   if(e.kind==='podoboo'){a.root.position.y=feet+0.5;a.root.rotation.z=e.podobooFalling?Math.PI:0;}
   if(shell){
    // Koopa's alternate CHR adds one row to the lower rim (14→15px); Beetle's two cells have identical artwork.
    const rim=e.kind==='beetle'?0:nativeShellPhase(e.shellTimer??0,s.random.frame,timersStopped||Boolean(e.dead)||Boolean(e.movingShell));
    a.root.scale.y=(14+rim)/14;a.root.position.y-=rim/16;
+   if(shellPicture)a.root.position.y=feet+(e.kind==='beetle'?12:13)/16;  // flipped about its feet: lifted by its height, a Beetle's shell one line lower (y+9 vs y+8)
    a.root.rotation.y=e.movingShell?e.age*0.5:0;a.pose('idle',0,s.frame);return;}
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
   a.root.rotation.y=e.kind==='piranha'?0.35:this.yaw(physical,yawFor(e.kind==='hammerBro'?(e.nativeDir??-1):facing),s.frame); // Piranha: head upright with its jaw seam toward the camera, as the 2D sprite
