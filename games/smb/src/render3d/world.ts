@@ -159,6 +159,8 @@ export class World{
      let n=1;if(grid)while(s.tiles.get(`${start+n},${row}`)===76)n++;
      this.pool('trunk',theme,palette,undefined,Math.max(1,Math.round(n*0.94/TRUNK_WIDTH))).add(this.m.makeScale(n*0.94/TRUNK_WIDTH,1,Math.min(n,1.5)*0.9/TRUNK_WIDTH).setPosition(start+n/2,14.5-row,pc.dz??0));break;}
     if(id===101||id===102){this.pool('cannon_base',theme,palette,undefined,1,id===101?'cannon':'cannon-plain').add(this.m.makeTranslation(col+0.5,14.5-row,0));break;}
+    // The stem's top piece sits under a mushroom cap whose underside is 0.38 tile above the cell (plat_mush_*): stretched up to meet it, centre kept in its cell.
+    if(id===79){this.pool('mush_stem',theme,palette).add(this.m.makeScale(1,1.4,1).setPosition(col+0.5,14.5-row+0.2,pc.dz??0));}else
     put(pc.model,col+0.5,14.5-row,pc.dz??0);
     // Mushroom stems run from their top piece (79) to the ground; the observed tile data skips some stem rows (4-3), so fill empty rows below.
     if(id===79)for(let r=row+1;r<15;r++){const below=s.tiles.get(`${col},${r}`);if(below===undefined)put('mush_stem',col+0.5,14.5-r,pc.dz??0);else if(below!==80)break;}
