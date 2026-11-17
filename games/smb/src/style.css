@@ -20,3 +20,5 @@
 .level-grid button{font:11px ui-monospace,monospace;color:#e6eddc;background:#ffffff08;border:1px solid #ffffff1c;border-radius:7px;padding:6px 0;cursor:pointer;min-width:0}
 .level-grid button:hover,.level-grid button:focus-visible{border-color:var(--lime);color:var(--lime);background:#d4f77d10;outline:none}
 #lobby{overflow-y:auto}
+#lobby{padding-bottom:29px}#lobby .lobby-footer{position:static;grid-column:1/-1;align-self:end;margin-top:24px}
+body:not(.playing) .topbar{background:linear-gradient(#101512 72%,#10151200)}
