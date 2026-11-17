@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import type {Simulation} from '../simulation.js';
 import {Kit,type Part} from './kit.js';
+import {DIST,PITCH,TARGET_Y} from './coords.js';
 import {procBlock,procPipe,procCoin,procDeco,cannonPedestal,LIQUIDS,lavaTime} from './proc.js';
 import {kindOf,kindIn,isPipeTop,isPipeBody,PIECES} from './semantics.js';
 import {analyseArea} from './layout.js';
@@ -30,6 +31,8 @@ class Pool{
  * a tangent attribute three.js derives the tangent frame from the UV derivatives. Render-only; one shader variant per material. */
 /** Diameter of the trunk model in tiles (assets3d/models/trunk.glb). */
 export const TRUNK_WIDTH=0.72;
+/** How far castle walls stand behind the play plane (their 1-tile blocks then clear Mario and the ground's front half). */
+const CASTLE_BACK=-1.1;
 const VARY=/^(block_(ground|brick|hard|wall)|castle_(brick|crenel|dark))/;
 function vary(material:THREE.Material){
  const m=material as THREE.MeshStandardMaterial;if(m.userData.varied)return;m.userData.varied=true;
@@ -61,7 +64,7 @@ function vary(material:THREE.Material){
  m.customProgramCacheKey=()=>'vary';m.needsUpdate=true;
 }
 export const TILE_MODELS=['block_ground','block_ground_top','block_brick','block_question','block_used','block_hard','block_wall','pipe_top','pipe_body','castle_brick','castle_crenel','castle_dark'];
-const SCENERY=new Set(['hill','bush','cloud','tree','empty','void']);const PHOTO_THEMES=new Set(['ground','snow','night']);const GRASS_THEMES=new Set(['ground','night','snow']);const SOLIDISH=new Set(['ground','wall','hard','brick','question','used','pipe','castle']);
+const SCENERY=new Set(['hill','bush','cloud','tree','empty','void']);const PHOTO_THEMES=new Set(['ground','snow','night']);const GRASS_THEMES=new Set(['ground','night','snow']);const SOLIDISH=new Set(['ground','wall','hard','brick','question','used','pipe']);  // castle walls stand back (CASTLE_BACK): the ground in front of them keeps its grass walkway
 /** Palette recolour, as the 2D picture's palette group colours a metatile: the albedo's luminance times an NES colour, the model's texture and shading
  * kept (castle / night / snow pipes are light grey, write-back blocks keep their cell's original group). */
 function paletteTint(m:THREE.Material,rgb:readonly number[]){const c=m.clone() as THREE.MeshStandardMaterial,v=rgb.map(x=>(x*3.4).toFixed(3)).join(',');
@@ -140,7 +143,11 @@ export class World{
    // A hard block carrying a cannon barrel is drawn as the blaster's skull pedestal (8-2's brick row), so the column is one piece as in the 2D picture.
    case 'hard':if(s.tiles.get(`${col},${row-1}`)===100){this.pool('block_hard',theme,palette,undefined,1,'cannon').add(this.m.makeTranslation(col+0.5,14.5-row,0));break;}put('block_hard',col+0.5,14.5-row);break;
    // Tiles 70 / 72 are the castle's dark doorway / window; in an underground area (4-2) the 2D picture shows the open black cave there, so nothing is drawn.
-   case 'castle':if((id===70||id===72)&&theme==='underground')break;put(id===71?'castle_brick':id===69||id===73?'castle_crenel':'castle_dark',col+0.5,14.5-row);break;
+   case 'castle':{if((id===70||id===72)&&theme==='underground')break;
+    // Castle walls are background in the NES (Mario walks in front of them): set back behind the play plane, moved along the camera ray and scaled
+    // so they still project exactly where the 2D picture draws them.
+    const c=this.camera,k=(c.z-CASTLE_BACK)/c.z,x=c.x+(col+0.5-c.x)*k,y=c.y+(14.5-row-c.y)*k;
+    this.pool(id===71?'castle_brick':id===69||id===73?'castle_crenel':'castle_dark',theme,palette).add(this.m.makeScale(k,k,k).setPosition(x,y,CASTLE_BACK));break;}
    case 'pipe':
     // Per tile, so shafts without a cap (pipes reaching the ceiling) are drawn too.
     if(isPipeTop(id))put('pipe_top',col+1,14.5-row);else if(isPipeBody(id))put('pipe_body',col+1,14.5-row);
@@ -172,7 +179,10 @@ export class World{
    default:break;
   }
  }
+ /** Camera position for this frame (as Atmosphere.place puts it). */
+ private camera=new THREE.Vector3();
  sync(s:Simulation,camPx:number){
+  this.camera.set((camPx+128)/16,TARGET_Y+DIST*Math.sin(PITCH),DIST*Math.cos(PITCH));
   if(this.area!==s.area){
    this.area=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));
    this.whiteScenery=whiteGroup(s.area.palette,0);this.whiteStone=whiteGroup(s.area.palette,1);this.stone=nesLinear(nativePalettes[s.area.palette][6]);
