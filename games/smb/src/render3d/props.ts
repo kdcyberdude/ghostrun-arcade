@@ -19,6 +19,8 @@ export class Props{
  private mats={lift:std(0xd8642a,0.4,0.6),liftEdge:std(0x8a3a18,0.4,0.7),cloud:std(0xffffff,0.95,0,{emissive:0x9ab4d8,emissiveIntensity:0.15}),
   bubble:std(0x9cdcff,0.05,0,{transparent:true,opacity:0.65,depthWrite:false}),fire:std(0xffa020,0.4,0,{emissive:0xff5a00,emissiveIntensity:2.2}),spring:std(0xd02a2a,0.3,0.7),springCap:std(0xe8e8f0,0.3,0.8),vine:std(0x2fa040,0.7),leaf:std(0x5ad04a,0.7),
   flag:std(0xf2f2ee,0.8,0,{side:THREE.DoubleSide}),star:std(0xff4a3a,0.5),spark:std(0xffffff,0.3,0,{emissive:0xffd070,emissiveIntensity:3}),toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
+ /** Hide the castle retainer stand-in while the rest of the last castle picture is held. */
+ hideRetainer(){for(const o of this.pools.get('retainer')??[])o.visible=false;}
  sync(s:Simulation){
   for(const l of this.pools.values())for(const o of l)o.visible=false;this.used.clear();
   if(s.spritePictureOwner!=='empty'&&s.spritePictureOwner!=='victory'){

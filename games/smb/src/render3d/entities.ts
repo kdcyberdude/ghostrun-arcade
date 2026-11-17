@@ -168,6 +168,8 @@ export class Entities{
    if(broCell!==undefined)a.poseRotation('ArmR',broCell>=30?'walk':undefined,a.duration('walk')/4);
   }
  }
+ /** Hide the castle retainer while the rest of the last castle picture is held. */
+ hideRetainer(){for(const name of ['toad','princess']){const p=this.pools.get(name);if(p){p.begin();p.end();}}}
  private retainer(s:Simulation){
   const picture=s.castleRetainer;if(!picture?.graphicsVisible)return;
   this.draw={offset:s.spriteShuffle.offsets[picture.slot+1],background:false};
