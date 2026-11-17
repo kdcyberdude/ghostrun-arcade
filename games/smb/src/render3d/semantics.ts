@@ -30,7 +30,7 @@ export const PIECES:Record<number,{model:string;dz?:number;rotY?:number}>={
  105:{model:'block_seabed'},136:{model:'block_cloud'},137:{model:'block_bowser_bridge'},197:{model:'axe',dz:0.1},
  22:{model:'plat_tree_l'},23:{model:'plat_tree_m'},24:{model:'plat_tree_r'},76:{model:'trunk',dz:-0.25},
  25:{model:'plat_mush_l'},26:{model:'plat_mush_m'},27:{model:'plat_mush_r'},79:{model:'mush_stem',dz:-0.2},80:{model:'mush_stem',dz:-0.2},
- 34:{model:'deco_coral',dz:-0.4},64:{model:'rope_v',dz:-0.3},65:{model:'rope_h',dz:-0.3},66:{model:'pulley',dz:-0.3},67:{model:'pulley',dz:-0.3},12:{model:'chain',dz:-0.2},
+ 34:{model:'deco_coral',dz:-0.4},64:{model:'rope_v',dz:-0.3},65:{model:'rope_h',dz:-0.3},66:{model:'pulley',dz:-0.3},67:{model:'pulley_r',dz:-0.3},12:{model:'chain',dz:-0.2},
  134:{model:'liquid_top'},135:{model:'liquid'},
 };
 for(const id of Object.keys(PIECES).map(Number))KINDS[id]='piece';

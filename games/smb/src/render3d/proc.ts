@@ -89,15 +89,56 @@ lava.onBeforeCompile=sh=>{
 lava.customProgramCacheKey=()=>'lava-v2';
 /** Liquids are shared materials so the renderer can animate them once per frame. */
 export const LIQUIDS={water,lava};
-const ROPE=std(0x7a5a32,0.9);  // hemp brown: reads against both snow and night skies
+/** Laid steel wire rope: six helical strands (a periodic canvas pattern, 1 lay per 0.25 tile along the cable) as colour and bump. */
+function strandTexture(){
+ const N=64,c=document.createElement('canvas');c.width=c.height=N;const ctx=c.getContext('2d')!,img=ctx.createImageData(N,N);
+ for(let y=0;y<N;y++)for(let x=0;x<N;x++){const v=0.5+0.5*Math.cos(2*Math.PI*(6*x/N+y/N)),k=Math.round(255*Math.pow(v,0.6)),i=(y*N+x)*4;img.data[i]=img.data[i+1]=img.data[i+2]=k;img.data[i+3]=255;}
+ ctx.putImageData(img,0,0);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1,4);return t;
+}
+const strands=typeof document==='undefined'?null:strandTexture();
+const ROPE=new THREE.MeshStandardMaterial({color:0x9ba1aa,metalness:0.85,roughness:0.42,bumpMap:strands,bumpScale:1.2,envMapIntensity:1.1});
+const WHEEL=std(0xa7adb5,0.3,1),HOUSING=std(0x2f343b,0.5,0.7),BOLT=std(0x7c8189,0.35,1);
+/** Radius of the rope's centre line around a pulley wheel; the wheel sits where the horizontal rope (0.22 above the tile centre, as in the 2D tile)
+ * meets the vertical rope (tile centre). */
+const CABLE=0.035,GROOVE=0.27,RC=GROOVE+CABLE,TOP=0.22;
+let wheelGeo:THREE.BufferGeometry|undefined;
+/** Cast pulley sheave: grooved rim on a thin web with a hub (axis along z). */
+function sheave(){
+ if(wheelGeo)return wheelGeo;
+ const prof=[[0.07,-0.075],[0.09,-0.03],[0.22,-0.022],[0.25,-0.06],[0.335,-0.07],[0.345,-0.055],[0.3,-0.03],[GROOVE,0],[0.3,0.03],[0.345,0.055],[0.335,0.07],[0.25,0.06],[0.22,0.022],[0.09,0.03],[0.07,0.075]];
+ wheelGeo=new THREE.LatheGeometry(prof.map(([r,y])=>new THREE.Vector2(r,y)),48);wheelGeo.rotateX(Math.PI/2);return wheelGeo;
+}
+/** Pulley block at a lift's rope corner (`side` 1: tile 66, the rope rises at the tile centre and turns right; -1: tile 67, mirrored): grooved sheave
+ * on an axle between two dark steel cheek plates joined by a top cross-bar, with the cable wrapped over its quarter. */
+function pulleyBlock(side:1|-1):Part[]{
+ const cx=side*RC,cy=TOP-RC,at=(x:number,y:number,z:number)=>new THREE.Matrix4().makeTranslation(x,y,z);
+ const wrap=new THREE.TorusGeometry(RC,CABLE,8,20,Math.PI/2);  // quarter from +x to +y: rotate so it runs from the vertical rope side to the top
+ const wrapM=new THREE.Matrix4().makeTranslation(cx,cy,0).multiply(new THREE.Matrix4().makeRotationZ(side>0?Math.PI/2:0));
+ const drop=new THREE.CylinderGeometry(CABLE,CABLE,cy+0.5,8);  // the rope from the tile bottom up to where it meets the wheel
+ const cheekH=0.5-(cy-0.1),cheek=new RoundedBoxGeometry(0.2,cheekH,0.03,3,0.012);
+ const axle=new THREE.CylinderGeometry(0.03,0.03,0.3,12);axle.rotateX(Math.PI/2);
+ const nut=new THREE.CylinderGeometry(0.05,0.05,0.03,6);nut.rotateX(Math.PI/2);
+ return [
+  {geometry:sheave(),material:WHEEL,matrix:at(cx,cy,0)},
+  {geometry:wrap,material:ROPE,matrix:wrapM},
+  {geometry:drop,material:ROPE,matrix:at(0,(cy-0.5)/2,0)},
+  {geometry:cheek,material:HOUSING,matrix:at(cx,cy-0.1+cheekH/2,0.105)},
+  {geometry:cheek,material:HOUSING,matrix:at(cx,cy-0.1+cheekH/2,-0.105)},
+  {geometry:new RoundedBoxGeometry(0.2,0.06,0.24,3,0.015),material:HOUSING,matrix:at(cx,0.47,0)},
+  {geometry:axle,material:BOLT,matrix:at(cx,cy,0)},
+  {geometry:nut,material:BOLT,matrix:at(cx,cy,0.135)},
+  {geometry:nut,material:BOLT,matrix:at(cx,cy,-0.135)},
+ ];
+}
 export function procDeco(name:string,theme:string):Part[]|undefined{
  const liquid=theme==='castle'?lava:water;
  if(name==='liquid'){const g=new THREE.BoxGeometry(1,1,1.6);return [{geometry:g,material:liquid,matrix:I()}];}
  if(name==='liquid_top'){const g=new THREE.BoxGeometry(1,0.7,1.6,liquid===lava?12:8,1,liquid===lava?16:4);g.translate(0,-0.15,0);  // lava: dense top so the shader's swell is smooth
   return [{geometry:g,material:liquid,matrix:I()}];}
- if(name==='rope_v'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);return [{geometry:g,material:ROPE,matrix:I()}];}
- if(name==='rope_h'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);g.rotateZ(Math.PI/2);return [{geometry:g,material:ROPE,matrix:I()}];}
- if(name==='pulley'){const g=new THREE.TorusGeometry(0.28,0.07,10,24);return [{geometry:g,material:std(0x8a8f98,0.3,0.9),matrix:I()}];}
+ if(name==='rope_v'){const g=new THREE.CylinderGeometry(CABLE,CABLE,1,10);return [{geometry:g,material:ROPE,matrix:I()}];}
+ // The horizontal rope runs at the 2D tile's rope line (0.22 above the centre), over the top of the pulley wheels.
+ if(name==='rope_h'){const g=new THREE.CylinderGeometry(CABLE,CABLE,1,10);g.rotateZ(Math.PI/2);return [{geometry:g,material:ROPE,matrix:new THREE.Matrix4().makeTranslation(0,TOP,0)}];}
+ if(name==='pulley'||name==='pulley_r')return pulleyBlock(name==='pulley'?1:-1);
  if(name==='chain'){const g=new THREE.TorusGeometry(0.12,0.035,8,16),material=std(0x9aa0a8,0.3,0.9);g.scale(1,1.6,1);return Array.from({length:5},(_,i)=>({geometry:g,material,matrix:new THREE.Matrix4().makeRotationZ(-Math.PI/4).setPosition((i-2)*0.1875,(i-2)*0.1875,0)}));}
  if(name==='deco_coral'){const g=new THREE.ConeGeometry(0.16,1,8);g.translate(0,0,0);const m=std(0x3ac06a,0.8);
   return [-0.25,0,0.25].map((x,i)=>({geometry:g,material:m,matrix:new THREE.Matrix4().makeRotationZ((i-1)*0.35).setPosition(x,0,0)}));}
