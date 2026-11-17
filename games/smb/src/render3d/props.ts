@@ -23,9 +23,10 @@ fireBody.customProgramCacheKey=()=>'firebar-body';
 const fireCore=new THREE.MeshBasicMaterial({color:new THREE.Color().setRGB(1.8,1.4,0.6,THREE.LinearSRGBColorSpace)});
 let fireGlow:THREE.SpriteMaterial|undefined;
 function fireballGroup(){
- if(!fireGlow){const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d')!,r=g.createRadialGradient(32,32,0,32,32,32);
-  r.addColorStop(0,'rgba(255,255,255,1)');r.addColorStop(0.35,'rgba(255,255,255,0.45)');r.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=r;g.fillRect(0,0,64,64);
-  fireGlow=new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),color:0xff6a1a,blending:THREE.AdditiveBlending,transparent:true,depthWrite:false,opacity:0.35});}
+ if(!fireGlow){const size=64,data=new Uint8Array(size*size*4);  // radial falloff, built without a DOM canvas
+  for(let y=0;y<size;y++)for(let x=0;x<size;x++){const d=Math.hypot(x+0.5-size/2,y+0.5-size/2)/(size/2),a=d>=1?0:d<0.35?1-d/0.35*0.55:0.45*(1-(d-0.35)/0.65),i=(y*size+x)*4;data[i]=data[i+1]=data[i+2]=255;data[i+3]=Math.round(a*255);}
+  const map=new THREE.DataTexture(data,size,size);map.needsUpdate=true;
+  fireGlow=new THREE.SpriteMaterial({map,color:0xff6a1a,blending:THREE.AdditiveBlending,transparent:true,depthWrite:false,opacity:0.35});}
  const group=new THREE.Group(),glow=new THREE.Sprite(fireGlow);glow.scale.set(0.85,0.85,1);
  group.add(new THREE.Mesh(new THREE.IcosahedronGeometry(0.21,4),fireBody),new THREE.Mesh(new THREE.SphereGeometry(0.09,16,12),fireCore),glow);return group;
 }
