@@ -59,6 +59,55 @@ vec3 flagWave(vec2 q){float a=q.x;float z=(0.03+0.1*a)*a*sin(q.x*7.0-uFlagTime)+
  const knob=new THREE.Mesh(new THREE.SphereGeometry(0.05,14,10),gold);knob.position.set(-0.455,0.41,0);
  group.add(cloth,pole,knob);return group;
 }
+/** Castle firework burst, driven by its native life (3 cells x 8 frames): a white-hot flash ball (the only mesh: radius 0.5, the 2D 16 px explosion,
+ * centred where it is drawn), radial spark streaks that fly out, droop and twinkle out (Points), an HDR halo for the bloom pass and a little drifting
+ * smoke (Sprites). Only the burst's own progress and index feed it, so one simulation frame always renders the same picture. */
+const SPARKS=96,FIREWORK_HUES=[[1.0,0.72,0.25],[1.0,0.3,0.22],[0.45,1.0,0.4],[0.5,0.7,1.0],[1.0,0.45,0.95]];
+let softDot:THREE.Texture|undefined,smokePuff:THREE.Texture|undefined;
+const radialTexture=(stops:[number,string][])=>{const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d')!,r=g.createRadialGradient(32,32,0,32,32,32);for(const [o,col] of stops)r.addColorStop(o,col);g.fillStyle=r;g.fillRect(0,0,64,64);return new THREE.CanvasTexture(c);};
+function fireworkGroup(){
+ softDot??=radialTexture([[0,'rgba(255,255,255,1)'],[0.25,'rgba(255,255,255,0.55)'],[0.6,'rgba(255,255,255,0.12)'],[1,'rgba(255,255,255,0)']]);
+ smokePuff??=radialTexture([[0,'rgba(255,255,255,0.8)'],[0.5,'rgba(255,255,255,0.35)'],[1,'rgba(255,255,255,0)']]);
+ const u={uT:{value:0},uHue:{value:new THREE.Vector3(1,0.7,0.3)}};
+ const flash=new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,fog:false});
+ flash.onBeforeCompile=sh=>{Object.assign(sh.uniforms,u);
+  sh.vertexShader='varying float vFace;\n'+sh.vertexShader.replace('#include <project_vertex>','#include <project_vertex>\n vFace=abs(dot(normalize(normalMatrix*normal),normalize(-mvPosition.xyz)));');
+  sh.fragmentShader='uniform float uT;uniform vec3 uHue;varying float vFace;\n'+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+ float flash=exp(-uT*9.0)*1.0+0.18*exp(-uT*3.0);float core=pow(vFace,3.0);
+ diffuseColor=vec4(mix(uHue*2.5,vec3(5.0,4.6,4.0),core)*core*flash,1.0);`);};
+ flash.customProgramCacheKey=()=>'firework-flash';
+ const geo=new THREE.BufferGeometry(),dir=new Float32Array(SPARKS*3),seed=new Float32Array(SPARKS*2);
+ for(let i=0;i<SPARKS;i++){const y=1-2*(i+0.5)/SPARKS,r=Math.sqrt(1-y*y),a=i*2.39996323;  // golden-angle sphere: an even shell of sparks
+  const k=0.85+0.3*Math.abs(Math.sin(i*12.9898)%1);dir.set([Math.cos(a)*r*k,y*k,Math.sin(a)*r*k*0.6],i*3);seed.set([Math.abs(Math.sin(i*78.233)%1),Math.abs(Math.sin(i*39.425)%1)],i*2);}
+ geo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(SPARKS*3),3));geo.setAttribute('aDir',new THREE.BufferAttribute(dir,3));geo.setAttribute('aSeed',new THREE.BufferAttribute(seed,2));
+ const spark=new THREE.PointsMaterial({size:0.9,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,fog:false});
+ spark.onBeforeCompile=sh=>{Object.assign(sh.uniforms,u);
+  const path='vec3 sparkAt(float t){float e=(1.0-exp(-6.0*t))/(1.0-exp(-6.0));return aDir*(1.55*e)+vec3(0.0,-0.55*t*t,0.0);}\n';
+  sh.vertexShader='uniform float uT;attribute vec3 aDir;attribute vec2 aSeed;varying vec2 vStreak;varying float vLen,vGlow,vWidth;\n'+path+sh.vertexShader
+   .replace('#include <begin_vertex>','vec3 transformed=sparkAt(uT);')
+   .replace('#include <fog_vertex>',`#include <fog_vertex>
+ vec4 back=projectionMatrix*modelViewMatrix*vec4(sparkAt(max(uT-0.12,0.0)),1.0);vec2 now=gl_Position.xy/gl_Position.w,was=back.xy/back.w;
+ vec2 d=(now-was)*vec2(1.0,-1.0)*scale;float len=length(d);vStreak=len>1e-4?d/len:vec2(0.0,1.0);
+ gl_PointSize=clamp(len*2.2+6.0,4.0,256.0);vLen=min(len,gl_PointSize*0.5-2.0)/(gl_PointSize*0.5);vWidth=0.0045*scale/(gl_PointSize*0.5);
+ float twinkle=uT<0.55?1.0:step(0.35,fract(sin(dot(aSeed,vec2(12.9898,78.233))+floor(uT*24.0)*0.37)*43758.5453));
+ vGlow=(1.0-smoothstep(0.5,1.1,uT+aSeed.x*0.12))*twinkle;`);
+  sh.fragmentShader='uniform vec3 uHue;uniform float uT;varying vec2 vStreak;varying float vLen,vGlow,vWidth;\n'+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+ vec2 q=gl_PointCoord*2.0-1.0;float h=clamp(dot(q,-vStreak),0.0,vLen);vec2 c=q+vStreak*h;float w=smoothstep(vWidth,0.0,length(c));
+ float head=1.0-h/max(vLen,1e-3);vec3 hot=mix(uHue*3.2,vec3(4.0,3.6,3.0),head*head*(1.0-uT));
+ diffuseColor=vec4(hot*w*(0.25+0.75*head)*vGlow,1.0);`).replace('#include <map_particle_fragment>','');};
+ spark.customProgramCacheKey=()=>'firework-sparks';
+ const points=new THREE.Points(geo,spark);points.frustumCulled=false;
+ const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:softDot,blending:THREE.AdditiveBlending,transparent:true,depthWrite:false,fog:false}));halo.name='halo';
+ const group=new THREE.Group();group.add(new THREE.Mesh(new THREE.SphereGeometry(0.5,24,16),flash),points,halo);
+ for(let i=0;i<4;i++){const puff=new THREE.Sprite(new THREE.SpriteMaterial({map:smokePuff,color:0x8a8a90,transparent:true,depthWrite:false}));puff.name='smoke';puff.userData.k=i;group.add(puff);}
+ group.userData.u=u;return group;
+}
+function syncFirework(o:THREE.Object3D,t:number,index:number){
+ const u=o.userData.u,hue=FIREWORK_HUES[index%FIREWORK_HUES.length];u.uT.value=t;u.uHue.value.set(hue[0],hue[1],hue[2]);
+ for(const c of o.children){const sp=c as THREE.Sprite;
+  if(c.name==='halo'){const a=Math.exp(-t*4);sp.scale.setScalar(1.2+2.6*Math.sqrt(t));sp.material.color.setRGB(hue[0]*3*a+1.5*Math.exp(-t*12),hue[1]*3*a+1.4*Math.exp(-t*12),hue[2]*3*a+1.2*Math.exp(-t*12));}
+  if(c.name==='smoke'){const k=c.userData.k,ang=k*1.7+index;sp.position.set(Math.cos(ang)*0.45*t,Math.sin(ang)*0.3*t+0.35*t*t,-0.1-k*0.02);sp.scale.setScalar(0.7+1.4*t);sp.material.opacity=0.3*Math.sin(Math.PI*Math.min(1,t*1.15));}}
+}
 const std=(color:number,rough=0.5,metal=0,extra:Partial<THREE.MeshStandardMaterialParameters>={})=>new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal,...extra});
 type Maker=()=>THREE.Object3D;
 export class Props{
@@ -69,7 +118,7 @@ export class Props{
   let o=l[i];if(!o){o=make();o.traverse(c=>{const m=c as THREE.Mesh;if(m.isMesh){m.castShadow=true;m.receiveShadow=true;}});this.group.add(o);l.push(o);}o.userData.nativeSprite={...this.draw};o.visible=true;return o;}
  private mats={lift:std(0xd8642a,0.4,0.6),liftEdge:std(0x8a3a18,0.4,0.7),cloud:std(0xffffff,0.95,0,{emissive:0x9ab4d8,emissiveIntensity:0.15}),
   bubble:std(0x9cdcff,0.05,0,{transparent:true,opacity:0.65,depthWrite:false}),spring:std(0xd02a2a,0.3,0.7),springCap:std(0xe8e8f0,0.3,0.8),vine:std(0x2fa040,0.7),leaf:std(0x5ad04a,0.7),
-  spark:std(0xffffff,0.3,0,{emissive:0xffd070,emissiveIntensity:3}),toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
+  toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
  /** Hide the castle retainer stand-in while the rest of the last castle picture is held. */
  hideRetainer(){for(const o of this.pools.get('retainer')??[])o.visible=false;}
  sync(s:Simulation){
@@ -105,7 +154,8 @@ export class Props{
     for(let i=0;i<6;i++){const l=new THREE.Mesh(new THREE.SphereGeometry(0.16,10,8),this.mats.leaf);l.scale.set(1.4,0.5,0.8);l.position.set(i%2?0.14:-0.14,(i+0.5)/6,0);g.add(l);}return g;});
    o.position.set((v.x+4)/16,(240-v.baseY)/16,0);o.scale.set(1,h,1);}
   const flag=s.castleFlag;if(flag){this.draw={offset:s.spriteShuffle.offsets[(s.nativeCastleFlag?.slot??5)+1],background:true};const o=this.take('castleFlag',castleFlagGroup);o.position.set((flag.x+8)/16,(232-flag.y)/16,-0.4);FLAG_TIME.value=s.frame*0.16;}
-  for(const fw of s.flagFireworks){this.draw={offset:s.spriteShuffle.offsets[(s.nativeFireworks.find(f=>f.index===fw.index)?.slot??0)+1],background:false};const o=this.take('spark',()=>new THREE.Mesh(new THREE.IcosahedronGeometry(0.5,2),this.mats.spark));o.position.set((fw.x+8)/16,(232-fw.y)/16,0.5);o.scale.setScalar(0.4+0.4*(fw.phase??0));}
+  for(const fw of s.flagFireworks){const native=s.nativeFireworks.find(f=>f.index===fw.index);this.draw={offset:s.spriteShuffle.offsets[(native?.slot??0)+1],background:false};const o=this.take('spark',fireworkGroup);o.position.set((fw.x+8)/16,(232-fw.y)/16,0.5);
+   syncFirework(o,((fw.phase??0)*8+8-(native?.timer??8))/24,fw.index);}
   }
   const picture=s.castleRetainer;if(picture?.graphicsVisible&&!this.kit.has(s.level.id==='8-4'?'princess':'toad')){this.draw={offset:s.spriteShuffle.offsets[picture.slot+1],background:false};
    const o=this.take('retainer',()=>{const g=new THREE.Group();const b=new THREE.Mesh(new THREE.CapsuleGeometry(0.28,0.4,6,12),this.mats.toad);b.position.y=0.5;g.add(b);
