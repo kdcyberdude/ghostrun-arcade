@@ -90,24 +90,24 @@ function clearInput(){heldKeys.clear();heldPointers.clear();tappedKeys.clear();t
 function setPaused(paused:boolean){sim.paused=paused;audio.setPaused(paused);if(loaded)draw();}
 function heldButtons(player:number){
  const keys=Array.from(new Set([...heldKeys,...tappedKeys]),key=>keyMaps[player][key]).filter((button):button is Button=>button!==undefined);
- const active=sim.phase==='title'||!sim.twoPlayer?0:sim.currentPlayer;
+ const active=sim.onTitle||!sim.twoPlayer?0:sim.currentPlayer;
  return [...new Set([...keys,...(player===active?[...heldPointers.values(),...tappedPointers]:[])])];
 }
 const eventAliases:Record<string,string>={silence:'command_silence',sfx_jump_small:'sfx_small_jump',sfx_jump_big:'sfx_big_jump',sfx_swim:'sfx_swim_stomp',sfx_stomp:'sfx_swim_stomp',sfx_pipe:'sfx_pipe_down_injury',sfx_powerup:'sfx_powerup_collected',sfx_kick:'sfx_enemy_smack',sfx_1up:'sfx_extra_life'};
 function soundEvents(){for(const raw of sim.events.splice(0)){const id=eventAliases[raw]??raw;if(id==='command_silence')audio.stopMusic();else if(id.startsWith('music_'))audio.playMusic(id);else if(id!=='pause'&&id!=='unpause')audio.effect(id);}audio.setPaused(sim.paused);}
-function draw(){if(sim.phase!=='title'&&!shell.playing)shell.enterGame();view.render(sim);status.textContent=sim.paused?'Paused · P or Enter to resume':sim.phase==='title'?'Enter to start · Tab selects 1 or 2 players':sim.phase==='intro'?`World ${sim.level.id} · Get ready`:sim.phase==='gameover'?'Game over · Enter to return to title':`${sim.currentPlayer?'Luigi':'Mario'} · ${sim.lives} lives · World ${sim.level.id}`;const pauseButton=document.querySelector('#pause')!;pauseButton.textContent=sim.paused?'Resume · P':'Pause · P';pauseButton.setAttribute('aria-pressed',String(sim.paused));}
+function draw(){if(!sim.onTitle&&!shell.playing)shell.enterGame();view.render(sim);status.textContent=sim.paused?'Paused · P or Enter to resume':sim.onTitle?'Enter to start · Tab selects 1 or 2 players':sim.phase==='intro'?`World ${sim.level.id} · Get ready`:sim.phase==='gameover'?'Game over · Enter to return to title':`${sim.currentPlayer?'Luigi':'Mario'} · ${sim.lives} lives · World ${sim.level.id}`;const pauseButton=document.querySelector('#pause')!;pauseButton.textContent=sim.paused?'Resume · P':'Pause · P';pauseButton.setAttribute('aria-pressed',String(sim.paused));}
 function resize(){const scale=Math.min(innerWidth/256,innerHeight/240);canvas.style.width=256*scale+'px';canvas.style.height=240*scale+'px';}
-function pause(){if(sim.phase==='play'||sim.phase==='flag'){setPaused(!sim.paused);shell.wake();}}
+function pause(){if((sim.phase==='play'||sim.phase==='flag')&&!sim.titleDemo){setPaused(!sim.paused);shell.wake();}}
 function mute(){muted=!muted;audio.setMuted(muted);document.querySelector('#mute')!.textContent=muted?'Muted · M':'Sound on · M';document.querySelector('#mute')!.setAttribute('aria-pressed',String(muted));}
 async function activate(){try{await audio.unlock();}catch{shell.notify('Sound couldn’t start. You can keep playing and try sound again.');}if(!shell.blocking)canvas.focus();}
 function start(){
  if(document.body.classList.contains('loading'))return;
  shell.requestFullscreen();shell.enterGame();
- if(sim.phase==='title'&&sim.nativeStartup){
+ if(sim.onTitle&&sim.nativeStartup){
   if(sim.nativeStartup.unsupported)sim.reset();
   menuStart={players:document.querySelector<HTMLSelectElement>('#players')!.value==='2'?1:0,release:false};sim.paused=false;controlled=false;
  }else{
-  if(sim.phase==='title'){sim.twoPlayer=document.querySelector<HTMLSelectElement>('#players')!.value==='2';sim.paused=false;}
+  if(sim.onTitle){sim.twoPlayer=document.querySelector<HTMLSelectElement>('#players')!.value==='2';sim.paused=false;}
   if(sim.phase==='title'||sim.phase==='play'||sim.phase==='flag'||sim.phase==='gameover'||sim.phase==='ending'){sim.step(['start']);sim.step([]);}
  }
  void activate();soundEvents();draw();
@@ -190,7 +190,8 @@ document.querySelector('#home-button')!.addEventListener('click',()=>{clearInput
 // The lobby Play action waits for the native menu and uses its Select/Start inputs.
 function frameButtons():Button[]{
  if(!menuStart)return heldButtons(0);
- if(sim.phase!=='title'){menuStart=undefined;return heldButtons(0);}
+ if(!sim.onTitle){menuStart=undefined;return heldButtons(0);}
+ if(sim.titleDemo){menuStart.release=true;return ['start'];} // Start ends the demo (ResetTitle); the menu then starts the game
  const n=sim.nativeStartup;if(!n||n.mode!==0||n.task!==3||n.initializing)return [];
  if(menuStart.release){menuStart.release=false;return [];}
  if(n.players!==menuStart.players){menuStart.release=true;return ['select'];}

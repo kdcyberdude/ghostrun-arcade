@@ -304,7 +304,7 @@ export class GameRenderer {
   const victoryHold=s.phase==='intro'&&s.levelLoad?.engine===8&&s.levelLoad.task===0;
   if(victoryHold&&this.castleHeld){for(const m of [...this.retainerMeshes,...(s.levelLoad!.screen===0?this.hudMeshes:[])])this.scene.remove(m);this.renderer.render(this.scene,this.camera);return;}
   this.castleHeld=s.phase==='castle';this.hudMeshes=[];this.backgroundDraws=[];this.backgroundTexts=[];this.backgroundShift=s.backgroundRowShift;this.retainerMeshes=[];
-  this.scene.clear();this.used.clear();const titlePicture=nativeStartupTitleShown(s.nativeStartupPicture,s.phase,s.nativeScreen),startup=titlePicture?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
+  this.scene.clear();this.used.clear();const over=s.gameOverScreen;if(over){this.renderer.setClearColor('#000000');if(over.text){this.hud(s,s.area.palette,true);if(s.twoPlayer)this.text(s.currentPlayer?'LUIGI':'MARIO',104,112);this.text('GAME OVER',88,128);}this.renderer.render(this.scene,this.camera);return;}const titlePicture=nativeStartupTitleShown(s.nativeStartupPicture,s.onTitle?'title':s.phase,s.nativeScreen),startup=titlePicture?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
   const screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined,black=screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
@@ -488,7 +488,7 @@ export class GameRenderer {
   this.textZ=1;
   this.text(s.currentPlayer?'LUIGI':'MARIO',24,16);this.text(s.hud.draw.score,24,24);
   // InitializeGame installs sprite zero before the first GameEngine row; intro still owns control.
-  if(!titlePicture&&s.phase==='intro'&&s.nativeScreen?.task!==3||s.phase==='gameover')this.quad('background-tiles-0f-27-17-1c.png',[112,16,8,8],88,24,1);
+  if(!titlePicture&&s.phase==='intro'&&s.nativeScreen?.task!==3||s.phase==='gameover'||s.gameOverScreen)this.quad('background-tiles-0f-27-17-1c.png',[112,16,8,8],88,24,1);
   else{
    // Supplied OAM [24,255,0x23,88]: palette3, behind the HUD background.
    const palette=manifest.palette_observations[paletteIndex].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
@@ -496,20 +496,22 @@ export class GameRenderer {
    this.quad(this.hudCoinTextures[this.rotation(paletteIndex)],[0,0,8,8],88,24,1);
   }
   this.text('×'+s.hud.draw.coins,96,24);
-  this.text('WORLD',144,16);this.text(s.hudLevelId,152,24);this.text('TIME',200,16);if(!hideTime&&s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden)this.text(s.hud.draw.time,208,24);
+  this.text('WORLD',144,16);this.text(s.hudLevelId,152,24);this.text('TIME',200,16);if(!hideTime&&!s.onTitle&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden)this.text(s.hud.draw.time,208,24);
   this.textZ=5;
  }
  private title(s:Simulation){
+  // The title is nametable text at the area's first screen: the demo scrolls it away with the world (af0ba437 pictures 57696-).
+  const left=-Math.floor(s.camera);
   for(const cmd of tables.title_screen.stream.commands){
    let at=parseInt(cmd.ppu_address,16)-0x2000;
    for(let i=0;i<cmd.length;i++){
-    const tile=cmd.payload[cmd.repeat?0:i],x=at%32*8,y=Math.floor(at/32)*8;
+    const tile=cmd.payload[cmd.repeat?0:i],x=at%32*8+left,y=Math.floor(at/32)*8;
     if(y<120&&y>=32)this.quad('background-tiles-22-36-17-0f.png',[tile%16*8,Math.floor(tile/16)*8,8,8],x,y,4,false,false,false);
     at+=cmd.stride;
    }
   }
-  this.text('©1985 NINTENDO',104,120,'background-tiles-22-36-17-0f.png');/* native copyright line is cream (0x36), the menu lines white */this.text('1 PLAYER GAME',88,144);this.text('2 PLAYER GAME',88,160);this.text('TOP- 000000',96,184);
-  this.quad('background-tiles-22-36-17-0f.png',[112,96,8,8],72,s.twoPlayer?160:144,5);
+  this.text('©1985 NINTENDO',104+left,120,'background-tiles-22-36-17-0f.png');/* native copyright line is cream (0x36), the menu lines white */this.text('1 PLAYER GAME',88+left,144);this.text('2 PLAYER GAME',88+left,160);this.text('TOP- '+s.topScoreText,96+left,184);
+  this.quad('background-tiles-22-36-17-0f.png',[112,96,8,8],72+left,s.twoPlayer?160:144,5);
  }
  screenshot(){return this.renderer.domElement.toDataURL('image/png');}
 }

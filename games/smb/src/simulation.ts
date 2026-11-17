@@ -5,7 +5,7 @@ import {nativePlayerHoleLocks} from './native-player-hole.js';
 import {nativeGoombaBlockStun} from './native-block-enemy.js';
 import {NativeColdStartup} from './native-cold-startup.js';
 import {NativeStartupPicture} from './native-startup-picture.js';
-import {nativeTitleControlsFromRam,stepNativeTitleControls,type NativeTitleControls} from './native-title-controls.js';
+import {nativeTitleControlsFromRam,stepNativeTitleControls,nativeTitleFromGameOver,stepNativeTitleReinit,nativeMenuJoypad,peekNativeMenuJoypad,stepNativeDemo,type NativeTitleControls,type NativeDemo} from './native-title-controls.js';
 import {NativeGraphicsScratch} from './native-graphics-scratch.js';
 
 import {nativePlayerEnemyLatch,nativeNormalEnemyBox,nativeNormalContactStomps} from './native-player-enemy-latch.js';
@@ -326,7 +326,7 @@ export class Simulation {
  nativeBackdrop=0x22; // PPUpalette0: retained across CPU RAM initialization, advanced by source screen writes
  nativeStartup?:NativeTitleControls;readonly nativeStartupPicture=new NativeStartupPicture();private coldStartup?:NativeColdStartup;
  get nativeColdRam():Readonly<Uint8Array>|undefined{return this.coldStartup&&!this.coldStartup.done?this.coldStartup.ram:undefined;}
- get nativeScreen(){return this.nativeStartup??this.nativeGameOver??this.deathLoad?.state??this.levelLoad;}
+ get nativeScreen(){return (this.titleDemo?.task===3?undefined:this.nativeStartup)??this.nativeGameOver??this.deathLoad?.state??this.levelLoad;}
  get timeUpScreen(){return this.phase==='intro'&&Boolean(this.lifeIntro?.timeUp)&&this.lifeIntro!.seen<LIFE_FLOW.ticksScreen;}
  /** DisplayIntermediate/DisplayTimeUp queues the text and enables PPU output; it appears on the following NMI. */
  get introHiddenEarly(){if(this.levelLoad)return this.levelLoad.task===0||this.levelLoad.screen<=6;return this.phaseFrame<(this.lifeIntro?.fromDeath?this.lifeIntro.set+1:TRANSITIONS.introHiddenBeforeFrame);}
@@ -342,6 +342,11 @@ export class Simulation {
   const lines=lateSplitLines(3*(hit+113)-7146,((Math.floor(this.camera)%512)+512)%512);return lines.length?lines:undefined;
  }
  get gameoverClosing(){return this.phase==='gameover'&&this.nativeGameOver?.mode===0;}
+ /** RunGameOver's screen once ScreenRoutines is done (task 2, then the title's InitializeGame rows): black, and the status bar with GAME OVER
+  * from the first DisableScreenFlag-0 task-2 row, as the picture after it shows (c5564067 RAM 2399 $0774 2, 2400 0; pictures 2395-2400 black, 2401-2803 the text). */
+ get gameOverScreen(){const n=this.nativeGameOver;return n&&(n.mode===0||this.phase==='gameover'&&n.task===2)?{text:n.mode===0||n.disable===0}:undefined;}
+ /** TopScoreDisplay $07D7 as the title prints it (c5564067 picture 2829: TOP- 001400). */
+ get topScoreText(){return String(this.nativeTopScore).padStart(6,'0');}
  get pipePreviewArea(){const d=this.destination;if(this.phase!=='pipe'||this.player.size!==0||!d?.smallPlayerRoomPreviewFrames||d.frames-this.phaseFrame>d.smallPlayerRoomPreviewFrames)return undefined;return this.level.areas.find(a=>a.id===d.area);}
  get pipeLoading(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames); }
  get pipeClearing(){return this.phase==='pipe'&&!this.area.autoWalk&&Boolean(this.destination&&this.destination.frames>64&&this.pipeTimer===0&&this.phaseFrame<this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames);}
@@ -352,7 +357,7 @@ export class Simulation {
  // The castle-walk scroll fraction ($0768) is only written by that scroll: the next castle starts from what the last one left (2-4 738f9c75 row 22157: 128 from 1-4).
  private victoryScrollFraction=0;
  reset(playing=false){
-  this.victoryScrollFraction=0;
+  this.victoryScrollFraction=0;this.continueWorld=0;this.titleDemo=undefined;this.titleReturn=undefined;this.loseLife=false;
   this.nativeStartup=undefined;this.coldStartup=undefined;this.nativeStartupPicture.reset();this.random=new NativeRandom();this.intervalControl=20;
   this.frame=0;this.timerBank=new NativeTimerBank();this.timerBank.set(0x09,0x18,-1);this.nativeTopScore=0;this.nativeJoypadMask=0;this.padBits=0;this.sprite0KeptFrame=-1;this.playerColorsFrame=-1;this.warpTextRow={frame:-1,offset:0};this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.timeUpDeath=false;this.lateDeath=false;this.offscreenDeathRows=0;this.firebarDeathFrame=0;this.deathMove=undefined;this.playerAnimNmiTimer=0;this.playerAnimNmiCtrl=0;this.lastJumpFallForce=0.5625;this.scrollCrossCamera=0;this.slotCamera=0;this.marioMotion=1;this.firebarMarioScreenX=0;this.flagAwardFrame=-1;this.flagScrollLocked=true;this.placedBankFrame=-1;this.nativeBankItemFrame=-1;this.slotScroll=false;this.jumpArc=false;this.springPrevA=false;this.swimDirection=0;this.swimMovingDir=0;this.bounceGravity=0.5625;this.springPinX=0;this.springPinY=0;this.springLaunchSpeed=0;this.waterCollisionPose=undefined;this.water=new NativeWater();this.paletteClock.buffer1.data.fill(0);this.offscreenPitDeath=false;this.offscreenLavaDeath=false;this.colorRotationPending=false;this.graphicsBuffer1=false;this.wallSpeed=undefined;this.wallSide=undefined;this.wallBackOut=false;this.sidePipeContact=undefined;this.swimPull=0;this.headBumped=false;this.deathLoad=undefined;this.levelLoad=undefined;this.warpHudLevel=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
@@ -501,7 +506,7 @@ export class Simulation {
    this.inputs.push(new Set(held[player]));const effective=this.inputs.shift()!;
    for(const key of ['start','select'] as Button[]){if(held[0].has(key)||(this.phase==='title'&&held[1].has(key)))effective.add(key);else effective.delete(key);}
    this.nmiBookkeeping(held[0]);
-   {this.paletteClock.buffer1.beginFrame();this.colorRotationPending=false;const starBefore=this.player.star,bowserPaletteBefore=this.bowserPalette,warpBefore=this.warpZoneActive,paletteBefore=this.starPalette,areaBefore=this.area,cameraBefore=this.camera,phaseBefore=this.phase,engineBefore=!['title','intro','gameover','ending','castle'].includes(this.phase),fresh=this.freshA,grace=this.phase==='play'&&this.controlGrace>0;if(grace){effective.delete('a');this.controlGrace--;}this.paletteRemove=false;this.graphicsBuffer1=false;this.blockUpdateBusy=false;this.loopScrollAdjustment=0;this.update(effective);this.flushColorRotation();if(this.nativeScreen?.task===1&&this.nativeScreen.screen>=1)this.hud.header(this.score,this.coins);this.snapshotPlayerPriority();this.nativeBackdrop=nativeScreenBackdrop(this.nativeBackdrop,this.nativeScreen?nativeScreenPicture(this.nativeScreen,this.area.theme==='water'):undefined,graphics.palette_observations[this.area.palette].palette[0]);if(!this.paused&&(areaBefore===this.area||this.loopScrollAdjustment!==0)){if(engineBefore||phaseBefore==='castle'&&this.phase==='castle'&&this.castleStage!=='message'){const buffer2=this.paletteClock.step(Math.max(0,Math.floor(this.camera)-Math.floor(cameraBefore)+this.loopScrollAdjustment),this.colorRotations,this.paletteRemove,this.graphicsBuffer1||(this.random.frame&7)===0,this.bowserPalette&&!bowserPaletteBefore||this.warpZoneActive&&!warpBefore); /* the warp-zone text is written over buffer1 on its row, dropping that row's rotation (1512e53a 1-2 RAM 4049: $06D4 0 -> 1, $0300 $2C with the WELCOME text; the coin keeps its old color until the 4057 rotation) */this.hud.step(buffer2,this.bowserPalette&&!bowserPaletteBefore);if(!buffer2){for(const [key,id]of this.blockBackgroundQueue)this.blockBackground.set(key,id);this.blockBackgroundQueue.clear();for(const p of this.area.platforms??[])if(platformMotionModel(p,this.platformMotion.context)==='native-balance')this.ropeShown.set(p,this.platformPosition(p).y);}}else{this.paletteClock.draw=this.colorRotations;this.hud.step(false);this.ropeShown.clear();}if(this.victoryPending>=0)this.vramBuffer1.rom(12+this.victoryPending);else if(this.bowserPalette&&!bowserPaletteBefore)this.vramBuffer1.rom(8); /* PrintVictoryMessages' message buffer (17a2baf0 1-4 RAM 10834: $0773 12) and the BowserPaletteData buffer (8f90807f RAM 10195: 8) */this.starDrawPalette=starBefore||this.player.star?paletteBefore:undefined;this.starPalette=nativeStarPalette(this.player.star,this.random.frame);}if(this.paused)this.hud.step(false);if(fresh&&!grace)this.freshA=false;}this.previous=effective;
+   {this.paletteClock.buffer1.beginFrame();this.colorRotationPending=false;const starBefore=this.player.star,bowserPaletteBefore=this.bowserPalette,warpBefore=this.warpZoneActive,paletteBefore=this.starPalette,areaBefore=this.area,cameraBefore=this.camera,phaseBefore=this.phase,engineBefore=!['title','intro','gameover','ending','castle'].includes(this.phase),fresh=this.freshA,grace=this.phase==='play'&&this.controlGrace>0;if(grace){effective.delete('a');this.controlGrace--;}this.paletteRemove=false;this.graphicsBuffer1=false;this.blockUpdateBusy=false;this.loopScrollAdjustment=0;this.titleMenu(effective);this.update(effective);this.afterTitleDemo();this.flushColorRotation();if(this.nativeScreen?.task===1&&this.nativeScreen.screen>=1)this.hud.header(this.score,this.coins);this.snapshotPlayerPriority();this.nativeBackdrop=nativeScreenBackdrop(this.nativeBackdrop,this.nativeScreen?nativeScreenPicture(this.nativeScreen,this.area.theme==='water'):undefined,graphics.palette_observations[this.area.palette].palette[0]);if(!this.paused&&(areaBefore===this.area||this.loopScrollAdjustment!==0)){if(engineBefore||phaseBefore==='castle'&&this.phase==='castle'&&this.castleStage!=='message'){const buffer2=this.paletteClock.step(Math.max(0,Math.floor(this.camera)-Math.floor(cameraBefore)+this.loopScrollAdjustment),this.colorRotations,this.paletteRemove,this.graphicsBuffer1||(this.random.frame&7)===0,this.bowserPalette&&!bowserPaletteBefore||this.warpZoneActive&&!warpBefore); /* the warp-zone text is written over buffer1 on its row, dropping that row's rotation (1512e53a 1-2 RAM 4049: $06D4 0 -> 1, $0300 $2C with the WELCOME text; the coin keeps its old color until the 4057 rotation) */this.hud.step(buffer2,this.bowserPalette&&!bowserPaletteBefore);if(!buffer2){for(const [key,id]of this.blockBackgroundQueue)this.blockBackground.set(key,id);this.blockBackgroundQueue.clear();for(const p of this.area.platforms??[])if(platformMotionModel(p,this.platformMotion.context)==='native-balance')this.ropeShown.set(p,this.platformPosition(p).y);}}else{this.paletteClock.draw=this.colorRotations;this.hud.step(false);this.ropeShown.clear();}if(this.victoryPending>=0)this.vramBuffer1.rom(12+this.victoryPending);else if(this.bowserPalette&&!bowserPaletteBefore)this.vramBuffer1.rom(8); /* PrintVictoryMessages' message buffer (17a2baf0 1-4 RAM 10834: $0773 12) and the BowserPaletteData buffer (8f90807f RAM 10195: 8) */this.starDrawPalette=starBefore||this.player.star?paletteBefore:undefined;this.starPalette=nativeStarPalette(this.player.star,this.random.frame);}if(this.paused)this.hud.step(false);if(fresh&&!grace)this.freshA=false;}this.previous=effective;
   }
  }
  /** Startup clocks are generated by the cold CPU / source title controller, never recording samples. */
@@ -516,6 +521,7 @@ export class Simulation {
    this.coldStartup.step(pad);this.vramBuffer1.seed(this.coldStartup.ram.subarray(0x300,0x400),this.coldStartup.ram[0x773]);this.nativeStartup=nativeTitleControlsFromRam(this.coldStartup.ram);this.nativeStartup.initializing=!this.coldStartup.done;this.syncStartupClocks(this.nativeStartup,true);this.nativeStartupPicture.step(this.nativeStartup);return;
   }
   if(this.nativeStartup?.unsupported)return;
+  if(this.nativeStartup!.reinit){const n=this.nativeStartup!;stepNativeTitleReinit(n);if(n.reinit)this.syncStartupClocks(n);else this.titleAfterGameOver(n);return;}
   const n=this.nativeStartup!,names:Button[]=['a','b','select','start','up','down','left','right'];let pad=0;for(const [bit,name]of names.entries())if(b.has(name))pad|=1<<bit;
   tickNativeEndLevelMusic(this.nativeEndLevelMusic,{operMode:0,eventQueue:this.soundQueues[3],areaQueue:this.soundQueues[4]});this.soundQueues.fill(0);
   const effect=stepNativeTitleControls(n,pad);if(effect.unsupportedDemo||effect.resetTitle)n.unsupported=effect.unsupportedDemo?'title-demo-playback':'title-initializer-reentry';this.syncStartupClocks(n);
@@ -526,12 +532,45 @@ export class Simulation {
   for(const packet of n.queuedPalette)this.vramBuffer1.append({address:packet.address,control:packet.bytes.length,payload:packet.bytes});
   this.nativeStartupPicture.step(n);
   if(effect.startGame){
+   // StartWorld1's InitScores (c5564067 RAM 2996: $07DD-$07E2 0); the retained title keeps the old status bar until InitializeArea blanks it (pictures 2997-2998: 001400 x05, WORLD 1-1 after A+Start in 68b5ca9f 7013)
+   if(effect.continueGame&&this.continueWorld){this.warpHudLevel=this.level.id;this.levelIndex=this.levels.findIndex(l=>l.id===`${this.continueWorld+1}-1`);}
+   this.score=0;this.coins=0;
    this.soundQueues[4]=128; // the title's Silence still waits in the area queue: title rows run no SoundEngine (all 539 power-on captures, RAM 10-60: $FB $80)
    this.levelLoad={task:n.task,engine:n.engine,screen:n.screen,disable:n.disable,timer:n.timer,columns:n.columns};this.phase='intro';this.phaseFrame=0;this.lifeIntro=undefined;this.alignLifeClock(n.interval);this.nativeStartup=undefined;this.coldStartup=undefined;
   }
  }
+ /** The title's game core (OperMode 0, task 3) while DemoEngine plays: the title controller stays the control state, the game rows run with the demo's buttons. */
+ titleDemo?:NativeTitleControls;private demo:NativeDemo={action:0,timer:0};private titleReturn?:{now:boolean};
+ get onTitle(){return this.phase==='title'&&!this.nativeGameOver||Boolean(this.titleDemo);}
+ /** GameMenuRoutine on a title row: DemoTimer reaching 0 with no Start/Select starts DemoEngine and GameCoreRoutine on that same row
+  * (af0ba437 RAM 57649: $07A2 0, $0717 1, $06FC Right, Mario's speed 1). Start or Select during the demo, or its end, is ResetTitle. */
+ private titleMenu(b:Set<Button>){
+  const n=this.nativeStartup,names:Button[]=['a','b','select','start','up','down','left','right'];let pad=0;for(const [bit,name]of names.entries())if(b.has(name))pad|=1<<bit;
+  if(!this.titleDemo){
+   if(!n||n.mode!==0||n.task!==3||n.reinit||n.unsupported||n.initializing||n.engine!==8||n.interval!==0||n.demo!==1||[0x10,0x90,0x20].includes(peekNativeMenuJoypad(n,pad)))return;
+   this.titleDemo=n;this.demo={action:0,timer:0};this.phase='play';this.phaseFrame=0;this.controlGrace=0;this.freshA=false;
+  }
+  const d=this.titleDemo;if(d.selectTimer)d.selectTimer--;if(this.intervalControl===0){if(d.timer)d.timer--;if(d.demo)d.demo--;}
+  const joy=nativeMenuJoypad(d,pad),demo=[0x10,0x90,0x20].includes(joy)?undefined:stepNativeDemo(this.demo);b.clear();
+  if(demo===undefined){d.task=0;d.disable=(d.disable+1)&255;this.titleReturn={now:true};return;}
+  for(const [bit,name]of names.entries())if(demo&(0x80>>bit))b.add(name);
+ }
+ /** GameEngineSubroutine as the demo leaves it; PlayerLoseLife (6) is ResetTitle on the same row (af0ba437 RAM 58742 engine $0B, 58743 6, task 0, $0774 1). */
+ private afterTitleDemo(){
+  const d=this.titleDemo;if(!d||this.titleReturn)return;this.events.length=0; // title rows run no SoundEngine
+  if(this.loseLife){d.task=0;d.disable=(d.disable+1)&255;d.engine=6;this.titleReturn={now:false};}
+  else d.engine=this.phase==='dying'?11:this.powerChange?({grow:9,shrink:10,fire:12} as const)[this.powerChange.kind]:8;
+  d.counter=this.random.frame;d.interval=this.intervalControl;d.random=[...this.random.bytes];
+ }
+ /** The rows after ResetTitle: the NMI clocks run, then InitializeGame as after a game over (af0ba437 RAM 58744-58746, $0774 still 1). */
+ private updateTitleReturn(){
+  this.random.tick();if(this.phase!=='dying')this.tickIntervalTimers();this.lifeRow++; // the death's TimerControl still holds the interval timers (af0ba437 RAM 58743 $0747 48, $077F 3 through 58745)
+  const d=this.titleDemo!,r=this.titleReturn!;if(r.now){r.now=false;return;}
+  this.nativeStartup=nativeTitleFromGameOver({counter:this.random.frame,interval:this.intervalControl,random:this.random.bytes,players:d.players,time:this.time},d.disable);this.titleDemo=undefined;this.titleReturn=undefined;this.syncStartupClocks(this.nativeStartup);
+ }
  private update(b:Set<Button>){
-  if(this.nativeStartup){this.updateStartup(b);return;}
+  if(this.titleReturn){this.updateTitleReturn();return;}
+  if(this.nativeStartup&&!this.titleDemo){this.updateStartup(b);return;}
   // SoundEngine consumes the preceding gameplay queue before ReadJoypads/PauseRoutine.
   tickNativeEndLevelMusic(this.nativeEndLevelMusic,{eventQueue:this.soundQueues[3],areaQueue:this.soundQueues[4],operMode:this.phase==='title'?0:1,pauseMode:this.paused?1:0});
   // SoundEngine itself (src/native-nmi-timing.ts) runs over the sound RAM with this queue: it plays them and clears the square, noise and pause queues, and the music queues off the pause path.
@@ -548,7 +587,7 @@ export class Simulation {
   const resumedAB=this.powerupStateZero?this.transformPreviousAB:this.entrancePreviousAB,previousA=resumedAB===undefined?this.previous.has('a'):Boolean(resumedAB&128),previousB=resumedAB===undefined?this.previous.has('b'):Boolean(resumedAB&64);
   const pressed=(key:Button)=>b.has(key)&&(!(key==='a'?previousA:key==='b'?previousB:this.previous.has(key))||(key==='a'&&this.freshA));
   if(this.phase==='title'){
-   this.nativeGameOver=undefined; // Ownership ended on the preceding RunGameOver termination row.
+   if(this.nativeGameOver){this.updateGameOver(b);return;} // InitializeGame follows RunGameOver's termination row
    this.titleFrame++;
    if(b.has('select')&&b.has('start'))return;
    if(pressed('select'))this.twoPlayer=!this.twoPlayer;
@@ -1388,7 +1427,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  private gameTimerState(){return {time:this.time,control:Math.max(0,24-this.timerFrames),fetch:this.fetchGameTimer};}
  /** AddToScore prints the coin count and then the score (StatusBarNybbles $02: coins, player score; 3d43b7b4 1-1 RAM 3017: $206D then $2062 in VRAM_Buffer1);
   * a firework's points print the time first instead (3d43b7b4 RAM 2023: $207A then $2062). */
- private addScore(value:number,first:'coins'|'time'='coins'){if(value){this.score+=value;const d=hudDigits(this.score,this.coins,this.time);this.hud.queue(first==='coins'?{coins:d.coins,score:d.score}:{time:d.time,score:d.score});}}
+ private addScore(value:number,first:'coins'|'time'='coins'){if(this.titleDemo)return; /* DigitsMathRoutine skips OperMode 0: the demo's 1000 leaves the status bar (af0ba437 pictures 58010-58742: 348250) */if(value){this.score+=value;const d=hudDigits(this.score,this.coins,this.time);this.hud.queue(first==='coins'?{coins:d.coins,score:d.score}:{time:d.time,score:d.score});}}
  get vramBuffer1(){return this.paletteClock.buffer1;}
  private timerBank=new NativeTimerBank();private timerControlFrame=0;
  /** $07D7 TopScoreDisplay and $074A SavedJoypad1Bits as the NMI leaves them: UpdateTopScore copies the score of the row before when higher;
@@ -1457,7 +1496,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  }
  private gameTimerStep(run:boolean){
   const n=this.gameTimerState();if(!this.nmiTimersHeld&&!this.shrinkEndStep)tickNativeGameTimer(n);this.timerFrames=24-n.control;
-  return run?this.consumeGameTimer(true):false;
+  return run&&!this.titleDemo?this.consumeGameTimer(true):false; // RunGameTimer exits in OperMode 0
  }
  private consumeGameTimer(run:boolean){
   const n=this.gameTimerState(),result=runNativeGameTimer(n,1,run?8:7,Math.floor((this.player.y-32)/256)+1);
@@ -3699,11 +3738,23 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  private updateGameOver(b:Set<Button>){
   const n=this.nativeGameOver!;const held=tickNativeGameOverMaster(n);
   if(!held){this.gameTimerStep(false);this.tickIntervalTimers();}n.timer=this.screenTimer;
+  if(n.mode===0&&this.levels[0].id!=='1-1'){this.nativeGameOver=undefined;return;} // level sets without 1-1 (fixtures) keep the plain title, as reset() does
+  if(n.mode===0){this.nativeStartup=nativeTitleFromGameOver({counter:this.random.frame,interval:this.intervalControl,random:this.random.bytes,players:Number(this.twoPlayer),time:this.time});this.syncStartupClocks(this.nativeStartup);return;}
   if(this.gameOverDispatch){this.gameOverDispatch=false;return;}
   const effect=runNativeGameOver(n,{start:b.has('start'),canContinue:this.twoPlayer&&this.slots[1-this.currentPlayer].lives>0});this.screenTimer=n.timer;
   if(effect.eventQueue!==undefined){this.soundQueues[3]=effect.eventQueue;if(effect.eventQueue===2)this.emit('event_game_over');}
   if(effect.leave==='continue'){this.nativeGameOver=undefined;this.finishGameover();}
-  else if(effect.leave==='title'){this.phase='title';this.phaseFrame=0;}
+  else if(effect.leave==='title'){this.phase='title';this.phaseFrame=0;this.continueWorld=Number(this.level.id[0])-1;} // $07FD ContinueWorld on the leave row (68b5ca9f RAM 6810: 1 after 2-1)
+ }
+ /** ContinueWorld $07FD: the world a game over left, restored by A+Start at the title. */
+ private continueWorld=0;
+ /** The task-1 row of InitializeGame (picture black from it): the game restarts at 1-1 (WorldNumber cleared; c5564067 RAM 2801-), while the
+  * clocks, TopScoreDisplay and the retained score/coin digits of the status bar stay (picture 2829: 001400 x05, TOP- 001400, WORLD 1-1); the title's
+  * status line prints those coin digits, not the cleared tally (f4c718d1 picture 25400: x17; af0ba437 after the demo's coin: x26). */
+ private titleAfterGameOver(n:NativeTitleControls){
+  const random=this.random,interval=this.intervalControl,top=this.nativeTopScore,score=this.score,draw={...this.hud.draw},frame=this.frame,row=this.lifeRow,frozen=this.lifeFrozen,world=this.continueWorld,backdrop=this.nativeGameOver?0x0f:this.nativeBackdrop;
+  this.reset();this.coldStartup=undefined;this.nativeStartup=n;this.random=random;this.intervalControl=interval;this.nativeTopScore=top;this.score=score;this.coins=Number(draw.coins);this.frame=frame;this.lifeRow=row;this.lifeFrozen=frozen;this.continueWorld=world;
+  this.events=[];this.hud.seed(draw);this.syncStartupClocks(n);this.nativeStartupPicture.backdrop=backdrop;this.nativeStartupPicture.step(n);n.initializing=false; // after a demo the sky stays until the title's palette (af0ba437 pictures 58744-58748)
  }
  private finishGameover(){
   if(!this.twoPlayer||this.slots[1-this.currentPlayer].lives<=0){this.restartToTitle();return;}
