@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import {nativeHammerPicturePhase} from '../native-misc.js';
 import {framePiranha} from './piranha-frame.js';
-import {enemyPicture,nativeHammerBroCell,nativeShellPhase,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
+import {enemyPicture,enemyRenderPicture,nativeHammerBroCell,nativeShellPhase,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
 import {nativeFireballPhase} from '../native-fireball-picture.js';
 import {playerVisible,playerCell} from '../player-cell.js';
@@ -120,7 +120,7 @@ export class Entities{
  }
  private yaw(e:Enemy,target:number,frame:number){const prev=this.enemyYaw.get(e);if(prev?.frame===frame)return prev.yaw;const y=turnToward(prev?.yaw??target,target);this.enemyYaw.set(e,{frame,yaw:y});return y;}
  private enemy(e:Enemy,s:Simulation){
-  const physical=e;e=enemyPicture(e);
+  const physical=e;e=enemyRenderPicture(e,s.frame,s.nativeTimersStopped);  // the picture the 2D renderer draws (with timers stopped: the current position)
   if(e.kind==='piranha'&&e.pir&&e.pir.speed>=0&&e.pir.timer!==0)return; // not drawn while it moves with its frame timer running, as in the 2D renderer (EnemyGfxHandler)
   this.draw={offset:s.spriteShuffle.offsets[(e.enemySlot??0)+1],background:e.kind==='piranha',clipRow:e.kind==='piranha'&&!e.dead?e.pir?.down:undefined};const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
   const pictureX=!e.dead?e.graphicsX??e.x:e.x,pictureY=!e.dead?e.graphicsY??e.y:e.y;
@@ -181,14 +181,15 @@ export class Entities{
  private item(i:Item,s:Simulation){
   const misc=i.nativeHammer??i.nativeCoin;this.draw={offset:misc?s.spriteShuffle.miscOffset(misc.slot):s.spriteShuffle.offsets[i.nativeFlame?i.nativeFlame.slot+1:6],background:i.nativePowerState!==undefined&&i.nativePowerState<0x80};
   const pictureX=i.nativeCoin||i.nativeHammer?Math.floor(s.camera)+(Math.floor(i.x-s.camera)&255):i.x;
-  const pictureY=i.nativeCoin||i.nativeHammer?(Math.floor(i.y)&255)+1:i.nativePowerState!==undefined?Math.floor(i.y)+1:i.y;
+  // A hammer's two rows wrap at 256 separately (renderer.ts): placed by its lower row, so a hammer just above the screen shows at the top as in 2D.
+  const pictureY=i.nativeHammer?((Math.floor(i.y)+8)&255)-7:i.nativeCoin?(Math.floor(i.y)&255)+1:i.nativePowerState!==undefined?Math.floor(i.y)+1:i.y;
   const cx=(pictureX+8)/16,cy=(232-pictureY)/16;this.box(i.x/16,(240-i.y-16)/16,i.x/16+1,(240-i.y)/16,0xffaa00);
   if(i.kind==='debris'){const m=this.take('debris',()=>new THREE.Mesh(new THREE.BoxGeometry(0.42,0.42,0.42),std(0xb8521e)));m.position.set((i.x+4)/16,(236-i.y)/16,0.2);m.rotation.set(i.age*0.3,i.age*0.2,i.age*0.25);return;}
   if(i.kind==='coin'&&(i.nativeCoin?.state??0)>=2)return; // native misc slot now draws its floatey 200, in Hud
   if(i.kind==='coin'){  // block coin: the same minted gold coin as the tile coins, spinning fast while it pops
    let m=this.coins[this.coinsUsed++];if(!m){m=new THREE.Mesh(coinGeometry(),GOLD);m.castShadow=true;this.group.add(m);this.coins.push(m);}
    this.mark(m);m.visible=true;m.position.set((pictureX+4)/16,(232-pictureY)/16,0);m.rotation.y=(i.nativeCoin?(s.random.frame>>1)&3:Math.floor(i.age/4)%4)*Math.PI/2;return;}
-  const name=ITEM_MODEL[i.kind],a=name?this.pool(name).take():undefined;
+  const name=ITEM_MODEL[i.kind],a=name?this.pool(name).take(i):undefined;
   if(!a){const m=this.take('item'+i.kind,()=>new THREE.Mesh(new THREE.SphereGeometry(0.4,20,14),std(i.kind==='mushroom'?0xe03030:0xffffff)));m.position.set(cx,cy,0);return;}
   this.mark(a.root);a.root.position.set(cx,(240-pictureY-16)/16,0);
   if(i.kind==='hammer')a.root.position.y=cy;
