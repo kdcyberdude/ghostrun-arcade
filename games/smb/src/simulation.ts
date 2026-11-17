@@ -231,7 +231,6 @@ export class Simulation {
  player!:Player; enemies:Enemy[]=[]; items:Item[]=[]; popups:ScorePopup[]=[]; phase:Phase='title'; phaseFrame=0; titleFrame=0;
  climbPoseFrame=0;
  locomotionPose:{kind:'stand'|'walk'|'skid'|'jump';frame:number;facing:number}={kind:'stand',frame:0,facing:1};
- wallDisplayPose?:{kind:'walk';frame:number;facing:number};private wallDisplayTimer=0;
  /** Native PlayerAnimCtrl/Timer/TimerSet (src/player-anim.ts). */
  playerAnim=new PlayerAnim();private jumpPose=false;private playerAnimNmiTimer=0;private playerAnimNmiCtrl=0;
  private offscreenLavaDeath=false;
@@ -421,7 +420,7 @@ export class Simulation {
   this.bindNativeHammerBros();this.setupNativePlacedStream();this.setupFishLoader();this.setupPlatformCatchUp();
   if(!deferTerrain)for(const command of this.specialAreaCommands())if(command.x>=Math.floor(this.camera/256)*256&&command.x<Math.floor(this.camera/256)*256+384)this.applySpecialAreaCommand(command);
   if(area.entryVine)this.specialSlot5.claimVine(Math.floor(this.player.x+8)&~15,240);
-  this.climbPoseFrame=0;this.locomotionPose={kind:'stand',frame:0,facing:1};this.playerAnim.reset();this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
+  this.climbPoseFrame=0;this.locomotionPose={kind:'stand',frame:0,facing:1};this.playerAnim.reset();this.jumpPose=false;
   this.swimPoseFrame=0;
   this.springTimers.clear();this.erasedVineSlots.clear();this.springRelease=false;this.loopPass=0;this.loopCorrect=0;this.mazeStates=[...area.mazes??[],...area.maze?[area.maze]:[]].filter(spec=>!this.nativeLoopPage(spec.loopAt)).map(spec=>({spec,sourceFrom:spec.loopTo,sourceTo:spec.loopAt,gate:0,completed:false}));this.nativeVictory=undefined;this.victoryBoss=undefined;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase=undefined;this.bridge=[];this.castleStage='bridge';this.castleArrivalFrame=0;
   this.flagNumber.y=this.flagNumber.fraction=0;this.flagTop=48;this.flagInside=false;this.flagBonus=0;
@@ -840,11 +839,6 @@ export class Simulation {
   let jumped=false;if(!springJumped)for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
   const lateGrounded=this.lateDeath&&(this.phase as string)==='dying'&&this.phaseFrame===0?p.grounded:undefined;if(lateGrounded!==undefined)p.grounded=gfxGrounded; // a late death (hammer, cannon shot) comes after PlayerGfxHandler: the row is drawn with the landing it made (560b78bf 5-2 RAM 42270: lands at Y 112 with Right held, $06D5 128 -> 96, the walk frame)
   this.updateLocomotionPose(poseGrounded,poseAbsolute,jumped,poseLocked?new Set():b);if(lateGrounded!==undefined)p.grounded=lateGrounded; // the uncontrolled water entry (engine 7) and the water bottom (PlayerCtrlRoutine DisJoyp, y >= $d0) replace the controller: 2-2 rows 352..386 and 1393.. keep swim frame 0 with A down
-  const wallDisplay=poseGrounded&&p.grounded&&p.size===0&&this.area.theme==='ground'&&this.camera===0&&p.x===this.camera&&b.has('left')&&!b.has('right')&&this.locomotionPose.kind!=='jump';
-  if(wallDisplay){
-   if(!this.wallDisplayPose){this.wallDisplayPose={kind:'walk',frame:this.locomotionPose.frame,facing:this.locomotionPose.facing};this.wallDisplayTimer=this.playerAnim.timer;}
-   else{this.wallDisplayTimer=Math.max(0,this.wallDisplayTimer-1);if(this.wallDisplayTimer===0){this.wallDisplayPose.frame=(this.wallDisplayPose.frame+1)%3;this.wallDisplayTimer=7;}this.wallDisplayPose.facing=this.locomotionPose.facing;}
-  }else this.wallDisplayPose=undefined;
   for(const [key,age]of this.bump){if(age>=15){ // the same block bumps again 16 rows after its last hit (a14e9c25 1-2 rows 4293, 4309)
  this.bump.delete(key);this.usedBlockRehits.delete(key);}else this.bump.set(key,age+1);}
   if(!p.dead&&this.area.fallExit&&p.vy>=0&&p.y>this.area.fallExit.belowY){const exit=this.area.fallExit;this.enterArea(exit.to,exit.spawn,exit.camera);return;}
@@ -2360,7 +2354,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
  private flagScrollLocked=true;
  private advanceFlag(){const next=nativeFlagStep(this.flagTop,this.nativePowerSlot.fraction);this.flagTop=next.y;this.nativePowerSlot.fraction=next.fraction;Object.assign(this.flagNumber,nativeFlagNumberStep(this.flagNumber.y,this.flagNumber.fraction));if(this.specialSlot5.id===48)this.specialSlot5.y=this.flagTop;}
  private beginFlag(){
-  this.jumpPose=false;this.wallDisplayPose=undefined;this.playerAnim.timer=this.playerAnimNmiTimer;this.playerAnim.ctrl=this.playerAnimNmiCtrl;this.climbPoseFrame=Math.floor(this.player.vy)!==0?this.playerAnim.animate(2):this.playerAnim.still();
+  this.jumpPose=false;this.playerAnim.timer=this.playerAnimNmiTimer;this.playerAnim.ctrl=this.playerAnimNmiCtrl;this.climbPoseFrame=Math.floor(this.player.vy)!==0?this.playerAnim.animate(2):this.playerAnim.still();
   this.flagScrollLocked=true;
   this.items=this.items.filter(i=>i.nativePowerState===undefined);
   this.flagAwardFrame=-1;this.flagTop=FLAG_COMPLETION.flagTopY-1;this.advanceFlag();this.flagInside=false;

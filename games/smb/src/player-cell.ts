@@ -26,7 +26,7 @@ export function playerCell(s:Simulation){
  // The time-up row: the game timer kills Mario after PlayerGfxHandler drew this row's pose (b7fcc3e4 1-1 row 9839: engine 11, PlayerGfxOffset still the walk).
  // So does a hammer, its misc-object pass also following PlayerGfxHandler (8-3 original RAM 4001: engine 11, OAM 5-8 still the jump tiles $41/$32/$43/$42 facing left).
  const timeUpRow=s.player.dead&&(s.timeUpDeath||s.lateDeath)&&s.phase==='dying'&&s.phaseFrame===0;
- const p=s.player,pose=s.phase==='play'||timeUpRow||s.nativeVictory||s.verticalPipeGraphics||s.sidePipeGraphics||s.phase==='flag'?(s.wallDisplayPose??s.locomotionPose):undefined;let cell=p.size?25:23;
+ const p=s.player,pose=s.phase==='play'||timeUpRow||s.nativeVictory||s.verticalPipeGraphics||s.sidePipeGraphics||s.phase==='flag'?s.locomotionPose:undefined;let cell=p.size?25:23;
  if(p.dead&&!timeUpRow)cell=22;else if(s.playerAnim.fresh&&(s.phase==='play'||s.nativeScreen?.engine===7))cell=p.size?25:23; // the area load row: Player_State 0 shows the standing pose (1-2 row 349, 2-2 row 352)
  else if(s.waterEntryStanding)cell=p.size?25:23;else if(s.entryFallPose)cell=p.size?0:12;else if(p.climbing)cell=(p.size?8:20)+(s.phase==='flag'?s.climbPoseFrame:Math.floor(p.anim/12)%2);
  else if(p.duck&&!(s.area.theme==='water'&&!p.grounded))cell=10;else if(s.area.theme==='water'&&!p.grounded&&!(timeUpRow&&pose?.kind!=='jump'))cell=(p.size?5:17)+s.swimPoseFrame; // the time-up row keeps a floor pose drawn before the timer killed Mario (52116322 2-2 RAM 23259: $B8 standing)
