@@ -14,7 +14,7 @@ import {compareFrame,family,pieceModels,cells3d as cellsOf,type Obj,type Cell,ty
 import {kindIn} from '../../src/render3d/semantics.js';
 import nesPalette from '../../assets/nes-rgb-palette.json';
 import {nativeBubbleShown} from '../../src/view-rules.js';
-import {nativeBlockSprites} from '../../src/native-block-picture.js';
+import {nativeBlockSprites,nativeBrickChunkSprites} from '../../src/native-block-picture.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
 import {PIECES} from '../../src/render3d/semantics.js';
 import popupAssemblies from '../../data/popup-assemblies.json';
@@ -55,7 +55,7 @@ function draw2d(s:Simulation):Draw2d{
  r2.castlePriorityTile=function(id:number,x:number,y:number,p:number){tiles.push({id,x,y,z:0,tag});const t=tag;tag='skip';try{return c0.call(this,id,x,y,p);}finally{tag=t;}}; // background repainted over a behind-background sprite: not part of the object
  r2.player=function(ss:Simulation){tag='player';const r=p0.call(this,ss);tag='misc';return r;};
  r2.enemy=function(e:Any,ss:Simulation){tag='enemy#'+ss.enemies.indexOf(e);const r=e0.call(this,e,ss);tag='misc';return r;};
- if(i0)r2.item=function(it:Any,ss:Simulation){tag='item#'+ss.items.indexOf(it);const r=i0.call(this,it,ss);tag='misc';return r;};
+ if(i0)r2.item=function(it:Any,ss:Simulation){tag='item#'+ss.pictureItems.indexOf(it);const r=i0.call(this,it,ss);tag='misc';return r;};
  r2.text=function(...a:Any[]){const t=tag;tag='skip';const r=txt.apply(this,a);tag=t;return r;};
  r2.hud=function(...a:Any[]){const t=tag;tag='skip';const r=hud.apply(this,a);tag=t;return r;};
  r2.castleRescue=function(...a:Any[]){tag='retainer';const r=cr.apply(this,a);tag='misc';return r;};
@@ -78,8 +78,8 @@ function objects2d(s:Simulation,all:{tag:string;r:Rect;source?:Rect;z:number;chr
  const near=(r:Rect)=>union(misc.filter(q=>hit(q.r,r)).map(q=>q.r));
  const exact=(x:number,y:number)=>union(misc.filter(q=>(q.source??q.r).x===Math.floor(x)&&(q.source??q.r).y===Math.floor(y)).map(q=>q.r));
  const ps=quads.filter(q=>q.tag==='player'),pr=union(ps.map(q=>q.r));if(pr)out.push({id:'player',sourceId:'player',kind:'player',oamHidden:allHidden(ps),...pr});
- s.enemies.forEach((physical,i)=>{const e=enemyPicture(physical),sprites=quads.filter(q=>q.tag==='enemy#'+i),r=union(sprites.map(q=>q.r));if(r)out.push({oamHidden:allHidden(sprites),id:'enemy#'+i,sourceId:'enemy#'+i,kind:e.kind,state:e.kind==='blooper'?(sprites.some(q=>q.chr===223)?'contracted':'extended'):e.kind==='lakitu'?(sprites.some(q=>q.chr===189)?'ducked':'normal'):e.kind==='piranha'?(sprites.some(q=>q.chr===229)?'open':'closed'):e.shell?(e.kind!=='beetle'&&sprites.some(q=>q.chr===109)?'shell-expanded':'shell'):e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.greenShellLaunchFrame!==undefined||e.defeat||(e.hbro?.state??0)&32||e.dead>0&&(e.kind==='cheep'||e.kind==='lakitu'||e.kind==='beetle'&&!e.squashed)?'flipped':e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',variant:spritePalette(sprites),...r});});
- s.items.forEach((it,i)=>{const r=typeof r2.item==='function'?union(quads.filter(q=>q.tag==='item#'+i&&q.z!==2.5&&q.r.y<240).map(q=>q.r)):near({x:it.x-cam,y:it.y,w:it.kind==='debris'?8:16,h:16});if(r)out.push({id:'item#'+i,sourceId:'item#'+i,kind:it.kind,...r});});  // pieces below the picture (a hammer row wrapped at 256) are not shown
+ s.enemies.forEach((physical,i)=>{const e=enemyPicture(physical),sprites=quads.filter(q=>q.tag==='enemy#'+i),r=union(sprites.map(q=>q.r));if(r)out.push({oamHidden:allHidden(sprites),id:'enemy#'+i,sourceId:'enemy#'+i,kind:e.kind,state:e.kind==='blooper'?(sprites.some(q=>q.chr===223)?'contracted':'extended'):e.kind==='lakitu'?(sprites.some(q=>q.chr===189)?'ducked':'normal'):e.kind==='piranha'?(sprites.some(q=>q.chr===229)?'open':'closed'):e.shell?(e.kind!=='beetle'&&(e.dead>0||e.walkerState===2||e.walkerState===3)||e.kind==='beetle'&&!e.dead&&(e.walkerState===2||e.walkerState===3)?'flipped':e.kind!=='beetle'&&sprites.some(q=>q.chr===109)?'shell-expanded':'shell'):e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.greenShellLaunchFrame!==undefined||e.defeat||(e.hbro?.state??0)&32||e.dead>0&&(e.kind==='cheep'||e.kind==='lakitu'||e.kind==='beetle'&&!e.squashed)?'flipped':e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',variant:spritePalette(sprites),...r});});
+ s.pictureItems.forEach((it,i)=>{const r=typeof r2.item==='function'?union(quads.filter(q=>q.tag==='item#'+i&&q.z!==2.5&&q.r.y<240).map(q=>q.r)):near({x:it.x-cam,y:it.y,w:it.kind==='debris'?8:16,h:16});if(r)out.push({id:'item#'+i,sourceId:'item#'+i,kind:it.kind,...r});});  // pieces below the picture (a hammer row wrapped at 256) are not shown
  (s.area.platforms??[]).forEach((pl,i)=>{const p=s.platformPicturePosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=nativePlatformArtworkYs(pl,context,p.y);
   ys.forEach((y,copy)=>{const cloud=platformMotionModel(pl,context)==='contact-cloud',r=cloud?near({x:p.x-cam,y,w:pl.width,h:8}):union(misc.filter(q=>(q.source??q.r).y===Math.floor(y)&&(q.source??q.r).w===8&&(q.source??q.r).h<=8&&(q.source??q.r).x>=Math.floor(p.x-cam)&&(q.source??q.r).x<Math.floor(p.x-cam)+pl.width).map(q=>q.r));if(r)out.push({id:`platform#${i}.${copy}`,kind:platformMotionModel(pl,context)==='contact-cloud'?'cloud':'lift',...r});});
  });
@@ -93,6 +93,8 @@ function objects2d(s:Simulation,all:{tag:string;r:Rect;source?:Rect;z:number;chr
   s.flagFireworks.forEach((f,i)=>{const r=exact(f.x-cam,f.y);if(r)out.push({id:'spark#'+i,kind:'spark',...r});});
  }
  (s.blockGraphics??[]).forEach(b=>nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera).forEach((p,i)=>{const q=quads.find(q=>q.tag==='misc'&&q.chr===p.tile&&(q.source??q.r).x===p.x&&(q.source??q.r).y===p.y);if(q)out.push({id:'block#'+b.slot+'.'+i,kind:b.metatile===196?'blockUsed':'blockBrick',...q.r});}));
+ // Broken brick chunks: one 8 px sprite each (nativeBrickChunkSprites), drawn as tile 0x84.
+ s.brickChunkPictures().forEach(c=>nativeBrickChunkSprites(c,s.random.frame,s.camera).forEach((p,k)=>{const q=quads.find(q=>q.tag==='misc'&&q.chr===0x84&&q.source?.x===p.x&&q.source?.y===p.y);if(q)out.push({id:`debris#${c.slot}.${k}`,kind:'debris',oamHidden:q.hidden,...q.r});}));
  const bubbleDraws=misc.filter(q=>q.chr===0x74);
  // Each bubble is the tile drawn at its own position (renderer.ts: x & 255, y + 1); one the OAM rows hide draws none.
  if(s.area.theme==='water')(s.bubbles??[]).forEach((b,i)=>{if(nativeBubbleShown(b,s.player.y,s.camera)){const at={x:(Math.floor(b.x)-Math.floor(s.camera))&255,y:Math.floor(b.y+1)},q=bubbleDraws.find(q=>q.source?.x===at.x&&q.source?.y===at.y);if(q){bubbleDraws.splice(bubbleDraws.indexOf(q),1);out.push({id:'bubble#'+i,sourceId:'bubble#'+i,kind:'bubble',oamHidden:q.hidden,...q.r});}}});
@@ -120,7 +122,7 @@ function objects3d(r3:Any,s:Simulation):(Obj&{root:THREE.Object3D})[]{
  const add=(kind:string,o:THREE.Object3D|undefined,i:number,sourceId?:string)=>{if(!o?.visible)return;const r=project(o);if(r)out.push({id:`${kind}@${i}`,kind,state:state(kind,o),variant:o.userData.nativePalette,root:o,sourceId,...r});};
  const e=r3.entities;
  if(e.mario)add('player',e.mario.root,0,'player');
- for(const [name,pool] of e.pools as Map<string,Any>)(pool.items as Any[]).forEach((a,i)=>{const owner=pool.owners.get(a),index=s.enemies.indexOf(owner),item=s.items.indexOf(owner);add(name,a.root,i,index>=0?'enemy#'+index:item>=0?'item#'+item:undefined);});
+ for(const [name,pool] of e.pools as Map<string,Any>)(pool.items as Any[]).forEach((a,i)=>{const owner=pool.owners.get(a),index=s.enemies.indexOf(owner),item=s.pictureItems.indexOf(owner);add(name,a.root,i,index>=0?'enemy#'+index:item>=0?'item#'+item:undefined);});
  for(const [key,list] of e.cache as Map<string,THREE.Mesh[]>)list.forEach((m,i)=>add(key,m,i));
  (e.coins as THREE.Mesh[]).forEach((m,i)=>add('coin',m,i));
  const bubbleIds=s.bubbles.map((bubble,i)=>({bubble,i})).filter(({bubble})=>nativeBubbleShown(bubble,s.player.y,s.camera)).map(({i})=>'bubble#'+i),fireIds=(s.area.firebars??[]).flatMap((bar,i)=>s.firebarCenters(bar).map((_,j)=>`fire#${i}.${j}`));

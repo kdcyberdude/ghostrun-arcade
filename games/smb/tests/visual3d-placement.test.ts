@@ -71,3 +71,8 @@ test('objects cut by the screen edge are compared by the part on screen',()=>{
  assert.deepEqual(compareFrame({...frame,objects2d:[p],objects3d:[{...p,id:'goomba@0',y:226,h:30}]}).issues,[]);
  assert.equal(compareFrame({...frame,objects2d:[p],objects3d:[{...p,id:'goomba@0',y:200,h:30}]}).issues[0]?.type,'object-offset');
 });
+
+test('a sliver of an object at the screen bottom is not compared for offset',()=>{
+ const p={id:'enemy#0',sourceId:'enemy#0',kind:'koopa',x:16,y:235,w:7,h:8};
+ assert.deepEqual(compareFrame({...frame,objects2d:[p],objects3d:[{...p,id:'koopa@0',x:12,y:229,w:27,h:30}]}).issues,[]);
+});

@@ -85,7 +85,8 @@ export function compareFrame(f:{theme:string;camera:number;tiles2d:Cell[];tiles3
   if(a[p.i].oamHidden)continue;
   if(onScreen(a[p.i])&&a[p.i].state&&b[p.j].state&&a[p.i].state!==b[p.j].state)issues.push({type:'object-state',what:a[p.i].id,at:`${a[p.i].state}->${b[p.j].state}`});
   if(onScreen(a[p.i])&&a[p.i].variant&&b[p.j].variant&&a[p.i].variant!==b[p.j].variant)issues.push({type:'object-variant',what:a[p.i].id,at:`${a[p.i].variant}->${b[p.j].variant}`});
-  if(onScreen(a[p.i])&&(Math.abs(p.dx)>TOLERANCE||Math.abs(p.dy)>TOLERANCE))issues.push({type:'object-offset',what:`${a[p.i].id}(${a[p.i].kind})`,at:`${Math.round(a[p.i].x)},${Math.round(a[p.i].y)}`,dx:Math.round(p.dx),dy:Math.round(p.dy)});}
+  // A sliver at the picture's edge (under 8 px shown) has no comparable centre or feet: the 3D model's cut differs from the sprite's tile rows.
+  if(onScreen(a[p.i])&&shown(a[p.i]).h>=8&&shown(a[p.i]).w>=8&&(Math.abs(p.dx)>TOLERANCE||Math.abs(p.dy)>TOLERANCE))issues.push({type:'object-offset',what:`${a[p.i].id}(${a[p.i].kind})`,at:`${Math.round(a[p.i].x)},${Math.round(a[p.i].y)}`,dx:Math.round(p.dx),dy:Math.round(p.dy)});}
  a.forEach((p,i)=>{if(onScreen(p)&&!ua.has(i)&&!p.oamHidden)issues.push({type:'object-missing-3d',what:`${p.id}(${p.kind})`,at:`${Math.round(p.x)},${Math.round(p.y)}`});});
  b.forEach((q,j)=>{if(onScreen(q)&&!ub.has(j))issues.push({type:'object-extra-3d',what:q.id,at:`${Math.round(q.x)},${Math.round(q.y)}`});});
  issues.push(...compareLooks(f.looks2d??[],f.looks3d??[]));
