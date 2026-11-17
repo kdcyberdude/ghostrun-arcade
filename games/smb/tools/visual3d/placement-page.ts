@@ -128,7 +128,7 @@ function poolColour(key:string,natural:number){const m=/@tint([\d.,]+)/.exec(key
 function looks(s:Simulation,r3:Any,tiles2d:{id:number;x:number;y:number;z:number;palette?:number}[],tiles3d:{name:string;x:number;y:number;key:string}[]){
  const cam=Math.floor(s.camera),outdoor=['ground','night','snow'].includes(s.area.theme),a:Look[]=[],b:Look[]=[];if(!tiles2d.length)return {a,b};
  if(outdoor){a.push({what:'sky',at:'',night:r2.renderer.getClearColor(new THREE.Color()).getHex()===0});b.push({what:'sky',at:'',night:r3.atmosphere.theme==='night'});}
- for(const t of tiles2d){const k=kindIn(t.id,s.area.theme);if(t.z===0&&t.palette!==undefined&&(k==='pipe'||k==='sidePipe'))a.push({what:'pipe',at:`${Math.round((t.x+cam)/16)},${Math.round(t.y/16)}`,rgb:nes(r2.palettes[t.palette][1])});}
+ for(const t of tiles2d){const k=kindIn(t.id,s.area.theme);if(t.z===0&&t.palette!==undefined&&(k==='pipe'||k==='sidePipe'))a.push({what:'pipe',at:`${Math.round((t.x+cam)/16)},${Math.round(t.y/16)}`,rgb:nes(r2.palettes[t.palette][(t.id>>6)*4+1])});}
  for(const [key,id] of s.blockBackground){const original=r2.originalTiles.get(key);if(id===196&&original!==undefined&&original>>6!==id>>6)a.push({what:'used',at:key,rgb:nes(r2.palettes[s.area.palette][(original>>6)*4+2])});}
  for(const t of tiles3d){const pipe=t.name.startsWith('pipe_');if(!pipe&&!t.name.startsWith('block_used'))continue;for(const [c,r] of cellsOf(t.name,t.x,t.y).cells)b.push({what:pipe?'pipe':'used',at:`${c},${r}`,rgb:poolColour(t.key,pipe?0x29:0x17)});}
  return {a,b};

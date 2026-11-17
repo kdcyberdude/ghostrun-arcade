@@ -72,6 +72,8 @@ const STEEL=[1,1.015,1.059];
 const nesLinear=(index:number)=>new THREE.Color().setRGB(...(nesPalette.colors[index].map(c=>c/255) as [number,number,number]),THREE.SRGBColorSpace).toArray();
 /** The 2D picture's scenery group (pipes, tree tops; group 0) and stone group (group 1) are white in castle, 3-1/3-2 night, snow and 6-3 night-snow palettes. */
 export const whiteGroup=(palette:number,group:number)=>nativePalettes[palette]?.[group*4+1]===0x30;
+/** Pipe colour of the 2D picture: the light colour of the tile's palette group (green models keep their own colour; NES white is light steel grey). */
+function pipeTint(palette:number,id:number){const c=nativePalettes[palette]?.[(id>>6)*4+1];return c===undefined||[9,10,11].includes(c&15)?undefined:c===0x30?STEEL:nesLinear(c);}
 /** Outdoor look of an area as its palette shows it: night = black backdrop, snow = white scenery (3-1/3-2 are snowy nights, 6-3 too). */
 export function areaLook(area:{theme:string;palette:number}){const outdoor=PHOTO_THEMES.has(area.theme);
  return {night:outdoor&&nativePalettes[area.palette]?.[0]===0x0f,snow:outdoor&&whiteGroup(area.palette,0)};}
@@ -94,7 +96,7 @@ export class World{
  }
  private pool(name:string,theme:string,palette=0,tint?:readonly number[]){
   const v=VARIANT[this.snowLook?'snow':theme]??'',want=v&&this.kit.has(name+v)?name+v:name;
-  tint??=this.whiteScenery&&(name.startsWith('pipe_')||name.startsWith('plat_tree_'))?STEEL:this.whiteStone&&name==='trunk'?this.stone:undefined;
+  tint??=this.whiteScenery&&name.startsWith('plat_tree_')?STEEL:this.whiteStone&&name==='trunk'?this.stone:undefined;
   const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join():'')+(cycles?'@palette'+palette:'');let p=this.pools.get(key);
   if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);if(tint){const rgb=tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
    if(cycles){const materials:THREE.MeshStandardMaterial[]=[];parts=parts.map(part=>{if(name==='block_question'&&parts.length>1&&!part.material.name.startsWith('M_Question'))return part;const material=part.material.clone() as THREE.MeshStandardMaterial;materials.push(material);return {...part,material};});this.paletteMaterials.push({palette,materials,coin:name==='coin_tile'});}
@@ -110,7 +112,7 @@ export class World{
  /** One map tile (grid or free piece) at (col,row); `key` is the bump cell ('' for none). */
  private tile(s:Simulation,id:number,col:number,row:number,key:string,palette=s.area.palette){
   const theme=s.area.theme,kind=kindIn(id,theme),age=key?s.bump.get(key):undefined,bump=age!==undefined&&!s.blockGraphics.some(b=>b.key===key)&&!s.usedBlockRehits.has(key)?Math.sin(age/16*Math.PI)*0.25:0;
-  const put=(name:string,x:number,y:number,dz=0)=>this.pool(name,theme,palette).add(this.m.makeTranslation(x,y,dz));
+  const pipe=kind==='pipe'||kind==='sidePipe'?pipeTint(palette,id):undefined,put=(name:string,x:number,y:number,dz=0)=>this.pool(name,theme,palette,pipe).add(this.m.makeTranslation(x,y,dz));
   switch(kind){
    case 'ground':{const above=kindOf(s.tiles.get(`${col},${row-1}`)??0);put(GRASS_THEMES.has(theme)&&!SOLIDISH.has(above)?'block_ground_top':'block_ground',col+0.5,14.5-row);break;}
    case 'wall':put('block_wall',col+0.5,14.5-row);break;
@@ -132,7 +134,7 @@ export class World{
     break;
    case 'sidePipe':
     // Upper-row tiles carry the 2-tall horizontal piece; rotated so the lip faces left (-X).
-    if(id===28||id===29||id===30||id===107)this.pool(id===28||id===107?'pipe_top':'pipe_body',theme).add(this.m.makeRotationZ(Math.PI/2).setPosition(col+0.5,14-row,0));
+    if(id===28||id===29||id===30||id===107)this.pool(id===28||id===107?'pipe_top':'pipe_body',theme,palette,pipe).add(this.m.makeRotationZ(Math.PI/2).setPosition(col+0.5,14-row,0));
     break;
    case 'coin':this.pool('coin_tile',theme,palette).add(this.m.makeRotationY(s.frame*0.06).setPosition(col+0.5,14.5-row,0));break;
    case 'piece':{const pc=PIECES[id];put(pc.model,col+0.5,14.5-row,pc.dz??0);
