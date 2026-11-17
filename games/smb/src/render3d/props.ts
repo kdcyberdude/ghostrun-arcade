@@ -108,6 +108,22 @@ function syncFirework(o:THREE.Object3D,t:number,index:number){
   if(c.name==='halo'){const a=Math.exp(-t*4);sp.scale.setScalar(1.2+2.6*Math.sqrt(t));sp.material.color.setRGB(hue[0]*3*a+1.5*Math.exp(-t*12),hue[1]*3*a+1.4*Math.exp(-t*12),hue[2]*3*a+1.2*Math.exp(-t*12));}
   if(c.name==='smoke'){const k=c.userData.k,ang=k*1.7+index;sp.position.set(Math.cos(ang)*0.45*t,Math.sin(ang)*0.3*t+0.35*t*t,-0.1-k*0.02);sp.scale.setScalar(0.7+1.4*t);sp.material.opacity=0.3*Math.sin(Math.PI*Math.min(1,t*1.15));}}
 }
+/** Mario's air bubble: a clear shell (nearly invisible face-on, a bright cyan rim toward its silhouette), a sharp window highlight up-left with a faint
+ * caustic opposite, and a gentle wobble in the vertex shader. Same centre as the 2D tile; the geometry stays a sphere, so its box is unchanged. */
+const BUBBLE_TIME={value:0};let bubbleMaterial:THREE.MeshStandardMaterial|undefined;
+function airBubble(){
+ if(bubbleMaterial)return bubbleMaterial;const m=bubbleMaterial=new THREE.MeshStandardMaterial({color:0xcfefff,roughness:0.04,metalness:0,transparent:true,depthWrite:false,envMapIntensity:1.6});
+ m.onBeforeCompile=sh=>{sh.uniforms.uBubbleTime=BUBBLE_TIME;
+  sh.vertexShader='uniform float uBubbleTime;\n'+sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
+ float bSeed=modelMatrix[3].x*2.3+modelMatrix[3].y*1.1,bw=sin(uBubbleTime+bSeed);
+ transformed*=vec3(1.0+0.07*bw,1.0-0.07*bw,1.0+0.03*bw);transformed+=normal*0.006*sin(3.0*atan(position.y,position.x)+uBubbleTime*1.7+bSeed);`);
+  sh.fragmentShader=sh.fragmentShader.replace('#include <opaque_fragment>',`vec3 bV=normalize(vViewPosition);float bFace=abs(dot(normal,bV)),bRim=pow(1.0-bFace,2.2);
+ float bHi=pow(max(dot(normal,normalize(vec3(-0.45,0.55,0.7))),0.0),90.0),bLo=pow(max(dot(normal,normalize(vec3(0.4,-0.55,0.73))),0.0),14.0);
+ outgoingLight=outgoingLight*0.55+vec3(0.55,0.85,1.0)*bRim*1.3+vec3(4.0)*bHi+vec3(0.5,0.8,1.0)*0.35*bLo;
+ diffuseColor.a=clamp(0.05+0.85*bRim+bHi+0.25*bLo,0.0,1.0);
+#include <opaque_fragment>`);};
+ m.customProgramCacheKey=()=>'air-bubble';return m;
+}
 const std=(color:number,rough=0.5,metal=0,extra:Partial<THREE.MeshStandardMaterialParameters>={})=>new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal,...extra});
 type Maker=()=>THREE.Object3D;
 export class Props{
@@ -117,7 +133,7 @@ export class Props{
  private take(key:string,make:Maker){let l=this.pools.get(key);if(!l)this.pools.set(key,l=[]);const i=this.used.get(key)??0;this.used.set(key,i+1);
   let o=l[i];if(!o){o=make();o.traverse(c=>{const m=c as THREE.Mesh;if(m.isMesh){m.castShadow=true;m.receiveShadow=true;}});this.group.add(o);l.push(o);}o.userData.nativeSprite={...this.draw};o.visible=true;return o;}
  private mats={lift:std(0xd8642a,0.4,0.6),liftEdge:std(0x8a3a18,0.4,0.7),cloud:std(0xffffff,0.95,0,{emissive:0x9ab4d8,emissiveIntensity:0.15}),
-  bubble:std(0x9cdcff,0.05,0,{transparent:true,opacity:0.65,depthWrite:false}),spring:std(0xd02a2a,0.3,0.7),springCap:std(0xe8e8f0,0.3,0.8),vine:std(0x2fa040,0.7),leaf:std(0x5ad04a,0.7),
+  spring:std(0xd02a2a,0.3,0.7),springCap:std(0xe8e8f0,0.3,0.8),vine:std(0x2fa040,0.7),leaf:std(0x5ad04a,0.7),
   toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
  /** Hide the castle retainer stand-in while the rest of the last castle picture is held. */
  hideRetainer(){for(const o of this.pools.get('retainer')??[])o.visible=false;}
@@ -134,8 +150,9 @@ export class Props{
    const x=Math.floor(s.camera)+p.x,planes=o.userData.clipPlanes as THREE.Plane[];o.position.set((x-col*8+8)/16,(232-p.y+row*8)/16,0);
    planes[0].constant=-x/16;planes[1].constant=(x+8)/16;planes[2].constant=-(232-p.y)/16;planes[3].constant=(240-p.y)/16;
   }
-  if(s.area.theme==='water')for(const [slot,b] of (s.bubbles??[]).entries())if(nativeBubbleShown(b,s.player.y,s.camera)){this.draw={offset:s.spriteShuffle.offsets[10+slot],background:false};const o=this.take('bubble',()=>new THREE.Mesh(new THREE.SphereGeometry(0.125,12,8),this.mats.bubble));
+  if(s.area.theme==='water')for(const [slot,b] of (s.bubbles??[]).entries())if(nativeBubbleShown(b,s.player.y,s.camera)){this.draw={offset:s.spriteShuffle.offsets[10+slot],background:false};const o=this.take('bubble',()=>new THREE.Mesh(new THREE.SphereGeometry(0.16,28,20),airBubble()));
    const x=Math.floor(s.camera)+((Math.floor(b.x)-Math.floor(s.camera))&255);o.position.set((x+4)/16,(235-b.y)/16,-0.15);o.castShadow=o.receiveShadow=false;}
+  BUBBLE_TIME.value=s.frame*0.3;
   for(const pl of s.area.platforms??[]){const pos=s.platformPicturePosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=nativePlatformArtworkYs(pl,context,pos.y);
    for(const y of ys){this.draw={offset:(s.spriteShuffle.offsets[(s.spriteObjectSlot(pl)??0)+1]+(y===pos.y?0:12))&255,background:false};const width=s.platformWidth(pl),w=width/16,cx=(pos.x+width/2)/16,cy=(236-y)/16;
    if(platformMotionModel(pl,{levelId:s.level.id,areaId:s.area.id})==='contact-cloud'){
