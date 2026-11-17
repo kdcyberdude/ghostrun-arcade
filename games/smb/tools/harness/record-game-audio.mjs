@@ -58,6 +58,8 @@ try{
   window.gameAudioCapture={commands,timestamps,states,inputFrames,initialization,initialState:structuredClone(window.marioDebug.snapshot()),AudioEngine,b64,async batch(){
    const end=Math.min(limit,frame+120);let first;
    while(frame<end){
+    // Video frame N is the picture before input frame N takes effect, as in the NES clips (a PPU frame shows the state the previous frame left).
+    {const timestamp=Math.round(frame*1e6/fps),duration=Math.round((frame+1)*1e6/fps)-timestamp;const v=new VideoFrame(canvas,{timestamp,duration});encoder.encode(v,{keyFrame:frame%120===0});v.close();}
     const mask=actions[run][0],queued=simulation.inputs[0],applied=((queued?names.reduce((m,name,i)=>m|(queued.has(name)?1<<i:0),0):mask)&63)|(mask&192);
     const reply=lagSet.has(frame)?window.mario.observe():window.mario.step(names.filter((_,i)=>mask&(1<<i)),1);inputFrames.push([offset+frame,mask,applied,effectiveMask]);
     if(transport==='direct-ppu'&&applied!==mask)throw Error('Direct transport changed a requested mask');
@@ -66,8 +68,7 @@ try{
     const transition=entrance&&window.marioDebug.simulation.level.id!==entrance.level;if(transition&&!levelTransition)levelTransition={reason:'observed level transition',inputFrame:frame,fromLevel:entrance.level,toLevel:window.marioDebug.simulation.level.id};const stopped=seenPlay&&['gameover','ending','title'].includes(phase); // like the NES clip, the next level's WORLD / lives screen is recorded until the inputs end
     if(frame===0)first=png.call(canvas,'image/png');
     if(frame%60===0||frame===frames-1||stopped)states.push({inputFrame:frame,state:structuredClone(window.marioDebug.snapshot())});
-    const timestamp=Math.round(frame*1e6/fps),duration=Math.round((frame+1)*1e6/fps)-timestamp;
-    const v=new VideoFrame(canvas,{timestamp,duration});encoder.encode(v,{keyFrame:frame%120===0});v.close();frame++;remaining--;
+    frame++;remaining--;
     if(!remaining&&frame<frames){run++;remaining=actions[run][1];}
     if(encoder.encodeQueueSize>=8)await encoder.flush();if(failure)throw Error(failure);
     if(stopped){limit=frame;terminal={phase,inputFrame:frame-1,...(levelTransition?{levelTransition}:{})};break;}
