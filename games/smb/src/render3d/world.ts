@@ -12,6 +12,7 @@ import {photoBackdrop} from './nature.js';
 import {nativeFlagSprites} from '../native-flag-picture.js';
 import {makeFlag,waveFlag} from './flag.js';
 import {liftRopeColumns,rotatedPalette} from '../view-rules.js';
+import {nativePlatformObject,platformMotionModel} from '../platform-motion.js';
 import graphics from '../../assets/graphics/graphics-manifest.json';
 import nesPalette from '../../assets/nes-rgb-palette.json';
 const nativePalettes=graphics.palette_observations.map(o=>o.palette);
@@ -144,13 +145,23 @@ export class World{
   // grid tile of its cell. Interactive pieces bump with their cell.
   const free=s.freeTiles.filter(p=>p.x>=(c0-1)*16&&p.x<(c1+1)*16&&!s.area.hiddenFreeTiles?.some(h=>h.x===p.x&&h.y===p.y&&h.id===p.id&&h.palette===p.palette));
   const pieces=[...(s.area.decorations??[]).filter(d=>d.x>=(c0-1)*16&&d.x<(c1+1)*16&&!SCENERY.has(kindIn(d.id,theme))),...free];
-  const pictureTiles=new Map(s.tiles);for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
+  const pictureTiles=new Map(s.tiles);
+  // As the 2D picture: a jumpspring writes blank (0x67) / half brick (0x68) into its two rows.
+  for(const spring of s.area.springs??[]){const col=Math.floor(spring.x/16),row=Math.floor((spring.y-8)/16);pictureTiles.set(`${col},${row-1}`,0x67);pictureTiles.set(`${col},${row}`,0x68);}
+  for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
+  // Balance lift ropes follow their lift as in the 2D picture: the rope column's map rope tiles are replaced by a rope from its top row down to the
+  // 8-pixel row above the lift (column of lift X + 24, X + 8 for 32-pixel lifts).
+  const ropes:{col:number;top:number;bottom:number}[]=[],context={levelId:s.level.id,areaId:s.area.id};
+  for(const platform of s.area.platforms??[]){if(nativePlatformObject(platform,context)?.kind!=='balance'||platformMotionModel(platform,context)!=='native-balance')continue;
+   const at={x:s.platformPosition(platform).x,y:s.ropeShown.get(platform)??s.platformPosition(platform).y},col=Math.floor((at.x+(s.platformWidth(platform)===32?8:24))/16),rows=[...pictureTiles].filter(([key,id])=>id===64&&key.startsWith(col+',')).map(([key])=>Number(key.split(',')[1]));if(!rows.length)continue;
+   for(const row of rows)pictureTiles.delete(`${col},${row}`);ropes.push({col,top:Math.min(...rows)*2,bottom:Math.floor((Math.floor(at.y)-1)/8)});}
   const covered=new Set(pieces.filter(p=>p.x%16===0&&p.y%16===0).map(p=>`${p.x/16},${p.y/16}`));
   for(let col=c0;col<=c1;col++)for(let row=2;row<15;row++){
    const key=`${col},${row}`,id=pictureTiles.get(key);if(id===undefined||covered.has(key))continue;
    this.tile(s,id,col,row,key);
   }
   for(const p of pieces)if(p.y>=32)this.tile(s,p.id,p.x/16,p.y/16,'interactive' in p&&p.interactive?`${p.x/16},${p.y/16}`:'',p.palette??s.area.palette);
+  for(const rope of ropes)if(rope.col>=c0&&rope.col<=c1)for(let row=Math.max(rope.top,4);row<=Math.min(rope.bottom,29);row++)this.pool('rope_v',theme).add(this.m.makeScale(1,0.5,1).setPosition(rope.col+0.5,15-(row+0.5)/2,PIECES[64].dz??0));
   // Castle lift ropes run the full column height (as in the 2D picture), not only where the map has rope tiles.
   if(this.ropeArea!==s.area){this.ropeArea=s.area;this.ropes=liftRopeColumns(s.area);}
   for(const col of this.ropes)if(col>=c0&&col<=c1)for(let row=2;row<15;row++)if(!s.tiles.has(`${col},${row}`))this.pool('rope_v',theme).add(this.m.makeTranslation(col+0.5,14.5-row,PIECES[64].dz??0));
