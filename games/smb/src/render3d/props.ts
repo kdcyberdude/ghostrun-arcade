@@ -29,6 +29,36 @@ function fireballGroup(){
  const group=new THREE.Group(),glow=new THREE.Sprite(fireGlow);glow.scale.set(0.85,0.85,1);
  group.add(new THREE.Mesh(new THREE.IcosahedronGeometry(0.21,4),fireBody),new THREE.Mesh(new THREE.SphereGeometry(0.09,16,12),fireCore),glow);return group;
 }
+/** Castle flag: a cloth pennant on a small pole, printed with the Nous Girl emblem (assets3d/flag, MIT, Nous Research). The cloth waves in the vertex
+ * shader from the simulation frame, so its geometry (and the bounding box the placement check measures) stays the flat 0.9 x 0.62 sheet. */
+const FLAG_TIME={value:0},FLAG_W=0.9,FLAG_H=0.62;
+let flagCloth:THREE.MeshPhysicalMaterial|undefined;
+function castleFlagGroup(){
+ if(!flagCloth){
+  const c=document.createElement('canvas');c.width=512;c.height=352;const g=c.getContext('2d')!;
+  const paint=(emblem?:HTMLImageElement)=>{g.fillStyle='#f4f1e8';g.fillRect(0,0,512,352);g.fillStyle='#c8202a';g.fillRect(0,0,512,14);g.fillRect(0,338,512,14);
+   if(emblem)g.drawImage(emblem,(512-300)/2+18,26,300,300);};
+  paint();const map=new THREE.CanvasTexture(c);map.colorSpace=THREE.SRGBColorSpace;map.anisotropy=8;
+  const img=new Image();img.onload=()=>{paint(img);map.needsUpdate=true;};img.src=import.meta.env.BASE_URL+'assets3d/flag/nous-girl.png';
+  flagCloth=new THREE.MeshPhysicalMaterial({map,roughness:0.85,sheen:1,sheenRoughness:0.6,sheenColor:new THREE.Color(0xffffff),side:THREE.DoubleSide});
+  // Travelling waves whose height grows away from the pole (uv.x = 0), plus a cross ripple; the normal is the analytic surface normal.
+  const wave=`uniform float uFlagTime;
+vec3 flagWave(vec2 q){float a=q.x;float z=(0.03+0.1*a)*a*sin(q.x*7.0-uFlagTime)+0.035*a*sin(q.y*5.0+q.x*4.0-uFlagTime*1.37);return vec3(-0.05*a*a*(1.0-cos(q.x*7.0-uFlagTime)),-0.06*a*a+0.02*a*sin(q.x*5.0-uFlagTime*0.8),z);}
+`;
+  flagCloth.onBeforeCompile=sh=>{sh.uniforms.uFlagTime=FLAG_TIME;
+   sh.vertexShader=wave+sh.vertexShader.replace('#include <beginnormal_vertex>',`vec3 fP=flagWave(uv),fU=vec3(${FLAG_W},0.0,0.0)+(flagWave(uv+vec2(0.01,0.0))-fP)*100.0,fV=vec3(0.0,${FLAG_H},0.0)+(flagWave(uv+vec2(0.0,0.01))-fP)*100.0;
+ vec3 objectNormal=normalize(cross(fU,fV));
+#ifdef USE_TANGENT
+ vec3 objectTangent=normalize(fU);
+#endif`).replace('#include <begin_vertex>','#include <begin_vertex>\n transformed+=fP;');};
+  flagCloth.customProgramCacheKey=()=>'castle-flag-cloth';
+ }
+ const group=new THREE.Group(),metal=std(0xd4d6da,0.3,0.9),gold=std(0xe8b830,0.25,1);
+ const cloth=new THREE.Mesh(new THREE.PlaneGeometry(FLAG_W,FLAG_H,28,14).translate(FLAG_W/2,0,0),flagCloth);cloth.position.set(-0.43,0.05,0);
+ const pole=new THREE.Mesh(new THREE.CylinderGeometry(0.025,0.03,0.78,10),metal);pole.position.set(-0.455,-0.01,0);
+ const knob=new THREE.Mesh(new THREE.SphereGeometry(0.05,14,10),gold);knob.position.set(-0.455,0.41,0);
+ group.add(cloth,pole,knob);return group;
+}
 const std=(color:number,rough=0.5,metal=0,extra:Partial<THREE.MeshStandardMaterialParameters>={})=>new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal,...extra});
 type Maker=()=>THREE.Object3D;
 export class Props{
@@ -39,7 +69,7 @@ export class Props{
   let o=l[i];if(!o){o=make();o.traverse(c=>{const m=c as THREE.Mesh;if(m.isMesh){m.castShadow=true;m.receiveShadow=true;}});this.group.add(o);l.push(o);}o.userData.nativeSprite={...this.draw};o.visible=true;return o;}
  private mats={lift:std(0xd8642a,0.4,0.6),liftEdge:std(0x8a3a18,0.4,0.7),cloud:std(0xffffff,0.95,0,{emissive:0x9ab4d8,emissiveIntensity:0.15}),
   bubble:std(0x9cdcff,0.05,0,{transparent:true,opacity:0.65,depthWrite:false}),spring:std(0xd02a2a,0.3,0.7),springCap:std(0xe8e8f0,0.3,0.8),vine:std(0x2fa040,0.7),leaf:std(0x5ad04a,0.7),
-  flag:std(0xf2f2ee,0.8,0,{side:THREE.DoubleSide}),star:std(0xff4a3a,0.5),spark:std(0xffffff,0.3,0,{emissive:0xffd070,emissiveIntensity:3}),toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
+  spark:std(0xffffff,0.3,0,{emissive:0xffd070,emissiveIntensity:3}),toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
  /** Hide the castle retainer stand-in while the rest of the last castle picture is held. */
  hideRetainer(){for(const o of this.pools.get('retainer')??[])o.visible=false;}
  sync(s:Simulation){
@@ -74,7 +104,7 @@ export class Props{
   for(const v of s.vines)if(v.height>0){this.draw={offset:s.spriteShuffle.offsets[(s.specialSlot5.vineSlots[0]??5)+1],background:true};const h=v.height/16,o=this.take('vine',()=>{const g=new THREE.Group();const st=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,1,8),this.mats.vine);st.position.y=0.5;g.add(st);
     for(let i=0;i<6;i++){const l=new THREE.Mesh(new THREE.SphereGeometry(0.16,10,8),this.mats.leaf);l.scale.set(1.4,0.5,0.8);l.position.set(i%2?0.14:-0.14,(i+0.5)/6,0);g.add(l);}return g;});
    o.position.set((v.x+4)/16,(240-v.baseY)/16,0);o.scale.set(1,h,1);}
-  const flag=s.castleFlag;if(flag){this.draw={offset:s.spriteShuffle.offsets[(s.nativeCastleFlag?.slot??5)+1],background:true};const o=this.take('castleFlag',()=>{const g=new THREE.Group();const c=new THREE.Mesh(new THREE.PlaneGeometry(0.9,0.7),this.mats.flag);g.add(c);const st=new THREE.Mesh(new THREE.SphereGeometry(0.15,12,8),this.mats.star);st.position.z=0.02;g.add(st);return g;});o.position.set((flag.x+8)/16,(232-flag.y)/16,-0.4);o.rotation.y=Math.sin(s.frame*0.1)*0.2;}
+  const flag=s.castleFlag;if(flag){this.draw={offset:s.spriteShuffle.offsets[(s.nativeCastleFlag?.slot??5)+1],background:true};const o=this.take('castleFlag',castleFlagGroup);o.position.set((flag.x+8)/16,(232-flag.y)/16,-0.4);FLAG_TIME.value=s.frame*0.16;}
   for(const fw of s.flagFireworks){this.draw={offset:s.spriteShuffle.offsets[(s.nativeFireworks.find(f=>f.index===fw.index)?.slot??0)+1],background:false};const o=this.take('spark',()=>new THREE.Mesh(new THREE.IcosahedronGeometry(0.5,2),this.mats.spark));o.position.set((fw.x+8)/16,(232-fw.y)/16,0.5);o.scale.setScalar(0.4+0.4*(fw.phase??0));}
   }
   const picture=s.castleRetainer;if(picture?.graphicsVisible&&!this.kit.has(s.level.id==='8-4'?'princess':'toad')){this.draw={offset:s.spriteShuffle.offsets[picture.slot+1],background:false};
