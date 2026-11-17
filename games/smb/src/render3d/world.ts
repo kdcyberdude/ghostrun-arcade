@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import type {Simulation} from '../simulation.js';
 import {Kit,type Part} from './kit.js';
-import {procBlock,procPipe,procCoin,procDeco,cannonPedestal,LIQUIDS} from './proc.js';
+import {procBlock,procPipe,procCoin,procDeco,cannonPedestal,LIQUIDS,lavaTime} from './proc.js';
 import {kindOf,kindIn,isPipeTop,isPipeBody,PIECES} from './semantics.js';
 import {analyseArea} from './layout.js';
 import {buildStatics,disposeGroup} from './scenery.js';
@@ -208,7 +208,7 @@ export class World{
   for(const p of this.pools.values())p.end();
   for(const entry of this.paletteMaterials){const index=rotatedPalette(nativePalettes,entry.palette,s.colorDrawRotations),[r,g,b]=nesPalette.colors[nativePalettes[index][13]];for(const material of entry.materials){material.color.setRGB(r/255,g/255,b/255,THREE.SRGBColorSpace);if(entry.coin)material.emissive.copy(material.color);}}
   this.light(camPx,s.frame);
-  LIQUIDS.lava.emissiveIntensity=0.85+0.2*Math.sin(s.frame*0.07);if(LIQUIDS.lava.map){LIQUIDS.lava.map.offset.set(s.frame*0.0011,s.frame*0.0004);}LIQUIDS.water.opacity=0.62+0.05*Math.sin(s.frame*0.05);
+  lavaTime.value=s.frame/60;LIQUIDS.water.opacity=0.62+0.05*Math.sin(s.frame*0.05);
   const flag=s.area.exit?.kind==='flag'?nativeFlagSprites(s.specialSlot5,undefined,camPx):[];this.flag.visible=flag.length>0;
   this.flag.userData.nativeSprite={offset:s.spriteShuffle.offsets[6],background:false};
   if(flag.length){this.flag.position.set((camPx+flag[0].x+8)/16,(232-flag[0].y)/16,0.05);waveFlag(this.flag,s.random.frame);}

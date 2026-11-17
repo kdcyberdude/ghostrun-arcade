@@ -38,30 +38,62 @@ export function coinGeometry(){
  coinGeo=mergeGeometries(parts)!;return coinGeo;
 }
 const water=new THREE.MeshPhysicalMaterial({color:0x1a7fc0,roughness:0.04,metalness:0,clearcoat:1,clearcoatRoughness:0.02,transparent:true,opacity:0.62,depthWrite:false,envMapIntensity:1.6});
-/** Tileable molten-rock texture: dark crust broken by glowing orange-yellow veins (periodic value noise, deterministic). */
-function lavaTexture(){
- const N=128,c=document.createElement('canvas');c.width=c.height=N;const ctx=c.getContext('2d')!,img=ctx.createImageData(N,N);
- const hash=(x:number,y:number,o:number)=>{const h=Math.sin(x*127.1+y*311.7+o*74.7)*43758.5453;return h-Math.floor(h);};
- const noise=(x:number,y:number,p:number,o:number)=>{const xi=Math.floor(x),yi=Math.floor(y),fx=x-xi,fy=y-yi,sx=fx*fx*(3-2*fx),sy=fy*fy*(3-2*fy);
-  const v=(a:number,b:number)=>hash(((xi+a)%p+p)%p,((yi+b)%p+p)%p,o);
-  return (v(0,0)*(1-sx)+v(1,0)*sx)*(1-sy)+(v(0,1)*(1-sx)+v(1,1)*sx)*sy;};
- for(let y=0;y<N;y++)for(let x=0;x<N;x++){
-  let n=0,amp=0.5;for(let k=0,p=4;k<4;k++,p*=2,amp/=2)n+=amp*noise(x/N*p,y/N*p,p,k);
-  const vein=Math.pow(1-Math.min(1,Math.abs(n-0.5)*5),3);           // bright where the fbm crosses its midline
-  const heat=Math.min(1,0.18+vein*0.95),i=(y*N+x)*4;
-  img.data[i]=Math.round(60+195*heat);img.data[i+1]=Math.round(8+180*Math.pow(heat,2.2));img.data[i+2]=Math.round(2+50*Math.pow(heat,5));img.data[i+3]=255;}
- ctx.putImageData(img,0,0);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.colorSpace=THREE.SRGBColorSpace;return t;
-}
-const lavaMap=typeof document==='undefined'?null:lavaTexture();
-const lava=new THREE.MeshStandardMaterial({color:0xffffff,map:lavaMap,emissive:0xffffff,emissiveMap:lavaMap,emissiveIntensity:0.9,roughness:0.85});
+/** Molten lava, all in the shader from world position and time (seamless across tiles, deterministic from the frame): a domain-warped flow of dark,
+ * cooling basalt crust plates drifting over the melt, broken by bright cracks and open molten pools whose black-body glow goes above 1 (HDR, caught by
+ * the bloom pass). The surface heaves gently (top faces only, mean height unchanged) and the crust is bump-shaded. `lavaTime` is set per frame. */
+export const lavaTime={value:0};
+const LAVA_NOISE=`
+uniform float uLavaT;varying vec3 vLavaW;varying vec3 vLavaN;
+float lavaHash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+float lavaNoise(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.0-2.0*f);
+ return mix(mix(lavaHash(i),lavaHash(i+vec2(1,0)),u.x),mix(lavaHash(i+vec2(0,1)),lavaHash(i+vec2(1,1)),u.x),u.y);}
+float lavaFbm(vec2 p){float v=0.0,a=0.5;mat2 r=mat2(0.8,0.6,-0.6,0.8);for(int i=0;i<5;i++){v+=a*lavaNoise(p);p=r*p*2.03+11.7;a*=0.5;}return v;}
+`;
+const lava=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffffff,roughness:0.9,metalness:0});
+lava.onBeforeCompile=sh=>{
+ sh.uniforms.uLavaT=lavaTime;
+ sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nuniform float uLavaT;varying vec3 vLavaW;varying vec3 vLavaN;').replace('#include <begin_vertex>',`#include <begin_vertex>
+ vec4 lw=vec4(transformed,1.0);
+ #ifdef USE_INSTANCING
+ lw=instanceMatrix*lw;
+ #endif
+ lw=modelMatrix*lw;
+ // The surface (the 0.2 top of a liquid_top tile) heaves with slow crossing swells; the mean height stays where it is.
+ if(position.y>0.15&&position.y<0.3){float d=0.03*sin(lw.x*2.1+lw.z*1.3+uLavaT*0.9)+0.02*sin(lw.x*3.7-lw.z*2.3-uLavaT*1.4);transformed.y+=d;lw.y+=d;}
+ vLavaW=lw.xyz;vLavaN=normal;`);
+ sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>'+LAVA_NOISE).replace('#include <map_fragment>',`
+ bool lavaTop=vLavaN.y>0.5;
+ vec2 lp=lavaTop?vLavaW.xz*vec2(1.0,1.4):vLavaW.xy*vec2(1.0,1.6);
+ float lt=uLavaT;
+ vec2 lq=lp*0.9+vec2(lt*0.045,lt*0.012);
+ vec2 lwarp=vec2(lavaFbm(lq+vec2(0.0,lt*0.03)),lavaFbm(lq+vec2(5.2,1.3)-lt*0.025));
+ float ln=lavaFbm(lq+1.7*lwarp);
+ float lr=1.0-abs(lavaFbm(lq*2.1+2.2*lwarp+3.1)*2.0-1.0);
+ float lcrack=pow(lr,22.0);
+ float lpool=smoothstep(0.6,0.74,ln);
+ float lheat=clamp(max(lpool,lcrack*1.1),0.0,1.0);
+ lheat*=0.85+0.15*sin(lt*1.7+ln*14.0);
+ float lgrain=lavaFbm(lp*7.0);
+ vec3 lcrust=mix(vec3(0.012,0.01,0.01),vec3(0.06,0.04,0.032),lgrain)*(0.8+0.4*ln);
+ diffuseColor=vec4(mix(lcrust,vec3(0.95,0.32,0.04),lheat),opacity);`).replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
+ roughnessFactor=mix(0.92,0.35,lheat);`).replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
+ {// Bump: crust plates stand above the melt, with a fine rocky grain.
+  float lh=(1.0-lheat)*0.7+lgrain*0.25;vec3 dpx=dFdx(-vViewPosition),dpy=dFdy(-vViewPosition);float dhx=dFdx(lh),dhy=dFdy(lh);
+  vec3 r1=cross(dpy,normal),r2=cross(normal,dpx);float det=dot(dpx,r1);vec3 g=sign(det)*(dhx*r1+dhy*r2);normal=normalize(abs(det)*normal-0.06*g);}`).replace('#include <emissivemap_fragment>',`
+ // Black-body ramp: dull red under the crust, orange in the cracks, yellow-white at the hottest.
+ vec3 lglow=vec3(0.07,0.008,0.0)*(0.3+ln)*(1.0-lheat);
+ lglow+=mix(vec3(0.9,0.09,0.0),vec3(2.2,0.6,0.05),smoothstep(0.3,0.85,lheat))*smoothstep(0.1,0.55,lheat);
+ lglow+=vec3(2.2,1.4,0.4)*smoothstep(0.8,1.0,lheat);
+ totalEmissiveRadiance=lglow;`);
+};
+lava.customProgramCacheKey=()=>'lava-v2';
 /** Liquids are shared materials so the renderer can animate them once per frame. */
 export const LIQUIDS={water,lava};
 const ROPE=std(0x7a5a32,0.9);  // hemp brown: reads against both snow and night skies
 export function procDeco(name:string,theme:string):Part[]|undefined{
  const liquid=theme==='castle'?lava:water;
  if(name==='liquid'){const g=new THREE.BoxGeometry(1,1,1.6);return [{geometry:g,material:liquid,matrix:I()}];}
- if(name==='liquid_top'){const g=new THREE.BoxGeometry(1,0.7,1.6,8,1,4);g.translate(0,-0.15,0);
-  if(liquid===lava){const pos=g.attributes.position;for(let i=0;i<pos.count;i++)if(pos.getY(i)>0.19)pos.setY(i,0.2+0.05*Math.sin((pos.getX(i)+0.5)*Math.PI*2)*Math.cos(pos.getZ(i)*2.2));g.computeVertexNormals();}  // tile-periodic ripple, seamless across neighbours
+ if(name==='liquid_top'){const g=new THREE.BoxGeometry(1,0.7,1.6,liquid===lava?12:8,1,liquid===lava?16:4);g.translate(0,-0.15,0);  // lava: dense top so the shader's swell is smooth
   return [{geometry:g,material:liquid,matrix:I()}];}
  if(name==='rope_v'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);return [{geometry:g,material:ROPE,matrix:I()}];}
  if(name==='rope_h'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);g.rotateZ(Math.PI/2);return [{geometry:g,material:ROPE,matrix:I()}];}
