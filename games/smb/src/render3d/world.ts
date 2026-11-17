@@ -26,7 +26,7 @@ class Pool{
  end(){for(const m of this.meshes){m.count=this.n;m.instanceMatrix.needsUpdate=true;}}
 }
 /** Per-block variety for stone/soil/brick pieces, so walls of identical blocks stop looking copy-pasted: from the block's TILE cell (stable while a brick
- * bumps) each instance gets a mirror of its texture in u and/or v and a small brightness/warmth shift. UV mirroring is safe for the normal map: without
+ * bumps) each instance gets a mirror of its texture in u and/or v; the colour stays the same, as every block of one kind is one colour in 2D. UV mirroring is safe for the normal map: without
  * a tangent attribute three.js derives the tangent frame from the UV derivatives. Render-only; one shader variant per material. */
 const VARY=/^(block_(ground|brick|hard|wall)|castle_(brick|crenel|dark))/;
 function vary(material:THREE.Material){
@@ -55,8 +55,6 @@ function vary(material:THREE.Material){
 #else
  vVary=vec3(0.5);
 #endif`);
-  sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nvarying vec3 vVary;').replace('#include <map_fragment>',
-   '#include <map_fragment>\n diffuseColor.rgb*=(0.9+0.18*vVary.z)*mix(vec3(0.97,0.99,1.04),vec3(1.05,0.99,0.92),fract(vVary.x*7.0+vVary.y*3.0));');
  };
  m.customProgramCacheKey=()=>'vary';m.needsUpdate=true;
 }
@@ -100,7 +98,10 @@ export class World{
   const v=VARIANT[this.snowLook?'snow':theme]??'',want=v&&this.kit.has(name+v)?name+v:name;
   tint??=this.whiteScenery&&name.startsWith('plat_tree_')?STEEL:this.whiteStone&&name==='trunk'?this.stone:undefined;
   const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join()+(this.nightLook?'@moon':''):'')+(cycles?'@palette'+palette:'');let p=this.pools.get(key);
-  if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);if(tint){const rgb=this.nightLook?tint.map((v,i)=>v*MOON_BALANCE[i]):tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
+  if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);
+   // Castle bricks and battlements are the same brick picture as brick blocks in 2D: draw them with the brick block's colour texture (both share its normal/roughness maps).
+   const brick=(want==='castle_brick'||want==='castle_crenel')?this.kit.parts('block_brick')?.[0]?.material as THREE.MeshStandardMaterial|undefined:undefined;
+   if(brick?.map)parts=parts.map(q=>{const m=(q.material as THREE.MeshStandardMaterial).clone();m.map=brick.map;m.color.copy(brick.color);return {...q,material:m};});if(tint){const rgb=this.nightLook?tint.map((v,i)=>v*MOON_BALANCE[i]):tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}if(tint){const rgb=this.nightLook?tint.map((v,i)=>v*MOON_BALANCE[i]):tint;parts=parts.map(q=>({...q,material:paletteTint(q.material,rgb)}));}
    if(cycles){const materials:THREE.MeshStandardMaterial[]=[];parts=parts.map(part=>{if(name==='block_question'&&parts.length>1&&!part.material.name.startsWith('M_Question'))return part;const material=part.material.clone() as THREE.MeshStandardMaterial;materials.push(material);return {...part,material};});this.paletteMaterials.push({palette,materials,coin:name==='coin_tile'});}
    p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,VARY.test(want));this.pools.set(key,p);}
   return p;
