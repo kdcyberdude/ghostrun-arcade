@@ -32,10 +32,13 @@ export async function setup(){
  r2=new GameRenderer(document.createElement('canvas'));await r2.load();
 }
 /** Everything the 2D renderer draws this frame: tiles (cell + id) and sprite quads tagged with the object being drawn. */
-function draw2d(s:Simulation){
+type Draw2d={quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[];draws:{id:number;tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[];tiles:{id:number;x:number;y:number;z:number;tag:string}[]};
+function draw2d(s:Simulation):Draw2d{
  const quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[]=[],draws:{id:number;tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[]=[],tiles:{id:number;x:number;y:number;z:number;tag:string}[]=[];let tag='misc',drawId=0;
  const q0=r2.quad,t0=r2.tile,p0=r2.player,e0=r2.enemy,i0=r2.item,c0=r2.castlePriorityTile,txt=r2.text,hud=r2.hud,cr=r2.castleRescue;
  r2.quad=function(name:string,rect:number[],x:number,y:number,z=0,fx=false,fy=false,sprite=true){
+  // Balance lift ropes are drawn as background tile quads (162/163) per 8-pixel row: recorded as rope cells (tile 64) like map rope tiles.
+  if(!sprite&&name.startsWith('background-tiles-')&&rect[0]===16&&rect[1]===80)tiles.push({id:64,x:Math.floor(x),y:Math.floor(y/16)*16,z:0,tag});
   const id=drawId++,q={tag,r:opaqueRect(name,rect,x,y,fx,fy)??{x:Math.floor(x),y:Math.floor(y),w:0,h:0},source:{x:Math.floor(x),y:Math.floor(y),w:rect[2],h:rect[3]},z,sourceName:name,chr:name.startsWith('sprite-tiles-')?rect[1]/8*16+rect[0]/8:undefined};q.r.draws=[id];if(sprite&&tag!=='skip'&&q.r.w&&q.r.h)quads.push(q);
   const before=this.scene.children.length,result=q0.call(this,name,rect,x,y,z,fx,fy,sprite);if(this.scene.children.length>before)draws.push({id,tag,r:q.r,z,sprite,mesh:this.scene.children.at(-1)});return result;
  };
@@ -48,8 +51,14 @@ function draw2d(s:Simulation){
  r2.hud=function(...a:Any[]){const t=tag;tag='skip';const r=hud.apply(this,a);tag=t;return r;};
  r2.castleRescue=function(...a:Any[]){tag='retainer';const r=cr.apply(this,a);tag='misc';return r;};
  try{r2.render(s);}finally{for(const k of ['quad','tile','player','enemy','item','castlePriorityTile','text','hud','castleRescue'])delete r2[k];}
- return {quads,tiles,draws};
+ // After a castle victory the 2D renderer re-shows its held castle picture without drawing (retainer removed): audit that held picture.
+ if(!quads.length&&!tiles.length&&r2.castleHeld&&s.phase==='intro'&&lastDraw)return {...lastDraw,quads:lastDraw.quads.filter(q=>q.tag!=='retainer')};
+ // A block write-back keeps the cell's original palette group and is then drawn as four background tile quads, not a metatile: record its cell.
+ const cam=Math.floor(s.camera);
+ if(tiles.length)for(const [key,id] of s.blockBackground){const original=r2.originalTiles.get(key);if(id===null||original===undefined||original>>6===id>>6)continue;const [col,row]=key.split(',').map(Number);tiles.push({id,x:col*16-cam,y:row*16,z:0,tag:'misc'});}
+ return lastDraw={quads,tiles,draws};
 }
+let lastDraw:Draw2d|undefined;
 /** Sim objects with the rect the 2D renderer drew for each (union of its quads). */
 function objects2d(s:Simulation,quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[]):Obj[]{
  const cam=Math.floor(s.camera),out:Obj[]=[],misc=quads.filter(q=>q.tag==='misc'&&q.z!==2.5);  // z 2.5 = score popups (HUD text in 3D)
@@ -112,7 +121,8 @@ function cells3d(r3:Any,s:Simulation){
 export function audit():FrameReport{
  const win=window as Any,s:Simulation=win.marioDebug.simulation,r3=win.render3d,cam=Math.floor(s.camera);
  const {quads,tiles}=draw2d(s);
- const t2:Cell[]=tiles.filter(t=>t.z!==2).map(t=>({col:Math.round((t.x+cam)/16),row:Math.round(t.y/16),id:t.id}));
+ // z 1: late scroll-split strips (single shifted scanlines of the NES picture, a raster artifact the 3D view does not reproduce).
+ const t2:Cell[]=tiles.filter(t=>t.z!==2&&t.z!==1).map(t=>({col:Math.round((t.x+cam)/16),row:Math.round(t.y/16),id:t.id}));
  // Debris is a tile-sheet sprite in 2D (z 2): it is an object, not terrain.
  const debris=tiles.filter(t=>t.z===2);
  const o2=objects2d(s,quads.concat(debris.map(t=>({tag:t.tag,r:{x:t.x,y:t.y,w:8,h:8},z:2}))));
