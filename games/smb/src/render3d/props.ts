@@ -8,6 +8,27 @@ import {nativeBubbleShown} from '../view-rules.js';
 import {nativeBlockSprites} from '../native-block-picture.js';
 import {procBlock} from './proc.js';
 import {RoundedBoxGeometry} from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+/** Firebar fireball: a white-hot core in a rippling body that shades yellow -> orange -> red toward its edge, with a soft additive glow (HDR colours,
+ * so the bloom pass gives the halo). The body is symmetric around the ball's centre, so its placement matches the 2D sprite. */
+const FIRE_TIME={value:0};
+const fireBody=new THREE.MeshBasicMaterial({color:0xffffff,transparent:true});
+fireBody.onBeforeCompile=sh=>{sh.uniforms.uTime=FIRE_TIME;
+ sh.vertexShader='uniform float uTime;\nvarying float vRim;\n'+sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
+ transformed+=normal*(0.03*sin(position.x*20.0+uTime)+0.03*sin(position.y*24.0-uTime*1.3)+0.025*sin(position.z*28.0+uTime*1.7));`).replace('#include <project_vertex>',`#include <project_vertex>
+ vRim=1.0-abs(dot(normalize(normalMatrix*normal),normalize(-mvPosition.xyz)));`);
+ sh.fragmentShader='varying float vRim;\n'+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+ vec3 fire=mix(vec3(1.6,1.05,0.3),vec3(1.35,0.38,0.04),smoothstep(0.0,0.5,vRim));fire=mix(fire,vec3(0.5,0.06,0.0),smoothstep(0.5,1.0,vRim));
+ diffuseColor=vec4(fire,diffuseColor.a*(1.0-smoothstep(0.5,1.0,vRim)*0.85));`);};
+fireBody.customProgramCacheKey=()=>'firebar-body';
+const fireCore=new THREE.MeshBasicMaterial({color:new THREE.Color().setRGB(1.8,1.4,0.6,THREE.LinearSRGBColorSpace)});
+let fireGlow:THREE.SpriteMaterial|undefined;
+function fireballGroup(){
+ if(!fireGlow){const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d')!,r=g.createRadialGradient(32,32,0,32,32,32);
+  r.addColorStop(0,'rgba(255,255,255,1)');r.addColorStop(0.35,'rgba(255,255,255,0.45)');r.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=r;g.fillRect(0,0,64,64);
+  fireGlow=new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),color:0xff6a1a,blending:THREE.AdditiveBlending,transparent:true,depthWrite:false,opacity:0.35});}
+ const group=new THREE.Group(),glow=new THREE.Sprite(fireGlow);glow.scale.set(0.85,0.85,1);
+ group.add(new THREE.Mesh(new THREE.IcosahedronGeometry(0.21,4),fireBody),new THREE.Mesh(new THREE.SphereGeometry(0.09,16,12),fireCore),glow);return group;
+}
 const std=(color:number,rough=0.5,metal=0,extra:Partial<THREE.MeshStandardMaterialParameters>={})=>new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal,...extra});
 type Maker=()=>THREE.Object3D;
 export class Props{
@@ -17,7 +38,7 @@ export class Props{
  private take(key:string,make:Maker){let l=this.pools.get(key);if(!l)this.pools.set(key,l=[]);const i=this.used.get(key)??0;this.used.set(key,i+1);
   let o=l[i];if(!o){o=make();o.traverse(c=>{const m=c as THREE.Mesh;if(m.isMesh){m.castShadow=true;m.receiveShadow=true;}});this.group.add(o);l.push(o);}o.userData.nativeSprite={...this.draw};o.visible=true;return o;}
  private mats={lift:std(0xd8642a,0.4,0.6),liftEdge:std(0x8a3a18,0.4,0.7),cloud:std(0xffffff,0.95,0,{emissive:0x9ab4d8,emissiveIntensity:0.15}),
-  bubble:std(0x9cdcff,0.05,0,{transparent:true,opacity:0.65,depthWrite:false}),fire:std(0xffa020,0.4,0,{emissive:0xff5a00,emissiveIntensity:2.2}),spring:std(0xd02a2a,0.3,0.7),springCap:std(0xe8e8f0,0.3,0.8),vine:std(0x2fa040,0.7),leaf:std(0x5ad04a,0.7),
+  bubble:std(0x9cdcff,0.05,0,{transparent:true,opacity:0.65,depthWrite:false}),spring:std(0xd02a2a,0.3,0.7),springCap:std(0xe8e8f0,0.3,0.8),vine:std(0x2fa040,0.7),leaf:std(0x5ad04a,0.7),
   flag:std(0xf2f2ee,0.8,0,{side:THREE.DoubleSide}),star:std(0xff4a3a,0.5),spark:std(0xffffff,0.3,0,{emissive:0xffd070,emissiveIntensity:3}),toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
  /** Hide the castle retainer stand-in while the rest of the last castle picture is held. */
  hideRetainer(){for(const o of this.pools.get('retainer')??[])o.visible=false;}
@@ -44,7 +65,8 @@ export class Props{
      for(let x=-w/2+0.25;x<w/2;x+=0.5){const r=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.05,12),this.mats.liftEdge);r.rotation.x=Math.PI/2;r.position.set(x,0,0.51);g.add(r);}return g;});o.position.set(cx,cy,0);}
    }
   }
-  for(const bar of s.area.firebars??[])for(const [part,{x,y}] of s.firebarCenters(bar).entries()){this.draw={offset:(s.spriteShuffle.offsets[(s.spriteObjectSlot(bar)??0)+1]+4*part)&255,background:false};const o=this.take('fire',()=>new THREE.Mesh(new THREE.SphereGeometry(0.24,16,12),this.mats.fire));o.position.set(x/16,(240-y-(bar.visualOffsetY??0))/16,0.1);o.scale.setScalar(1);o.rotation.z=nativeFireballPhase(s.random.frame)*Math.PI/2;}
+  for(const bar of s.area.firebars??[])for(const [part,{x,y}] of s.firebarCenters(bar).entries()){this.draw={offset:(s.spriteShuffle.offsets[(s.spriteObjectSlot(bar)??0)+1]+4*part)&255,background:false};const o=this.take('fire',()=>fireballGroup());o.position.set(x/16,(240-y-(bar.visualOffsetY??0))/16,0.1);o.scale.setScalar(1);o.rotation.set(part*1.3,part*0.7,nativeFireballPhase(s.random.frame)*Math.PI/2);}
+  FIRE_TIME.value=s.frame*0.35;
   for(const sp of s.area.springs??[]){this.draw={offset:s.spriteShuffle.offsets[(s.spriteObjectSlot(sp)??0)+1],background:false};const c=s.springCompression(sp),h=(24-c*8)/16,o=this.take('spring',()=>{const g=new THREE.Group();
     const coil=new THREE.Mesh(new THREE.TorusGeometry(0.34,0.06,8,24),this.mats.spring);for(let i=0;i<4;i++){const k=coil.clone();k.rotation.x=Math.PI/2;k.position.y=0.2+i*0.3;k.name='coil';g.add(k);}
     const top=new THREE.Mesh(new THREE.CylinderGeometry(0.46,0.46,0.12,24),this.mats.springCap);top.name='top';top.position.y=1.44;g.add(top);const bot=top.clone();bot.position.y=0.06;g.add(bot);return g;});
