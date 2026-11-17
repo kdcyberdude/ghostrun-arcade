@@ -13,6 +13,7 @@ test('last drawn free tile replaces the covered grid category',()=>{
 test('underground doorway overlay removes its covered wall',()=>{
  const r=compareFrame({...frame,theme:'underground',tiles2d:[{col:4,row:8,id:84},{col:4,row:8,id:70}]});
  assert.deepEqual(r.issues,[]);
+ assert.equal(category2d(72,'underground'),undefined);
 });
 test('edge object matches before visibility filtering',()=>{
  const r=compareFrame({...frame,objects2d:[{id:'fire#0',kind:'fire',x:8,y:100,w:8,h:8}],objects3d:[{id:'fire@0',kind:'fire',x:7,y:100,w:8,h:8}]});

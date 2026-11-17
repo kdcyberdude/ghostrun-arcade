@@ -133,8 +133,8 @@ export class World{
     const original=key&&s.blockBackground.get(key)===id?this.originalTiles.get(key):undefined,group=original!==undefined&&original>>6!==id>>6?original>>6:undefined;
     this.pool('block_used',theme,palette,group===undefined?undefined:nesLinear(nativePalettes[palette][group*4+2])).add(this.m.makeTranslation(col+0.5,14.5-row+bump,0));break;}
    case 'hard':put('block_hard',col+0.5,14.5-row);break;
-   // Tile 70 is the castle's dark doorway; over an underground wall (4-2) the 2D picture shows the open cave there, so nothing is drawn.
-   case 'castle':if(id===70&&theme==='underground')break;put(id===71?'castle_brick':id===69||id===73?'castle_crenel':'castle_dark',col+0.5,14.5-row);break;
+   // Tiles 70 / 72 are the castle's dark doorway / window; in an underground area (4-2) the 2D picture shows the open black cave there, so nothing is drawn.
+   case 'castle':if((id===70||id===72)&&theme==='underground')break;put(id===71?'castle_brick':id===69||id===73?'castle_crenel':'castle_dark',col+0.5,14.5-row);break;
    case 'pipe':
     // Per tile, so shafts without a cap (pipes reaching the ceiling) are drawn too.
     if(isPipeTop(id))put('pipe_top',col+1,14.5-row);else if(isPipeBody(id))put('pipe_body',col+1,14.5-row);

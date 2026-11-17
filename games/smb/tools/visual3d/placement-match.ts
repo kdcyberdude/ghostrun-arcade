@@ -17,7 +17,7 @@ const IGNORE_TILE=new Set(['empty','void','hill','bush','cloud','tree','flagBall
 /** 2D metatile id -> category drawn by the 3D world. */
 export function category2d(id:number,theme:string):string|undefined{
  if(id===104)return 'brick';
- if(id===70&&theme==='underground')return undefined;
+ if((id===70||id===72)&&theme==='underground')return undefined;
  const k=kindIn(id,theme);if(IGNORE_TILE.has(k))return undefined;
  if(k==='sidePipe')return 'pipe';if(k==='flagPole'||id===64||id===65)return 'rope';if(k==='piece')return 'piece:'+id;
  return k;
