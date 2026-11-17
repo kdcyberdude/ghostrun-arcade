@@ -427,7 +427,7 @@ export class Simulation {
   this.items=[];this.popups=[];this.bump.clear();this.enemyBumpCells.clear();this.blockBounceTimer=0;this.usedBlockRehits.clear();if(!preserveTimer){this.time=this.level.time;this.timerFrames=0;}
   if(!deferTerrain)for(let column=this.parserColumnX-384;column<this.parserColumnX;column+=16){this.createNativeCannons(column);this.createNativePipeObjects(column);}
   if(!deferTerrain)for(const spring of this.area.springs??[])if(spring.nativeColumn!==undefined&&spring.nativeColumn>=this.parserColumnX-384&&spring.nativeColumn<this.parserColumnX)this.createNativeSpring(spring);
-  this.emit(this.areaMusic());
+  if(this.phase!=='intro')this.emit(this.areaMusic());  // the WORLD x-y screen is silent: the music starts with play (startPlayAfterIntro)
  }
  private emit(id:string,queued=true){this.events.push(id);const q=SOUND_QUEUE_WRITES[id];if(q&&queued)this.soundQueues[q[0]]=q[1];if(id==='sfx_jump_small'||id==='sfx_jump_big'||id==='sfx_swim')this.timerBank.set(0x02,0x20,this.frame);} // InitJS starts JumpSwimTimer $0782 at $20 with every jump and swim stroke
  private areaMusic(){const area=this.area;return `music_${area.entryVine?'cloud':area.theme==='underground'?'underground':area.theme==='water'?'water':area.theme==='castle'?'castle':'ground'}${this.time<=100?'_hurry':''}`;}
