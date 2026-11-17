@@ -2406,7 +2406,6 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    else this.advanceFlag();
    return;
   }
-  if(this.phaseFrame===this.flagAwardFrame+1)this.emit('event_level_clear');
   const walkFrom=this.flagAwardFrame+rules.flipFrames+1;
   if(this.phaseFrame<walkFrom){p.x=exit.x-1+(p.x-Math.floor(p.x));p.climbing=true;p.facing=-1;p.vy=0;this.playerControlRow(true);this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);this.motor.tickTimers();return;} /* the NMI counts SideCollisionTimer and RunningTimer down on the slide and flip rows too (8f90807f RAM 19634, 17a2baf0 RAM 1533) */ // the flip clears Player_Y_Speed, so the climb frame holds (e255e4c1 row 6215: $9F 0, $070D 0)
   p.climbing=false;p.facing=1;this.playerControlRow();
@@ -2434,7 +2433,7 @@ this.specialSlot5.claimVine(x*16,y*16);this.items=this.items.filter(i=>i.nativeP
    if(this.wallSpeed!==undefined){this.motor.contact(1,true);p.vx=this.motor.speed/4096;this.flagInside=true;this.playerBackgroundPriority=true;}
    if(this.wallSpeed!==undefined||this.wallBackOut)this.sideCollisionTimer=16;
    // PlayerEndLevel clears ScrollLock after AutoControlPlayer, at native y >= $ae; this frame still used the lock.
-   if(this.flagScrollLocked&&Math.floor(p.y)>=0xae+32){this.flagScrollLocked=false;this.soundQueues[3]=32;}
+   if(this.flagScrollLocked&&Math.floor(p.y)>=0xae+32){this.flagScrollLocked=false;this.soundQueues[3]=32;this.emit('event_level_clear');} // EndOfLevelMusic starts here, not at the flag award
   }
   if(this.nativeCastleFlag?.task===5){this.nextLevel();return;}
   this.runNativeFlagActors();
