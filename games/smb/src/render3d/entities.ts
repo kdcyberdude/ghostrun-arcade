@@ -13,6 +13,8 @@ import {Kit} from './kit.js';
 import {ActorPool,Actor,turnToward,yawFor} from './actors.js';
 import {coinGeometry,GOLD} from './proc.js';
 import nesPalette from '../../assets/nes-rgb-palette.json';
+import graphics from '../../assets/graphics/graphics-manifest.json';
+import {nativeBrickChunkSprites} from '../native-block-picture.js';
 const NES_COLORS=nesPalette.colors.map(([r,g,b])=>new THREE.Color().setRGB(r/255,g/255,b/255,THREE.SRGBColorSpace));
 /** Sprite palette the 2D renderer draws a kind with when the enemy carries none (renderer.ts enemy()). */
 export const BASE_PALETTE:Partial<Record<EnemyKind,string>>={goomba:'0f-0f-36-17',koopa:'0f-1a-30-27',redKoopa:'0f-16-30-27',paratroopa:'0f-1a-30-27',beetle:'0f-1a-30-27',spiny:'0f-16-30-27',piranha:'0f-1a-30-27',blooper:'0f-00-30-10',cheep:'0f-16-30-27',lakitu:'0f-1a-30-27',hammerBro:'0f-1a-30-27',podoboo:'0f-16-30-27'};
@@ -72,7 +74,8 @@ export class Entities{
   const advanced=s.frame!==this.lastFrame;
   this.player(s,advanced);
   for(const e of s.enemies)if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&enemyPicture(e).dead<90)this.enemy(e,s);
-  if(s.spritePictureOwner==='engine')for(const i of s.items)if(itemShown(i))this.item(i,s);
+  if(s.spritePictureOwner==='engine')for(const i of s.pictureItems)if(itemShown(i)&&s.itemPictureShown(i))this.item(i,s);  // as the 2D renderer: a flame from the frame after it appears, a collected item's last picture
+  if(s.spritePictureOwner==='engine')this.chunks(s);
   this.retainer(s);
   for(const p of this.pools.values())p.end();
   this.lastFrame=s.frame;
@@ -108,6 +111,7 @@ export class Entities{
   const dyingFrame=p.dead&&s.phase==='dying'?s.phaseFrame:p.dead?DEATH_FREEZE+60:0;
   if(!loop&&clip==='death')t=Math.min(1,dyingFrame/DEATH_FREEZE)*a.duration('death');
   a.pose(clip,t,s.frame,loop);
+  if(clip==='swim')a.root.position.y+=2/16;  // the swim pose's trailing legs reach below the feet, where the 2D swim cells leave blank rows (2-2 / 7-2 swims: 3D feet 1-5 px low)
   if(clip==='swim'){const kick=(appearance.swimKick===undefined?0.75:0.25)*a.duration('swim');for(const bone of ['ThighL','ShinL','FootL','ThighR','ShinR','FootR'])a.poseRotation(bone,'swim',kick);}
   const facing=appearance.facing;
   const target=p.dead?0:clip==='climb'||clip==='slide'?yawFor(facing)*0.4+(facing<0?Math.PI*0.6:0):yawFor(facing);
@@ -150,7 +154,11 @@ export class Entities{
    // Koopa's alternate CHR adds one row to the lower rim (14→15px); Beetle's two cells have identical artwork.
    const rim=e.kind==='beetle'?0:nativeShellPhase(e.shellTimer??0,s.random.frame,timersStopped||Boolean(e.dead)||Boolean(e.movingShell));
    a.root.scale.y=(14+rim)/14;a.root.position.y-=rim/16;
-   if(shellPicture)a.root.position.y=feet+(e.kind==='beetle'?12:13)/16;  // flipped about its feet: lifted by its height, a Beetle's shell one line lower (y+9 vs y+8)
+   // Upside-down shell pictures (renderer.ts): a defeated or killed walker, a defeated shell, a shell launched by a mid-air stomp (state 2/3) and a dead
+   // Koopa shell. Flipped about its feet, then lifted so its bottom row sits where the 2D picture's does (1 / 2 / 3 lines below the feet).
+   const koopa=e.kind!=='beetle',stomped=e.shell&&!e.dead&&(e.walkerState===2||e.walkerState===3),dead=e.shell&&koopa&&e.dead>0;
+   const below=shellPicture||stomped||dead&&e.defeat?(koopa?1:2):dead?3:undefined;
+   if(below!==undefined){a.root.rotation.z=Math.PI;a.root.position.y=feet+(14-below)/16;}
    a.root.rotation.y=e.movingShell?e.age*0.5:0;a.pose('idle',0,s.frame);return;}
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
   a.root.rotation.y=e.kind==='piranha'?0.35:this.yaw(physical,yawFor(e.kind==='hammerBro'?(e.nativeDir??-1):facing),s.frame); // Piranha: head upright with its jaw seam toward the camera, as the 2D sprite
@@ -170,6 +178,15 @@ export class Entities{
  }
  /** Hide the castle retainer while the rest of the last castle picture is held. */
  hideRetainer(){for(const name of ['toad','princess']){const p=this.pools.get(name);if(p){p.begin();p.end();}}}
+ /** Broken brick chunks where the 2D renderer draws them (nativeBrickChunkSprites: one 8 px piece per sprite, sprite palette 3). */
+ private chunks(s:Simulation){
+  const cam=Math.floor(s.camera),color=NES_COLORS[graphics.palette_observations[s.area.palette].palette[31]];
+  for(const c of s.brickChunkPictures())for(const p of nativeBrickChunkSprites(c,s.random.frame,s.camera)){
+   this.draw={offset:s.spriteShuffle.offsets[8+c.slot],background:false};
+   const m=this.take('debris',()=>new THREE.Mesh(new THREE.BoxGeometry(0.42,0.42,0.42),std(0xb8521e)));(m.material as THREE.MeshStandardMaterial).color.copy(color);
+   m.position.set((cam+p.x+4)/16,(236-p.y)/16,0.2);const t=s.random.frame;m.rotation.set(t*0.3,t*0.2,t*0.25);
+  }
+ }
  private retainer(s:Simulation){
   const picture=s.castleRetainer;if(!picture?.graphicsVisible)return;
   this.draw={offset:s.spriteShuffle.offsets[picture.slot+1],background:false};
@@ -184,7 +201,7 @@ export class Entities{
   // A hammer's two rows wrap at 256 separately (renderer.ts): placed by its lower row, so a hammer just above the screen shows at the top as in 2D.
   const pictureY=i.nativeHammer?((Math.floor(i.y)+8)&255)-7:i.nativeCoin?(Math.floor(i.y)&255)+1:i.nativePowerState!==undefined?Math.floor(i.y)+1:i.y;
   const cx=(pictureX+8)/16,cy=(232-pictureY)/16;this.box(i.x/16,(240-i.y-16)/16,i.x/16+1,(240-i.y)/16,0xffaa00);
-  if(i.kind==='debris'){const m=this.take('debris',()=>new THREE.Mesh(new THREE.BoxGeometry(0.42,0.42,0.42),std(0xb8521e)));m.position.set((i.x+4)/16,(236-i.y)/16,0.2);m.rotation.set(i.age*0.3,i.age*0.2,i.age*0.25);return;}
+  if(i.kind==='debris')return;  // drawn from the native brick chunk picture (chunks())
   if(i.kind==='coin'&&(i.nativeCoin?.state??0)>=2)return; // native misc slot now draws its floatey 200, in Hud
   if(i.kind==='coin'){  // block coin: the same minted gold coin as the tile coins, spinning fast while it pops
    let m=this.coins[this.coinsUsed++];if(!m){m=new THREE.Mesh(coinGeometry(),GOLD);m.castShadow=true;this.group.add(m);this.coins.push(m);}
@@ -194,7 +211,8 @@ export class Entities{
   this.mark(a.root);a.root.position.set(cx,(240-pictureY-16)/16,0);
   if(i.kind==='hammer')a.root.position.y=cy;
   if(i.kind==='flame')a.root.position.set((pictureX+12)/16,(236-pictureY)/16,0);
-  if(i.kind==='fireball'||i.kind==='star'){a.root.position.set((i.x+4)/16,(232-i.y)/16-0.5,0);}
+  if(i.kind==='fireball')a.root.position.set((i.x+4)/16,(232-i.y)/16-0.5,0);
+  if(i.kind==='star')a.root.position.set(cx,(239-pictureY)/16-0.5,0);  // the 2D Star is 16 px wide, drawn one line below a native power-up's y
   a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?(i.nativeHammer?(nativeHammerPicturePhase(i.nativeHammer,s.random.frame,s.frame,s.nativeTimersStopped)):Math.floor(i.age/4)%4)/4*a.duration('spin'):i.kind==='fireball'?nativeFireballPhase(s.random.frame)/4*a.duration('spin'):i.age/60,s.frame);
  }
 }
