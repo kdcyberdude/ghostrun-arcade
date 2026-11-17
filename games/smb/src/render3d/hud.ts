@@ -6,6 +6,16 @@ import {NES_W,NES_H} from './coords.js';
 import {nativeFlagSprites} from '../native-flag-picture.js';
 import {nativeScreenPicture} from '../native-screen-picture.js';
 import {trackedLoad} from './loading.js';
+import {floateyOwnSlot} from '../native-oam-picture.js';
+import popupAssemblies from '../../data/popup-assemblies.json';
+type Popup=Simulation['popups'][number];
+/** Whether the 2D picture draws this floatey number (renderer.ts popups): not on the frame a lower slot's floatey ran before the shell reached it,
+ * and not when a later slot's number takes the same OAM entries. */
+function floateyShown(s:Simulation,popup:Popup){
+ if(!popupAssemblies.records.some(record=>record.value===popup.value)||popup.hiddenFrame===s.frame)return false;
+ const offset=(q:Popup)=>q.victim?.enemySlot===undefined?undefined:s.spriteShuffle.offsets[floateyOwnSlot(q.victim)?q.victim.enemySlot+1:8+s.blockControl],mine=offset(popup);
+ return mine===undefined||!s.popups.some(q=>q!==popup&&q.hiddenFrame!==s.frame&&q.victim?.enemySlot!==undefined&&q.victim.enemySlot>popup.victim!.enemySlot!&&offset(q)===mine);
+}
 export class Hud{
  private canvas=document.createElement('canvas');private ctx:CanvasRenderingContext2D;private texture:THREE.CanvasTexture;private material:THREE.MeshBasicMaterial;
  readonly scene=new THREE.Scene();readonly camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);private last='';
@@ -49,7 +59,7 @@ export class Hud{
   if(world)for(const o of [...s.area.overlays??[],...(s.warpZoneActive?s.area.warpZone?.overlays??[]:[])])if(o.x-cam>-200&&o.x-cam<256)lines.push(`O|${o.text}|${o.x-cam}|${o.y}`);
   if(world&&s.phase==='flag'&&exit?.kind==='flag'&&s.flagBonus>0){const score=nativeFlagSprites(s.specialSlot5,{y:s.flagNumber.y,score:s.flagBonus},cam)[3];if(score)lines.push(`P|${s.flagBonus}|${score.x}|${score.y}`);}
   if(world&&s.spritePictureOwner==='engine')for(const item of s.items)if(item.kind==='coin'&&(item.nativeCoin?.state??0)>=2)lines.push(`P|200|${Math.floor(item.x-cam)&255}|${(Math.floor(item.y)&255)+1}`);
-  this.popups=[];if((hudOn||s.phase==='flag')&&s.spritePictureOwner==='engine')s.popups.forEach((pu,index)=>{const x=Math.round(pu.x),y=Math.round(pu.y);lines.push(`P|${pu.value}|${x}|${y}`);this.popups.push({index,value:pu.value,x,y});});
+  this.popups=[];if((hudOn||s.phase==='flag')&&s.spritePictureOwner==='engine')s.popups.forEach((pu,index)=>{if(!floateyShown(s,pu))return;const x=Math.round(pu.x),y=Math.round(pu.y);lines.push(`P|${pu.value}|${x}|${y}`);this.popups.push({index,value:pu.value,x,y});});
   const key=lines.join('~');if(key===this.last)return key!=='';this.last=key;
   const c=this.ctx;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.canvas.width,this.canvas.height);c.setTransform(this.scale,0,0,this.scale,0,0);
   for(const l of lines){const [t,...a]=l.split('|');
