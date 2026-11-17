@@ -87,6 +87,34 @@ lava.onBeforeCompile=sh=>{
  totalEmissiveRadiance=lglow;`);
 };
 lava.customProgramCacheKey=()=>'lava-v2';
+/** Water surface seen from below (water areas' top row): a thin, rippling, see-through sheet whose underside shimmers with moving caustic light and
+ * whose front edge is the bright wave line of the 2D picture. Waves move with `lavaTime` (frame-deterministic) and keep the sheet's mean height. */
+const waterTop=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffffff,roughness:0.06,metalness:0,transparent:true,depthWrite:false,envMapIntensity:1.5});
+waterTop.onBeforeCompile=sh=>{
+ sh.uniforms.uLavaT=lavaTime;
+ sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nuniform float uLavaT;varying vec3 vWaterW;varying vec3 vWaterN;varying float vWaterY;').replace('#include <begin_vertex>',`#include <begin_vertex>
+ vec4 ww=vec4(transformed,1.0);
+ #ifdef USE_INSTANCING
+ ww=instanceMatrix*ww;
+ #endif
+ ww=modelMatrix*ww;
+ float wave=0.05*sin(ww.x*2.4-uLavaT*1.5+ww.z*0.6)+0.025*sin(ww.x*5.1+ww.z*1.9+uLavaT*2.2)+0.015*sin(ww.z*3.3-uLavaT*1.2+ww.x*1.3);
+ transformed.y+=wave;ww.y+=wave;vWaterW=ww.xyz;vWaterN=normal;vWaterY=position.y;`);
+ sh.fragmentShader=sh.fragmentShader.replace('#include <common>',`#include <common>
+uniform float uLavaT;varying vec3 vWaterW;varying vec3 vWaterN;varying float vWaterY;
+// Tileable caustic network (iterated warp, after the classic "water caustic" pattern).
+float caustic(vec2 p,float t){vec2 i=p;float c=1.0;const float inten=0.005;
+ for(int n=0;n<4;n++){float tt=t*(1.0-(3.5/float(n+1)));i=p+vec2(cos(tt-i.x)+sin(tt+i.y),sin(tt-i.y)+cos(tt+i.x));c+=1.0/length(vec2(p.x/(sin(i.x+tt)/inten),p.y/(cos(i.y+tt)/inten)));}
+ c/=4.0;c=1.17-pow(c,1.4);return clamp(pow(abs(c),8.0),0.0,1.0);}`).replace('#include <map_fragment>',`
+ bool wFront=abs(vWaterN.z)>0.5;
+ vec2 wp=wFront?vec2(vWaterW.x,vWaterW.y*3.0):vWaterW.xz;
+ float wc=caustic(wp*1.6+vec2(0.0,uLavaT*0.05),uLavaT*0.35+23.0);
+ // Front edge: the surface line, brightest at the crest.
+ float wCrest=wFront?smoothstep(0.1,0.2,vWaterY):0.0;
+ diffuseColor=vec4(mix(vec3(0.2,0.55,0.85),vec3(0.9,0.98,1.0),max(wc*0.85,wCrest)),wFront?0.55+0.4*wCrest:0.42+0.45*wc);`).replace('#include <emissivemap_fragment>',`
+ totalEmissiveRadiance=vec3(0.35,0.7,0.95)*(0.18+1.1*wc)+vec3(0.9,1.0,1.0)*1.3*wCrest;`);
+};
+waterTop.customProgramCacheKey=()=>'water-top';
 /** Liquids are shared materials so the renderer can animate them once per frame. */
 export const LIQUIDS={water,lava};
 /** Laid steel wire rope: six helical strands (a periodic canvas pattern, 1 lay per 0.25 tile along the cable) as colour and bump. */
@@ -133,6 +161,8 @@ function pulleyBlock(side:1|-1):Part[]{
 export function procDeco(name:string,theme:string):Part[]|undefined{
  const liquid=theme==='castle'?lava:water;
  if(name==='liquid'){const g=new THREE.BoxGeometry(1,1,1.6);return [{geometry:g,material:liquid,matrix:I()}];}
+ // Water areas' surface: a thin wavy sheet from 0.08 to the 0.2 surface (the old 0.7-tall slab read as a wall); pools elsewhere (3-1) and lava keep their slab.
+ if(name==='liquid_top'&&theme==='water'){const g=new THREE.BoxGeometry(1,0.12,1.6,16,1,8);g.translate(0,0.14,0);return [{geometry:g,material:waterTop,matrix:I()}];}
  if(name==='liquid_top'){const g=new THREE.BoxGeometry(1,0.7,1.6,liquid===lava?12:8,1,liquid===lava?16:4);g.translate(0,-0.15,0);  // lava: dense top so the shader's swell is smooth
   return [{geometry:g,material:liquid,matrix:I()}];}
  if(name==='rope_v'){const g=new THREE.CylinderGeometry(CABLE,CABLE,1,10);return [{geometry:g,material:ROPE,matrix:I()}];}

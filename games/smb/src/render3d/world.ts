@@ -102,7 +102,7 @@ export class World{
  private pool(name:string,theme:string,palette=0,tint?:readonly number[],repeatX=1,shape?:string){
   const v=VARIANT[this.snowLook?'snow':theme]??'',want=v&&this.kit.has(name+v)?name+v:name;
   tint??=this.whiteScenery&&name.startsWith('plat_tree_')?STEEL:this.whiteStone&&name==='trunk'?this.stone:undefined;
-  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want)+(tint?'@tint'+tint.join()+(this.nightLook?'@moon':''):'')+(cycles?'@palette'+palette:'')+(repeatX>1?'@x'+repeatX:'')+(shape?'@'+shape:'');let p=this.pools.get(key);
+  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':theme==='water'?'sea':'water'):want)+(tint?'@tint'+tint.join()+(this.nightLook?'@moon':''):'')+(cycles?'@palette'+palette:'')+(repeatX>1?'@x'+repeatX:'')+(shape?'@'+shape:'');let p=this.pools.get(key);
   const model=shape&&!shape.startsWith('cannon')?(v&&this.kit.has(shape+v)?shape+v:shape):want;
   if(!p){let parts=shape?.startsWith('cannon')?cannonPedestal(this.kit.parts('cannon_top'),shape==='cannon'):this.kit.parts(model)??this.fallback(shape??name,theme);
    // The barrel model leaves 0.08 tile open above and below: stretched to the full tile so it meets the pedestal under it (its mouth keeps its shape).
