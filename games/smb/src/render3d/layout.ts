@@ -6,15 +6,17 @@ export interface Layout{clusters:Cluster[];castle?:{col0:number;row0:number;col1
 export function analyseArea(area:Area):Layout{
  const grid=new Map<string,number>();for(const [c,r,id] of area.tiles)grid.set(`${c},${r}`,id);
  const clusters:Cluster[]=[],seen=new Set<string>();
+ const plain=(id:number|undefined)=>id===undefined?undefined:kindIn(id,area.theme);
+ // Bush end pieces (2 / 4) also round off clouds (6-3 rows 2 and 7): next to a cloud tile they belong to the cloud, not a bush in the sky.
+ const kindAt=(c:number,r:number):Kind|undefined=>{const k=plain(grid.get(`${c},${r}`));return k==='bush'&&[[-1,0],[1,0],[-1,1],[0,1],[1,1]].some(([dc,dr])=>plain(grid.get(`${c+dc},${r+dr}`))==='cloud')?'cloud':k;};
  const kindOf=(id:number)=>kindIn(id,area.theme);
- const family=(id:number|undefined):Kind|undefined=>id===undefined?undefined:kindOf(id);
- for(const [c,r,id] of area.tiles){
-  const kind=kindOf(id);if(kind!=='hill'&&kind!=='bush'&&kind!=='cloud'&&kind!=='tree')continue;
+ for(const [c,r] of area.tiles){
+  const kind=kindAt(c,r)!;if(kind!=='hill'&&kind!=='bush'&&kind!=='cloud'&&kind!=='tree')continue;
   const key=`${c},${r}`;if(seen.has(key))continue;
   const stack=[[c,r]],cluster:Cluster={kind,col0:c,row0:r,col1:c,row1:r,ids:[]};seen.add(key);
   while(stack.length){const [cc,rr]=stack.pop()!;const tid=grid.get(`${cc},${rr}`)!;cluster.ids.push(tid);
    cluster.col0=Math.min(cluster.col0,cc);cluster.col1=Math.max(cluster.col1,cc);cluster.row0=Math.min(cluster.row0,rr);cluster.row1=Math.max(cluster.row1,rr);
-   for(let dc=-1;dc<=1;dc++)for(let dr=-1;dr<=1;dr++){const k=`${cc+dc},${rr+dr}`;if(seen.has(k))continue;if(family(grid.get(k))!==kind)continue;seen.add(k);stack.push([cc+dc,rr+dr]);}}
+   for(let dc=-1;dc<=1;dc++)for(let dr=-1;dr<=1;dr++){const k=`${cc+dc},${rr+dr}`;if(seen.has(k))continue;if(kindAt(cc+dc,rr+dr)!==kind)continue;seen.add(k);stack.push([cc+dc,rr+dr]);}}
   clusters.push(cluster);
  }
  const layout:Layout={clusters};
