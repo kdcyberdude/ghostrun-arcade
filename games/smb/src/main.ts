@@ -53,7 +53,7 @@ if('setResolution' in view){
  current={res:fixedScale?LADDER.find(p=>heights[p]<=view.scale*240)??'0.5K':autoRes?'1K':askedRes,tier:autoTier?'high':askedTier as Tier};
  if(autoRes||autoTier){
   const levels=ladder(),saved=learned(),fitsDefault=[...levels].reverse().find(l=>cost(l)<=28)??levels[0];  // start at the best level a typical laptop GPU holds at 35+ fps
-  current=levels.find(l=>l.res===saved.res&&l.tier===saved.tier)??fitsDefault;
+  current=levels.find(l=>l.res===saved.res&&l.tier===saved.tier)??fitsDefault??current;
  }
  for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))picker.addEventListener('change',()=>setResolution(picker.value));
  for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality'))picker.addEventListener('change',()=>setQuality(picker.value as Tier|'auto'));
