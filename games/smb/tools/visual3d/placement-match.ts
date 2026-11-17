@@ -5,7 +5,7 @@
 import {kindIn} from '../../src/render3d/semantics.js';
 export interface Obj{id:string;sourceId?:string;kind:string;x:number;y:number;w:number;h:number;state?:string}
 export interface Cell{col:number;row:number;id:number}
-export interface Issue{type:'tile-missing-3d'|'tile-extra-3d'|'tile-overlap-3d'|'object-missing-3d'|'object-extra-3d'|'object-offset'|'object-state';what:string;at:string;dx?:number;dy?:number}
+export interface Issue{type:'tile-missing-3d'|'tile-extra-3d'|'tile-overlap-3d'|'look-3d'|'object-missing-3d'|'object-extra-3d'|'object-offset'|'object-state';what:string;at:string;dx?:number;dy?:number}
 export interface FrameReport{issues:Issue[];counts:{tiles2d:number;tiles3d:number;objects2d:number;objects3d:number}}
 /** Offsets above this many NES pixels (centre x or feet y) are reported. */
 export const TOLERANCE=6;
@@ -41,7 +41,24 @@ export function family(kind:string):string{
 }
 /** Objects whose centre is on screen (both renderers draw edge objects partly; perspective widens 3D boxes near the edges). */
 const onScreen=(o:Obj)=>{const cx=o.x+o.w/2,cy=o.y+o.h/2;return cx>=12&&cx<244&&cy>=32&&cy<240;};
-export function compareFrame(f:{theme:string;camera:number;tiles2d:Cell[];tiles3d:{name:string;x:number;y:number}[];objects2d:Obj[];objects3d:Obj[];pieceModel?:(c:string)=>string}):FrameReport{
+/** Colour family of an sRGB colour (0-255): grey for unsaturated colours, else a hue bucket. Palette identity is compared by family, since lit 3D
+ * materials never reproduce the NES colour exactly. */
+export function colourFamily([r,g,b]:readonly number[]):string{
+ const max=Math.max(r,g,b),min=Math.min(r,g,b);if(max-min<0.2*Math.max(max,1)||max<24)return 'grey';
+ const h=(max===r?((g-b)/(max-min)+6)%6:max===g?(b-r)/(max-min)+2:(r-g)/(max-min)+4)*60;
+ return h<45?'orange':h<70?'yellow':h<170?'green':h<260?'blue':h<330?'purple':'orange';
+}
+/** One palette-identity sample: what (e.g. 'pipe', 'used') drawn at a cell in a colour (sRGB 0-255), or the sky's night/day. */
+export interface Look{what:string;at:string;rgb?:readonly number[];night?:boolean}
+/** Looks present in both pictures are compared: the sky's night/day and each sampled cell's colour family. */
+export function compareLooks(a:Look[],b:Look[]):Issue[]{
+ const issues:Issue[]=[],have=new Map(b.map(l=>[l.what+'@'+l.at,l]));
+ for(const l of a){const m=have.get(l.what+'@'+l.at);if(!m)continue;
+  if(l.night!==undefined&&m.night!==undefined&&l.night!==m.night)issues.push({type:'look-3d',what:l.what,at:`${l.night?'night':'day'}->${m.night?'night':'day'}`});
+  if(l.rgb&&m.rgb&&colourFamily(l.rgb)!==colourFamily(m.rgb))issues.push({type:'look-3d',what:l.what,at:`${l.at} ${colourFamily(l.rgb)}->${colourFamily(m.rgb)}`});}
+ return issues;
+}
+export function compareFrame(f:{theme:string;camera:number;tiles2d:Cell[];tiles3d:{name:string;x:number;y:number}[];objects2d:Obj[];objects3d:Obj[];pieceModel?:(c:string)=>string;looks2d?:Look[];looks3d?:Look[]}):FrameReport{
  const issues:Issue[]=[],norm=f.pieceModel??((c:string)=>c);
  // Only fully visible columns are compared (both renderers cull differently at the edges).
  const c0=Math.ceil(f.camera/16),c1=Math.floor((f.camera+240)/16),inView=(c:number,r:number)=>c>=c0&&c<=c1&&r>=2&&r<=14;
@@ -65,5 +82,6 @@ export function compareFrame(f:{theme:string;camera:number;tiles2d:Cell[];tiles3
   if(onScreen(a[p.i])&&(Math.abs(p.dx)>TOLERANCE||Math.abs(p.dy)>TOLERANCE))issues.push({type:'object-offset',what:`${a[p.i].id}(${a[p.i].kind})`,at:`${Math.round(a[p.i].x)},${Math.round(a[p.i].y)}`,dx:Math.round(p.dx),dy:Math.round(p.dy)});}
  a.forEach((p,i)=>{if(onScreen(p)&&!ua.has(i))issues.push({type:'object-missing-3d',what:`${p.id}(${p.kind})`,at:`${Math.round(p.x)},${Math.round(p.y)}`});});
  b.forEach((q,j)=>{if(onScreen(q)&&!ub.has(j))issues.push({type:'object-extra-3d',what:q.id,at:`${Math.round(q.x)},${Math.round(q.y)}`});});
+ issues.push(...compareLooks(f.looks2d??[],f.looks3d??[]));
  return {issues,counts:{tiles2d:f.tiles2d.length,tiles3d:f.tiles3d.length,objects2d:a.length,objects3d:b.length}};
 }

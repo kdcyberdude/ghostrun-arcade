@@ -10,7 +10,9 @@ import {enemyPicture} from '../../src/enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from '../../src/platform-motion.js';
 import {renderEquivalenceSnapshot} from './equivalence-snapshot.js';
 import {sceneState,visiblePixels} from './visibility-pass.js';
-import {compareFrame,family,pieceModels,type Obj,type Cell,type FrameReport} from './placement-match.js';
+import {compareFrame,family,pieceModels,cells3d as cellsOf,type Obj,type Cell,type FrameReport,type Look} from './placement-match.js';
+import {kindIn} from '../../src/render3d/semantics.js';
+import nesPalette from '../../assets/nes-rgb-palette.json';
 import {nativeBubbleShown} from '../../src/view-rules.js';
 import {nativeBlockSprites} from '../../src/native-block-picture.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
@@ -32,7 +34,7 @@ export async function setup(){
  r2=new GameRenderer(document.createElement('canvas'));await r2.load();
 }
 /** Everything the 2D renderer draws this frame: tiles (cell + id) and sprite quads tagged with the object being drawn. */
-type Draw2d={quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[];draws:{id:number;tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[];tiles:{id:number;x:number;y:number;z:number;tag:string}[]};
+type Draw2d={quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[];draws:{id:number;tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[];tiles:{id:number;x:number;y:number;z:number;tag:string;palette?:number}[]};
 function draw2d(s:Simulation):Draw2d{
  const quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[]=[],draws:{id:number;tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[]=[],tiles:{id:number;x:number;y:number;z:number;tag:string}[]=[];let tag='misc',drawId=0;
  const q0=r2.quad,t0=r2.tile,p0=r2.player,e0=r2.enemy,i0=r2.item,c0=r2.castlePriorityTile,txt=r2.text,hud=r2.hud,cr=r2.castleRescue;
@@ -42,7 +44,7 @@ function draw2d(s:Simulation):Draw2d{
   const id=drawId++,q={tag,r:opaqueRect(name,rect,x,y,fx,fy)??{x:Math.floor(x),y:Math.floor(y),w:0,h:0},source:{x:Math.floor(x),y:Math.floor(y),w:rect[2],h:rect[3]},z,sourceName:name,chr:name.startsWith('sprite-tiles-')?rect[1]/8*16+rect[0]/8:undefined};q.r.draws=[id];if(sprite&&tag!=='skip'&&q.r.w&&q.r.h)quads.push(q);
   const before=this.scene.children.length,result=q0.call(this,name,rect,x,y,z,fx,fy,sprite);if(this.scene.children.length>before)draws.push({id,tag,r:q.r,z,sprite,mesh:this.scene.children.at(-1)});return result;
  };
- r2.tile=function(id:number,x:number,y:number,palette:number,z=0){tiles.push({id,x,y,z,tag});return t0.call(this,id,x,y,palette,z);};
+ r2.tile=function(id:number,x:number,y:number,palette:number,z=0){tiles.push({id,x,y,z,tag,palette});return t0.call(this,id,x,y,palette,z);};
  r2.castlePriorityTile=function(id:number,x:number,y:number,p:number){tiles.push({id,x,y,z:0,tag});return c0.call(this,id,x,y,p);};
  r2.player=function(ss:Simulation){tag='player';const r=p0.call(this,ss);tag='misc';return r;};
  r2.enemy=function(e:Any,ss:Simulation){tag='enemy#'+ss.enemies.indexOf(e);const r=e0.call(this,e,ss);tag='misc';return r;};
@@ -113,9 +115,23 @@ function objects3d(r3:Any,s:Simulation):(Obj&{root:THREE.Object3D})[]{
 /** Tiles the 3D world drew this frame, by the pool model name, recorded by re-running World.sync with a logging pool(). */
 function cells3d(r3:Any,s:Simulation){
  const w=r3.world,orig=w.pool,log:{name:string;x:number;y:number}[]=[];
- w.pool=function(name:string,theme:string,palette:number){const p=orig.call(this,name,theme,palette);return {add:(m:THREE.Matrix4)=>{log.push({name,x:m.elements[12],y:m.elements[13]});return p.add(m);}};};
+ const keys=()=>new Map([...(w.pools as Map<string,unknown>)].map(([k,p])=>[p,k]));
+ w.pool=function(name:string,...rest:Any[]){const p=orig.call(this,name,...rest),key=keys().get(p) as string;return {add:(m:THREE.Matrix4)=>{log.push({name,x:m.elements[12],y:m.elements[13],key});return p.add(m);}};};
  try{w.sync(s,Math.floor(s.camera));}finally{delete w.pool;}
- return log;
+ return log as {name:string;x:number;y:number;key:string}[];
+}
+const nes=(index:number)=>nesPalette.colors[index] as number[];
+/** Colour of a 3D pool: its palette tint (linear, x3.4 in the shader key), else the model's own colour (green pipes, gold used blocks). */
+function poolColour(key:string,natural:number){const m=/@tint([\d.,]+)/.exec(key);if(!m)return nes(natural);
+ return m[1].split(',').map(Number).map(v=>{const c=Math.min(1,v/3.4);return Math.round(255*(c<=0.0031308?12.92*c:1.055*c**(1/2.4)-0.055));});}
+/** Palette identity of both pictures: outdoor sky night/day, pipe colour per cell, block write-back colour per cell. */
+function looks(s:Simulation,r3:Any,tiles2d:{id:number;x:number;y:number;z:number;palette?:number}[],tiles3d:{name:string;x:number;y:number;key:string}[]){
+ const cam=Math.floor(s.camera),outdoor=['ground','night','snow'].includes(s.area.theme),a:Look[]=[],b:Look[]=[];if(!tiles2d.length)return {a,b};
+ if(outdoor){a.push({what:'sky',at:'',night:r2.renderer.getClearColor(new THREE.Color()).getHex()===0});b.push({what:'sky',at:'',night:r3.atmosphere.theme==='night'});}
+ for(const t of tiles2d){const k=kindIn(t.id,s.area.theme);if(t.z===0&&t.palette!==undefined&&(k==='pipe'||k==='sidePipe'))a.push({what:'pipe',at:`${Math.round((t.x+cam)/16)},${Math.round(t.y/16)}`,rgb:nes(r2.palettes[t.palette][1])});}
+ for(const [key,id] of s.blockBackground){const original=r2.originalTiles.get(key);if(id===196&&original!==undefined&&original>>6!==id>>6)a.push({what:'used',at:key,rgb:nes(r2.palettes[s.area.palette][(original>>6)*4+2])});}
+ for(const t of tiles3d){const pipe=t.name.startsWith('pipe_');if(!pipe&&!t.name.startsWith('block_used'))continue;for(const [c,r] of cellsOf(t.name,t.x,t.y).cells)b.push({what:pipe?'pipe':'used',at:`${c},${r}`,rgb:poolColour(t.key,pipe?0x29:0x17)});}
+ return {a,b};
 }
 /** One audit of the current frame (call after the page has drawn it). */
 export function audit():FrameReport{
@@ -128,7 +144,8 @@ export function audit():FrameReport{
  const o2=objects2d(s,quads.concat(debris.map(t=>({tag:t.tag,r:{x:t.x,y:t.y,w:8,h:8},z:2}))));
  const black=!r3.world.group.visible;
  const t3=black?[]:cells3d(r3,s),o3=black?[]:objects3d(r3,s);
- return compareFrame({theme:s.area.theme,camera:cam,tiles2d:t2,tiles3d:t3,objects2d:o2,objects3d:o3,pieceModel:pieceModels(PIECES)});
+ const look=black?{a:[],b:[]}:looks(s,r3,tiles,t3);
+ return compareFrame({theme:s.area.theme,camera:cam,tiles2d:t2,tiles3d:t3,objects2d:o2,objects3d:o3,pieceModel:pieceModels(PIECES),looks2d:look.a,looks3d:look.b});
 }
 /** Optional depth/alpha candidate audit. It does not assert pixel-shape equality between authored3D and NES sprites. */
 export function visibilityAudit(){

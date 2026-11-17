@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {compareFrame,category2d,cells3d} from '../tools/visual3d/placement-match.js';
+import {compareFrame,category2d,cells3d,colourFamily} from '../tools/visual3d/placement-match.js';
 const frame={theme:'ground',camera:0,tiles2d:[],tiles3d:[],objects2d:[],objects3d:[]};
 test('placement audit reports missing terrain and objects',()=>{
  const r=compareFrame({...frame,tiles2d:[{col:4,row:8,id:84}],objects2d:[{id:'player',kind:'player',x:70,y:150,w:16,h:16}]});
@@ -42,4 +42,12 @@ test('native actor identity prevents adjacent Cheeps swapping through padded-foo
  assert.deepEqual(compareFrame({...frame,objects2d:a,objects3d:b}).issues,[]);
  assert.equal(compareFrame({...frame,objects2d:a.map(({sourceId,...o})=>o),objects3d:b.map(({sourceId,...o})=>o)}).issues[0]?.type,'object-offset');
  b[0].x-=10;const broken=compareFrame({...frame,objects2d:a,objects3d:b});assert.equal(broken.issues[0]?.type,'object-offset');assert.match(broken.issues[0]?.what??'',/enemy#10/);
+});
+
+test('palette identity: night sky and pipe / block colour families are compared per cell',()=>{
+ assert.deepEqual([[252,252,252],[188,188,188],[184,248,24],[0,168,0],[228,92,16],[0,136,136]].map(colourFamily),['grey','grey','green','green','orange','blue']);
+ const looks2d=[{what:'sky',at:'',night:true},{what:'pipe',at:'4,10',rgb:[252,252,252]},{what:'used',at:'7,9',rgb:[188,188,188]}];
+ assert.deepEqual(compareFrame({...frame,looks2d,looks3d:[{what:'sky',at:'',night:true},{what:'pipe',at:'4,10',rgb:[230,232,240]},{what:'used',at:'7,9',rgb:[160,160,165]}]}).issues,[]);
+ const r=compareFrame({...frame,looks2d,looks3d:[{what:'sky',at:'',night:false},{what:'pipe',at:'4,10',rgb:[184,248,24]},{what:'used',at:'7,9',rgb:[228,92,16]},{what:'pipe',at:'9,10',rgb:[184,248,24]}]});
+ assert.deepEqual(r.issues.map(i=>`${i.type} ${i.what} ${i.at}`),['look-3d sky night->day','look-3d pipe 4,10 grey->green','look-3d used 7,9 grey->orange']);
 });
