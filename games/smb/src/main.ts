@@ -25,18 +25,17 @@ const ALL_LEVELS:(Level&{manualOnly?:boolean})[]=[{res:'0.5K',tier:'low'},{res:'
 /** Estimated frame time in ms on an Apple M4 laptop (measured): fixed scene cost plus a part per million pixels. Only ratios matter; a measured factor rescales it per device. */
 const COST={low:[5.8,1.5],high:[4,4.5],ultra:[4,15]} as const;
 const cost=(l:Level)=>{const h=heights[l.res],mp=h*h*256/240/1e6;return COST[l.tier][0]+COST[l.tier][1]*mp;};
-let autoRes=false,autoTier=false,current:Level={res:'1K',tier:'high'},autoSettle=0,deviceFactor=1,fastWindows=0;
-let probe:{back:Level;windows:number}|undefined;const blocked=new Map<string,number>(),failures=new Map<string,number>();
-/** Leave a level alone after it fails: 2 minutes, then 4, 8… so a device at its limit is not retried often. */
-function block(l:Level,now:number){const n=(failures.get(key(l))??0)+1;failures.set(key(l),n);blocked.set(key(l),now+120000*2**(n-1));}const key=(l:Level)=>l.res+'/'+l.tier;
+let autoRes=false,autoTier=false,current:Level={res:'1K',tier:'high'},autoSettle=0,deviceFactor=1,steadyWindows=0,lowWindows=0,playSeconds=0,capped=false;
+let probe:{back:Level;windows:number}|undefined,lowered:{from:Level;fps:number}|undefined,ceiling:string|undefined;
+const key=(l:Level)=>l.res+'/'+l.tier;
 /** The largest preset the screen can show in fullscreen, in physical pixels. */
 function screenPreset(){const physical=Math.min(screen.width*240/256,screen.height)*(devicePixelRatio||1);return LADDER.find(p=>heights[p]<=physical*1.1)??'0.5K';}
 /** Levels Auto may use: within the screen, and holding fixed whichever of resolution or graphics was chosen by hand. */
 function ladder(){const max=heights[screenPreset()];return ALL_LEVELS.filter(l=>heights[l.res]<=max&&(autoRes||l.res===current.res)&&(autoTier||l.tier===current.tier)&&!(l.manualOnly&&autoRes&&autoTier)).map(({res,tier})=>({res,tier}));}
 // What Auto settled on last time in this browser, so the next visit starts there (cleared by choosing Auto again).
 const LEARNED='smb-auto-3d';
-function learned():Partial<Level>{try{return JSON.parse(localStorage.getItem(LEARNED)??'{}');}catch{return {};}}
-function learn(){try{localStorage.setItem(LEARNED,JSON.stringify(current));}catch{}}
+function learned():Partial<Level>&{ceiling?:string}{try{return JSON.parse(localStorage.getItem(LEARNED)??'{}');}catch{return {};}}
+function learn(){try{localStorage.setItem(LEARNED,JSON.stringify({...current,ceiling}));}catch{}}
 const tier=():Tier=>current.tier;
 if('setResolution' in view){
  document.querySelector('.edition')!.textContent='3D VERSION';
@@ -52,8 +51,9 @@ if('setResolution' in view){
  const fixedScale=params.has('scale')&&!params.has('res');if(fixedScale)autoRes=autoTier=false;
  current={res:fixedScale?LADDER.find(p=>heights[p]<=view.scale*240)??'0.5K':autoRes?'1K':askedRes,tier:autoTier?'high':askedTier as Tier};
  if(autoRes||autoTier){
-  const levels=ladder(),saved=learned(),fitsDefault=[...levels].reverse().find(l=>cost(l)<=28)??levels[0];  // start at the best level a typical laptop GPU holds at 35+ fps
-  current=levels.find(l=>l.res===saved.res&&l.tier===saved.tier)??fitsDefault??current;
+  const levels=ladder(),saved=learned(),fitsDefault=[...levels].reverse().find(l=>cost(l)<=14)??levels[0];  // start at the best level a typical laptop GPU holds at 60 fps
+  const known=levels.find(l=>l.res===saved.res&&l.tier===saved.tier);if(known)ceiling=saved.ceiling;
+  current=known??fitsDefault??current;
  }
  for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))picker.addEventListener('change',()=>setResolution(picker.value));
  for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality'))picker.addEventListener('change',()=>setQuality(picker.value as Tier|'auto'));
@@ -62,28 +62,32 @@ if('setResolution' in view){
 }
 function remember(key:string,value:string|null){const url=new URL(location.href);if(value===null)url.searchParams.delete(key);else url.searchParams.set(key,value);history.replaceState(null,'',url);}
 function syncPickers(){for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))p.value=autoRes?'auto':current.res;for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality'))p.value=autoTier?'auto':current.tier;}
-function apply(level:Level){if(!('setResolution' in view))return;current=level;view.setResolution(heights[level.res]);view.setQuality(level.tier);autoSettle=2;fastWindows=0;if(loaded)draw();}
+function apply(level:Level){if(!('setResolution' in view))return;current=level;view.setResolution(heights[level.res]);view.setQuality(level.tier);autoSettle=2;steadyWindows=lowWindows=0;if(loaded)draw();}
 /** 'auto' or a preset. Choosing Auto again forgets what Auto learned before. */
-function setResolution(choice:string,save=true){if(!('setResolution' in view))return;autoRes=choice==='auto';if(autoRes){try{localStorage.removeItem(LEARNED);}catch{}blocked.clear();failures.clear();}else apply({...current,res:choice});syncPickers();if(save)remember('res',autoRes?null:choice);}
-function setQuality(choice:Tier|'auto'){if(!('setQuality' in view))return;autoTier=choice==='auto';if(autoTier){try{localStorage.removeItem(LEARNED);}catch{}blocked.clear();failures.clear();}else apply({...current,tier:choice as Tier});syncPickers();remember('quality',autoTier?null:choice);}
+function setResolution(choice:string,save=true){if(!('setResolution' in view))return;autoRes=choice==='auto';if(autoRes){try{localStorage.removeItem(LEARNED);}catch{}ceiling=undefined;capped=false;}else apply({...current,res:choice});syncPickers();if(save)remember('res',autoRes?null:choice);}
+function setQuality(choice:Tier|'auto'){if(!('setQuality' in view))return;autoTier=choice==='auto';if(autoTier){try{localStorage.removeItem(LEARNED);}catch{}ceiling=undefined;capped=false;}else apply({...current,tier:choice as Tier});syncPickers();remember('quality',autoTier?null:choice);}
 /**
- * Auto, once per measured second. The loop already skips frames down to 30 drawn frames a second, so the game keeps full speed above 30 fps.
- * 30 fps is the target, not 60: with frame skipping the game is at full speed from 30 up.
- * Down: two seconds under 30 fps jumps straight to the best level estimated to hold 33 fps (estimates are rescaled by this device's measured cost).
- * Up: six steady seconds with room to spare (near 60, or the next level estimated to hold 33 fps) tries one level better; if that drops under 30 fps
- * it goes back and leaves that level alone (2, 4, 8… minutes). A steady 60 says nothing about spare capacity, so then it has to be tried.
+ * Auto, once per measured second of play. The target is every game frame drawn, 60 a second: a skipped frame shows as a stutter
+ * (the loop still keeps full game speed down to 30 drawn frames by skipping every other frame).
+ * Down: two seconds under 55 drawn frames go to the best lower level estimated to hold 60 (estimates rescaled by this device's measured cost).
+ *   If that does not raise the rate, the browser or display caps it (battery saver, a 30 Hz screen), not the drawing: go back and stop lowering.
+ * Up: only in the first 20 seconds of play after the page opens, so play is never interrupted by trials later: after 4 steady seconds at 58+,
+ *   one level better is tried and kept only if it holds 58+ for 3 seconds; a level that fails is remembered as this device's ceiling.
  */
-function adapt(fps:number,slowWindows:number,now:number){
- if(!('setResolution' in view)||!(autoRes||autoTier))return false;
+function adapt(fps:number){
+ if(!('setResolution' in view)||!(autoRes||autoTier)||sim.phase!=='play')return false;
+ playSeconds++;
  if(fps<57)deviceFactor=(1000/fps)/cost(current);
  const levels=ladder(),i=levels.findIndex(l=>key(l)===key(current));
- if(probe){probe.windows--;if(fps<30){block(current,now);const back=probe.back;probe=undefined;apply(back);learn();return true;}if(probe.windows<=0)probe=undefined;}
- if(slowWindows>=2&&i>0){
-  block(current,now);
-  const target=[...levels.slice(0,i)].reverse().find(l=>cost(l)*deviceFactor<=1000/33)??levels[0];apply(target);learn();return true;
+ if(lowered){const {from,fps:before}=lowered;lowered=undefined;if(fps<57&&fps<before*1.1){capped=true;apply(from);learn();return true;}}
+ if(probe){if(fps<58){const back=probe.back;probe=undefined;ceiling=key(current);apply(back);learn();return true;}if(--probe.windows<=0){probe=undefined;learn();}return false;}
+ lowWindows=fps<55?lowWindows+1:0;
+ if(lowWindows>=2&&i>0&&!capped){
+  const target=[...levels.slice(0,i)].reverse().find(l=>cost(l)*deviceFactor<=1000/62)??levels[0];lowered={from:current,fps};apply(target);learn();return true;
  }
- const next=levels[i+1],room=fps>=57||fps>=36&&next!==undefined&&cost(next)*deviceFactor<=1000/33;fastWindows=room?fastWindows+1:0;
- if(fastWindows>=6&&next&&(blocked.get(key(next))??0)<now){probe={back:current,windows:4};apply(next);learn();return true;}
+ steadyWindows=fps>=58?steadyWindows+1:0;
+ const next=levels[i+1];
+ if(playSeconds<=20&&steadyWindows>=4&&next&&key(next)!==ceiling){probe={back:current,windows:3};apply(next);return true;}
  return false;
 }
 function clearInput(){heldKeys.clear();heldPointers.clear();tappedKeys.clear();tappedPointers.clear();menuStart=undefined;}
@@ -176,13 +180,13 @@ function lighterSetting():{label:string;apply:()=>void}|undefined{
  const i=LADDER.indexOf(current.res);if(!autoRes&&i<LADDER.length-1)return {label:'Lower resolution',apply:()=>setResolution(LADDER[i+1])};
  return playTwoD;
 }
-function watchSpeed(now:number){
+function watchSpeed(now:number,drew:boolean){
  if(!shell.playing||sim.paused||shell.blocking||controlled||document.hidden){perfStart=0;return;}
  if(!perfStart){perfStart=now;perfFrames=0;return;}
- perfFrames++;const span=now-perfStart;if(span<1000)return;
+ if(drew)perfFrames++;const span=now-perfStart;if(span<1000)return;
  const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<(is3D?30:50)?perfSlow+1:0;
  // The first two seconds after any change are skipped while shaders and buffers warm up.
- if(autoSettle>0)autoSettle--;else if(adapt(fps,perfSlow,now))perfSlow=0;
+ if(autoSettle>0)autoSettle--;else if(adapt(fps))perfSlow=0;
  showRate(fps);
  const lighter=perfSlow>=3?lighterSetting():undefined;
  if(perfSlow<3||(is3D&&!lighter)||!perf.hidden||perfDismissed)return;
@@ -205,5 +209,6 @@ function frameButtons():Button[]{
 let last=performance.now(),accumulator=0;
 // 2D presents every simulation step; 3D can use two steps per draw to keep full speed down to 30 drawn frames a second.
 const MAX_STEPS_PER_DRAW=is3D?2:1;
-function animate(now:number){watchSpeed(now);if(!controlled&&!shell.blocking){accumulator+=Math.min(250,now-last);const dt=1000/NATIVE_HZ;for(let steps=0;accumulator>=dt&&steps<MAX_STEPS_PER_DRAW;steps++){sim.step(frameButtons(),1,heldButtons(1));tappedKeys.clear();tappedPointers.clear();accumulator-=dt;}accumulator=Math.min(accumulator,dt);soundEvents();if(shell.playing)draw();}last=now;requestAnimationFrame(animate);}
+// Only a new game frame is drawn: a 120 or 144 Hz screen would otherwise draw every game frame twice or more for the same picture.
+function animate(now:number){let steps=0;if(!controlled&&!shell.blocking){accumulator+=Math.min(250,now-last);const dt=1000/NATIVE_HZ;for(;accumulator>=dt&&steps<MAX_STEPS_PER_DRAW;steps++){sim.step(frameButtons(),1,heldButtons(1));tappedKeys.clear();tappedPointers.clear();accumulator-=dt;}accumulator=Math.min(accumulator,dt);soundEvents();if(shell.playing&&steps>0)draw();}watchSpeed(now,steps>0);last=now;requestAnimationFrame(animate);}
 requestAnimationFrame(animate);
