@@ -19,7 +19,7 @@ const query=new URLSearchParams(location.search);
 /** Output heights (16:15 game frame): 0.5K (480p), 1K (960p), 2K (1440p), 4K (2160p). `?res=` picks one at load (older 960p/1080p links still work), `?scale=` too. */
 export const RESOLUTIONS:Record<string,number>={'0.5K':480,'1K':960,'960p':960,'1080p':1080,'2K':1440,'4K':2160};
 export class Renderer3D{
- private gl:THREE.WebGLRenderer;private atmosphere:Atmosphere;private kit=new Kit();private world!:World;private entities!:Entities;private hud:Hud;private props=new Props(this.kit);private lava=new LavaFx();private avatar?:IntroAvatar;scale:number;private castleHeld=false;private hudShown=false;
+ private gl:THREE.WebGLRenderer;private atmosphere:Atmosphere;private kit=new Kit();private world!:World;private entities!:Entities;private hud:Hud;private props=new Props(this.kit);private lava=new LavaFx();private avatar?:IntroAvatar;scale:number;private castleHeld=false;private hudShown=false;private warmedArea='';
  /** True while the held castle picture is shown (read by tools/visual3d). */
  held=false;
  constructor(private canvas:HTMLCanvasElement){
@@ -53,13 +53,18 @@ export class Renderer3D{
   const screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined;
   const camPx=Math.floor(s.camera),over=s.gameOverScreen;const black=over?true:screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
   this.atmosphere.setTheme(areaLook(s.area).night?'night':s.area.theme,s.area.id);
-  this.world.group.visible=this.entities.group.visible=this.props.group.visible=this.lava.group.visible=!black;
-  this.atmosphere.setBlackout(black);
-  this.atmosphere.place(camPx);
-  if(!black){this.world.sync(s,camPx);this.entities.sync(s,camPx);this.props.sync(s);this.lava.sync(s,camPx);}
-  const sprites:import('./sprite-pass.js').SpriteDraw[]=[];for(const bank of [this.world.group,this.entities.group,this.props.group])for(const root of bank.children)if(root.visible)sprites.push({root,offset:root.userData.nativeSprite?.offset??255,background:root.userData.nativeSprite?.background??false,clipRow:root.userData.nativeSprite?.clipRow});
-  this.atmosphere.spritesFor(sprites.filter(d=>d.root.parent!==this.world.group||d.root.userData.nativeSprite),[this.world.group,this.entities.group,this.props.group]);
-  if(screen&&black){this.gl.setRenderTarget(null);this.gl.setClearColor(!over&&s.nativeBackdrop===0x22?0x6888fc:0x000000);this.gl.clear();}else this.atmosphere.render();
+  // The intro screen hides the level, so the first play frame would compile all its shaders at once (a 150-200 ms freeze as play starts).
+  // Once per area the level is also drawn during the intro, and the intro picture over it in the same frame: never seen, only compiled.
+  const area=s.level.id+'/'+s.area.id,warm=black&&s.phase==='intro'&&this.warmedArea!==area;if(warm)this.warmedArea=area;
+  for(const hide of warm?[false,true]:[black]){
+   this.world.group.visible=this.entities.group.visible=this.props.group.visible=this.lava.group.visible=!hide;
+   this.atmosphere.setBlackout(hide);
+   this.atmosphere.place(camPx);
+   if(!hide){this.world.sync(s,camPx);this.entities.sync(s,camPx);this.props.sync(s);this.lava.sync(s,camPx);}
+   const sprites:import('./sprite-pass.js').SpriteDraw[]=[];for(const bank of [this.world.group,this.entities.group,this.props.group])for(const root of bank.children)if(root.visible)sprites.push({root,offset:root.userData.nativeSprite?.offset??255,background:root.userData.nativeSprite?.background??false,clipRow:root.userData.nativeSprite?.clipRow});
+   this.atmosphere.spritesFor(sprites.filter(d=>d.root.parent!==this.world.group||d.root.userData.nativeSprite),[this.world.group,this.entities.group,this.props.group]);
+   if(screen&&hide){this.gl.setRenderTarget(null);this.gl.setClearColor(!over&&s.nativeBackdrop===0x22?0x6888fc:0x000000);this.gl.clear();}else this.atmosphere.render();
+  }
   // Same visibility rule as the HUD's lives screen.
   if(screen?screen.avatar:s.phase==='intro'&&!(!s.introFromGameover&&s.introHiddenEarly||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame))this.avatar?.render(this.gl,s.frame,Boolean(s.currentPlayer));
   if(this.hudShown=this.hud.draw(s,true)){this.gl.autoClear=false;this.gl.clearDepth();this.gl.render(this.hud.scene,this.hud.camera);this.gl.autoClear=true;}
